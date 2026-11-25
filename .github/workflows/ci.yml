@@ -6,6 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: {python-version: '3.11'}
+        with: {python-version: '3.14'}
       - run: pip install -e '.[dev]'
       - run: ruff check . && lint-imports && pytest --cov=claimtower.settlement --cov-branch --cov-fail-under=95
