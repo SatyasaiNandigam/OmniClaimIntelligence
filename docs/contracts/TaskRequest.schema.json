@@ -1,0 +1,39 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "assignee_role": {
+      "title": "Assignee Role",
+      "type": "string"
+    },
+    "claim_id": {
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "task_type": {
+      "title": "Task Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "task_type",
+    "assignee_role",
+    "description",
+    "idempotency_key"
+  ],
+  "title": "TaskRequest",
+  "type": "object"
+}

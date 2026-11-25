@@ -1,0 +1,123 @@
+# SYNTHETIC. Labelled cases for the claim-specific questions the model may add to the register (T4.1).
+# Each case is a small claim: a header, the facts extracted from its documents, and the clauses in force. Labels:
+#   needed: [[clause ids], ...]  - a question a careful adjuster WOULD add. A proposal "hits" a group when it cites any clause of that group.
+#   none_needed: true            - the standard questions already cover everything: any accepted proposal is spurious.
+# Splits: `dev` = used to write and tune the prompt and checks; `fresh` = written BEFORE the dev results were looked at, run once after the
+# prompt was frozen. Do not tune on `fresh`. All people, places and amounts are invented.
+
+clauses:
+  COV-WATER:    {type: coverage,  heading: 2.2 Escape of water, text: "We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental."}
+  DEF-SUDDEN:   {type: definition, heading: 1.2 Sudden and accidental, text: "Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage."}
+  EXC-GRADUAL:  {type: exclusion, heading: 3.2 Gradual leakage, text: "We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time."}
+  COND-PERIOD:  {type: condition, heading: 5.1 Period of insurance, text: "This policy covers loss or damage occurring during the period of insurance shown in the Schedule."}
+  COND-NOTIFY:  {type: condition, heading: 5.2 Notifying a claim, text: "You must tell us about any loss within 14 days of discovering it and give us the documents and information we ask for."}
+  COND-MITIGATE: {type: condition, heading: 5.3 Preventing further loss, text: "You must take reasonable steps to prevent further loss or damage."}
+  COND-UNOCC:   {type: condition, heading: 1. Unoccupied buildings, text: "We do not cover escape of water if the Buildings have been unoccupied for more than 30 consecutive days before the loss, unless the water supply was turned off at the mains."}
+  COND-MAINT:   {type: condition, heading: 5.5 Looking after the property, text: "You must keep the Buildings, including the boiler and heating system, in good repair and have the boiler serviced at least once every 24 months."}
+  EXC-FROST:    {type: exclusion, heading: 3.4 Frost, text: "We do not cover damage caused by water freezing in pipes or tanks unless the heating was kept on at a minimum of 8 degrees Celsius or the water was drained down."}
+  SUB-E1:       {type: sublimit, heading: 1. Water damage sublimit, text: "The most we will pay for loss or damage under the escape of water cover is INR 100,000 for any one claim."}
+  SUB-E2:       {type: sublimit, heading: 1. Revised sublimit, text: "With effect from 1 March 2026 the sublimit in Endorsement END-01 is increased to INR 200,000 for any one claim."}
+  DED-STD:      {type: deductible, heading: 4.2 Standard deductible, text: "We pay for each claim only the amount above the deductible shown in the Schedule."}
+
+cases:
+  # ---------------------------------------------------------------------------------------------------- dev
+  - id: D1-unoccupied
+    split: dev
+    header: {loss_date: "2026-03-14", loss_type: water_damage, loss_description: "Pipe burst in the kitchen."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, COND-UNOCC, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: we had been away and the house had been empty for five weeks when the pipe burst"}
+      - {id: F2, text: "Plumber reports: the kitchen supply pipe split at a joint"}
+    needed: [[COND-UNOCC]]
+  - id: D2-late-notice
+    split: dev
+    header: {loss_date: "2026-03-14", loss_type: water_damage, loss_description: "Leak under the bathroom sink."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, COND-NOTIFY, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the leak began on 14 March 2026"}
+      - {id: F2, text: "The claim was first reported to the insurer on 20 April 2026"}
+    needed: [[COND-NOTIFY]]
+  - id: D3-clean
+    split: dev
+    header: {loss_date: "2026-03-14", loss_type: water_damage, loss_description: "Supply pipe burst while the family was at home."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, COND-NOTIFY, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the supply pipe burst at 7am on 14 March 2026 and we shut the mains within minutes"}
+      - {id: F2, text: "Plumber reports: a sudden rupture of the copper supply pipe; repaired the same day"}
+      - {id: F3, text: "The claim was first reported to the insurer on 14 March 2026"}
+    none_needed: true
+  - id: D4-appliance-hose
+    split: dev
+    header: {loss_date: "2026-03-14", loss_type: water_damage, loss_description: "Washing machine hose burst."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the inlet hose of the washing machine burst and flooded the utility room"}
+      - {id: F2, text: "Surveyor reports: the hose is a flexible rubber hose connecting the machine to the tap"}
+    needed: [[COV-WATER]]
+  - id: D5-gradual-decoy
+    split: dev
+    header: {loss_date: "2026-03-14", loss_type: water_damage, loss_description: "Damp patch spreading on the kitchen wall."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, DED-STD]
+    facts:
+      - {id: F1, text: "Plumber reports: significant corrosion at the joint of the supply pipe"}
+      - {id: F2, text: "Surveyor reports: moisture in the kitchen wall and the hallway skirting"}
+    none_needed: true
+
+  # ---------------------------------------------------------------------------------------------------- fresh (unseen)
+  - id: F1-frost
+    split: fresh
+    header: {loss_date: "2026-01-20", loss_type: water_damage, loss_description: "Pipe in the loft froze and split."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, EXC-FROST, COND-PERIOD, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the cold snap froze the loft pipe while we were on holiday and we had switched the heating off"}
+      - {id: F2, text: "Plumber reports: a split in the loft water pipe caused by freezing"}
+    needed: [[EXC-FROST]]
+  - id: F2-maintenance
+    split: fresh
+    header: {loss_date: "2026-02-10", loss_type: water_damage, loss_description: "Boiler leaked into the utility room."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, COND-MAINT, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the boiler pipework leaked and soaked the utility room floor"}
+      - {id: F2, text: "Plumber reports: the boiler has not been serviced for about three years"}
+    needed: [[COND-MAINT]]
+  - id: F3-mitigation
+    split: fresh
+    header: {loss_date: "2026-03-02", loss_type: water_damage, loss_description: "Tank overflow flooded the bedroom."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, COND-MITIGATE, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the water tank overflowed and we left the water running for two days before anyone turned off the mains"}
+      - {id: F2, text: "Surveyor reports: the bedroom ceiling and the landing carpet are saturated"}
+    needed: [[COND-MITIGATE]]
+  - id: F4-clean
+    split: fresh
+    header: {loss_date: "2026-04-05", loss_type: water_damage, loss_description: "A radiator valve failed and sprayed water."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, COND-NOTIFY, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the radiator valve failed at 6pm on 5 April 2026 and we isolated the supply straight away"}
+      - {id: F2, text: "Plumber reports: the valve spindle failed suddenly; replaced on 5 April 2026"}
+      - {id: F3, text: "The claim was first reported to the insurer on 6 April 2026"}
+    none_needed: true
+  - id: F5-occupied-decoy
+    split: fresh
+    header: {loss_date: "2026-03-14", loss_type: water_damage, loss_description: "Pipe burst in the hallway."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, COND-UNOCC, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: our family lives in the house all year round and the whole household was at home when the pipe burst"}
+      - {id: F2, text: "Plumber reports: sudden failure of a fitting on the hallway supply pipe"}
+    none_needed: true
+  - id: F6-sublimit-decoy
+    split: fresh
+    header: {loss_date: "2026-03-01", loss_type: water_damage, loss_description: "Burst pipe on the day the revised sublimit starts."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, SUB-E1, SUB-E2, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: the pipe burst on the morning of 1 March 2026"}
+      - {id: F2, text: "Plumber reports: sudden rupture of the supply pipe"}
+    none_needed: true
+  - id: F7-tenant
+    split: fresh
+    header: {loss_date: "2026-03-14", loss_type: water_damage, loss_description: "Pipe burst in the rented flat."}
+    clauses: [COV-WATER, DEF-SUDDEN, EXC-GRADUAL, COND-PERIOD, DED-STD]
+    facts:
+      - {id: F1, text: "Claimant reports: I rent this flat from my landlord and the supply pipe burst in the kitchen"}
+      - {id: F2, text: "Plumber reports: sudden rupture of the kitchen supply pipe"}
+    needed: [[COV-WATER]]

@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "agent_id": {
+      "title": "Agent Id",
+      "type": "string"
+    },
+    "rationale": {
+      "default": "",
+      "title": "Rationale",
+      "type": "string"
+    },
+    "updates": {
+      "additionalProperties": true,
+      "title": "Updates",
+      "type": "object"
+    }
+  },
+  "required": [
+    "agent_id",
+    "updates"
+  ],
+  "title": "StatePatch",
+  "type": "object"
+}

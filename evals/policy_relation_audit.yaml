@@ -1,0 +1,10 @@
+# Hand judgement of relations the extractor proposed that the minimal labels (data/synthetic/policies/clause_index.json) do not list.
+# verdict: valid | invalid. Judged by reading the two clauses, not by looking at the score. Add an entry whenever a new unlabelled relation
+# appears; an unaudited one counts against precision. Audited-valid relations are reported separately (precision_with_audited).
+audited:
+  - {source: CL-DEF-BUILDINGS, target: CL-COV-FIRE, relation: defines, verdict: valid,
+     note: "2.1 Fire covers damage to 'the Buildings', which clause 1.1 defines. The labels only list relations used by the water scenarios."}
+  - {source: CL-DEF-BUILDINGS, target: CL-COV-WATER, relation: defines, verdict: valid,
+     note: "2.2 Escape of water covers damage to 'the Buildings', which clause 1.1 defines."}
+  - {source: CL-H3-DEF-ESCAPE, target: CL-H3-COV-PERILS, relation: defines, verdict: valid,
+     note: "2.1 Perils lists 'escape of water' as an insured peril, the term clause 1.1 defines. Only 2.2 is labelled."}

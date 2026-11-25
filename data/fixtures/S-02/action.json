@@ -1,0 +1,23 @@
+{
+  "proposed_actions": [
+    {
+      "action_id": "ACT-CLM-0002-1",
+      "action_type": "draft_status_message",
+      "responsible_party": "claimant",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0002:draft_status_message:claimant",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0002-2",
+      "action_type": "present_settlement_for_human_approval",
+      "responsible_party": "adjuster",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0002:present_settlement_for_human_approval",
+      "payload_ref": null
+    }
+  ],
+  "drafts": []
+}

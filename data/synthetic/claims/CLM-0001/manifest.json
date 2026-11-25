@@ -1,0 +1,71 @@
+{
+  "claim_id": "CLM-0001",
+  "scenario_id": "S-01",
+  "synthetic": true,
+  "license": "CC0-1.0 - drawn by scripts/generate_synthetic_docs.py, no third-party imagery",
+  "documents": [
+    {
+      "document_id": "DOC-S01-1",
+      "filename": "fnol.pdf",
+      "doc_type": "fnol",
+      "page_count": 1,
+      "sha256": "c4e349048d47622824394912314ccd29e25794b044afe19629fde1cd5ea52044",
+      "text_sha256": "a875e785593079ca96067d82cf146a316860e7bf67b7292bdecf9d3d47e1729d",
+      "received_on": "2026-03-16",
+      "uploaded_by": "claimant",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S01-2",
+      "filename": "plumber_report.pdf",
+      "doc_type": "plumber_report",
+      "page_count": 1,
+      "sha256": "bc7613adb8d5ac03c29a13053045ab04fbc15d5dacb0313e2acf991c57b6f4bb",
+      "text_sha256": "260d026dcc1e6966589c55eeb944aa87c230d5da58a279ff2b8d707089798214",
+      "received_on": "2026-03-17",
+      "uploaded_by": "plumber",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S01-3",
+      "filename": "surveyor_report.pdf",
+      "doc_type": "surveyor_report",
+      "page_count": 1,
+      "sha256": "e33ae1df357b114134fda43e3ecb5344c194137e0e283d9e493b309e89274b7b",
+      "text_sha256": "4a1ce1c0d32e108443952087a759d1a22fddd6585aba786c7c810fd5525b1aee",
+      "received_on": "2026-03-19",
+      "uploaded_by": "surveyor",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S01-4",
+      "filename": "estimate.pdf",
+      "doc_type": "estimate",
+      "page_count": 1,
+      "sha256": "4a37437631d8fdd24fd48781bc86740606d5938aa6963157842989e01473b466",
+      "text_sha256": "1b664a723cb16a8a38e887a459379a91f91f5460ce14eb5284e089cf407a4a94",
+      "received_on": "2026-03-20",
+      "uploaded_by": "contractor",
+      "in_scenario": true
+    }
+  ],
+  "variants": [],
+  "photos": [
+    {
+      "file": "photos/kitchen_wall_stain.jpg",
+      "sha256": "e3571ddbbc37f59f836c85d3539035c27b8df2c69ff08d6647bc50e282d5ff17",
+      "in_scenario": false,
+      "role": "good",
+      "shows": "stain on kitchen wall",
+      "expected_quality_verdict": "usable"
+    },
+    {
+      "file": "photos/pipe_joint_closeup.jpg",
+      "sha256": "ea2343d10a64393b015d2a289bf17a1e043350658e373a6ac644fbd5eb20fff3",
+      "in_scenario": false,
+      "role": "good",
+      "shows": "corroded pipe joint",
+      "expected_quality_verdict": "usable"
+    }
+  ]
+}

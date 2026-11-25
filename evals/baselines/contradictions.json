@@ -1,0 +1,371 @@
+{
+  "entries": [
+    {
+      "label": "T4.3 contradictions v2 (prompt frozen on dev; fresh run once)",
+      "date": "2026-11-25",
+      "config_sha": "63e4bcc7b621bcac",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "cases": 10,
+            "labelled": 5,
+            "predicted": 2,
+            "precision": 1.0,
+            "recall": 0.4,
+            "by_kind": {
+              "date": {
+                "labelled": 2,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 0.5
+              },
+              "amount": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 1,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 2
+            },
+            "false_alarms": [],
+            "missed": [
+              "S-01: ['F-S01-02'] vs ['F-S01-03', 'F-S01-04'] (cause)",
+              "D-extent: ['D-extent/f1'] vs ['D-extent/f2'] (extent)",
+              "D-timing: ['D-timing/f1'] vs ['D-timing/f2'] (date)"
+            ]
+          },
+          "fresh": {
+            "cases": 11,
+            "labelled": 8,
+            "predicted": 4,
+            "precision": 1.0,
+            "recall": 0.5,
+            "by_kind": {
+              "date": {
+                "labelled": 3,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 0.6666666666666666
+              },
+              "amount": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 2,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 2,
+              "medium": 2
+            },
+            "false_alarms": [],
+            "missed": [
+              "N5-cause: ['N5-cause/f1'] vs ['N5-cause/f2'] (cause)",
+              "N6-extent: ['N6-extent/f1'] vs ['N6-extent/f2'] (extent)",
+              "N9-two-conflicts: ['N9-two-conflicts/f1'] vs ['N9-two-conflicts/f2'] (cause)",
+              "N11-timing: ['N11-timing/f1'] vs ['N11-timing/f2'] (date)"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "cases": 10,
+            "labelled": 5,
+            "predicted": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "by_kind": {
+              "date": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "amount": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 5
+            },
+            "false_alarms": [],
+            "missed": []
+          },
+          "fresh": {
+            "cases": 11,
+            "labelled": 8,
+            "predicted": 8,
+            "precision": 1.0,
+            "recall": 1.0,
+            "by_kind": {
+              "date": {
+                "labelled": 3,
+                "predicted": 3,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "amount": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 5,
+              "medium": 3
+            },
+            "false_alarms": [],
+            "missed": []
+          }
+        }
+      }
+    },
+    {
+      "label": "T4.3 re-recorded after relaxing criteria wording (Q-P10): dropped 'dated' and 'itemised'",
+      "date": "2026-11-25",
+      "config_sha": "1881987b6a88c27b",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "cases": 10,
+            "labelled": 5,
+            "predicted": 2,
+            "precision": 1.0,
+            "recall": 0.4,
+            "by_kind": {
+              "date": {
+                "labelled": 2,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 0.5
+              },
+              "amount": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 1,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 2
+            },
+            "false_alarms": [],
+            "missed": [
+              "S-01: ['F-S01-02'] vs ['F-S01-03', 'F-S01-04'] (cause)",
+              "D-extent: ['D-extent/f1'] vs ['D-extent/f2'] (extent)",
+              "D-timing: ['D-timing/f1'] vs ['D-timing/f2'] (date)"
+            ]
+          },
+          "fresh": {
+            "cases": 11,
+            "labelled": 8,
+            "predicted": 4,
+            "precision": 1.0,
+            "recall": 0.5,
+            "by_kind": {
+              "date": {
+                "labelled": 3,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 0.6666666666666666
+              },
+              "amount": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 2,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 0,
+                "precision": null,
+                "recall": 0.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 2,
+              "medium": 2
+            },
+            "false_alarms": [],
+            "missed": [
+              "N5-cause: ['N5-cause/f1'] vs ['N5-cause/f2'] (cause)",
+              "N6-extent: ['N6-extent/f1'] vs ['N6-extent/f2'] (extent)",
+              "N9-two-conflicts: ['N9-two-conflicts/f1'] vs ['N9-two-conflicts/f2'] (cause)",
+              "N11-timing: ['N11-timing/f1'] vs ['N11-timing/f2'] (date)"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "cases": 10,
+            "labelled": 5,
+            "predicted": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "by_kind": {
+              "date": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "amount": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 4,
+              "medium": 1
+            },
+            "false_alarms": [],
+            "missed": []
+          },
+          "fresh": {
+            "cases": 11,
+            "labelled": 8,
+            "predicted": 8,
+            "precision": 1.0,
+            "recall": 1.0,
+            "by_kind": {
+              "date": {
+                "labelled": 3,
+                "predicted": 3,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "amount": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "cause": {
+                "labelled": 2,
+                "predicted": 2,
+                "precision": 1.0,
+                "recall": 1.0
+              },
+              "extent": {
+                "labelled": 1,
+                "predicted": 1,
+                "precision": 1.0,
+                "recall": 1.0
+              }
+            },
+            "under_cited": 0,
+            "refused": 0,
+            "severities": {
+              "high": 5,
+              "medium": 3
+            },
+            "false_alarms": [],
+            "missed": []
+          }
+        }
+      }
+    }
+  ]
+}

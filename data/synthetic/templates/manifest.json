@@ -1,0 +1,23 @@
+{
+  "synthetic": true,
+  "documents": [
+    {
+      "document_id": "DOC-TPL-1",
+      "filename": "invoice_sample.pdf",
+      "doc_type": "invoice",
+      "sha256": "d24a181d45cc6ffaaad0d59a803eb01ed7f64b1b76d459e3e44c562b950eaf4d",
+      "source_text": [
+        "INVOICE - SYNTHETIC DOCUMENT\nInvoice number: INV-TPL-0001\nVendor: SYNTHETIC Repairs Pvt Ltd (fictional)\nLabour: INR 40,000\nMaterials: INR 25,000\nTax: INR 11,700\nTotal: INR 76,700\nPayment terms: 30 days\n"
+      ]
+    },
+    {
+      "document_id": "DOC-TPL-2",
+      "filename": "email_sample.pdf",
+      "doc_type": "email",
+      "sha256": "0052e96104a3dba7842e293ff7a24b8e6943f046ab3b46cc3773957f3dc16159",
+      "source_text": [
+        "Re: my water damage claim - SYNTHETIC DOCUMENT\nHello, I am writing about the damage to my kitchen.\nThe plumber told me the pipe may have been leaking for some time.\nPlease tell me what else you need.\nRegards, SYNTHETIC Claimant\n"
+      ]
+    }
+  ]
+}

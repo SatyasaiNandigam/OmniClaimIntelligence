@@ -1,0 +1,1455 @@
+# Labelled text documents for the field/table extraction eval (T2.3). ALL SYNTHETIC. Block style and quoted strings on purpose
+# (an unquoted comma inside a YAML {flow mapping} silently splits a value).
+#   split:  dev (written with the extractor in mind, fine to tune on) | holdout (different formats, report these)
+#   expected: {field: normalised value}   flagged: fields that MUST come out flagged low-confidence   absent: must NOT be extracted
+#   missing_required: required fields the extractor must report as missing   table: expected table and self-check status
+# The document type is given (set by a human in the eval) so extraction is measured on its own, not through the classifier.
+items:
+# ------------------------------------------------------------------------------------------------ dev
+- id: d01
+  split: dev
+  doc_type: fnol
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Iyer
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Description: Water leaking from the bathroom ceiling.
+    Estimated loss: INR 45,000
+  expected:
+    claimant_name: "R. Iyer"
+    policy_number: "POL-2201"
+    loss_date: "2026-06-03"
+    loss_description: "Water leaking from the bathroom ceiling."
+    estimated_loss: "45000"
+- id: d02
+  split: dev
+  doc_type: plumber_report
+  text: |
+    PLUMBER'S REPORT
+    Inspection date: 5 June 2026
+    Findings: The pipe joint above the bathroom had a crack.
+    Joint replaced and supply restored.
+  expected:
+    inspection_date: "2026-06-05"
+    findings: "The pipe joint above the bathroom had a crack."
+    work_carried_out: "Joint replaced and supply restored."
+  flagged: [work_carried_out]
+- id: d03
+  split: dev
+  doc_type: surveyor_report
+  text: |
+    SURVEYOR'S REPORT
+    Site visit: 6 June 2026
+    Moisture readings were high in the bathroom ceiling.
+    Assessed repair cost: INR 40,000
+  expected:
+    site_visit_date: "2026-06-06"
+    assessed_repair_cost: "40000"
+    observations: "Moisture readings were high in the bathroom ceiling."
+  flagged: [observations]
+- id: d04
+  split: dev
+  doc_type: estimate
+  text: |
+    REPAIR ESTIMATE
+    Ceiling repair: INR 25,000
+    Painting: INR 15,000
+    Total: INR 40,000
+    Scope: bathroom ceiling
+  expected:
+    scope: "bathroom ceiling"
+    total_amount: "40000"
+  table:
+    status: reconciled
+    total: "40000"
+    items: [["Ceiling repair", "25000"], ["Painting", "15000"]]
+- id: d05
+  split: dev
+  doc_type: invoice
+  text: |
+    TAX INVOICE
+    Invoice number: 5521
+    Vendor: A1 Repairs
+    Invoice date: 8 June 2026
+    Labour: INR 20,000
+    GST: INR 3,600
+    Total: INR 23,600
+    Payment terms: 15 days
+  expected:
+    invoice_number: "5521"
+    vendor_name: "A1 Repairs"
+    invoice_date: "2026-06-08"
+    payment_terms: "15 days"
+    total_amount: "23600"
+  table:
+    status: reconciled
+    total: "23600"
+    tax: "3600"
+    items: [["Labour", "20000"]]
+- id: d06
+  split: dev
+  doc_type: policy_schedule
+  text: |
+    POLICY SCHEDULE
+    Policy number: POL-2201
+    Period of insurance: 1 January 2026 to 31 December 2026
+    Building limit: INR 2,000,000
+    Standard deductible: INR 10,000
+  expected:
+    policy_number: "POL-2201"
+    period_of_insurance: "2026-01-01/2026-12-31"
+    building_limit: "2000000"
+    standard_deductible: "10000"
+- id: d07
+  split: dev
+  doc_type: email
+  text: |
+    From: r.iyer@example.invalid
+    To: claims@insurer.example.invalid
+    Date: 9 June 2026
+    Subject: Water damage claim
+
+    Please find the documents attached.
+  expected:
+    email_from: "r.iyer@example.invalid"
+    email_to: "claims@insurer.example.invalid"
+    email_date: "2026-06-09"
+    email_subject: "Water damage claim"
+- id: d08
+  split: dev
+  doc_type: estimate
+  text: |
+    REPAIR ESTIMATE
+    Ceiling repair: INR 20,000
+    Painting: INR 15,000
+    Total: INR 40,000
+  expected:
+    total_amount: "40000"
+  flagged: [total_amount]
+  table:
+    status: mismatch
+    total: "40000"
+    items: [["Ceiling repair", "20000"], ["Painting", "15000"]]
+# ------------------------------------------------------------------------------------------------ holdout (different formats and layouts)
+- id: h01
+  split: holdout
+  doc_type: fnol
+  note: "ambiguous day/month date: day-first assumed and FLAGGED"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: S. Kulkarni
+    Policy number: POL-4410
+    Date of loss: 2/8/2026
+    Description: Kitchen pipe burst overnight.
+  expected:
+    loss_date: "2026-08-02"
+    policy_number: "POL-4410"
+  flagged: [loss_date]
+- id: h02
+  split: holdout
+  doc_type: fnol
+  note: "dd-Mon-yyyy date and Rs. amount with trailing slash-dash"
+  text: |
+    CLAIM FORM
+    Insured name: S. Kulkarni
+    Policy no: POL-4410
+    Date of incident: 02-Aug-2026
+    Nature of loss: Burst pipe in the kitchen.
+    Approximate amount of loss: Rs. 60,000/-
+  expected:
+    claimant_name: "S. Kulkarni"
+    policy_number: "POL-4410"
+    loss_date: "2026-08-02"
+    estimated_loss: "60000"
+    loss_description: "Burst pipe in the kitchen."
+- id: h03
+  split: holdout
+  doc_type: fnol
+  note: "month-first text date and rupee symbol with Indian grouping"
+  text: |
+    LOSS INTIMATION FORM
+    Claimant name: P. Nair
+    Policy number: POL-5520
+    Date of loss: August 2, 2026
+    Estimated loss: ₹1,50,000
+  expected:
+    claimant_name: "P. Nair"
+    policy_number: "POL-5520"
+    loss_date: "2026-08-02"
+    estimated_loss: "150000"
+- id: h04
+  split: holdout
+  doc_type: fnol
+  note: "ordinal date and lakh amount"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: P. Nair
+    Policy number: POL-5520
+    Date of loss: 2nd August 2026
+    Estimated loss: INR 1.5 lakh
+  expected:
+    loss_date: "2026-08-02"
+    estimated_loss: "150000"
+- id: h05
+  split: holdout
+  doc_type: fnol
+  note: "lower-case policy id, ISO date, bare number without currency"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: A. Thomas
+    Policy No: pol-6001
+    Date of incident: 2026-08-02
+    Approximate amount of loss: 60000
+  expected:
+    policy_number: "POL-6001"
+    loss_date: "2026-08-02"
+    estimated_loss: "60000"
+- id: h06
+  split: holdout
+  doc_type: fnol
+  note: "value on the line after the label"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: A. Thomas
+    Policy number: POL-6001
+    Date of loss: 14 October 2026
+    Description:
+    Water came through the ceiling of the passage.
+  expected:
+    loss_description: "Water came through the ceiling of the passage."
+- id: h07
+  split: holdout
+  doc_type: fnol
+  note: "the document states two different loss dates: first kept, the other listed, flagged"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: D. Fernandes
+    Policy number: POL-7120
+    Date of loss: 2 August 2026
+    Description: Pipe burst.
+    Date of loss: 5 August 2026
+  expected:
+    loss_date: "2026-08-02"
+  flagged: [loss_date]
+- id: h08
+  split: holdout
+  doc_type: fnol
+  note: "an unparseable date is KEPT as written, normalised value absent, flagged"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: D. Fernandes
+    Policy number: POL-7120
+    Date of loss: last Tuesday
+    Description: Pipe burst.
+  expected:
+    loss_date: null
+  flagged: [loss_date]
+- id: h09
+  split: holdout
+  doc_type: fnol
+  note: "no policy number: reported as missing, not invented"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: D. Fernandes
+    Date of loss: 3 November 2026
+    Description: Pipe burst in the passage.
+  expected:
+    claimant_name: "D. Fernandes"
+    loss_date: "2026-11-03"
+  absent: [policy_number]
+  missing_required: [policy_number]
+- id: h10
+  split: holdout
+  doc_type: fnol
+  note: "an impossible calendar date is not repaired"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: K. Dsouza
+    Policy number: POL-7188
+    Date of loss: 31 February 2026
+    Description: Kitchen fire.
+  expected:
+    loss_date: null
+  flagged: [loss_date]
+- id: h11
+  split: holdout
+  doc_type: fnol
+  note: "time and location fields (free text with a colon inside the value)"
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: K. Dsouza
+    Policy number: POL-7188
+    Date of loss: 9 November 2026
+    Time of loss: 10:30 pm
+    Location of loss: 12 Park Road, Pune
+    Description: Kitchen fire, smoke damage to two rooms.
+  expected:
+    loss_time: "10:30 pm"
+    loss_location: "12 Park Road, Pune"
+- id: h12
+  split: holdout
+  doc_type: plumber_report
+  note: "synonym labels"
+  text: |
+    PLUMBING INSPECTION REPORT
+    Date of inspection: 4 August 2026
+    Observations: The supply line under the sink was split.
+  expected:
+    inspection_date: "2026-08-04"
+    findings: "The supply line under the sink was split."
+- id: h13
+  split: holdout
+  doc_type: surveyor_report
+  note: "synonym labels, cause and assessed cost"
+  text: |
+    LOSS ADJUSTER'S REPORT
+    Date of survey: 6 August 2026
+    Cause of loss: failed pipe joint.
+    Assessed cost: INR 55,000
+  expected:
+    site_visit_date: "2026-08-06"
+    cause_of_loss: "failed pipe joint."
+    assessed_repair_cost: "55000"
+- id: h14
+  split: holdout
+  doc_type: policy_schedule
+  note: "dash-separated period, Indian grouping, synonym labels"
+  text: |
+    CERTIFICATE OF INSURANCE
+    Policy no: POL-4410
+    Period: 1 Jan 2026 - 31 Dec 2026
+    Sum insured: INR 30,00,000
+    Excess: INR 5,000
+  expected:
+    policy_number: "POL-4410"
+    period_of_insurance: "2026-01-01/2026-12-31"
+    building_limit: "3000000"
+    standard_deductible: "5000"
+- id: h15
+  split: holdout
+  doc_type: policy_schedule
+  note: "numeric dd/mm/yyyy period (unambiguous: 31/12)"
+  text: |
+    POLICY SCHEDULE
+    Policy number: POL-5520
+    Policy period: 1/1/2026 to 31/12/2026
+    Building limit: INR 2,500,000
+  expected:
+    period_of_insurance: "2026-01-01/2026-12-31"
+    building_limit: "2500000"
+- id: h16
+  split: holdout
+  doc_type: invoice
+  note: "no tax row: flagged informationally; id with slashes"
+  text: |
+    INVOICE
+    Invoice no: INV/22/0087
+    Supplier: Rapid Plumbing
+    Invoice date: 5 August 2026
+    Call-out and labour: INR 2,500
+    Materials: INR 1,200
+    Total: INR 3,700
+    Payment terms: net 15
+  expected:
+    invoice_number: "INV/22/0087"
+    vendor_name: "Rapid Plumbing"
+    invoice_date: "2026-08-05"
+    payment_terms: "net 15"
+    total_amount: "3700"
+  table:
+    status: reconciled
+    total: "3700"
+    items: [["Call-out and labour", "2500"], ["Materials", "1200"]]
+    flags: [no_tax_line]
+- id: h17
+  split: holdout
+  doc_type: invoice
+  note: "CGST and SGST rows reconcile"
+  text: |
+    TAX INVOICE
+    Invoice number: TI-0099
+    Vendor: Rapid Plumbing
+    Pipe replacement: INR 10,000
+    CGST (9%): INR 900
+    SGST (9%): INR 900
+    Total: INR 11,800
+  expected:
+    total_amount: "11800"
+  table:
+    status: reconciled
+    total: "11800"
+    tax: "1800"
+    items: [["Pipe replacement", "10000"]]
+- id: h18
+  split: holdout
+  doc_type: invoice
+  note: "arithmetic error: 30,000 + 12,000 is not 45,000"
+  text: |
+    INVOICE
+    Invoice number: 7714
+    Vendor: Metro Plumbing
+    Plumbing work: INR 30,000
+    Tiling: INR 12,000
+    GST: INR 0
+    Total: INR 45,000
+  expected:
+    total_amount: "45000"
+  flagged: [total_amount]
+  table:
+    status: mismatch
+    total: "45000"
+    items: [["Plumbing work", "30000"], ["Tiling", "12000"]]
+- id: h19
+  split: holdout
+  doc_type: estimate
+  note: "subtotal and discount rows"
+  text: |
+    QUOTATION FOR REPAIRS
+    Strip and replace flooring: INR 50,000
+    Repaint walls: INR 20,000
+    Subtotal: INR 70,000
+    Discount: INR 5,000
+    Total: INR 65,000
+  expected:
+    total_amount: "65000"
+  table:
+    status: reconciled
+    total: "65000"
+    items: [["Strip and replace flooring", "50000"], ["Repaint walls", "20000"]]
+- id: h20
+  split: holdout
+  doc_type: estimate
+  note: "two different totals: ambiguous, flagged"
+  text: |
+    ESTIMATE OF REPAIR COSTS
+    Plumbing: INR 15,000
+    Tiling: INR 25,000
+    Total: INR 40,000
+    Grand total: INR 42,000
+  expected:
+    total_amount: "42000"
+  flagged: [total_amount]
+  table:
+    status: ambiguous_total
+    items: [["Plumbing", "15000"], ["Tiling", "25000"]]
+- id: h21
+  split: holdout
+  doc_type: estimate
+  note: "no total row"
+  text: |
+    REPAIR ESTIMATE
+    Plumbing: INR 15,000
+    Tiling: INR 25,000
+  absent: [total_amount]
+  table:
+    status: no_total
+    items: [["Plumbing", "15000"], ["Tiling", "25000"]]
+- id: h22
+  split: holdout
+  doc_type: estimate
+  note: "mixed currencies are never summed"
+  text: |
+    REPAIR ESTIMATE
+    Plumbing: INR 15,000
+    Imported fitting: USD 200
+    Total: INR 20,000
+  table:
+    status: mixed_currency
+    items: [["Plumbing", "15000"], ["Imported fitting", "200"]]
+- id: h23
+  split: holdout
+  doc_type: estimate
+  note: "duplicate line items are flagged but still reconcile"
+  text: |
+    REPAIR ESTIMATE
+    Plumbing: INR 15,000
+    Plumbing: INR 15,000
+    Total: INR 30,000
+  expected:
+    total_amount: "30000"
+  table:
+    status: reconciled
+    total: "30000"
+    items: [["Plumbing", "15000"], ["Plumbing", "15000"]]
+    flags: [duplicate_line_items]
+- id: h24
+  split: holdout
+  doc_type: estimate
+  note: "a credit row (negative amount) and Indian grouping"
+  text: |
+    REPAIR ESTIMATE
+    Flooring: INR 1,25,000
+    Less trade-in: -INR 25,000
+    Total: INR 1,00,000
+  expected:
+    total_amount: "100000"
+  table:
+    status: reconciled
+    total: "100000"
+    items: [["Flooring", "125000"], ["Less trade-in", "-25000"]]
+- id: h25
+  split: holdout
+  doc_type: email
+  note: "weekday and time in the date header"
+  text: |
+    From: s.kulkarni@example.invalid
+    To: claims@insurer.example.invalid
+    Date: Tue, 10 Mar 2026 10:00:00 +0000
+    Subject: Missing endorsement
+
+    Please resend the endorsement.
+  expected:
+    email_from: "s.kulkarni@example.invalid"
+    email_date: "2026-03-10"
+    email_subject: "Missing endorsement"
+- id: h26
+  split: holdout
+  doc_type: surveyor_report
+  note: "two unlabelled passages: the first is taken, the other kept as an alternative"
+  text: |
+    SURVEY REPORT
+    Date of survey: 7 August 2026
+    The walls in the lounge show damp patches near the skirting.
+
+    Photographs were taken of each affected wall.
+  expected:
+    site_visit_date: "2026-08-07"
+  flagged: [observations]
+# ------------------------------------------------------------------------------------------------ fresh (written AFTER the v2 fixes; first measured against v2)
+- id: f01
+  split: fresh
+  doc_type: fnol
+  note: 'date range: there is no single loss date'
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: M. Rao
+    Policy number: POL-3310
+    Date of loss: between 3 and 5 May 2026
+    Description: Slow leak found.
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: f02
+  split: fresh
+  doc_type: fnol
+  note: 'amount range: there is no single amount'
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: M. Rao
+    Policy number: POL-3310
+    Date of loss: 11 July 2026
+    Estimated loss: INR 45,000 to INR 60,000
+  expected:
+    estimated_loss: null
+  flagged:
+  - estimated_loss
+- id: f03
+  split: fresh
+  doc_type: fnol
+  note: a second date in brackets is context, not a conflict
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: M. Rao
+    Policy number: POL-3310
+    Date of loss: 14 March 2026 (reported on 16 March 2026)
+  expected:
+    loss_date: '2026-03-14'
+- id: f04
+  split: fresh
+  doc_type: fnol
+  note: upper-case labels with a space before the colon
+  text: |
+    FIRST NOTICE OF LOSS
+    CLAIMANT : M. Rao
+    POLICY NUMBER : POL-3310
+    DATE OF LOSS : 11 July 2026
+  expected:
+    claimant_name: M. Rao
+    policy_number: POL-3310
+    loss_date: '2026-07-11'
+- id: f05
+  split: fresh
+  doc_type: fnol
+  note: a space inside the policy number is not repaired
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL 2201
+    Date of loss: 3 June 2026
+  expected:
+    policy_number: null
+  flagged:
+  - policy_number
+- id: f06
+  split: fresh
+  doc_type: fnol
+  note: date followed by a time
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 14 March 2026 at 10:30
+  expected:
+    loss_date: '2026-03-14'
+- id: f07
+  split: fresh
+  doc_type: fnol
+  note: claimant given with a dash, not a label
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant - R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Description: Leak.
+  expected:
+    policy_number: POL-2201
+  absent:
+  - claimant_name
+  missing_required:
+  - claimant_name
+- id: f08
+  split: fresh
+  doc_type: estimate
+  note: total row labelled 'Total (incl. GST)'
+  text: |
+    REPAIR ESTIMATE
+    Plumbing: INR 10,000
+    GST: INR 1,800
+    Total (incl. GST): INR 11,800
+  expected:
+    total_amount: '11800'
+  table:
+    status: reconciled
+    total: '11800'
+    tax: '1800'
+    items:
+    - - Plumbing
+      - '10000'
+- id: f09
+  split: fresh
+  doc_type: estimate
+  note: item labels with brackets
+  text: |
+    REPAIR ESTIMATE
+    Labour (2 days): INR 8,000
+    Materials: INR 4,000
+    Total: INR 12,000
+  expected:
+    total_amount: '12000'
+  table:
+    status: reconciled
+    total: '12000'
+    items:
+    - - Labour (2 days)
+      - '8000'
+    - - Materials
+      - '4000'
+- id: f10
+  split: fresh
+  doc_type: invoice
+  note: '''Amount due'' is the total'
+  text: |
+    INVOICE
+    Invoice number: 9001
+    Vendor: Rapid Plumbing & Drainage Ltd.
+    Repairs: INR 5,000
+    Amount due: INR 5,000
+  expected:
+    invoice_number: '9001'
+    vendor_name: Rapid Plumbing & Drainage Ltd.
+    total_amount: '5000'
+  table:
+    status: reconciled
+    total: '5000'
+    items:
+    - - Repairs
+      - '5000'
+- id: f11
+  split: fresh
+  doc_type: surveyor_report
+  note: amount written with 'approximately'
+  text: |
+    SURVEYOR'S REPORT
+    Site visit: 6 June 2026
+    Assessed repair cost: approximately INR 98,000
+  expected:
+    assessed_repair_cost: '98000'
+- id: f12
+  split: fresh
+  doc_type: estimate
+  note: a note row and a validity line are not line items
+  text: |
+    REPAIR ESTIMATE
+    Tiling: INR 22,000
+    Note: prices valid for 30 days
+    Total: INR 22,000
+  expected:
+    total_amount: '22000'
+  table:
+    status: reconciled
+    total: '22000'
+    items:
+    - - Tiling
+      - '22000'
+- id: f13
+  split: fresh
+  doc_type: fnol
+  note: numeric date, day and month both 12 or less
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 03/04/2026
+  expected:
+    loss_date: '2026-04-03'
+  flagged:
+  - loss_date
+- id: f14
+  split: fresh
+  doc_type: policy_schedule
+  note: dotted numeric dates
+  text: |
+    POLICY SCHEDULE
+    Policy number: POL-2201
+    Period of insurance: 01.01.2026 to 31.12.2026
+  expected:
+    period_of_insurance: 2026-01-01/2026-12-31
+- id: f15
+  split: fresh
+  doc_type: email
+  note: date with a time zone name
+  text: |
+    From: r.gupta@example.invalid
+    To: claims@insurer.example.invalid
+    Date: 18 October 2026 14:05 IST
+    Subject: Photos
+
+    Sent as asked.
+  expected:
+    email_date: '2026-10-18'
+    email_subject: Photos
+- id: f16
+  split: fresh
+  doc_type: fnol
+  note: a colon inside the description
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Description: Water damage: ceiling and one wall.
+  expected:
+    loss_description: 'Water damage: ceiling and one wall.'
+- id: f17
+  split: fresh
+  doc_type: plumber_report
+  note: '''Findings -'' is not a label'
+  text: |
+    PLUMBER'S REPORT
+    Inspection date: 5 June 2026
+    Findings - the joint was cracked.
+  expected:
+    inspection_date: '2026-06-05'
+  missing_required:
+  - findings
+- id: f18
+  split: fresh
+  doc_type: estimate
+  note: rupee rows written Rs.
+  text: |
+    REPAIR ESTIMATE
+    Flooring: Rs. 55,000
+    Total: Rs. 55,000
+  expected:
+    total_amount: '55000'
+  table:
+    status: reconciled
+    total: '55000'
+    items:
+    - - Flooring
+      - '55000'
+# ------------------------------------------------------------------------------------------------ fresh2 (written AFTER the v3 fixes: the unseen check for v3)
+- id: g01
+  split: fresh2
+  doc_type: fnol
+  note: dash date range
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3-5 May 2026
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: g02
+  split: fresh2
+  doc_type: fnol
+  note: from..to date range
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: from 3 May to 5 May 2026
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: g03
+  split: fresh2
+  doc_type: fnol
+  note: night spanning two dates
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: night of 3/4 May 2026
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: g04
+  split: fresh2
+  doc_type: fnol
+  note: amount range with dash
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 45,000 - 60,000
+  expected:
+    estimated_loss: null
+  flagged:
+  - estimated_loss
+- id: g05
+  split: fresh2
+  doc_type: fnol
+  note: amount range without any currency
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: 45,000-60,000
+  expected:
+    estimated_loss: null
+  flagged:
+  - estimated_loss
+- id: g06
+  split: fresh2
+  doc_type: fnol
+  note: two amounts that are NOT a range must not be flagged
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 98,000 (INR 8,000 excluded)
+  expected:
+    estimated_loss: '98000'
+- id: g07
+  split: fresh2
+  doc_type: estimate
+  note: '''Total labour'' is an item row, not the total'
+  text: |
+    REPAIR ESTIMATE
+    Total labour: INR 8,000
+    Total materials: INR 4,000
+    Total: INR 12,000
+  expected:
+    total_amount: '12000'
+  table:
+    status: reconciled
+    total: '12000'
+    items:
+    - - Total labour
+      - '8000'
+    - - Total materials
+      - '4000'
+- id: g08
+  split: fresh2
+  doc_type: estimate
+  note: Total payable
+  text: |
+    REPAIR ESTIMATE
+    Repairs: INR 9,000
+    Total payable: INR 9,000
+  expected:
+    total_amount: '9000'
+  table:
+    status: reconciled
+    total: '9000'
+    items:
+    - - Repairs
+      - '9000'
+- id: g09
+  split: fresh2
+  doc_type: estimate
+  note: Grand Total
+  text: |
+    REPAIR ESTIMATE
+    Repairs: INR 9,000
+    Grand Total: INR 9,000
+  expected:
+    total_amount: '9000'
+  table:
+    status: reconciled
+    total: '9000'
+    items:
+    - - Repairs
+      - '9000'
+- id: g10
+  split: fresh2
+  doc_type: invoice
+  note: Net payable with VAT
+  text: |
+    INVOICE
+    Invoice number: 310
+    Vendor: Citywide Plumbing
+    Repairs: INR 5,000
+    VAT: INR 900
+    Net payable: INR 5,900
+  expected:
+    invoice_number: '310'
+    total_amount: '5900'
+  table:
+    status: reconciled
+    total: '5900'
+    tax: '900'
+    items:
+    - - Repairs
+      - '5000'
+- id: g11
+  split: fresh2
+  doc_type: invoice
+  note: subtotal, tax and total
+  text: |
+    INVOICE
+    Invoice number: 311
+    Vendor: Citywide Plumbing
+    Repairs: INR 5,000
+    Subtotal: INR 5,000
+    Tax: INR 900
+    Total: INR 5,900
+  expected:
+    total_amount: '5900'
+  table:
+    status: reconciled
+    total: '5900'
+    tax: '900'
+    items:
+    - - Repairs
+      - '5000'
+- id: g12
+  split: fresh2
+  doc_type: fnol
+  note: date without a year is not completed
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: g13
+  split: fresh2
+  doc_type: fnol
+  note: '''nil'' is not an amount'
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: nil
+  expected:
+    estimated_loss: null
+  flagged:
+  - estimated_loss
+- id: g14
+  split: fresh2
+  doc_type: fnol
+  note: 'two policy ids in one value: the first'
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201 (renewal of POL-1990)
+    Date of loss: 3 June 2026
+  expected:
+    policy_number: POL-2201
+- id: g15
+  split: fresh2
+  doc_type: fnol
+  note: a title in the name
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: Mr. R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+  expected:
+    claimant_name: Mr. R. Gupta
+- id: g16
+  split: fresh2
+  doc_type: surveyor_report
+  note: two visit dates joined by 'and'
+  text: |
+    SURVEYOR'S REPORT
+    Site visit: 6 June 2026 and 7 June 2026
+    Moisture readings were high.
+  expected:
+    site_visit_date: null
+  flagged:
+  - site_visit_date
+- id: g17
+  split: fresh2
+  doc_type: estimate
+  note: INR and the rupee symbol in one table
+  text: |
+    REPAIR ESTIMATE
+    Plumbing: INR 5,000
+    Painting: ₹ 3,000
+    Total: INR 8,000
+  expected:
+    total_amount: '8000'
+  table:
+    status: reconciled
+    total: '8000'
+    items:
+    - - Plumbing
+      - '5000'
+    - - Painting
+      - '3000'
+- id: g18
+  split: fresh2
+  doc_type: estimate
+  note: items do not add up to the total
+  text: |
+    REPAIR ESTIMATE
+    Plumbing: INR 5,000
+    Painting: INR 2,500
+    Total: INR 8,000
+  expected:
+    total_amount: '8000'
+  flagged:
+  - total_amount
+  table:
+    status: mismatch
+    total: '8000'
+    items:
+    - - Plumbing
+      - '5000'
+    - - Painting
+      - '2500'
+# ------------------------------------------------------------------------------------------------ fresh3 (written AFTER the fresh2 fixes: the unseen check for them)
+- id: k01
+  split: fresh3
+  doc_type: fnol
+  note: ordinal date range
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3rd to 5th May 2026
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: k02
+  split: fresh3
+  doc_type: fnol
+  note: spaced dash date range
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 - 5 May 2026
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: k03
+  split: fresh3
+  doc_type: fnol
+  note: '''between X and Y'' amount range'
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: between INR 40,000 and INR 60,000
+  expected:
+    estimated_loss: null
+  flagged:
+  - estimated_loss
+- id: k04
+  split: fresh3
+  doc_type: fnol
+  note: thousands written as k
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 40k
+  expected:
+    estimated_loss: '40000'
+- id: k05
+  split: fresh3
+  doc_type: fnol
+  note: range written with k
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 40k-60k
+  expected:
+    estimated_loss: null
+  flagged:
+  - estimated_loss
+- id: k06
+  split: fresh3
+  doc_type: estimate
+  note: '''Total Cost'' is the total'
+  text: |
+    REPAIR ESTIMATE
+    Repairs: INR 9,000
+    Total Cost: INR 9,000
+  expected:
+    total_amount: '9000'
+  table:
+    status: reconciled
+    total: '9000'
+    items:
+    - - Repairs
+      - '9000'
+- id: k07
+  split: fresh3
+  doc_type: invoice
+  note: '''Total Amount Due'' is the total'
+  text: |
+    INVOICE
+    Invoice number: 312
+    Vendor: Citywide Plumbing
+    Repairs: INR 5,000
+    GST: INR 900
+    Total Amount Due: INR 5,900
+  expected:
+    total_amount: '5900'
+  table:
+    status: reconciled
+    total: '5900'
+    tax: '900'
+    items:
+    - - Repairs
+      - '5000'
+- id: k08
+  split: fresh3
+  doc_type: estimate
+  note: '''Amount payable'' is the total'
+  text: |
+    REPAIR ESTIMATE
+    Repairs: INR 9,000
+    Amount payable: INR 9,000
+  expected:
+    total_amount: '9000'
+  table:
+    status: reconciled
+    total: '9000'
+    items:
+    - - Repairs
+      - '9000'
+- id: k09
+  split: fresh3
+  doc_type: fnol
+  note: two dates joined by a slash
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026 / 4 June 2026
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: k10
+  split: fresh3
+  doc_type: estimate
+  note: 'a discount written as ''Less: Discount (10%): ...'''
+  text: |
+    REPAIR ESTIMATE
+    Repairs: INR 5,000
+    Less: Discount (10%): INR 500
+    Total: INR 4,500
+  expected:
+    total_amount: '4500'
+  table:
+    status: reconciled
+    total: '4500'
+    items:
+    - - Repairs
+      - '5000'
+- id: k11
+  split: fresh3
+  doc_type: fnol
+  note: two claimants in one value
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta, S. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+  expected:
+    claimant_name: R. Gupta, S. Gupta
+- id: k12
+  split: fresh3
+  doc_type: fnol
+  note: decimals in an amount
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 1,20,000.50
+  expected:
+    estimated_loss: '120000.5'
+- id: k13
+  split: fresh3
+  doc_type: fnol
+  note: a foreign currency keeps its currency
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: USD 1,200
+  expected:
+    estimated_loss: '1200'
+- id: k14
+  split: fresh3
+  doc_type: surveyor_report
+  note: trailing word after the amount
+  text: |
+    SURVEYOR'S REPORT
+    Site visit: 6 June 2026
+    Assessed repair cost: INR 98,000 only
+  expected:
+    assessed_repair_cost: '98000'
+# ------------------------------------------------------------------------------------------------ fresh4 (written AFTER the fresh3 fixes: the last unseen check)
+- id: m01
+  split: fresh4
+  doc_type: fnol
+  note: trailing full stop after the date
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026.
+  expected:
+    loss_date: '2026-06-03'
+- id: m02
+  split: fresh4
+  doc_type: fnol
+  note: lower-case month
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 june 2026
+  expected:
+    loss_date: '2026-06-03'
+- id: m03
+  split: fresh4
+  doc_type: fnol
+  note: '''3rd of June, 2026'''
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3rd of June, 2026
+  expected:
+    loss_date: '2026-06-03'
+- id: m04
+  split: fresh4
+  doc_type: fnol
+  note: amount with /- suffix and Indian grouping
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 1,20,000/-
+  expected:
+    estimated_loss: '120000'
+- id: m05
+  split: fresh4
+  doc_type: fnol
+  note: amount in lakh
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 1.2 lakh
+  expected:
+    estimated_loss: '120000'
+- id: m06
+  split: fresh4
+  doc_type: fnol
+  note: Rs without a space
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: Rs.60000
+  expected:
+    estimated_loss: '60000'
+- id: m07
+  split: fresh4
+  doc_type: fnol
+  note: currency glued to the number
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR60,000
+  expected:
+    estimated_loss: '60000'
+- id: m08
+  split: fresh4
+  doc_type: fnol
+  note: currency after the number
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: 60,000 INR
+  expected:
+    estimated_loss: '60000'
+- id: m09
+  split: fresh4
+  doc_type: fnol
+  note: trailing full stop after the policy number
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201.
+    Date of loss: 3 June 2026
+  expected:
+    policy_number: POL-2201
+- id: m10
+  split: fresh4
+  doc_type: estimate
+  note: 'tax-inclusive total with a separate tax row: double counted'
+  text: |
+    REPAIR ESTIMATE
+    Plumbing: INR 10,000
+    GST: INR 1,800
+    Total: INR 10,000
+  expected:
+    total_amount: '10000'
+  flagged:
+  - total_amount
+  table:
+    status: mismatch
+    total: '10000'
+    items:
+    - - Plumbing
+      - '10000'
+- id: m11
+  split: fresh4
+  doc_type: invoice
+  note: INR and Rs in one table
+  text: |
+    INVOICE
+    Invoice number: 313
+    Vendor: Citywide Plumbing
+    Labour: INR 5,000
+    Parts: Rs 2,000
+    Total: INR 7,000
+  expected:
+    total_amount: '7000'
+  table:
+    status: reconciled
+    total: '7000'
+    items:
+    - - Labour
+      - '5000'
+    - - Parts
+      - '2000'
+- id: m12
+  split: fresh4
+  doc_type: fnol
+  note: approximate qualifier inside the label
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss (approx): 3 June 2026
+  expected:
+    loss_date: '2026-06-03'
+- id: m13
+  split: fresh4
+  doc_type: policy_schedule
+  note: '''until'' joins the period dates'
+  text: |
+    POLICY SCHEDULE
+    Policy number: POL-2201
+    Period of insurance: 1 Jan 2026 until 31 Dec 2026
+  expected:
+    period_of_insurance: 2026-01-01/2026-12-31
+- id: m14
+  split: fresh4
+  doc_type: fnol
+  note: '''or so'' after an amount'
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 45,000 or so
+  expected:
+    estimated_loss: '45000'
+- id: m15
+  split: fresh4
+  doc_type: fnol
+  note: dash then free text after an amount
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 45000 - not yet confirmed
+  expected:
+    estimated_loss: '45000'
+- id: m16
+  split: fresh4
+  doc_type: fnol
+  note: date range with a dash between full dates
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026 - 5 June 2026
+  expected:
+    loss_date: null
+  flagged:
+  - loss_date
+- id: m17
+  split: fresh4
+  doc_type: fnol
+  note: amount in crore
+  text: |
+    FIRST NOTICE OF LOSS
+    Claimant: R. Gupta
+    Policy number: POL-2201
+    Date of loss: 3 June 2026
+    Estimated loss: INR 5,00,00,000
+  expected:
+    estimated_loss: '50000000'

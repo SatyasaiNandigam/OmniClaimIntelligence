@@ -1,0 +1,55 @@
+# Retrieval eval set (T3.4). SYNTHETIC. Written BEFORE the retriever existed.
+#   snapshots   what is searched: the clauses in force on a loss date (built with get_snapshot; 'fake' = a small PAS for the unseen policies)
+#   split       dev = corpus snapshots (parameters may be tuned on these) | fresh = unseen documents (never tuned on)
+#   kind        lexical (shares words with the clause) | paraphrase (means the same, few shared words) | negative (nothing in the policy answers it)
+#   relevant    clauses that answer the query (a retrieval counts if it returns them); labelled ids for the corpus, '<doc>:<heading>' otherwise
+#   modifiers   {clause: [endorsement clauses]} that MUST come back with the clause when it is retrieved (the failure mode of plain vector search)
+# A relevant clause that is not in the snapshot at all (e.g. the decomposer left its type unclassified) cannot be retrieved: it is reported
+# separately and left out of recall, so a decomposition gap is not blamed on retrieval.
+snapshots:
+  S01:  {policy: POL-1001, as_of: "2026-03-14"}                      # BASE-HOME-1 + END-01
+  S04B: {policy: POL-1004, as_of: "2026-02-01"}                      # END-02 has replaced END-01
+  S12:  {policy: POL-1012, as_of: "2026-03-01"}                      # v2: END-01 + END-03 (water deductible)
+  HARB: {fake: {policy: POL-H1, base: HARBOUR-1, as_of: "2026-04-01", endorsements: [{id: HARBOUR-E1, from: "2026-01-01"}, {id: HARBOUR-E2, from: "2026-03-01"}]}}
+  RIVR: {fake: {policy: POL-R1, base: RIVERSIDE-1, as_of: "2026-05-01", endorsements: []}}
+queries:
+  # ------------------------------------------------------------------ dev: the corpus
+  - {id: R-01, split: dev, kind: lexical, snapshot: S01, query: "Was the policy in force on the date of loss?", relevant: [CL-COND-PERIOD]}
+  - {id: R-02, split: dev, kind: lexical, snapshot: S01, query: "Is a burst pipe covered?", relevant: [CL-COV-WATER], modifiers: {CL-COV-WATER: [CL-SUB-WATER-E1]}}
+  - {id: R-03, split: dev, kind: lexical, snapshot: S01, query: "What does sudden and accidental mean?", relevant: [CL-DEF-SUDDEN]}
+  - {id: R-04, split: dev, kind: paraphrase, snapshot: S01, query: "Is slow leaking over many months excluded?", relevant: [CL-EXC-GRADUAL]}
+  - {id: R-05, split: dev, kind: paraphrase, snapshot: S01, query: "What is the most that will be paid for water damage in one claim?", relevant: [CL-SUB-WATER-E1]}
+  - {id: R-06, split: dev, kind: paraphrase, snapshot: S01, query: "How much excess does the customer bear?", relevant: [CL-DED-STD]}
+  - {id: R-07, split: dev, kind: paraphrase, snapshot: S01, query: "How quickly must the customer report the loss?", relevant: [CL-COND-NOTIFY]}
+  - {id: R-08, split: dev, kind: paraphrase, snapshot: S01, query: "Does the customer have to take steps to limit further damage?", relevant: [CL-COND-MITIGATE]}
+  - {id: R-09, split: dev, kind: paraphrase, snapshot: S01, query: "Which document wins if an endorsement contradicts the policy wording?", relevant: [CL-COND-PRECEDENCE]}
+  - {id: R-10, split: dev, kind: lexical, snapshot: S01, query: "Is fire damage insured?", relevant: [CL-COV-FIRE]}
+  - {id: R-11, split: dev, kind: lexical, snapshot: S01, query: "What is the building limit?", relevant: [CL-LIM-BUILDING]}
+  - {id: R-12, split: dev, kind: lexical, snapshot: S01, query: "Is wear and tear excluded?", relevant: [CL-EXC-WEAR]}
+  - {id: R-13, split: dev, kind: lexical, snapshot: S01, query: "Which water-damage sublimit applies on the date of loss?", relevant: [CL-SUB-WATER-E1]}
+  - {id: R-14, split: dev, kind: lexical, snapshot: S01, query: "Was the water damage sudden and accidental rather than gradual?",
+     relevant: [CL-COV-WATER, CL-DEF-SUDDEN, CL-EXC-GRADUAL], modifiers: {CL-COV-WATER: [CL-SUB-WATER-E1]}}
+  - {id: R-15, split: dev, kind: lexical, snapshot: S04B, query: "Which water-damage sublimit applies on the date of loss?", relevant: [CL-SUB-WATER-E2]}
+  - {id: R-16, split: dev, kind: paraphrase, snapshot: S04B, query: "Is an escape of water from a tank insured?", relevant: [CL-COV-WATER], modifiers: {CL-COV-WATER: [CL-SUB-WATER-E2]}}
+  - {id: R-17, split: dev, kind: lexical, snapshot: S12, query: "What deductible applies to an escape of water claim?", relevant: [CL-DED-WATER-E3, CL-DED-STD],
+     modifiers: {CL-DED-STD: [CL-DED-WATER-E3]}}
+  - {id: R-18, split: dev, kind: negative, snapshot: S01, query: "What is the capital of France?", relevant: []}
+  - {id: R-19, split: dev, kind: negative, snapshot: S01, query: "Recommend a good restaurant near the property", relevant: []}
+  # ------------------------------------------------------------------ fresh: unseen documents
+  - {id: R-20, split: fresh, kind: lexical, snapshot: HARB, query: "Is a split frozen pipe covered?", relevant: ["HARBOUR-1:2.2 Frozen pipes"]}
+  - {id: R-21, split: fresh, kind: lexical, snapshot: HARB, query: "What excess applies when a pipe has frozen?",
+     relevant: ["HARBOUR-E1:1. Frozen pipe excess", "HARBOUR-1:4.2 Excess"], modifiers: {"HARBOUR-1:4.2 Excess": ["HARBOUR-E1:1. Frozen pipe excess"]}}
+  - {id: R-22, split: fresh, kind: paraphrase, snapshot: HARB, query: "What is the most the insurer will pay in a year?",
+     relevant: ["HARBOUR-1:4.1 Sum insured", "HARBOUR-E2:1. Higher sum insured"], modifiers: {"HARBOUR-1:4.1 Sum insured": ["HARBOUR-E2:1. Higher sum insured"]}}
+  - {id: R-23, split: fresh, kind: paraphrase, snapshot: HARB, query: "What if the owner failed to look after the pipes?", relevant: ["HARBOUR-1:3.1 Neglect"]}
+  - {id: R-24, split: fresh, kind: lexical, snapshot: HARB, query: "What is a fixed installation?", relevant: ["HARBOUR-1:1.1 Fixed installation"]}
+  - {id: R-25, split: fresh, kind: paraphrase, snapshot: HARB, query: "How do I make a claim?", relevant: ["HARBOUR-1:5.1 Claims procedure"]}
+  - {id: R-26, split: fresh, kind: paraphrase, snapshot: HARB, query: "Is rust damage to pipes excluded?", relevant: ["HARBOUR-1:3.2 Gradual damage"]}
+  - {id: R-27, split: fresh, kind: paraphrase, snapshot: HARB, query: "Is water that escapes suddenly from the heating system insured?", relevant: ["HARBOUR-1:2.1 Water damage"]}
+  - {id: R-28, split: fresh, kind: negative, snapshot: HARB, query: "Who won the football match?", relevant: []}
+  - {id: R-29, split: fresh, kind: lexical, snapshot: RIVR, query: "Is a burst hose covered?", relevant: ["RIVERSIDE-1:Clause 2.1 Water escape"]}
+  - {id: R-30, split: fresh, kind: lexical, snapshot: RIVR, query: "Are unoccupied homes excluded?", relevant: ["RIVERSIDE-1:Clause 3.2 Unoccupied homes"]}
+  - {id: R-31, split: fresh, kind: paraphrase, snapshot: RIVR, query: "How long do I have to tell the insurer about a loss?", relevant: ["RIVERSIDE-1:Clause 5.1 Prompt notice"]}
+  - {id: R-32, split: fresh, kind: lexical, snapshot: RIVR, query: "What does burst mean?", relevant: ["RIVERSIDE-1:Clause 1.2 Burst"]}
+  - {id: R-33, split: fresh, kind: paraphrase, snapshot: RIVR, query: "Is seepage over a long time covered?", relevant: ["RIVERSIDE-1:Clause 3.1 Long-term seepage"]}
+  - {id: R-34, split: fresh, kind: paraphrase, snapshot: RIVR, query: "Is there an upper limit on what we pay?", relevant: ["RIVERSIDE-1:Clause 4.1 Maximum payable"]}

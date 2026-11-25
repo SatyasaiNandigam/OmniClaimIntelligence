@@ -1,0 +1,111 @@
+{
+  "entries": [
+    {
+      "label": "T4.7 gap agent (sticky contradictions). L1/L2 exact; L3 also re-ran Q-START (a link the model found)",
+      "date": "2026-11-25",
+      "model": "gpt-5-mini",
+      "scenarios": [
+        {
+          "scenario": "L1-plumber-explains-the-corrosion",
+          "re_run": [
+            "Q-START",
+            "Q-SUDDEN"
+          ],
+          "expected": [
+            "Q-START",
+            "Q-SUDDEN"
+          ],
+          "exact": true,
+          "others_identical": true,
+          "incremental_calls": 9,
+          "full_calls": 14,
+          "status_changes": "Q-SUDDEN requires_validation -> established; Q-START unverified -> requires_validation; contradictions added: C-94E945E0; contradictions removed: C-4C31CA2B; requests changed: claimant, plumber; scenarios changed: Q-SUDDEN",
+          "problems": [],
+          "statuses_before": {
+            "Q-INFORCE": "established",
+            "Q-SUDDEN": "requires_validation",
+            "Q-START": "unverified",
+            "Q-EXTENT": "partially_established",
+            "Q-AMOUNT": "unverified",
+            "Q-SUBLIMIT": "established"
+          },
+          "statuses_after": {
+            "Q-INFORCE": "established",
+            "Q-SUDDEN": "established",
+            "Q-START": "requires_validation",
+            "Q-EXTENT": "partially_established",
+            "Q-AMOUNT": "unverified",
+            "Q-SUBLIMIT": "established"
+          }
+        },
+        {
+          "scenario": "L2-plumber-confirms-long-term-leak",
+          "re_run": [
+            "Q-START",
+            "Q-SUDDEN"
+          ],
+          "expected": [
+            "Q-START",
+            "Q-SUDDEN"
+          ],
+          "exact": true,
+          "others_identical": true,
+          "incremental_calls": 9,
+          "full_calls": 13,
+          "status_changes": "Q-START unverified -> established; contradictions added: C-9EE95555; requests changed: claimant, plumber; scenarios changed: Q-SUDDEN",
+          "problems": [],
+          "statuses_before": {
+            "Q-INFORCE": "established",
+            "Q-SUDDEN": "requires_validation",
+            "Q-START": "unverified",
+            "Q-EXTENT": "partially_established",
+            "Q-AMOUNT": "unverified",
+            "Q-SUBLIMIT": "established"
+          },
+          "statuses_after": {
+            "Q-INFORCE": "established",
+            "Q-SUDDEN": "requires_validation",
+            "Q-START": "established",
+            "Q-EXTENT": "partially_established",
+            "Q-AMOUNT": "unverified",
+            "Q-SUBLIMIT": "established"
+          }
+        },
+        {
+          "scenario": "L3-surveyor-reassesses-extent-and-cost",
+          "re_run": [
+            "Q-AMOUNT",
+            "Q-EXTENT",
+            "Q-START"
+          ],
+          "expected": [
+            "Q-AMOUNT",
+            "Q-EXTENT"
+          ],
+          "exact": false,
+          "others_identical": true,
+          "incremental_calls": 12,
+          "full_calls": 14,
+          "status_changes": "Q-START unverified -> established; Q-AMOUNT unverified -> partially_established; requests changed: claimant, plumber, surveyor",
+          "problems": [],
+          "statuses_before": {
+            "Q-INFORCE": "established",
+            "Q-SUDDEN": "requires_validation",
+            "Q-START": "unverified",
+            "Q-EXTENT": "partially_established",
+            "Q-AMOUNT": "unverified",
+            "Q-SUBLIMIT": "established"
+          },
+          "statuses_after": {
+            "Q-INFORCE": "established",
+            "Q-SUDDEN": "requires_validation",
+            "Q-START": "established",
+            "Q-EXTENT": "partially_established",
+            "Q-AMOUNT": "partially_established",
+            "Q-SUBLIMIT": "established"
+          }
+        }
+      ]
+    }
+  ]
+}

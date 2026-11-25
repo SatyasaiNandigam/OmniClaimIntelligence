@@ -1,0 +1,122 @@
+{
+  "open_questions": [
+    {
+      "question_id": "Q-INFORCE",
+      "text": "Was the policy in force on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "PAS policy status is in force on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "linked_fact_ids": [
+        "F-S05-01"
+      ]
+    },
+    {
+      "question_id": "Q-SUDDEN",
+      "text": "Was the water damage sudden and accidental rather than gradual?",
+      "category": "cause",
+      "status": "established",
+      "establishing_criteria": [
+        "Technical statement of the failure mechanism by a qualified person",
+        "Evidence that the damage began at or immediately before the reported loss date"
+      ],
+      "linked_clause_ids": [
+        "CL-COV-WATER",
+        "CL-DEF-SUDDEN"
+      ],
+      "linked_fact_ids": [
+        "F-S05-02",
+        "F-S05-03",
+        "F-S05-04"
+      ]
+    },
+    {
+      "question_id": "Q-START",
+      "text": "When did the leak or damage begin?",
+      "category": "timing",
+      "status": "established",
+      "establishing_criteria": [
+        "Technical evidence of when the leak or corrosion began",
+        "Maintenance or inspection record"
+      ],
+      "linked_clause_ids": [
+        "CL-EXC-GRADUAL"
+      ],
+      "linked_fact_ids": [
+        "F-S05-03",
+        "F-S05-04"
+      ]
+    },
+    {
+      "question_id": "Q-EXTENT",
+      "text": "Which areas were affected by the reported event?",
+      "category": "extent",
+      "status": "established",
+      "establishing_criteria": [
+        "Surveyor-confirmed list of affected areas",
+        "Each affected area linked to the reported event"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S05-05"
+      ]
+    },
+    {
+      "question_id": "Q-AMOUNT",
+      "text": "Is the claimed repair cost reasonable and supported?",
+      "category": "amount",
+      "status": "established",
+      "establishing_criteria": [
+        "Surveyor-assessed cost of repair",
+        "Estimate reconciling to the surveyor scope"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S05-06",
+        "F-S05-07"
+      ]
+    },
+    {
+      "question_id": "Q-SUBLIMIT",
+      "text": "Which water-damage sublimit applies on the date of loss?",
+      "category": "coverage_condition",
+      "status": "missing",
+      "establishing_criteria": [
+        "Applicable endorsement wording effective on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COV-WATER"
+      ],
+      "linked_fact_ids": [
+        "F-S05-08"
+      ]
+    }
+  ],
+  "contradictions": [],
+  "missing_evidence": [
+    {
+      "question_id": "Q-SUBLIMIT",
+      "gap_type": "missing",
+      "minimum_evidence_request": {
+        "addressee_role": "policy_administration",
+        "items": [
+          "Copy of endorsement END-01 (Water Damage Sublimit Endorsement) as in force on 10 June 2026"
+        ],
+        "must_answer_sub_questions": [
+          "Q-SUBLIMIT"
+        ],
+        "maps_to_criteria": [
+          "Applicable endorsement wording effective on the date of loss"
+        ]
+      },
+      "resolves_question_ids": [
+        "Q-SUBLIMIT"
+      ]
+    }
+  ],
+  "counterfactuals": []
+}

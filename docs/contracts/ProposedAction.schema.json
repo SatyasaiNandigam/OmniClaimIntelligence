@@ -1,0 +1,62 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "action_id": {
+      "title": "Action Id",
+      "type": "string"
+    },
+    "action_type": {
+      "title": "Action Type",
+      "type": "string"
+    },
+    "execution_mode": {
+      "enum": [
+        "draft",
+        "controlled_api"
+      ],
+      "title": "Execution Mode",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "payload_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Payload Ref"
+    },
+    "responsible_party": {
+      "title": "Responsible Party",
+      "type": "string"
+    },
+    "status": {
+      "default": "proposed",
+      "enum": [
+        "proposed",
+        "approved",
+        "executed",
+        "failed",
+        "cancelled"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "action_id",
+    "action_type",
+    "responsible_party",
+    "execution_mode",
+    "idempotency_key"
+  ],
+  "title": "ProposedAction",
+  "type": "object"
+}

@@ -1,0 +1,61 @@
+{
+  "additionalProperties": false,
+  "description": "Payload of the `human_decision` event (T6.3).",
+  "properties": {
+    "claim_id": {
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "decided_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decided At"
+    },
+    "decision": {
+      "enum": [
+        "approve",
+        "edit",
+        "reject",
+        "request_more_evidence"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reason"
+    },
+    "reviewer_id": {
+      "title": "Reviewer Id",
+      "type": "string"
+    },
+    "reviewer_role": {
+      "title": "Reviewer Role",
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "decision",
+    "reviewer_id",
+    "reviewer_role"
+  ],
+  "title": "HumanDecision",
+  "type": "object"
+}

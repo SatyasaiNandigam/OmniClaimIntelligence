@@ -1,0 +1,65 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "contradiction_id": {
+      "title": "Contradiction Id",
+      "type": "string"
+    },
+    "explanation": {
+      "title": "Explanation",
+      "type": "string"
+    },
+    "fact_ids_a": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Fact Ids A",
+      "type": "array"
+    },
+    "fact_ids_b": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Fact Ids B",
+      "type": "array"
+    },
+    "kind": {
+      "default": "other",
+      "enum": [
+        "date",
+        "amount",
+        "cause",
+        "extent",
+        "other"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "question_id": {
+      "title": "Question Id",
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
+      "title": "Severity",
+      "type": "string"
+    }
+  },
+  "required": [
+    "contradiction_id",
+    "question_id",
+    "fact_ids_a",
+    "fact_ids_b",
+    "severity",
+    "explanation"
+  ],
+  "title": "Contradiction",
+  "type": "object"
+}

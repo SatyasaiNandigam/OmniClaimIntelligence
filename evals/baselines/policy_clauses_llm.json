@@ -1,0 +1,134 @@
+{
+  "entries": [
+    {
+      "label": "v1 prompt, first live run: RIVERSIDE (dev) 2/2 typed correctly; ELMWOOD (fresh_llm) 10/11 typed correctly, 6.2 Dishonest claims wrongly typed condition",
+      "date": "2026-11-25",
+      "signals_sha": "f560d9b0053f",
+      "splits": {
+        "corpus": {
+          "labelled": 31,
+          "predicted": 31,
+          "detected": 31,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh": {
+          "labelled": 21,
+          "predicted": 21,
+          "detected": 21,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh_llm": {
+          "labelled": 13,
+          "predicted": 13,
+          "detected": 13,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.9231,
+          "wrong_types": [
+            "ELMWOOD-1:6.2 Dishonest claims: expected no type, got condition (llm)"
+          ],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        }
+      }
+    },
+    {
+      "label": "4a final: prompt v2, effort low, amount guard. Unseen BEECH-1: 10/10 genuine clauses typed right, 5/6 none clauses left alone, 6.3 Joint holders wrongly typed condition. dev splits 100% (tuned on them, not evidence). Guard added after seeing BEECH 6.4: unseen result before the guard was 14/16.",
+      "date": "2026-11-25",
+      "signals_sha": "f560d9b0053f",
+      "splits": {
+        "corpus": {
+          "labelled": 31,
+          "predicted": 31,
+          "detected": 31,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "dev_llm": {
+          "labelled": 28,
+          "predicted": 28,
+          "detected": 28,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "dev_llm2": {
+          "labelled": 16,
+          "predicted": 16,
+          "detected": 16,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh": {
+          "labelled": 21,
+          "predicted": 21,
+          "detected": 21,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh_llm": {
+          "labelled": 16,
+          "predicted": 16,
+          "detected": 16,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.9375,
+          "wrong_types": [
+            "BEECH-1:6.3 Joint holders: expected no type, got condition (llm)"
+          ],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        }
+      }
+    }
+  ]
+}

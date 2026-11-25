@@ -1,0 +1,52 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": {
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "created": {
+      "default": true,
+      "title": "Created",
+      "type": "boolean"
+    },
+    "mock": {
+      "default": true,
+      "title": "Mock",
+      "type": "boolean"
+    },
+    "retrieved_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retrieved At"
+    },
+    "source_system": {
+      "default": "",
+      "title": "Source System",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "claim_id"
+  ],
+  "title": "TaskAck",
+  "type": "object"
+}

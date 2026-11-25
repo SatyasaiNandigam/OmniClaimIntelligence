@@ -1,0 +1,65 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "clause_id": {
+      "title": "Clause Id",
+      "type": "string"
+    },
+    "document": {
+      "title": "Document",
+      "type": "string"
+    },
+    "modified_by": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Modified By",
+      "type": "array"
+    },
+    "page": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Page"
+    },
+    "span": {
+      "anyOf": [
+        {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Span"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    }
+  },
+  "required": [
+    "clause_id",
+    "document",
+    "text"
+  ],
+  "title": "ClauseCitation",
+  "type": "object"
+}

@@ -1,0 +1,73 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "as_of": {
+      "format": "date",
+      "title": "As Of",
+      "type": "string"
+    },
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "mock": {
+      "default": true,
+      "title": "Mock",
+      "type": "boolean"
+    },
+    "policy_no": {
+      "title": "Policy No",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retrieved At"
+    },
+    "source_system": {
+      "default": "",
+      "title": "Source System",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "in_force",
+        "lapsed",
+        "cancelled",
+        "reinstated",
+        "not_found"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "status_effective_from": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Status Effective From"
+    }
+  },
+  "required": [
+    "policy_no",
+    "as_of",
+    "status"
+  ],
+  "title": "PolicyStatusResponse",
+  "type": "object"
+}

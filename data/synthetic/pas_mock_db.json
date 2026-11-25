@@ -1,0 +1,607 @@
+{
+  "synthetic": true,
+  "note": "SYNTHETIC mock PAS - not a real policy administration system",
+  "policies": [
+    {
+      "policy_no": "POL-1001",
+      "holder_name": "SYNTHETIC Household 1001",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2026-01-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "note": ""
+        }
+      ],
+      "note": "S-01 and S-02. In force all of 2026 with END-01."
+    },
+    {
+      "policy_no": "POL-1003",
+      "holder_name": "SYNTHETIC Household 1003",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2025-02-11",
+          "effective_to": "2026-02-10",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2025-02-11",
+          "effective_to": "2026-02-09",
+          "note": ""
+        },
+        {
+          "status": "lapsed",
+          "effective_from": "2026-02-10",
+          "effective_to": null,
+          "note": "premium not renewed"
+        }
+      ],
+      "note": "S-03: lapsed on 2026-02-10, loss on 2026-02-13."
+    },
+    {
+      "policy_no": "POL-1004",
+      "holder_name": "SYNTHETIC Household 1004",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2025-12-01",
+          "effective_to": "2026-11-30",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2025-12-01",
+              "effective_to": null
+            },
+            {
+              "endorsement_id": "END-02",
+              "effective_from": "2026-02-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2025-12-01",
+          "effective_to": "2026-11-30",
+          "note": ""
+        }
+      ],
+      "note": "S-04: two endorsements with different effective dates."
+    },
+    {
+      "policy_no": "POL-1005",
+      "holder_name": "SYNTHETIC Household 1005",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2026-01-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "note": ""
+        }
+      ],
+      "note": "S-05: schedule lists END-01 whose wording is not available to the claim."
+    },
+    {
+      "policy_no": "POL-1006",
+      "holder_name": "SYNTHETIC Household 1006",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2026-01-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "note": ""
+        }
+      ],
+      "note": "Future S-10 (duplicate FNOL): same claimant files twice."
+    },
+    {
+      "policy_no": "POL-1007",
+      "holder_name": "SYNTHETIC Household 1007",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2026-01-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "note": ""
+        }
+      ],
+      "note": "Future S-11 (duplicate invoice number)."
+    },
+    {
+      "policy_no": "POL-1008",
+      "holder_name": "SYNTHETIC Household 1008",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2026-01-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "note": ""
+        }
+      ],
+      "note": "Future S-16: 1,850,000 already paid, so the remaining limit is 150,000."
+    },
+    {
+      "policy_no": "POL-1009",
+      "holder_name": "SYNTHETIC Household 1009",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "note": ""
+        }
+      ],
+      "note": "Unrelated policy with an old fire claim (noise for duplicate detection)."
+    },
+    {
+      "policy_no": "POL-1013",
+      "holder_name": "SYNTHETIC Household 1013",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2026-01-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "note": ""
+        }
+      ],
+      "note": "Sample claims under samples/ (claim_sample_1): in force all of 2026 with END-01."
+    },
+    {
+      "policy_no": "POL-1010",
+      "holder_name": "SYNTHETIC Household 1010",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2025-05-01",
+          "effective_to": "2026-04-30",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2025-05-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2025-05-01",
+          "effective_to": "2026-04-30",
+          "note": ""
+        },
+        {
+          "status": "lapsed",
+          "effective_from": "2026-05-01",
+          "effective_to": null,
+          "note": "not renewed"
+        }
+      ],
+      "note": "Lapse boundary: loss on 04-30 is covered, on 05-01 is not."
+    },
+    {
+      "policy_no": "POL-1011",
+      "holder_name": "SYNTHETIC Household 1011",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2025-06-01",
+          "effective_to": "2026-05-31",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2025-06-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2025-06-01",
+          "effective_to": "2026-01-31",
+          "note": ""
+        },
+        {
+          "status": "cancelled",
+          "effective_from": "2026-02-01",
+          "effective_to": "2026-02-28",
+          "note": "premium not received"
+        },
+        {
+          "status": "reinstated",
+          "effective_from": "2026-03-01",
+          "effective_to": "2026-05-31",
+          "note": "premium received; no cover for the gap"
+        }
+      ],
+      "note": "Cancelled 2026-02-01, reinstated 2026-03-01; losses inside the gap are not covered."
+    },
+    {
+      "policy_no": "POL-1012",
+      "holder_name": "SYNTHETIC Household 1012",
+      "versions": [
+        {
+          "version": "v1",
+          "effective_from": "2025-07-01",
+          "effective_to": "2026-01-14",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2025-07-01",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000"
+          }
+        },
+        {
+          "version": "v2",
+          "effective_from": "2026-01-15",
+          "effective_to": "2026-06-30",
+          "base_wording_id": "BASE-HOME-1",
+          "endorsements": [
+            {
+              "endorsement_id": "END-01",
+              "effective_from": "2025-07-01",
+              "effective_to": null
+            },
+            {
+              "endorsement_id": "END-03",
+              "effective_from": "2026-01-15",
+              "effective_to": null
+            }
+          ],
+          "schedule": {
+            "building_limit": "2000000",
+            "standard_deductible": "10000",
+            "water_deductible": "25000"
+          }
+        }
+      ],
+      "status_history": [
+        {
+          "status": "in_force",
+          "effective_from": "2025-07-01",
+          "effective_to": "2026-06-30",
+          "note": ""
+        }
+      ],
+      "note": "Mid-term change: v1 until 2026-01-14, v2 from 2026-01-15 (adds END-03, water deductible 25,000 SAMPLE)."
+    }
+  ],
+  "cases": [
+    {
+      "policy_no": "POL-1001",
+      "as_of": "2026-03-14",
+      "expected_status": "in_force",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "S-01 loss date"
+    },
+    {
+      "policy_no": "POL-1001",
+      "as_of": "2026-05-02",
+      "expected_status": "in_force",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "S-02 loss date"
+    },
+    {
+      "policy_no": "POL-1003",
+      "as_of": "2026-02-13",
+      "expected_status": "lapsed",
+      "expected_version": "v1",
+      "expected_endorsements": [],
+      "why": "S-03: three days after the lapse; informational version only"
+    },
+    {
+      "policy_no": "POL-1004",
+      "as_of": "2026-01-20",
+      "expected_status": "in_force",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01",
+        "END-02"
+      ],
+      "why": "S-04: END-02 is listed but not yet effective on this date"
+    },
+    {
+      "policy_no": "POL-1005",
+      "as_of": "2026-06-10",
+      "expected_status": "in_force",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "S-05: END-01 listed in the schedule"
+    },
+    {
+      "policy_no": "POL-1010",
+      "as_of": "2026-04-30",
+      "expected_status": "in_force",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "lapse boundary: last day in force"
+    },
+    {
+      "policy_no": "POL-1010",
+      "as_of": "2026-05-01",
+      "expected_status": "lapsed",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "lapse boundary: first day lapsed"
+    },
+    {
+      "policy_no": "POL-1010",
+      "as_of": "2025-04-30",
+      "expected_status": "not_found",
+      "expected_version": null,
+      "expected_endorsements": [],
+      "why": "day before inception: no cover record"
+    },
+    {
+      "policy_no": "POL-1011",
+      "as_of": "2026-01-31",
+      "expected_status": "in_force",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "last day before cancellation"
+    },
+    {
+      "policy_no": "POL-1011",
+      "as_of": "2026-02-01",
+      "expected_status": "cancelled",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "first day of cancellation"
+    },
+    {
+      "policy_no": "POL-1011",
+      "as_of": "2026-02-15",
+      "expected_status": "cancelled",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "inside the cancellation gap: not covered"
+    },
+    {
+      "policy_no": "POL-1011",
+      "as_of": "2026-03-01",
+      "expected_status": "reinstated",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "reinstatement day: covered again"
+    },
+    {
+      "policy_no": "POL-1011",
+      "as_of": "2026-03-10",
+      "expected_status": "reinstated",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "after reinstatement"
+    },
+    {
+      "policy_no": "POL-1012",
+      "as_of": "2026-01-14",
+      "expected_status": "in_force",
+      "expected_version": "v1",
+      "expected_endorsements": [
+        "END-01"
+      ],
+      "why": "straddle: last day of version v1"
+    },
+    {
+      "policy_no": "POL-1012",
+      "as_of": "2026-01-15",
+      "expected_status": "in_force",
+      "expected_version": "v2",
+      "expected_endorsements": [
+        "END-01",
+        "END-03"
+      ],
+      "why": "straddle: first day of version v2"
+    },
+    {
+      "policy_no": "POL-1012",
+      "as_of": "2026-03-01",
+      "expected_status": "in_force",
+      "expected_version": "v2",
+      "expected_endorsements": [
+        "END-01",
+        "END-03"
+      ],
+      "why": "inside version v2"
+    },
+    {
+      "policy_no": "POL-9999",
+      "as_of": "2026-03-01",
+      "expected_status": "not_found",
+      "expected_version": null,
+      "expected_endorsements": [],
+      "why": "unknown policy number"
+    },
+    {
+      "policy_no": "pol-1001",
+      "as_of": "2026-03-14",
+      "expected_status": "not_found",
+      "expected_version": null,
+      "expected_endorsements": [],
+      "why": "no fuzzy matching: a lower-case number is not an exact match, route to an operator"
+    }
+  ]
+}

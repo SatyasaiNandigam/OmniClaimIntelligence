@@ -1,0 +1,148 @@
+# Labelled clauses for UNSEEN policy documents (T3.1 evaluation). SYNTHETIC. Written BEFORE the decomposer was run on them.
+# text = the clause body, whitespace-normalised and verbatim from the document (heading excluded).
+# The types follow the labelling convention of the corpus (data/synthetic/policies/clause_index.json).
+documents:
+  - file: RIVERSIDE-1.txt
+    doc_id: RIVERSIDE-1
+    split: fresh
+    clauses:
+      - {heading: "Clause 1.1 Dwelling", type: definition, page: 1, text: "The dwelling means the main house named in the Schedule."}
+      - {heading: "Clause 1.2 Burst", type: definition, page: 1, text: "Burst means a sudden rupture of a pipe, tank or hose."}
+      - {heading: "Clause 2.1 Water escape", type: coverage, page: 1, text: "We pay for damage to the dwelling caused by a burst of a fixed pipe or tank."}
+      - {heading: "Clause 3.1 Long-term seepage", type: exclusion, page: 1, text: "We do not pay for damage from seepage that continues over weeks or months."}
+      - {heading: "Clause 3.2 Unoccupied homes", type: exclusion, page: 1, text: "We do not pay for water damage if the dwelling was empty for over 60 days."}
+      - {heading: "Clause 4.1 Maximum payable", type: limit, page: 1, text: "We will pay no more than the Sum Insured shown in the Schedule for any claim."}
+      - {heading: "Clause 4.2 Excess", type: deductible, page: 1, text: "You pay the excess shown in the Schedule on every claim."}
+      - {heading: "Clause 5.1 Prompt notice", type: condition, page: 1, text: "Tell us about a loss within 30 days."}
+      - {heading: "Clause 5.2 Reasonable care", type: condition, page: 1, text: "You must keep pipes and tanks in good repair and take reasonable steps to stop further damage."}
+  - file: HARBOUR-1.txt
+    doc_id: HARBOUR-1
+    split: fresh
+    clauses:
+      - {heading: "1.1 Fixed installation", type: definition, page: 1, text: "Fixed installation means the pipes, tanks and heating equipment that are permanently connected to the main water supply of the home."}
+      - {heading: "1.2 Frozen pipe", type: definition, page: 1, text: "Frozen pipe means a pipe in which water has turned to ice and caused it to split."}
+      - {heading: "2.1 Water damage", type: coverage, page: 1, text: "We cover damage to the home caused by water that escapes suddenly from a fixed installation."}
+      - {heading: "2.2 Frozen pipes", type: coverage, page: 1, text: "We also cover the cost of repairing a frozen pipe that has split and the damage that follows."}
+      - {heading: "3.1 Neglect", type: exclusion, page: 1, text: "We do not cover damage where you failed to maintain the pipes."}
+      - {heading: "3.2 Gradual damage", type: exclusion, page: 1, text: "We do not cover damage that happens gradually, including: (a) rust and corrosion; (b) a slow drip that is left unrepaired."}
+      - {heading: "4.1 Sum insured", type: limit, page: 1, text: "The most we will pay for all claims in one year is the sum insured shown in the Schedule."}
+      - {heading: "4.2 Excess", type: deductible, page: 1, text: "You must pay the excess shown in the Schedule towards each claim."}
+      - {heading: "5.1 Claims procedure", type: condition, page: 1, text: "Contact us promptly after a loss and send the documents we ask for."}
+  - file: HARBOUR-E1.txt
+    doc_id: HARBOUR-E1
+    split: fresh
+    clauses:
+      - {heading: "1. Frozen pipe excess", type: deductible, page: 1, text: "For a claim for a frozen pipe the excess is INR 5,000 in place of the excess in the wording."}
+  - file: HARBOUR-E2.txt
+    doc_id: HARBOUR-E2
+    split: fresh
+    clauses:
+      - {heading: "1. Higher sum insured", type: limit, page: 1, text: "From 1 March 2026 the most we will pay for all claims in one year is INR 3,000,000."}
+  - file: HARBOUR-E3.txt
+    doc_id: HARBOUR-E3
+    split: fresh
+    clauses:
+      - {heading: "1. Further sum insured increase", type: limit, page: 1, text: "The increase in Endorsement HARBOUR-E2 is raised to INR 3,500,000 for loss on or after 1 June 2026."}
+  - file: ELMWOOD-1.txt
+    doc_id: ELMWOOD-1
+    split: dev_llm          # wording the type rules do not recognise (4a). First live run found a wrong type on 6.2, so this is now a DEV document.
+    clauses:
+      - {heading: "1.1 Pipework", type: definition, page: 1, text: "Pipework means all fixed pipes, valves and tanks supplying or draining water in the home."}
+      - {heading: "1.2 Home", type: definition, page: 1, text: "Home means the house at the address in the Schedule and its garage."}
+      - {heading: "2.1 Burst or overflowing water", type: coverage, page: 1, text: "We will repair damage caused by pipework bursting or overflowing."}
+      - {heading: "2.2 Storm", type: coverage, page: 1, text: "We will repair damage to the home caused by storm."}
+      - {heading: "3.1 Slow deterioration", type: exclusion, page: 1, text: "We will not repair damage resulting from rot, corrosion or long-term leaking."}
+      - {heading: "3.2 Empty homes", type: exclusion, page: 1, text: "We will not repair damage if the home was left empty for more than 45 days."}
+      - {heading: "4.1 Highest payment", type: limit, page: 1, text: "The highest amount we will pay for any one claim is the Sum Insured in the Schedule."}
+      - {heading: "4.2 Your share", type: deductible, page: 1, text: "You bear the first part of every claim, as shown in the Schedule."}
+      - {heading: "4.3 Water ceiling", type: sublimit, page: 1, text: "We will pay at most INR 150,000 for damage from pipework in a single claim."}
+      - {heading: "5.1 Telling us", type: condition, page: 1, text: "Tell us within 14 days of finding any damage."}
+      - {heading: "5.2 Protecting the home", type: condition, page: 1, text: "Take sensible steps to stop damage getting worse."}
+      # `none`: a real clause that is none of the seven types. The right answer is to stay unclassified; ANY type here is a wrong answer.
+      - {heading: "6.1 Governing law", type: none, page: 1, text: "This policy is governed by the law of the country shown in the Schedule."}
+      - {heading: "6.2 Dishonest claims", type: none, page: 1, text: "If a claim is dishonest we may refuse it and cancel the policy."}
+  - file: WILLOW-1.txt
+    doc_id: WILLOW-1
+    split: dev_llm          # seen: prompt v1 typed 3 of its 5 `none` clauses, so it is DEV from here on.
+    clauses:
+      - {heading: "A1 Flood", type: definition, page: 1, text: "Flood means water that rises from a river, lake or sea and covers normally dry land."}
+      - {heading: "B1 Sudden pipe failure", type: coverage, page: 1, text: "We will meet the cost of repairing damage caused by a pipe suddenly splitting."}
+      - {heading: "B2 Fire and smoke", type: coverage, page: 1, text: "We will meet the cost of repairing damage caused by fire or smoke."}
+      - {heading: "C1 Faulty workmanship", type: exclusion, page: 1, text: "We will not meet the cost of repairing damage caused by poor building work."}
+      - {heading: "D1 Top amount for the policy", type: limit, page: 1, text: "The top amount we will pay for all claims in a year is shown as the Sum Insured in the Schedule."}
+      - {heading: "D2 Pipe damage cap", type: sublimit, page: 1, text: "The most we will pay for repairing pipes and fittings is INR 80,000 for any one claim."}
+      - {heading: "D3 First amount you pay", type: deductible, page: 1, text: "You are responsible for the first INR 7,500 of each claim."}
+      - {heading: "E1 Keeping us informed", type: condition, page: 1, text: "Contact us within 21 days of discovering a loss."}
+      - {heading: "E2 Maintenance", type: condition, page: 1, text: "Keep the plumbing in good working order."}
+      - {heading: "F1 Ending the policy", type: none, page: 1, text: "Either of us may end this policy by giving 30 days written notice."}
+      - {heading: "F2 Fraud", type: none, page: 1, text: "If you or anyone acting for you makes a fraudulent claim we will not pay it."}
+      - {heading: "F3 Complaints", type: none, page: 1, text: "If you are unhappy with our service you can complain to our customer team."}
+      - {heading: "F4 Paying the premium", type: condition, page: 1, text: "You must pay the premium by the due date in the Schedule."}
+      - {heading: "F5 Changes to these terms", type: none, page: 1, text: "We may change these terms only by writing to you at least 30 days before the change."}
+      - {heading: "F6 Currency", type: none, page: 1, text: "All amounts under this policy are in Indian rupees."}
+  - file: WALNUT-1.txt
+    doc_id: WALNUT-1
+    split: dev_llm2         # written before the experiments, but prompt v2 names the SAME kinds of none-clause (disputes, data, language, renewal, headings),
+                            # so it is not a fair unseen test for v2. Reported as a second reading only.
+    clauses:
+      - {heading: "1.1 Tank", type: definition, page: 1, text: "Tank means any container that stores water for the home."}
+      - {heading: "2.1 Burst tanks", type: coverage, page: 1, text: "We will cover the repair of damage to the home from a burst water tank."}
+      - {heading: "2.2 Lightning", type: coverage, page: 1, text: "Damage from lightning is included in this policy."}
+      - {heading: "3.1 War risks", type: exclusion, page: 1, text: "Damage caused by war or nuclear activity is not included."}
+      - {heading: "3.2 Ageing", type: exclusion, page: 1, text: "No payment will be made for damage from wear and tear."}
+      - {heading: "4.1 Annual ceiling", type: limit, page: 1, text: "Our total payment in any policy year will never go beyond the Sum Insured in the Schedule."}
+      - {heading: "4.2 Tank cap", type: sublimit, page: 1, text: "Damage from water tanks is capped at INR 60,000 per claim."}
+      - {heading: "4.3 Your first part", type: deductible, page: 1, text: "The first INR 5,000 of every claim is borne by you."}
+      - {heading: "5.1 Reporting a loss", type: condition, page: 1, text: "You need to let us know about any loss within 28 days."}
+      - {heading: "5.2 Living in the home", type: condition, page: 1, text: "The home must be lived in for at least 180 days each year."}
+      - {heading: "6.1 Cooling off", type: none, page: 1, text: "You may cancel within 14 days of buying and receive a full refund of the premium."}
+      - {heading: "6.2 Disputes", type: none, page: 1, text: "Any dispute will be decided by the courts of the country named in the Schedule."}
+      - {heading: "6.3 Personal data", type: none, page: 1, text: "We use your personal information as explained in our privacy notice."}
+      - {heading: "6.4 Renewal", type: none, page: 1, text: "We may refuse to renew this policy by writing to you before the end of the period."}
+      - {heading: "6.5 Headings", type: none, page: 1, text: "Headings are for convenience and do not affect the meaning of these terms."}
+      - {heading: "6.6 Language", type: none, page: 1, text: "This policy is written in English."}
+  - file: BEECH-1.txt
+    doc_id: BEECH-1
+    split: fresh_llm        # the unseen check: written and labelled BEFORE prompt v2 + effort `low` was run on it; its 6 `none` clauses are kinds the prompt does not name.
+    clauses:
+      - {heading: "1.1 Hose", type: definition, page: 1, text: "Hose means a flexible pipe fitted to a washing machine or sink."}
+      - {heading: "2.1 Failed hoses", type: coverage, page: 1, text: "Repair costs after a flood from a failed hose are paid by us."}
+      - {heading: "2.2 Burst pipes", type: coverage, page: 1, text: "Escape of water from a burst pipe is something we protect you against."}
+      - {heading: "3.1 Deliberate harm", type: exclusion, page: 1, text: "Loss from deliberate damage by you is not paid."}
+      - {heading: "3.2 Mould", type: exclusion, page: 1, text: "Mould that grows over time is outside this cover."}
+      - {heading: "4.1 Twelve-month maximum", type: limit, page: 1, text: "In any twelve months we pay no more than the Sum Insured."}
+      - {heading: "4.2 Baths and basins", type: sublimit, page: 1, text: "For leaks from baths and basins the ceiling is INR 40,000 each claim."}
+      - {heading: "4.3 Starting contribution", type: deductible, page: 1, text: "Each claim starts with you paying INR 3,000."}
+      - {heading: "5.1 Empty home", type: condition, page: 1, text: "Switch off the water supply if you leave the home empty for a week or more."}
+      - {heading: "5.2 Alarm", type: condition, page: 1, text: "Cover only applies while the alarm is switched on at night."}
+      - {heading: "6.1 Recovery from others", type: none, page: 1, text: "Once we have paid a claim we may take over your right to recover the money from anyone responsible."}
+      - {heading: "6.2 Post", type: none, page: 1, text: "Any notice we send to you will be sent to the address in the Schedule."}
+      - {heading: "6.3 Joint holders", type: none, page: 1, text: "If more than one person is named, each of you is bound by these terms."}
+      - {heading: "6.4 Rounding", type: none, page: 1, text: "Payments are rounded to the nearest rupee."}
+      - {heading: "6.5 Outsiders", type: none, page: 1, text: "Nobody except you and us may enforce this policy."}
+      - {heading: "6.6 Plain words", type: none, page: 1, text: "We have tried to write these terms in plain words."}
+
+# ---------------------------------------------------------------------------------------------------- relations (T3.2)
+# Written BEFORE the relation extractor was run on these documents. A pool = one policy: its wording plus the endorsements attached to it.
+# Clause keys are '<doc_id>:<heading>'. Only relations a careful reader would state are labelled; anything else the extractor proposes is
+# reported as 'unlabelled' and judged by hand (see evals/policy_relation_audit.yaml), never silently counted as right.
+pools:
+  - id: RIVERSIDE
+    documents: [RIVERSIDE-1]
+    relations:
+      - {source: "RIVERSIDE-1:Clause 1.1 Dwelling", target: "RIVERSIDE-1:Clause 2.1 Water escape", relation: defines}
+      - {source: "RIVERSIDE-1:Clause 1.1 Dwelling", target: "RIVERSIDE-1:Clause 3.2 Unoccupied homes", relation: defines}
+      - {source: "RIVERSIDE-1:Clause 1.2 Burst", target: "RIVERSIDE-1:Clause 2.1 Water escape", relation: defines}
+      - {source: "RIVERSIDE-1:Clause 3.1 Long-term seepage", target: "RIVERSIDE-1:Clause 2.1 Water escape", relation: excepts}
+      - {source: "RIVERSIDE-1:Clause 3.2 Unoccupied homes", target: "RIVERSIDE-1:Clause 2.1 Water escape", relation: excepts}
+  - id: HARBOUR
+    documents: [HARBOUR-1, HARBOUR-E1, HARBOUR-E2, HARBOUR-E3]
+    relations:
+      - {source: "HARBOUR-1:1.1 Fixed installation", target: "HARBOUR-1:2.1 Water damage", relation: defines}
+      - {source: "HARBOUR-1:1.2 Frozen pipe", target: "HARBOUR-1:2.2 Frozen pipes", relation: defines}
+      - {source: "HARBOUR-1:3.1 Neglect", target: "HARBOUR-1:2.1 Water damage", relation: excepts}
+      - {source: "HARBOUR-1:3.1 Neglect", target: "HARBOUR-1:2.2 Frozen pipes", relation: excepts}
+      - {source: "HARBOUR-1:3.2 Gradual damage", target: "HARBOUR-1:2.1 Water damage", relation: excepts}
+      - {source: "HARBOUR-E1:1. Frozen pipe excess", target: "HARBOUR-1:4.2 Excess", relation: modifies}
+      - {source: "HARBOUR-E2:1. Higher sum insured", target: "HARBOUR-1:4.1 Sum insured", relation: modifies}
+      - {source: "HARBOUR-E3:1. Further sum insured increase", target: "HARBOUR-E2:1. Higher sum insured", relation: modifies}

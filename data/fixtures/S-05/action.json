@@ -1,0 +1,32 @@
+{
+  "proposed_actions": [
+    {
+      "action_id": "ACT-CLM-0005-1",
+      "action_type": "create_task",
+      "responsible_party": "request_endorsement_END-01_from_policy_administration",
+      "execution_mode": "controlled_api",
+      "status": "proposed",
+      "idempotency_key": "CLM-0005:create_task:request_endorsement_END-01_from_policy_administration",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0005-2",
+      "action_type": "hold_settlement_until_endorsement_received",
+      "responsible_party": "adjuster",
+      "execution_mode": "controlled_api",
+      "status": "proposed",
+      "idempotency_key": "CLM-0005:hold_settlement_until_endorsement_received",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0005-3",
+      "action_type": "draft_status_message",
+      "responsible_party": "claimant",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0005:draft_status_message:claimant",
+      "payload_ref": null
+    }
+  ],
+  "drafts": []
+}

@@ -1,0 +1,166 @@
+{
+  "entries": [
+    {
+      "label": "T4.5 requests v2 (repair round). dev = tuned on; fresh = first unseen set (seen, pre-repair rule-item share 67%, rated both 64%); fresh2 = unseen, run once",
+      "date": "2026-11-25",
+      "config_sha": "573ce9b6b22d8c82",
+      "model": "gpt-5-mini",
+      "rating": "model-rated (self-assessment), not a domain reviewer",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "cases": 5,
+            "addressee_precision": 1.0,
+            "addressee_recall": 1.0,
+            "question_recall": 1.0,
+            "extra_question_pairs": 0,
+            "self_check_problems": 0,
+            "duplicates_of_received": 0,
+            "internal_needs_sent_externally": 0,
+            "rule_written_item_share": 1.0,
+            "refused_items": 0,
+            "rated_requests": 6,
+            "rated_sufficient": 0.6666666666666666,
+            "rated_minimal": 0.8333333333333334,
+            "rated_both": 0.5,
+            "abstained_wrongly_asked": 0,
+            "unexpected_requests": [],
+            "missed": [],
+            "low_rated": [
+              "S-01 plumber: sufficient=False minimal=True: sufficient is false because the requested items seek technical evidence of when corrosion/leak began and clarification of conflicting statements, but they do not require specific types of technical dating (e.g., metallurgical analysis, pipe failure forensics, or dated moisture readings) so resolving timing may remain unresolved if the provided evidence is not definitive.",
+              "S-01 surveyor: sufficient=True minimal=False: Not minimal: two items both address Q-AMOUNT (surveyor-assessed cost and estimate reconciling to scope) are overlapping/redundant rather than distinct needs.",
+              "D2-amount-conflict surveyor: sufficient=False minimal=True: sufficient is false because the request only asks to 'clarify the conflict' between the two amounts and does not require supporting documentation or explanation to determine which amount is reasonable, so the Q-AMOUNT need would remain unresolved."
+            ]
+          },
+          "fresh": {
+            "cases": 10,
+            "addressee_precision": 1.0,
+            "addressee_recall": 1.0,
+            "question_recall": 1.0,
+            "extra_question_pairs": 0,
+            "self_check_problems": 0,
+            "duplicates_of_received": 0,
+            "internal_needs_sent_externally": 0,
+            "rule_written_item_share": 1.0,
+            "refused_items": 0,
+            "rated_requests": 11,
+            "rated_sufficient": 0.8181818181818182,
+            "rated_minimal": 0.8181818181818182,
+            "rated_both": 0.6363636363636364,
+            "abstained_wrongly_asked": 0,
+            "unexpected_requests": [],
+            "missed": [],
+            "low_rated": [
+              "N1-cause-conflict plumber: sufficient=False minimal=True: sufficient is false because clarifying the conflict requires specific evidence (timing of failure, inspection details, photos, corrosion dating) beyond a single statement reconciling claimant vs plumber accounts.",
+              "N2-amount-conflict surveyor: sufficient=False minimal=True: sufficient is false because simply clarifying the conflicting amounts (INR 250,000 vs INR 120,000) may not by itself establish whether the higher or lower figure is reasonable and supported; additional detail on basis for each amount (breakdowns, estimates, or sources) is needed.",
+              "N3-nothing-on-start-or-extent surveyor: sufficient=True minimal=False: Items are redundant: both requested items ask for the same thing (surveyor-confirmed list of affected areas and linking each affected area to the reported event), so although they fully cover the needs, one item repeats the other.",
+              "N9-extent-and-cost-short surveyor: sufficient=True minimal=False: Not minimal: two items both address Q-AMOUNT (surveyor-assessed cost and estimate reconciling to scope) are overlapping/redundant rather than distinct needs."
+            ]
+          },
+          "fresh2": {
+            "cases": 7,
+            "addressee_precision": 1.0,
+            "addressee_recall": 1.0,
+            "question_recall": 1.0,
+            "extra_question_pairs": 0,
+            "self_check_problems": 0,
+            "duplicates_of_received": 0,
+            "internal_needs_sent_externally": 0,
+            "rule_written_item_share": 1.0,
+            "refused_items": 0,
+            "rated_requests": 11,
+            "rated_sufficient": 0.7272727272727273,
+            "rated_minimal": 1.0,
+            "rated_both": 0.7272727272727273,
+            "abstained_wrongly_asked": 0,
+            "unexpected_requests": [],
+            "missed": [],
+            "low_rated": [
+              "M1-cause-conflict-and-cost plumber: sufficient=False minimal=True: sufficient is false because the listed item simply repeats the conflicting statements and does not request objective evidence or explanation to resolve whether damage was sudden versus long-term deterioration.",
+              "M3-extent-conflict-and-no-policy-answer surveyor: sufficient=False minimal=True: sufficient is false because the request asks only to 'clarify the conflict' but does not explicitly require the surveyor to state the extent for each area or explain cause/timing, so answering may still leave which areas were affected unresolved.",
+              "M5-cost-conflict-and-extent-short surveyor: sufficient=False minimal=True: sufficient is false because resolving the Q-AMOUNT conflict requires explanation or justification for the INR 50,000 difference (e.g., reasons for higher invoice) which the items only ask to 'clarify' but do not explicitly require the supporting details needed to settle the conflict."
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "cases": 5,
+            "addressee_precision": 1.0,
+            "addressee_recall": 1.0,
+            "question_recall": 1.0,
+            "extra_question_pairs": 0,
+            "self_check_problems": 0,
+            "duplicates_of_received": 0,
+            "internal_needs_sent_externally": 0,
+            "rule_written_item_share": 0.2857142857142857,
+            "refused_items": 4,
+            "rated_requests": 6,
+            "rated_sufficient": 0.3333333333333333,
+            "rated_minimal": 0.8333333333333334,
+            "rated_both": 0.3333333333333333,
+            "abstained_wrongly_asked": 0,
+            "unexpected_requests": [],
+            "missed": [],
+            "low_rated": [
+              "S-01 plumber: sufficient=False minimal=True: sufficient is false because the requested items seek technical evidence of when corrosion/leak began and clarification of conflicting statements, but they do not require specific types of technical dating (e.g., metallurgical analysis, pipe failure forensics, or dated moisture readings) so resolving timing may remain unresolved if the provided evidence is not definitive.",
+              "S-01 claimant: sufficient=False minimal=True: sufficient is false because the maintenance/inspection record should show when the leak or damage began, but the requested item only shows inspection date and noted issues without explicitly establishing the leak start date (Q-START).",
+              "S-01 surveyor: sufficient=False minimal=False: Insufficient: the request asks only for confirmation of affected areas and itemised repair costs reconciling to contractor INR 180,000 but does not explicitly require the surveyor-assessed cost per area to be linked to the reported event for each area (Q-EXTENT linkage may be incomplete) nor an explicit reconciliation showing how the itemised costs sum and reconcile to the surveyor scope (Q-AMOUNT reconciliation may be incomplete); also the two cost items are redundant by repeating reconciliation and surveyor-assessed cost requirements, making the items partly redundant.",
+              "D2-amount-conflict surveyor: sufficient=False minimal=True: sufficient is false because the requested signed statement may not resolve the 29% discrepancy unless it includes justification tying specific line-item differences to the overall percent conflict; minimal is true because the single requested item directly targets the stated need without extra or unrelated requests."
+            ]
+          },
+          "fresh": {
+            "cases": 10,
+            "addressee_precision": 1.0,
+            "addressee_recall": 1.0,
+            "question_recall": 1.0,
+            "extra_question_pairs": 0,
+            "self_check_problems": 0,
+            "duplicates_of_received": 0,
+            "internal_needs_sent_externally": 0,
+            "rule_written_item_share": 0.16666666666666666,
+            "refused_items": 2,
+            "rated_requests": 11,
+            "rated_sufficient": 0.45454545454545453,
+            "rated_minimal": 1.0,
+            "rated_both": 0.45454545454545453,
+            "abstained_wrongly_asked": 0,
+            "unexpected_requests": [],
+            "missed": [],
+            "low_rated": [
+              "N1-cause-conflict plumber: sufficient=False minimal=True: sufficient is false because the request does not resolve the conflict between claimant's statement and plumber's finding—the plumber's opinion and timeframe are requested but may not settle conflicting accounts without explicit comparison to claimant's account or additional objective evidence.",
+              "N2-amount-conflict surveyor: sufficient=False minimal=True: sufficient is false because the requested itemized written statement may still leave the 52% cost conflict unresolved without an explicit requirement to explain methodology for unit rates, overhead/profit, or to provide supporting invoices/quotes to substantiate the higher or lower unit prices.",
+              "N3-nothing-on-start-or-extent claimant: sufficient=False minimal=True: sufficient is false because the item may show inspection/repair dates but might not explicitly indicate when the leak or damage began, so the need (When did the leak or damage begin?) could remain unresolved.",
+              "N5-no-policy-answer policy_administration: sufficient=False minimal=True: sufficient is false because the request asks to confirm policy status and provide effective and cancellation/endorsement dates but does not explicitly request evidence that the PAS policy status is ‘in force’ on the date (e.g., confirmation the PAS record pertains to this policy), leaving potential ambiguity about matching records.",
+              "N10-cause-and-start plumber: sufficient=False minimal=True: Sufficient is false because the plumber_report may describe failure mechanism and give an opinionated date/range but a 'technical statement by a qualified person' and 'technical evidence of when the leak/corrosion began' may require more explicit demonstration of qualifications or supporting technical evidence beyond a single signed report as worded.",
+              "N10-cause-and-start claimant: sufficient=False minimal=True: sufficient is false because the item may show inspection/repair dates but might not explicitly indicate when the leak or damage began, so the need (When did the leak or damage begin?) could remain unresolved."
+            ]
+          },
+          "fresh2": {
+            "cases": 7,
+            "addressee_precision": 1.0,
+            "addressee_recall": 1.0,
+            "question_recall": 1.0,
+            "extra_question_pairs": 0,
+            "self_check_problems": 0,
+            "duplicates_of_received": 0,
+            "internal_needs_sent_externally": 0,
+            "rule_written_item_share": 0.09090909090909091,
+            "refused_items": 4,
+            "rated_requests": 11,
+            "rated_sufficient": 0.7272727272727273,
+            "rated_minimal": 0.8181818181818182,
+            "rated_both": 0.7272727272727273,
+            "abstained_wrongly_asked": 0,
+            "unexpected_requests": [],
+            "missed": [],
+            "low_rated": [
+              "M1-cause-conflict-and-cost plumber: sufficient=False minimal=True: sufficient is false because the item may not resolve the conflict: an appearance-based statement alone might not definitively settle whether damage was sudden vs long-term without linking observed features to timing or providing definitive indicators.",
+              "M5-cost-conflict-and-extent-short surveyor: sufficient=False minimal=False: The signed statement item addresses Q-EXTENT but the line-item explanation is vague about requiring reconciliation linking each invoice line to estimate lines and justification for the 50% increase, so Q-AMOUNT remains unresolved; additionally the items overlap and the signed statement plus line-item reconciliation could be combined but currently the request is not minimal and the reconciliation request is imprecise.",
+              "M6-start-with-reports-on-file claimant: sufficient=False minimal=False: sufficient=false because the request asks for records covering dates before observed staining but does not explicitly require the leak start date tied to those records (may leave question unresolved); minimal=false because the item bundles multiple data points (dates, inspector name, work order numbers) into one request but otherwise matches needs—however asking for 'labelled' record may be redundant/unnecessary beyond the stated need."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

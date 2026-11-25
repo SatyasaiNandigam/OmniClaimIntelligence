@@ -1,0 +1,194 @@
+# Document types: how the classifier recognises them (T2.2) and which fields the extractor pulls out of them (T2.3).
+# Domain content, not code: add a type, a synonym, or a field here.
+#
+# CLASSIFIER - how a document is scored (ingestion/classifier.py):
+#   title zone  = heading-like lines near the top of page 1 (short lines that are not "Label: value")
+#   title score = 1 if any title_patterns regex matches a heading-like line
+#   phrase score= distinct `phrases` found in the first pages / phrases_needed (max 1)
+#   score       = title_weight * title + phrase_weight * phrase - negative_penalty * (any negative phrase found)
+#   The classifier ABSTAINS (type "unknown", routed to a human) when the best score is below min_score, the winner is
+#   within min_margin of the runner-up, or (answer_without_heading: false) the winner rests on phrases alone with no heading
+#   evidence: a gym's "terms and conditions" shares the vocabulary of a policy wording, so vocabulary alone is a guess.
+#   Symmetrically, a heading alone is not enough (an article titled "Estimate your reading time" is not an estimate): it must be
+#   corroborated by at least min_phrase_hits supporting phrases.
+#   structure_patterns (e.g. an e-mail header block) count as heading evidence. It never outputs "other": a human assigns that.
+# e-mail is recognised from the message headers, photos from the image itself (no text); both have no text signals here.
+#
+# EXTRACTOR - what is pulled out of a classified document (ingestion/extractors/):
+#   a field is found as a "Label: value" line whose label is one of the field's labels (the first is canonical); `from_body` fields
+#   take sentence-like unlabelled lines instead. Wrapped PDF lines are merged into one logical line by geometry. Every value keeps its page,
+#   region and the verbatim line it came from. Values that are uncertain are FLAGGED low-confidence, never dropped.
+#
+# All numbers below are SAMPLE values tuned on the labelled sets, not insurer policy.
+# See evals/baselines/classification.json and evals/baselines/extraction.json.
+classifier:
+  title_weight: 0.55          # SAMPLE
+  phrase_weight: 0.45         # SAMPLE
+  negative_penalty: 0.30      # SAMPLE
+  min_score: 0.45             # SAMPLE
+  min_margin: 0.15            # SAMPLE
+  answer_without_heading: false   # SAMPLE: vocabulary alone never decides a type
+  min_phrase_hits: 1          # SAMPLE: ...and a heading alone is not enough either
+  title_zone_lines: 14        # SAMPLE
+  title_max_chars: 90         # SAMPLE
+  pages_scanned: 3            # SAMPLE
+  ocr_confidence_cap: 0.85    # SAMPLE
+  llm_min_confidence: 0.70    # SAMPLE
+  llm_confidence_cap: 0.80    # SAMPLE
+  photo_confidence: 0.75      # SAMPLE
+  container_confidence: 0.95  # SAMPLE
+
+extractor:
+  low_confidence: 0.70              # SAMPLE: below this a value is flagged
+  label_confidence: 0.95            # SAMPLE
+  synonym_confidence: 0.90          # SAMPLE
+  body_confidence: 0.65             # SAMPLE
+  unparseable_confidence: 0.40      # SAMPLE
+  ambiguous_factor: 0.75            # SAMPLE
+  conflict_factor: 0.70             # SAMPLE
+  table_mismatch_confidence: 0.50   # SAMPLE
+  ocr_confidence_cap: 0.85          # SAMPLE
+  llm_confidence_cap: 0.80          # SAMPLE
+  wrap_gap_ratio: 0.35              # SAMPLE
+  wrap_x_tolerance: 3.0             # SAMPLE
+  body_min_words: 5                 # SAMPLE
+  table_tolerance: 0                # SAMPLE: stated total must equal the computed total exactly
+  boilerplate_patterns:
+    - 'for software testing only'
+    - '^page \d+ of \d+$'
+    - '^signed:'
+    - '^ref:'
+    - '\|\s*synthetic$'
+    - '^synthetic .*\(fictional\)$'
+  table:
+    total_labels: ['(grand )?total( cost| amount| payable| due)*( \(.*\))?', 'amount (due|payable)', 'net (payable|amount)']
+    subtotal_labels: ['sub-?total']
+    tax_labels: ['(tax|gst|vat|cgst|sgst|igst)( .*)?']
+    discount_labels: ['(less:? )?discount( .*)?']
+    skip_labels: ['estimated .*', 'amount (claimed|paid)', 'premium( .*)?', 'balance( .*)?', 'deposit( .*)?', '.*\b(number|no\.?|ref|reference|id|code|phone)']
+
+types:
+  fnol:
+    title: First notice of loss
+    title_patterns:
+      - 'first notice of loss'
+      - '\bfnol\b'
+      - 'claim (intimation|notification|form)'
+      - 'loss (intimation|notification|report)'
+      - 'notification of (loss|claim)'
+    phrases: [date of loss, policy number, claimant, estimated loss, description, loss reported]
+    phrases_needed: 3   # SAMPLE
+    fields:
+      claimant_name: {labels: [claimant, claimant name, insured name, policyholder, name of insured, insured], type: text, required: true}
+      policy_number: {labels: [policy number, policy no, policy no., policy ref, 'policy #'], type: id, required: true, pattern: '[A-Z]{2,5}-?\d{2,}[A-Z0-9-]*'}
+      loss_date: {labels: [date of loss, date of incident, loss date, incident date], type: date, required: true}
+      loss_time: {labels: [time of loss, time of incident], type: text}
+      loss_location: {labels: [location of loss, loss location, address of loss, risk address, property address], type: text}
+      loss_description: {labels: [description, description of loss, nature of loss, what happened], type: narrative, required: true}
+      estimated_loss: {labels: [estimated loss, approximate amount of loss, amount claimed, estimated amount], type: money}
+  policy_schedule:
+    title: Policy schedule
+    title_patterns:
+      - 'policy schedule'
+      - 'schedule of (insurance|cover)'
+      - 'certificate of insurance'
+      - 'statement of cover'
+    phrases: [period of insurance, building limit, standard deductible, endorsements attached, sum insured, premium, policy number]
+    phrases_needed: 3   # SAMPLE
+    fields:
+      policy_number: {labels: [policy number, policy no, policy no., policy ref], type: id, required: true, pattern: '[A-Z]{2,5}-?\d{2,}[A-Z0-9-]*'}
+      period_of_insurance: {labels: [period of insurance, policy period, period], type: date_range, required: true}
+      building_limit: {labels: [building limit, sum insured, limit of liability], type: money}
+      standard_deductible: {labels: [standard deductible, deductible, excess], type: money}
+      endorsements_attached: {labels: [endorsements attached, endorsements, forms and endorsements], type: text}
+  policy_wording:
+    title: Policy wording
+    title_patterns:
+      - 'policy wording'
+      - 'policy (document|booklet)'
+      - 'terms and conditions of (the )?policy'
+    phrases: [what is covered, what is not covered, definitions, conditions, we cover, we do not cover, exclusions, period of insurance]
+    phrases_needed: 3   # SAMPLE
+  endorsement:
+    title: Endorsement
+    title_patterns:
+      - 'endorsement'
+      - 'amendment to (the )?policy'
+      - '\brider\b'
+    phrases: [forms part of the policy, this endorsement, effective from, attached to the policy, endorsement no]
+    phrases_needed: 2   # SAMPLE
+  plumber_report:
+    title: Plumber's report
+    title_patterns:
+      - 'plumber.?s? report'
+      - 'plumbing (inspection |contractor )?report'
+      - 'leak detection report'
+      - 'plumbing engineer'
+    phrases: [inspection date, findings, joint, corrosion, supply restored, replaced, pipe, plumber, leak]
+    phrases_needed: 3   # SAMPLE
+    fields:
+      inspection_date: {labels: [inspection date, date of inspection, visit date], type: date, required: true}
+      findings: {labels: [findings, observations, diagnosis], type: narrative, required: true}
+      work_carried_out: {type: narrative, from_body: true}
+  surveyor_report:
+    title: Surveyor's report
+    title_patterns:
+      - 'surveyor.?s? report'
+      - 'loss adjuster.?s? report'
+      - 'survey report'
+      - 'engineer.?s? (assessment|report)'
+      - 'loss assessment'
+    phrases: [site visit, moisture, assessed repair cost, readings, cause of loss, surveyor, assessment]
+    phrases_needed: 3   # SAMPLE
+    fields:
+      site_visit_date: {labels: [site visit, date of visit, site visit date, survey date, date of survey], type: date, required: true}
+      cause_of_loss: {labels: [cause of loss, cause], type: narrative}
+      assessed_repair_cost: {labels: [assessed repair cost, assessed cost, assessed loss, cost of repair], type: money}
+      observations: {type: narrative, from_body: true}
+  estimate:
+    title: Repair estimate
+    title_patterns:
+      - 'repair estimate'
+      - '\bestimate\b'
+      - '\bquotation\b'
+      - '\bquote\b'
+      - 'bill of quantities'
+    phrases: [scope, total, labour, materials, estimated cost, inr]
+    phrases_needed: 3   # SAMPLE
+    negative_phrases: [invoice number, payment terms]
+    table: true
+    fields:
+      scope: {labels: [scope, scope of work, work scope], type: text}
+  invoice:
+    title: Invoice
+    title_patterns:
+      - 'tax invoice'
+      - '\binvoice\b'
+      - 'bill for'
+      - 'bill -'
+    phrases: [invoice number, vendor, payment terms, tax, due date, gstin, total]
+    phrases_needed: 3   # SAMPLE
+    table: true
+    table_expects_tax: true
+    fields:
+      invoice_number: {labels: [invoice number, invoice no, invoice no., 'invoice #', bill no], type: text, required: true}
+      invoice_date: {labels: [invoice date, date of invoice, dated], type: date}
+      vendor_name: {labels: [vendor, supplier, billed by, seller], type: text, required: true}
+      due_date: {labels: [due date, payment due], type: date}
+      payment_terms: {labels: [payment terms, terms], type: text}
+      tax_id: {labels: [gstin, tax id, vat number], type: text}
+  email:
+    title: E-mail
+    structure_patterns: ['^from:', '^to:', '^subject:', '^date:']      # a header block counts as heading evidence
+    structure_needed: 3   # SAMPLE
+    phrases: ['from:', 'to:', 'subject:', 'regards', 'dear', 'hello']
+    phrases_needed: 3   # SAMPLE
+    fields:
+      email_from: {labels: [from, sender], type: text, required: true}
+      email_to: {labels: [to, recipient], type: text}
+      email_date: {labels: [date, sent], type: date}
+      email_subject: {labels: [subject], type: text}
+  photo:
+    title: Photograph
+  other:
+    title: Other / not claim-relevant (assigned by a human)

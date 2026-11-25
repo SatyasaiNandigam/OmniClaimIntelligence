@@ -1,0 +1,61 @@
+# SAMPLE - not insurer policy. Every value below must be replaced by Claims Operations' real approval matrix.
+# Extraction confidence is deliberately NOT a routing feature (guardrail 4) - the loader rejects it.
+#
+# Evaluation order. The FIRST stage that matches decides the tier; the `code`s of the conditions that matched
+# in that stage become the reason codes:
+#   1. mandatory_referral.any_of -> complex  (cannot be overridden by anything below)
+#   2. tiers.complex.any_of      -> complex  (escalation triggers)
+#   3. tiers.simple.all_of       -> simple   (ALL must hold)
+#   4. tiers.medium.any_of       -> medium   (ANY holds)
+#   5. otherwise                 -> complex  (tiers.complex.default)
+#
+# Condition syntax: {feature: <name>, is: <value> | in: [values] | gt/gte/lt/lte: <number>, code: <REASON_CODE>}
+# Features and their allowed values are declared once below; a typo fails at startup (core/config.py).
+rules_version: "sample-2"
+
+features:
+  policy_status:          [in_force, not_in_force]
+  policy_match:           [exact, mismatch]
+  policy_certainty:       [exact, partial]
+  evidence_completeness:  [complete, minor_gap, major_gap]
+  contradiction_severity: [none, low, medium, high]
+  duplicate_status:       [clear_or_benign, needs_confirmation, multiple_linked]
+  coverage_certainty:     [resolved, unresolved, not_assessed]
+  specialist_required:    boolean
+  exposure_inr:           number
+
+approver_roles:             # role that must approve; must exist in rbac.yaml
+  simple: adjuster
+  medium: adjuster
+  complex: senior_adjuster
+
+mandatory_referral:
+  any_of:
+    - {feature: policy_status,       is: not_in_force,     code: POLICY_NOT_IN_FORCE}
+    - {feature: policy_match,        is: mismatch,         code: POLICY_MISMATCH}
+    - {feature: duplicate_status,    is: multiple_linked,  code: DUPLICATE_MULTIPLE_LINKED}
+    - {feature: specialist_required, is: true,             code: SPECIALIST_REQUIRED}
+
+tiers:
+  complex:
+    default: true
+    any_of:
+      - {feature: contradiction_severity, is: high,        code: CONTRADICTION_HIGH}
+      - {feature: evidence_completeness,  is: major_gap,   code: EVIDENCE_GAP_MATERIAL}
+      - {feature: coverage_certainty,     is: unresolved,  code: COVERAGE_UNRESOLVED}
+      - {feature: exposure_inr,           gt: 500000,      code: EXPOSURE_HIGH}              # SAMPLE
+  simple:
+    all_of:
+      - {feature: policy_certainty,       is: exact,            code: POLICY_EXACT}
+      - {feature: evidence_completeness,  is: complete,         code: EVIDENCE_COMPLETE}
+      - {feature: contradiction_severity, is: none,             code: NO_CONTRADICTION}
+      - {feature: duplicate_status,       is: clear_or_benign,  code: DUPLICATE_CLEAR}
+      - {feature: coverage_certainty,     is: resolved,         code: COVERAGE_RESOLVED}
+      - {feature: exposure_inr,           lte: 100000,          code: EXPOSURE_WITHIN_FRONTLINE}  # SAMPLE
+  medium:
+    any_of:
+      - {feature: policy_certainty,       is: partial,               code: POLICY_ENDORSEMENT_MISSING}
+      - {feature: evidence_completeness,  is: minor_gap,             code: EVIDENCE_MINOR_GAP}
+      - {feature: contradiction_severity, in: [low, medium],         code: CONTRADICTION_MINOR}
+      - {feature: duplicate_status,       is: needs_confirmation,    code: DUPLICATE_NEEDS_CONFIRMATION}
+      - {feature: exposure_inr,           gt: 100000, lte: 500000,   code: EXPOSURE_MEDIUM_BAND}  # SAMPLE

@@ -1,0 +1,32 @@
+{
+  "proposed_actions": [
+    {
+      "action_id": "ACT-CLM-0003-1",
+      "action_type": "register_claim",
+      "responsible_party": "adjuster",
+      "execution_mode": "controlled_api",
+      "status": "proposed",
+      "idempotency_key": "CLM-0003:register_claim",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0003-2",
+      "action_type": "route_to_operator",
+      "responsible_party": "adjuster",
+      "execution_mode": "controlled_api",
+      "status": "proposed",
+      "idempotency_key": "CLM-0003:route_to_operator",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0003-3",
+      "action_type": "draft_acknowledgement",
+      "responsible_party": "claimant",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0003:draft_acknowledgement:claimant",
+      "payload_ref": null
+    }
+  ],
+  "drafts": []
+}

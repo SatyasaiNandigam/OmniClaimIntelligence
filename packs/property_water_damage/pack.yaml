@@ -1,0 +1,3 @@
+name: property_water_damage
+version: "0.1.0"
+claim_types: [water_damage]

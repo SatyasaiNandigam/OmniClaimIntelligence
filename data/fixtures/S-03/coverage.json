@@ -1,0 +1,27 @@
+{
+  "coverage_issues": [
+    {
+      "issue_id": "ISS-INFORCE",
+      "issue": "Policy in force on date of loss",
+      "status": "identified",
+      "clause_citations": [
+        {
+          "clause_id": "CL-COND-PERIOD",
+          "document": "BASE-HOME-1",
+          "page": 3,
+          "span": [
+            144,
+            241
+          ],
+          "text": "This policy covers loss or damage occurring during the period of insurance shown in the Schedule.",
+          "modified_by": []
+        }
+      ],
+      "fact_ids": [
+        "F-S03-01"
+      ],
+      "question_ids": [],
+      "note": "Policy not in force on the loss date; no further coverage reasoning is performed."
+    }
+  ]
+}

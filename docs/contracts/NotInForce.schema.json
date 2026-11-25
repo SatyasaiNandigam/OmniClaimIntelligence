@@ -1,0 +1,26 @@
+{
+  "additionalProperties": false,
+  "description": "Returned by get_snapshot when no policy version applies on the loss date.",
+  "properties": {
+    "loss_date": {
+      "format": "date",
+      "title": "Loss Date",
+      "type": "string"
+    },
+    "policy_id": {
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "policy_id",
+    "loss_date",
+    "reason"
+  ],
+  "title": "NotInForce",
+  "type": "object"
+}

@@ -1,0 +1,110 @@
+{
+  "claim_id": "CLM-0001",
+  "state_version": 3,
+  "correlation_id": "corr-0001",
+  "claim_header": {
+    "claim_id": "CLM-0001",
+    "claimant_name": "SYNTHETIC Claimant",
+    "policy_ref": "POL-1001",
+    "loss_date": "2026-03-14",
+    "loss_type": "water_damage",
+    "loss_description": "Pipe burst in kitchen",
+    "channel": "portal"
+  },
+  "documents": [
+    {
+      "document_id": "DOC-1",
+      "claim_id": "CLM-0001",
+      "filename": "plumber_report.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "page_count": 2,
+      "detected_type": "plumber_report",
+      "type_confidence": 0.93
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-1",
+      "claim_id": "CLM-0001",
+      "proposition": "Corrosion present at the pipe joint",
+      "source_document_id": "DOC-1",
+      "page": 1,
+      "evidence_text": "significant corrosion at the joint",
+      "evidence_type": "contradicting",
+      "related_question_ids": ["Q-CAUSE"],
+      "extraction_confidence": 0.88
+    },
+    {
+      "fact_id": "F-2",
+      "claim_id": "CLM-0001",
+      "proposition": "Customer reports a sudden burst",
+      "source_document_id": "DOC-1",
+      "page": 1,
+      "evidence_text": "the pipe burst suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": ["Q-CAUSE"],
+      "extraction_confidence": 0.9
+    }
+  ],
+  "open_questions": [
+    {
+      "question_id": "Q-CAUSE",
+      "text": "Was the damage sudden and accidental, or gradual leakage?",
+      "category": "cause",
+      "status": "requires_validation",
+      "linked_clause_ids": ["CL-COV-WATER", "CL-EXC-GRADUAL"]
+    }
+  ],
+  "contradictions": [
+    {
+      "contradiction_id": "C-1",
+      "question_id": "Q-CAUSE",
+      "fact_ids_a": ["F-1"],
+      "fact_ids_b": ["F-2"],
+      "kind": "cause",
+      "severity": "high",
+      "explanation": "Customer says sudden burst; plumber notes long-term corrosion."
+    }
+  ],
+  "missing_evidence": [
+    {
+      "question_id": "Q-CAUSE",
+      "gap_type": "contradictory",
+      "minimum_evidence_request": {
+        "addressee_role": "plumber",
+        "items": ["Failure mechanism of the joint", "Whether corrosion predates the incident"],
+        "must_answer_sub_questions": ["Q-CAUSE"]
+      },
+      "resolves_question_ids": ["Q-CAUSE"]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "scenario_id": "A",
+      "question_id": "Q-CAUSE",
+      "assumed_finding": "New evidence supports sudden failure",
+      "affected_issue_ids": ["ISS-1"],
+      "implication_text": "The sudden-and-accidental condition would move to established and be re-assessed.",
+      "next_step": "Re-run coverage reasoning for ISS-1."
+    }
+  ],
+  "coverage_issues": [
+    {
+      "issue_id": "ISS-1",
+      "issue": "Sudden and accidental water damage",
+      "status": "unresolved",
+      "clause_citations": [
+        {"clause_id": "CL-COV-WATER", "document": "base_wording", "page": 4, "text": "sudden and accidental"}
+      ],
+      "fact_ids": ["F-1", "F-2"]
+    }
+  ],
+  "routing": {
+    "tier": "complex",
+    "reason_codes": ["CONTRADICTION_HIGH"],
+    "required_approver_role": "senior_adjuster",
+    "rules_version": "sample-1"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_evidence"
+}

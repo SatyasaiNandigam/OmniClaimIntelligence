@@ -1,0 +1,16 @@
+{
+  "settlement": {
+    "status": "cannot_calculate",
+    "reserve_forecast": null,
+    "assessed_loss": null,
+    "payable": null,
+    "steps": [],
+    "missing_inputs": [
+      "assessed_covered_loss",
+      "non_covered_items_total"
+    ],
+    "rule_version": "sample-1.0",
+    "currency": "INR",
+    "explanation": null
+  }
+}

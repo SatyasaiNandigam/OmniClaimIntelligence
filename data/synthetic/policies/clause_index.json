@@ -1,0 +1,584 @@
+{
+  "synthetic": true,
+  "span_basis": "character offsets in the whitespace-normalised PDF page text (pymupdf get_text)",
+  "documents": [
+    {
+      "doc_id": "BASE-HOME-1",
+      "title": "Home Protect - Policy Wording",
+      "kind": "base_wording",
+      "version": "2025-01",
+      "difficulty": "medium",
+      "used_by": [
+        "S-01",
+        "S-02",
+        "S-03",
+        "S-04",
+        "S-05"
+      ],
+      "intent": "Standard all-risks style wording. Sudden-and-accidental water cover, gradual-leakage exclusion, precedence condition.",
+      "pages": 3,
+      "pdf": "BASE-HOME-1.pdf",
+      "docx": "BASE-HOME-1.docx"
+    },
+    {
+      "doc_id": "BASE-HOME-2",
+      "title": "Home Comfort - Policy Wording",
+      "kind": "base_wording",
+      "version": "2025-06",
+      "difficulty": "hard",
+      "used_by": [
+        "S-06",
+        "S-07"
+      ],
+      "intent": "Ambiguous exclusion with an exception (\"resulting damage\") that depends on a defined term (maintenance); multi-cause clause.",
+      "pages": 2,
+      "pdf": "BASE-HOME-2.pdf",
+      "docx": "BASE-HOME-2.docx"
+    },
+    {
+      "doc_id": "BASE-HOME-3",
+      "title": "Home Basic - Policy Wording",
+      "kind": "base_wording",
+      "version": "2025-03",
+      "difficulty": "medium-hard",
+      "used_by": [],
+      "intent": "Named-perils product with definition-heavy structure and a different clause style (parser variance).",
+      "pages": 2,
+      "pdf": "BASE-HOME-3.pdf",
+      "docx": "BASE-HOME-3.docx"
+    },
+    {
+      "doc_id": "END-01",
+      "title": "Water Damage Sublimit Endorsement",
+      "kind": "endorsement",
+      "version": "2025-01",
+      "difficulty": "easy",
+      "used_by": [
+        "S-01",
+        "S-02",
+        "S-04",
+        "S-05"
+      ],
+      "intent": "Adds a sublimit that modifies the escape-of-water cover.",
+      "pages": 1,
+      "pdf": "END-01.pdf",
+      "docx": "END-01.docx",
+      "applies_to": [
+        "BASE-HOME-1"
+      ],
+      "effective_from": "schedule"
+    },
+    {
+      "doc_id": "END-02",
+      "title": "Revised Water Damage Sublimit Endorsement",
+      "kind": "endorsement",
+      "version": "2026-02",
+      "difficulty": "medium",
+      "used_by": [
+        "S-04"
+      ],
+      "intent": "Later endorsement amends END-01 from a fixed date; tests as-of-date resolution and precedence.",
+      "pages": 1,
+      "pdf": "END-02.pdf",
+      "docx": "END-02.docx",
+      "applies_to": [
+        "BASE-HOME-1"
+      ],
+      "effective_from": "2026-02-01"
+    },
+    {
+      "doc_id": "END-03",
+      "title": "Escape of Water Deductible Endorsement",
+      "kind": "endorsement",
+      "version": "2025-01",
+      "difficulty": "easy",
+      "used_by": [],
+      "intent": "Replaces the standard deductible for escape-of-water claims.",
+      "pages": 1,
+      "pdf": "END-03.pdf",
+      "docx": "END-03.docx",
+      "applies_to": [
+        "BASE-HOME-1"
+      ],
+      "effective_from": "schedule"
+    },
+    {
+      "doc_id": "END-04",
+      "title": "Unoccupied Property Condition Endorsement",
+      "kind": "endorsement",
+      "version": "2025-01",
+      "difficulty": "medium",
+      "used_by": [],
+      "intent": "Conditions the water cover on occupancy; needs an occupancy fact from the evidence.",
+      "pages": 1,
+      "pdf": "END-04.pdf",
+      "docx": "END-04.docx",
+      "applies_to": [
+        "BASE-HOME-1"
+      ],
+      "effective_from": "schedule"
+    },
+    {
+      "doc_id": "END-05",
+      "title": "Definition of Sudden - Clarification Endorsement",
+      "kind": "endorsement",
+      "version": "2025-01",
+      "difficulty": "medium",
+      "used_by": [],
+      "intent": "Amends a definition (relation 'modifies' on a definition rather than a limit).",
+      "pages": 1,
+      "pdf": "END-05.pdf",
+      "docx": "END-05.docx",
+      "applies_to": [
+        "BASE-HOME-1"
+      ],
+      "effective_from": "schedule"
+    }
+  ],
+  "clauses": [
+    {
+      "clause_id": "CL-DEF-BUILDINGS",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "definition",
+      "heading": "1.1 Buildings",
+      "page": 1,
+      "span": [
+        210,
+        336
+      ],
+      "text": "Buildings means the dwelling at the address shown in the Schedule, including its permanent fixtures, fixed pipes and fittings."
+    },
+    {
+      "clause_id": "CL-DEF-SUDDEN",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "definition",
+      "heading": "1.2 Sudden and accidental",
+      "page": 1,
+      "span": [
+        363,
+        534
+      ],
+      "text": "Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage."
+    },
+    {
+      "clause_id": "CL-COV-FIRE",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "coverage",
+      "heading": "2.1 Fire",
+      "page": 1,
+      "span": [
+        572,
+        655
+      ],
+      "text": "We cover loss of or damage to the Buildings caused by fire, lightning or explosion."
+    },
+    {
+      "clause_id": "CL-COV-WATER",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "coverage",
+      "heading": "2.2 Escape of water",
+      "page": 1,
+      "span": [
+        676,
+        835
+      ],
+      "text": "We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental."
+    },
+    {
+      "clause_id": "CL-EXC-WEAR",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "exclusion",
+      "heading": "3.1 Wear and tear",
+      "page": 2,
+      "span": [
+        147,
+        231
+      ],
+      "text": "We do not cover loss or damage caused by wear and tear, rust or any gradual process."
+    },
+    {
+      "clause_id": "CL-EXC-GRADUAL",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "exclusion",
+      "heading": "3.2 Gradual leakage",
+      "page": 2,
+      "span": [
+        252,
+        399
+      ],
+      "text": "We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time."
+    },
+    {
+      "clause_id": "CL-LIM-BUILDING",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "limit",
+      "heading": "4.1 Building Limit",
+      "page": 2,
+      "span": [
+        453,
+        574
+      ],
+      "text": "Our liability for all claims arising in the period of insurance will not exceed the Building Limit shown in the Schedule."
+    },
+    {
+      "clause_id": "CL-DED-STD",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "deductible",
+      "heading": "4.2 Standard deductible",
+      "page": 2,
+      "span": [
+        599,
+        676
+      ],
+      "text": "We will deduct the standard deductible shown in the Schedule from each claim."
+    },
+    {
+      "clause_id": "CL-COND-PERIOD",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "condition",
+      "heading": "5.1 Period of insurance",
+      "page": 3,
+      "span": [
+        144,
+        241
+      ],
+      "text": "This policy covers loss or damage occurring during the period of insurance shown in the Schedule."
+    },
+    {
+      "clause_id": "CL-COND-NOTIFY",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "condition",
+      "heading": "5.2 Notifying a claim",
+      "page": 3,
+      "span": [
+        264,
+        380
+      ],
+      "text": "You must tell us about any loss as soon as reasonably possible and give us the documents and information we ask for."
+    },
+    {
+      "clause_id": "CL-COND-MITIGATE",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "condition",
+      "heading": "5.3 Preventing further loss",
+      "page": 3,
+      "span": [
+        409,
+        474
+      ],
+      "text": "You must take reasonable steps to prevent further loss or damage."
+    },
+    {
+      "clause_id": "CL-COND-PRECEDENCE",
+      "doc_id": "BASE-HOME-1",
+      "clause_type": "condition",
+      "heading": "5.4 Endorsements",
+      "page": 3,
+      "span": [
+        492,
+        704
+      ],
+      "text": "Endorsements listed in the Schedule form part of this policy. Where an endorsement conflicts with this wording or with an earlier endorsement, the later endorsement applies from its effective date and not before."
+    },
+    {
+      "clause_id": "CL-H2-DEF-SUDDEN",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "definition",
+      "heading": "A1 Sudden",
+      "page": 1,
+      "span": [
+        209,
+        274
+      ],
+      "text": "Sudden means occurring without warning and within a short period."
+    },
+    {
+      "clause_id": "CL-H2-DEF-MAINT",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "definition",
+      "heading": "A2 Maintenance",
+      "page": 1,
+      "span": [
+        290,
+        407
+      ],
+      "text": "Maintenance means the reasonable steps normally taken by a prudent owner to keep pipes and fittings in working order."
+    },
+    {
+      "clause_id": "CL-H2-COV-WATER",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "coverage",
+      "heading": "B1 Water damage",
+      "page": 1,
+      "span": [
+        449,
+        560
+      ],
+      "text": "We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C."
+    },
+    {
+      "clause_id": "CL-H2-EXC-GRADUAL",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "exclusion",
+      "heading": "C1 Gradual escape",
+      "page": 1,
+      "span": [
+        599,
+        671
+      ],
+      "text": "We do not cover damage caused by water that escapes gradually over time."
+    },
+    {
+      "clause_id": "CL-H2-EXC-GRADUAL-EXC",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "exclusion",
+      "heading": "C2 Resulting damage",
+      "page": 1,
+      "span": [
+        692,
+        833
+      ],
+      "text": "However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance."
+    },
+    {
+      "clause_id": "CL-H2-LIM-WATER",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "limit",
+      "heading": "D1 Water limit",
+      "page": 2,
+      "span": [
+        128,
+        218
+      ],
+      "text": "The most we will pay for any one escape of water is the Water Limit shown in the Schedule."
+    },
+    {
+      "clause_id": "CL-H2-COND-MULTI",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "condition",
+      "heading": "E1 More than one cause",
+      "page": 2,
+      "span": [
+        270,
+        388
+      ],
+      "text": "Where more than one cause contributes to a loss, we will pay only for the part of the loss caused by an insured cause."
+    },
+    {
+      "clause_id": "CL-H2-COND-PERIOD",
+      "doc_id": "BASE-HOME-2",
+      "clause_type": "condition",
+      "heading": "E2 Period of insurance",
+      "page": 2,
+      "span": [
+        412,
+        503
+      ],
+      "text": "This policy covers damage that begins during the period of insurance shown in the Schedule."
+    },
+    {
+      "clause_id": "CL-H3-DEF-ESCAPE",
+      "doc_id": "BASE-HOME-3",
+      "clause_type": "definition",
+      "heading": "1.1 Escape of water",
+      "page": 1,
+      "span": [
+        221,
+        308
+      ],
+      "text": "Escape of water means the sudden bursting or overflowing of a fixed water installation."
+    },
+    {
+      "clause_id": "CL-H3-COV-PERILS",
+      "doc_id": "BASE-HOME-3",
+      "clause_type": "coverage",
+      "heading": "2.1 Perils",
+      "page": 1,
+      "span": [
+        338,
+        438
+      ],
+      "text": "We cover damage to the buildings caused only by the insured perils: fire, storm and escape of water."
+    },
+    {
+      "clause_id": "CL-H3-COV-ESCAPE",
+      "doc_id": "BASE-HOME-3",
+      "clause_type": "coverage",
+      "heading": "2.2 Escape of water",
+      "page": 1,
+      "span": [
+        459,
+        602
+      ],
+      "text": "For the peril of escape of water, we pay for damage that is the direct result of an event within the meaning of Escape of water in section 1.1."
+    },
+    {
+      "clause_id": "CL-H3-EXC-GRADUAL",
+      "doc_id": "BASE-HOME-3",
+      "clause_type": "exclusion",
+      "heading": "3.1 Earlier leaking",
+      "page": 2,
+      "span": [
+        143,
+        254
+      ],
+      "text": "No cover applies where the water installation has leaked, dripped or seeped before the bursting or overflowing."
+    },
+    {
+      "clause_id": "CL-H3-DED-STD",
+      "doc_id": "BASE-HOME-3",
+      "clause_type": "deductible",
+      "heading": "4.1 Deductible",
+      "page": 2,
+      "span": [
+        295,
+        358
+      ],
+      "text": "We deduct the deductible shown in the Schedule from each claim."
+    },
+    {
+      "clause_id": "CL-H3-COND-PERIOD",
+      "doc_id": "BASE-HOME-3",
+      "clause_type": "condition",
+      "heading": "4.2 Period",
+      "page": 2,
+      "span": [
+        370,
+        458
+      ],
+      "text": "Cover applies only to damage occurring in the period of insurance shown in the Schedule."
+    },
+    {
+      "clause_id": "CL-SUB-WATER-E1",
+      "doc_id": "END-01",
+      "clause_type": "sublimit",
+      "heading": "1. Water damage sublimit",
+      "page": 1,
+      "span": [
+        318,
+        522
+      ],
+      "text": "The most we will pay for loss or damage covered under the escape of water cover of this policy is INR 100,000 for any one claim. This sublimit forms part of, and is not in addition to, the Building Limit."
+    },
+    {
+      "clause_id": "CL-SUB-WATER-E2",
+      "doc_id": "END-02",
+      "clause_type": "sublimit",
+      "heading": "1. Revised sublimit",
+      "page": 1,
+      "span": [
+        263,
+        556
+      ],
+      "text": "With effect from 1 February 2026 the sublimit in Endorsement END-01 is increased to INR 200,000 for any one claim. For loss occurring on or after that date this endorsement prevails over Endorsement END-01. Loss occurring before that date remains subject to the sublimit in Endorsement END-01."
+    },
+    {
+      "clause_id": "CL-DED-WATER-E3",
+      "doc_id": "END-03",
+      "clause_type": "deductible",
+      "heading": "1. Escape of water deductible",
+      "page": 1,
+      "span": [
+        328,
+        428
+      ],
+      "text": "For each claim for escape of water the deductible is INR 25,000 in place of the standard deductible."
+    },
+    {
+      "clause_id": "CL-COND-UNOCC-E4",
+      "doc_id": "END-04",
+      "clause_type": "condition",
+      "heading": "1. Unoccupied buildings",
+      "page": 1,
+      "span": [
+        325,
+        498
+      ],
+      "text": "We do not cover escape of water if the Buildings have been unoccupied for more than 30 consecutive days before the loss, unless the water supply was turned off at the mains."
+    },
+    {
+      "clause_id": "CL-DEF-SUDDEN-E5",
+      "doc_id": "END-05",
+      "clause_type": "definition",
+      "heading": "1. Freezing",
+      "page": 1,
+      "span": [
+        320,
+        480
+      ],
+      "text": "For the purposes of the definition of Sudden and accidental in the policy wording, a burst caused by the freezing of a pipe is treated as sudden and accidental."
+    }
+  ],
+  "relations": [
+    {
+      "source": "CL-DEF-SUDDEN",
+      "target": "CL-COV-WATER",
+      "relation": "defines"
+    },
+    {
+      "source": "CL-EXC-GRADUAL",
+      "target": "CL-COV-WATER",
+      "relation": "excepts"
+    },
+    {
+      "source": "CL-SUB-WATER-E1",
+      "target": "CL-COV-WATER",
+      "relation": "modifies"
+    },
+    {
+      "source": "CL-SUB-WATER-E2",
+      "target": "CL-SUB-WATER-E1",
+      "relation": "modifies"
+    },
+    {
+      "source": "CL-DED-WATER-E3",
+      "target": "CL-DED-STD",
+      "relation": "modifies"
+    },
+    {
+      "source": "CL-COND-UNOCC-E4",
+      "target": "CL-COV-WATER",
+      "relation": "conditions"
+    },
+    {
+      "source": "CL-DEF-SUDDEN-E5",
+      "target": "CL-DEF-SUDDEN",
+      "relation": "modifies"
+    },
+    {
+      "source": "CL-COND-PRECEDENCE",
+      "target": "CL-SUB-WATER-E2",
+      "relation": "conditions"
+    },
+    {
+      "source": "CL-H2-DEF-SUDDEN",
+      "target": "CL-H2-COV-WATER",
+      "relation": "defines"
+    },
+    {
+      "source": "CL-H2-EXC-GRADUAL",
+      "target": "CL-H2-COV-WATER",
+      "relation": "excepts"
+    },
+    {
+      "source": "CL-H2-EXC-GRADUAL-EXC",
+      "target": "CL-H2-EXC-GRADUAL",
+      "relation": "excepts"
+    },
+    {
+      "source": "CL-H2-DEF-MAINT",
+      "target": "CL-H2-EXC-GRADUAL-EXC",
+      "relation": "defines"
+    },
+    {
+      "source": "CL-H3-DEF-ESCAPE",
+      "target": "CL-H3-COV-ESCAPE",
+      "relation": "defines"
+    },
+    {
+      "source": "CL-H3-EXC-GRADUAL",
+      "target": "CL-H3-COV-ESCAPE",
+      "relation": "excepts"
+    }
+  ]
+}

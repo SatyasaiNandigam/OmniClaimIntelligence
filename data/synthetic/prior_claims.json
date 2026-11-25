@@ -1,0 +1,101 @@
+{
+  "synthetic": true,
+  "claims": [
+    {
+      "claim_id": "CLM-P-0010",
+      "policy_no": "POL-1006",
+      "claimant_name": "SYNTHETIC Claimant J",
+      "loss_date": "2026-04-08",
+      "loss_type": "water_damage",
+      "channel": "portal",
+      "description": "On 8 April 2026 the bathroom pipe burst and flooded the floor.",
+      "amount_claimed": "90000",
+      "status": "open",
+      "relation": "exact_duplicate",
+      "relation_to": "S-10",
+      "why": "Same claimant, policy, loss date and description as the S-10 FNOL, filed earlier through the portal (S-10 arrives via the call centre)."
+    },
+    {
+      "claim_id": "CLM-P-0020",
+      "policy_no": "POL-1006",
+      "claimant_name": "SYNTHETIC Claimant J",
+      "loss_date": "2026-05-20",
+      "loss_type": "water_damage",
+      "channel": "call_centre",
+      "description": "On 20 May 2026 the kitchen sink overflowed and wet the cabinets.",
+      "amount_claimed": "35000",
+      "status": "paid",
+      "relation": "benign_near_match",
+      "relation_to": "S-10",
+      "why": "Same claimant and policy but a different date and location: a genuine second incident. Flag for review at most; never merge or reject."
+    },
+    {
+      "claim_id": "CLM-P-0011",
+      "policy_no": "POL-1007",
+      "claimant_name": "SYNTHETIC Claimant K",
+      "loss_date": "2026-03-01",
+      "loss_type": "water_damage",
+      "channel": "email",
+      "description": "On 1 March 2026 a laundry pipe leaked into the hallway.",
+      "amount_claimed": "85000",
+      "status": "paid",
+      "relation": "unrelated",
+      "relation_to": "S-11",
+      "why": "Not a duplicate claim. Holds invoice INV-2026-0042, whose number is reused by the S-11 claim (invoice-level duplicate check)."
+    },
+    {
+      "claim_id": "CLM-P-0030",
+      "policy_no": "POL-1008",
+      "claimant_name": "SYNTHETIC Claimant L",
+      "loss_date": "2026-01-15",
+      "loss_type": "water_damage",
+      "channel": "portal",
+      "description": "On 15 January 2026 a roof leak damaged several rooms.",
+      "amount_claimed": "1900000",
+      "status": "paid",
+      "relation": "unrelated",
+      "relation_to": "S-16",
+      "why": "Consumes most of the building limit so S-16 meets a nearly exhausted limit."
+    },
+    {
+      "claim_id": "CLM-P-0050",
+      "policy_no": "POL-1009",
+      "claimant_name": "SYNTHETIC Claimant M",
+      "loss_date": "2025-08-02",
+      "loss_type": "fire",
+      "channel": "agent",
+      "description": "Kitchen fire on 2 August 2025.",
+      "amount_claimed": "30000",
+      "status": "closed",
+      "relation": "unrelated",
+      "relation_to": null,
+      "why": "Noise: a different policy and peril."
+    }
+  ],
+  "payments": [
+    {
+      "payment_id": "PAY-P-0011",
+      "claim_id": "CLM-P-0011",
+      "policy_no": "POL-1007",
+      "amount": "85000",
+      "paid_on": "2026-03-28",
+      "idempotency_key": "CLM-P-0011:pay:1"
+    },
+    {
+      "payment_id": "PAY-P-0030",
+      "claim_id": "CLM-P-0030",
+      "policy_no": "POL-1008",
+      "amount": "1850000",
+      "paid_on": "2026-03-05",
+      "idempotency_key": "CLM-P-0030:pay:1"
+    },
+    {
+      "payment_id": "PAY-P-0050",
+      "claim_id": "CLM-P-0050",
+      "policy_no": "POL-1009",
+      "amount": "30000",
+      "paid_on": "2025-09-01",
+      "idempotency_key": "CLM-P-0050:pay:1"
+    }
+  ]
+}

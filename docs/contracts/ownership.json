@@ -1,0 +1,47 @@
+{
+  "agents": {
+    "action": [
+      "drafts",
+      "proposed_actions"
+    ],
+    "audit": [
+      "audit_ref",
+      "qa_report"
+    ],
+    "coverage": [
+      "coverage_issues"
+    ],
+    "evidence": [
+      "documents",
+      "facts",
+      "image_findings"
+    ],
+    "gap": [
+      "contradictions",
+      "counterfactuals",
+      "missing_evidence",
+      "open_questions"
+    ],
+    "intake": [
+      "claim_header",
+      "duplicate_candidates",
+      "intake_checklist"
+    ],
+    "policy": [
+      "policy_snapshot"
+    ],
+    "settlement": [
+      "settlement"
+    ],
+    "supervisor": [
+      "human_approval_required",
+      "resolution_status",
+      "routing"
+    ]
+  },
+  "system_fields": [
+    "claim_id",
+    "correlation_id",
+    "state_version"
+  ]
+}

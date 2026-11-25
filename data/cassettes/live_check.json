@@ -1,0 +1,668 @@
+{
+  "0108d8020288207d49d188b7e600377932a22799a4351e98e367047e2bb77132": {
+    "input_tokens": 444,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 60,
+    "text": "{\n  \"fields\": {\n    \"claimant_name\": {\n      \"value\": \"R. Gupta\",\n      \"evidence_snippet\": \"Claimant - R. Gupta\",\n      \"confidence\": 0.92\n    }\n  }\n}"
+  },
+  "04164ffc0e688e9b23c5249694edc57af21219a8b32380aa855db808273331dd": {
+    "input_tokens": 451,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "041cbb0a5352522ccb820090c2bdd620a89c572631975c94286e3e69ab98e7a2": {
+    "input_tokens": 298,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 58,
+    "text": "{\"document_type\":\"estimate\",\"confidence\":0.9,\"evidence_snippet\":\"Cost summary Scope: replace skirting and repaint. Labour: INR 12,000 Materials: INR 6,500 Total: INR 18,500\"}"
+  },
+  "0634a452707bad3e98c4f3f8540d5952e133b90976aa767bc13d8f54e284c16d": {
+    "input_tokens": 518,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.62,\"evidence_snippet\":\"\"}"
+  },
+  "093cfe4e7b1b406dabb4c3dbbd3b8b41df13c02d5ff824f3cd9932497f4f214b": {
+    "input_tokens": 291,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 51,
+    "text": "{\"document_type\":\"invoice\",\"confidence\":0.86,\"evidence_snippet\":\"Bill of Supply Invoice number: BS-22 Vendor: Local Hardware Total: INR 1,900 Payment terms: cash\"}"
+  },
+  "0a237524b0eac9476aa9c625d6c29dde5fba767bdc357b21f7de479d64eb9714": {
+    "input_tokens": 453,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "0c519f44607238da3e3d4eb590d097ce4824ec850203fa0cf54a7ef912415978": {
+    "input_tokens": 298,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 61,
+    "text": "{\"document_type\":\"plumber_report\",\"confidence\":0.93,\"evidence_snippet\":\"PLUMBING INSPECTION REPORT Date: 4 August 2026 The supply line under the sink was split. New fitting installed and the water restored.\"}"
+  },
+  "0e404481440f9018b7bfd60b13620e9cb329739e2d5ffb527b4232fd6966729e": {
+    "input_tokens": 302,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 64,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.9,\"evidence_snippet\":\"REPORT OF LOSS Claimant: S. Kulkarni Policy number: POL-4410 Date of loss: 2 August 2026 Description: The kitchen pipe burst overnight.\"}"
+  },
+  "0fa53b0b9f8b8ce6706e5f7c45db8219f61598597b7d9b6f16b37f1e6f57ac23": {
+    "input_tokens": 450,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "10761ea867ba69b9344aef2692dadac9009ff54703de2c57f6c54ebeb207d2d4": {
+    "input_tokens": 312,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 38,
+    "text": "{\"document_type\":\"surveyor_report\",\"confidence\":0.4,\"evidence_snippet\":\"The surveyor measured moisture in two rooms.\"}"
+  },
+  "197ec82c2013bc4d5a243ce6108a1e3f9953977c9e543279c096ee3f9245c0c4": {
+    "input_tokens": 536,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 33,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.92,\"evidence_snippet\":\"NOTICE OF LOSS - HOME\"}"
+  },
+  "1a31414000aef127197df6aa0be8df16b09fb4b5c9028b752685901ad3a9d348": {
+    "input_tokens": 304,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 66,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.9,\"evidence_snippet\":\"NOTICE OF LOSS - HOME Claimant: A. Thomas Policy number: POL-6001 Date of loss: 14 October 2026 Description: Burst geyser pipe flooded the passage.\"}"
+  },
+  "1a9bd6161132b2c8029be8d3961d3f6b710253ce003787ff4af8df3219947c34": {
+    "input_tokens": 447,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "1ca66420c5e6ef5893f633893854a6b19cac31ae59c315b2aa32fe7086fdf181": {
+    "input_tokens": 447,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "24a0c3377d0d86d52ee656986df41fbbaf75971152bb29d604aa070a62ecbd1b": {
+    "input_tokens": 534,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 36,
+    "text": "{\n  \"document_type\": \"unknown\",\n  \"confidence\": 0.2,\n  \"evidence_snippet\": \"\"\n}"
+  },
+  "2673dafc9c9ba488766a045767e696192a74350ac2398f25c35d834bc6019b70": {
+    "input_tokens": 450,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "272f2748f2c8a08759bf389e1500aa576a9d60bcc68ac180ce8ed7214d742ead": {
+    "input_tokens": 2647,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 159,
+    "text": "SYNTHETIC DOCUMENT - for software testing only. Not a real document. All amounts are SAMPLE.\n\nSYNTHETIC Loss Surveyors Ltd (fictional)\nRef: CLM-0002/SUR\n\nSURVEYOR'S REPORT - SYNTHETIC DOCUMENT\n\nSite visit: 5 May 2026\n\nMoisture was confined to the kitchen floor and the lower kitchen wall. No moisture was found in other\nrooms.\n\nAssessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss.\n\nSigned: _______________________\n\nCONFIDENTIAL\n\nCLM-0002 | DOC-S02-3 | SYNTHETIC\n\nPage 1 of 1"
+  },
+  "285621674fb2f3b54e4cf8a675a44b215dffea0998a7872b03c454b089662ab4": {
+    "input_tokens": 544,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.9,\"evidence_snippet\":\"\"}"
+  },
+  "29fa487225e563cdf02f05ec2eb3ab146aba031b70445c5a9e57966576c1dd1d": {
+    "input_tokens": 443,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "2a1dcd55f6cf4f815c126cb23ef04a863440dbcde9aa4db1aad93d9f03951723": {
+    "input_tokens": 518,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.87,\"evidence_snippet\":\"\"}"
+  },
+  "2b6bc6680e25f8abec5493b4d689526de6e61db6b8a9c43d3a715f0c28950377": {
+    "input_tokens": 534,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 31,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.95,\"evidence_snippet\":\"REPORT OF LOSS\"}"
+  },
+  "30a69f30373342a3449c018606ef1165a510b1820f09409050ed95ced681abf4": {
+    "input_tokens": 531,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.3,\"evidence_snippet\":\"\"}"
+  },
+  "322e72d51ded1552ee7417d14af282ff004292997e04f2725fccb11121b51e0a": {
+    "input_tokens": 540,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.67,\"evidence_snippet\":\"\"}"
+  },
+  "333cd6e262fdb91492554138ba11541ee12055938f49c92947b096ed855f6687": {
+    "input_tokens": 527,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.67,\"evidence_snippet\":\"\"}"
+  },
+  "38b54e3f2017d82c77ae28f50dc6c5799792d2868dead02c58cde5325c0eb329": {
+    "input_tokens": 295,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 58,
+    "text": "{\"document_type\":\"plumber_report\",\"confidence\":0.9,\"evidence_snippet\":\"Report on burst pipe Inspection date: 15 October 2026 Findings: the geyser inlet pipe had split at the joint. Pipe replaced.\"}"
+  },
+  "395933afbe8227657de037edc2a66004009ba07243361748b1feb0e48bc5fe68": {
+    "input_tokens": 453,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "3970b7d89763492b839aa20374b84064a3105b6455faacb7505e5feb9319a1b9": {
+    "input_tokens": 456,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "3ac9da3aa4a6217221f1503378bd711521d86b81d713e18823cc44972b30f35a": {
+    "input_tokens": 447,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "3c4a1be3386b7a727f75e22b33fb2e9275afcf5d56727ee1d69319016a3f7e27": {
+    "input_tokens": 298,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 59,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.9,\"evidence_snippet\":\"Pancakes Mix flour, milk and eggs. Heat a pan with a little butter. Pour a ladle of batter and cook until golden on both sides.\"}"
+  },
+  "3efb6ea378c838dc1e8396fa7ef931f198d158295946944c781b7e7d95678e9c": {
+    "input_tokens": 521,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.58,\"evidence_snippet\":\"\"}"
+  },
+  "4566a2688ab90dcea770ebe72b0a30888f228774f7588223cd7c330452b81cf4": {
+    "input_tokens": 308,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 68,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.74,\"evidence_snippet\":\"THE GARDEN CAFE Starters: soup of the day, garlic bread Mains: grilled fish, vegetable curry Desserts: ice cream, fruit salad Open daily 9am to 10pm\"}"
+  },
+  "4c4915ad3b2fed93ab15b154bb26431b0cb32c8b8365a429bf71d16158ae0461": {
+    "input_tokens": 442,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "4c7eb9241e2fd05f84c2d7cefe041e0d1442e0abdd32d15c843caa6c57d8158d": {
+    "input_tokens": 530,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 36,
+    "text": "{\"document_type\":\"plumber_report\",\"confidence\":0.95,\"evidence_snippet\":\"PLUMBING INSPECTION REPORT\"}"
+  },
+  "4ce8626d7747fb83527430af91097bc2448f9706ca0933b829a6bb38f14aa069": {
+    "input_tokens": 537,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.24,\"evidence_snippet\":\"\"}"
+  },
+  "4f4c2ad6d8d60a6871797eb5761a2c5f69ba93cf1fa4d83b657cafaf6bedf432": {
+    "input_tokens": 527,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 33,
+    "text": "{\"document_type\":\"surveyor_report\",\"confidence\":0.4,\"evidence_snippet\":\"Report on burst pipe\"}"
+  },
+  "54bc9d420f6c4900759da4c9110995bd68b95b53ff307541be3d0e19deddac01": {
+    "input_tokens": 457,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "5a339646dfaeb5e071290bcf89d8e76da02ee5a1b4252a770588d03a22406725": {
+    "input_tokens": 549,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 43,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.75,\"evidence_snippet\":\"I am writing to report a loss under my policy POL-5521.\"}"
+  },
+  "5ba3cb6c5a30818d27e52f495db7809d189b2d555663ce1437d293bf29059619": {
+    "input_tokens": 292,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 53,
+    "text": "{\"document_type\":\"policy_schedule\",\"confidence\":0.62,\"evidence_snippet\":\"Schedule of Insurance Agents Meeting Monday 10am: opening remarks Monday 11am: product update Tuesday 9am: training\"}"
+  },
+  "5fc2532b97ea2020b37950bd7034e80dee262f08dfd4277ccded2c91afd1ac83": {
+    "input_tokens": 450,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 18,
+    "text": "{\"fields\": {\"loss_description\": null}}"
+  },
+  "5fdc834af1b188f71a2d73f0eb9ec33f0f727238502455e2237e11c8c8c75e47": {
+    "input_tokens": 315,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 76,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.81,\"evidence_snippet\":\"LOSS INTIMATION FORM Insured name: S. Kulkarni Policy no: POL-4410 Date of incident: 2 August 2026 Nature of loss: kitchen pipe burst Approximate amount of loss: INR 60,000\"}"
+  },
+  "617ccf8f656409813d1329f6c21b80d42807ad6da4c0da0a6127772b8c1321f3": {
+    "input_tokens": 528,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.7,\"evidence_snippet\":\"\"}"
+  },
+  "6264b4bd289ff8fc30ec163a370da66ebacc521bced72f2f0f115752741a9d4c": {
+    "input_tokens": 530,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.9,\"evidence_snippet\":\"\"}"
+  },
+  "62c9105d478abe18d7993fe299fc63f70c12a1776b43b223ea1b88895805ba2a": {
+    "input_tokens": 442,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "65bffc1121476ab2f2cfe7c186e7d0d05244c2f91b6fe62892920236ec5890ef": {
+    "input_tokens": 292,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 52,
+    "text": "{\"document_type\":\"email\",\"confidence\":0.9,\"evidence_snippet\":\"Dear Sir, I am unhappy with the delay on my claim. Please reply within seven days. Yours faithfully, D. Fernandes\"}"
+  },
+  "6662e00ba3a2fbd8fff80205803bd899639f61e8e35ed3b1456713195a3e5c55": {
+    "input_tokens": 526,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.6,\"evidence_snippet\":\"\"}"
+  },
+  "68aa98c9cff610ad4ff593cf1d6092ff4f3a5da2dcf4db786568804a1756b156": {
+    "input_tokens": 444,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "6eec0f26d907ea563b073b78b2887d96e217ef2831971917595b977a579a2436": {
+    "input_tokens": 459,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "76e28b1449cb051386f803a5c042fcb8b1312c5d3661c288f3c51305e4a8b982": {
+    "input_tokens": 538,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 43,
+    "text": "{\"document_type\":\"surveyor_report\",\"confidence\":0.6,\"evidence_snippet\":\"Loss Adjuster Site Assessment Site visit: 8 October 2026\"}"
+  },
+  "77376071dc5b61a47aefdd2d751d170daa273ff7f76d3ffde99b64e49b43dd55": {
+    "input_tokens": 305,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 35,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.72,\"evidence_snippet\":\"We cover access to all gym facilities.\"}"
+  },
+  "785d56c781f708ab8aeee47af8abe94e4dc778f784576050fc8107dc68f33ff9": {
+    "input_tokens": 289,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 51,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.48,\"evidence_snippet\":\"\\\"Quote of the day The best way to predict the future is to create it. Share this quote with a friend.\\\"\"}"
+  },
+  "79504ca342b4c62fedc453b8099c23978908939a583c2e6f7a7034b711734a79": {
+    "input_tokens": 296,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 57,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.78,\"evidence_snippet\":\"POLICE REPORT Reference: FIR-2026-4410 A complaint of theft was registered on 20 October 2026 at the local station.\"}"
+  },
+  "7b342be983f54561aa70065abb7e180201244aca5b8cdda44c351c843789cd06": {
+    "input_tokens": 454,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "7cf9e0259df5ecc38db439e4dea5f52988796a45003ff9ccec03edab8c73dee0": {
+    "input_tokens": 298,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 60,
+    "text": "{\"document_type\":\"surveyor_report\",\"confidence\":0.82,\"evidence_snippet\":\"Survey Report and Estimate Site visit: 17 October 2026 Moisture readings were high. Scope: replace flooring. Total: INR 52,000\"}"
+  },
+  "7fb1eb2fd2cd6209a6595cff465365e0fde34c9bba93ca4b6b9d75ca258d4780": {
+    "input_tokens": 288,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 50,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.82,\"evidence_snippet\":\"\\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\\\"\"}"
+  },
+  "7fd5ca612846733354f9c2d8ac8e7b28b2dea37e4c222859f1bb95aa23460823": {
+    "input_tokens": 520,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.55,\"evidence_snippet\":\"\"}"
+  },
+  "8134a75e5f2438beb53d7a7fcfe257e5c923e547882ef75507bbec57c5dbc1b5": {
+    "input_tokens": 445,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 18,
+    "text": "{\"fields\": {\"loss_description\": null}}"
+  },
+  "8487fff70065e7fce514c8622e841d21d5d6cf0245eb9768f9fe544e3a96c6f0": {
+    "input_tokens": 520,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.9,\"evidence_snippet\":\"\"}"
+  },
+  "863e5ba46f587b0a41f110135f538b5f0fe6095bca43f8283d5a26f8b0a7f305": {
+    "input_tokens": 455,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "888f99bc21331aff5b9b005b181cb17729d650e5e3bef0e0ffa1a4a731521fca": {
+    "input_tokens": 441,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"policy_number\":null}}"
+  },
+  "8d442e4f98fa82d8195e9267bf145b2af05252466e35253eb93c04da97c2c408": {
+    "input_tokens": 454,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "8e2d005e4107473a547cb3c036894e75b10ed97b298f3db613f133021b6bff19": {
+    "input_tokens": 442,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "8f8fe5337ab294cf3d20785e6c6d06e961cd1ff75c66057df736299ca3ed2ce6": {
+    "input_tokens": 447,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 18,
+    "text": "{\"fields\": {\"loss_description\": null}}"
+  },
+  "92d9652f512cddb59a01d44cd0886fa9a02ced138ad737f64aeb221f0811f399": {
+    "input_tokens": 296,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 59,
+    "text": "{\"document_type\":\"surveyor_report\",\"confidence\":0.62,\"evidence_snippet\":\"Inspection Report - Property Damage Site visit: 16 October 2026 Moisture was found in the passage walls. Cause of loss: failed pipe.\"}"
+  },
+  "946e7e54f0ac41705dead26698922b5ca72a28398e1cd95c681ba9e6f42e9b6e": {
+    "input_tokens": 97,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 18,
+    "text": "{\"word\":\"pong\",\"number\":7}"
+  },
+  "9493e18be34267df67bdd22ec8fc2c2e4a3069153bf3910be306ebd4d48a2cba": {
+    "input_tokens": 444,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "95cf11d2462da1715cbddd0c2509017cc5638dabdfb47051686d26bf1c2ebbef": {
+    "input_tokens": 285,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 46,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.8,\"evidence_snippet\":\"t he pi pe bur st on mo nd ay m uch wat er ev ery wh ere\"}"
+  },
+  "97194a7bc05e9c5430e74c119af64b464324cca98bab02d27af58ce7af2a50d2": {
+    "input_tokens": 272,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 33,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.75,\"evidence_snippet\":\"This page intentionally left blank.\"}"
+  },
+  "9a0b281f7f165505b9785c0d2327cc49a74439d279fa89cb52404561bdfe3e41": {
+    "input_tokens": 530,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 33,
+    "text": "{\"document_type\":\"surveyor_report\",\"confidence\":0.95,\"evidence_snippet\":\"Survey Report and Estimate\"}"
+  },
+  "9a3fe206c588f24d180b95594fb43be7ae9e5a8a0c386c85cb1cf450eb0dc186": {
+    "input_tokens": 524,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.2,\"evidence_snippet\":\"\"}"
+  },
+  "9b666701efc37f4eb312a969a16b892357ba1b3f0eb262ea3f564a9d86e4c259": {
+    "input_tokens": 304,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 66,
+    "text": "{\"document_type\":\"plumber_report\",\"confidence\":0.9,\"evidence_snippet\":\"Site note Visited the property. Found the compression joint on the supply pipe corroded and leaking. Replaced the joint, supply restored. - J. Mehta, Plumber\"}"
+  },
+  "9db4a05808abe76b77900dc12c7b831fdc8c7e64031f168f1bbddd6c42e08a33": {
+    "input_tokens": 439,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 18,
+    "text": "{\"fields\": {\"loss_description\": null}}"
+  },
+  "a37d1221a73fdf51079f7a93a31b5ac7b89ba8f734017907faf00cbd7ed46d46": {
+    "input_tokens": 445,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "a76f031f9c4c501feef20230f665b09b137bea2107b130e1985c5f0108ff54c3": {
+    "input_tokens": 430,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 61,
+    "text": "{\n  \"fields\": {\n    \"findings\": {\n      \"value\": \"the joint was cracked.\",\n      \"evidence_snippet\": \"Findings - the joint was cracked.\",\n      \"confidence\": 0.9\n    }\n  }\n}"
+  },
+  "ae6d6529fdd987204d3b6550b3c01dc71a2f1d47726afcf6a38c5acb5972cf9a": {
+    "input_tokens": 282,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 42,
+    "text": "{\"document_type\":\"email\",\"confidence\":0.8,\"evidence_snippet\":\"Dear Sir, Please find enclosed the documents. Regards, R. Iyer\"}"
+  },
+  "b4a3cb6bce3cf97f9cb393772413f6c1131c76b15204aa860a1e884e13f1c742": {
+    "input_tokens": 458,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "ba60bf407ad09c651055229a30b3ac6e9f8820a94a379c6056e394551837d467": {
+    "input_tokens": 533,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 57,
+    "text": "{\"document_type\":\"endorsement\",\"confidence\":0.95,\"evidence_snippet\":\"Policy change notice Policy number: POL-8812 This endorsement is effective from 1 November 2026 and amends the water damage limit.\"}"
+  },
+  "baf5dc34afdefa7ad39ca7f7e33757c1d631a9dff1b34f1457e498e6397868a8": {
+    "input_tokens": 451,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "bc0c294e90f164bdc1814bd2295dc9736387671458e438d7190c01a4921fc10a": {
+    "input_tokens": 450,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "bd68f383f2a3fbca6be6c3400db70accd240cbcc169e1a2b883587b443ad7eb9": {
+    "input_tokens": 454,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "be0bdf7b3d5eae6835d61e4028ba3d47d106225ea9e38571d65c2eaeba8e0490": {
+    "input_tokens": 449,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 18,
+    "text": "{\"fields\": {\"loss_description\": null}}"
+  },
+  "be279a5f4c2d671fc20ce67c0f92425992202ef5bba3924da40712c7b22245a7": {
+    "input_tokens": 528,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.7,\"evidence_snippet\":\"\"}"
+  },
+  "c0b86db486b7bea4e637c3e6be84f80520a7c17d4554a8cfb95c2363f14cf223": {
+    "input_tokens": 520,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.45,\"evidence_snippet\":\"\"}"
+  },
+  "c0c457d64ac78cbcd626655f7b6401d0ba6cef066882c63da487d9cf1453eb10": {
+    "input_tokens": 530,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.86,\"evidence_snippet\":\"\"}"
+  },
+  "c120d76cf5a2816bcc7c97c66549d14d42f0b51c416ea444631dc6a84861ca93": {
+    "input_tokens": 444,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 18,
+    "text": "{\"fields\": {\"loss_description\": null}}"
+  },
+  "c5211d317275e063ad8c247b79ce5c88f48b35971daf01c63a0ab21b6cbf16de": {
+    "input_tokens": 11,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 10,
+    "text": "OK"
+  },
+  "c68f4dd186185deb38361342dd92471825b6eeb7f5666055d30a99057fee10e1": {
+    "input_tokens": 528,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.2,\"evidence_snippet\":\"\"}"
+  },
+  "c7e890aafc9055e6a2f79bd534acda72fe48e6689c02617c7b7f6c288a4bf9bd": {
+    "input_tokens": 453,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "c89fb17987c494792bcfe8e912e661e81a17676ecc6d22090e4452039905111a": {
+    "input_tokens": 524,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.72,\"evidence_snippet\":\"\"}"
+  },
+  "ca0c2e906237e09c6ec830db8e9d0b2587b3f35e5b2c78575ba78e61b64663b2": {
+    "input_tokens": 296,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 57,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.5,\"evidence_snippet\":\"Estimate your reading time Most adults read about 250 words a minute. Divide the word count by 250 to see how long an article will take.\"}"
+  },
+  "ca2ecafa71f4b040aa6789387e04646ab035979456a10cf8f88c57e9950817c7": {
+    "input_tokens": 455,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "cbc7155303fdaf32066eddad72316242cb606d9b4a5a38a053fe438d45b67b43": {
+    "input_tokens": 547,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 32,
+    "text": "{\"document_type\":\"fnol\",\"confidence\":0.95,\"evidence_snippet\":\"LOSS INTIMATION FORM\"}"
+  },
+  "cec1d3aa9ac4f0e854206eeb258012f91c1a2fbd1d947c5a5a0c4b23f203b38c": {
+    "input_tokens": 523,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 36,
+    "text": "{\"document_type\":\"invoice\",\"confidence\":0.95,\"evidence_snippet\":\"Bill of Supply Invoice number: BS-22\"}"
+  },
+  "d54dad12985ce7e17a9c2295c1ce61398b0a05cfbe607b38653124dbe14e58a8": {
+    "input_tokens": 524,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.55,\"evidence_snippet\":\"\"}"
+  },
+  "d7ded8dfb281f7303131c210e6da57148aa231f1c396c9748b146e31e7ebb815": {
+    "input_tokens": 452,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "d9f0ace5da3d8b4805a4178841f6685289f25d169b259ac4f001b22363e97d0a": {
+    "input_tokens": 446,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "da04717709c525e92eefe103b7afdc4909429a337c336f5d549a2bed5ebb5d58": {
+    "input_tokens": 536,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 66,
+    "text": "{\"document_type\":\"plumber_report\",\"confidence\":0.9,\"evidence_snippet\":\"Site note Visited the property. Found the compression joint on the supply pipe corroded and leaking. Replaced the joint, supply restored. - J. Mehta, Plumber\"}"
+  },
+  "da55b8e3686d928a0b4abfaa1e2cbfa8d20d49c8f68746d6b1047c6d844d0eec": {
+    "input_tokens": 526,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.62,\"evidence_snippet\":\"\"}"
+  },
+  "da7ab504165e7686b10476d7756d897ede20c8016fc2647ffeea3b6eba3a4895": {
+    "input_tokens": 446,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "db583a7a142a6b575de46f077fe4b12ac8c8b0467675e602804a93732fdc0063": {
+    "input_tokens": 520,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.53,\"evidence_snippet\":\"\"}"
+  },
+  "df9bbda8dd300c74abf7eb050f42540eb5f2cce83a8ac14e7d2abc62770aca3e": {
+    "input_tokens": 517,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.75,\"evidence_snippet\":\"\"}"
+  },
+  "e523a91a09fe05e99086adac794462153707f937eb71cbf1bba030a3a396febe": {
+    "input_tokens": 442,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "e591de5c81a4f336e89e08d87371339ccb51f799280a2a22f456199c9f08d35b": {
+    "input_tokens": 288,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 49,
+    "text": "{\"document_type\":\"invoice\",\"confidence\":0.58,\"evidence_snippet\":\"PAYMENT RECEIPT Received with thanks INR 11,200 towards premium. Thank you for your business.\"}"
+  },
+  "e8ae30e0b5089cd575a7c2c034cc4f5afeb8e2c86e77ebe0a81f2251dd2ed5a9": {
+    "input_tokens": 295,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 56,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.82,\"evidence_snippet\":\"Estimate of Pi Archimedes estimated pi between 3.1408 and 3.1429. Monte Carlo methods give a random estimate.\"}"
+  },
+  "ea2a7f04801f912599f843c42eaf438a298e3562a664e6fbb4c728f45fd6d060": {
+    "input_tokens": 451,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "eccb6cef3e25fca3a217f4967e0330c8d894489a5faa6a7a0ef686a09f061056": {
+    "input_tokens": 449,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "ef8ee4d793be1addaa5d47976beb225e92326ec14b20373e653642eedd465778": {
+    "input_tokens": 444,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  },
+  "f51441943908e176a605a387f13a56ea29f9b0380ec0958d0e77419c61df8e63": {
+    "input_tokens": 514,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.75,\"evidence_snippet\":\"\"}"
+  },
+  "f92e8e40d4639dfc61763f52a0a2c7625a2773e2c8e2b55e799993692313fc85": {
+    "input_tokens": 528,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 34,
+    "text": "{\"document_type\":\"surveyor_report\",\"confidence\":0.9,\"evidence_snippet\":\"Inspection Report - Property Damage\"}"
+  },
+  "f941a629231f4af4756d73c98c8f7852beeb1f223c6c3c5b4c677932aa444a6f": {
+    "input_tokens": 455,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 25,
+    "text": "{\n  \"fields\": {\n    \"loss_description\": null\n  }\n}"
+  },
+  "fa750324258a94f5c18a4d10374f3ec6b6b9cf4a2ee61887fc1d08a37a66852b": {
+    "input_tokens": 504,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 28,
+    "text": "{\"document_type\":\"unknown\",\"confidence\":0.9,\"evidence_snippet\":\"\"}"
+  },
+  "fabf17dab5ab66e3102fe1a23be4d2dc2e9564879488ecc0f99fa6645fd1cc26": {
+    "input_tokens": 454,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 17,
+    "text": "{\"fields\":{\"loss_description\":null}}"
+  }
+}

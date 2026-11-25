@@ -1,0 +1,97 @@
+{
+  "entries": [
+    {
+      "label": "T4.1 model questions v3 (prompt frozen on dev; fresh run once)",
+      "date": "2026-11-25",
+      "config_sha": "cf89ce4ce0753fb0",
+      "model": "gpt-5-mini",
+      "splits": {
+        "dev": {
+          "cases": 5,
+          "needed_groups": 3,
+          "hits": 3,
+          "recall": 1.0,
+          "none_needed_cases": 2,
+          "spurious_cases": 0,
+          "accepted_total": 3,
+          "accepted_per_case": 0.6,
+          "refused_by_reason": {
+            "repeats standard question": 1
+          },
+          "unavailable": 0,
+          "misses": [],
+          "spurious": [],
+          "extras": []
+        },
+        "fresh": {
+          "cases": 7,
+          "needed_groups": 4,
+          "hits": 3,
+          "recall": 0.75,
+          "none_needed_cases": 3,
+          "spurious_cases": 2,
+          "accepted_total": 6,
+          "accepted_per_case": 0.86,
+          "refused_by_reason": {
+            "repeats standard question": 1
+          },
+          "unavailable": 0,
+          "misses": [
+            "F7-tenant: nothing about ['CL-COV-WATER']"
+          ],
+          "spurious": [
+            "F4-clean: Was the failed valve part of the building's fixed heating/plumbing apparatus (i.e., permanently attached to the building)?",
+            "F5-occupied-decoy: Was the failed fitting part of the building's fixed water piping (not a removable appliance or tenant-owned fixture)?"
+          ],
+          "extras": []
+        }
+      }
+    },
+    {
+      "label": "T4.1 re-recorded after relaxing criteria wording (Q-P10): dropped 'dated' and 'itemised'",
+      "date": "2026-11-25",
+      "config_sha": "1749e32dd07fadf3",
+      "model": "gpt-5-mini",
+      "splits": {
+        "dev": {
+          "cases": 5,
+          "needed_groups": 3,
+          "hits": 3,
+          "recall": 1.0,
+          "none_needed_cases": 2,
+          "spurious_cases": 0,
+          "accepted_total": 3,
+          "accepted_per_case": 0.6,
+          "refused_by_reason": {},
+          "unavailable": 0,
+          "misses": [],
+          "spurious": [],
+          "extras": []
+        },
+        "fresh": {
+          "cases": 7,
+          "needed_groups": 4,
+          "hits": 2,
+          "recall": 0.5,
+          "none_needed_cases": 3,
+          "spurious_cases": 1,
+          "accepted_total": 3,
+          "accepted_per_case": 0.43,
+          "refused_by_reason": {
+            "repeats standard question": 3,
+            "verbatim": 1
+          },
+          "unavailable": 0,
+          "misses": [
+            "F2-maintenance: nothing about ['CL-COND-MAINT']",
+            "F7-tenant: nothing about ['CL-COV-WATER']"
+          ],
+          "spurious": [
+            "F6-sublimit-decoy: Was the ruptured supply pipe a fixed (built-in) water pipe forming part of the building's plumbing system?"
+          ],
+          "extras": []
+        }
+      }
+    }
+  ]
+}

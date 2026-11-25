@@ -1,0 +1,550 @@
+# Labelled documents for the document-type classifier eval (T2.2). ALL SYNTHETIC.
+#
+# expected: a pack type, or `unknown` = the classifier MUST abstain and route to a human.
+# split:
+#   dev      written alongside the signals; fine to tune on
+#   holdout  written in different words than the signals; report these, do not tune on them blindly
+# (A further `fresh` split is added only AFTER tuning so there is an unseen check; see evals/baselines/classification.json.)
+# kind: text -> a plain .txt file with `text`;  email -> an .eml built from `headers` + `body`.
+items:
+# ------------------------------------------------------------------------------------------------ dev
+- {id: d01, split: dev, kind: text, expected: fnol, note: standard FNOL, text: "FIRST NOTICE OF LOSS\nClaimant: R. Iyer\nPolicy number: POL-2201\nDate of loss: 3 June 2026\nDescription: Water leaking from the bathroom ceiling.\nEstimated loss: INR 45,000\n"}
+- {id: d02, split: dev, kind: text, expected: plumber_report, note: standard plumber report, text: "PLUMBER'S REPORT\nInspection date: 5 June 2026\nFindings: The pipe joint above the bathroom had a crack. Joint replaced and supply restored.\n"}
+- {id: d03, split: dev, kind: text, expected: surveyor_report, note: standard surveyor report, text: "SURVEYOR'S REPORT\nSite visit: 6 June 2026\nMoisture readings were high in the bathroom ceiling.\nAssessed repair cost: INR 40,000\n"}
+- {id: d04, split: dev, kind: text, expected: estimate, note: standard estimate, text: "REPAIR ESTIMATE\nCeiling repair: INR 25,000\nPainting: INR 15,000\nTotal: INR 40,000\nScope: bathroom ceiling\n"}
+- {id: d05, split: dev, kind: text, expected: invoice, note: standard invoice, text: "INVOICE\nInvoice number: 5521\nVendor: A1 Repairs\nLabour: INR 20,000\nTax: INR 3,600\nTotal: INR 23,600\nPayment terms: 15 days\n"}
+- {id: d06, split: dev, kind: text, expected: policy_schedule, note: standard schedule, text: "POLICY SCHEDULE\nPolicy number: POL-2201\nPeriod of insurance: 1 January 2026 to 31 December 2026\nBuilding limit: INR 2,000,000\nStandard deductible: INR 10,000\n"}
+- {id: d07, split: dev, kind: text, expected: policy_wording, note: standard wording, text: "Home Cover - Policy Wording\n1. Definitions\nBuildings means the dwelling named in the schedule.\n2. What is covered\nWe cover loss caused by fire.\n3. What is not covered\nWe do not cover wear and tear.\n4. Conditions\nTell us about any loss promptly.\n"}
+- {id: d08, split: dev, kind: text, expected: endorsement, note: standard endorsement, text: "ENDORSEMENT NO. 2\nThis endorsement forms part of the policy and is effective from 1 March 2026.\nThe water damage sublimit is INR 150,000.\n"}
+- {id: d09, split: dev, kind: email, expected: email, note: plain e-mail, headers: {From: r.iyer@example.invalid, To: claims@insurer.example.invalid, Subject: Water damage claim}, body: "Hello,\nMy bathroom ceiling is leaking. Please tell me what you need.\nRegards, R. Iyer\n"}
+- {id: d10, split: dev, kind: text, expected: unknown, note: unrelated menu, text: "THE GARDEN CAFE\nStarters: soup of the day, garlic bread\nMains: grilled fish, vegetable curry\nDesserts: ice cream, fruit salad\nOpen daily 9am to 10pm\n"}
+- {id: d11, split: dev, kind: text, expected: unknown, note: bare cover letter, text: "Dear Sir,\nPlease find enclosed the documents.\nRegards,\nR. Iyer\n"}
+- {id: d12, split: dev, kind: text, expected: unknown, note: almost empty, text: "ok\n"}
+- {id: d13, split: dev, kind: text, expected: fnol, note: FNOL that mentions invoice and estimate words, text: "FIRST NOTICE OF LOSS\nClaimant: M. Rao\nPolicy number: POL-3310\nDate of loss: 11 July 2026\nDescription: A pipe burst. I will send the plumber's invoice and a repair estimate later.\nEstimated loss: INR 80,000\n"}
+- {id: d14, split: dev, kind: text, expected: unknown, note: placeholder text, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n"}
+# ------------------------------------------------------------------------------------------------ holdout (different wording)
+- {id: h01, split: holdout, kind: text, expected: fnol, note: "different title, labels do not match phrases", text: "LOSS INTIMATION FORM\nInsured name: S. Kulkarni\nPolicy no: POL-4410\nDate of incident: 2 August 2026\nNature of loss: kitchen pipe burst\nApproximate amount of loss: INR 60,000\n"}
+- {id: h02, split: holdout, kind: text, expected: fnol, note: no matching title but field phrases, text: "REPORT OF LOSS\nClaimant: S. Kulkarni\nPolicy number: POL-4410\nDate of loss: 2 August 2026\nDescription: The kitchen pipe burst overnight.\n"}
+- {id: h03, split: holdout, kind: text, expected: fnol, note: claim form title, text: "CLAIM FORM - WATER DAMAGE\nPolicyholder: P. Nair\nPolicy number: POL-5520\nWhat happened: ceiling stain after heavy rain\nAmount claimed: INR 35,000\n"}
+- {id: h04, split: holdout, kind: text, expected: plumber_report, note: plumbing inspection title, text: "PLUMBING INSPECTION REPORT\nDate: 4 August 2026\nThe supply line under the sink was split. New fitting installed and the water restored.\n"}
+- {id: h05, split: holdout, kind: text, expected: plumber_report, note: leak detection title, text: "LEAK DETECTION REPORT - KITCHEN\nTested all pipework with a pressure gauge.\nA slow leak was found at the elbow joint behind the cabinet.\n"}
+- {id: h06, split: holdout, kind: text, expected: plumber_report, note: informal note without a title, text: "Site note\nVisited the property. Found the compression joint on the supply pipe corroded and leaking. Replaced the joint, supply restored.\n- J. Mehta, Plumber\n"}
+- {id: h07, split: holdout, kind: text, expected: surveyor_report, note: loss adjuster title, text: "LOSS ADJUSTER'S REPORT\nWe attended the risk on 5 August 2026 and recorded the extent of the damage.\nMoisture was present in two rooms.\n"}
+- {id: h08, split: holdout, kind: text, expected: surveyor_report, note: engineer title, text: "Engineer's Assessment of Water Damage\nThe cause of loss appears to be a failed fitting.\nMoisture readings were taken in the hall.\n"}
+- {id: h09, split: holdout, kind: text, expected: surveyor_report, note: survey report title, text: "SURVEY REPORT\nProperty: 12 Park Road\nWalls in the lounge show damp patches.\nThe surveyor recommends drying and repainting.\n"}
+- {id: h10, split: holdout, kind: text, expected: estimate, note: quotation title, text: "QUOTATION FOR REPAIRS\nStrip and replace flooring: INR 55,000\nRepaint walls: INR 18,000\nGrand total: INR 73,000\n"}
+- {id: h11, split: holdout, kind: text, expected: estimate, note: builder quote, text: "Builder's Quote\nWork to be carried out in the lounge and hall.\nLabour and materials: INR 90,000\n"}
+- {id: h12, split: holdout, kind: text, expected: invoice, note: tax invoice, text: "TAX INVOICE\nInvoice number: TI-0099\nSupplier: Rapid Plumbing\nGSTIN: 29ABCDE1234F1Z5\nAmount due: INR 14,160\nDue date: 30 August 2026\n"}
+- {id: h13, split: holdout, kind: text, expected: invoice, note: bill title, text: "Bill - Plumbing repairs\nCall-out and labour: INR 2,500\nMaterials: INR 1,200\nPayment terms: due on receipt\n"}
+- {id: h14, split: holdout, kind: text, expected: policy_schedule, note: certificate title, text: "CERTIFICATE OF INSURANCE\nInsured: S. Kulkarni\nPolicy number: POL-4410\nSum insured: INR 3,000,000\nPeriod of insurance: 1 Jan 2026 - 31 Dec 2026\nPremium paid: INR 9,800\n"}
+- {id: h15, split: holdout, kind: text, expected: policy_schedule, note: schedule of insurance, text: "Schedule of Insurance\nPolicy number: POL-5520\nBuilding limit: INR 2,500,000\nDeductible: INR 5,000\n"}
+- {id: h16, split: holdout, kind: text, expected: policy_wording, note: policy document title, text: "Household Insurance Policy Document\nThis is your contract with us.\nDefinitions\nWhat we cover\nWe cover damage to your home caused by fire or storm.\nWhat we do not cover\nExclusions\nGeneral conditions\n"}
+- {id: h17, split: holdout, kind: text, expected: policy_wording, note: policy booklet, text: "Your Policy Booklet\nPlease read this booklet carefully.\nWhat is covered\nWe cover escape of water from fixed pipes.\nWhat is not covered\nWe do not cover gradual leakage.\n"}
+- {id: h18, split: holdout, kind: text, expected: endorsement, note: numbered endorsement, text: "Endorsement No. 4 - Deductible Change\nPolicy number: POL-4410\nWith effect from 1 September 2026 the deductible for escape of water is INR 25,000.\n"}
+- {id: h19, split: holdout, kind: text, expected: endorsement, note: amendment title, text: "AMENDMENT TO POLICY\nThis amendment is attached to the policy and changes the sum insured to INR 3,500,000.\n"}
+- {id: h20, split: holdout, kind: email, expected: email, note: forwarded mail, headers: {From: agent@example.invalid, To: claims@insurer.example.invalid, Subject: "Fwd: plumber report attached"}, body: "Forwarding the plumber's report as requested.\nThanks\n"}
+- {id: h21, split: holdout, kind: email, expected: email, note: reply with no greeting, headers: {From: s.kulkarni@example.invalid, To: claims@insurer.example.invalid, Subject: "Re: claim POL-4410"}, body: "Photos are on the way.\n"}
+- {id: h22, split: holdout, kind: text, expected: unknown, note: "mixed summary: plumber, surveyor and estimate signals tie", text: "Summary of file\nThe plumber found corrosion at the joint of the supply pipe. The surveyor measured moisture in two rooms. The total estimate is INR 40,000 and the scope covers the kitchen. Labour and materials are included.\n"}
+- {id: h23, split: holdout, kind: text, expected: unknown, note: "gym terms that borrow policy words", text: "Terms and Conditions of Membership\nDefinitions\nWhat is covered by your membership\nWe cover access to all gym facilities.\nWhat is not covered\nWe do not cover personal training.\nConditions\nExclusions apply on public holidays.\n"}
+- {id: h24, split: holdout, kind: text, expected: unknown, note: blank page notice, text: "This page intentionally left blank.\n"}
+- {id: h25, split: holdout, kind: text, expected: unknown, note: recipe, text: "Pancakes\nMix flour, milk and eggs. Heat a pan with a little butter. Pour a ladle of batter and cook until golden on both sides.\n"}
+- {id: h26, split: holdout, kind: text, expected: fnol, note: FNOL for another line of business is still an FNOL, text: "FIRST NOTICE OF LOSS - MOTOR\nClaimant: T. George\nPolicy number: MOT-7781\nDate of loss: 9 September 2026\nDescription: Rear-ended at a junction.\nEstimated loss: INR 25,000\n"}
+- {id: h27, split: holdout, kind: text, expected: invoice, note: invoice from a plumbing company, text: "INVOICE\nInvoice number: PLB-310\nVendor: Citywide Plumbing and Drainage\nLeak repair - labour: INR 3,000\nTotal: INR 3,540\nPayment terms: 7 days\n"}
+- {id: h28, split: holdout, kind: text, expected: estimate, note: cost summary with no title match, text: "Cost summary\nScope: replace skirting and repaint.\nLabour: INR 12,000\nMaterials: INR 6,500\nTotal: INR 18,500\n"}
+- {id: h29, split: holdout, kind: text, expected: endorsement, note: endorsement wording without a heading, text: "Policy number: POL-4410\nThis endorsement forms part of the policy.\nIt is effective from 1 October 2026.\nAll other terms remain unchanged.\n"}
+# ------------------------------------------------------------------------------------------------ fresh (written AFTER the v2 design was fixed; first measured against v2)
+- id: f01
+  split: fresh
+  kind: text
+  expected: fnol
+  note: title without the word 'first'
+  text: |
+    NOTICE OF LOSS - HOME
+    Claimant: A. Thomas
+    Policy number: POL-6001
+    Date of loss: 14 October 2026
+    Description: Burst geyser pipe flooded the passage.
+- id: f02
+  split: fresh
+  kind: text
+  expected: estimate
+  note: estimate wording variant
+  text: |
+    ESTIMATE OF REPAIR COSTS
+    Plumbing: INR 8,000
+    Tiling: INR 22,000
+    Total: INR 30,000
+- id: f03
+  split: fresh
+  kind: text
+  expected: invoice
+  note: invoice that also says estimate
+  text: |
+    INVOICE
+    Invoice number: 7714
+    Vendor: Metro Plumbing
+    As per our earlier estimate the work is complete.
+    Total: INR 30,000
+    Payment terms: 10 days
+- id: f04
+  split: fresh
+  kind: text
+  expected: plumber_report
+  note: heading with no standard title
+  text: |
+    Report on burst pipe
+    Inspection date: 15 October 2026
+    Findings: the geyser inlet pipe had split at the joint. Pipe replaced.
+- id: f05
+  split: fresh
+  kind: text
+  expected: surveyor_report
+  note: inspection report heading
+  text: |
+    Inspection Report - Property Damage
+    Site visit: 16 October 2026
+    Moisture was found in the passage walls.
+    Cause of loss: failed pipe.
+- id: f06
+  split: fresh
+  kind: text
+  expected: policy_schedule
+  note: schedule plus receipt
+  text: |
+    Policy Schedule and Premium Receipt
+    Policy number: POL-6001
+    Period of insurance: 1 Nov 2025 - 31 Oct 2026
+    Premium: INR 11,200
+    Building limit: INR 4,000,000
+- id: f07
+  split: fresh
+  kind: text
+  expected: endorsement
+  note: policy endorsement title
+  text: |
+    Policy Endorsement
+    Policy number: POL-6001
+    This endorsement forms part of the policy and is effective from 1 November 2026.
+- id: f08
+  split: fresh
+  kind: email
+  expected: email
+  note: mail with a polite greeting
+  headers:
+    From: a.thomas@example.invalid
+    To: claims@insurer.example.invalid
+    Subject: Claim POL-6001 - photographs
+  body: |
+    Dear team, photographs attached. Kind regards, A. Thomas
+- id: f09
+  split: fresh
+  kind: text
+  expected: unknown
+  note: article whose title contains 'estimate'
+  text: |
+    Estimate your reading time
+    Most adults read about 250 words a minute.
+    Divide the word count by 250 to see how long an article will take.
+- id: f10
+  split: fresh
+  kind: text
+  expected: unknown
+  note: '''quote of the day'' page'
+  text: |
+    Quote of the day
+    The best way to predict the future is to create it.
+    Share this quote with a friend.
+- id: f11
+  split: fresh
+  kind: text
+  expected: unknown
+  note: garbled OCR-like text
+  text: |
+    t he pi pe bur st on mo nd ay
+    m uch wat er ev ery wh ere
+- id: f12
+  split: fresh
+  kind: text
+  expected: unknown
+  note: police report is not in the pack
+  text: |
+    POLICE REPORT
+    Reference: FIR-2026-4410
+    A complaint of theft was registered on 20 October 2026 at the local station.
+- id: f13
+  split: fresh
+  kind: text
+  expected: fnol
+  note: abbreviation title
+  text: |
+    FNOL
+    Claimant: A. Thomas
+    Policy number: POL-6001
+    Date of loss: 14 October 2026
+    Description: Pipe burst in the passage.
+- id: f14
+  split: fresh
+  kind: text
+  expected: invoice
+  note: bill of supply wording
+  text: |
+    Bill of Supply
+    Invoice number: BS-22
+    Vendor: Local Hardware
+    Total: INR 1,900
+    Payment terms: cash
+- id: f15
+  split: fresh
+  kind: text
+  expected: email
+  note: pasted e-mail saved as a text file
+  text: |
+    From: a.thomas@example.invalid
+    To: claims@insurer.example.invalid
+    Date: 18 October 2026
+    Subject: Missing endorsement
+
+    Please resend the endorsement.
+- id: f16
+  split: fresh
+  kind: text
+  expected: unknown
+  note: one document that is both a survey and an estimate
+  text: |
+    Survey Report and Estimate
+    Site visit: 17 October 2026
+    Moisture readings were high.
+    Scope: replace flooring. Total: INR 52,000
+- id: f17
+  split: fresh
+  kind: text
+  expected: unknown
+  note: receipt is not in the pack
+  text: |
+    PAYMENT RECEIPT
+    Received with thanks INR 11,200 towards premium.
+    Thank you for your business.
+- id: f18
+  split: fresh
+  kind: text
+  expected: policy_wording
+  note: wording with a plain title
+  text: |
+    Policy Wording
+    Part A Definitions
+    Part B What is covered
+    We cover fire and escape of water.
+    Part C What is not covered
+    We do not cover wear and tear.
+# ------------------------------------------------------------------------------------------------ fresh2 + adversarial (written AFTER v3; fresh2 is the unseen check for v3; adversarial = keyword-rich look-alikes, tracked not gated)
+- id: g01
+  split: fresh2
+  kind: text
+  expected: fnol
+  note: claim notification
+  text: |
+    CLAIM NOTIFICATION
+    Claimant: D. Fernandes
+    Policy number: POL-7120
+    Date of loss: 3 November 2026
+    Description: Water running down the lounge wall after a pipe failure.
+    Estimated loss: INR 72,000
+- id: g02
+  split: fresh2
+  kind: text
+  expected: plumber_report
+  note: plumber report with a subtitle
+  text: |
+    Plumber's Report - Bathroom Leak
+    Inspection date: 5 November 2026
+    Findings: the shower mixer joint was corroded and leaking. Joint replaced and supply restored.
+- id: g03
+  split: fresh2
+  kind: text
+  expected: surveyor_report
+  note: surveyor report
+  text: |
+    Surveyor's Report
+    Site visit: 6 November 2026
+    Moisture readings were elevated in the lounge and hall.
+    Assessed repair cost: INR 66,000
+- id: g04
+  split: fresh2
+  kind: text
+  expected: estimate
+  note: numbered estimate
+  text: |
+    Repair Estimate No. 12
+    Scope: lounge wall and flooring.
+    Labour: INR 30,000
+    Materials: INR 28,000
+    Total: INR 58,000
+- id: g05
+  split: fresh2
+  kind: text
+  expected: invoice
+  note: tax invoice with due date
+  text: |
+    Tax Invoice
+    Invoice number: 20261107
+    Vendor: Prime Repairs
+    Total: INR 58,000
+    Due date: 30 November 2026
+- id: g06
+  split: fresh2
+  kind: text
+  expected: policy_schedule
+  note: policy schedule
+  text: |
+    Policy Schedule
+    Policy number: POL-7120
+    Period of insurance: 1 January 2026 to 31 December 2026
+    Standard deductible: INR 10,000
+    Building limit: INR 2,500,000
+- id: g07
+  split: fresh2
+  kind: text
+  expected: endorsement
+  note: endorsement
+  text: |
+    Endorsement
+    This endorsement forms part of the policy and is effective from 1 December 2026.
+    The unoccupied-property condition is added.
+- id: g08
+  split: fresh2
+  kind: email
+  expected: email
+  note: plain mail
+  headers:
+    From: d.fernandes@example.invalid
+    To: claims@insurer.example.invalid
+    Subject: Quote for the lounge repairs
+  body: |
+    Hello, the contractor's quote is attached.
+    Regards, D. Fernandes
+- id: g09
+  split: fresh2
+  kind: text
+  expected: fnol
+  note: fire loss notice
+  text: |
+    FIRST NOTICE OF LOSS - FIRE
+    Claimant: K. Dsouza
+    Policy number: POL-7188
+    Date of loss: 9 November 2026
+    Description: Kitchen fire, smoke damage to two rooms.
+- id: g10
+  split: fresh2
+  kind: text
+  expected: unknown
+  note: maths page with 'estimate' heading
+  text: |
+    Estimate of Pi
+    Archimedes estimated pi between 3.1408 and 3.1429.
+    Monte Carlo methods give a random estimate.
+- id: g11
+  split: fresh2
+  kind: text
+  expected: unknown
+  note: '''schedule of insurance'' in an agents'' meeting agenda'
+  text: |
+    Schedule of Insurance Agents Meeting
+    Monday 10am: opening remarks
+    Monday 11am: product update
+    Tuesday 9am: training
+- id: g12
+  split: fresh2
+  kind: text
+  expected: unknown
+  note: complaints letter with no document type
+  text: |
+    Dear Sir,
+    I am unhappy with the delay on my claim.
+    Please reply within seven days.
+    Yours faithfully, D. Fernandes
+- id: a01
+  split: adversarial
+  kind: text
+  expected: unknown
+  note: article about invoices that quotes invoice fields
+  text: |
+    How to write an invoice
+    Every invoice needs an invoice number, the vendor details and clear payment terms.
+    Show the tax separately and state the due date.
+- id: a02
+  split: adversarial
+  kind: text
+  expected: unknown
+  note: political endorsement that uses endorsement phrases
+  text: |
+    Endorsement of the council candidate
+    This endorsement is effective from election day and forms part of the campaign statement.
+    Signed by the residents association.
+- id: a03
+  split: adversarial
+  kind: text
+  expected: unknown
+  note: website privacy policy with wording-like sections
+  text: |
+    Privacy Policy Document
+    Definitions
+    Personal data means information about you.
+    Conditions
+    By using this site you accept these conditions.
+    We do not cover third-party sites.
+- id: a04
+  split: adversarial
+  kind: text
+  expected: unknown
+  note: repair-shop advert full of estimate vocabulary
+  text: |
+    Repair Estimate - free!
+    Scope of work, labour and materials priced upfront. Total transparency in INR.
+    Call now for a free estimate.
+- id: l01
+  split: llm1
+  kind: text
+  expected: unknown
+  note: chaser email asking for a status update
+  text: |
+    Hello team,
+    Could you tell me where my claim stands? I have not heard anything for two weeks.
+    Thanks, M. Pillai
+- id: l02
+  split: llm1
+  kind: text
+  expected: unknown
+  note: cover note forwarding an invoice and an estimate
+  text: |
+    Dear Sir,
+    Please find enclosed the plumber invoice and the repair estimate for the kitchen.
+    Kindly acknowledge receipt.
+    Regards, S. Nair
+- id: l03
+  split: llm1
+  kind: text
+  expected: unknown
+  note: meeting minutes that mention a claim
+  text: |
+    Minutes of weekly claims huddle
+    Attendees: Asha, Ben, Chitra
+    Discussed the backlog and the surveyor schedule. No decisions taken.
+- id: l04
+  split: llm1
+  kind: text
+  expected: unknown
+  note: garbled OCR of a loss report
+  text: |
+    f ir st no ti ce of l os s
+    th e ki tc he n fl oo d ed la st ni gh t
+    c la im an t r. pa te l
+- id: l05
+  split: llm1
+  kind: text
+  expected: unknown
+  note: blank form template with labels only
+  text: |
+    Claim form (blank)
+    Name: ______
+    Policy number: ______
+    Date of loss: ______
+    Please attach supporting documents.
+- id: l06
+  split: llm1
+  kind: text
+  expected: unknown
+  note: shopping list
+  text: |
+    Buy pipe sealant, washers, towels, bleach and a bucket.
+    Check the hardware store opens at nine.
+- id: l07
+  split: llm1
+  kind: text
+  expected: unknown
+  note: delivery note for materials
+  text: |
+    Delivery note
+    Delivered: 12 bags of cement, 4 tile boxes.
+    Received by: site foreman
+- id: l08
+  split: llm1
+  kind: text
+  expected: unknown
+  note: news article about flooding
+  text: |
+    City faces another week of heavy rain
+    Officials said drains were overwhelmed on Tuesday and several streets flooded. Residents were advised to stay home.
+- id: l09
+  split: llm1
+  kind: text
+  expected: fnol
+  note: loss report with no heading but clearly a first notice
+  text: |
+    I am writing to report a loss under my policy POL-5521.
+    Claimant: A. Menon
+    Date of loss: 3 October 2026
+    A pipe burst in the bathroom and flooded the hallway. Estimated loss INR 40,000.
+- id: l10
+  split: llm1
+  kind: text
+  expected: surveyor_report
+  note: inspection report headed as a site assessment
+  text: |
+    Loss Adjuster Site Assessment
+    Site visit: 8 October 2026
+    Moisture readings were high in the kitchen wall. Assessed repair cost: INR 64,000.
+    Recommendation: approve repairs.
+- id: l11
+  split: llm1
+  kind: text
+  expected: invoice
+  note: tax invoice for repairs, heading in a letterhead style
+  text: |
+    Reliable Repairs Pvt Ltd - Tax Invoice
+    Invoice number: RR-2209
+    Pipe replacement - labour: INR 5,000
+    Total: INR 5,900
+- id: l12
+  split: llm1
+  kind: text
+  expected: endorsement
+  note: change notice to an existing policy
+  text: |
+    Policy change notice
+    Policy number: POL-8812
+    This endorsement is effective from 1 November 2026 and amends the water damage limit. All other terms are unchanged.
+- id: l13
+  split: llm1
+  kind: text
+  expected: unknown
+  note: short generic email between adjusters
+  text: |
+    Hi Ben, I will look at the claim file tomorrow morning and revert. Thanks, Asha
+- id: l14
+  split: llm1
+  kind: text
+  expected: unknown
+  note: advert for a water-damage restoration company
+  text: |
+    Water damage? Call us!
+    We offer free estimates, fast surveys and the lowest invoice in town.
+- id: l15
+  split: llm1
+  kind: text
+  expected: unknown
+  note: claim summary mixing a notice, an estimate and a survey
+  text: |
+    File summary for the adjuster
+    First notice received 2 October. Estimate of INR 55,000 attached. Survey report says moisture is high.
+    Pending: invoice.
+- id: l16
+  split: llm1
+  kind: text
+  expected: estimate
+  note: quotation for repair work
+  text: |
+    Quotation for repair work
+    Scope: replace damaged flooring and repaint walls.
+    Labour: INR 20,000
+    Materials: INR 14,000
+    Total: INR 34,000

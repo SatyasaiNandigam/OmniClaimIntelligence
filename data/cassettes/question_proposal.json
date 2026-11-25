@@ -1,0 +1,74 @@
+{
+  "0631099faae934a9f175bc56be189f47f105b5cf5139bb985fd8f6e9e543e9e7": {
+    "input_tokens": 1337,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 845,
+    "text": "{\"questions\":[{\"text\":\"Was the split fitting part of the building's fixed water pipes/plumbing (not a removable appliance connection)?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F-S02-02\"],\"evidence_quote\":\"escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"establishing_criteria\":[\"Photograph or plumbing schematic showing the fitting is attached to the building plumbing\",\"Plumber statement confirming fitting is part of fixed piping\",\"Invoice or part description showing fixed pipe component\"],\"confidence\":0.8},{\"text\":\"Are there any past repair records, complaints, or evidence of gradual deterioration/corrosion to this fitting or adjacent pipes?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-S02-04\"],\"evidence_quote\":\"gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"establishing_criteria\":[\"Maintenance/repair records or service invoices showing prior leaks or work on that fitting\",\"Photographs showing historical staining or corrosion predating loss\",\"Homeowner statement or repair logs indicating repeated seepage or issues\"],\"confidence\":0.9}]}"
+  },
+  "34b5115039ee86372310436d5e15f3f86e8a487e5cb78ce8752aba988da743d7": {
+    "input_tokens": 575,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 184,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-START\",\"reason\":\"Prior maintenance, repair records or reports of leaks before the loss date are the same evidence used to establish when the leak or damage began (Q-START).\"}"
+  },
+  "3a77ca3c7b901021ef5097719296c59f9a7c34c4316fa9121055664cfbbc1b68": {
+    "input_tokens": 583,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 123,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question asks whether the failed component was a fixed part of the building versus a non-fixed/replaceable item, so answering this requires distinct evidence about the hose's status.\"}"
+  },
+  "3f0d13bcf404f1a39a901a296243da1c5a98a852b3dae97f3bcb28ff472c2df4": {
+    "input_tokens": 1583,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1006,
+    "text": "{\"questions\":[{\"text\":\"Did the visible corrosion predate the pipe burst (is there dated inspection or repair evidence showing corrosion existed before 14 March 2026)?\",\"category\":\"cause\",\"clause_ids\":[\"CL-DEF-SUDDEN\",\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-S01-03\",\"F-S01-01\"],\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"establishing_criteria\":[\"Dated inspection or photo before 2026-03-14 showing corrosion\",\"Dated repair or replacement records for the joint prior to 2026-03-14\"],\"confidence\":0.9},{\"text\":\"Are there prior maintenance, repair records or reports of leaks for the kitchen supply pipe or joint before the loss date?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-S01-03\",\"F-S01-01\"],\"evidence_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"establishing_criteria\":[\"Invoices or work orders for repairs to that pipe/joint dated before 2026-03-14\",\"Maintenance logs or tenant reports noting prior leaks or repeated seepage at that location before 2026-03-14\"],\"confidence\":0.8}]}"
+  },
+  "44100dcac5185d4b49f5727584bd23ec8b37f9354e2da7e6d5d441676e60b86e": {
+    "input_tokens": 1539,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 859,
+    "text": "{\"questions\":[{\"text\":\"Was the split coupling part of the building's fixed water piping system rather than a movable appliance or tenant-owned fitting?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F-S05-05\"],\"evidence_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"establishing_criteria\":[\"Plumber report stating the coupling is connected to the building's fixed supply\",\"Photograph or drawing showing the coupling fixed to the building pipework\",\"Property inventory or tenancy statement identifying the fitting as building fabric\"],\"confidence\":0.7}]}"
+  },
+  "5d38c6819316ec999b7df845f663ed5b6fbdde428160d3fd9026615e9957a085": {
+    "input_tokens": 575,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 123,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"Determining whether the coupling is part of the building\u2019s fixed plumbing (versus a movable or tenant-owned fitting) requires ownership/fixture evidence not covered by any listed standard question.\"}"
+  },
+  "672295521980fa905bae956dbe980b991998776a6a6ad5562ed339515e0d08a3": {
+    "input_tokens": 1621,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 527,
+    "text": "{\"questions\":[{\"text\":\"Was the split pipe fitting a fixed part of the building (permanently attached) or a removable/portable fixture?\", \"category\":\"coverage_condition\", \"clause_ids\":[\"CL-COV-WATER\"], \"fact_ids\":[\"F-S02-02\",\"F-S02-03\"], \"evidence_quote\":\"escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"establishing_criteria\":[\"Photograph or surveyor statement describing how the fitting is attached to building fabric\"], \"confidence\":0.9}]}"
+  },
+  "75c1bee61d8c015cc8c5de4b5ae214acf4d07ba518fe28b11460f39cb28b4d34": {
+    "input_tokens": 1593,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 932,
+    "text": "{\"questions\":[{\"text\":\"Was the burst flexible hose an integral or fixed part of the building plumbing (a \\\"fixed water pipe, tank or apparatus\\\") at the time of loss?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F-S04-03\",\"F-S04-04\"],\"evidence_quote\":\"escape of water from fixed water pipes, tanks or apparatus\",\"establishing_criteria\":[\"Photographs or site survey showing hose permanently connected to building plumbing (not a temporary/replaceable fitting)\",\"Plumber statement or installation record describing the hose as fixed/installed as part of the plumbing system\",\"Invoice or building specification listing the hose as a fixed plumbing component\"],\"confidence\":0.85}]}"
+  },
+  "7ebe3abd8ca827ce5b68d39af84dc123a026f4590f62fb7a09a3e069d1872457": {
+    "input_tokens": 580,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 128,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-START\",\"reason\":\"This asks when corrosion began and seeks dated evidence of prior corrosion, which is the same fact established by Q-START (detailed dated technical/inspection evidence of when the leak or corrosion began).\"}"
+  },
+  "9421befe0db4f19ffee3b8ae5f94b424ddae2582823c75a6ee72c0f3c12eb3c6": {
+    "input_tokens": 1299,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 800,
+    "text": "{\"questions\":[{\"text\":\"Does evidence show the pipe joint corrosion pre-dated the loss, indicating gradual deterioration rather than a sudden failure?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-DEF-SUDDEN\",\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-S01-03\"],\"evidence_quote\":\"not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"establishing_criteria\":[\"Plumber inspection report dated before 14 March 2026 describing corrosion at the joint\",\"Repair or maintenance records/invoices noting corrosion or leaks prior to 14 March 2026\",\"Pre-loss photographs showing corrosion at the pipe joint dated before 14 March 2026\"],\"confidence\":0.9}]}"
+  },
+  "e2915d7f0135dad386d17b6ed71d0fcc772a6ac4c12430dcd5c1bf4f279a0f43": {
+    "input_tokens": 1309,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 621,
+    "text": "{\"questions\":[{\"text\":\"Was the burst flexible hose under the basin part of a \\\"fixed water ... pipes, tanks or apparatus\\\" as defined by the policy or was it a removable/replaceable fitting?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F-S04-02\",\"F-S04-03\",\"F-S04-04\"],\"evidence_quote\":\"escape of water from fixed water pipes, tanks or apparatus\",\"establishing_criteria\":[\"plumber statement confirming whether the hose is permanently fixed or a removable fitting\",\"photographs or inventory showing how the hose is attached and whether it is part of fixed plumbing\",\"manufacturer/installation documentation classifying the hose as a fixed component or a replaceable flexible connector\"],\"confidence\":0.9}]}"
+  },
+  "fb5ecd0638e6270bc496bbdb53805217f59792be7226bfc8c34866d7aac96ffb": {
+    "input_tokens": 1255,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 826,
+    "text": "{\"questions\":[{\"text\":\"What is the installation date or age of the failed coupling and are there maintenance or repair records for it?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-DEF-SUDDEN\",\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-S05-02\",\"F-S05-04\"],\"evidence_quote\":\"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"establishing_criteria\":[\"Invoice or work order showing installation date of coupling\",\"Maintenance or repair records showing no prior issues before loss date\",\"Photograph or inspector report confirming condition at/just before loss\"],\"confidence\":0.85},{\"text\":\"Provide the Schedule endorsement END-01 text or description referenced in the Schedule.\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F-S05-08\"],\"evidence_quote\":\"Schedule references endorsement END-01\",\"establishing_criteria\":[\"Copy of the Schedule showing endorsement END-01 text\",\"Insurer statement or policy document describing END-01 modifications\"],\"confidence\":0.8}]}"
+  }
+}

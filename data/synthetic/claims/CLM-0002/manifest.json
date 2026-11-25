@@ -1,0 +1,77 @@
+{
+  "claim_id": "CLM-0002",
+  "scenario_id": "S-02",
+  "synthetic": true,
+  "license": "CC0-1.0 - drawn by scripts/generate_synthetic_docs.py, no third-party imagery",
+  "documents": [
+    {
+      "document_id": "DOC-S02-1",
+      "filename": "fnol.pdf",
+      "doc_type": "fnol",
+      "page_count": 1,
+      "sha256": "4cf2a69c72b46a8d0e7542572f6937ac47ae045b023a74de779f7e5cbcb8edfc",
+      "text_sha256": "63c8be91567213bb3c1aa61035b169a3f36490a336920be2c2cd4c163ba6bdda",
+      "received_on": "2026-05-03",
+      "uploaded_by": "claimant",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S02-2",
+      "filename": "plumber_report.pdf",
+      "doc_type": "plumber_report",
+      "page_count": 1,
+      "sha256": "37019b49a75cf3466d72d510b8c4accc199e3277088237557a8a7661992d9cff",
+      "text_sha256": "d83c8398401b62522b6f819d58375d3bef01f38d8f12d11c9c9c344f33218740",
+      "received_on": "2026-05-04",
+      "uploaded_by": "plumber",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S02-3",
+      "filename": "surveyor_report.pdf",
+      "doc_type": "surveyor_report",
+      "page_count": 1,
+      "sha256": "330d375abda21cd22e042daad3398d21b5dcb0e5160d5ef49ba1df83b9c97fd7",
+      "text_sha256": "cbc061c294df5df0d46e82c7f58b32b1dec60c1b732a381d3930525aaa04c397",
+      "received_on": "2026-05-06",
+      "uploaded_by": "surveyor",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S02-4",
+      "filename": "estimate.pdf",
+      "doc_type": "estimate",
+      "page_count": 1,
+      "sha256": "921bb6f7225e3c965135f23bd2d413d2aa847d0a2982e702819dafe633ba4dab",
+      "text_sha256": "8d8dcafcd546cb6749495c8b5e718bae3ac56416157e95a742c018e29b5f8d7f",
+      "received_on": "2026-05-06",
+      "uploaded_by": "contractor",
+      "in_scenario": true
+    }
+  ],
+  "variants": [
+    {
+      "filename": "surveyor_report_scanned.pdf",
+      "variant_of": "DOC-S02-3",
+      "kind": "scanned_rotated",
+      "rotation_deg": 1.8,
+      "needs_ocr": true,
+      "text_extractable": false,
+      "sha256": "5fc9514e44f588de7bf70a209683c097f892ea0d07b4ab5f861ee2cb5a191c48",
+      "expected_text": [
+        "SURVEYOR'S REPORT - SYNTHETIC DOCUMENT Site visit: 5 May 2026 Moisture was confined to the kitchen floor and the lower kitchen wall. No moisture was found in other rooms. Assessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss."
+      ],
+      "in_scenario": false
+    }
+  ],
+  "photos": [
+    {
+      "file": "photos/kitchen_floor_moisture.jpg",
+      "sha256": "f6e6357d545635329ed8372c46a68adb8e55ee9718ef1b998302dbf88ebed199",
+      "in_scenario": false,
+      "role": "good",
+      "shows": "moisture stain on kitchen floor",
+      "expected_quality_verdict": "usable"
+    }
+  ]
+}

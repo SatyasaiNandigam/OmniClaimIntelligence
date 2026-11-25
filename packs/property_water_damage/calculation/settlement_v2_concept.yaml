@@ -1,0 +1,18 @@
+# SAMPLE - not insurer policy. Alternative step ORDER taken from the concept document:
+#   payable = min(eligible loss, limit) - deductible - adjustments
+# (settlement_v1.yaml follows the guidelines PDF: (loss - non-covered - deductible) first, then the caps.)
+# Which order is right for the product is an open domain question: docs/assumptions.md Q-S1.
+# Same input names, same invariants (checked at startup by core.config.CalculationRules); only the ORDER differs.
+# Worked difference: assessed 200000, non-covered 15000, deductible 10000, remaining limit 150000, no sublimit, no prior payments
+#   v1 -> 175000 capped to 150000 = 150000      v2 -> 185000 capped to 150000, less 10000 = 140000
+version: "sample-concept-1.0"
+currency: INR
+rounding: {mode: half_up, places: 0}   # SAMPLE: whole rupees
+steps:
+  - {id: start,               op: set,      from: assessed_covered_loss}
+  - {id: less_non_covered,    op: subtract, from: non_covered_items_total}
+  - {id: apply_sublimit,      op: cap,      from: water_damage_sublimit, optional: true}
+  - {id: cap_remaining_limit, op: cap,      from: remaining_policy_limit}
+  - {id: less_deductible,     op: subtract, from: applicable_deductible}
+  - {id: less_prior_payments, op: subtract, from: prior_payments_total}
+  - {id: floor_zero,          op: floor,    value: 0}   # SAMPLE: a payable is never negative

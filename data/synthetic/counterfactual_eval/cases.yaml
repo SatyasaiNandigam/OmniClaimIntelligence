@@ -1,0 +1,116 @@
+# SYNTHETIC. Labelled cases for the counterfactual engine (T4.6).
+# `dev` = used to write and tune the prompt (S-01 is rebuilt from the scenario ground truth: its labelled table names the affected issues).
+# `fresh` = written BEFORE any model result on it was seen, run once after the prompt was frozen. Clauses are those of the S-01 policy snapshot:
+#   CL-COV-WATER (coverage), CL-DEF-SUDDEN (definition), CL-EXC-GRADUAL (exclusion), CL-SUB-WATER-E1 (sublimit), CL-LIM-BUILDING (limit),
+#   CL-DED-STD (deductible), CL-COND-PERIOD (condition). Q-SUDDEN is the only framed question; its clauses are COV-WATER, DEF-SUDDEN, EXC-GRADUAL.
+# `status`: unresolved | established | abstained (the sufficiency state of Q-SUDDEN). `expect`: the issue ids a scenario must re-assess, [] = no scenarios.
+# A finding about the cause re-assesses OPEN cover and exclusion issues that share a clause with the question; never established ones, never limits,
+# sublimits or deductibles. `facts` are what is on file about the question (shown to the model so the rewrite can fit the claim).
+
+cases:
+  # ---------------------------------------------------------------------------------------------------- dev
+  - id: S-01
+    split: dev
+    status: unresolved
+    requests: [plumber, claimant, surveyor]
+    facts: ["Claimant reports the kitchen supply pipe burst suddenly", "Significant corrosion was present at the joint of the kitchen supply pipe", "Moisture was elevated in the kitchen, hallway and adjoining bedroom wall"]
+    issues:
+      - {id: ISS-INFORCE, title: "Policy in force on date of loss", status: established, clauses: [CL-COND-PERIOD]}
+      - {id: ISS-COVER-WATER, title: "Escape of water: sudden and accidental", status: unresolved, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+      - {id: ISS-EXC-GRADUAL, title: "Gradual leakage exclusion", status: potentially_relevant, clauses: [CL-EXC-GRADUAL]}
+      - {id: ISS-SUBLIMIT, title: "Water-damage sublimit", status: identified, clauses: [CL-SUB-WATER-E1, CL-COV-WATER]}
+    expect: {Q-SUDDEN: [ISS-COVER-WATER, ISS-EXC-GRADUAL]}
+  - id: D1-cover-only
+    split: dev
+    status: unresolved
+    requests: [plumber]
+    facts: ["Claimant reports the hose burst suddenly"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water: sudden and accidental", status: unresolved, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+      - {id: ISS-LIMIT, title: "Building limit", status: identified, clauses: [CL-LIM-BUILDING]}
+    expect: {Q-SUDDEN: [ISS-COVER-WATER]}
+  - id: D2-with-sublimit-and-deductible
+    split: dev
+    status: unresolved
+    requests: [plumber, surveyor]
+    facts: ["Plumber reports the pipe wall was thinned by long-term corrosion"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water: sudden and accidental", status: unresolved, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+      - {id: ISS-EXC-GRADUAL, title: "Gradual leakage exclusion", status: potentially_relevant, clauses: [CL-EXC-GRADUAL]}
+      - {id: ISS-SUBLIMIT, title: "Water-damage sublimit", status: identified, clauses: [CL-SUB-WATER-E1, CL-COV-WATER]}
+      - {id: ISS-DEDUCTIBLE, title: "Standard deductible", status: identified, clauses: [CL-DED-STD]}
+    expect: {Q-SUDDEN: [ISS-COVER-WATER, ISS-EXC-GRADUAL]}
+  - id: D3-established
+    split: dev
+    status: established
+    requests: []
+    facts: ["Plumber reports the fitting failed suddenly"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water: sudden and accidental", status: established, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+    expect: {}
+
+  # ---------------------------------------------------------------------------------------------------- fresh (unseen)
+  - id: N1-mixed-issues
+    split: fresh
+    status: unresolved
+    requests: [plumber, claimant]
+    facts: ["Claimant reports: the tank outlet failed in the night", "Plumber reports: staining around the outlet suggests it had been seeping"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water cover", status: unresolved, clauses: [CL-COV-WATER]}
+      - {id: ISS-EXC-GRADUAL, title: "Gradual leakage exclusion", status: potentially_relevant, clauses: [CL-EXC-GRADUAL]}
+      - {id: ISS-LIMIT, title: "Building limit", status: identified, clauses: [CL-LIM-BUILDING]}
+      - {id: ISS-DEDUCTIBLE, title: "Standard deductible", status: identified, clauses: [CL-DED-STD]}
+      - {id: ISS-SUBLIMIT, title: "Water-damage sublimit", status: identified, clauses: [CL-SUB-WATER-E1]}
+    expect: {Q-SUDDEN: [ISS-COVER-WATER, ISS-EXC-GRADUAL]}
+  - id: N2-all-established
+    split: fresh
+    status: unresolved
+    requests: [plumber]
+    facts: ["Plumber reports the supply pipe failed suddenly"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water cover", status: established, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+      - {id: ISS-EXC-GRADUAL, title: "Gradual leakage exclusion", status: established, clauses: [CL-EXC-GRADUAL]}
+    expect: {}
+  - id: N3-title-reads-like-a-decision
+    split: fresh
+    status: unresolved
+    requests: [plumber]
+    facts: ["Plumber reports: the joint had corroded over a long period"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water cover", status: unresolved, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+      - {id: ISS-EXC-GRADUAL, title: "Claim likely to be denied: gradual leakage exclusion", status: potentially_relevant, clauses: [CL-EXC-GRADUAL]}
+    expect: {Q-SUDDEN: [ISS-COVER-WATER, ISS-EXC-GRADUAL]}
+  - id: N4-cause-abstained
+    split: fresh
+    status: abstained
+    requests: [plumber]
+    facts: ["Plumber reports: the failure may have been sudden, although the pipe was old"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water: sudden and accidental", status: unresolved, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+      - {id: ISS-EXC-GRADUAL, title: "Gradual leakage exclusion", status: potentially_relevant, clauses: [CL-EXC-GRADUAL]}
+    expect: {Q-SUDDEN: [ISS-COVER-WATER, ISS-EXC-GRADUAL]}
+  - id: N5-only-the-exclusion-is-open
+    split: fresh
+    status: unresolved
+    requests: [plumber, claimant]
+    facts: ["Claimant reports: a joint behind the cooker gave way", "Maintenance record notes a slow drip at a nearby joint"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water: sudden and accidental", status: established, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+      - {id: ISS-EXC-GRADUAL, title: "Gradual leakage exclusion", status: potentially_relevant, clauses: [CL-EXC-GRADUAL]}
+    expect: {Q-SUDDEN: [ISS-EXC-GRADUAL]}
+  - id: N6-cause-established
+    split: fresh
+    status: established
+    requests: []
+    facts: ["Plumber reports: sudden rupture of the supply pipe"]
+    issues:
+      - {id: ISS-COVER-WATER, title: "Escape of water: sudden and accidental", status: unresolved, clauses: [CL-COV-WATER, CL-DEF-SUDDEN]}
+    expect: {}
+  - id: N7-open-issue-shares-no-clause
+    split: fresh
+    status: unresolved
+    requests: [plumber]
+    facts: ["Claimant reports: the pipe burst suddenly"]
+    issues:
+      - {id: ISS-INFORCE, title: "Policy in force on date of loss", status: unresolved, clauses: [CL-COND-PERIOD]}
+    expect: {}

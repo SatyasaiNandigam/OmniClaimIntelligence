@@ -1,0 +1,38 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "reason_codes": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Reason Codes",
+      "type": "array"
+    },
+    "required_approver_role": {
+      "title": "Required Approver Role",
+      "type": "string"
+    },
+    "rules_version": {
+      "title": "Rules Version",
+      "type": "string"
+    },
+    "tier": {
+      "enum": [
+        "simple",
+        "medium",
+        "complex"
+      ],
+      "title": "Tier",
+      "type": "string"
+    }
+  },
+  "required": [
+    "tier",
+    "reason_codes",
+    "required_approver_role",
+    "rules_version"
+  ],
+  "title": "RoutingDecision",
+  "type": "object"
+}

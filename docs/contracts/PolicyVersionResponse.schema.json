@@ -1,0 +1,178 @@
+{
+  "$defs": {
+    "EndorsementRef": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_from": {
+          "format": "date",
+          "title": "Effective From",
+          "type": "string"
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective To"
+        },
+        "endorsement_id": {
+          "title": "Endorsement Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "endorsement_id",
+        "effective_from"
+      ],
+      "title": "EndorsementRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "as_of": {
+      "format": "date",
+      "title": "As Of",
+      "type": "string"
+    },
+    "base_wording_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Base Wording Id"
+    },
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "effective_from": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective From"
+    },
+    "effective_to": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective To"
+    },
+    "endorsements": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/EndorsementRef"
+      },
+      "title": "Endorsements",
+      "type": "array"
+    },
+    "mock": {
+      "default": true,
+      "title": "Mock",
+      "type": "boolean"
+    },
+    "policy_no": {
+      "title": "Policy No",
+      "type": "string"
+    },
+    "response_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Response Ref"
+    },
+    "retrieved_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retrieved At"
+    },
+    "source_system": {
+      "default": "",
+      "title": "Source System",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "in_force",
+        "lapsed",
+        "cancelled",
+        "reinstated",
+        "not_found"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "status_effective_from": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Status Effective From"
+    },
+    "version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Version"
+    }
+  },
+  "required": [
+    "policy_no",
+    "as_of",
+    "status"
+  ],
+  "title": "PolicyVersionResponse",
+  "type": "object"
+}

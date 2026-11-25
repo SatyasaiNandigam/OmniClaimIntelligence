@@ -1,0 +1,197 @@
+{
+  "documents": [
+    {
+      "document_id": "DOC-S02-1",
+      "claim_id": "CLM-0002",
+      "filename": "fnol.pdf",
+      "sha256": "4cf2a69c72b46a8d0e7542572f6937ac47ae045b023a74de779f7e5cbcb8edfc",
+      "page_count": 1,
+      "detected_type": "fnol",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "claimant",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0002/fnol.pdf"
+    },
+    {
+      "document_id": "DOC-S02-2",
+      "claim_id": "CLM-0002",
+      "filename": "plumber_report.pdf",
+      "sha256": "37019b49a75cf3466d72d510b8c4accc199e3277088237557a8a7661992d9cff",
+      "page_count": 1,
+      "detected_type": "plumber_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "plumber",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0002/plumber_report.pdf"
+    },
+    {
+      "document_id": "DOC-S02-3",
+      "claim_id": "CLM-0002",
+      "filename": "surveyor_report.pdf",
+      "sha256": "330d375abda21cd22e042daad3398d21b5dcb0e5160d5ef49ba1df83b9c97fd7",
+      "page_count": 1,
+      "detected_type": "surveyor_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "surveyor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0002/surveyor_report.pdf"
+    },
+    {
+      "document_id": "DOC-S02-4",
+      "claim_id": "CLM-0002",
+      "filename": "estimate.pdf",
+      "sha256": "921bb6f7225e3c965135f23bd2d413d2aa847d0a2982e702819dafe633ba4dab",
+      "page_count": 1,
+      "detected_type": "estimate",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "contractor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0002/estimate.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-S02-01",
+      "claim_id": "CLM-0002",
+      "proposition": "Reported date of loss is 2 May 2026",
+      "source_document_id": "DOC-S02-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Date of loss: 2 May 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-02",
+      "claim_id": "CLM-0002",
+      "proposition": "Claimant reports the fitting split suddenly",
+      "source_document_id": "DOC-S02-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "the pipe fitting under the kitchen sink split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-03",
+      "claim_id": "CLM-0002",
+      "proposition": "Plumber reports the fitting split suddenly",
+      "source_document_id": "DOC-S02-2",
+      "page": 1,
+      "region": null,
+      "evidence_text": "The pipe fitting split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-04",
+      "claim_id": "CLM-0002",
+      "proposition": "Plumber found no corrosion, prior leakage or staining",
+      "source_document_id": "DOC-S02-2",
+      "page": 1,
+      "region": null,
+      "evidence_text": "No corrosion, prior leakage or staining was observed",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-05",
+      "claim_id": "CLM-0002",
+      "proposition": "Moisture was confined to kitchen floor and lower wall",
+      "source_document_id": "DOC-S02-3",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Moisture was confined to the kitchen floor and the lower kitchen wall",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-EXTENT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-06",
+      "claim_id": "CLM-0002",
+      "proposition": "Surveyor-assessed repair cost is INR 98,000",
+      "source_document_id": "DOC-S02-3",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Assessed repair cost: INR 98,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-07",
+      "claim_id": "CLM-0002",
+      "proposition": "Estimate total reconciles to the surveyor assessment",
+      "source_document_id": "DOC-S02-4",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Total: INR 98,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-08",
+      "claim_id": "CLM-0002",
+      "proposition": "INR 8,000 of the cost is an upgrade not caused by the loss",
+      "source_document_id": "DOC-S02-3",
+      "page": 1,
+      "region": null,
+      "evidence_text": "INR 8,000 is an upgrade not caused by the loss",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "image_findings": []
+}

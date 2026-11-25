@@ -1,0 +1,476 @@
+{
+  "052a9ed53e810f40cdf4f110c9332dd0fb16377bc2337600b8a368f0881d61ea": {
+    "input_tokens": 746,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 471,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D1-claimant-only-cause/f1\"\n      ],\n      \"evidence_quote\": \"Claimant reports: the pipe burst suddenly in the night\",\n      \"rationale\": \"The claimant describes a sudden pipe burst but the criterion specifically asks for a technical statement by a qualified person, which is lacking.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"D1-claimant-only-cause/f1\"\n      ],\n      \"evidence_quote\": \"Claimant reports: the pipe burst suddenly in the night\",\n      \"rationale\": \"The claimant's account indicates the damage began suddenly during the reported loss night, directly addressing timing of onset.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "066db1849333d7fdf0f376b6870abc3dec37585c2b60fb725943078b4a5023f3": {
+    "input_tokens": 750,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 502,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S05-03\",\n        \"F-S05-04\"\n      ],\n      \"evidence_quote\": \"Plumber found no corrosion or prior leakage\",\n      \"rationale\": \"A qualified plumber reported the coupling split suddenly and explicitly found no corrosion or prior leakage, indicating the leak began at the moment of the split.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "0e811a58d931ba2e258eab25555a7901852acf256ed4180e71785af8cd28ccf0": {
+    "input_tokens": 756,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 377,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S02-03\",\n        \"F-S02-04\"\n      ],\n      \"evidence_quote\": \"Plumber reports the fitting split suddenly\",\n      \"rationale\": \"A plumber's report indicates a sudden split and no prior corrosion or staining, which addresses timing but provides no dated technical evidence of when the leak began.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "148595a076e8e523e70cfbcb3684be7932b66b2c9f9b171a99aafbeba556590d": {
+    "input_tokens": 794,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 609,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S02-06\"\n      ],\n      \"evidence_quote\": \"Surveyor-assessed repair cost is INR 98,000\",\n      \"rationale\": \"A qualified surveyor explicitly assessed the repair cost as INR 98,000, directly satisfying the criterion.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S02-07\",\n        \"F-S02-08\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The estimate total is said to reconcile to the surveyor assessment, but an INR 8,000 upgrade not caused by the loss indicates the itemised estimate may include non-scope items.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "1555bdf608b64b9435770419e1ed0784d70f5c8dbd13c4030f981f50357e3f05": {
+    "input_tokens": 734,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 382,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No listed fact provides dated technical evidence or any date indicating when the leak or corrosion began.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N8-start-nothing-relevant/f1\"\n      ],\n      \"evidence_quote\": \"Plumber reports: replaced the joint and tested the supply\",\n      \"rationale\": \"There is a plumber report of work performed (a maintenance/inspection action) but it contains no date, so it does not meet the criterion fully.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "221850d3402026210de28673f080845204cfd2787a1410eaceedb4145e9e6770": {
+    "input_tokens": 782,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 498,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N1-complete-and-clean/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the fitting failed suddenly; a fresh fracture surface and no earlier leakage or corrosion were found\",\n      \"rationale\": \"A technical inspection by a plumber describes a fresh fracture and no prior corrosion, but it is not dated, so it does not provide dated technical evidence of when the leak began.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N1-complete-and-clean/f3\"\n      ],\n      \"evidence_quote\": \"Maintenance record dated 10 January 2026 shows the pipework was inspected and found sound\",\n      \"rationale\": \"There is a dated maintenance/inspection record (10 January 2026) stating the pipework was inspected and found sound.\",\n      \"confidence\": 0.95\n    }\n  ]\n}"
+  },
+  "22e48aaf2fffcc2c841bc370fabdd32a7e68104df48b725c3a5a150c5b10a4e4": {
+    "input_tokens": 697,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 634,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No fact is a surveyor-assessed cost; the facts are claimant estimates only.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D2-estimate-only/f1\",\n        \"D2-estimate-only/f2\"\n      ],\n      \"evidence_quote\": \"Estimate total is INR 90,000\",\n      \"rationale\": \"There is an itemised estimate line and a total, but no reconciliation to a surveyor scope is provided.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "243e163dc41a67b12db3fb0d92cff6fe50fdad944282b35b5bdff792a03f6cc8": {
+    "input_tokens": 760,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 530,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S04-06\"\n      ],\n      \"evidence_quote\": \"Surveyor-assessed repair cost is INR 150,000\",\n      \"rationale\": \"A surveyor explicitly assessed the repair cost and gave a specific figure matching the criterion.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S04-07\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The estimate's total is said to reconcile to the surveyor assessment, but there is no explicit itemised estimate shown reconciling line-by-line to the surveyor scope.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "2e2735d868d785e2344d41e46be12d8887c10637d564883cbaf1031344592653": {
+    "input_tokens": 676,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 306,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No dated technical evidence is provided; the single fact notes corrosion but has no date or technical assessment of when it began.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"There is no dated maintenance or inspection record among the facts; only an observation of corrosion is given.\",\"confidence\":0.9}]}"
+  },
+  "2f8e20e6666139d226041a94ee32bc090e16ca92a0aa69efb67c4e3ecbe7614f": {
+    "input_tokens": 746,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 438,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N3-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall was heavily corroded and the joint had been seeping for a long time\",\n      \"rationale\": \"A plumber's technical observation indicates prolonged leakage but gives no specific start time.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "32f5734b6ff647c29ae71a18cf8f72ea58976fc77f2fd36daa8806873574e4f7": {
+    "input_tokens": 760,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 474,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S05-06\"\n      ],\n      \"evidence_quote\": \"Surveyor-assessed repair cost is INR 110,000\",\n      \"rationale\": \"A surveyor explicitly assessed the repair cost at INR 110,000, satisfying the requirement for a surveyor-assessed figure.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S05-07\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The estimate total reconciles to the surveyor assessment, but the facts do not explicitly show an itemised estimate that reconciles line-by-line to the surveyor scope.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "3ab90b9053382206158fcc798950a9e9b76d98f763cc74153b905548bfb3329a": {
+    "input_tokens": 750,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 635,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No technical statement from a qualified person is provided; only the claimant's account is present.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N2-claimant-only/f1\"\n      ],\n      \"evidence_quote\": \"Claimant reports: the hose came off its fitting with a bang and water went everywhere\",\n      \"rationale\": \"The claimant's account describes a sudden event occurring at the time of loss consistent with water beginning immediately before/report date.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "3c109a97d76913d7e68df58750e50ff8dab9185ef88408ca8623421ea0b7db94": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 552,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S04-03\",\"F-S04-04\"],\"evidence_quote\":\"Plumber reports the hose ruptured suddenly\",\"rationale\":\"A plumber (a qualified person) stated the hose ruptured suddenly and noted no prior leakage or corrosion, providing a technical statement of the failure mechanism.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S04-02\",\"F-S04-03\"],\"evidence_quote\":\"Claimant reports the hose burst suddenly\",\"rationale\":\"Both claimant and plumber describe a sudden rupture, but none of the facts tie that event explicitly to the reported loss date (undated).\",\"confidence\":0.8}]}"
+  },
+  "3d17ae160dca6ea60ce88360c2c0b5db73b8e07193aa7988da1603ffb2c4124e": {
+    "input_tokens": 767,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 331,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"N5-amount-contradicted/f2\"],\"evidence_quote\":\"Surveyor assessed the repair cost at INR 100,000\",\"rationale\":\"A surveyor explicitly assessed the repair cost at INR 100,000, satisfying the requirement for a surveyor-assessed figure.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No itemised estimate or reconciliation to the surveyor's scope is provided, only a total estimate.\",\"confidence\":0.9}]}"
+  },
+  "3eadc42423e6b11e8e77b38ec1c1fa3c381557cb1ab95a9e654a5c8b8b8f6c55": {
+    "input_tokens": 730,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 625,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No technical evidence in the provided facts documents when the leak or corrosion began.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N8-start-nothing-relevant/f1\"\n      ],\n      \"evidence_quote\": \"Plumber reports: replaced the joint and tested the supply\",\n      \"rationale\": \"There is a plumber report of maintenance, but it does not state dates or when the leak began.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "4015ef27123cbdca6679ee20cbc34bd7c9c310de2f527b1993b2f048ea3194c0": {
+    "input_tokens": 673,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 407,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"partly\",\"fact_ids\":[\"F-S02-05\"],\"evidence_quote\":\"Moisture was confined to kitchen floor and lower wall\",\"rationale\":\"The fact identifies affected areas but does not state that this list was confirmed by a surveyor as required by the criterion.\",\"confidence\":0.8},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S02-05\"],\"evidence_quote\":\"Moisture was confined to kitchen floor and lower wall\",\"rationale\":\"The fact names the areas affected by moisture but does not explicitly link each named area to the reported event.\",\"confidence\":0.7}]}"
+  },
+  "43de11dd5157015b5162c912bb5d7ce02fb93bfa71e11e76f66ce4cbda945b95": {
+    "input_tokens": 672,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 465,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"partly\",\"fact_ids\":[\"F-S05-05\"],\"evidence_quote\":\"Moisture was confined to utility room and passage\",\"rationale\":\"The fact names the affected areas but does not explicitly state it is a surveyor-confirmed list as the criterion requires.\",\"confidence\":0.7},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-05\"],\"evidence_quote\":\"Moisture was confined to utility room and passage\",\"rationale\":\"The fact links the specific areas (utility room and passage) directly to the moisture event.\",\"confidence\":0.9}]}"
+  },
+  "455fa0c08f038de6624a3c64c5d929d229308077d810d91ac081646a370e2a31": {
+    "input_tokens": 762,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 470,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N1-complete-and-clean/f5\"\n      ],\n      \"evidence_quote\": \"Surveyor assessed the repair cost at INR 98,000\",\n      \"rationale\": \"A surveyor explicitly assessed the repair cost at INR 98,000, satisfying the requirement for a surveyor-assessed figure.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N1-complete-and-clean/f6\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The estimate is stated to reconcile to the surveyor assessment, meeting the requirement that the estimate aligns with the surveyor scope.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "4565a6389b546916b3569f14678c77b2627073e534a128b322cff9f8171ad7d3": {
+    "input_tokens": 732,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 459,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No technical statement from a qualified person is provided among the facts.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-02\",\"F-S01-03\",\"F-S01-04\"],\"evidence_quote\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"rationale\":\"The claimant's report supports a sudden start but significant corrosion and elevated moisture in multiple areas suggest earlier, gradual onset so the evidence is conflicting.\",\"confidence\":0.75}]}"
+  },
+  "46dedc71eeb1a3a6284a914bed604e3a3a367f3cadc6b57c34c7ca3504dba6a9": {
+    "input_tokens": 746,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 446,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"The criterion requires a technical statement by a qualified person, but only the claimant's report is present.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N7-no-extent-evidence/f2\"\n      ],\n      \"evidence_quote\": \"Claimant reports: the stopcock failed and flooded the cellar\",\n      \"rationale\": \"The claimant's account indicates a sudden failure causing flooding at the time of loss, but there is no independent corroboration or professional assessment.\",\n      \"confidence\": 0.6\n    }\n  ]\n}"
+  },
+  "47609faf6f755c26c6fc92ee3d12333fbe7c5cf290e0838c466f0a5755b4a1f5": {
+    "input_tokens": 688,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 297,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No dated technical evidence is provided; the plumber's statements are undated and do not state when the leak began.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No dated maintenance or inspection record is present among the facts.\",\"confidence\":0.9}]}"
+  },
+  "482881e032be0706914b3f472ed15830250d2e53dde0a40bdab030971164f31e": {
+    "input_tokens": 694,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 460,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S05-06\"\n      ],\n      \"evidence_quote\": \"Surveyor-assessed repair cost is INR 110,000\",\n      \"rationale\": \"A surveyor-assessed repair cost is explicitly provided and matches the criterion wording.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S05-07\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The facts state the estimate total reconciles to the surveyor assessment but do not show an itemised estimate reconciling to the surveyor scope.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "49596fe55d88c24024333fce7baefa405db87aab7094a6ca35470dcdd5bcb783": {
+    "input_tokens": 791,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 482,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S02-03\"],\"evidence_quote\":\"Plumber reports the fitting split suddenly\",\"rationale\":\"A plumber's report constitutes a technical statement by a qualified person that the fitting split suddenly, meeting the criterion.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-S02-02\",\"F-S02-03\",\"F-S02-04\"],\"evidence_quote\":\"Plumber found no corrosion, prior leakage or staining\",\"rationale\":\"Claimant and plumber both report a sudden split and the plumber found no signs of prior leakage, supporting onset at or immediately before the loss date.\",\"confidence\":0.85}]}"
+  },
+  "4bc9c70eb5db0f9e5863ecef75fc5ea98906fa347bc03758f4f9a3e020be090f": {
+    "input_tokens": 755,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 438,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated technical evidence or timestamped assessment is provided about when the leak or corrosion began.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S04-03\",\n        \"F-S04-04\"\n      ],\n      \"evidence_quote\": \"Plumber found no corrosion or prior leakage\",\n      \"rationale\": \"There is a plumber's inspection noting no prior leakage, but no dated maintenance or inspection record is provided.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "550e714f2c9ae5caeb99a6da8304b083b36f5844f95b05d2793033167d12f691": {
+    "input_tokens": 754,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 436,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S05-03\",\n        \"F-S05-04\"\n      ],\n      \"evidence_quote\": \"Plumber found no corrosion or prior leakage\",\n      \"rationale\": \"The plumber's technical observations indicate a sudden split and no prior corrosion but provide no dated evidence of when the leak began.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated maintenance or inspection records are provided among the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "57dfa7343d936fc7dcc8cff5d893b20601ee6ba216a0e43f8384c606c0ca276e": {
+    "input_tokens": 782,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 657,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"D4-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall had been thinned by long-term corrosion\",\n      \"rationale\": \"A plumber (a qualified person) gave a technical statement about the failure mechanism (long-term corrosion of the pipe wall).\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unclear\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No fact explicitly ties the start of damage to the reported loss date; the claimant's statement implies sudden failure but does not explicitly date onset, and the plumber's assessment indicates a gradual process.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "5a85f45671c47647c661fd8b98476ee1dc616b78cc1193a3bfe714846e073cf3": {
+    "input_tokens": 806,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 681,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-03\"\n      ],\n      \"evidence_quote\": \"Significant corrosion was present at the joint of the kitchen supply pipe\",\n      \"rationale\": \"A plumber (qualified) documented significant corrosion at the joint, which is a technical observation relevant to failure mechanism but does not explicitly state the mechanism (sudden vs gradual).\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-02\",\n        \"F-S01-04\"\n      ],\n      \"evidence_quote\": \"Claimant reports the kitchen supply pipe burst suddenly\",\n      \"rationale\": \"The claimant reports a sudden burst at the loss date, but the surveyor found elevated moisture in multiple areas suggesting the damage may have started earlier.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "5a920524a617fd3df86333e3604ad8964bff7936d0ac98dc0a699e0b9be1af37": {
+    "input_tokens": 764,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 409,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"N1-complete-and-clean/f5\"],\"evidence_quote\":\"Surveyor assessed the repair cost at INR 98,000\",\"rationale\":\"A qualified surveyor's assessed repair cost is provided directly and matches the criterion.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"N1-complete-and-clean/f6\"],\"evidence_quote\":\"Estimate total reconciles to the surveyor assessment\",\"rationale\":\"The estimate total is reconciled to the surveyor assessment but no itemised estimate or detailed reconciliation to the surveyor scope is shown.\",\"confidence\":0.8}]}"
+  },
+  "5b0c31cfba5347158c287fb067be0f23cf9866f90701de82790cf3a18f3c627b": {
+    "input_tokens": 752,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 437,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S02-03\",\n        \"F-S02-04\"\n      ],\n      \"evidence_quote\": \"Plumber reports the fitting split suddenly\",\n      \"rationale\": \"A qualified plumber reported a sudden split and found no corrosion or prior leakage, which indicates the leak began at the time of the sudden failure.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "5c12c8334fcff57faec7f0293bd7072e3324f6dd2ff418985fc082ebe98c4d7e": {
+    "input_tokens": 765,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 455,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N5-amount-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Surveyor assessed the repair cost at INR 100,000\",\n      \"rationale\": \"A surveyor-provided repair cost is present and states INR 100,000, satisfying the requirement for a surveyor-assessed amount.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"There is no fact showing the claimant's estimate (INR 140,000) has been reconciled to the surveyor's scope.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "5c3b1ae4c26b2212312d4662d54ccb048f694d639276137a89376d7de483834e": {
+    "input_tokens": 738,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 505,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D4-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall had been thinned by long-term corrosion\",\n      \"rationale\": \"A plumber's technical observation indicates long-term corrosion but does not state when the corrosion or leak began, so it partially addresses timing.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "5cab19bd1b2a25a77ef0a672d4af872860e4328f0821e8ac105048058207902d": {
+    "input_tokens": 807,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 479,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N9-low-contradiction-does-not-block/f1\"\n      ],\n      \"evidence_quote\": \"Surveyor assessed the repair cost at INR 98,000\",\n      \"rationale\": \"A surveyor explicitly assessed the repair cost at INR 98,000, satisfying the requirement for a surveyor-assessed figure.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N9-low-contradiction-does-not-block/f2\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The estimate is stated to reconcile to the surveyor's assessment, indicating alignment between the estimate and the surveyor scope.\",\n      \"confidence\": 0.95\n    }\n  ]\n}"
+  },
+  "5de3173a99fc9780afe163d12d6879d7445358d13a7ccd428b5ca2efb61ff0ef": {
+    "input_tokens": 742,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 386,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The criterion requires a technical statement by a qualified person, and only the claimant's report is present.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"N8-start-nothing-relevant/f2\"],\"evidence_quote\":\"Claimant reports: the pipe burst suddenly\",\"rationale\":\"The claimant's report describes a sudden pipe burst consistent with damage beginning at or immediately before the reported loss date.\",\"confidence\":0.7}]}"
+  },
+  "5fc89a0e71185943d39b967ec14c86714a7f94625863ab75e119973ec209ca4e": {
+    "input_tokens": 731,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 619,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No surveyor-assessed cost is provided; only an estimate total is listed.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N7-no-extent-evidence/f1\"\n      ],\n      \"evidence_quote\": \"Estimate total is INR 56,000\",\n      \"rationale\": \"There is an estimate total but no reconciliation to a surveyor scope is shown.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "612014d7a256669af147ccabebca3ebf2e2dc22d9dc1fca46a52cb27b74a0ca9": {
+    "input_tokens": 731,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 368,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-03\"\n      ],\n      \"evidence_quote\": \"Significant corrosion was present at the joint of the kitchen supply pipe\",\n      \"rationale\": \"A plumber-observed corrosion is technical evidence that damage occurred before inspection but gives no specific timing for when the leak began.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "6230c95b91d99094bc19bb99278ed1599a1a2328ab27c4d596c36c4cc2f43398": {
+    "input_tokens": 678,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 299,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"Only a claimant estimate is present; there is no surveyor-assessed cost as required.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"There is no itemised estimate nor any reconciliation to a surveyor scope in the facts provided.\",\"confidence\":0.9}]}"
+  },
+  "625df7c7c67203a4eba531af777ed62dfb4d7a36fa40839804a0d2ae836d2d07": {
+    "input_tokens": 750,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 381,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N3-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall was heavily corroded and the joint had been seeping for a long time\",\n      \"rationale\": \"A plumber's technical observation indicates long-term seepage but provides no dated evidence of when corrosion or leakage began.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated maintenance or inspection records are provided in the facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "75c9791b39ebefb718a344f229105a429a6d03ced86914d8018e5984dbed6764": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 510,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"D4-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall had been thinned by long-term corrosion\",\n      \"rationale\": \"A plumber (a qualified person) provided a technical explanation that the pipe wall was thinned by long-term corrosion, stating a failure mechanism.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No fact specifies that the damage began at or immediately before the reported loss date.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "7c892136291551227f938b025077b9b5f3a7e242dfe3946b73d7a7162856daf9": {
+    "input_tokens": 795,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 593,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N3-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall was heavily corroded and the joint had been seeping for a long time\",\n      \"rationale\": \"A plumber (a qualified person) gives a technical explanation that corrosion and long-term seeping caused the failure.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unclear\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"The claimant says it failed suddenly at night but the plumber reports long-term seeping, so timing relative to the reported loss date cannot be determined from these conflicting accounts.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "7e77f50d6d4061ebd02cb0dfeb45238b52b988098e9f912266df4893dfa62113": {
+    "input_tokens": 758,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 344,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S04-06\"],\"evidence_quote\":\"Surveyor-assessed repair cost is INR 150,000\",\"rationale\":\"A surveyor explicitly assessed the repair cost as INR 150,000, satisfying the requirement for a surveyor-assessed figure.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-S04-07\"],\"evidence_quote\":\"Estimate total reconciles to the surveyor assessment\",\"rationale\":\"The estimate is stated to reconcile to the surveyor's assessment, showing the estimate aligns with the surveyor scope.\",\"confidence\":0.95}]}"
+  },
+  "8311bc8bc8b2d5611800aa22430098ff7695f6ae0c2f0f09d187557bd8e9ab11": {
+    "input_tokens": 761,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 431,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"partly\",\"fact_ids\":[\"D2-estimate-only/f1\",\"D2-estimate-only/f2\"],\"evidence_quote\":\"Estimate total is INR 90,000\",\"rationale\":\"There is a stated cost estimate and line items, but the figures are not from a surveyor-assessed report so the criterion is not fully met.\",\"confidence\":0.8},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"D2-estimate-only/f2\"],\"evidence_quote\":\"Estimate line 'Pipe replacement' is INR 30,000\",\"rationale\":\"An itemised line is provided, but there is no reconciliation to a surveyor scope or confirmation that the estimate matches a surveyor's findings.\",\"confidence\":0.8}]}"
+  },
+  "85c6b55ae8e4f9c8161158b3a1addb202e581aeae2a571eba26b718c01a6d93f": {
+    "input_tokens": 778,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 433,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"N1-complete-and-clean/f2\"],\"evidence_quote\":\"Plumber reports: the fitting failed suddenly; a fresh fracture surface and no earlier leakage or corrosion were found\",\"rationale\":\"A plumber's technical observation of a fresh fracture surface and absence of earlier leakage directly indicates the failure began suddenly and recently.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"N1-complete-and-clean/f3\"],\"evidence_quote\":\"Maintenance record dated 10 January 2026 shows the pipework was inspected and found sound\",\"rationale\":\"A dated maintenance/inspection record stating the pipework was found sound provides documentary evidence that damage had not begun by that inspection date.\",\"confidence\":0.9}]}"
+  },
+  "86801d21d0cd207afa9f02c921f1a2169349615cbf7bf05a9aa84732d0b21001": {
+    "input_tokens": 671,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 511,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S04-05\"\n      ],\n      \"evidence_quote\": \"Moisture was confined to bathroom and corridor\",\n      \"rationale\": \"The fact names affected areas but does not explicitly state it is a surveyor-confirmed list.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S04-05\"\n      ],\n      \"evidence_quote\": \"Moisture was confined to bathroom and corridor\",\n      \"rationale\": \"The fact directly links the bathroom and corridor to the moisture (the reported event).\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "8693cf38d1f158bb00b8a95e4db98a2accee5913510c82e1a7c263587f78aed8": {
+    "input_tokens": 790,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 418,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S04-03\"],\"evidence_quote\":\"Plumber reports the hose ruptured suddenly\",\"rationale\":\"A plumber (a qualified person) explicitly attributes the failure to a sudden rupture, which is a technical statement of mechanism.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-S04-02\",\"F-S04-03\",\"F-S04-04\"],\"evidence_quote\":\"Plumber found no corrosion or prior leakage\",\"rationale\":\"The claimant and plumber both report a sudden burst and the plumber found no prior leakage or corrosion, supporting that damage began at the reported event.\",\"confidence\":0.9}]}"
+  },
+  "8b940ab98b9df69663e5b1b5ab63d9491df579af9d51411283d5eb071064685e": {
+    "input_tokens": 735,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 373,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-03\"\n      ],\n      \"evidence_quote\": \"Significant corrosion was present at the joint of the kitchen supply pipe\",\n      \"rationale\": \"A plumber-observed technical sign (corrosion) bears on when leakage/corrosion began but the fact provides no date or dated assessment.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated maintenance or inspection record is provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "8bd5222582bb0d4151c9f6f0619b3c656be627d39a9223c64a47f57845b0a4a1": {
+    "input_tokens": 775,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 574,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N6-extent-partly-scoped/f1\"\n      ],\n      \"evidence_quote\": \"Surveyor reports: moisture was found in the utility room, the garage wall and the bedroom above\",\n      \"rationale\": \"A surveyor explicitly reports moisture in a specific list of areas, satisfying a surveyor-confirmed listing.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N6-extent-partly-scoped/f1\",\n        \"N6-extent-partly-scoped/f2\"\n      ],\n      \"evidence_quote\": \"Surveyor reports: moisture was found in the utility room, the garage wall and the bedroom above\",\n      \"rationale\": \"The surveyor lists affected areas but there is ambiguity/contradiction about scope (estimate says only utility room), so not all areas are clearly linked to the reported event.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "8c7d12a82c3ad3d8318c989821c8806a8d55d1fe741270d6ebd3a5c48429f851": {
+    "input_tokens": 792,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 560,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S02-06\"\n      ],\n      \"evidence_quote\": \"Surveyor-assessed repair cost is INR 98,000\",\n      \"rationale\": \"The surveyor report explicitly states the assessed repair cost as INR 98,000, satisfying the requirement for a surveyor-assessed cost.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S02-07\",\n        \"F-S02-08\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"While the estimate total is said to reconcile to the surveyor assessment, the estimate includes INR 8,000 of an upgrade not caused by the loss, so it does not fully reconcile to the loss-only surveyor scope.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "8f114604198ad148337c14cd9128a0714b9bb7235da48f77150cad789654563b": {
+    "input_tokens": 734,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 567,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"Only the claimant's estimate is present; there is no surveyor-assessed cost in the facts.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D3-no-extent-evidence/f1\"\n      ],\n      \"evidence_quote\": \"Claimant estimates the loss at INR 70,000\",\n      \"rationale\": \"There is an estimate from the claimant but no surveyor scope or reconciliation to a surveyor's findings.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "91c7bfcbc4d69d4a2465a96a893cad2fd78435ea25df0338505819b6b4e04701": {
+    "input_tokens": 689,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 282,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated technical evidence is provided; the plumber's observations are not a dated technical record showing when the leak or corrosion began.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"There are no dated maintenance or inspection records among the provided facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "95f02e9d12c21c146a34e050b242eb0ea104cb6ed95a03e1e71174baae2d961e": {
+    "input_tokens": 809,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 434,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N9-low-contradiction-does-not-block/f1\"\n      ],\n      \"evidence_quote\": \"Surveyor assessed the repair cost at INR 98,000\",\n      \"rationale\": \"A surveyor explicitly assessed the repair cost at INR 98,000, satisfying the requirement for a surveyor-assessed figure.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N9-low-contradiction-does-not-block/f2\",\n        \"N9-low-contradiction-does-not-block/f1\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The estimate total reconciles to the surveyor assessment, but no itemised estimate showing reconciliation to the surveyor scope is provided.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "9621b47fed5e6547f0f4b81586b58dc07901525068765db90b5c29075082d3fe": {
+    "input_tokens": 758,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 409,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-06\"],\"evidence_quote\":\"Surveyor-assessed repair cost is INR 110,000\",\"rationale\":\"A surveyor explicitly assessed the repair cost as INR 110,000, satisfying the requirement for a surveyor-assessed figure.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-07\"],\"evidence_quote\":\"Estimate total reconciles to the surveyor assessment\",\"rationale\":\"The provided estimate is stated to reconcile to the surveyor's assessment, showing the estimate aligns with the surveyor scope.\",\"confidence\":0.95}]}"
+  },
+  "9cf8d576eaf5dc7e3de76889e702b107d1397ad2443ed03eecc9db39159d2d61": {
+    "input_tokens": 690,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 472,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-05\"\n      ],\n      \"evidence_quote\": \"Contractor estimate total is INR 180,000\",\n      \"rationale\": \"The only cost figure is a contractor estimate, not a surveyor-assessed amount, so the criterion is addressed but not satisfied.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-05\",\n        \"F-S01-06\"\n      ],\n      \"evidence_quote\": \"Estimate scope covers only the kitchen and hallway\",\n      \"rationale\": \"There is a scope statement and a total, but no itemised estimate that reconciles line-by-line to a surveyor scope.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "9d7ee1fc6669d4488ba63a064d2f9805a095567bcedb168fdbfe314aa4f4ac4a": {
+    "input_tokens": 694,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 462,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S04-06\"\n      ],\n      \"evidence_quote\": \"Surveyor-assessed repair cost is INR 150,000\",\n      \"rationale\": \"A surveyor-assessed repair cost is explicitly given and matches the criterion's requirement.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S04-07\"\n      ],\n      \"evidence_quote\": \"Estimate total reconciles to the surveyor assessment\",\n      \"rationale\": \"The facts state the estimate total reconciles to the surveyor assessment but do not confirm an itemised estimate or reconciliation to the surveyor's detailed scope.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "9d9238ceb419a549ee08d6c480ede59c8a2523d9c380773a65f786c84c63f46f": {
+    "input_tokens": 733,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 418,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S02-05\"],\"evidence_quote\":\"Moisture was confined to kitchen floor and lower wall\",\"rationale\":\"A surveyor report explicitly states which areas had moisture, satisfying a surveyor-confirmed list of affected areas.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S02-05\"],\"evidence_quote\":\"Moisture was confined to kitchen floor and lower wall\",\"rationale\":\"The surveyor identifies the affected areas but does not explicitly state these areas are linked to the reported event, so the connection is addressed but not fully established in the facts provided.\",\"confidence\":0.8}]}"
+  },
+  "9fda5533372faafc5d85dc66045c402f486f67e980788ea34133e22807534ad9": {
+    "input_tokens": 690,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 367,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"There is no dated technical statement indicating when the leak or corrosion began; the plumber's observations are undated and do not give a start date.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No dated maintenance or inspection record is provided among the facts.\",\"confidence\":0.9}]}"
+  },
+  "a4fad5eadb5ccb59fd6bee1b0d9053ce7ac28c9fc3bbdbf928bcf2dbbfe3c188": {
+    "input_tokens": 742,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 374,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D4-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall had been thinned by long-term corrosion\",\n      \"rationale\": \"A plumber's technical observation indicates long-term corrosion but provides no dated evidence of when the corrosion or leak began.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated maintenance or inspection record is provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "a5e1c97d4edde98710ab84880b6cd77e2defaa52b53b1fbc5bd80e8309021c18": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 630,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"partly\",\"fact_ids\":[\"F-S02-03\",\"F-S02-04\"],\"evidence_quote\":\"Plumber reports the fitting split suddenly\",\"rationale\":\"A plumber's report addresses cause but is not presented as a technical failure-mechanism statement by a clearly identified qualified expert, though lack of corrosion supports sudden failure.\",\"confidence\":0.7},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S02-02\",\"F-S02-03\",\"F-S02-04\"],\"evidence_quote\":\"Plumber found no corrosion, prior leakage or staining\",\"rationale\":\"Reports that the fitting split suddenly and no prior leakage suggest the damage began at discovery, but no explicit dated linkage to the reported loss date is provided.\",\"confidence\":0.7}]}"
+  },
+  "a6989ffd07e55b1cfdc81bec5000bce8abb7beb798decc5670a027da8f78aecc": {
+    "input_tokens": 736,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 348,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"The only available figure is the claimant's estimate; there is no surveyor-assessed cost provided.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No itemised estimate or reconciliation to a surveyor scope is provided, only a single claimant total.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "a87c73abc9d62b1d1a6c06e0471e362a07f204fdc500f4d03697f5345da17bb9": {
+    "input_tokens": 800,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 417,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"There is no surveyor-assessed cost provided; only claimant estimate lines and totals are listed.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"N4-estimate-without-assessment/f1\",\"N4-estimate-without-assessment/f2\",\"N4-estimate-without-assessment/f3\"],\"evidence_quote\":\"Estimate total is INR 112,000\",\"rationale\":\"An estimate (total and line items) is present but there is no surveyor scope or reconciliation showing the estimate aligns with a surveyor's scope.\",\"confidence\":0.8}]}"
+  },
+  "a887ab83cd1dee4d9f6eb584153683fe1f2fc507e924b455544ae87b244ac491": {
+    "input_tokens": 749,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 432,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"N1-complete-and-clean/f4\"],\"evidence_quote\":\"Surveyor reports: moisture is confined to the kitchen floor and the lower wall; all of it is consistent with the reported burst\",\"rationale\":\"A surveyor explicitly identifies the affected areas as the kitchen floor and lower wall.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"N1-complete-and-clean/f4\"],\"evidence_quote\":\"Surveyor reports: moisture is confined to the kitchen floor and the lower wall; all of it is consistent with the reported burst\",\"rationale\":\"The surveyor states the moisture in those areas is consistent with the reported burst, linking them to the event.\",\"confidence\":0.95}]}"
+  },
+  "a9fbc15478451e84abc6aed2b014f410d1c8188fbe9d59650cae971368f598ab": {
+    "input_tokens": 684,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 567,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D4-cause-contradicted/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the pipe wall had been thinned by long-term corrosion\",\n      \"rationale\": \"A plumber's technical observation indicates long-term corrosion but there is no dated evidence specifying when the corrosion or leak began.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No dated maintenance or inspection record is provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "af91252cf13662e4396ee8171eb00e57399d8a14a04e970be2271626540cdfdc": {
+    "input_tokens": 731,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 376,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No surveyor-assessed cost or any surveyor figure is provided in the listed facts.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N6-extent-partly-scoped/f2\"\n      ],\n      \"evidence_quote\": \"Estimate scope covers only the utility room\",\n      \"rationale\": \"The fact indicates the estimate's scope but does not show reconciliation to a surveyor's scope or that the full survey scope is matched.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "b6b01e4e0a65f578db99aff0e5aacc6e0b9c61f7ab2e0ba21af36307bd808d5e": {
+    "input_tokens": 731,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 392,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S04-05\"\n      ],\n      \"evidence_quote\": \"Moisture was confined to bathroom and corridor\",\n      \"rationale\": \"A surveyor report explicitly states which areas had moisture, providing a surveyor-confirmed list of affected areas.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S04-05\"\n      ],\n      \"evidence_quote\": \"Moisture was confined to bathroom and corridor\",\n      \"rationale\": \"The surveyor confirms moisture in those areas but does not explicitly state those areas are linked to the reported event itself.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "b71b31311115a93e5bf5bbe3cb2e4c949924bb5e2048202ca061637f65d0958f": {
+    "input_tokens": 733,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 441,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N7-no-extent-evidence/f1\"\n      ],\n      \"evidence_quote\": \"Estimate total is INR 56,000\",\n      \"rationale\": \"A numeric repair total is provided but it is not identified as a surveyor-assessed figure, so the source requirement is not satisfied.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"Only a single total is given with no itemised estimate or reconciliation to a surveyor scope.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "b8eb2fb58e32437075a59df424e996d291450ee7a60d162b0d2dcb0b502aaf03": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 480,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-03\"],\"evidence_quote\":\"Plumber reports the coupling split suddenly\",\"rationale\":\"A plumber (a qualified tradesperson) provided a direct technical statement that the coupling split suddenly, describing the failure mechanism.\",\"confidence\":0.8},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S05-02\",\"F-S05-03\",\"F-S05-04\"],\"evidence_quote\":\"Claimant reports the coupling split suddenly\",\"rationale\":\"Multiple sources describe a sudden split and no prior leakage, but no dated record explicitly ties the start of damage to the reported loss date.\",\"confidence\":0.8}]}"
+  },
+  "ba49e41295c62db60e2fdeb130bf66dee961d666537bdd075f59e9e98249446f": {
+    "input_tokens": 752,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 395,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No surveyor-assessed repair cost is provided in the listed facts, only a contractor estimate.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-05\",\"F-S01-06\"],\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The facts show the contractor estimate amount and that its scope is limited to kitchen and hallway, but do not show reconciliation to any surveyor scope.\",\"confidence\":0.8}]}"
+  },
+  "bfb8e95a0d98cdfb662054bf93de43df4866f7fb65cc2a072ac007b0edd92080": {
+    "input_tokens": 754,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 545,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-05\"],\"evidence_quote\":\"Contractor estimate total is INR 180,000\",\"rationale\":\"A cost figure is provided but it is a contractor estimate, not a surveyor-assessed amount required by the criterion.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-06\",\"F-S01-05\"],\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The facts show a limited scope and a total cost but no itemised estimate reconciling line-by-line to a surveyor scope is provided.\",\"confidence\":0.8}]}"
+  },
+  "ca03f5f424b6b213225d5fd177aadc5a990beee9f759aea80e1370da79ba00af": {
+    "input_tokens": 759,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 376,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The criterion requests a surveyor-assessed cost but the facts only state an estimate from an unknown source, not a surveyor assessment.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"There is no surveyor scope provided to reconcile the estimate against; only estimate line items and a total are given.\",\"confidence\":0.9}]}"
+  },
+  "cc243e12207bbfde95dea2ac841263dcc1c25294ecf659ac6f0652b3fabc3517": {
+    "input_tokens": 832,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 531,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N1-complete-and-clean/f2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: the fitting failed suddenly; a fresh fracture surface and no earlier leakage or corrosion were found\",\n      \"rationale\": \"A plumber provided a technical assessment describing a sudden fitting failure with a fresh fracture and no prior leakage, which satisfies the requirement for a qualified person's statement of mechanism.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"N1-complete-and-clean/f1\",\n        \"N1-complete-and-clean/f2\",\n        \"N1-complete-and-clean/f4\"\n      ],\n      \"evidence_quote\": \"Claimant reports: the supply pipe split suddenly while we were cooking\",\n      \"rationale\": \"The claimant's timing, the plumber's finding of a fresh fracture with no prior leakage, and the surveyor's confinement of moisture consistent with the reported burst together indicate the damage began at or immediately before the reported loss date.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "ceadcb5edf894b00fdd08d9fb127694108469403b026e3830b80aaf7d00c1318": {
+    "input_tokens": 720,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 428,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S02-06\"],\"evidence_quote\":\"Surveyor-assessed repair cost is INR 98,000\",\"rationale\":\"A surveyor-assessed repair cost is explicitly given as INR 98,000, satisfying the requirement for a surveyor-assessed figure.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S02-07\",\"F-S02-08\"],\"evidence_quote\":\"Estimate total reconciles to the surveyor assessment\",\"rationale\":\"The estimate total reconciles to the surveyor assessment, but itemisation and exclusion of the INR 8,000 upgrade from the loss-related scope are not fully documented.\",\"confidence\":0.8}]}"
+  },
+  "d36c6107e29971544a825e1a4876deecd1d76486869cb996500e474f66cc1cbb": {
+    "input_tokens": 688,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 601,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D1-claimant-only-cause/f1\"\n      ],\n      \"evidence_quote\": \"Claimant reports: the pipe burst suddenly in the night\",\n      \"rationale\": \"The claimant describes a sudden burst but the statement is not from a qualified person as requested.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"D1-claimant-only-cause/f1\"\n      ],\n      \"evidence_quote\": \"Claimant reports: the pipe burst suddenly in the night\",\n      \"rationale\": \"The claimant's report gives timing ('in the night') consistent with a sudden start, but there is no dated linkage to the reported loss date.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "dbfe22f5dfa67be6d40dcf11c2e4140e467e8970f8df32bf76d8e1a604089355": {
+    "input_tokens": 696,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 446,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S01-04\"],\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"A surveyor report explicitly lists the affected areas (kitchen, hallway, adjoining bedroom wall).\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"None of the provided facts explicitly link the listed affected areas to the reported event.\",\"confidence\":0.9}]}"
+  },
+  "dcfb55f3bffe4f3c4f05f0ef7efa7a9667bb8dfb8b2a40833689f5c2dd79203d": {
+    "input_tokens": 733,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 458,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No fact provides a surveyor-assessed cost figure or equivalent assessment of repair cost.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"N6-extent-partly-scoped/f2\"],\"evidence_quote\":\"Estimate scope covers only the utility room\",\"rationale\":\"The single fact shows an estimate scope but it only covers the utility room and does not provide a full itemised estimate reconciling to the surveyor scope.\",\"confidence\":0.9}]}"
+  },
+  "ddd6056067257279f971570fc3728d18a38d185e38fb06d1446b3d11621dee11": {
+    "input_tokens": 732,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 463,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S05-05\"\n      ],\n      \"evidence_quote\": \"Moisture was confined to utility room and passage\",\n      \"rationale\": \"A surveyor report explicitly lists the affected areas (utility room and passage), satisfying a surveyor-confirmed list.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S05-05\"\n      ],\n      \"evidence_quote\": \"Moisture was confined to utility room and passage\",\n      \"rationale\": \"The surveyor identifies the affected areas but does not explicitly link each area to the reported event, so the connection is not fully established.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "e5f4778adc2a46d59d278323fc6116450652ff6c7f61b6736fa9555ec608ddbb": {
+    "input_tokens": 751,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 528,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S04-03\",\n        \"F-S04-04\"\n      ],\n      \"evidence_quote\": \"Plumber reports the hose ruptured suddenly\",\n      \"rationale\": \"A qualified plumber observed a sudden hose rupture and found no prior corrosion or leakage, providing technical evidence that the damage began at the rupture.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S04-04\"\n      ],\n      \"evidence_quote\": \"Plumber found no corrosion or prior leakage\",\n      \"rationale\": \"The plumber's inspection notes address prior leakage but do not constitute a formal maintenance or ongoing inspection record.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "e8bd628fc64f0d118886e9123c1df4d0c6c97cb7f292915fa6e3383b317927a4": {
+    "input_tokens": 789,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 555,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-03\",\"F-S05-04\"],\"evidence_quote\":\"Plumber reports the coupling split suddenly\",\"rationale\":\"A licensed plumber provided a direct technical statement that the coupling split suddenly and found no corrosion or prior leakage, which supports a sudden failure mechanism.\",\"confidence\":0. nine},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-02\",\"F-S05-04\"],\"evidence_quote\":\"Claimant reports the coupling split suddenly\",\"rationale\":\"The claimant reported the coupling split suddenly at the time of loss and the plumber found no evidence of prior leakage, supporting that damage began at or immediately before the reported loss date.\",\"confidence\":0.85}]}"
+  },
+  "f8c1e216cc5881f9bc6517614a9e451fb11ffe6c4eada755294a32b2a31657b4": {
+    "input_tokens": 802,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 658,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N4-estimate-without-assessment/f1\",\n        \"N4-estimate-without-assessment/f2\",\n        \"N4-estimate-without-assessment/f3\"\n      ],\n      \"evidence_quote\": \"Estimate total is INR 112,000\",\n      \"rationale\": \"An overall and itemised cost are provided but the figures come from an estimate document, not a surveyor-assessed figure as required.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"N4-estimate-without-assessment/f1\",\n        \"N4-estimate-without-assessment/f2\",\n        \"N4-estimate-without-assessment/f3\"\n      ],\n      \"evidence_quote\": \"Estimate total is INR 112,000\",\n      \"rationale\": \"There is an itemised estimate whose lines sum to the stated total, but no surveyor scope is provided to confirm reconciliation to a surveyor's scope.\",\n      \"confidence\": 0.85\n    }\n  ]\n}"
+  },
+  "fe0fe4e56a2d638d8756a2a53ea872432a483b9050c3f325609fe753fd02fd9b": {
+    "input_tokens": 1039,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 296,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-03\",\"F-S05-04\"],\"evidence_quote\":\"Plumber reports the coupling split suddenly\",\"rationale\":\"A plumber provided a technical statement that the coupling split suddenly and found no corrosion or prior leakage, supporting a sudden failure mechanism.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-S05-02\",\"F-S05-04\"],\"evidence_quote\":\"Claimant reports the coupling split suddenly\",\"rationale\":\"The claimant reported the coupling split suddenly at the time of loss and the plumber found no evidence of prior leakage, indicating the damage began at or immediately before the reported loss date.\",\"confidence\":0.8}]}"
+  },
+  "fe3168104f3c6376e672364668abafba921d51ff5896e09ff0a142ec7b9031f1": {
+    "input_tokens": 762,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 480,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S01-04\"\n      ],\n      \"evidence_quote\": \"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\n      \"rationale\": \"A surveyor report explicitly identifies the kitchen, hallway, and adjoining bedroom wall as areas with elevated moisture.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-04\",\n        \"F-S01-06\"\n      ],\n      \"evidence_quote\": \"Estimate scope covers only the kitchen and hallway\",\n      \"rationale\": \"The surveyor links moisture to three areas but the estimate ties the scope only to the kitchen and hallway, leaving the bedroom-wall linkage to the reported event unconfirmed in the estimate.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  }
+}

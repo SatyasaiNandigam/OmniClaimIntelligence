@@ -1,0 +1,126 @@
+# Assumptions, SAMPLE values and open questions
+
+> **SAMPLE - not insurer policy.** Every number, threshold, step order and role below is a placeholder so the prototype can run.
+> Nothing here may be presented as a real insurer's rule. Each SAMPLE number carries an inline `# SAMPLE` comment in its file
+> (enforced by `tests/unit/test_routing_rules_sample.py`). Guardrail 11: no invented thresholds or benefit percentages.
+
+## 1. Standing assumptions (shown to reviewers)
+
+| # | Assumption | Where it matters |
+|---|---|---|
+| A1 | PA = PAS = Policy Administration System (not pre-authorisation). Mock PAS, read-only. | `integrations/mock/pas_mock.py`, T3.3 |
+| A2 | "Recon" = claims-payment reconciliation. Scope is unconfirmed; the mock is labelled MOCK on screen. | T6.5, demo step 10 |
+| A3 | Line of business = property, water damage. One pack (`packs/property_water_damage`). | scope decision, BUILD_PLAN §2 |
+| A4 | Currency INR, whole rupees (half-up rounding). | `settlement_v1.yaml` |
+| A5 | Regulatory reference = India (IRDAI); figures must be re-verified before any are cited. | BUILD_PLAN §17 #9 |
+| A6 | A human approves every payment, denial and adverse coverage decision; the system only recommends. | `configs/autonomy_matrix.yaml` |
+| A7 | All data is synthetic (`data/`), all documents carry a SYNTHETIC banner. | `data/README.md` |
+
+## 2. Routing rules (`configs/routing_rules.yaml`, `rules_version: sample-2`)
+
+**How it decides.** First matching stage wins, and the `code`s of the conditions that matched are the reason codes:
+mandatory referral → complex escalation triggers → simple (all conditions) → medium (any condition) → default complex.
+Extraction confidence is not a feature and the loader rejects it. Features and allowed values are declared in the file; a typo fails at startup.
+
+| Stage | Result | Conditions (reason code) |
+|---|---|---|
+| 1 Mandatory referral | complex | `POLICY_NOT_IN_FORCE`, `POLICY_MISMATCH`, `DUPLICATE_MULTIPLE_LINKED`, `SPECIALIST_REQUIRED` |
+| 2 Complex triggers | complex | `CONTRADICTION_HIGH`, `EVIDENCE_GAP_MATERIAL`, `COVERAGE_UNRESOLVED`, `EXPOSURE_HIGH` (> INR 500,000 SAMPLE) |
+| 3 Simple (all) | simple | `POLICY_EXACT`, `EVIDENCE_COMPLETE`, `NO_CONTRADICTION`, `DUPLICATE_CLEAR`, `COVERAGE_RESOLVED`, `EXPOSURE_WITHIN_FRONTLINE` (≤ INR 100,000 SAMPLE) |
+| 4 Medium (any) | medium | `POLICY_ENDORSEMENT_MISSING`, `EVIDENCE_MINOR_GAP`, `CONTRADICTION_MINOR`, `DUPLICATE_NEEDS_CONFIRMATION`, `EXPOSURE_MEDIUM_BAND` (INR 100,001-500,000 SAMPLE) |
+| 5 Default | complex | `DEFAULT_COMPLEX` (not yet emitted by config; the evaluator in T5.6 adds it) |
+
+Approver roles (SAMPLE): simple/medium → `adjuster`, complex → `senior_adjuster`.
+
+Result on the five labelled scenarios (proved by `test_routing_rules_sample.py`):
+
+| Scenario | Tier | Reason codes |
+|---|---|---|
+| S-01 running example | complex | `CONTRADICTION_HIGH`, `EVIDENCE_GAP_MATERIAL`, `COVERAGE_UNRESOLVED` |
+| S-02 clean | simple | all six simple codes |
+| S-03 lapsed policy | complex | `POLICY_NOT_IN_FORCE` |
+| S-04 endorsements | medium | `EXPOSURE_MEDIUM_BAND` |
+| S-05 missing endorsement | medium | `POLICY_ENDORSEMENT_MISSING`, `EVIDENCE_MINOR_GAP`, `EXPOSURE_MEDIUM_BAND` |
+
+*Change history:* sample-1 routed S-01 to medium because the exposure band alone matched and a high contradiction was not an escalation trigger; sample-2 fixes that.
+
+## 3. Settlement formula (`packs/property_water_damage/calculation/settlement_v1.yaml`, `sample-1.0`)
+
+`assessed loss − non-covered items − deductible → cap at water sublimit (if any) → cap at remaining limit → − prior payments → floor at 0`, whole rupees, half-up.
+The order is configuration, not code. The concept document and the guidelines PDF use different orders (see Q-S1); both are shipped: `settlement_v1.yaml` (PDF order) and `settlement_v2_concept.yaml` (`min(eligible loss, limit) − deductible − adjustments`). For 200,000 / 15,000 / 10,000 / limit 150,000 they give 150,000 and 140,000.
+The LLM only extracts and classifies inputs; the engine computes (guardrail 1).
+
+**S-05 (sublimit referenced but wording missing):** `water_damage_sublimit` is `optional: true` ("skip when absent"). To stop the engine silently ignoring a sublimit
+that applies but is unknown, the Settlement agent (T5.5) must list it in `SettlementInputs.unavailable_inputs`; the engine then returns `cannot_calculate`
+with that input as missing even though the step is optional (implemented and tested in T5.3; see Q-S4 for the business question).
+
+**Rule-file invariants** (enforced at startup by `core.config.CalculationRules`): first step is the only `set`; each input is used by one step only (no repeated
+deduction); the last step is a floor at 0 (payable never negative); a non-optional cap on `remaining_policy_limit` exists (payable never exceeds it);
+input names must be real `SettlementInputs` fields. The engine rounds once, at the end, half-up, and records it as a final `rounding` trace step.
+
+## 4. Inventory of SAMPLE numbers
+
+| Value | File | Meaning |
+|---|---|---|
+| 100000 | `routing_rules.yaml` | Front-line authority ceiling (simple tier) |
+| 100000 – 500000 | `routing_rules.yaml` | Medium exposure band |
+| 500000 | `routing_rules.yaml` | Exposure above which a claim is always complex |
+| `places: 0` | `settlement_v1.yaml` | Rounding to whole rupees |
+| `value: 0` | `settlement_v1.yaml` | Payable floor |
+| `min_citation_count: 1` | `configs/app.yaml` | Citations needed before the system may assert a clause |
+| classifier weights, min score/margin, phrase counts, confidence caps | `packs/*/document_types.yaml` | Document-type classifier thresholds, tuned on the labelled set (`evals/baselines/`) |
+| extractor confidences, low-confidence line, wrap geometry, table tolerance | `packs/*/document_types.yaml` | Field/table extractor parameters, tuned on the labelled sets (`evals/baselines/`) |
+| INR 100,000 / 200,000, 30 days, INR 25,000 | `data/synthetic/policies/corpus.yaml` | Endorsement sublimits, unoccupancy period, water deductible |
+| Building limit INR 2,000,000, deductible INR 10,000 | `data/scenarios/scenarios.yaml` | Synthetic policy schedule values |
+
+## 5. Questions for a claims domain expert
+
+Answer these before any value leaves SAMPLE status. Priority: **P1** blocks a credible demo, **P2** blocks a pilot.
+
+**Routing and authority**
+- **Q-R1 (P1)** What are the real approval tiers and monetary authority limits per role? Is exposure measured on the claimed amount, the assessed loss, or the payable?
+- **Q-R2 (P1)** Which situations are *mandatory referrals* regardless of amount (coverage dispute, suspected misrepresentation, litigation, vulnerable customer, ...)?
+- **Q-R3 (P2)** Should a medium-severity contradiction be a complex trigger instead of medium? Is "major evidence gap" a trigger or just a delay?
+- **Q-R4 (P2)** Do second approvals (four-eyes) apply above a threshold, and who may approve their own team's claims?
+
+**Settlement**
+- **Q-S1 (P1)** Is the deductible applied before or after the limit/sublimit cap? (Concept doc: `min(eligible loss, limit) − deductible − adjustments`; guidelines: `(loss − non-covered − deductible)` then cap.)
+- **Q-S2 (P1)** Does the sublimit count towards, or sit in addition to, the building limit? (END-01 wording says "part of, not in addition to".)
+- **Q-S3 (P2)** Depreciation / betterment / under-insurance (average) clauses: which apply to water damage and in what order? Are VAT/GST and professional fees payable?
+- **Q-S4 (P1)** If an endorsement referenced in the schedule cannot be found, should settlement be blocked entirely, or can an indicative reserve be shown?
+- **Q-S5 (P2)** Rounding rule and currency handling for payments (whole rupees? paise?).
+
+**Policy and evidence**
+- **Q-P1 (P1)** When two endorsements conflict, is "later effective date prevails" the standard rule, or does specificity win? (The synthetic wording states the former.)
+- **Q-P2 (P1)** What evidence does an adjuster accept to establish "sudden vs gradual" and the start date of a leak? Is a plumber's statement enough, or is an independent expert required?
+- **Q-P3 (P2)** How should "resulting damage" exceptions to a gradual-leakage exclusion be handled (BASE-HOME-2 clause C2)? Is escalation always required?
+- **Q-P4 (P2)** Are the minimum-evidence requests we generate (see S-01 ground truth) what an adjuster would actually send? Anything missing or unnecessary?
+- **Q-P5 (P1)** Policy clauses whose wording the rules do not recognise are typed by a language model (`llm_typing.enabled: true`, decided 2026-11-25) and enter the snapshot flagged `REVIEW`. Who confirms those types, when, and may coverage or settlement rely on an unconfirmed one? Measured on an unseen document: all 9 genuine clauses typed correctly, but 1 of 6 clauses that are none of the seven types (joint holders) was wrongly typed `condition`; the model's confidence does not separate right from wrong. Until a review step exists, a reader must treat every `REVIEW` clause as a proposal, and every `NOT IN THIS SNAPSHOT` clause as unknown.
+- **Q-P6 (P1)** The open-question register has six standard questions (floor, always asked) plus claim-specific questions a model may add (`model_questions.enabled: true`, decided 2026-11-25). Each added question must cite real clauses/facts, quote them verbatim, and pass a second model look for repeats of a standard question. Measured: on 5 dev cases 3/3 needed questions raised, 0 spurious; on 7 unseen cases 3/4 needed raised, and 2 of 3 "nothing needed" claims got a generic "is it a fixed part of the building" question nothing in the facts called for. Who reviews a model-added question before it triggers an evidence request to a claimant or third party (T4.5), and is an unnecessary request acceptable at this rate? Until a review step exists, treat `origin == "model"` questions as proposals. The model also over-uses the category `coverage_condition`.
+- **Q-P7 (P2)** The ground-truth question-to-clause links are inconsistent: Q-SUDDEN links the gradual-leakage exclusion in S-01 but not in S-02/S-04/S-05, and S-04's Q-SUBLIMIT lists END-02 although it is not in that snapshot. The register links the exclusion for Q-SUDDEN in every scenario (the concept document says it should be linked), so it differs from the labels in S-02, S-04 and S-05. Confirm which is intended.
+- **Q-P8 (P1)** Fact-to-question links: the fact templates' tags are the floor and a model (`fact_links.enabled: true`, decided 2026-11-25) judges each link's direction (supporting = consistent with the claim as presented, contradicting = points away, neutral), may add links the tags missed, and may drop a wrong tag. Measured on 6 unseen cases: link recall 94% (tags alone 69%), direction 88% (tags alone, all neutral, 48%), no contradicting link read as supporting. Weakness: link precision stays 81%, because the model never dropped a wrong tag (it says neutral instead), so a few irrelevant links remain. Is "direction relative to the claim as presented" the convention your adjusters use, and is a neutral irrelevant link acceptable? Dev labels give one direction per fact, a coarser label than per-link, so dev accuracy (88%) is a rough guide.
+- **Q-P9 (P1)** Contradictions: dates and amounts are compared by rules (a differing date of loss; an invoice, surveyor visit or plumber inspection dated before the loss; claimed / estimated / invoiced vs assessed amounts, with severity from the size of the gap), and narrative conflicts (cause, extent, timing) are proposed by a model and checked (two cited sides, verbatim quotes). Measured: all 5 dev and 8 unseen labelled contradictions found, no false alarm in 11 unseen claims, including lookalikes (consistent accounts, a hedge, close amounts). Small sample (16 cases, one labeller); a real file will have subtler conflicts. Open: (a) the gap bands (10 / 25 / 50 %; 5 / 15 / 30 % for invoice vs estimate) are SAMPLE: what gap does an adjuster treat as a dispute? (b) Is an estimate that leaves out damaged rooms a contradiction or only an incomplete scope? It is treated as a gap (T4.4), not a contradiction. (c) Is a plumber inspection dated before the reported loss a contradiction, or evidence of an earlier leak? It is raised on Q-START as medium. (d) The rules read the wording of the fact templates; a fact worded differently is not compared.
+- **Q-P10 (P1) DECIDED 2026-11-25: relax the criteria.** Sufficiency: for each open question the classifier judges every establishing criterion (policy criteria from the snapshot, fact criteria by a model that must cite and quote the facts and may say `unclear`), then a decision table in `question_templates.yaml` gives the status and gap type (contradictory / missing / insufficient). Q-START's two criteria are alternatives (BUILD_PLAN: technical evidence or a maintenance / inspection record); the others need every criterion. The criteria first read as worded were stricter than the labelled scenarios, so "dated" and "itemised" were dropped ("Technical evidence of when the leak or corrosion began", "Maintenance or inspection record", "Estimate reconciling to the surveyor scope"); the ground truth and fixtures were updated to match. Measured on 15 unseen questions: status 73% -> 87%, gap type 80% -> 93%, never established when it is not. Still open: is a claimant's own account enough to meet "evidence that the damage began at the reported loss date" (the model says yes: partially_established, not possible)? And with "dated" gone, does an undated plumber finding really establish the start of a leak? Changing the criteria changes the prompts of T4.1-T4.3 too; their model answers were re-recorded and moved slightly (T4.1 unseen recall 3/4 -> 2/4; T4.2 unseen direction 88% -> 82%, one contradicting-read-as-supporting link; T4.3 unchanged): the model's answers vary between recordings, so treat the small-sample numbers as a guide, not a measurement.
+- **Q-P11 (P1) DECIDED 2026-11-25** Minimum-evidence requests: for every question that is not established, ONE request per addressee (not piecemeal). WHO is asked is a pack table (`requests.criteria_roles`, `conflict_roles`: plumber for cause and start-of-leak evidence, claimant for maintenance records, surveyor for extent and assessed cost, policy administration for policy wording; all SAMPLE roles from the ground truth). The model words the items; each is checked (serves a need, within 250 characters, no verdict wording, no repeat, no document type already on file), refused items trigger one repair round with the reasons, and a need still uncovered gets a rule-written item, so nothing unresolved is dropped. Internal needs (a missing endorsement) go to policy administration and never to the claimant; an abstained question goes to a person, not to an external request. Measured on 22 cases (dev 5, unseen 17): the right addressees and the right questions every time, no self-check problem, no request for a document already on file, no internal need sent externally. The model writes 71-91% of the items itself after the repair round (before it, on the first unseen set, 33%: its items were refused for length). **Not measured: whether a domain reviewer finds the requests "sufficient and minimal".** A model rated them (dev 33%, unseen 45% and 73% rated both sufficient and minimal; rule-written items alone 50-73%), but that rater is hypercritical and inconsistent (it faults requests for hypothetical ways an answer could fall short), so it is a rough signal only. Decisions: (a) the roles and one request per person are what the adjusters send (confirmed; the criterion-to-role table is still SAMPLE); (b) a third party (plumber, surveyor, contractor) is NEVER contacted by the system: its request is drafted with `delivery: via_claimant_or_adjuster` and a claimant or an adjuster passes it on (only the claimant is `direct`, policy administration is `internal`); (c) the reviewer who rates "sufficient and minimal" is an adjuster: `python evals/runners/export_request_review.py` writes `evals/review/request_review.csv` (28 requests) for them to rate, and their ratings replace the model's rough signal above.
+- **Q-P12 (P1)** Counterfactual scenarios: for each unresolved MATERIAL question (only Q-SUDDEN is framed in the pack) three scenarios, A the finding supports the claim as presented, B it points away, C it is inconclusive, each naming the coverage issues it would re-assess (open issues that share a clause with the question and are of a kind the question re-assesses: cover and exclusion for the cause, never the sublimit), what the finding would do to each, and the next step (B to a senior adjuster, C to an independent expert, A to collecting what is outstanding). The text is built from pack rules; a model may rewrite it for the claim, and a rewrite is kept only if a linter finds no wording that predicts or recommends a decision, it is conditional, it names only affected issues and keeps each effect. An issue title that itself reads like a decision is replaced by its id. Measured on 11 labelled cases (4 dev, 7 unseen, incl. an adversarial title): affected issues and A/B/C completeness 100%, no lint failure, every rewrite accepted. Not measured: whether the wording is accurate and helpful; **an adjuster should rate `evals/review/counterfactual_review.csv`** (21 scenarios). Open: (a) which other questions are material enough to frame (Q-START? Q-EXTENT? Q-AMOUNT?); (b) are the effects and next steps (`counterfactuals.effects`, `next_steps`, SAMPLE) what an adjuster would say; (c) the linter's forbidden wording is mine and should be extended with the insurer's own phrases; (d) T5.1 (coverage issue matrix) is not built: issues come from the fixtures, so the issue-to-question link (shared clauses) must be checked when real issues arrive.
+- **Q-P13 (P1)** Incremental reassessment (Gap agent): after a first full assessment, new evidence re-runs only the questions it touches; every other question, contradiction, request and scenario is carried over exactly as it was (a model could answer differently on a re-run). A fact touches a question through its template tag, through a link the model found, through the questions it was linked to before (if it was edited, rejected or removed), or through a changed policy (policy questions and questions whose linked clauses changed). Only NEW or CHANGED facts are sent to the model for linking; the model's claim-specific questions are re-read once per batch of new facts; requests are rewritten only for addressees whose needs changed. The link directions and per-criterion assessments are not in ClaimState, so the agent keeps them in `GapMemory` (serialisable; the orchestrator must checkpoint it, otherwise a restart does a full run, slower but not wrong). Contradictions are STICKY: an earlier conflict stays open unless the model retracts it with a NEW fact it quotes (checked). Measured on S-01 with three late-evidence scenarios (real model): the two plumber reports re-ran exactly Q-SUDDEN and Q-START, the surveyor report re-ran its two labelled questions plus Q-START (a link the model found); every other question, contradiction and request was identical; the incremental run used 9-12 model calls against 13-14 for a full re-run (the saving is modest: the model's questions, linking and the touched questions' judgements are still asked). A plumber's later report that only confirms a long-term leak left the cause question open (before stickiness it wrongly dropped to partially established because the model did not repeat the conflict). Open: (a) the orchestrator (T6.2) must pass the memory and decide when a full re-run is wanted (e.g. a policy wording change); (b) two reports from the same plumber that disagree (corrosion "significant" then "surface rust only") are reported as a conflict needing validation, not silently resolved: is that what an adjuster wants? (c) ClaimState has no field for the not-in-force reason or the abstained questions: the rationale carries them (REVIEW) until the supervisor and UI read them from it.
+- **Q-O1 (P1)** The claim graph (T6.1, `docs/orchestration.md`) runs the new-claim flow as a fixed pipeline with deterministic routing: a claim with no policy in force skips coverage and settlement; any failing agent parks the claim (`awaiting_human`) and the flow halts with the reason; the human gate accepts approve, reject or request_more_evidence from a named reviewer. Assumed (SAMPLE, please confirm): (a) the role hierarchy adjuster < senior_adjuster < supervisor decides who may decide a claim (`required_approver_role` or higher), and that is all `rbac.yaml` says today (it only lists roles); (b) reject and request-more-evidence need a reason, approve does not; (c) an "edit" decision (change a recommendation, re-run settlement) is not supported yet (T6.3); (d) skipping coverage and settlement for a lapsed policy is right (a human still sees the claim at the gate). Limits to know: the mock agents' output is the labelled fixture, so in a mixed run it can disagree with the real agents upstream (e.g. clause ids); `ClaimState` has no field for why a claim is not in force, why an agent failed or which questions abstained, so the reason lives in the event log and the patch rationale until the contract is deliberately extended; checkpoints and events are in memory.
+
+- **Q-A1 (P1)** The API (T7.1, `docs/api.md`) is a thin HTTP surface over the claim graph. Decided: (a) a claim is created and run to the human gate in the same request (synchronous); (b) uploading a document re-assesses the claim from the evidence node, and a recommendation waiting at the gate is superseded because nobody had decided yet; (c) a refused decision is a 422 with the reason and the gate stays open; (d) every response carries `X-Mock-Agents`. Not done, on purpose: authentication (the reviewer's id and role are asserted by the caller), persistence (claims, checkpoints and the audit log are in memory), idempotency keys on `POST /claims`, background processing. Open: (i) how are reviewers authenticated, and does a reviewer see all claims or only their team's (`rbac.yaml` has roles only)? (ii) is it acceptable that new evidence silently supersedes a recommendation that a reviewer is reading (the audit log records it)? (iii) should creating a claim return immediately and run in the background once the model is on (it can take a minute)?
+
+**Regulatory and operations**
+- **Q-C1 (P1)** Which regulation governs acknowledgement, document request and decision timelines for this product, and what are the exact limits? (IRDAI figures to be re-verified.)
+- **Q-C2 (P2)** Must the reasons for a deduction or rejection be communicated in a prescribed format?
+- **Q-C3 (P2)** What does "Recon" actually reconcile in the target estate (payments, GL, reserves)? Who owns breaks?
+- **Q-C4 (P2)** Retention and audit requirements for the decision dossier (duration, immutability, data residency)?
+
+**Document handling (T2.2)**
+- **Q-D1 (P1)** What titles and layouts do your insurers' real FNOL forms, surveyor and plumber reports, estimates and invoices use? The classifier's signals in `document_types.yaml` come from my own wording, not real documents.
+- **Q-D2 (P1)** Is it acceptable that ~12% of ordinary documents (informal or unusually titled) go to a human to be typed, in exchange for no document being confidently mis-typed? What over-abstention rate is tolerable?
+- **Q-D4 (P1)** Which fields must be extracted from each document type, and under what labels, dates and number formats do your insurers' real documents state them? (Indian grouping and lakh/crore are handled; the label vocabulary in `document_types.yaml` is mine.)
+- **Q-D5 (P1)** For a day/month date such as 03/04/2026, is day-first always right? (Assumed, and always flagged for review.)
+- **Q-D6 (P2)** When an estimate or invoice does not add up, who resolves it, and is any tolerance acceptable? (Currently exact; the difference is recorded and the table flagged.)
+- **Q-D7 (P2)** Which open questions should each kind of fact bear on (`fact_templates.yaml`)? E.g. should every loss date bear on the sublimit question, or only when an endorsement is date-dependent?
+- **Q-D3 (P2)** Which other document types appear in real claim files (police report, receipts, ID proof, bank details) and should be added to the pack?
+
+*Status:* none answered yet. Record answers here with the date and the person, then move the value out of SAMPLE in the relevant file.

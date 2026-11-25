@@ -1,0 +1,117 @@
+{
+  "additionalProperties": false,
+  "description": "Typed input of the deterministic engine (the LLM extracts and cites these; it never computes).\n\n`unavailable_inputs` lists inputs that APPLY to this claim but cannot be determined yet (e.g. a sublimit endorsement\nreferenced by the schedule whose wording is missing, scenario S-05). The engine must report them as missing and\nnever calculate without them - this is what `optional: true` in the rule file cannot express.",
+  "properties": {
+    "applicable_deductible": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Applicable Deductible"
+    },
+    "assessed_covered_loss": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Assessed Covered Loss"
+    },
+    "input_citations": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "default": {},
+      "title": "Input Citations",
+      "type": "object"
+    },
+    "non_covered_items_total": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Non Covered Items Total"
+    },
+    "prior_payments_total": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Prior Payments Total"
+    },
+    "remaining_policy_limit": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Remaining Policy Limit"
+    },
+    "unavailable_inputs": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Unavailable Inputs",
+      "type": "array"
+    },
+    "water_damage_sublimit": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Water Damage Sublimit"
+    }
+  },
+  "title": "SettlementInputs",
+  "type": "object"
+}

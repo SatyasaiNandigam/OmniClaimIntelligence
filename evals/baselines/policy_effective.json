@@ -1,0 +1,21 @@
+{
+  "entries": [
+    {
+      "label": "v1: scenarios S-01/02/04/05 + 13 dated cases (E-10 label corrected before baseline)",
+      "date": "2026-11-25",
+      "signals_sha": "623d38c5cf47",
+      "results": {
+        "scenarios": {
+          "passed": 4,
+          "total": 4,
+          "failed": []
+        },
+        "cases": {
+          "passed": 13,
+          "total": 13,
+          "failed": []
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "category": {
+      "enum": [
+        "coverage_condition",
+        "cause",
+        "timing",
+        "extent",
+        "amount"
+      ],
+      "title": "Category",
+      "type": "string"
+    },
+    "establishing_criteria": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Establishing Criteria",
+      "type": "array"
+    },
+    "linked_clause_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Clause Ids",
+      "type": "array"
+    },
+    "linked_fact_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Fact Ids",
+      "type": "array"
+    },
+    "question_id": {
+      "title": "Question Id",
+      "type": "string"
+    },
+    "status": {
+      "default": "unverified",
+      "enum": [
+        "unverified",
+        "possible",
+        "missing",
+        "partially_established",
+        "established",
+        "requires_validation"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question_id",
+    "text",
+    "category"
+  ],
+  "title": "OpenQuestion",
+  "type": "object"
+}

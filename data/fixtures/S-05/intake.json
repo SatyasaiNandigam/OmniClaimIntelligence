@@ -1,0 +1,14 @@
+{
+  "claim_header": {
+    "claim_id": "CLM-0005",
+    "claimant_name": "SYNTHETIC Claimant E",
+    "policy_ref": "POL-1005",
+    "loss_date": "2026-06-10",
+    "loss_type": "water_damage",
+    "loss_description": "Pipe coupling in utility room split suddenly",
+    "channel": "email",
+    "registered_at": null
+  },
+  "intake_checklist": [],
+  "duplicate_candidates": []
+}

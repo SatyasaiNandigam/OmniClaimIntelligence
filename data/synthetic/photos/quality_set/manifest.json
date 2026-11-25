@@ -1,0 +1,84 @@
+{
+  "synthetic": true,
+  "license": "CC0-1.0 - drawn by scripts/generate_synthetic_docs.py, no third-party imagery",
+  "purpose": "image-quality evaluation set (T2.5)",
+  "photos": [
+    {
+      "file": "good_wide.jpg",
+      "sha256": "108e87c339a38954352b0c8042afa22991bddec856cdfdd158680f0755ccd2f9",
+      "size": [
+        960,
+        640
+      ],
+      "role": "good",
+      "shows": "water stain on a wall, wide view",
+      "expected_quality_verdict": "usable"
+    },
+    {
+      "file": "good_closeup.jpg",
+      "sha256": "1d0f8d0a338a98df4de3664c9abdb8692f6e2fb73a5602d64362a3c1c5cd7ffb",
+      "size": [
+        960,
+        640
+      ],
+      "role": "good",
+      "shows": "corroded pipe joint, close-up",
+      "expected_quality_verdict": "usable"
+    },
+    {
+      "file": "blurry.jpg",
+      "sha256": "1e2f749f963c87fa097a628adfefba9b92f58b75acfe1260205ba7f079229863",
+      "size": [
+        960,
+        640
+      ],
+      "role": "blurry",
+      "shows": "water stain, out of focus",
+      "expected_quality_verdict": "poor"
+    },
+    {
+      "file": "low_res.jpg",
+      "sha256": "dd2b968816d774881d00bdc2265b4775f794dffc647d0009444269f014adee3a",
+      "size": [
+        160,
+        107
+      ],
+      "role": "low_res",
+      "shows": "water stain, 160x107 pixels",
+      "expected_quality_verdict": "poor"
+    },
+    {
+      "file": "glare.jpg",
+      "sha256": "94016cea3775bafe3369858c2c488667eaf7c8d580357e69e8cd243361a59870",
+      "size": [
+        960,
+        640
+      ],
+      "role": "glare",
+      "shows": "water stain partly washed out by glare",
+      "expected_quality_verdict": "poor"
+    },
+    {
+      "file": "dark.jpg",
+      "sha256": "cf7eb7ee2411396a624c8b7bb5fd25987cb8c3d34a6df863bae718f5249346d5",
+      "size": [
+        960,
+        640
+      ],
+      "role": "dark",
+      "shows": "water stain, severely under-exposed",
+      "expected_quality_verdict": "poor"
+    },
+    {
+      "file": "unrelated_garden.jpg",
+      "sha256": "c71a440a2d71568e94db7595c44e7ae81ce581cd0fb4e787cffa42b8ae1bdc9b",
+      "size": [
+        960,
+        640
+      ],
+      "role": "unrelated",
+      "shows": "a garden - not the insured property damage",
+      "expected_quality_verdict": "unrelated"
+    }
+  ]
+}

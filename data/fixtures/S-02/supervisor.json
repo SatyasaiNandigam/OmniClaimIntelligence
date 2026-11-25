@@ -1,0 +1,17 @@
+{
+  "routing": {
+    "tier": "simple",
+    "reason_codes": [
+      "POLICY_EXACT",
+      "EVIDENCE_COMPLETE",
+      "NO_CONTRADICTION",
+      "DUPLICATE_CLEAR",
+      "COVERAGE_RESOLVED",
+      "EXPOSURE_WITHIN_FRONTLINE"
+    ],
+    "required_approver_role": "adjuster",
+    "rules_version": "sample-2"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_human"
+}

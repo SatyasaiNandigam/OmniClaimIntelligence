@@ -1,0 +1,77 @@
+{
+  "$defs": {
+    "MinimumEvidenceRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "addressee_role": {
+          "title": "Addressee Role",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Items",
+          "type": "array"
+        },
+        "maps_to_criteria": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Maps To Criteria",
+          "type": "array"
+        },
+        "must_answer_sub_questions": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Must Answer Sub Questions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "addressee_role",
+        "items"
+      ],
+      "title": "MinimumEvidenceRequest",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "gap_type": {
+      "enum": [
+        "missing",
+        "contradictory",
+        "insufficient"
+      ],
+      "title": "Gap Type",
+      "type": "string"
+    },
+    "minimum_evidence_request": {
+      "$ref": "#/$defs/MinimumEvidenceRequest"
+    },
+    "question_id": {
+      "title": "Question Id",
+      "type": "string"
+    },
+    "resolves_question_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Resolves Question Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "question_id",
+    "gap_type",
+    "minimum_evidence_request"
+  ],
+  "title": "MissingEvidence",
+  "type": "object"
+}

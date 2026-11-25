@@ -1,0 +1,21 @@
+{
+  "entries": [
+    {
+      "label": "v1: scenarios S-01..S-05 + 19 PAS cases (lapse, cancellation, reinstatement, straddle, missing wording)",
+      "date": "2026-11-25",
+      "signals_sha": "623d38c5cf47",
+      "results": {
+        "scenarios": {
+          "passed": 5,
+          "total": 5,
+          "failed": []
+        },
+        "cases": {
+          "passed": 19,
+          "total": 19,
+          "failed": []
+        }
+      }
+    }
+  ]
+}

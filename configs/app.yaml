@@ -1,0 +1,9 @@
+# SAMPLE values - not insurer policy
+# llm.provider: openai | azure_openai
+# gpt-5-mini is a reasoning model: it only accepts its default temperature, so `temperature: null` means "do not send it".
+# reasoning_effort trades accuracy for cost and latency (minimal | low | medium | high). The API key comes from .env (LLM_API_KEY).
+# embedding_model / embedding_dimensions are used by clause retrieval (T3.3 -> T3.4); short vectors keep recorded cassettes small.
+llm: {provider: openai, text_model: gpt-5-mini, vision_model: gpt-5-mini, embedding_model: text-embedding-3-small, embedding_dimensions: 256, temperature: null, reasoning_effort: minimal}
+abstention: {min_citation_count: 1}   # SAMPLE
+flags: {use_mock_pas: true, use_mock_claims: true, use_mock_recon: true, llm_replay_mode: false}
+active_pack: property_water_damage

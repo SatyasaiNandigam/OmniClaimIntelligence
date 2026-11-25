@@ -1,0 +1,721 @@
+{
+  "entries": [
+    {
+      "label": "T4.2 linker v2 (prompt frozen on dev; fresh run once), tags given",
+      "date": "2026-11-25",
+      "config_sha": "cb6e2954352218f2",
+      "model": "gpt-5-mini",
+      "tags": "given",
+      "modes": {
+        "tags only": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 40,
+            "correct_links": 40,
+            "link_precision": 1.0,
+            "link_recall": 1.0,
+            "direction_accuracy": 0.425,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [
+              "S-01 F-S01-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-01 F-S01-03->Q-SUDDEN: labelled contradicting, got neutral",
+              "S-01 F-S01-03->Q-START: labelled contradicting, got neutral",
+              "S-01 F-S01-04->Q-SUDDEN: labelled contradicting, got neutral",
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got neutral",
+              "S-02 F-S02-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-02 F-S02-03->Q-SUDDEN: labelled supporting, got neutral",
+              "S-02 F-S02-03->Q-START: labelled supporting, got neutral",
+              "S-02 F-S02-04->Q-SUDDEN: labelled supporting, got neutral",
+              "S-02 F-S02-04->Q-START: labelled supporting, got neutral",
+              "S-02 F-S02-05->Q-EXTENT: labelled supporting, got neutral",
+              "S-04 F-S04-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-04 F-S04-03->Q-SUDDEN: labelled supporting, got neutral",
+              "S-04 F-S04-03->Q-START: labelled supporting, got neutral",
+              "S-04 F-S04-04->Q-SUDDEN: labelled supporting, got neutral",
+              "S-04 F-S04-04->Q-START: labelled supporting, got neutral",
+              "S-04 F-S04-05->Q-EXTENT: labelled supporting, got neutral",
+              "S-05 F-S05-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-05 F-S05-03->Q-SUDDEN: labelled supporting, got neutral",
+              "S-05 F-S05-03->Q-START: labelled supporting, got neutral",
+              "S-05 F-S05-04->Q-SUDDEN: labelled supporting, got neutral",
+              "S-05 F-S05-04->Q-START: labelled supporting, got neutral",
+              "S-05 F-S05-05->Q-EXTENT: labelled supporting, got neutral"
+            ],
+            "missed": [],
+            "extra": []
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 31,
+            "correct_links": 25,
+            "link_precision": 0.8064516129032258,
+            "link_recall": 0.6944444444444444,
+            "direction_accuracy": 0.48,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L1-long-term-leak L1-long-term-leak/f2->Q-SUDDEN: labelled contradicting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-SUDDEN: labelled supporting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-START: labelled supporting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f3->Q-EXTENT: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f1->Q-EXTENT: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f2->Q-EXTENT: labelled contradicting, got neutral",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L5-cost-doubt L5-cost-doubt/f4->Q-SUDDEN: labelled supporting, got neutral",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-SUDDEN: labelled supporting, got neutral",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-START: labelled supporting, got neutral"
+            ],
+            "missed": [
+              "L1-long-term-leak L1-long-term-leak/f2->Q-START",
+              "L2-sudden-and-clean L2-sudden-and-clean/f4->Q-AMOUNT",
+              "L3-wider-damage L3-wider-damage/f3->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f3->Q-START",
+              "L3-wider-damage L3-wider-damage/f3->Q-EXTENT",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-START",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-SUDDEN",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-START",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT",
+              "L6-date-and-sublimit L6-date-and-sublimit/f2->Q-SUBLIMIT"
+            ],
+            "extra": [
+              "L1-long-term-leak L1-long-term-leak/f3->Q-SUDDEN (neutral)",
+              "L2-sudden-and-clean L2-sudden-and-clean/f5->Q-SUDDEN (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-SUDDEN (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-START (neutral)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-AMOUNT (neutral)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f4->Q-INFORCE (neutral)"
+            ]
+          }
+        },
+        "tags + model": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 40,
+            "correct_links": 40,
+            "link_precision": 1.0,
+            "link_recall": 1.0,
+            "direction_accuracy": 0.875,
+            "critical_errors": 1,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting"
+            ],
+            "wrong_direction": [
+              "S-01 F-S01-04->Q-SUDDEN: labelled contradicting, got neutral",
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting",
+              "S-01 F-S01-06->Q-EXTENT: labelled neutral, got contradicting",
+              "S-02 F-S02-03->Q-START: labelled supporting, got neutral",
+              "S-02 F-S02-08->Q-AMOUNT: labelled neutral, got contradicting"
+            ],
+            "missed": [],
+            "extra": []
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 42,
+            "correct_links": 34,
+            "link_precision": 0.8095238095238095,
+            "link_recall": 0.9444444444444444,
+            "direction_accuracy": 0.8823529411764706,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [
+              "L1-long-term-leak L1-long-term-leak/f3->Q-EXTENT: labelled neutral, got supporting",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f4->Q-EXTENT: labelled neutral, got supporting",
+              "L6-date-and-sublimit L6-date-and-sublimit/f2->Q-SUBLIMIT: labelled neutral, got supporting"
+            ],
+            "missed": [
+              "L3-wider-damage L3-wider-damage/f3->Q-EXTENT",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT"
+            ],
+            "extra": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-START (supporting)",
+              "L1-long-term-leak L1-long-term-leak/f3->Q-SUDDEN (contradicting)",
+              "L2-sudden-and-clean L2-sudden-and-clean/f5->Q-SUDDEN (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-SUDDEN (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-START (neutral)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-SUDDEN (supporting)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-AMOUNT (neutral)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f4->Q-INFORCE (neutral)"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "T4.2 linker v2, tags removed",
+      "date": "2026-11-25",
+      "config_sha": "cb6e2954352218f2",
+      "model": "gpt-5-mini",
+      "tags": "none",
+      "modes": {
+        "tags only": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 0,
+            "correct_links": 0,
+            "link_precision": null,
+            "link_recall": 0.0,
+            "direction_accuracy": null,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [],
+            "missed": [
+              "S-01 F-S01-01->Q-INFORCE",
+              "S-01 F-S01-02->Q-SUDDEN",
+              "S-01 F-S01-03->Q-SUDDEN",
+              "S-01 F-S01-03->Q-START",
+              "S-01 F-S01-04->Q-SUDDEN",
+              "S-01 F-S01-04->Q-EXTENT",
+              "S-01 F-S01-05->Q-AMOUNT",
+              "S-01 F-S01-06->Q-EXTENT",
+              "S-01 F-S01-06->Q-AMOUNT",
+              "S-02 F-S02-01->Q-INFORCE",
+              "S-02 F-S02-02->Q-SUDDEN",
+              "S-02 F-S02-03->Q-SUDDEN",
+              "S-02 F-S02-03->Q-START",
+              "S-02 F-S02-04->Q-SUDDEN",
+              "S-02 F-S02-04->Q-START",
+              "S-02 F-S02-05->Q-EXTENT",
+              "S-02 F-S02-06->Q-AMOUNT",
+              "S-02 F-S02-07->Q-AMOUNT",
+              "S-02 F-S02-08->Q-AMOUNT",
+              "S-03 F-S03-01->Q-INFORCE",
+              "S-04 F-S04-01->Q-INFORCE",
+              "S-04 F-S04-01->Q-SUBLIMIT",
+              "S-04 F-S04-02->Q-SUDDEN",
+              "S-04 F-S04-03->Q-SUDDEN",
+              "S-04 F-S04-03->Q-START",
+              "S-04 F-S04-04->Q-SUDDEN",
+              "S-04 F-S04-04->Q-START",
+              "S-04 F-S04-05->Q-EXTENT",
+              "S-04 F-S04-06->Q-AMOUNT",
+              "S-04 F-S04-07->Q-AMOUNT",
+              "S-05 F-S05-01->Q-INFORCE",
+              "S-05 F-S05-02->Q-SUDDEN",
+              "S-05 F-S05-03->Q-SUDDEN",
+              "S-05 F-S05-03->Q-START",
+              "S-05 F-S05-04->Q-SUDDEN",
+              "S-05 F-S05-04->Q-START",
+              "S-05 F-S05-05->Q-EXTENT",
+              "S-05 F-S05-06->Q-AMOUNT",
+              "S-05 F-S05-07->Q-AMOUNT",
+              "S-05 F-S05-08->Q-SUBLIMIT"
+            ],
+            "extra": []
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 0,
+            "correct_links": 0,
+            "link_precision": null,
+            "link_recall": 0.0,
+            "direction_accuracy": null,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [],
+            "missed": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-SUDDEN",
+              "L1-long-term-leak L1-long-term-leak/f2->Q-SUDDEN",
+              "L1-long-term-leak L1-long-term-leak/f2->Q-START",
+              "L1-long-term-leak L1-long-term-leak/f3->Q-EXTENT",
+              "L1-long-term-leak L1-long-term-leak/f4->Q-AMOUNT",
+              "L1-long-term-leak L1-long-term-leak/f5->Q-INFORCE",
+              "L1-long-term-leak L1-long-term-leak/f5->Q-SUBLIMIT",
+              "L2-sudden-and-clean L2-sudden-and-clean/f1->Q-SUDDEN",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-SUDDEN",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-START",
+              "L2-sudden-and-clean L2-sudden-and-clean/f3->Q-EXTENT",
+              "L2-sudden-and-clean L2-sudden-and-clean/f4->Q-AMOUNT",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f1->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f2->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f3->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f3->Q-START",
+              "L3-wider-damage L3-wider-damage/f3->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f4->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f4->Q-AMOUNT",
+              "L3-wider-damage L3-wider-damage/f5->Q-AMOUNT",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-SUDDEN",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-START",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-SUDDEN",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-START",
+              "L4-dated-evidence L4-dated-evidence/f4->Q-SUBLIMIT",
+              "L5-cost-doubt L5-cost-doubt/f1->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f2->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT",
+              "L5-cost-doubt L5-cost-doubt/f4->Q-SUDDEN",
+              "L6-date-and-sublimit L6-date-and-sublimit/f1->Q-INFORCE",
+              "L6-date-and-sublimit L6-date-and-sublimit/f1->Q-SUBLIMIT",
+              "L6-date-and-sublimit L6-date-and-sublimit/f2->Q-SUBLIMIT",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-SUDDEN",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-START"
+            ],
+            "extra": []
+          }
+        },
+        "tags + model": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 38,
+            "correct_links": 32,
+            "link_precision": 0.8421052631578947,
+            "link_recall": 0.8,
+            "direction_accuracy": 0.90625,
+            "critical_errors": 1,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting"
+            ],
+            "wrong_direction": [
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting",
+              "S-01 F-S01-06->Q-EXTENT: labelled neutral, got supporting",
+              "S-02 F-S02-08->Q-AMOUNT: labelled neutral, got contradicting"
+            ],
+            "missed": [
+              "S-01 F-S01-04->Q-SUDDEN",
+              "S-01 F-S01-06->Q-AMOUNT",
+              "S-02 F-S02-03->Q-START",
+              "S-02 F-S02-04->Q-START",
+              "S-04 F-S04-01->Q-SUBLIMIT",
+              "S-05 F-S05-01->Q-INFORCE",
+              "S-05 F-S05-03->Q-START",
+              "S-05 F-S05-04->Q-START"
+            ],
+            "extra": [
+              "S-01 F-S01-01->Q-START (neutral)",
+              "S-01 F-S01-02->Q-EXTENT (supporting)",
+              "S-02 F-S02-01->Q-START (neutral)",
+              "S-04 F-S04-01->Q-START (neutral)",
+              "S-04 F-S04-02->Q-START (supporting)",
+              "S-05 F-S05-01->Q-START (neutral)"
+            ]
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 41,
+            "correct_links": 33,
+            "link_precision": 0.8048780487804879,
+            "link_recall": 0.9166666666666666,
+            "direction_accuracy": 0.8484848484848485,
+            "critical_errors": 1,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [
+              "L1-long-term-leak L1-long-term-leak/f2->Q-START: labelled contradicting, got supporting"
+            ],
+            "wrong_direction": [
+              "L1-long-term-leak L1-long-term-leak/f2->Q-START: labelled contradicting, got supporting",
+              "L1-long-term-leak L1-long-term-leak/f3->Q-EXTENT: labelled neutral, got supporting",
+              "L3-wider-damage L3-wider-damage/f4->Q-EXTENT: labelled neutral, got supporting",
+              "L4-dated-evidence L4-dated-evidence/f4->Q-SUBLIMIT: labelled neutral, got supporting",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT: labelled neutral, got contradicting"
+            ],
+            "missed": [
+              "L1-long-term-leak L1-long-term-leak/f5->Q-INFORCE",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f4->Q-AMOUNT"
+            ],
+            "extra": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-START (supporting)",
+              "L1-long-term-leak L1-long-term-leak/f5->Q-START (supporting)",
+              "L2-sudden-and-clean L2-sudden-and-clean/f5->Q-START (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-START (neutral)",
+              "L5-cost-doubt L5-cost-doubt/f4->Q-START (supporting)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-SUDDEN (supporting)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f1->Q-START (neutral)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f4->Q-INFORCE (neutral)"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "T4.2 re-recorded after relaxing criteria wording (Q-P10): dropped 'dated' and 'itemised', tags given",
+      "date": "2026-11-25",
+      "config_sha": "257c2585cc580230",
+      "model": "gpt-5-mini",
+      "tags": "given",
+      "modes": {
+        "tags only": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 40,
+            "correct_links": 40,
+            "link_precision": 1.0,
+            "link_recall": 1.0,
+            "direction_accuracy": 0.425,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [
+              "S-01 F-S01-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-01 F-S01-03->Q-SUDDEN: labelled contradicting, got neutral",
+              "S-01 F-S01-03->Q-START: labelled contradicting, got neutral",
+              "S-01 F-S01-04->Q-SUDDEN: labelled contradicting, got neutral",
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got neutral",
+              "S-02 F-S02-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-02 F-S02-03->Q-SUDDEN: labelled supporting, got neutral",
+              "S-02 F-S02-03->Q-START: labelled supporting, got neutral",
+              "S-02 F-S02-04->Q-SUDDEN: labelled supporting, got neutral",
+              "S-02 F-S02-04->Q-START: labelled supporting, got neutral",
+              "S-02 F-S02-05->Q-EXTENT: labelled supporting, got neutral",
+              "S-04 F-S04-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-04 F-S04-03->Q-SUDDEN: labelled supporting, got neutral",
+              "S-04 F-S04-03->Q-START: labelled supporting, got neutral",
+              "S-04 F-S04-04->Q-SUDDEN: labelled supporting, got neutral",
+              "S-04 F-S04-04->Q-START: labelled supporting, got neutral",
+              "S-04 F-S04-05->Q-EXTENT: labelled supporting, got neutral",
+              "S-05 F-S05-02->Q-SUDDEN: labelled supporting, got neutral",
+              "S-05 F-S05-03->Q-SUDDEN: labelled supporting, got neutral",
+              "S-05 F-S05-03->Q-START: labelled supporting, got neutral",
+              "S-05 F-S05-04->Q-SUDDEN: labelled supporting, got neutral",
+              "S-05 F-S05-04->Q-START: labelled supporting, got neutral",
+              "S-05 F-S05-05->Q-EXTENT: labelled supporting, got neutral"
+            ],
+            "missed": [],
+            "extra": []
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 31,
+            "correct_links": 25,
+            "link_precision": 0.8064516129032258,
+            "link_recall": 0.6944444444444444,
+            "direction_accuracy": 0.48,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L1-long-term-leak L1-long-term-leak/f2->Q-SUDDEN: labelled contradicting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-SUDDEN: labelled supporting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-START: labelled supporting, got neutral",
+              "L2-sudden-and-clean L2-sudden-and-clean/f3->Q-EXTENT: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f1->Q-EXTENT: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f2->Q-EXTENT: labelled contradicting, got neutral",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L5-cost-doubt L5-cost-doubt/f4->Q-SUDDEN: labelled supporting, got neutral",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-SUDDEN: labelled supporting, got neutral",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-START: labelled supporting, got neutral"
+            ],
+            "missed": [
+              "L1-long-term-leak L1-long-term-leak/f2->Q-START",
+              "L2-sudden-and-clean L2-sudden-and-clean/f4->Q-AMOUNT",
+              "L3-wider-damage L3-wider-damage/f3->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f3->Q-START",
+              "L3-wider-damage L3-wider-damage/f3->Q-EXTENT",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-START",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-SUDDEN",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-START",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT",
+              "L6-date-and-sublimit L6-date-and-sublimit/f2->Q-SUBLIMIT"
+            ],
+            "extra": [
+              "L1-long-term-leak L1-long-term-leak/f3->Q-SUDDEN (neutral)",
+              "L2-sudden-and-clean L2-sudden-and-clean/f5->Q-SUDDEN (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-SUDDEN (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-START (neutral)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-AMOUNT (neutral)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f4->Q-INFORCE (neutral)"
+            ]
+          }
+        },
+        "tags + model": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 40,
+            "correct_links": 40,
+            "link_precision": 1.0,
+            "link_recall": 1.0,
+            "direction_accuracy": 0.85,
+            "critical_errors": 1,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting"
+            ],
+            "wrong_direction": [
+              "S-01 F-S01-04->Q-SUDDEN: labelled contradicting, got neutral",
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting",
+              "S-01 F-S01-06->Q-EXTENT: labelled neutral, got supporting",
+              "S-02 F-S02-05->Q-EXTENT: labelled supporting, got neutral",
+              "S-02 F-S02-08->Q-AMOUNT: labelled neutral, got contradicting",
+              "S-05 F-S05-08->Q-SUBLIMIT: labelled neutral, got supporting"
+            ],
+            "missed": [],
+            "extra": []
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 42,
+            "correct_links": 34,
+            "link_precision": 0.8095238095238095,
+            "link_recall": 0.9444444444444444,
+            "direction_accuracy": 0.8235294117647058,
+            "critical_errors": 1,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [
+              "L3-wider-damage L3-wider-damage/f3->Q-START: labelled contradicting, got supporting"
+            ],
+            "wrong_direction": [
+              "L1-long-term-leak L1-long-term-leak/f3->Q-EXTENT: labelled neutral, got supporting",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN: labelled supporting, got neutral",
+              "L3-wider-damage L3-wider-damage/f3->Q-START: labelled contradicting, got supporting",
+              "L3-wider-damage L3-wider-damage/f4->Q-EXTENT: labelled neutral, got contradicting",
+              "L4-dated-evidence L4-dated-evidence/f4->Q-SUBLIMIT: labelled neutral, got supporting",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT: labelled neutral, got contradicting"
+            ],
+            "missed": [
+              "L3-wider-damage L3-wider-damage/f3->Q-EXTENT",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-START"
+            ],
+            "extra": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-START (supporting)",
+              "L1-long-term-leak L1-long-term-leak/f3->Q-SUDDEN (contradicting)",
+              "L2-sudden-and-clean L2-sudden-and-clean/f5->Q-SUDDEN (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-SUDDEN (supporting)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-START (neutral)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-SUDDEN (supporting)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-AMOUNT (neutral)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f4->Q-INFORCE (neutral)"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "T4.2 re-recorded after relaxing criteria wording (Q-P10): dropped 'dated' and 'itemised', tags removed",
+      "date": "2026-11-25",
+      "config_sha": "257c2585cc580230",
+      "model": "gpt-5-mini",
+      "tags": "none",
+      "modes": {
+        "tags only": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 0,
+            "correct_links": 0,
+            "link_precision": null,
+            "link_recall": 0.0,
+            "direction_accuracy": null,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [],
+            "missed": [
+              "S-01 F-S01-01->Q-INFORCE",
+              "S-01 F-S01-02->Q-SUDDEN",
+              "S-01 F-S01-03->Q-SUDDEN",
+              "S-01 F-S01-03->Q-START",
+              "S-01 F-S01-04->Q-SUDDEN",
+              "S-01 F-S01-04->Q-EXTENT",
+              "S-01 F-S01-05->Q-AMOUNT",
+              "S-01 F-S01-06->Q-EXTENT",
+              "S-01 F-S01-06->Q-AMOUNT",
+              "S-02 F-S02-01->Q-INFORCE",
+              "S-02 F-S02-02->Q-SUDDEN",
+              "S-02 F-S02-03->Q-SUDDEN",
+              "S-02 F-S02-03->Q-START",
+              "S-02 F-S02-04->Q-SUDDEN",
+              "S-02 F-S02-04->Q-START",
+              "S-02 F-S02-05->Q-EXTENT",
+              "S-02 F-S02-06->Q-AMOUNT",
+              "S-02 F-S02-07->Q-AMOUNT",
+              "S-02 F-S02-08->Q-AMOUNT",
+              "S-03 F-S03-01->Q-INFORCE",
+              "S-04 F-S04-01->Q-INFORCE",
+              "S-04 F-S04-01->Q-SUBLIMIT",
+              "S-04 F-S04-02->Q-SUDDEN",
+              "S-04 F-S04-03->Q-SUDDEN",
+              "S-04 F-S04-03->Q-START",
+              "S-04 F-S04-04->Q-SUDDEN",
+              "S-04 F-S04-04->Q-START",
+              "S-04 F-S04-05->Q-EXTENT",
+              "S-04 F-S04-06->Q-AMOUNT",
+              "S-04 F-S04-07->Q-AMOUNT",
+              "S-05 F-S05-01->Q-INFORCE",
+              "S-05 F-S05-02->Q-SUDDEN",
+              "S-05 F-S05-03->Q-SUDDEN",
+              "S-05 F-S05-03->Q-START",
+              "S-05 F-S05-04->Q-SUDDEN",
+              "S-05 F-S05-04->Q-START",
+              "S-05 F-S05-05->Q-EXTENT",
+              "S-05 F-S05-06->Q-AMOUNT",
+              "S-05 F-S05-07->Q-AMOUNT",
+              "S-05 F-S05-08->Q-SUBLIMIT"
+            ],
+            "extra": []
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 0,
+            "correct_links": 0,
+            "link_precision": null,
+            "link_recall": 0.0,
+            "direction_accuracy": null,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [],
+            "missed": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-SUDDEN",
+              "L1-long-term-leak L1-long-term-leak/f2->Q-SUDDEN",
+              "L1-long-term-leak L1-long-term-leak/f2->Q-START",
+              "L1-long-term-leak L1-long-term-leak/f3->Q-EXTENT",
+              "L1-long-term-leak L1-long-term-leak/f4->Q-AMOUNT",
+              "L1-long-term-leak L1-long-term-leak/f5->Q-INFORCE",
+              "L1-long-term-leak L1-long-term-leak/f5->Q-SUBLIMIT",
+              "L2-sudden-and-clean L2-sudden-and-clean/f1->Q-SUDDEN",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-SUDDEN",
+              "L2-sudden-and-clean L2-sudden-and-clean/f2->Q-START",
+              "L2-sudden-and-clean L2-sudden-and-clean/f3->Q-EXTENT",
+              "L2-sudden-and-clean L2-sudden-and-clean/f4->Q-AMOUNT",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f1->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f2->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f3->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f3->Q-START",
+              "L3-wider-damage L3-wider-damage/f3->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f4->Q-EXTENT",
+              "L3-wider-damage L3-wider-damage/f4->Q-AMOUNT",
+              "L3-wider-damage L3-wider-damage/f5->Q-AMOUNT",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-SUDDEN",
+              "L4-dated-evidence L4-dated-evidence/f1->Q-START",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-SUDDEN",
+              "L4-dated-evidence L4-dated-evidence/f2->Q-START",
+              "L4-dated-evidence L4-dated-evidence/f4->Q-SUBLIMIT",
+              "L5-cost-doubt L5-cost-doubt/f1->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f2->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-AMOUNT",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT",
+              "L5-cost-doubt L5-cost-doubt/f4->Q-SUDDEN",
+              "L6-date-and-sublimit L6-date-and-sublimit/f1->Q-INFORCE",
+              "L6-date-and-sublimit L6-date-and-sublimit/f1->Q-SUBLIMIT",
+              "L6-date-and-sublimit L6-date-and-sublimit/f2->Q-SUBLIMIT",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-SUDDEN",
+              "L6-date-and-sublimit L6-date-and-sublimit/f3->Q-START"
+            ],
+            "extra": []
+          }
+        },
+        "tags + model": {
+          "dev": {
+            "items": 5,
+            "labelled_links": 40,
+            "predicted_links": 38,
+            "correct_links": 33,
+            "link_precision": 0.868421052631579,
+            "link_recall": 0.825,
+            "direction_accuracy": 0.9090909090909091,
+            "critical_errors": 1,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting"
+            ],
+            "wrong_direction": [
+              "S-01 F-S01-04->Q-EXTENT: labelled contradicting, got supporting",
+              "S-01 F-S01-06->Q-EXTENT: labelled neutral, got contradicting",
+              "S-02 F-S02-08->Q-AMOUNT: labelled neutral, got contradicting"
+            ],
+            "missed": [
+              "S-01 F-S01-04->Q-SUDDEN",
+              "S-01 F-S01-06->Q-AMOUNT",
+              "S-02 F-S02-03->Q-START",
+              "S-04 F-S04-01->Q-SUBLIMIT",
+              "S-04 F-S04-03->Q-START",
+              "S-05 F-S05-03->Q-START",
+              "S-05 F-S05-04->Q-START"
+            ],
+            "extra": [
+              "S-01 F-S01-01->Q-START (neutral)",
+              "S-01 F-S01-02->Q-START (supporting)",
+              "S-02 F-S02-01->Q-START (neutral)",
+              "S-04 F-S04-01->Q-START (neutral)",
+              "S-05 F-S05-01->Q-START (neutral)"
+            ]
+          },
+          "fresh": {
+            "items": 6,
+            "labelled_links": 36,
+            "predicted_links": 41,
+            "correct_links": 32,
+            "link_precision": 0.7804878048780488,
+            "link_recall": 0.8888888888888888,
+            "direction_accuracy": 0.84375,
+            "critical_errors": 0,
+            "refused_judgements": 0,
+            "dropped_links": 0,
+            "critical": [],
+            "wrong_direction": [
+              "L1-long-term-leak L1-long-term-leak/f3->Q-EXTENT: labelled neutral, got supporting",
+              "L3-wider-damage L3-wider-damage/f4->Q-EXTENT: labelled neutral, got supporting",
+              "L4-dated-evidence L4-dated-evidence/f4->Q-SUBLIMIT: labelled neutral, got supporting",
+              "L5-cost-doubt L5-cost-doubt/f3->Q-EXTENT: labelled neutral, got contradicting",
+              "L6-date-and-sublimit L6-date-and-sublimit/f2->Q-SUBLIMIT: labelled neutral, got supporting"
+            ],
+            "missed": [
+              "L1-long-term-leak L1-long-term-leak/f5->Q-SUBLIMIT",
+              "L3-wider-damage L3-wider-damage/f1->Q-SUDDEN",
+              "L3-wider-damage L3-wider-damage/f3->Q-START",
+              "L3-wider-damage L3-wider-damage/f4->Q-AMOUNT"
+            ],
+            "extra": [
+              "L1-long-term-leak L1-long-term-leak/f1->Q-START (supporting)",
+              "L1-long-term-leak L1-long-term-leak/f5->Q-START (neutral)",
+              "L2-sudden-and-clean L2-sudden-and-clean/f5->Q-START (neutral)",
+              "L4-dated-evidence L4-dated-evidence/f3->Q-START (neutral)",
+              "L5-cost-doubt L5-cost-doubt/f4->Q-START (supporting)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-SUDDEN (supporting)",
+              "L5-cost-doubt L5-cost-doubt/f5->Q-AMOUNT (neutral)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f1->Q-START (neutral)",
+              "L6-date-and-sublimit L6-date-and-sublimit/f4->Q-INFORCE (neutral)"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

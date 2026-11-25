@@ -1,0 +1,52 @@
+# How an extracted field becomes a Fact (T2.4): the proposition wording and which open questions it bears on.
+# Domain content, not code. Keys are "<document type>.<field>" (see document_types.yaml); table documents also need
+# "<type>.line_item" and "<type>.total_amount". The pack loader refuses a pack where an extractable field has no template here.
+#
+# Placeholders: {value} the value as written in the document | {normalised} ISO date / plain decimal | {sentence} one sentence (split_sentences)
+#               {label} the label as written | {description} {amount} {currency} for table line items
+# `questions` tag the fact with the open questions it bears on (ids from question_templates.yaml). The DIRECTION (supports / contradicts)
+# is NOT decided here: facts leave this stage as "neutral" and the fact-question linker (T4.2) sets it.
+# split_sentences: a narrative field becomes one Fact per sentence, each with its own verbatim evidence.
+templates:
+  # ---- first notice of loss
+  fnol.claimant_name:        {proposition: "The claimant is {value}"}
+  fnol.policy_number:        {proposition: "The claim cites policy {value}"}
+  # the loss date decides both whether the policy was in force AND which date-effective endorsement (sublimit) applies (scenario S-04)
+  fnol.loss_date:            {proposition: "Reported date of loss is {value}", questions: [Q-INFORCE, Q-SUBLIMIT]}
+  fnol.loss_time:            {proposition: "Reported time of loss is {value}"}
+  fnol.loss_location:        {proposition: "Reported location of loss is {value}"}
+  fnol.loss_description:     {proposition: "Claimant reports: {sentence}", questions: [Q-SUDDEN], split_sentences: true}
+  fnol.estimated_loss:       {proposition: "Claimant estimates the loss at {value}", questions: [Q-AMOUNT]}
+  # ---- plumber report
+  plumber_report.inspection_date:   {proposition: "Plumber inspected the property on {value}"}
+  plumber_report.findings:          {proposition: "Plumber reports: {sentence}", questions: [Q-SUDDEN, Q-START], split_sentences: true}
+  plumber_report.work_carried_out:  {proposition: "Plumber reports: {sentence}", split_sentences: true}
+  # ---- surveyor report
+  surveyor_report.site_visit_date:       {proposition: "Surveyor visited the site on {value}"}
+  surveyor_report.cause_of_loss:         {proposition: "Surveyor reports the cause of loss: {sentence}", questions: [Q-SUDDEN], split_sentences: true}
+  surveyor_report.assessed_repair_cost:  {proposition: "Surveyor assessed the repair cost at {value}", questions: [Q-AMOUNT]}
+  surveyor_report.observations:          {proposition: "Surveyor reports: {sentence}", questions: [Q-SUDDEN, Q-EXTENT], split_sentences: true}
+  # ---- estimate
+  estimate.scope:         {proposition: "Estimate scope: {value}", questions: [Q-EXTENT, Q-AMOUNT]}
+  estimate.line_item:     {proposition: "Estimate line '{description}' is {amount}", questions: [Q-AMOUNT]}
+  estimate.total_amount:  {proposition: "Estimate total is {value}", questions: [Q-AMOUNT]}
+  # ---- invoice
+  invoice.invoice_number:  {proposition: "Invoice number is {value}"}
+  invoice.invoice_date:    {proposition: "Invoice is dated {value}"}
+  invoice.vendor_name:     {proposition: "Invoice is issued by {value}"}
+  invoice.due_date:        {proposition: "Invoice payment is due {value}"}
+  invoice.payment_terms:   {proposition: "Invoice payment terms: {value}"}
+  invoice.tax_id:          {proposition: "Vendor tax id is {value}"}
+  invoice.line_item:       {proposition: "Invoice line '{description}' is {amount}", questions: [Q-AMOUNT]}
+  invoice.total_amount:    {proposition: "Invoice total is {value}", questions: [Q-AMOUNT]}
+  # ---- policy schedule
+  policy_schedule.policy_number:          {proposition: "The schedule is for policy {value}"}
+  policy_schedule.period_of_insurance:    {proposition: "Period of insurance is {value}", questions: [Q-INFORCE]}
+  policy_schedule.building_limit:         {proposition: "Building limit is {value}"}
+  policy_schedule.standard_deductible:    {proposition: "Standard deductible is {value}"}
+  policy_schedule.endorsements_attached:  {proposition: "The schedule lists endorsements: {value}", questions: [Q-SUBLIMIT]}
+  # ---- e-mail
+  email.email_from:     {proposition: "E-mail sent by {value}"}
+  email.email_to:       {proposition: "E-mail addressed to {value}"}
+  email.email_date:     {proposition: "E-mail dated {value}"}
+  email.email_subject:  {proposition: "E-mail subject: {value}"}

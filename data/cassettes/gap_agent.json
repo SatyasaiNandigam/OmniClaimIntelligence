@@ -1,0 +1,362 @@
+{
+  "0641daeb55949ae5966e077acc7ce7397dc3c4c9de475a5a3b26c424ccd0a675": {
+    "input_tokens": 695,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 328,
+    "text": "{\"items\":[{\"text\":\"State whether the moisture/damage to the adjoining bedroom wall is linked to the reported event and list the specific observations/measurements (moisture readings with exact locations and values) that support that linkage.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "10a13653a59f80a28eba221668a8d66253c4913a77eee5cb2ffcfd720d81e4bb": {
+    "input_tokens": 967,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 279,
+    "text": "{\"items\":[{\"text\":\"State whether the corrosion at the kitchen supply pipe joint (kitchen supply pipe joint) is consistent with a sudden accidental burst or with long\u2011term gradual corrosion; give your basis and estimate whether the pipe failure occurred on/near the claimant's reported loss date or earlier.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "1ac13add43acaf397ff6258b2e782abacb6c6b98242e7133d6aa25860edb9787": {
+    "input_tokens": 857,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 534,
+    "text": "{\"items\":[{\"text\":\"Provide a dated written statement about the kitchen supply pipe joint (kitchen supply pipe): whether the observed significant corrosion is consistent with gradual deterioration or with a sudden burst, and your estimate of the corrosion's age and whether failure timing matches the claimant's reported loss date.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "1b0dc35232dab5563bc996b1816bf20d50711c9ebed81b39abd30a58f595d3c5": {
+    "input_tokens": 998,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 303,
+    "text": "{\n  \"links\": [\n    {\n      \"fact_id\": \"F-L2-plumber-confirms-long-term-leak-0\",\n      \"question_id\": \"Q-SUDDEN\",\n      \"direction\": \"contradicting\",\n      \"evidence_quote\": \"the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\n      \"rationale\": \"If corrosion and seeping existed for months before the loss date, the damage appears gradual rather than sudden.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"fact_id\": \"F-L2-plumber-confirms-long-term-leak-0\",\n      \"question_id\": \"Q-START\",\n      \"direction\": \"contradicting\",\n      \"evidence_quote\": \"the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\n      \"rationale\": \"Stating the leak/seepage began many months earlier indicates the start predates the reported loss date.\",\n      \"confidence\": 0.95\n    }\n  ]\n}"
+  },
+  "1c9cbd61349265da50a37dfc89c2cf3687fc208051667078cb41ca246853b320": {
+    "input_tokens": 963,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 268,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-S01-02\"],\"fact_ids_b\":[\"F-S01-03\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"quote_b\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"explanation\":\"One fact asserts a sudden burst of the supply pipe while the other documents significant corrosion at the same joint, which implies a gradual deterioration as the cause; both cannot be true as the primary cause (sudden accidental failure vs long-term corrosion) for the same observed failure mechanism.\",\"confidence\":0.95}]}"
+  },
+  "1f435ddc83ee94a65e8ccd27b36b0be37bae58643ee9cd0ac0d7b3e8277f151c": {
+    "input_tokens": 800,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 481,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-L3-surveyor-reassesses-extent-and-cost-1\"],\"evidence_quote\":\"Surveyor supplementary report: the assessed cost of repair covering all affected areas is INR 175,000\",\"rationale\":\"A surveyor-provided assessed cost for repair of all affected areas is explicitly given as INR 175,000, satisfying the requirement for a surveyor-assessed cost.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-05\",\"F-S01-06\",\"F-L3-surveyor-reassesses-extent-and-cost-1\"],\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The contractor estimate (INR 180,000) and the surveyor figure (INR 175,000) exist but the estimate covers only kitchen and hallway and thus does not fully reconcile to the surveyor's scope covering all affected areas.\",\"confidence\":0.9}]}"
+  },
+  "2489641f601e09ff5f5e2c30b3a007ee807e0b9bbdac7fba0b3680971cc29fea": {
+    "input_tokens": 930,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 470,
+    "text": "{\"items\":[{\"text\":\"Provide a dated, signed statement describing whether the corrosion you observed at the kitchen supply pipe joint is consistent with a sudden burst or gradual deterioration, and state when (approx date or before/after the reported loss date) the leak/corrosion likely began.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "2f603addfc70267460923d032b53f495d6973b88591e343a0ea183d7db2b6a0f": {
+    "input_tokens": 1649,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 667,
+    "text": "{\"questions\":[{\"text\":\"Is the elevated moisture in the adjoining bedroom wall resulting from the same escape of water event as the kitchen and hallway?\",\"category\":\"extent\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-SUB-WATER-E1\"],\"fact_ids\":[\"F-S01-04\",\"F-S01-06\"],\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"establishing_criteria\":[\"Surveyor report linking bedroom damage to the same pipe burst\",\"Moisture mapping or timelines showing contemporaneous water ingress in bedroom and other areas\",\"Photographs or contractor assessment noting continuous water path from kitchen to bedroom wall\"],\"confidence\":0.9}]}"
+  },
+  "303fc45c0c26dabb94429fe47af6f4286c504bbaf665fa2182708e04a2659e7e": {
+    "input_tokens": 1724,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1191,
+    "text": "{\n  \"questions\": [\n    {\n      \"text\": \"Was the corrosion at the joint limited to surface rust (no through\u2011wall or pitting corrosion) or was there loss of metal section that could indicate gradual deterioration?\",\n      \"category\": \"cause\",\n      \"clause_ids\": [\n        \"CL-EXC-GRADUAL\",\n        \"CL-DEF-SUDDEN\",\n        \"CL-COV-WATER\"\n      ],\n      \"fact_ids\": [\n        \"F-S01-03\",\n        \"F-L1-plumber-explains-the-corrosion-0\"\n      ],\n      \"evidence_quote\": \"the corrosion is surface rust only and the joint failed suddenly\",\n      \"establishing_criteria\": [\n        \"Metallurgical or laboratory analysis showing through\u2011wall corrosion or loss of cross\u2011section\",\n        \"Close\u2011up dated photographs or inspection report showing pitting/penetration prior to failure\",\n        \"Surveyor or independent engineer report confirming only superficial corrosion with no section loss\"\n      ],\n      \"confidence\": 0.85\n    }\n  ]\n}"
+  },
+  "334a48d2c0d6e8e558490ac417b2215dc32b13c57fca1065aeb3f72d406079a0": {
+    "input_tokens": 954,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 15,
+    "text": "{\"conflicts\": []}"
+  },
+  "36ab561a730b906775656bb54f3e016d29f2b000daf460925682da6214e14c2e": {
+    "input_tokens": 1041,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 413,
+    "text": "{\"items\":[{\"text\":\"Dated, signed statement: for the kitchen supply pipe joint you inspected, state whether the observed corrosion is consistent with a sudden burst or with long-term deterioration, and give your best estimate of when the leak/corrosion began (specific date or before/after the reported loss date).\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "4179b68f213ec0419ab5169db391c5f8d2125f9066fa6d1b6eaae621033cba5e": {
+    "input_tokens": 562,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 253,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-SUDDEN\",\"reason\":\"A qualified technical statement of the failure mechanism (required for Q-SUDDEN) would identify the failed component and whether it was a fixed pipe versus a removable hose or appliance.\"}"
+  },
+  "49e52f51a4300dbe7c041377e41bb2e7944a75a399058515fbdee6a1fb37593d": {
+    "input_tokens": 1438,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 675,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-S01-02\"],\"fact_ids_b\":[\"F-L2-plumber-confirms-long-term-leak-0\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"quote_b\":\"Plumber supplementary report: the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\"explanation\":\"The claimant asserts a sudden burst of the kitchen supply pipe, while the plumber states the joint had long-standing corrosion and was seeping for months; both cannot be true as the primary cause (sudden accidental rupture versus long-term deterioration) of the same pipe failure.\",\"confidence\":0.95}],\"resolved\":[]}"
+  },
+  "4cf5fceab3912ee93d9a9294843cd4b8f30a818907cad23a5772d3b22e646a8e": {
+    "input_tokens": 1037,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 661,
+    "text": "{\"links\":[{\"fact_id\":\"F-L1-plumber-explains-the-corrosion-0\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\"rationale\":\"The plumber states the joint failed suddenly and corrosion was only surface rust, which supports a sudden failure rather than gradual deterioration.\",\"confidence\":0.95},{\"fact_id\":\"F-L1-plumber-explains-the-corrosion-0\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\"rationale\":\"A sudden joint failure implies the leak began at the moment of failure, pointing to a start date contemporaneous with the reported loss.\",\"confidence\":0.85},{\"fact_id\":\"F-L1-plumber-explains-the-corrosion-1\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"Plumber supplementary report: the joint was inspected on 10 January 2026 and no leakage predates 14 March 2026\",\"rationale\":\"The inspector found no leakage before 14 March 2026, which supports the leak starting on or after that date.\",\"confidence\":0.9}]}"
+  },
+  "4ee8c0aea168c016a20f2d6f6d32f43030ca6dc8d5484f6ec2735519269e4e80": {
+    "input_tokens": 995,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 636,
+    "text": "{\n  \"conflicts\": [\n    {\n      \"fact_ids_a\": [\n        \"F-S01-02\"\n      ],\n      \"fact_ids_b\": [\n        \"F-S01-03\"\n      ],\n      \"kind\": \"cause\",\n      \"severity\": \"high\",\n      \"quote_a\": \"Claimant reports the kitchen supply pipe burst suddenly\",\n      \"quote_b\": \"Significant corrosion was present at the joint of the kitchen supply pipe\",\n      \"explanation\": \"The claimant asserts a sudden burst (supporting a sudden accidental loss) while the presence of significant corrosion implies a gradual deterioration cause; both cannot be true about whether the failure was sudden.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_ids_a\": [\n        \"F-L1-plumber-explains-the-corrosion-0\"\n      ],\n      \"fact_ids_b\": [\n        \"F-S01-03\"\n      ],\n      \"kind\": \"cause\",\n      \"severity\": \"high\",\n      \"quote_a\": \"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\n      \"quote_b\": \"Significant corrosion was present at the joint of the kitchen supply pipe\",\n      \"explanation\": \"The plumber's technical statement says the corrosion was only surface rust and the joint failed suddenly, which contradicts the separate fact that significant corrosion was present; they cannot both describe the same joint condition.\",\n      \"confidence\": 0.95\n    }\n  ]\n}"
+  },
+  "5137b77c2b950515b9d20ad444534fdaabcd816d92016e0d41371ef50dcd715b": {
+    "input_tokens": 853,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 578,
+    "text": "{\"items\":[{\"text\":\"State which specific areas you attribute to the reported water event; explicitly confirm whether the adjoining bedroom wall is linked to the same event as the kitchen and hallway and give the inspection date and rationale.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"},{\"text\":\"Provide your assessed repair cost and a line-by-line reconciliation to the contractor estimate (total INR 180,000), indicating which estimate items you accept, exclude or adjust and why, tied to your scoped areas.\",\"need_ids\":[1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "56dda89220d8866906098afcad7ac92a29503b93c02a2ec9d205e00d0644e06f": {
+    "input_tokens": 858,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 610,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S01-03\",\n        \"F-L2-plumber-confirms-long-term-leak-0\"\n      ],\n      \"evidence_quote\": \"Plumber supplementary report: the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\n      \"rationale\": \"A qualified plumber's report describes corrosion and long\u2011term seeping at the joint, providing a technical explanation of the failure mechanism.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"The plumber's finding that the joint had been seeping for many months contradicts the claim that the damage began at or immediately before the reported loss date.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "5d7c0e919c6e6bf844b6d5bde16d33775263fae0b12565bd0b9a1e3c7d0087d9": {
+    "input_tokens": 803,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 558,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S01-03\"],\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"A plumber's report of significant corrosion at the joint is a technical observation by a qualified person describing a likely failure mechanism.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-02\",\"F-S01-03\",\"F-S01-04\"],\"evidence_quote\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"rationale\":\"The claimant asserts the burst occurred at the loss date, but the plumber's corrosion finding and elevated moisture in multiple areas cast doubt on whether damage predated the report.\",\"confidence\":0.6}]}"
+  },
+  "60b662e6f0fec2447c2f182fe74297b2925759b2b60dcdc7a0e60c8acaf483a9": {
+    "input_tokens": 579,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 193,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-SUDDEN\",\"reason\":\"Determining whether corrosion is superficial versus causing metal loss is the technical evidence about the failure mechanism used to establish if the damage was sudden or gradual, so it is covered by Q-SUDDEN.\"}"
+  },
+  "612014d7a256669af147ccabebca3ebf2e2dc22d9dc1fca46a52cb27b74a0ca9": {
+    "input_tokens": 731,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 431,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-03\"\n      ],\n      \"evidence_quote\": \"Significant corrosion was present at the joint of the kitchen supply pipe\",\n      \"rationale\": \"A plumber's observation of significant corrosion is technical evidence of deterioration but does not specify when the leak or corrosion began.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "67b4d16ab64c7edec992083b64b12913c2a6fb9acead10c1f9c91de1696e5d98": {
+    "input_tokens": 845,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 772,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-L1-plumber-explains-the-corrosion-0\",\n        \"F-S01-03\"\n      ],\n      \"evidence_quote\": \"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\n      \"rationale\": \"A qualified plumber provided a technical explanation attributing the failure to a sudden joint failure and characterized the corrosion as surface rust only.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-L1-plumber-explains-the-corrosion-0\",\n        \"F-S01-02\"\n      ],\n      \"evidence_quote\": \"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\n      \"rationale\": \"The plumber's statement that the joint failed suddenly, together with the claimant's report of a sudden burst, supports that the damage began at or immediately before the reported loss date.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "69b92303ddcf5bfe96c9719d0841c7211bb41a0715b5eb793b09896061b90bdc": {
+    "input_tokens": 862,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 402,
+    "text": "{\"items\":[{\"text\":\"State which areas you attribute to the reported event (kitchen, hallway, adjoining bedroom wall), provide a surveyor-assessed repair cost total, and an itemised reconciliation showing how the contractor's INR 180,000 estimate maps to your surveyor scope.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\"}]}"
+  },
+  "6ce8bd255a017d55903a55d16b9d10e4024fe0d022e269aac7d85d04b6d6ca50": {
+    "input_tokens": 1006,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 446,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-S01-02\"],\"fact_ids_b\":[\"F-S01-03\",\"F-L2-plumber-confirms-long-term-leak-0\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"quote_b\":\"Plumber supplementary report: the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\"explanation\":\"The claimant asserts a sudden burst of the kitchen supply pipe, while the plumber and corrosion observation indicate a long-term corrosion and ongoing seepage predating the reported loss; both a sudden accidental burst and a long-term seeping failure cannot be true as the primary failure mechanism. This conflict bears directly on whether the loss is sudden/accidental (covered) or gradual (potentially excluded).\",\"confidence\":0.95}]}"
+  },
+  "71d0133609ec840aaa3f4cb3c6948ebf64a9fe5b5d8e2fda3262b0cb6c64b053": {
+    "input_tokens": 930,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 375,
+    "text": "{\"scenarios\":[{\"scenario_id\":\"A\",\"implication_text\":\"If new evidence supports a sudden failure of the kitchen supply pipe, the issue Escape of water: sudden and accidental would move toward established; the issue Gradual leakage exclusion would be re-assessed as not engaged.\",\"next_step\":\"Obtain the outstanding plumber report and other missing evidence, then re-run coverage and settlement checks for the affected issues for human review.\"},{\"scenario_id\":\"B\",\"implication_text\":\"If new evidence supports prolonged leakage, the issue Escape of water: sudden and accidental would not be established; the issue Gradual leakage exclusion would become potentially applicable. This outcome should be escalated for senior review.\",\"next_step\":\"Refer the file, cited evidence and relevant clauses to a senior adjuster for review; do not make an automatic decision.\"},{\"scenario_id\":\"C\",\"implication_text\":\"If the new evidence is inconclusive, the issue Escape of water: sudden and accidental would remain unresolved; the issue Gradual leakage exclusion would stay open: whether it is engaged could not be concluded.\",\"next_step\":\"Arrange for an independent expert inspection to try to resolve the question of sudden failure versus gradual leakage.\"}]}"
+  },
+  "76712fa86297b16df7f67b1fdbae1c230dfd578cd06e434d933e4e012b60e92c": {
+    "input_tokens": 1441,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 362,
+    "text": "{\n  \"conflicts\": [],\n  \"resolved\": [\n    {\n      \"contradiction_id\": \"C-4C31CA2B\",\n      \"resolving_fact_ids\": [\n        \"F-L1-plumber-explains-the-corrosion-0\"\n      ],\n      \"evidence_quote\": \"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\n      \"explanation\": \"The earlier contradiction asserted a sudden burst (F-S01-02) versus significant corrosion at the joint (F-S01-03) implying gradual deterioration. The plumber's supplemental report attributes the corrosion to surface rust only and states the joint failed suddenly, reconciling the apparent inconsistency by explaining the corrosion was not the long-term cause.\"\n    }\n  ]\n}"
+  },
+  "79f92c932bab1ed2b4aee79cd9bb91c928b451005f2dc3d87d354eee056dea7e": {
+    "input_tokens": 933,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "7bdbd713355c9a84928bedde9e465df2e7a391416d500696ce5e6e13bad26d36": {
+    "input_tokens": 1169,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1662,
+    "text": "{\"links\":[{\"fact_id\":\"F-S01-01\",\"question_id\":\"Q-INFORCE\",\"direction\":\"neutral\",\"evidence_quote\":\"Reported date of loss is 14 March 2026\",\"rationale\":\"A reported loss date alone does not establish whether the policy was in force on that date.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-02\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"rationale\":\"The claimant's statement that the pipe burst suddenly is directly consistent with the damage being sudden and accidental.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Significant corrosion suggests a progressive deterioration rather than a sudden failure, which points away from a sudden event.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-START\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Presence of significant corrosion indicates the leak or damage likely began before the reported loss date, contradicting a start at the loss date.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"neutral\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"Elevated moisture locations are relevant to timing but do not by themselves indicate whether the event was sudden or gradual.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"The statement identifies the specific areas with elevated moisture, supporting that those areas were affected by the reported event.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-05\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Contractor estimate total is INR 180,000\",\"rationale\":\"A contractor's total estimate is a monetary figure relevant to amount but does not by itself confirm reasonableness or causation.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-EXTENT\",\"direction\":\"contradicting\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The estimate excludes the adjoining bedroom despite moisture reported there, which conflicts with the claimed full extent of affected areas.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"contradicting\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"An estimate limited to kitchen and hallway suggests the claimed total may not cover all reported damaged areas, undermining the claimed repair amount's completeness.\",\"confidence\":0.8},{\"fact_id\":\"F-L2-plumber-confirms-long-term-leak-0\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"contradicting\",\"evidence_quote\":\"the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\"rationale\":\"The plumber's statement that corrosion and seeping existed for many months indicates a long-term issue, contradicting a sudden failure on the loss date.\",\"confidence\":0.95},{\"fact_id\":\"F-L2-plumber-confirms-long-term-leak-0\",\"question_id\":\"Q-START\",\"direction\":\"contradicting\",\"evidence_quote\":\"the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\"rationale\":\"This indicates the leak began well before the reported loss date, contradicting a start at or immediately before that date.\",\"confidence\":0.95}]}"
+  },
+  "7c44b7bc601f560bca170f041c497ccfbe5cd05ba93f4d88f2baf004affd1ac9": {
+    "input_tokens": 1692,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 526,
+    "text": "{\"questions\": []}"
+  },
+  "7d3b89e8e65f4e620503ca2a79ed7838edb4ac32c8159e3b96fc828538a08e4e": {
+    "input_tokens": 755,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 474,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No surveyor-assessed repair cost is provided; only a contractor estimate exists.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unclear\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"There is no surveyor scope to compare against the contractor estimate, so reconciliation cannot be determined from the facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "805cdc5663a42ac75c5d56b9d202bba87c855878b223fce6a8d421996a9697e2": {
+    "input_tokens": 974,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 348,
+    "text": "{\"items\":[{\"text\":\"Provide a written surveyor statement naming the specific areas you link to the reported event (kitchen, hallway, adjoining bedroom wall), give your surveyor-assessed total repair cost (INR), and itemise how the contractor INR 180,000 maps to your surveyor scope.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "84005723b7dabfc8aba3d2d64fd192ffb78a960f312a58ae57e47f0bf3a6f027": {
+    "input_tokens": 975,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 207,
+    "text": "{\"conflicts\": []}"
+  },
+  "873d2d948b65ee868aa6d878d4a50fd9a8c4868ccf343600df7237e734d0eb07": {
+    "input_tokens": 910,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 470,
+    "text": "{\"items\":[{\"text\":\"Provide a written supplement describing the kitchen supply pipe joint (location: under sink at rear left supply to cold tap): state whether corrosion was surface rust or significant penetrating corrosion, explain if that condition is consistent with a sudden joint failure or with a gradual leak.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"},{\"text\":\"Provide new close-up color photos of the failed kitchen supply pipe joint (under sink rear left) with a ruler for scale and one wider shot showing the kitchen, hallway and adjoining bedroom wall moisture areas, dated and signed by you.\",\"need_ids\":[0,1],\"asks_for\":\"new_document\",\"document_type\":\"photo\"}]}"
+  },
+  "886a4cdd0d8374a06adf8cbc66c290669d047288210453d9b850ecdd7b2eb096": {
+    "input_tokens": 784,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 534,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-L3-surveyor-reassesses-extent-and-cost-0\",\n        \"F-S01-03\"\n      ],\n      \"evidence_quote\": \"Surveyor supplementary report: the moisture in the bedroom wall is a result of the 14 March 2026 escape of water\",\n      \"rationale\": \"A qualified surveyor explicitly attributes the moisture to a 14 March 2026 escape of water, supported by a plumber's observation of significant corrosion indicating an active leak.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "a65db3c9a1d1efd7d0df7e8c29ccb5ff37d90730c3a0e7d84856dd6b750c6d33": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 132,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-EXTENT\",\"reason\":\"This asks which areas were affected by the reported event and whether the bedroom moisture is linked to the same escape, which is covered by Q-EXTENT's requirement to link each affected area to the reported event.\"}"
+  },
+  "aa1500261c6175d226aa06736a8a866c87cb16b14665cd8def5d92a5c301896c": {
+    "input_tokens": 1208,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1641,
+    "text": "{\"links\":[{\"fact_id\":\"F-S01-01\",\"question_id\":\"Q-INFORCE\",\"direction\":\"neutral\",\"evidence_quote\":\"Reported date of loss is 14 March 2026\",\"rationale\":\"This fact only states the reported loss date and does not itself confirm policy status on that date.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-02\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"rationale\":\"The claimant's statement explicitly describes a sudden burst, which supports the event being sudden and accidental.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Significant corrosion indicates a gradual deterioration rather than a sudden failure, which points away from a sudden event.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-START\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Corrosion implies the degradation began prior to the reported loss date, contradicting a recent start.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"neutral\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"Elevated moisture levels are relevant to timing but do not by themselves indicate whether the leak was sudden or gradual.\",\"confidence\":0.7},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"The recorded elevated moisture identifies the specific areas affected, supporting that these areas were impacted by the event.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-05\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Contractor estimate total is INR 180,000\",\"rationale\":\"This is a monetary estimate and does not by itself prove the reasonableness or causation of the claimed amount.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-EXTENT\",\"direction\":\"contradicting\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"Stating the estimate excludes the bedroom suggests the bedroom may not be considered affected, which conflicts with claims that it was.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The scope description relates to which areas are included but does not by itself confirm whether the total cost is reasonable.\",\"confidence\":0.7},{\"fact_id\":\"F-L3-surveyor-reassesses-extent-and-cost-0\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"Surveyor supplementary report: the moisture in the bedroom wall is a result of the 14 March 2026 escape of water\",\"rationale\":\"A surveyor explicitly ties the bedroom moisture to the 14 March escape, confirming that the bedroom was affected by the reported event.\",\"confidence\":0.95},{\"fact_id\":\"F-L3-surveyor-reassesses-extent-and-cost-1\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"supporting\",\"evidence_quote\":\"Surveyor supplementary report: the assessed cost of repair covering all affected areas is INR 175,000\",\"rationale\":\"The surveyor's assessed repair cost provides an expert-supported valuation, supporting the reasonableness of the claimed amount.\",\"confidence\":0.95}]}"
+  },
+  "ac5216c2b977804d494558748735b3504adef96df86d090b3229e105eb600bd6": {
+    "input_tokens": 888,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 276,
+    "text": "{\"items\":[{\"text\":\"State whether the corrosion at the kitchen supply pipe joint in the kitchen (inspected 10 Jan 2026) is consistent with progressive deterioration or a sudden failure; specify the earliest observed leakage date and list any pipe-thickness/corrosion measurements and photo dates.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "b10dcba293c752430757d4509e36a0a7dafee338431060ca6e1d05f9d4a511ee": {
+    "input_tokens": 948,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 462,
+    "text": "{\"scenarios\":[{\"scenario_id\":\"A\",\"implication_text\":\"If new evidence supports a sudden failure of the kitchen supply joint, Escape of water: sudden and accidental would move toward established; Gradual leakage exclusion would be re-assessed as not engaged.\",\"next_step\":\"Collect the outstanding evidence (the plumber), then re-run coverage and settlement for the affected issues for human review.\"},{\"scenario_id\":\"B\",\"implication_text\":\"If new evidence supports prolonged leakage, Escape of water: sudden and accidental would not be established; Gradual leakage exclusion would become potentially applicable. This needs senior human review.\",\"next_step\":\"Refer to a senior adjuster with the cited clauses and evidence; no automatic decision.\"},{\"scenario_id\":\"C\",\"implication_text\":\"If new evidence is inconclusive, Escape of water: sudden and accidental would remain unresolved; Gradual leakage exclusion would stay open: whether it is engaged could not be concluded.\",\"next_step\":\"Consider an independent expert inspection.\"}]}"
+  },
+  "b23707479b45ea047d5955d4dfe834c4ab765a17d954ad47dd399cf52e7e35ee": {
+    "input_tokens": 816,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 724,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-S01-04\",\n        \"F-L3-surveyor-reassesses-extent-and-cost-0\"\n      ],\n      \"evidence_quote\": \"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\n      \"rationale\": \"A surveyor report explicitly identifies the kitchen, hallway and adjoining bedroom wall as having elevated moisture, constituting a surveyor-confirmed list of affected areas.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-L3-surveyor-reassesses-extent-and-cost-0\",\n        \"F-S01-04\"\n      ],\n      \"evidence_quote\": \"Surveyor supplementary report: the moisture in the bedroom wall is a result of the 14 March 2026 escape of water\",\n      \"rationale\": \"The surveyor explicitly links the bedroom wall moisture to the 14 March escape, but the facts do not explicitly state the kitchen and hallway moisture were caused by that same event.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "b5111c9a763f407b293efa7ff103214b90be82175b83d434581c495b5219a0c0": {
+    "input_tokens": 919,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 470,
+    "text": "{\"items\":[{\"text\":\"Signed supplemental statement about the kitchen supply pipe joint: state whether you observed an acute burst or only long-term corrosion/seepage, whether the failure could occur suddenly on or just before 14 Mar 2026, and earliest month/year you observed seepage.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "b672b10c882ca9adf7963e24b8b47d93e59a90f2bb34c67783c70f8a1055c7ce": {
+    "input_tokens": 1028,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 405,
+    "text": "{\"items\":[{\"text\":\"Signed statement: for the kitchen supply pipe joint, did you observe an acute burst or only long-term corrosion/seepage? Could the observed condition have occurred suddenly on or just before 14 Mar 2026? Give earliest month/year you observed seepage.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "b90adb2dba69278c1da6661975b0b6efb6707ece2bdfdce1eb46e59a33df7cbe": {
+    "input_tokens": 861,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 285,
+    "text": "{\"items\":[{\"text\":\"State whether the corrosion and joint condition at the kitchen supply pipe joint (kitchen sink supply) and the moisture in the kitchen/hallway/bedroom walls are consistent with a sudden rupture on 14-Mar-2026 or with long-term seeping; list the specific observations and dates of those observations.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "ba49e41295c62db60e2fdeb130bf66dee961d666537bdd075f59e9e98249446f": {
+    "input_tokens": 752,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 509,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No surveyor-assessed repair cost is provided; only a contractor estimate is listed.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-S01-06\",\n        \"F-S01-05\"\n      ],\n      \"evidence_quote\": \"Estimate scope covers only the kitchen and hallway\",\n      \"rationale\": \"The estimate states the scope (kitchen and hallway) but there is no surveyor scope or reconciliation shown between estimate and any surveyor assessment.\",\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "bb49a380f1a54bc612ff4f7615c7e86ab05f3b2a1bd86cee3a482658b4957c09": {
+    "input_tokens": 763,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 562,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S01-04\"],\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"A surveyor report explicitly identifies the affected areas (kitchen, hallway, adjoining bedroom wall), satisfying the requirement for a surveyor-confirmed list.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-04\",\"F-S01-06\"],\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"The surveyor links three areas to the event, but the estimate limits scope to only kitchen and hallway, leaving the linkage for the adjoining bedroom wall contested.\",\"confidence\":0.75}]}"
+  },
+  "bc77f5bb5e66be69c1ef3d58af9fedb68e00b3709d45031590756526c92b7658": {
+    "input_tokens": 959,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 465,
+    "text": "{\"scenarios\":[{\"scenario_id\":\"A\",\"implication_text\":\"If new evidence supports a sudden failure of the kitchen supply pipe, Escape of water: sudden and accidental would move toward established; Gradual leakage exclusion would be re-assessed as not engaged.\",\"next_step\":\"Collect the outstanding evidence (the plumber), then re-run coverage and settlement for the affected issues for human review.\"},{\"scenario_id\":\"B\",\"implication_text\":\"If new evidence supports prolonged leakage at the joint, Escape of water: sudden and accidental would not be established; Gradual leakage exclusion would become potentially applicable. This needs senior human review.\",\"next_step\":\"Refer to a senior adjuster with the cited clauses and evidence; no automatic decision.\"},{\"scenario_id\":\"C\",\"implication_text\":\"If new evidence is inconclusive, Escape of water: sudden and accidental would remain unresolved; Gradual leakage exclusion would stay open: whether it is engaged could not be concluded.\",\"next_step\":\"Consider an independent expert inspection.\"}]}"
+  },
+  "bf046672bcd63fbd51904c5bf8a89253359d40da17db13d0d59dd12848f10307": {
+    "input_tokens": 953,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 456,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-S01-03\"],\"fact_ids_b\":[\"F-L3-surveyor-reassesses-extent-and-cost-0\"],\"kind\":\"date\",\"severity\":\"medium\",\"quote_a\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"quote_b\":\"Surveyor supplementary report: the moisture in the bedroom wall is a result of the 14 March 2026 escape of water\",\"explanation\":\"One fact indicates significant corrosion at a supply-pipe joint, implying a long-developing deterioration that could have begun well before March 14, 2026; the other attributes the bedroom moisture specifically to an escape of water on 14 March 2026. These cannot both establish the same single start date for the leak without reconciling whether the corrosion preceded and caused a longstanding leak or whether the loss began with the single 14 March event.\",\"confidence\":0.8}]}"
+  },
+  "ca28192881228b1f780bbe70dec763b8e9df41c087c2eb8d6774740f5bd70ec7": {
+    "input_tokens": 1728,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 994,
+    "text": "{\"questions\":[{\"text\":\"Was the failed component a fixed water pipe (not a removable hose or appliance)?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F-S01-02\",\"F-S01-03\"],\"evidence_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"establishing_criteria\":[\"Plumber or contractor statement identifying the failed part as a fixed pipe\",\"Photographs showing a rigid pipe fixed to the building fabric at the failure location\",\"Invoice or parts list describing replacement of a fixed pipe (not a flexible hose or appliance)\"],\"confidence\":0.8}]}"
+  },
+  "ce9610d09c3813dd5b974bf0098fe273939c32c7c8b1de04bf211c606e19216e": {
+    "input_tokens": 1208,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1552,
+    "text": "{\"links\":[{\"fact_id\":\"F-S01-01\",\"question_id\":\"Q-INFORCE\",\"direction\":\"neutral\",\"evidence_quote\":\"Reported date of loss is 14 March 2026\",\"rationale\":\"Provides only the reported loss date and does not state policy status on that date.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-02\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"rationale\":\"The claimant explicitly describes a sudden burst, which supports a sudden accidental event.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Significant corrosion suggests a gradual deterioration inconsistent with a purely sudden failure.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-START\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Presence of significant corrosion implies the leak or deterioration began earlier than the reported loss date.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"Explicitly lists the areas where moisture was elevated, supporting those areas as affected.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"neutral\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"Elevated moisture shows affected areas but does not indicate whether the damage was sudden or gradual.\",\"confidence\":0.7},{\"fact_id\":\"F-S01-05\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Contractor estimate total is INR 180,000\",\"rationale\":\"This is a monetary estimate and does not itself state whether the amount is reasonable or caused by the loss.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The estimate explicitly limits the repair scope to kitchen and hallway, supporting those areas as the claimed affected areas.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"Scope description is relevant to cost but does not by itself confirm whether the claimed amount is reasonable.\",\"confidence\":0.8},{\"fact_id\":\"F-L1-plumber-explains-the-corrosion-0\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\"rationale\":\"The plumber states the joint failed suddenly and that corrosion was only surface rust, supporting a sudden failure.\",\"confidence\":0.95},{\"fact_id\":\"F-L1-plumber-explains-the-corrosion-0\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\"rationale\":\"Indicates the failure occurred suddenly and corrosion was superficial, supporting an onset at the reported loss date.\",\"confidence\":0.9},{\"fact_id\":\"F-L1-plumber-explains-the-corrosion-1\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"Plumber supplementary report: the joint was inspected on 10 January 2026 and no leakage predates 14 March 2026\",\"rationale\":\"A prior inspection found no leakage before the reported loss, supporting that the leak began on or just before 14 March 2026.\",\"confidence\":0.95}]}"
+  },
+  "d04c6eeaf356145238cdedbd3f20b047ea85105651a1442249d80520e75704bf": {
+    "input_tokens": 771,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 414,
+    "text": "{\"items\":[{\"text\":\"Please provide a written supplement stating whether the corrosion at the kitchen supply pipe joint (inspected 10 Jan 2026) is consistent with progressive deterioration or a sudden failure, and give the earliest observed leakage date plus any pipe-thickness measurements or photos taken on 10 Jan and 14 Mar 2026.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "d4ff3c9867749e4337a7bd1e4d98637978231015514b1427d547a2a96b50349d": {
+    "input_tokens": 963,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 518,
+    "text": "{\"items\":[{\"text\":\"State whether the 14 Mar 2026 escape of water caused the elevated moisture in the kitchen, hallway and the adjoining bedroom wall, and briefly explain how you linked each area to that event.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"},{\"text\":\"Provide a line-by-line reconciliation showing how your INR 175,000 assessed repair cost maps to the contractor INR 180,000 estimate by room/part (kitchen, hallway, bedroom wall) and list items included or omitted.\",\"need_ids\":[1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "d8ab67f595288b0cf2f7dbefe010d2336b99105f6c2bc0cdd6f4a52c3b332136": {
+    "input_tokens": 661,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 261,
+    "text": "{\"items\":[{\"text\":\"Provide any maintenance or inspection records for the kitchen supply pipe joint (where plumber_report noted significant corrosion), including dates and who performed them, covering the 12 months before the leak began.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"other\"}]}"
+  },
+  "dec4acfa1f1efe76e577a3ed819f376fa83ec42438309558fa05e5d846be3df8": {
+    "input_tokens": 986,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 699,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-S01-03\"],\"fact_ids_b\":[\"F-L1-plumber-explains-the-corrosion-0\",\"F-L1-plumber-explains-the-corrosion-1\"],\"kind\":\"date\",\"severity\":\"high\",\"quote_a\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"quote_b\":\"Plumber supplementary report: the corrosion is surface rust only and the joint failed suddenly\",\"explanation\":\"One fact reports significant corrosion at the joint (implying progressive deterioration and an earlier start), while the plumber's report states the joint was only surface-rusted and failed suddenly (and inspection on 10 January found no leakage predating 14 March 2026), so the event cannot both be long-developing corrosion and a sudden failure with no earlier leakage.\",\"confidence\":0.95}]}"
+  },
+  "e98a833c6b22da683484b673bbf276b7c41398ab55938c399ca3d8a8b5621992": {
+    "input_tokens": 852,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 407,
+    "text": "{\"items\":[{\"need_ids\":[0,1],\"text\":\"Confirm whether the 14 Mar 2026 escape of water caused moisture in the kitchen, hallway and the adjoining bedroom wall, and provide a line-item reconciliation showing how your INR 175,000 assessed cost maps to the contractor INR 180,000 estimate by area.\",\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "ef44a5d0d239a26923754b6d56a13ddce2ae5b26a483924bfc575ba2d1454dc9": {
+    "input_tokens": 1037,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 605,
+    "text": "{\"links\":[{\"fact_id\":\"F-L3-surveyor-reassesses-extent-and-cost-0\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"the moisture in the bedroom wall is a result of the 14 March 2026 escape of water\",\"rationale\":\"The surveyor explicitly links moisture in the bedroom wall to the reported 14 Mar 2026 escape, supporting that the bedroom was affected by that event.\",\"confidence\":0.95},{\"fact_id\":\"F-L3-surveyor-reassesses-extent-and-cost-0\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"the moisture in the bedroom wall is a result of the 14 March 2026 escape of water\",\"rationale\":\"Stating the moisture is a result of the 14 Mar 2026 escape ties the start of the leak/damage to that date.\",\"confidence\":0.9},{\"fact_id\":\"F-L3-surveyor-reassesses-extent-and-cost-1\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"the assessed cost of repair covering all affected areas is INR 175,000\",\"rationale\":\"This gives an assessed total cost (a monetary figure) which is neutral regarding reasonableness or causation of individual items.\",\"confidence\":0.9}]}"
+  },
+  "f32e261a65b982ff7166fee03916f9176b2a1bbbc918cde1b61578a6490f8de5": {
+    "input_tokens": 786,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 417,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S01-03\",\"F-L2-plumber-confirms-long-term-leak-0\"],\"evidence_quote\":\"Plumber supplementary report: the corrosion had been present for many months and the joint was seeping long before 14 March 2026\",\"rationale\":\"A qualified plumber reported significant corrosion and explicitly stated the joint had been seeping for many months prior to 14 March 2026, providing technical timing evidence.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No maintenance or inspection records are provided in the listed facts.\",\"confidence\":0.9}]}"
+  },
+  "f5073cc6b7c7066fe2a038c92c5d563006e392a6e7d8a92ce40b2efaad01743f": {
+    "input_tokens": 1114,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1241,
+    "text": "{\"links\":[{\"fact_id\":\"F-S01-01\",\"question_id\":\"Q-INFORCE\",\"direction\":\"neutral\",\"evidence_quote\":\"Reported date of loss is 14 March 2026\",\"rationale\":\"This is a bare reported date and by itself does not say whether the policy was in force.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-02\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"rationale\":\"The claimant's statement explicitly describes a sudden burst, which supports sudden accidental damage.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Presence of significant corrosion suggests a progressive deterioration rather than a sudden failure.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-03\",\"question_id\":\"Q-START\",\"direction\":\"contradicting\",\"evidence_quote\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"rationale\":\"Corrosion indicates the defect or leakage likely began before the reported loss date.\",\"confidence\":0.8},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"Elevated moisture in those specific locations confirms those areas were affected by the event.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-04\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"neutral\",\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"Presence of moisture shows affected areas but does not by itself indicate sudden versus gradual onset.\",\"confidence\":0.7},{\"fact_id\":\"F-S01-05\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Contractor estimate total is INR 180,000\",\"rationale\":\"This is a monetary estimate and does not by itself say whether the claimed cost is reasonable or caused by the loss.\",\"confidence\":0.9},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-EXTENT\",\"direction\":\"contradicting\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The estimate excludes the adjoining bedroom wall which other evidence shows had elevated moisture, contradicting a wider affected area.\",\"confidence\":0.85},{\"fact_id\":\"F-S01-06\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"Scope limitation describes what is included in the estimate but does not alone establish whether the total claimed cost is reasonable.\",\"confidence\":0.7}]}"
+  },
+  "f78ac44d01a3b97d102d0fc082068afd5c6b511432f52dc31589e8370a6a51d8": {
+    "input_tokens": 861,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 403,
+    "text": "{\"items\":[{\"text\":\"Supplement the surveyor_report: confirm whether the kitchen and hallway moisture were caused by the 14 Mar 2026 escape and provide an itemised, reconciled repair cost covering kitchen, hallway and the bedroom with totals and basis (INR).\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "fa0309942291709fab5528af5f0f9f009b789a7fba661fdd2feda5f2a5bb327d": {
+    "input_tokens": 761,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 555,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S01-04\"],\"evidence_quote\":\"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\"rationale\":\"A surveyor report explicitly identifies the affected areas (kitchen, hallway, adjoining bedroom wall).\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-04\",\"F-S01-06\"],\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The estimate links the kitchen and hallway to the event but the surveyor-only note of an adjoining bedroom wall is not tied to the reported event in the estimate, so not every area is clearly linked.\",\"confidence\":0.8}]}"
+  },
+  "fb0ea7372cf6e77a8ee67a932ee32c310e166a10417ee510dc255d8888703db7": {
+    "input_tokens": 752,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 406,
+    "text": "{\"items\":[{\"text\":\"State whether your inspection findings at the kitchen supply pipe joint (kitchen, adjacent hallway/bedroom wall) are consistent with a sudden burst on 14-Mar-2026 or with long-term seeping; list specific observations that support your conclusion and dates you observed them.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "fccbb47e48078f8c98deb6fd8bbfbc3a56ad68b728750232d5d7cbabfe13c931": {
+    "input_tokens": 826,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 488,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-S01-03\",\"F-L1-plumber-explains-the-corrosion-0\",\"F-L1-plumber-explains-the-corrosion-1\"],\"evidence_quote\":\"the joint was inspected on 10 January 2026 and no leakage predates 14 March 2026\",\"rationale\":\"A qualified plumber's inspection and report provide technical evidence narrowing the start to after 10 Jan 2026 and noting no leakage before 14 Mar 2026, supporting a technical timing conclusion.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-L1-plumber-explains-the-corrosion-1\"],\"evidence_quote\":\"the joint was inspected on 10 January 2026 and no leakage predates 14 March 2026\",\"rationale\":\"The plumber's inspection record explicitly states the inspection date and that no leakage predates 14 March 2026, satisfying the maintenance/inspection record criterion.\",\"confidence\":0.9}]}"
+  },
+  "ff8f1e8dc26a9ae60fdb09bbbb013f82d6b8f435a1d6ef0f167d7336c2ad6396": {
+    "input_tokens": 799,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 594,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-L3-surveyor-reassesses-extent-and-cost-1\"],\"evidence_quote\":\"Surveyor supplementary report: the assessed cost of repair covering all affected areas is INR 175,000\",\"rationale\":\"A surveyor report explicitly gives an assessed repair cost of INR 175,000, satisfying the requirement for a surveyor-assessed cost.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"partly\",\"fact_ids\":[\"F-S01-05\",\"F-S01-06\",\"F-L3-surveyor-reassesses-extent-and-cost-1\"],\"evidence_quote\":\"Estimate scope covers only the kitchen and hallway\",\"rationale\":\"The contractor estimate (INR 180,000) exists but covers only kitchen and hallway, not the full areas the surveyor assessed, so the estimate does not fully reconcile to the surveyor scope.\",\"confidence\":0.9}]}"
+  }
+}

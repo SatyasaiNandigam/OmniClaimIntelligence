@@ -1,0 +1,68 @@
+{
+  "entries": [
+    {
+      "label": "T4.6 counterfactuals v1 (prompt frozen on dev; fresh run once)",
+      "date": "2026-11-25",
+      "config_sha": "0f6c3d8432775243",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "cases": 4,
+            "questions_with_scenarios_expected": 3,
+            "complete_a_b_c": 1.0,
+            "scenarios_where_none_expected": 0,
+            "affected_issues_exact": 1.0,
+            "scenarios": 9,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "model_text_share": 0.0,
+            "refused_rewrites": {},
+            "wrong": []
+          },
+          "fresh": {
+            "cases": 7,
+            "questions_with_scenarios_expected": 4,
+            "complete_a_b_c": 1.0,
+            "scenarios_where_none_expected": 0,
+            "affected_issues_exact": 1.0,
+            "scenarios": 12,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "model_text_share": 0.0,
+            "refused_rewrites": {},
+            "wrong": []
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "cases": 4,
+            "questions_with_scenarios_expected": 3,
+            "complete_a_b_c": 1.0,
+            "scenarios_where_none_expected": 0,
+            "affected_issues_exact": 1.0,
+            "scenarios": 9,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "model_text_share": 1.0,
+            "refused_rewrites": {},
+            "wrong": []
+          },
+          "fresh": {
+            "cases": 7,
+            "questions_with_scenarios_expected": 4,
+            "complete_a_b_c": 1.0,
+            "scenarios_where_none_expected": 0,
+            "affected_issues_exact": 1.0,
+            "scenarios": 12,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "model_text_share": 1.0,
+            "refused_rewrites": {},
+            "wrong": []
+          }
+        }
+      }
+    }
+  ]
+}

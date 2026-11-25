@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+*.db
+evals/reports/*
+!evals/reports/.gitkeep
+.pytest_cache/
+.ruff_cache/
+var/
+.import_linter_cache/
+.hypothesis/

@@ -1,0 +1,1763 @@
+{
+  "$defs": {
+    "BBox": {
+      "additionalProperties": false,
+      "description": "Region on a page/image, normalised 0..1 in page coordinates.",
+      "properties": {
+        "x0": {
+          "title": "X0",
+          "type": "number"
+        },
+        "x1": {
+          "title": "X1",
+          "type": "number"
+        },
+        "y0": {
+          "title": "Y0",
+          "type": "number"
+        },
+        "y1": {
+          "title": "Y1",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
+      "title": "BBox",
+      "type": "object"
+    },
+    "ClaimHeader": {
+      "additionalProperties": false,
+      "properties": {
+        "channel": {
+          "default": "other",
+          "enum": [
+            "portal",
+            "call_centre",
+            "email",
+            "agent",
+            "other"
+          ],
+          "title": "Channel",
+          "type": "string"
+        },
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "claimant_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimant Name"
+        },
+        "loss_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loss Date"
+        },
+        "loss_description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loss Description"
+        },
+        "loss_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loss Type"
+        },
+        "policy_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Policy Ref"
+        },
+        "registered_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Registered At"
+        }
+      },
+      "required": [
+        "claim_id"
+      ],
+      "title": "ClaimHeader",
+      "type": "object"
+    },
+    "ClauseCitation": {
+      "additionalProperties": false,
+      "properties": {
+        "clause_id": {
+          "title": "Clause Id",
+          "type": "string"
+        },
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "modified_by": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Modified By",
+          "type": "array"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "span": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Span"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "clause_id",
+        "document",
+        "text"
+      ],
+      "title": "ClauseCitation",
+      "type": "object"
+    },
+    "ClauseRelation": {
+      "additionalProperties": false,
+      "properties": {
+        "relation": {
+          "enum": [
+            "modifies",
+            "excepts",
+            "defines",
+            "conditions"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "source_clause_id": {
+          "title": "Source Clause Id",
+          "type": "string"
+        },
+        "target_clause_id": {
+          "title": "Target Clause Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_clause_id",
+        "target_clause_id",
+        "relation"
+      ],
+      "title": "ClauseRelation",
+      "type": "object"
+    },
+    "Contradiction": {
+      "additionalProperties": false,
+      "properties": {
+        "contradiction_id": {
+          "title": "Contradiction Id",
+          "type": "string"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        },
+        "fact_ids_a": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Fact Ids A",
+          "type": "array"
+        },
+        "fact_ids_b": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Fact Ids B",
+          "type": "array"
+        },
+        "kind": {
+          "default": "other",
+          "enum": [
+            "date",
+            "amount",
+            "cause",
+            "extent",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Severity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contradiction_id",
+        "question_id",
+        "fact_ids_a",
+        "fact_ids_b",
+        "severity",
+        "explanation"
+      ],
+      "title": "Contradiction",
+      "type": "object"
+    },
+    "CounterfactualScenario": {
+      "additionalProperties": false,
+      "properties": {
+        "affected_issue_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Affected Issue Ids",
+          "type": "array"
+        },
+        "assumed_finding": {
+          "title": "Assumed Finding",
+          "type": "string"
+        },
+        "implication_text": {
+          "title": "Implication Text",
+          "type": "string"
+        },
+        "next_step": {
+          "title": "Next Step",
+          "type": "string"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "scenario_id": {
+          "enum": [
+            "A",
+            "B",
+            "C"
+          ],
+          "title": "Scenario Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "assumed_finding",
+        "implication_text",
+        "next_step"
+      ],
+      "title": "CounterfactualScenario",
+      "type": "object"
+    },
+    "CoverageIssue": {
+      "additionalProperties": false,
+      "properties": {
+        "clause_citations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ClauseCitation"
+          },
+          "title": "Clause Citations",
+          "type": "array"
+        },
+        "fact_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Fact Ids",
+          "type": "array"
+        },
+        "issue": {
+          "title": "Issue",
+          "type": "string"
+        },
+        "issue_id": {
+          "title": "Issue Id",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "question_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Question Ids",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "established",
+            "identified",
+            "unresolved",
+            "potentially_relevant",
+            "incomplete",
+            "abstain"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "issue_id",
+        "issue",
+        "status"
+      ],
+      "title": "CoverageIssue",
+      "type": "object"
+    },
+    "DocumentRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "blob_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Blob Path"
+        },
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "detected_type": {
+          "default": "unknown",
+          "title": "Detected Type",
+          "type": "string"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "needs_ocr": {
+          "default": false,
+          "title": "Needs Ocr",
+          "type": "boolean"
+        },
+        "page_count": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Page Count",
+          "type": "integer"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "source_channel": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Channel"
+        },
+        "type_confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Type Confidence",
+          "type": "number"
+        },
+        "type_evidence_snippet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Type Evidence Snippet"
+        },
+        "uploaded_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uploaded At"
+        },
+        "uploaded_by": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uploaded By"
+        }
+      },
+      "required": [
+        "document_id",
+        "claim_id",
+        "filename",
+        "sha256"
+      ],
+      "title": "DocumentRecord",
+      "type": "object"
+    },
+    "Draft": {
+      "additionalProperties": false,
+      "properties": {
+        "addressee_role": {
+          "title": "Addressee Role",
+          "type": "string"
+        },
+        "body": {
+          "title": "Body",
+          "type": "string"
+        },
+        "draft_id": {
+          "title": "Draft Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "information_request",
+            "status_message",
+            "acknowledgement",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "status": {
+          "default": "draft",
+          "enum": [
+            "draft",
+            "approved",
+            "sent"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "subject": {
+          "title": "Subject",
+          "type": "string"
+        }
+      },
+      "required": [
+        "draft_id",
+        "kind",
+        "addressee_role",
+        "subject",
+        "body"
+      ],
+      "title": "Draft",
+      "type": "object"
+    },
+    "DuplicateCandidate": {
+      "additionalProperties": false,
+      "description": "A *possible* duplicate. Never fraud, never auto-merged (guardrail 3).",
+      "properties": {
+        "candidate_id": {
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "differing_fields": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Differing Fields",
+          "type": "array"
+        },
+        "disposition": {
+          "default": "needs_review",
+          "enum": [
+            "needs_review",
+            "related_but_distinct",
+            "confirmed_duplicate"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "duplicate_type": {
+          "enum": [
+            "fnol",
+            "invoice",
+            "payment",
+            "document"
+          ],
+          "title": "Duplicate Type",
+          "type": "string"
+        },
+        "explanation": {
+          "default": "",
+          "title": "Explanation",
+          "type": "string"
+        },
+        "linked_claim_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Linked Claim Id"
+        },
+        "matched_fields": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Matched Fields",
+          "type": "array"
+        },
+        "prior_outcome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prior Outcome"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "duplicate_type"
+      ],
+      "title": "DuplicateCandidate",
+      "type": "object"
+    },
+    "Endorsement": {
+      "additionalProperties": false,
+      "properties": {
+        "clause_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Clause Ids",
+          "type": "array"
+        },
+        "effective_from": {
+          "format": "date",
+          "title": "Effective From",
+          "type": "string"
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective To"
+        },
+        "endorsement_id": {
+          "title": "Endorsement Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "endorsement_id",
+        "title",
+        "effective_from"
+      ],
+      "title": "Endorsement",
+      "type": "object"
+    },
+    "Fact": {
+      "additionalProperties": false,
+      "description": "Provenance is mandatory. evidence_text must be a verbatim substring of the page (checked in T2.4).",
+      "properties": {
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "evidence_text": {
+          "minLength": 1,
+          "title": "Evidence Text",
+          "type": "string"
+        },
+        "evidence_type": {
+          "enum": [
+            "supporting",
+            "contradicting",
+            "neutral"
+          ],
+          "title": "Evidence Type",
+          "type": "string"
+        },
+        "extraction_confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Extraction Confidence",
+          "type": "number"
+        },
+        "extractor_version": {
+          "default": "0",
+          "title": "Extractor Version",
+          "type": "string"
+        },
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "proposition": {
+          "title": "Proposition",
+          "type": "string"
+        },
+        "region": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BBox"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "related_question_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Question Ids",
+          "type": "array"
+        },
+        "source_document_id": {
+          "title": "Source Document Id",
+          "type": "string"
+        },
+        "verification_status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "human_verified",
+            "rejected"
+          ],
+          "title": "Verification Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fact_id",
+        "claim_id",
+        "proposition",
+        "source_document_id",
+        "evidence_text",
+        "evidence_type",
+        "extraction_confidence"
+      ],
+      "title": "Fact",
+      "type": "object"
+    },
+    "ImageFinding": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "finding_id": {
+          "title": "Finding Id",
+          "type": "string"
+        },
+        "is_visible_fact": {
+          "default": true,
+          "title": "Is Visible Fact",
+          "type": "boolean"
+        },
+        "limitation_note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Limitation Note"
+        },
+        "observation": {
+          "title": "Observation",
+          "type": "string"
+        },
+        "quality_verdict": {
+          "default": "unknown",
+          "enum": [
+            "usable",
+            "poor",
+            "unrelated",
+            "unknown"
+          ],
+          "title": "Quality Verdict",
+          "type": "string"
+        },
+        "region": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BBox"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "suggested_next_photo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Suggested Next Photo"
+        }
+      },
+      "required": [
+        "finding_id",
+        "document_id",
+        "observation",
+        "confidence"
+      ],
+      "title": "ImageFinding",
+      "type": "object"
+    },
+    "IntakeChecklistItem": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "document_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Id"
+        },
+        "item_id": {
+          "title": "Item Id",
+          "type": "string"
+        },
+        "received": {
+          "default": false,
+          "title": "Received",
+          "type": "boolean"
+        },
+        "required": {
+          "default": true,
+          "title": "Required",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "item_id",
+        "description"
+      ],
+      "title": "IntakeChecklistItem",
+      "type": "object"
+    },
+    "MinimumEvidenceRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "addressee_role": {
+          "title": "Addressee Role",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Items",
+          "type": "array"
+        },
+        "maps_to_criteria": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Maps To Criteria",
+          "type": "array"
+        },
+        "must_answer_sub_questions": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Must Answer Sub Questions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "addressee_role",
+        "items"
+      ],
+      "title": "MinimumEvidenceRequest",
+      "type": "object"
+    },
+    "MissingEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "gap_type": {
+          "enum": [
+            "missing",
+            "contradictory",
+            "insufficient"
+          ],
+          "title": "Gap Type",
+          "type": "string"
+        },
+        "minimum_evidence_request": {
+          "$ref": "#/$defs/MinimumEvidenceRequest"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "resolves_question_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Resolves Question Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "question_id",
+        "gap_type",
+        "minimum_evidence_request"
+      ],
+      "title": "MissingEvidence",
+      "type": "object"
+    },
+    "OpenQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "coverage_condition",
+            "cause",
+            "timing",
+            "extent",
+            "amount"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "establishing_criteria": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Establishing Criteria",
+          "type": "array"
+        },
+        "linked_clause_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Linked Clause Ids",
+          "type": "array"
+        },
+        "linked_fact_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Linked Fact Ids",
+          "type": "array"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "possible",
+            "missing",
+            "partially_established",
+            "established",
+            "requires_validation"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "text",
+        "category"
+      ],
+      "title": "OpenQuestion",
+      "type": "object"
+    },
+    "PolicyClause": {
+      "additionalProperties": false,
+      "properties": {
+        "clause_id": {
+          "title": "Clause Id",
+          "type": "string"
+        },
+        "clause_type": {
+          "enum": [
+            "coverage",
+            "exclusion",
+            "definition",
+            "condition",
+            "limit",
+            "sublimit",
+            "deductible"
+          ],
+          "title": "Clause Type",
+          "type": "string"
+        },
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "heading": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Heading"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "span": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Span"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "clause_id",
+        "clause_type",
+        "text",
+        "document"
+      ],
+      "title": "PolicyClause",
+      "type": "object"
+    },
+    "PolicySnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "clauses": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/PolicyClause"
+          },
+          "title": "Clauses",
+          "type": "array"
+        },
+        "effective_from": {
+          "format": "date",
+          "title": "Effective From",
+          "type": "string"
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective To"
+        },
+        "endorsements": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Endorsement"
+          },
+          "title": "Endorsements",
+          "type": "array"
+        },
+        "mock": {
+          "default": true,
+          "title": "Mock",
+          "type": "boolean"
+        },
+        "pas_status": {
+          "default": "in_force",
+          "enum": [
+            "in_force",
+            "lapsed",
+            "cancelled",
+            "reinstated"
+          ],
+          "title": "Pas Status",
+          "type": "string"
+        },
+        "policy_id": {
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "precedence_rules": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Precedence Rules",
+          "type": "array"
+        },
+        "relations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ClauseRelation"
+          },
+          "title": "Relations",
+          "type": "array"
+        },
+        "retrieved_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Retrieved At"
+        },
+        "source_system_response_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source System Response Ref"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "policy_id",
+        "version",
+        "effective_from"
+      ],
+      "title": "PolicySnapshot",
+      "type": "object"
+    },
+    "ProposedAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "title": "Action Id",
+          "type": "string"
+        },
+        "action_type": {
+          "title": "Action Type",
+          "type": "string"
+        },
+        "execution_mode": {
+          "enum": [
+            "draft",
+            "controlled_api"
+          ],
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "idempotency_key": {
+          "title": "Idempotency Key",
+          "type": "string"
+        },
+        "payload_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Payload Ref"
+        },
+        "responsible_party": {
+          "title": "Responsible Party",
+          "type": "string"
+        },
+        "status": {
+          "default": "proposed",
+          "enum": [
+            "proposed",
+            "approved",
+            "executed",
+            "failed",
+            "cancelled"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_id",
+        "action_type",
+        "responsible_party",
+        "execution_mode",
+        "idempotency_key"
+      ],
+      "title": "ProposedAction",
+      "type": "object"
+    },
+    "QAFailure": {
+      "additionalProperties": false,
+      "properties": {
+        "check": {
+          "title": "Check",
+          "type": "string"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        },
+        "ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ref"
+        }
+      },
+      "required": [
+        "check",
+        "detail"
+      ],
+      "title": "QAFailure",
+      "type": "object"
+    },
+    "QAReport": {
+      "additionalProperties": false,
+      "properties": {
+        "failures": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/QAFailure"
+          },
+          "title": "Failures",
+          "type": "array"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "passed"
+      ],
+      "title": "QAReport",
+      "type": "object"
+    },
+    "RoutingDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "required_approver_role": {
+          "title": "Required Approver Role",
+          "type": "string"
+        },
+        "rules_version": {
+          "title": "Rules Version",
+          "type": "string"
+        },
+        "tier": {
+          "enum": [
+            "simple",
+            "medium",
+            "complex"
+          ],
+          "title": "Tier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tier",
+        "reason_codes",
+        "required_approver_role",
+        "rules_version"
+      ],
+      "title": "RoutingDecision",
+      "type": "object"
+    },
+    "SettlementResult": {
+      "additionalProperties": false,
+      "properties": {
+        "assessed_loss": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assessed Loss"
+        },
+        "currency": {
+          "default": "INR",
+          "title": "Currency",
+          "type": "string"
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Explanation"
+        },
+        "missing_inputs": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Inputs",
+          "type": "array"
+        },
+        "payable": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Payable"
+        },
+        "reserve_forecast": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reserve Forecast"
+        },
+        "rule_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rule Version"
+        },
+        "status": {
+          "enum": [
+            "calculated",
+            "cannot_calculate"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "steps": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SettlementStepTrace"
+          },
+          "title": "Steps",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "SettlementResult",
+      "type": "object"
+    },
+    "SettlementStepTrace": {
+      "additionalProperties": false,
+      "properties": {
+        "amount_after": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Amount After"
+        },
+        "amount_before": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Amount Before"
+        },
+        "input_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Ref"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "amount_before",
+        "amount_after"
+      ],
+      "title": "SettlementStepTrace",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "audit_ref": {
+      "default": "",
+      "title": "Audit Ref",
+      "type": "string"
+    },
+    "claim_header": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ClaimHeader"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "claim_id": {
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "contradictions": {
+      "items": {
+        "$ref": "#/$defs/Contradiction"
+      },
+      "title": "Contradictions",
+      "type": "array"
+    },
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "counterfactuals": {
+      "items": {
+        "$ref": "#/$defs/CounterfactualScenario"
+      },
+      "title": "Counterfactuals",
+      "type": "array"
+    },
+    "coverage_issues": {
+      "items": {
+        "$ref": "#/$defs/CoverageIssue"
+      },
+      "title": "Coverage Issues",
+      "type": "array"
+    },
+    "documents": {
+      "items": {
+        "$ref": "#/$defs/DocumentRecord"
+      },
+      "title": "Documents",
+      "type": "array"
+    },
+    "drafts": {
+      "items": {
+        "$ref": "#/$defs/Draft"
+      },
+      "title": "Drafts",
+      "type": "array"
+    },
+    "duplicate_candidates": {
+      "items": {
+        "$ref": "#/$defs/DuplicateCandidate"
+      },
+      "title": "Duplicate Candidates",
+      "type": "array"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "human_approval_required": {
+      "default": true,
+      "title": "Human Approval Required",
+      "type": "boolean"
+    },
+    "image_findings": {
+      "items": {
+        "$ref": "#/$defs/ImageFinding"
+      },
+      "title": "Image Findings",
+      "type": "array"
+    },
+    "intake_checklist": {
+      "items": {
+        "$ref": "#/$defs/IntakeChecklistItem"
+      },
+      "title": "Intake Checklist",
+      "type": "array"
+    },
+    "missing_evidence": {
+      "items": {
+        "$ref": "#/$defs/MissingEvidence"
+      },
+      "title": "Missing Evidence",
+      "type": "array"
+    },
+    "open_questions": {
+      "items": {
+        "$ref": "#/$defs/OpenQuestion"
+      },
+      "title": "Open Questions",
+      "type": "array"
+    },
+    "policy_snapshot": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PolicySnapshot"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "proposed_actions": {
+      "items": {
+        "$ref": "#/$defs/ProposedAction"
+      },
+      "title": "Proposed Actions",
+      "type": "array"
+    },
+    "qa_report": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QAReport"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "resolution_status": {
+      "default": "registered",
+      "enum": [
+        "registered",
+        "assessing",
+        "awaiting_evidence",
+        "awaiting_human",
+        "approved",
+        "paid",
+        "closed"
+      ],
+      "title": "Resolution Status",
+      "type": "string"
+    },
+    "routing": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RoutingDecision"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "settlement": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SettlementResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "state_version": {
+      "default": 0,
+      "minimum": 0,
+      "title": "State Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "claim_id"
+  ],
+  "title": "ClaimState",
+  "type": "object"
+}

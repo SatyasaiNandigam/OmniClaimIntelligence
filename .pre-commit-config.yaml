@@ -1,0 +1,38 @@
+# Install once the repo is a git repository:  pip install -e ".[dev]" && pre-commit install
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '\.(md|pdf|docx)$'
+      - id: end-of-file-fixer
+        exclude: '\.(pdf|docx)$'
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=2048"]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.6                       # keep equal to the ruff pin in pyproject.toml
+    hooks:
+      - id: ruff
+  - repo: local
+    hooks:
+      - id: import-boundaries          # settlement/ must never import LLM code (guardrail 1)
+        name: import-linter
+        entry: lint-imports
+        language: system
+        pass_filenames: false
+        files: '^(src|pyproject\.toml)'
+      - id: schema-drift               # docs/contracts must match the code
+        name: contract export drift check
+        entry: python scripts/export_schemas.py --check
+        language: system
+        pass_filenames: false
+        files: '^(src/claimtower/(core/(schemas|interfaces|state)|integrations/base|agents/base)|docs/contracts/)'
+      - id: contract-freeze            # contracts may only change through an approved freeze (docs/contracts/README.md)
+        name: contract freeze check
+        entry: python scripts/freeze_contracts.py --check
+        language: system
+        pass_filenames: false
+        files: '^docs/contracts/'

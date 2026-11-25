@@ -1,0 +1,151 @@
+# Expected effective clause sets (T3.2). SYNTHETIC. Written BEFORE the engine was run on them, from the wording of the endorsements:
+#   END-02: "With effect from 1 February 2026 ... For loss occurring on or after that date this endorsement prevails over Endorsement END-01.
+#            Loss occurring before that date remains subject to the sublimit in Endorsement END-01."
+#   BASE-HOME-1 5.4: "... the later endorsement applies from its effective date and not before."
+# The scenarios S-01, S-02, S-04 and S-05 are checked separately against data/ground_truth/<id>.json (snapshot.effective_clause_ids).
+# Clause keys: corpus clauses by their labelled id (CL-...), unseen documents by '<doc_id>:<heading>'.
+# Listings are what the policy system / schedule says: id, effective from, optional effective to, optional title.
+cases:
+  - id: E-01
+    why: the day before END-02 takes effect - END-01 still governs
+    pool: BASE-HOME-1
+    as_of: "2026-01-31"
+    listings: [{id: END-01, from: "2025-12-01"}, {id: END-02, from: "2026-02-01"}]
+    include: [CL-SUB-WATER-E1, CL-COV-WATER]
+    exclude: [CL-SUB-WATER-E2]
+    modified_by: {CL-COV-WATER: [CL-SUB-WATER-E1]}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-02
+    why: boundary - END-02 effective on its first day, it replaces END-01 ("on or after that date")
+    pool: BASE-HOME-1
+    as_of: "2026-02-01"
+    listings: [{id: END-01, from: "2025-12-01"}, {id: END-02, from: "2026-02-01"}]
+    include: [CL-SUB-WATER-E2, CL-COV-WATER]
+    exclude: [CL-SUB-WATER-E1]
+    modified_by: {CL-COV-WATER: [CL-SUB-WATER-E2]}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-03
+    why: well after END-02 - the cited modifier of the cover is END-02, not END-01
+    pool: BASE-HOME-1
+    as_of: "2026-03-15"
+    listings: [{id: END-01, from: "2025-12-01"}, {id: END-02, from: "2026-02-01"}]
+    include: [CL-SUB-WATER-E2]
+    exclude: [CL-SUB-WATER-E1]
+    modified_by: {CL-COV-WATER: [CL-SUB-WATER-E2]}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-04
+    why: before any endorsement is in force - the plain wording only
+    pool: BASE-HOME-1
+    as_of: "2025-11-30"
+    listings: [{id: END-01, from: "2025-12-01"}, {id: END-02, from: "2026-02-01"}]
+    include: [CL-COV-WATER, CL-DEF-SUDDEN]
+    exclude: [CL-SUB-WATER-E1, CL-SUB-WATER-E2]
+    modified_by: {}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-05
+    why: an endorsement that has ended no longer applies
+    pool: BASE-HOME-1
+    as_of: "2026-06-01"
+    listings: [{id: END-03, from: "2026-01-01", to: "2026-05-31"}]
+    include: [CL-DED-STD]
+    exclude: [CL-DED-WATER-E3]
+    modified_by: {}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-06
+    why: the last day of an endorsement's window still counts
+    pool: BASE-HOME-1
+    as_of: "2026-05-31"
+    listings: [{id: END-03, from: "2026-01-01", to: "2026-05-31"}]
+    include: [CL-DED-STD, CL-DED-WATER-E3]
+    exclude: []
+    modified_by: {CL-DED-STD: [CL-DED-WATER-E3]}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-07
+    why: the unoccupied-property condition and the freezing clarification are cited with the clauses they act on
+    pool: BASE-HOME-1
+    as_of: "2026-04-01"
+    listings: [{id: END-04, from: "2026-01-01"}, {id: END-05, from: "2026-01-01"}]
+    include: [CL-COND-UNOCC-E4, CL-DEF-SUDDEN-E5]
+    exclude: []
+    modified_by: {CL-COV-WATER: [CL-COND-UNOCC-E4], CL-DEF-SUDDEN: [CL-DEF-SUDDEN-E5]}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-08
+    why: a listed endorsement without wording is reported, and the clause it probably affects is abstained on (title from the schedule)
+    pool: BASE-HOME-1
+    as_of: "2026-06-10"
+    listings: [{id: END-09, from: "2026-01-01", title: "Water Damage Sublimit Endorsement"}]
+    include: [CL-COV-WATER]
+    exclude: []
+    modified_by: {}
+    abstain: [CL-COV-WATER]
+    missing: [END-09]
+    conflicts: []
+  - id: E-09
+    why: a listed endorsement without wording and without a title - reported, but which clause it affects is unknown (nothing invented)
+    pool: BASE-HOME-1
+    as_of: "2026-06-10"
+    listings: [{id: END-09, from: "2026-01-01"}]
+    include: [CL-COV-WATER]
+    exclude: []
+    modified_by: {}
+    abstain: []
+    missing: [END-09]
+    conflicts: []
+  - id: E-10
+    why: unseen policy with NO precedence rule - two endorsements on the same clause are both kept and the clause is abstained on
+    pool: HARBOUR
+    as_of: "2026-07-01"
+    listings: [{id: HARBOUR-E2, from: "2026-03-01"}, {id: HARBOUR-E3, from: "2026-06-01"}]
+    include: ["HARBOUR-E2:1. Higher sum insured", "HARBOUR-E3:1. Further sum insured increase"]
+    exclude: []
+    modified_by: {"HARBOUR-1:4.1 Sum insured": ["HARBOUR-E2:1. Higher sum insured"], "HARBOUR-E2:1. Higher sum insured": ["HARBOUR-E3:1. Further sum insured increase"]}   # both kept, so both are cited (label corrected: it first said {})
+    abstain: ["HARBOUR-1:4.1 Sum insured"]
+    missing: []
+    conflicts: [precedence_unstated]
+  - id: E-11
+    why: unseen policy, before the second increase - only the first endorsement is in force and it is cited with the sum insured
+    pool: HARBOUR
+    as_of: "2026-04-01"
+    listings: [{id: HARBOUR-E2, from: "2026-03-01"}, {id: HARBOUR-E3, from: "2026-06-01"}]
+    include: ["HARBOUR-E2:1. Higher sum insured"]
+    exclude: ["HARBOUR-E3:1. Further sum insured increase"]
+    modified_by: {"HARBOUR-1:4.1 Sum insured": ["HARBOUR-E2:1. Higher sum insured"]}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-12
+    why: unseen policy - an excess endorsement is in force and cited with the excess clause
+    pool: HARBOUR
+    as_of: "2026-02-01"
+    listings: [{id: HARBOUR-E1, from: "2026-01-01"}, {id: HARBOUR-E2, from: "2026-03-01"}]
+    include: ["HARBOUR-E1:1. Frozen pipe excess"]
+    exclude: ["HARBOUR-E2:1. Higher sum insured"]
+    modified_by: {"HARBOUR-1:4.2 Excess": ["HARBOUR-E1:1. Frozen pipe excess"]}
+    abstain: []
+    missing: []
+    conflicts: []
+  - id: E-13
+    why: the policy system and the endorsement disagree about the effective date - the system is used and the disagreement is reported
+    pool: HARBOUR
+    as_of: "2026-04-01"
+    listings: [{id: HARBOUR-E2, from: "2026-02-01"}]
+    include: ["HARBOUR-E2:1. Higher sum insured"]
+    exclude: []
+    modified_by: {"HARBOUR-1:4.1 Sum insured": ["HARBOUR-E2:1. Higher sum insured"]}
+    abstain: ["HARBOUR-1:4.1 Sum insured"]
+    missing: []
+    conflicts: [date_mismatch]

@@ -1,0 +1,15 @@
+{
+  "settlement": {
+    "status": "cannot_calculate",
+    "reserve_forecast": null,
+    "assessed_loss": "110000",
+    "payable": null,
+    "steps": [],
+    "missing_inputs": [
+      "water_damage_sublimit"
+    ],
+    "rule_version": "sample-1.0",
+    "currency": "INR",
+    "explanation": null
+  }
+}

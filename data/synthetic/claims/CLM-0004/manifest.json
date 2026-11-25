@@ -1,0 +1,63 @@
+{
+  "claim_id": "CLM-0004",
+  "scenario_id": "S-04",
+  "synthetic": true,
+  "license": "CC0-1.0 - drawn by scripts/generate_synthetic_docs.py, no third-party imagery",
+  "documents": [
+    {
+      "document_id": "DOC-S04-1",
+      "filename": "fnol.pdf",
+      "doc_type": "fnol",
+      "page_count": 1,
+      "sha256": "db90eb5ffd74dfb9147a17afe5cad3206a8174d5d50d20a50abf2737b75c0ecc",
+      "text_sha256": "a916976497ae746fbe9e390c10ae3d4dc3f5da76c9a6ee1420b499abe1bebc35",
+      "received_on": "2026-01-21",
+      "uploaded_by": "claimant",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S04-2",
+      "filename": "plumber_report.pdf",
+      "doc_type": "plumber_report",
+      "page_count": 1,
+      "sha256": "372fb3ff0ab19065050b91023717b0f9a151b67acb03b78ed5abaed078234e7b",
+      "text_sha256": "878b64f7cb05f5bc8111a49cdde0b0d2bdd865e50707c8478241e4284ca5ddfb",
+      "received_on": "2026-01-22",
+      "uploaded_by": "plumber",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S04-3",
+      "filename": "surveyor_report.pdf",
+      "doc_type": "surveyor_report",
+      "page_count": 1,
+      "sha256": "2b9760dd5b33d85449b2d8fffb22fc83ba853bd86356e2a48b1b3d64003261da",
+      "text_sha256": "215d33bfb5bbf06b7a67d7ac28d0b56343001263d67fcb06502b8ac387d2293a",
+      "received_on": "2026-01-24",
+      "uploaded_by": "surveyor",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S04-4",
+      "filename": "estimate.pdf",
+      "doc_type": "estimate",
+      "page_count": 1,
+      "sha256": "52dcfe5f54c5a94cde79692f9cbe9a3182269bbb06c6680c8f1ddff3af8a5ef9",
+      "text_sha256": "eba1814dc3e7d625bfae24720b907d8baa149d9c2364d8e573a4de545fa48c83",
+      "received_on": "2026-01-24",
+      "uploaded_by": "contractor",
+      "in_scenario": true
+    }
+  ],
+  "variants": [],
+  "photos": [
+    {
+      "file": "photos/bathroom_wall_stain.jpg",
+      "sha256": "4ccd7cb2a7b19619569f48b229097265039b8c8e23d4dd2ea70c6b7d2f54d9e9",
+      "in_scenario": false,
+      "role": "good",
+      "shows": "stain on bathroom wall",
+      "expected_quality_verdict": "usable"
+    }
+  ]
+}

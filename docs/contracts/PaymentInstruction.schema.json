@@ -1,0 +1,56 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "amount": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Amount"
+    },
+    "approval_ref": {
+      "title": "Approval Ref",
+      "type": "string"
+    },
+    "approved_by": {
+      "title": "Approved By",
+      "type": "string"
+    },
+    "claim_id": {
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "currency": {
+      "default": "INR",
+      "title": "Currency",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "payee_ref": {
+      "title": "Payee Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "amount",
+    "payee_ref",
+    "approved_by",
+    "approval_ref",
+    "idempotency_key"
+  ],
+  "title": "PaymentInstruction",
+  "type": "object"
+}

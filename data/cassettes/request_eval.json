@@ -1,0 +1,650 @@
+{
+  "042531b4e73fab2228451891fcb4cb50f69280ee73ca7b57ef3b1917b4a272e5": {
+    "input_tokens": 768,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 536,
+    "text": "{\"items\":[{\"text\":\"Provide a signed surveyor statement listing each area damaged by the reported event (kitchen, hallway, adjoining bedroom wall or others) and an itemised surveyor repair cost per area that reconciles to your scope and the contractor's INR 180,000 total.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "0a3779188ce88cbc0d20b122a2c63a5d3c69d03909b6e542201ba9bc042ecd56": {
+    "input_tokens": 381,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 75,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the requested itemized written statement may still leave the 52% cost conflict unresolved without an explicit requirement to explain methodology for unit rates, overhead/profit, or to provide supporting invoices/quotes to substantiate the higher or lower unit prices.\"}"
+  },
+  "10c696b74039fe214fbd8ed96e35b8ca14ba9484a15954549e2fc48a37a78220": {
+    "input_tokens": 428,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 87,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the requested items seek technical evidence of when corrosion/leak began and clarification of conflicting statements, but they do not require specific types of technical dating (e.g., metallurgical analysis, pipe failure forensics, or dated moisture readings) so resolving timing may remain unresolved if the provided evidence is not definitive.\"}"
+  },
+  "11d2982e81bb6713e09b4337a68b19ec286a8d5d33321e97f76355dfc4b2f6ec": {
+    "input_tokens": 750,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 339,
+    "text": "{\"items\":[{\"text\":\"Plumber report dated the loss date: technical statement of how the upstairs cistern float valve stuck and caused the tank to overflow, whether the failure pattern indicates sudden vs gradual, parts condition, and photos of float/valve and tank interior.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "125017b8915210e404e8f6ebac1c80b34898d025cabcd3353855f6128ed6fe8c": {
+    "input_tokens": 353,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "1282892f0b10c905896f30e90f111534d90ff5c1b484c54a49034258d68f7213": {
+    "input_tokens": 670,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 272,
+    "text": "{\"items\":[{\"text\":\"Surveyor report from your inspection listing each room/area where you observed water damage and, for each area, state whether it was caused by the reported event (yes/no) and briefly explain the link to that event.\",\"need_ids\":[0,1],\"asks_for\":\"new_document\",\"document_type\":\"surveyor_report\"}]}"
+  },
+  "137fd60b3cd82a46aa015efac4846449c6f52052e6c789aa27c84f3d208d1fcb": {
+    "input_tokens": 660,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 397,
+    "text": "{\"items\":[{\"text\":\"Provide the full endorsement wording and its effective start and end dates for END-01 and END-02 as listed on the policy schedule, and specify which endorsement wording was in force on the policyholder's date of loss.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"endorsement\"}]}"
+  },
+  "165accb47f966cd1647c374cca0efd0f5977fb2cc864aa40efe55644fc9e1e43": {
+    "input_tokens": 766,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 464,
+    "text": "{\"items\":[{\"text\":\"State which areas (utility room, garage wall, bedroom above) you link to the reported event and for each give your assessed repair cost and explain whether and how the INR 61,000 estimate reconciles to your scope.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "187c7633f88fbb644dcd955858b195c0f377e7a78267838f04f5dacf6ee6461a": {
+    "input_tokens": 343,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "1ee0f16498f1e629a1ffaacaecca7852ab16cd3e1978ed287795f2edd3d38314": {
+    "input_tokens": 647,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 513,
+    "text": "{\"items\":[{\"text\":\"Provide the labelled maintenance or inspection record for the kitchen supply pipe joint (kitchen supply pipe) showing the inspection date and any noted corrosion, leaks, or repairs.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"other\"}]}"
+  },
+  "256f1beac2a15c58302ae4ff6536b92aa4f4f3b15f6baadf6141a6cf51270953": {
+    "input_tokens": 648,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 330,
+    "text": "{\"items\":[{\"text\":\"Provide the PAS policy status for the insured on 12 April 2026: state whether the policy was in force on that date, include policy number, status effective dates, and any cancellation/lapse notice dates.\",\"need_ids\":[0],\"asks_for\":\"information\",\"document_type\":\"\"}]}"
+  },
+  "2816aeb02ba8a4109cb987d1d17b4963ce2e756cad189849d8554a21ebc002b4": {
+    "input_tokens": 786,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 203,
+    "text": "{\"items\":[{\"text\":\"Based on your inspection of the washing machine supply hose in the laundry room, state whether the perished/cracked appearance you observed is consistent with a sudden burst during operation or indicative of long-term wear, and briefly explain.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "2a7cae4a3e3166241f91332c2e822fc104d6f620144c5e0a506acc16966013f6": {
+    "input_tokens": 352,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "2d25387904b70fd1169c1ad0d86828d6b8b6ca53705757a92c65584de960956c": {
+    "input_tokens": 334,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 63,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the item may show inspection/repair dates but might not explicitly indicate when the leak or damage began, so the need (When did the leak or damage begin?) could remain unresolved.\"}"
+  },
+  "2ec65980eb9b8b6892eb00290b02adaf8d86cbb2dd143b5a89c5fd48c9b2a7c0": {
+    "input_tokens": 374,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "2ef79917cb70a702f80d2d46fbd20e474db0916abf6f6b8bf983da4b1a30aa92": {
+    "input_tokens": 353,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 60,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because clarifying the conflict requires specific evidence (timing of failure, inspection details, photos, corrosion dating) beyond a single statement reconciling claimant vs plumber accounts.\"}"
+  },
+  "3313ac8ace2f6af51a6dd418a5feafe9af71c10a07af6519ce5f7dca52e599db": {
+    "input_tokens": 720,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 381,
+    "text": "{\"items\":[{\"text\":\"Please provide a signed, dated statement about the kitchen supply pipe joint (the corroded joint you reported): 1) whether the corrosion pattern you observed is consistent with a sudden burst or with prolonged leakage; 2) your best technical estimate (month/year) when the corrosion/leakage likely began; 3) whether you observed evidence of an acute rupture at time of visit and notes of any prior repairs or observations (include dates if known).\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "33baf2c76b4ac1766f68e8e930fcee592fe8cd3e94d134f9a1b599b2f12662ef": {
+    "input_tokens": 388,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "3414cc1ade61c9272351291d589e2a6c7291ebc4095c51114ff5cd40e512a5d6": {
+    "input_tokens": 365,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 70,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the request asks only to 'clarify the conflict' but does not explicitly require the surveyor to state the extent for each area or explain cause/timing, so answering may still leave which areas were affected unresolved.\"}"
+  },
+  "36b935ce7dd92ada0dd9ed1ff9815f2c3bc15fb183e0e2a7ba72055546dc3277": {
+    "input_tokens": 647,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 333,
+    "text": "{\"items\":[{\"text\":\"Provide a written statement estimating the date or date range when the leak/corrosion of the bathroom supply/drain pipe above the stained ceiling began, and whether signs indicate sudden failure or gradual corrosion, with brief basis for your estimate.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "39cd7eb77438bc3bbcab48cfa9e4956cc1f1c10c22131280064e1ce8d565d0a0": {
+    "input_tokens": 646,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 392,
+    "text": "{\"items\":[{\"text\":\"Please provide the labelled maintenance or inspection record for the upstairs bathroom/ceiling area (covering dates before the observed staining), including dates, inspector/contractor name, and any work order numbers.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"other\"}]}"
+  },
+  "3b0f99034857e4bfe31ff95ca181006eecff9d0e9443a1298e8c8d15e4692796": {
+    "input_tokens": 392,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 66,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the items request clarification and technical timing evidence but may not resolve the conflict without a direct expert opinion tying corrosion timeline to sudden failure (i.e., precise dating/forensic analysis is still needed).\"}"
+  },
+  "3c43bfa3c787bfd4f9190507ccf2274c3083a74280bed8ec0a70eb1ea85de48f": {
+    "input_tokens": 682,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 269,
+    "text": "{\"items\":[{\"text\":\"Based on your inspection of the corroded pipe wall and the seeping joint in the affected room, does the observed condition indicate a sudden catastrophic pipe failure or long-term gradual corrosion? Please explain and give an estimated timeframe.\" ,\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "3d2e16ac7fb23b7b1484dd1956e47c2c21406bf14e45e60148fb73c4dc4678fc": {
+    "input_tokens": 375,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 98,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the request asks for confirmation of which total was validated and a written line-item comparison with assessed quantities/unit rates and reasons for each difference; if the surveyor provided those exactly it would resolve the 29% conflict, but as written it's possible the surveyor could still fail to explicitly state which total they validated or fully reconcile quantities/unit rates\u2014thus unresolved.\"}"
+  },
+  "3d4b08515cd3ea510c49fe01504ffd991ba648e7d2ab83e57c765c34778027ec": {
+    "input_tokens": 671,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 493,
+    "text": "{\n  \"items\": [\n    {\n      \"text\": \"Provide a written statement reconciling your assessed repair cost (INR 120,000) with the claimant's INR 250,000: give an itemized schedule by part/room with labor and material unit prices, quantities, totals, and note any exclusions or assumptions.\",\n      \"need_ids\": [\n        0\n      ],\n      \"asks_for\": \"statement\",\n      \"document_type\": \"\"\n    }\n  ]\n}"
+  },
+  "3e097686338152e54525347be1d6d5328fc41bd04723bba0b2bf94d694856e78": {
+    "input_tokens": 643,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 342,
+    "text": "{\"items\":[{\"text\":\"Provide a surveyor-confirmed list of all specific areas affected (e.g., kitchen, master bedroom, hallway) and for each area state explicitly whether the damage is linked to the reported water event (yes/no) and a one-sentence reason for the linkage.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "3e70c770221827eefe13973e0e0f7eec892fe95c1802145215b7afeef9d3228d": {
+    "input_tokens": 397,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 95,
+    "text": "{\"sufficient\":false,\"minimal\":false,\"reason\":\"The signed statement item addresses Q-EXTENT but the line-item explanation is vague about requiring reconciliation linking each invoice line to estimate lines and justification for the 50% increase, so Q-AMOUNT remains unresolved; additionally the items overlap and the signed statement plus line-item reconciliation could be combined but currently the request is not minimal and the reconciliation request is imprecise.\"}"
+  },
+  "40e55324045cce1884134f280e11b882106c8f676192bc698196367d9d671784": {
+    "input_tokens": 683,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 327,
+    "text": "{\"items\":[{\"text\":\"Provide a signed plumber_report describing the failure mechanism of the kitchen supply pipe that split while cooking and state an opinionated date or date range when the leak/corrosion began.\",\"need_ids\":[0,1],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "43fabde19ee9b08e9afe43a0bdc42aa34d11c65da86db04ea7bb565792cbca67": {
+    "input_tokens": 337,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "4b7b9be54d1f1b922e8f081fa2364db77f27f5ebde26eab52c5cf85a2aff4751": {
+    "input_tokens": 681,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 261,
+    "text": "{\"items\":[{\"text\":\"Provide the exact full wording of endorsement END-01 as it existed and was effective on the date of loss (please supply the version number and effective date with the endorsement text).\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"endorsement\"}]}"
+  },
+  "54ffeaf0afe2baaa896f72bb8aa214c7c79e038b4ba2f3472e23399c1b3d6e79": {
+    "input_tokens": 620,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 396,
+    "text": "{\"items\":[{\"text\":\"Please provide the maintenance or inspection record labelled for the kitchen supply pipe joint (kitchen, supply pipe) showing the date(s) of inspection/maintenance and any notes about corrosion or repairs performed before the leak was discovered.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"other\"}]}"
+  },
+  "584641be295795603f326e3a790be544e5e10d46b6fb4bb05d195f08bd13b3e9": {
+    "input_tokens": 354,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "5a0a666862bb4ed373d736501e6fbb7e969854395d49ba4084429f809f1a1def": {
+    "input_tokens": 644,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 344,
+    "text": "{\"items\":[{\"text\":\"Provide a written supplement explaining the INR 250,000 vs INR 120,000 difference: give a line\u2011by\u2011line repair cost breakdown with unit rates, labour/material quantities and measurements for each affected room/component (specify which room/part) and date of your inspection.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "5b3092a9e4408d2312932f7f4b549d5343a459a3fbe01978507e00a11419ffe0": {
+    "input_tokens": 642,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 386,
+    "text": "{\"items\":[{\"text\":\"Provide the maintenance or inspection record (service log, repair order, or labelled inspection) documenting when the leak or damage began for the cracked elbow joint under the bathroom basin.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"other\"}]}"
+  },
+  "5f195c16133429415b0f89d13bbfbbaf76d7551785565cd0709baeab351ae8d7": {
+    "input_tokens": 355,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "5f51b1c54b661862ca3b68eab0ebc73c499a898962dce18cc5ca0c050d64a9ef": {
+    "input_tokens": 629,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 296,
+    "text": "{\n  \"items\": [\n    {\n      \"text\": \"Signed plumber_report with an estimated start date (DD/MM/YYYY) for the leak at the kitchen sink supply line under the cabinet, stating the technical basis (corrosion pattern, pipe failure type, any measurements) for that date.\",\n      \"need_ids\": [\n        0\n      ],\n      \"asks_for\": \"new_document\",\n      \"document_type\": \"plumber_report\"\n    }\n  ]\n}"
+  },
+  "6200f77c444e3de1cc2cb2df72d5dc77142546baf8137709c440bf7db20b039c": {
+    "input_tokens": 601,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 453,
+    "text": "{\"items\":[{\"text\":\"Upload the maintenance or inspection record (e.g., dated service report, landlord maintenance log, or contractor inspection) for the affected area that shows the date the leak or water damage began.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"other\"}]}"
+  },
+  "67a00b36b57c146b85875e652976f2254d8cc97ffc013d25496ea0e35633c401": {
+    "input_tokens": 747,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 345,
+    "text": "{\"items\":[{\"text\":\"Based on your inspection of the kitchen supply pipe joint, state whether the observed significant corrosion and condition of the joint are consistent with a sudden burst event or with prolonged leakage, and give your estimated earliest month/year when the corrosion/leak began and the specific inspection findings supporting that estimate.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "68a63efbb8614da3d9454540b3dc2c617856d9f57de0c03b957529dd5e76b3f8": {
+    "input_tokens": 453,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 92,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the items lack explicit instruction to link each affected area to the reported event with clear per-area linkage for every listed surface and to explicitly reconcile line-item totals to the contractor estimate (the second item requests reconciliation but does not require per-area validation that totals sum to the contractor amount and note adjustments), leaving potential ambiguity in complete reconciliation.\"}"
+  },
+  "6967cebd2d6c02cb2238c20e8d212441e376f53bfaf413f77b6a1b9a5fab9872": {
+    "input_tokens": 414,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 92,
+    "text": "{\"sufficient\":false,\"minimal\":false,\"reason\":\"Insufficient: the items ask for surveyor-assessed cost and an estimate reconciling to scope but do not require the surveyor to link each listed affected room/surface explicitly to the reported event in a way that ties scope and costs to those specific areas, and the two cost items partially duplicate (both ask about cost reconciliation) creating redundancy.\"}"
+  },
+  "6c1f8a6b6cf3e343a19b911e5e840b14009cfafaad24a328fa052b0b2f95f21b": {
+    "input_tokens": 628,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 447,
+    "text": "{\"items\":[{\"text\":\"Upload the labeled maintenance or inspection record(s) for the water leak/affected area that show inspection or repair dates and indicate when the leak or damage began.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"other\"}]}"
+  },
+  "78d12f5ac98405167f1862b8f8fe62ee0530827e654c2d52ed9375ab9d49d538": {
+    "input_tokens": 371,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 85,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"Sufficient is false because the plumber_report may describe failure mechanism and give an opinionated date/range but a 'technical statement by a qualified person' and 'technical evidence of when the leak/corrosion began' may require more explicit demonstration of qualifications or supporting technical evidence beyond a single signed report as worded.\"}"
+  },
+  "7aab13959cb93431ebd27b9c398e9e95799114263b59f3d8a5a1b089d99c2df2": {
+    "input_tokens": 744,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 400,
+    "text": "{\"items\":[{\"text\":\"Dated, signed plumber report for the burst pipe at the claimant's home: identify the specific part/pipe, describe the failure mechanism, state whether the failure appears sudden or gradual, and provide inspection date and plumber license number.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "7e9712eff60ac551e8f53e57704cbac6b58f650b2ea8993ae156b748655aee48": {
+    "input_tokens": 350,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "80ddfcb3bd6707f1c4dd75ec8a8746c5fbb427644401c7147ac9e0eb12c0d6a6": {
+    "input_tokens": 674,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 187,
+    "text": "{\"items\":[{\"text\":\"Provide the full endorsement wording for END-03 that was effective on the date of loss (include version number and effective date).\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"endorsement\"}]}"
+  },
+  "87c9359ac67bda5da4f4c082c9791b60150a9466cb18c78bb041b4efe9142f65": {
+    "input_tokens": 675,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 269,
+    "text": "{\"items\":[{\"text\":\"Confirm whether the insured policy was in force on 12 April 2026; state the policy status on that date (in force, lapsed, cancelled) and provide policy effective date and any cancellation/retroactive endorsement date.\",\"need_ids\":[0],\"asks_for\":\"information\",\"document_type\":\"\"}]}"
+  },
+  "8e3de68f64ebb719f029386fccd6404a9337a0b6ecd9e9a8e9889c120ab1e53c": {
+    "input_tokens": 825,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 400,
+    "text": "{\"items\":[{\"text\":\"Provide a dated, signed technical statement describing the failure mechanism of the kitchen supply hose at the kitchen supply line, whether your findings are consistent with a sudden burst vs gradual leak, and the observed or estimated date and time the hose failed.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "8f252b871154c4a0cb9aaf73d2f50c368de26fe6ac80f6cb85b927ad46a8b7d3": {
+    "input_tokens": 362,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the request asks for endorsements and their effective dates but does not explicitly require confirmation that the provided endorsement wording is the exact wording in force on the date of loss (e.g., showing which of END-01 or END-02 wording applied on that date) \u2014 unless the response clearly identifies which endorsement wording was in force, the Q-SUBLIMIT need is not fully resolved.\"}"
+  },
+  "907aa7055c5d1cddbc7dc94a4aeed0b37eae24c79ce83b42814759dfb7fa9f8f": {
+    "input_tokens": 685,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 398,
+    "text": "{\"items\":[{\"text\":\"Based on your inspection of the washing machine supply hose in the laundry room, please state whether the perished/cracked condition you observed is consistent with a sudden burst while the machine was running or with gradual long-term wear and explain why.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "930b71567ee2ff8a6e49efed4a20be3038f6d8bb67fe9955d5dbed013b272f92": {
+    "input_tokens": 410,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "930d0b1804d70c408974d8e14cc61f6e1709ab9ad87bae5d335b76b9d2e1ed6f": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 397,
+    "text": "{\"items\":[{\"text\":\"Provide a signed statement listing each room/area affected by the reported event (label each to the event) and a line-item explanation reconciling the INR 100,000 estimate vs INR 150,000 invoice.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "93df6b76c2d195a79616535ddd1d9bdb4faa12fde291569e180db079da23f06c": {
+    "input_tokens": 323,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 65,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because resolving the 29% discrepancy requires documentation of basis/backup for amounts (e.g., estimates, invoices, scope reconciliation), which the single request to clarify the conflict does not explicitly demand.\"}"
+  },
+  "94b0a375a9a2e8076f491f6bd07c060dd3687f3cd0cafa2a57b325318720d369": {
+    "input_tokens": 410,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 133,
+    "text": "{\"sufficient\":false,\"minimal\":false,\"reason\":\"Insufficient: the request asks only for confirmation of affected areas and itemised repair costs reconciling to contractor INR 180,000 but does not explicitly require the surveyor-assessed cost per area to be linked to the reported event for each area (Q-EXTENT linkage may be incomplete) nor an explicit reconciliation showing how the itemised costs sum and reconcile to the surveyor scope (Q-AMOUNT reconciliation may be incomplete); also the two cost items are redundant by repeating reconciliation and surveyor-assessed cost requirements, making the items partly redundant.\"}"
+  },
+  "97037b120c77f83e3893e40e246a9e3ff6e17a92a8e08391153fdb64b308ee37": {
+    "input_tokens": 379,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "9fcb8f019a41fa22a6845fc584a9d1ff0db7e66ef5bef9d8d63a30f2918fdc5b": {
+    "input_tokens": 354,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 67,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the request only asks to 'clarify the conflict' between the two amounts and does not require supporting documentation or explanation to determine which amount is reasonable, so the Q-AMOUNT need would remain unresolved.\"}"
+  },
+  "a0731edeb80bdef5c3b05eecca480854efa581ce806ffe3b64ae9697ba30aa4a": {
+    "input_tokens": 379,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "a0b7510f62d53028a40da5b6a123758590459c26701f4c6ae46e0916d66804a1": {
+    "input_tokens": 308,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "a32f1fe259398c14064a35eaf4c55ee073e67125aac26c47505c57f0cfeb0a89": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 275,
+    "text": "{\"items\":[{\"text\":\"Provide a dated, signed technical statement describing the failure mechanism of the kitchen/bath supply hose, whether your findings are consistent with a sudden burst vs gradual leak, and whether the damage began at or immediately before the reported loss date (include times).\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "a583f17079f64f20bb251f0bcca496041a19b949750b118b29373a75f92366ee": {
+    "input_tokens": 687,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 262,
+    "text": "{\"items\":[{\"text\":\"Provide the full endorsement wording (PDF or digital copy) for the water-damage sublimit endorsement (END-01 or END-02) that was effective on the date of loss.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"endorsement\"}]}"
+  },
+  "a75abc9ce538c8fc2c9ae2900deb0fdb08b6843e223e3ce39176f6549ef779d4": {
+    "input_tokens": 390,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 67,
+    "text": "{\"sufficient\":true,\"minimal\":false,\"reason\":\"Items are redundant: both requested items ask for the same thing (surveyor-confirmed list of affected areas and linking each affected area to the reported event), so although they fully cover the needs, one item repeats the other.\"}"
+  },
+  "a8915fc43ef6bab67fa1ed6f7a2260131e419b3ecf48f86a2eb22df974a02022": {
+    "input_tokens": 440,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 57,
+    "text": "{\"sufficient\":true,\"minimal\":false,\"reason\":\"Not minimal: two items both address Q-AMOUNT (surveyor-assessed cost and estimate reconciling to scope) are overlapping/redundant rather than distinct needs.\"}"
+  },
+  "aa6e1abc08792dd2eb8abb3b5c70ead99242e6cd04aa62f7df3cd8495c60817b": {
+    "input_tokens": 655,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 423,
+    "text": "{\n  \"items\": [\n    {\n      \"text\": \"Provide a signed, dated statement about the failed pipe and joint: state whether the observed heavy corrosion and long-term seepage you reported are consistent with a sudden night-time pipe failure (as claimant says) or indicate gradual failure, and explain the basis.\",\n      \"need_ids\": [\n        0\n      ],\n      \"asks_for\": \"statement\",\n      \"document_type\": \"\"\n    }\n  ]\n}"
+  },
+  "aca4dfdc1b622d67981bcc458c237e9fad65165b16a1ca8c0df3fd148f9152db": {
+    "input_tokens": 353,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "af00f8ce0c4aed86e14f158789f4e0039622cc9cc6a2ff07a2050703e0d65bb4": {
+    "input_tokens": 356,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "b0fb80c904e5d21843f50d1382f7cdb7aeaaa70168c83c84ab3b3ba7aac7129b": {
+    "input_tokens": 656,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 343,
+    "text": "{\"items\":[{\"text\":\"Dated plumber report for the kitchen supply pipe that split while cooking: describe diagnostic findings (fracture features, corrosion, measurements), state whether failure is consistent with a sudden rupture or gradual deterioration, and give an estimate/date when leak/corrosion began.\",\"need_ids\":[0,1],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "b3699a9efb82d9f56ee933e45a2149bfeb523082b8af6fb20593f35f9e8a57a6": {
+    "input_tokens": 602,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 477,
+    "text": "{\"items\":[{\"text\":\"Provide a dated plumber_report that states your best estimate of when the leak or corrosion on the affected pipe began, explain the methods used to determine that date (corrosion depth, pipe sample, rate, or other measurement), and attach date-stamped close-up photos of the corroded area.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "b370493b1d1fbc7808c1449357593621a95793fd1e9fbf1a3bf8e5478f0a93f9": {
+    "input_tokens": 669,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 389,
+    "text": "{\"items\":[{\"text\":\"Confirm whether the PAS policy was in force on the date of loss; provide policy status as of that date and the policy effective date, expiry date, and any cancellation or reinstatement dates.\",\"need_ids\":[0],\"asks_for\":\"information\",\"document_type\":\"\"}]}"
+  },
+  "b575b5790608c39db320abec693e4430486d6db138f6827a4b2fbaa119f5326f": {
+    "input_tokens": 344,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "b7800df2cb4015e00f75705276545cb63f1ba9b708b53c0833df2eb871e9f30c": {
+    "input_tokens": 654,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 258,
+    "text": "{\"items\":[{\"text\":\"Provide the full, signed endorsement END-01 wording version that was effective on the policyholder\u2019s date of loss; include endorsement effective date range and file/version identifier\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"endorsement\"}]}"
+  },
+  "b92233d28297587f4d5aaf0217b6e68ff18b2aaba19f4e0df2cb82cb7b70ee5f": {
+    "input_tokens": 350,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "bcb29843f7622d809846eee966a791a5792d6db9a5008897b885a0e2c9883924": {
+    "input_tokens": 289,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 50,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because a single 'Maintenance or inspection record' may not establish when the leak began (could lack dates or relevant entries).\" }"
+  },
+  "be9483b15422e9c801e55c6d7f095db2f19cc9588c4ad4140097d4caaf36965e": {
+    "input_tokens": 741,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 572,
+    "text": "{\n  \"items\": [\n    {\n      \"text\": \"Please state exactly which rooms and specific surfaces were affected by the reported event and confirm which of those you link to that event (e.g., kitchen floor, kitchen ceiling, hallway skirting, adjoining bedroom wall).\",\n      \"need_ids\": [\n        0\n      ],\n      \"asks_for\": \"statement\",\n      \"document_type\": \"\"\n    },\n    {\n      \"text\": \"Provide your assessed repair cost (INR) with a line\u2011item breakdown tied to the areas you link to the event (cost per room, per surface/element) and reconcile this to the contractor estimate of INR 180,000, noting any items excluded.\",\n      \"need_ids\": [\n        1,\n        2\n      ],\n      \"asks_for\": \"information\",\n      \"document_type\": \"\"\n    }\n  ]\n}"
+  },
+  "be9dcef53fa1f1638bc47b2fc2aa0ef005d7723c25388ddb59cea8320bb68c20": {
+    "input_tokens": 641,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 273,
+    "text": "{\"items\":[{\"text\":\"Confirm which total repair cost you validated (INR 100,000 vs claimant estimate INR 140,000) and provide a written line-item comparison showing your assessed quantities/unit rates, items you excluded or reduced, and the reason for each difference.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "c0933d431419f1487b9234283a0801613fcb6217c4f54277241e0681ef4fcc8d": {
+    "input_tokens": 394,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 148,
+    "text": "{\"sufficient\":false,\"minimal\":false,\"reason\":\"sufficient is false because 'Each affected area linked to the reported event' may still lack explicit linkage for each area to a specific event instance (e.g., chronology/locations tied to event IDs) and 'Estimate reconciling to the surveyor scope' may not provide a reconciled numeric total matching the 'Surveyor-assessed cost of repair'; minimal is false because 'Q-AMOUNT' is represented twice by two overlapping items (surveyor-assessed cost and estimate reconciling to scope) creating redundancy and the first item is worded identically to a need while the second repeats the same need in different form.\"}"
+  },
+  "c0c65ae1a36a97b0f1f3dc7431b42c8ed122f59044dc957e051ab0c71aa62c56": {
+    "input_tokens": 643,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 454,
+    "text": "{\"items\":[{\"text\":\"Provide a dated, signed statement whether the replaced cracked elbow under the bathroom basin shows long-term corrosion or a sudden failure, give your estimated date or timeframe when the leak/corrosion began and the basis for that estimate.\",\"need_ids\":[0],\"asks_for\":\"statement\"}]}"
+  },
+  "c1f31af45883f6f4ddf15075c776ff8e4ac277285436a0f16253239c8676796e": {
+    "input_tokens": 378,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 73,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the requested signed statement may not resolve the 29% discrepancy unless it includes justification tying specific line-item differences to the overall percent conflict; minimal is true because the single requested item directly targets the stated need without extra or unrelated requests.\"}"
+  },
+  "c4e3b1a01bd761010906f4eeef051a52f7b19b437af47a600068654e23b4b4f3": {
+    "input_tokens": 361,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "c6f22f7d55f7bd9e1aa8b56433bca149c0b0e44b22ed3d0035ffb412e6aab67d": {
+    "input_tokens": 370,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 69,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the request does not resolve the conflict between claimant's statement and plumber's finding\u2014the plumber's opinion and timeframe are requested but may not settle conflicting accounts without explicit comparison to claimant's account or additional objective evidence.\"}"
+  },
+  "c8290bdcbf1261d532a9d03ac8ea5cd2eb2116c7e40e61f6fbe3083a2fcf110b": {
+    "input_tokens": 343,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 100,
+    "text": "{\"sufficient\":false,\"minimal\":false,\"reason\":\"sufficient=false because the request asks for records covering dates before observed staining but does not explicitly require the leak start date tied to those records (may leave question unresolved); minimal=false because the item bundles multiple data points (dates, inspector name, work order numbers) into one request but otherwise matches needs\u2014however asking for 'labelled' record may be redundant/unnecessary beyond the stated need.\"}"
+  },
+  "c97837640da0c089a785d0e9ab5926c63dc3bbb9746d9aee695ca7854c27f921": {
+    "input_tokens": 881,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 408,
+    "text": "{\"items\":[{\"text\":\"Statement: Confirm each area you attribute to the reported event (kitchen, hallway, and whether the adjoining bedroom wall is included) and provide an itemised surveyor repair cost per area and your total, reconciling to the contractor INR 180,000.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "cdbbd6d34a941a4e141a2ebf122ed375bdaaf4bcce6d6ecebfd1b6b3163a468d": {
+    "input_tokens": 347,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "d05057585fce3e80c62e2aa444d6fe314cf2defdc9a3e6f4079a82577f7ef467": {
+    "input_tokens": 371,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 63,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the item may not resolve the conflict: an appearance-based statement alone might not definitively settle whether damage was sudden vs long-term without linking observed features to timing or providing definitive indicators.\"}"
+  },
+  "d152eb803ad2e74a9b6409fc7d353f4165af8964aab6c5dbaa35c1a9db971a92": {
+    "input_tokens": 388,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "d319ebf02540186549703ae0bdc3dbbcf23aeed7d1e6a7afc1684e6bdcf63d34": {
+    "input_tokens": 739,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 475,
+    "text": "{\"items\":[{\"text\":\"For the reported water event, confirm whether each area\u2014utility room, garage wall, bedroom above\u2014is attributed to that event; for each area list the required repair works and provide your itemised assessed repair cost and a reconciled total vs the estimate of INR 61,000.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "d4feef1e02259172558bb21b189a3aa038278da71b786b7208350d92b0861769": {
+    "input_tokens": 336,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 64,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the maintenance/inspection record should show when the leak or damage began, but the requested item only shows inspection date and noted issues without explicitly establishing the leak start date (Q-START).\" }"
+  },
+  "d64ace0a4c32c4e5ec56514848f094840a02c125368cc746d20f76f0ad66af4b": {
+    "input_tokens": 357,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 54,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the listed item simply repeats the conflicting statements and does not request objective evidence or explanation to resolve whether damage was sudden versus long-term deterioration.\"}"
+  },
+  "d7534c238ebd695d038aea94787702de5b68de3e9cced602910e7f3876275912": {
+    "input_tokens": 354,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 82,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because simply clarifying the conflicting amounts (INR 250,000 vs INR 120,000) may not by itself establish whether the higher or lower figure is reasonable and supported; additional detail on basis for each amount (breakdowns, estimates, or sources) is needed.\"}"
+  },
+  "d7c02120d6c41a5a559a46f73faee35b309182ad36c6b57ae42d07f38a188056": {
+    "input_tokens": 351,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "d9e552b49e07370bdb17bc9499638df3ee79815dcb28db1e705400ab779b2c56": {
+    "input_tokens": 314,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "db09675ac1243b229a55e7c37dae922db5f185d29fa030dbeaf32dd3bf89d277": {
+    "input_tokens": 747,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 396,
+    "text": "{\"items\":[{\"text\":\"Provide a dated statement estimating the date or date range when the bathroom supply/drain pipe above the stained ceiling began leaking or corroding, and indicate whether signs show sudden failure or gradual corrosion with a one-sentence basis.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "db79f8735de73d0498ebd70c0ea351374d01f6d8d955e112585eaac45eddc4b4": {
+    "input_tokens": 340,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "dd32dce363e8821718759cfa15260dae9a65a73e563ba596b691252c8fcbae93": {
+    "input_tokens": 395,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "de857d51331952650449c77bfc5fe6ad4589b72bbad5d0ed2d2ad1bd3f0b3cd2": {
+    "input_tokens": 335,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "df1d9c6b2e3486259f1abf04891bab256c0dfa77e53ef4048cfd85b5e367cdc4": {
+    "input_tokens": 316,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 110,
+    "text": "{\"sufficient\":false,\"minimal\":false,\"reason\":\"Insufficient: the item requests only the maintenance/inspection record for the kitchen supply pipe joint but does not specify records showing when the leak/damage began (Q-START) or require timeline/corroborating evidence; Redundant/vague: the single item is narrowly focused and may miss other relevant records (e.g., broader inspection logs or related repairs) so it does not fully map to the stated need and may omit necessary context.\"}"
+  },
+  "e07404716a3e86f200cd1b5b147776ec6503c49d10a70848be7fd7b89bee7ef0": {
+    "input_tokens": 359,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "e2316ffd3adebf842f7484c53aa3e6500f256fccbd1cf4ceb0f666b6820ef02f": {
+    "input_tokens": 616,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 470,
+    "text": "{\"items\":[{\"text\":\"Provide a signed plumber_report describing the failure mechanism of the burst pipe the claimant reported (identify exact pipe by material and location: room and fixture), state whether findings are consistent with sudden/accidental or gradual failure, date of inspection, and your license number.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "e37e883a9e0b0a2dadce0fd84e6f64f936f2092322f744ac92552edf213ef004": {
+    "input_tokens": 643,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 337,
+    "text": "{\"items\":[{\"text\":\"Provide a dated, signed plumber diagnostic report for the burst pipe in the claimant's home: identify the specific part, describe the failure mechanism and cause, state whether the failure appears sudden or gradual, and include inspection date and license number.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "e6640e0b9d010786149a909b5acdc040fa24abf81dc047db294c9751c5765225": {
+    "input_tokens": 668,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 276,
+    "text": "{\"items\":[{\"text\":\"Provide a signed statement reconciling your assessed repair cost INR 100,000 with the claimant's estimate INR 140,000: list each line-item, amounts in both figures, and explain any exclusions or adjustments you used to derive INR 100,000.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "e856a4a2a3fae15e7fee106b5646b3c714768e78235e0c30fa9b40e5682d2220": {
+    "input_tokens": 692,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 741,
+    "text": "{\"items\":[{\"text\":\"Signed, dated technical statement describing the failure mechanism of the kitchen supply hose you replaced (part/model if known), stating whether the failure is consistent with a sudden burst vs gradual wear and whether your findings indicate the leak began at or immediately before the claimant\u2019s reported loss date; include the date and time you observed the burst and performed the repair.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "ea9d4a78dc8b9c6d0fb7759d0376a493e1f64d4f46e9aa72b9f24bfbbab9ac1a": {
+    "input_tokens": 648,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 402,
+    "text": "{\"items\":[{\"text\":\"Plumber report from your inspection: a technical statement describing how the upstairs cistern float valve stuck and caused the tank overflow on the loss date, explain the failure mechanism, whether it was sudden vs gradual, parts condition, and include photos.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"plumber_report\"}]}"
+  },
+  "ed53a1e398492bbfa47e453e39dff28293c0ac4bacf45b31eec9059ea15aebea": {
+    "input_tokens": 325,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "eef16ab7e03c22d514654309b70276efa37887788546cc5dcfec319988fc008b": {
+    "input_tokens": 685,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 333,
+    "text": "{\"items\":[{\"text\":\"Provide a surveyor report with an itemised scope of repairs, line-item costs and calculations reconciling to the claimant estimate (INR 88,000), and state your total assessed repair cost.\",\"need_ids\":[0,1],\"asks_for\":\"new_document\",\"document_type\":\"surveyor_report\"}]}"
+  },
+  "f00bec26bd78738ce8519fadaa6749f935dc47dfacd793b3e643c3a7a7e924dd": {
+    "input_tokens": 364,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 82,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the request asks to confirm policy status and provide effective and cancellation/endorsement dates but does not explicitly request evidence that the PAS policy status is \u2018in force\u2019 on the date (e.g., confirmation the PAS record pertains to this policy), leaving potential ambiguity about matching records.\"}"
+  },
+  "f05c644b5218ea012cd8bc60649b3d52a7745b0a432dd4445924eab483ecf584": {
+    "input_tokens": 680,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 463,
+    "text": "{\"items\":[{\"text\":\"Please state whether you observed damp in the landing and in the two bedroom walls in addition to the bathroom ceiling; give each room's specific location, condition (fresh/wet vs old/dry stains) and the date you made the observation.\",\"need_ids\":[0],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "f5acb6bb316bf9f1d828d93b60a17b843745cdb6075a8c3af69e81a272d4e9f9": {
+    "input_tokens": 860,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 460,
+    "text": "{\"items\":[{\"text\":\"State whether the corrosion at the kitchen supply pipe joint is consistent with a sudden burst or with prolonged leakage, and give your estimated earliest month/year the corrosion/leak began plus the specific inspection findings that support that estimate.\",\"need_ids\":[0,1],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "f69fbc06da5b168a9709565c7db26b787909b1c0dcb1c7f8e94521323ac5b51b": {
+    "input_tokens": 402,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 23,
+    "text": "{\"sufficient\":true,\"minimal\":true,\"reason\":\"\"}"
+  },
+  "f7a0ecb09d4612e49fa4095ac420a5c8617e4578cde80cd9f533f24cc8df78f5": {
+    "input_tokens": 414,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 78,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because resolving the Q-AMOUNT conflict requires explanation or justification for the INR 50,000 difference (e.g., reasons for higher invoice) which the items only ask to 'clarify' but do not explicitly require the supporting details needed to settle the conflict.\"}"
+  },
+  "f9040e9b2f7dc56cb8a9d3aa11990a8f3d3562f7ff6ee4a253b61a64bdafe065": {
+    "input_tokens": 320,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"sufficient\":false,\"minimal\":true,\"reason\":\"sufficient is false because the request asks for the full, signed endorsement wording version effective on the date of loss including effective date range and file/version identifier, but it does not explicitly require confirmation that the wording shown was indeed the version in force on the exact date of loss (e.g., a stamped effective-date validation or policy schedule cross-reference) so the need Q-SUBLIMIT may remain unresolved.\"}"
+  }
+}

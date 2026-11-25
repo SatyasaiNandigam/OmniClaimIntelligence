@@ -1,0 +1,122 @@
+# How a policy document is cut into typed clauses (T3.1). Conventions of the wording styles we have seen: SAMPLE, extend per pack.
+# Regular expressions are in single quotes so backslashes are literal. Section / clause patterns are case-sensitive on purpose
+# (an all-capitals line is a section title, a capitalised one is a clause heading); every other pattern ignores case.
+# A clause whose type no rule can decide is NOT guessed: it is returned as unclassified for a human.
+
+max_heading_chars: 80
+
+noise_patterns:                                  # banners, footers, page numbers, the document's own meta line
+  - '^SYNTHETIC DOCUMENT\b'
+  - '^.{1,40}\|\s*SYNTHETIC\s*$'
+  - '^Page \d+ of \d+$'
+  - '^(?:Policy wording|Endorsement)\s+\S+\s*\|\s*Version\b'
+
+section_patterns:
+  - '^(?:SECTION|PART|ARTICLE|CHAPTER|Section|Part|Article|Chapter)\s+[A-Za-z0-9]+\s*(?:[-:.]\s*|\s+)(?P<title>\S.*)$'
+  - '^\d+\.\s+(?P<title>[A-Z][A-Z ,&/''-]{3,})$'
+
+clause_patterns:
+  - '^(?:Clause\s+)?(?P<number>\d+\.\d+(?:\.\d+)*)\s+(?P<title>[A-Z].*)$'      # 1.1 Buildings   /   Clause 1.1 Dwelling
+  - '^(?P<number>[A-Z]\d+)\s+(?P<title>[A-Z][a-z].*)$'                          # A1 Sudden
+  - '^(?P<number>\d+)\.\s+(?P<title>[A-Z][a-z].*)$'                             # 1. Water damage sublimit  (endorsements)
+
+endorsement_title_patterns:
+  - '\bendorsement\b'
+
+# Evidence order per clause: its heading, its section, the document title, then its text. Rules are tried in the order below.
+types:
+  - type: sublimit
+    heading_keywords: ['\bsub-?limit\b']
+    title_keywords: ['\bsub-?limit\b']
+  - type: deductible
+    heading_keywords: ['\bdeductible\b', '\bexcess\b']
+    title_keywords: ['\bdeductible\b']
+  - type: limit
+    heading_keywords: ['\blimit\b', '\bsum insured\b']
+    section_keywords: ['\blimits?\b']
+    title_keywords: ['\blimit\b']
+  - type: exclusion
+    section_keywords: ['\bnot covered\b', '\bnot cover\b', '\bnot pay\b', '\bexclusions?\b']
+    text_cues: ['^We do not (?:cover|pay)\b']
+  - type: coverage
+    section_keywords: ['\bwhat (?:is|we) cover(?:ed)?\b', '\bcover for\b', '\binsured perils\b', '^\W*covers?\W*$']
+    text_cues: ['^We (?:also )?(?:cover|pay for)\b']
+  - type: definition
+    section_keywords: ['\bdefinitions?\b', '\bmeanings? of words\b', '\bwords with special meanings?\b', '\bdefined (?:terms|words)\b']
+    title_keywords: ['\bdefinition\b']
+    text_cues: ['^\S.{0,60}?\bmeans\b']
+  - type: condition
+    heading_keywords: ['\bperiod\b', '\bnotif']
+    section_keywords: ['\bconditions?\b']
+    title_keywords: ['\bcondition\b']
+    text_cues: ['^You must\b']
+
+# ---------------------------------------------------------------------------------------------------- relations (T3.2)
+# How clauses are linked. A relation is only recorded when there is evidence for it (a reference, a defined term, shared words); when
+# several targets fit equally well, or none fits, NO relation is recorded and the clause is reported as ambiguous for a human.
+relations:
+  heading_weight: 2             # SAMPLE: a shared word in the target's heading counts double
+  text_weight: 1                # SAMPLE
+  min_score: 1                  # SAMPLE
+  stopwords: ['a', 'an', 'and', 'any', 'are', 'as', 'at', 'be', 'by', 'caused', 'claim', 'claims', 'cover', 'covered', 'covers',
+              'damage', 'do', 'each', 'for', 'from', 'has', 'have', 'if', 'in', 'is', 'it', 'loss', 'more', 'most', 'not', 'of',
+              'on', 'one', 'or', 'pay', 'policy', 'shown', 'than', 'that', 'the', 'this', 'to', 'unless', 'we', 'which', 'will',
+              'with', 'you', 'your', 'endorsement', 'wording', 'schedule']
+  explicit_reference_patterns:
+    - '\bEndorsement\s+(?P<id>[A-Z][A-Z0-9]*-[A-Z0-9]+)\b'
+  exception_cues:
+    - '^(?:However|But|Except|Provided)\b'
+  precedence_clause_cues:
+    - '\bendorsements?\b.*\b(?:conflicts?|inconsistent|prevails?)\b'
+  later_prevails_cues:
+    - '\blater endorsement (?:applies|prevails)\b'
+  prevails_over_patterns:
+    - '\bthis endorsement prevails over (?:the )?Endorsement\s+(?P<id>[A-Z][A-Z0-9]*-[A-Z0-9]+)\b'
+  effective_date_cues:
+    - '\bwith effect from\s+(?P<date>\d{1,2} [A-Za-z]+ \d{4})'
+    - '\bon or after\s+(?P<date>\d{1,2} [A-Za-z]+ \d{4})'
+    - '\bfrom\s+(?P<date>\d{1,2} [A-Za-z]+ \d{4})'
+  rules:                         # the first rule that applies to a clause and finds a target wins
+    - {source_kind: wording, source_types: [exclusion], relation: excepts, target_types: [exclusion], method: exception}
+    - {source_kind: wording, source_types: [exclusion], relation: excepts, target_types: [coverage], method: overlap}
+    - {source_kind: wording, source_types: [definition], relation: defines, target_types: [coverage, exclusion, condition, limit, sublimit, deductible], method: term}
+    - {source_kind: endorsement, source_types: [sublimit], relation: modifies, target_types: [coverage, sublimit], method: overlap}
+    - {source_kind: endorsement, source_types: [deductible], relation: modifies, target_types: [deductible], method: overlap}
+    - {source_kind: endorsement, source_types: [limit], relation: modifies, target_types: [limit, sublimit], method: overlap}
+    - {source_kind: endorsement, source_types: [definition], relation: modifies, target_types: [definition], method: overlap}
+    - {source_kind: endorsement, source_types: [coverage], relation: modifies, target_types: [coverage], method: overlap}
+    - {source_kind: endorsement, source_types: [condition], relation: conditions, target_types: [coverage], method: overlap}
+    - {source_kind: endorsement, source_types: [exclusion], relation: excepts, target_types: [coverage], method: overlap}
+
+# ---------------------------------------------------------------------------------------------------- retrieval (T3.4)
+# Keyword search (BM25) and embedding similarity each rank the clauses IN FORCE on the loss date; the two rankings are fused by reciprocal
+# rank. A clause is returned together with the endorsement clauses that modify it. All numbers are SAMPLE starting points.
+retrieval:
+  k: 5
+  bm25_k1: 1.2                 # SAMPLE
+  bm25_b: 0.75                 # SAMPLE
+  heading_weight: 2            # SAMPLE
+  rrf_k: 60                    # SAMPLE
+  keyword_weight: 1.0          # SAMPLE
+  dense_weight: 1.0            # SAMPLE
+  min_dense_similarity: 0.30   # SAMPLE: chosen on the DEV queries only (relevant >= 0.36, unrelated <= 0.21); below it an embedding match is ignored
+  stopwords: ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'can', 'do', 'does', 'for', 'from', 'has', 'have', 'how', 'if', 'in', 'is', 'it',
+              'of', 'on', 'or', 'our', 'that', 'the', 'their', 'this', 'to', 'was', 'we', 'what', 'when', 'which', 'who', 'will', 'with',
+              'you', 'your']
+
+# ---------------------------------------------------------------------------------------------------- optional model typing (4a)
+# Asked ONLY for clauses the rules above could not type. The answer is accepted only if the type is one of the seven, the quoted evidence is
+# verbatim from the clause (or its heading), and the confidence reaches min_confidence; it is then capped at confidence_cap. Such clauses are
+# marked type_source 'llm' and named in the snapshot for human review. Anything else stays unclassified.
+llm_typing:
+  enabled: true            # DECISION 2026-11-25: on. Model-typed clauses enter the snapshot, flagged 'REVIEW' (and counted in the agent's rationale).
+  min_confidence: 0.70      # SAMPLE
+  confidence_cap: 0.80      # SAMPLE
+  max_clause_chars: 1500    # SAMPLE
+  reasoning_effort: low     # SAMPLE: chosen on the dev documents - with 'minimal' the model typed a fraud clause as an exclusion
+  types_needing_amount: [limit, sublimit, deductible]   # a payout rule must say HOW MUCH: an amount, or a pointer to one
+  amount_cues:
+    - '\b(?:INR|Rs\.?)\s*\d'
+    - '\bSum Insured\b'
+    - '\bSchedule\b'
+    - '\b(?:limit|deductible|excess)\b'

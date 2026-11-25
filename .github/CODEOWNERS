@@ -1,0 +1,21 @@
+# Replace @A..@D with GitHub handles. One owner per folder = few merge conflicts.
+/src/claimtower/core/            @A
+/src/claimtower/orchestration/   @A
+/src/claimtower/integrations/    @A
+/src/claimtower/actions/         @A
+/src/claimtower/duplicates/      @A
+/configs/                        @A
+/src/claimtower/ingestion/       @B
+/src/claimtower/vision/          @B
+/src/claimtower/evidence/        @B
+/src/claimtower/policy/          @C
+/src/claimtower/coverage/        @C
+/src/claimtower/settlement/      @C
+/src/claimtower/routing/         @C
+/packs/                          @B @C
+/src/claimtower/api/             @D
+/src/claimtower/ui/              @D
+/src/claimtower/audit/           @D
+/data/                           @D
+/evals/                          @D
+/docs/                           @D

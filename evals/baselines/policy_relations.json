@@ -1,0 +1,87 @@
+{
+  "entries": [
+    {
+      "label": "v1 first run: corpus conventions + generic stopwords; fresh pools unseen; 3 corpus extras audited valid",
+      "date": "2026-11-25",
+      "signals_sha": "623d38c5cf47",
+      "splits": {
+        "corpus": {
+          "labelled": 14,
+          "predicted": 16,
+          "matched": 13,
+          "recall": 0.9286,
+          "precision": 0.8125,
+          "precision_with_audited": 1.0,
+          "missed": [
+            "CL-H2-DEF-SUDDEN -defines-> CL-H2-COV-WATER"
+          ],
+          "audited_valid": [
+            "CL-DEF-BUILDINGS -defines-> CL-COV-FIRE   [term: uses the defined term 'Buildings']",
+            "CL-DEF-BUILDINGS -defines-> CL-COV-WATER   [term: uses the defined term 'Buildings']",
+            "CL-H3-DEF-ESCAPE -defines-> CL-H3-COV-PERILS   [term: uses the defined term 'Escape of water']"
+          ],
+          "unlabelled": [],
+          "ambiguous": [
+            "CL-EXC-WEAR (excepts): no shared words with any candidate target"
+          ],
+          "by_type": {
+            "excepts": {
+              "labelled": 4,
+              "matched": 4,
+              "predicted": 4
+            },
+            "modifies": {
+              "labelled": 4,
+              "matched": 4,
+              "predicted": 4
+            },
+            "conditions": {
+              "labelled": 2,
+              "matched": 2,
+              "predicted": 2
+            },
+            "defines": {
+              "labelled": 4,
+              "matched": 3,
+              "predicted": 6
+            }
+          }
+        },
+        "fresh": {
+          "labelled": 13,
+          "predicted": 11,
+          "matched": 11,
+          "recall": 0.8462,
+          "precision": 1.0,
+          "precision_with_audited": 1.0,
+          "missed": [
+            "HARBOUR-1:3.1 Neglect -excepts-> HARBOUR-1:2.1 Water damage",
+            "HARBOUR-1:3.2 Gradual damage -excepts-> HARBOUR-1:2.1 Water damage"
+          ],
+          "audited_valid": [],
+          "unlabelled": [],
+          "ambiguous": [
+            "HARBOUR-1:3.2 Gradual damage (excepts): no shared words with any candidate target"
+          ],
+          "by_type": {
+            "excepts": {
+              "labelled": 5,
+              "matched": 3,
+              "predicted": 3
+            },
+            "defines": {
+              "labelled": 5,
+              "matched": 5,
+              "predicted": 5
+            },
+            "modifies": {
+              "labelled": 3,
+              "matched": 3,
+              "predicted": 3
+            }
+          }
+        }
+      }
+    }
+  ]
+}

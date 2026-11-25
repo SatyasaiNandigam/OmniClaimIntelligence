@@ -1,0 +1,64 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "detail": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Detail"
+    },
+    "mock": {
+      "default": true,
+      "title": "Mock",
+      "type": "boolean"
+    },
+    "recon_id": {
+      "title": "Recon Id",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retrieved At"
+    },
+    "source_system": {
+      "default": "",
+      "title": "Source System",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "matched",
+        "unmatched",
+        "pending"
+      ],
+      "title": "State",
+      "type": "string"
+    }
+  },
+  "required": [
+    "recon_id",
+    "state"
+  ],
+  "title": "MatchStatus",
+  "type": "object"
+}

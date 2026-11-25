@@ -1,0 +1,68 @@
+{
+  "entries": [
+    {
+      "label": "v1 first run: templates as first written (loss date tagged Q-INFORCE only)",
+      "date": "2026-11-25",
+      "extractor_sha": "7721314a48c2",
+      "result": {
+        "scenario_facts": 73,
+        "text_document_facts": 341,
+        "citation": {
+          "facts": 414,
+          "verbatim_ok": 414,
+          "verbatim_rate": 1.0,
+          "region_checked": 73,
+          "region_ok": 73,
+          "region_rate": 1.0,
+          "ocr_basis": 0,
+          "problems": []
+        },
+        "ground_truth_facts": 31,
+        "ground_truth_covered": 31,
+        "ground_truth_recall": 1.0,
+        "ground_truth_uncovered": [],
+        "question_links": 40,
+        "question_links_covered": 39,
+        "question_link_recall": 0.975,
+        "question_links_missing": [
+          "F-S04-01->Q-SUBLIMIT"
+        ],
+        "low_confidence_facts": 49,
+        "all_neutral": true,
+        "fact_ids_unique": true,
+        "refused": []
+      }
+    },
+    {
+      "label": "v2 loss date also tagged Q-SUBLIMIT (it selects the date-effective endorsement): ground-truth question links 40/40",
+      "date": "2026-11-25",
+      "extractor_sha": "7721314a48c2",
+      "result": {
+        "scenario_facts": 73,
+        "text_document_facts": 341,
+        "citation": {
+          "facts": 414,
+          "verbatim_ok": 414,
+          "verbatim_rate": 1.0,
+          "region_checked": 73,
+          "region_ok": 73,
+          "region_rate": 1.0,
+          "ocr_basis": 0,
+          "problems": []
+        },
+        "ground_truth_facts": 31,
+        "ground_truth_covered": 31,
+        "ground_truth_recall": 1.0,
+        "ground_truth_uncovered": [],
+        "question_links": 40,
+        "question_links_covered": 40,
+        "question_link_recall": 1.0,
+        "question_links_missing": [],
+        "low_confidence_facts": 49,
+        "all_neutral": true,
+        "fact_ids_unique": true,
+        "refused": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "routing": {
+    "tier": "complex",
+    "reason_codes": [
+      "POLICY_NOT_IN_FORCE"
+    ],
+    "required_approver_role": "senior_adjuster",
+    "rules_version": "sample-2"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_human"
+}

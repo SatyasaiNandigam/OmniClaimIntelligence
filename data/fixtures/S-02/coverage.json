@@ -1,0 +1,113 @@
+{
+  "coverage_issues": [
+    {
+      "issue_id": "ISS-INFORCE",
+      "issue": "Policy in force on date of loss",
+      "status": "established",
+      "clause_citations": [
+        {
+          "clause_id": "CL-COND-PERIOD",
+          "document": "BASE-HOME-1",
+          "page": 3,
+          "span": [
+            144,
+            241
+          ],
+          "text": "This policy covers loss or damage occurring during the period of insurance shown in the Schedule.",
+          "modified_by": []
+        }
+      ],
+      "fact_ids": [
+        "F-S02-01"
+      ],
+      "question_ids": [],
+      "note": null
+    },
+    {
+      "issue_id": "ISS-COVER-WATER",
+      "issue": "Escape of water: sudden and accidental",
+      "status": "established",
+      "clause_citations": [
+        {
+          "clause_id": "CL-COV-WATER",
+          "document": "BASE-HOME-1",
+          "page": 1,
+          "span": [
+            676,
+            835
+          ],
+          "text": "We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.",
+          "modified_by": [
+            "CL-SUB-WATER-E1"
+          ]
+        },
+        {
+          "clause_id": "CL-DEF-SUDDEN",
+          "document": "BASE-HOME-1",
+          "page": 1,
+          "span": [
+            363,
+            534
+          ],
+          "text": "Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.",
+          "modified_by": [
+            "CL-DEF-SUDDEN-E5"
+          ]
+        }
+      ],
+      "fact_ids": [
+        "F-S02-02",
+        "F-S02-03",
+        "F-S02-04"
+      ],
+      "question_ids": [],
+      "note": null
+    },
+    {
+      "issue_id": "ISS-EXC-GRADUAL",
+      "issue": "Gradual leakage exclusion",
+      "status": "established",
+      "clause_citations": [
+        {
+          "clause_id": "CL-EXC-GRADUAL",
+          "document": "BASE-HOME-1",
+          "page": 2,
+          "span": [
+            252,
+            399
+          ],
+          "text": "We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.",
+          "modified_by": []
+        }
+      ],
+      "fact_ids": [
+        "F-S02-04"
+      ],
+      "question_ids": [],
+      "note": "Exclusion not engaged."
+    },
+    {
+      "issue_id": "ISS-SUBLIMIT",
+      "issue": "Water-damage sublimit",
+      "status": "identified",
+      "clause_citations": [
+        {
+          "clause_id": "CL-SUB-WATER-E1",
+          "document": "END-01",
+          "page": 1,
+          "span": [
+            318,
+            522
+          ],
+          "text": "The most we will pay for loss or damage covered under the escape of water cover of this policy is INR 100,000 for any one claim. This sublimit forms part of, and is not in addition to, the Building Limit.",
+          "modified_by": [
+            "CL-SUB-WATER-E2"
+          ]
+        }
+      ],
+      "fact_ids": [],
+      "question_ids": [],
+      "note": "Sublimit identified; payable is below it."
+    }
+  ]
+}

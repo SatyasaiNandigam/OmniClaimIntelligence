@@ -1,0 +1,12 @@
+{
+  "routing": {
+    "tier": "medium",
+    "reason_codes": [
+      "EXPOSURE_MEDIUM_BAND"
+    ],
+    "required_approver_role": "adjuster",
+    "rules_version": "sample-2"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_human"
+}

@@ -1,0 +1,212 @@
+{
+  "documents": [
+    {
+      "document_id": "DOC-S05-1",
+      "claim_id": "CLM-0005",
+      "filename": "fnol.pdf",
+      "sha256": "8083ae2beffa0ea17ef6bd36ed316cacaf987d35ce7f507cd36d79b4bf5642e6",
+      "page_count": 1,
+      "detected_type": "fnol",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "claimant",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0005/fnol.pdf"
+    },
+    {
+      "document_id": "DOC-S05-2",
+      "claim_id": "CLM-0005",
+      "filename": "plumber_report.pdf",
+      "sha256": "6edd824c89d2a0ed5ff3ba06e535c24bed40ffb351ba655ca545ccfd84d4596e",
+      "page_count": 1,
+      "detected_type": "plumber_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "plumber",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0005/plumber_report.pdf"
+    },
+    {
+      "document_id": "DOC-S05-3",
+      "claim_id": "CLM-0005",
+      "filename": "surveyor_report.pdf",
+      "sha256": "81256702f0a172ccc75da36f00146a8e6a7621ed42dbe6fc33a1c6e1ff4ff325",
+      "page_count": 1,
+      "detected_type": "surveyor_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "surveyor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0005/surveyor_report.pdf"
+    },
+    {
+      "document_id": "DOC-S05-4",
+      "claim_id": "CLM-0005",
+      "filename": "estimate.pdf",
+      "sha256": "1c2be7d65af91664e3a568f21e1b69642645af8fd46889a258ae354d83bab4bb",
+      "page_count": 1,
+      "detected_type": "estimate",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "contractor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0005/estimate.pdf"
+    },
+    {
+      "document_id": "DOC-S05-5",
+      "claim_id": "CLM-0005",
+      "filename": "policy_schedule.pdf",
+      "sha256": "fc44528a63e6b724d4370a83d345d513bac27d1286b7bf5fdc0654b01d387369",
+      "page_count": 1,
+      "detected_type": "policy_schedule",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "claimant",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0005/policy_schedule.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-S05-01",
+      "claim_id": "CLM-0005",
+      "proposition": "Reported date of loss is 10 June 2026",
+      "source_document_id": "DOC-S05-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Date of loss: 10 June 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-02",
+      "claim_id": "CLM-0005",
+      "proposition": "Claimant reports the coupling split suddenly",
+      "source_document_id": "DOC-S05-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "the pipe coupling in the utility room split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-03",
+      "claim_id": "CLM-0005",
+      "proposition": "Plumber reports the coupling split suddenly",
+      "source_document_id": "DOC-S05-2",
+      "page": 1,
+      "region": null,
+      "evidence_text": "The pipe coupling split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-04",
+      "claim_id": "CLM-0005",
+      "proposition": "Plumber found no corrosion or prior leakage",
+      "source_document_id": "DOC-S05-2",
+      "page": 1,
+      "region": null,
+      "evidence_text": "No corrosion or prior leakage was observed",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-05",
+      "claim_id": "CLM-0005",
+      "proposition": "Moisture was confined to utility room and passage",
+      "source_document_id": "DOC-S05-3",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Moisture was confined to the utility room and the adjoining passage",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-EXTENT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-06",
+      "claim_id": "CLM-0005",
+      "proposition": "Surveyor-assessed repair cost is INR 110,000",
+      "source_document_id": "DOC-S05-3",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Assessed repair cost: INR 110,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-07",
+      "claim_id": "CLM-0005",
+      "proposition": "Estimate total reconciles to the surveyor assessment",
+      "source_document_id": "DOC-S05-4",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Total: INR 110,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-08",
+      "claim_id": "CLM-0005",
+      "proposition": "Schedule references endorsement END-01",
+      "source_document_id": "DOC-S05-5",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Endorsements attached: END-01 Water Damage Sublimit Endorsement",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-SUBLIMIT"
+      ],
+      "extraction_confidence": 0.96,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "image_findings": []
+}

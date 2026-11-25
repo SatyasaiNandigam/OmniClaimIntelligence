@@ -1,0 +1,51 @@
+# SYNTHETIC. Unseen labelled cases for the fact <-> question linker (T4.2). Written BEFORE any model result on them was seen.
+# The development set is the five scenario ground-truth files (data/ground_truth/S-0*.json); these are the `fresh` split: run once after
+# the prompt was frozen. Do not tune on them.
+#
+# Each fact has `tags` (what the fact templates would have tagged it with, deliberately imperfect: some missing, some wrong) and `links`
+# (the labelled truth: question id -> direction). A fact with `links: {}` bears on none of the questions.
+# Direction = relative to the claim AS PRESENTED by the claimant: supporting = consistent with it, contradicting = points away from it,
+# neutral = relevant but not leaning (bare dates, amounts, references, a repair that says nothing about cause).
+# Questions are the six standard ones: Q-INFORCE, Q-SUDDEN, Q-START, Q-EXTENT, Q-AMOUNT, Q-SUBLIMIT.
+
+cases:
+  - id: L1-long-term-leak
+    facts:
+      - {id: f1, text: "Claimant reports: the supply pipe burst while we were having breakfast on 9 April 2026", tags: [Q-SUDDEN], links: {Q-SUDDEN: supporting}}
+      - {id: f2, text: "Plumber reports: the pipe wall had been thinned by long-term corrosion and the joint had been weeping for months", tags: [Q-SUDDEN], links: {Q-SUDDEN: contradicting, Q-START: contradicting}}
+      - {id: f3, text: "Surveyor reports: damp staining on the ceiling below the kitchen and in the dining room", tags: [Q-SUDDEN, Q-EXTENT], links: {Q-EXTENT: neutral}}
+      - {id: f4, text: "Contractor estimate total is INR 96,500", tags: [Q-AMOUNT], links: {Q-AMOUNT: neutral}}
+      - {id: f5, text: "Reported date of loss is 9 April 2026", tags: [Q-INFORCE, Q-SUBLIMIT], links: {Q-INFORCE: neutral, Q-SUBLIMIT: neutral}}
+  - id: L2-sudden-and-clean
+    facts:
+      - {id: f1, text: "Claimant reports: the flexible hose under the sink split with a bang and water sprayed across the floor", tags: [Q-SUDDEN], links: {Q-SUDDEN: supporting}}
+      - {id: f2, text: "Plumber reports: the hose failed suddenly at the crimp; no sign of earlier leakage or staining", tags: [Q-SUDDEN, Q-START], links: {Q-SUDDEN: supporting, Q-START: supporting}}
+      - {id: f3, text: "Surveyor reports: water damage is limited to the kitchen floor and the base of two units", tags: [Q-EXTENT], links: {Q-EXTENT: supporting}}
+      - {id: f4, text: "Surveyor assessed the repair cost at INR 64,000", tags: [], links: {Q-AMOUNT: neutral}}
+      - {id: f5, text: "Surveyor visited the site on 21 February 2026", tags: [Q-SUDDEN], links: {}}
+  - id: L3-wider-damage
+    facts:
+      - {id: f1, text: "Claimant reports: water came from the bathroom pipe and wet the bathroom floor only", tags: [Q-SUDDEN, Q-EXTENT], links: {Q-SUDDEN: supporting, Q-EXTENT: supporting}}
+      - {id: f2, text: "Surveyor reports: moisture readings are elevated in the bathroom, the hallway, the main bedroom and the lounge wall", tags: [Q-EXTENT], links: {Q-EXTENT: contradicting}}
+      - {id: f3, text: "Surveyor reports: the wall readings in the lounge are consistent with seepage over several weeks", tags: [], links: {Q-SUDDEN: contradicting, Q-START: contradicting, Q-EXTENT: contradicting}}
+      - {id: f4, text: "Estimate scope covers the bathroom and hallway only", tags: [Q-EXTENT, Q-AMOUNT], links: {Q-EXTENT: neutral, Q-AMOUNT: neutral}}
+      - {id: f5, text: "Claimant estimates the loss at INR 210,000", tags: [Q-AMOUNT], links: {Q-AMOUNT: neutral}}
+  - id: L4-dated-evidence
+    facts:
+      - {id: f1, text: "Claimant reports: we noticed the stain on the ceiling for the first time on 2 March 2026 and the pipe gave way that night", tags: [Q-SUDDEN], links: {Q-SUDDEN: supporting, Q-START: supporting}}
+      - {id: f2, text: "Maintenance record dated 11 November 2025 notes a slow drip at the same joint, advised replacement", tags: [], links: {Q-SUDDEN: contradicting, Q-START: contradicting}}
+      - {id: f3, text: "Plumber replaced the joint on 3 March 2026", tags: [Q-SUDDEN, Q-START], links: {}}
+      - {id: f4, text: "Policy schedule lists the water damage sublimit endorsement END-01", tags: [Q-SUBLIMIT], links: {Q-SUBLIMIT: neutral}}
+  - id: L5-cost-doubt
+    facts:
+      - {id: f1, text: "Estimate total is INR 148,000", tags: [Q-AMOUNT], links: {Q-AMOUNT: neutral}}
+      - {id: f2, text: "Surveyor assessed the repair cost at INR 91,000", tags: [Q-AMOUNT], links: {Q-AMOUNT: neutral}}
+      - {id: f3, text: "Surveyor reports: INR 30,000 of the estimate is for upgrading the kitchen units, which were not damaged", tags: [], links: {Q-AMOUNT: contradicting, Q-EXTENT: neutral}}
+      - {id: f4, text: "Claimant reports: the pipe split suddenly in the early morning", tags: [Q-SUDDEN], links: {Q-SUDDEN: supporting}}
+      - {id: f5, text: "Plumber carried out an emergency repair and issued invoice 4471", tags: [Q-AMOUNT], links: {}}
+  - id: L6-date-and-sublimit
+    facts:
+      - {id: f1, text: "Reported date of loss is 15 February 2026", tags: [Q-INFORCE, Q-SUBLIMIT], links: {Q-INFORCE: neutral, Q-SUBLIMIT: neutral}}
+      - {id: f2, text: "Revised sublimit endorsement END-02 takes effect on 1 February 2026", tags: [], links: {Q-SUBLIMIT: neutral}}
+      - {id: f3, text: "Plumber reports: the tank outlet failed suddenly and the cause was a cracked fitting, with no earlier leakage", tags: [Q-SUDDEN, Q-START], links: {Q-SUDDEN: supporting, Q-START: supporting}}
+      - {id: f4, text: "Claimant reports the claim cites policy POL-1042", tags: [Q-INFORCE], links: {}}

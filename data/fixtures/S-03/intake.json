@@ -1,0 +1,14 @@
+{
+  "claim_header": {
+    "claim_id": "CLM-0003",
+    "claimant_name": "SYNTHETIC Claimant C",
+    "policy_ref": "POL-1003",
+    "loss_date": "2026-02-13",
+    "loss_type": "water_damage",
+    "loss_description": "Pipe burst in bathroom",
+    "channel": "call_centre",
+    "registered_at": null
+  },
+  "intake_checklist": [],
+  "duplicate_candidates": []
+}

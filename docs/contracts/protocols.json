@@ -1,0 +1,82 @@
+{
+  "Agent": {
+    "attributes": {
+      "agent_id": "typing.ClassVar[str]",
+      "owns": "typing.ClassVar[frozenset[str]]"
+    },
+    "methods": {
+      "run": "(self, state: claimtower.core.schemas.claim_state.ClaimState) -> claimtower.core.state.StatePatch"
+    },
+    "module": "claimtower.agents.base"
+  },
+  "AuditLog": {
+    "attributes": {},
+    "methods": {
+      "record": "(self, event: 'AuditEvent') -> 'None'"
+    },
+    "module": "claimtower.core.interfaces"
+  },
+  "ClaimsClient": {
+    "attributes": {},
+    "methods": {
+      "create_claim": "(self, request: 'ClaimCreateRequest') -> 'ClaimAck'",
+      "create_task": "(self, request: 'TaskRequest') -> 'TaskAck'",
+      "get_claim": "(self, claim_id: 'str') -> 'ClaimRecord'",
+      "update_status": "(self, update: 'ClaimStatusUpdate') -> 'ClaimAck'"
+    },
+    "module": "claimtower.integrations.base"
+  },
+  "FactExtractor": {
+    "attributes": {},
+    "methods": {
+      "extract_facts": "(self, documents: 'list[DocumentRecord]') -> 'list[Fact]'"
+    },
+    "module": "claimtower.core.interfaces"
+  },
+  "ImageAnalyser": {
+    "attributes": {},
+    "methods": {
+      "analyse_images": "(self, images: 'list[DocumentRecord]') -> 'list[ImageFinding]'"
+    },
+    "module": "claimtower.core.interfaces"
+  },
+  "PASClient": {
+    "attributes": {},
+    "methods": {
+      "get_policy_version": "(self, policy_no: 'str', as_of: 'date') -> 'PolicyVersionResponse'",
+      "get_status": "(self, policy_no: 'str', as_of: 'date') -> 'PolicyStatusResponse'"
+    },
+    "module": "claimtower.integrations.base"
+  },
+  "PolicyService": {
+    "attributes": {},
+    "methods": {
+      "get_snapshot": "(self, policy_no: 'str', loss_date: 'date') -> 'PolicySnapshot | NotInForce'",
+      "retrieve_clauses": "(self, query: 'str', snapshot: 'PolicySnapshot') -> 'list[ClauseCitation]'"
+    },
+    "module": "claimtower.core.interfaces"
+  },
+  "ReconClient": {
+    "attributes": {},
+    "methods": {
+      "get_match_status": "(self, recon_id: 'str') -> 'MatchStatus'",
+      "list_breaks": "(self, claim_id: 'str | None' = None) -> 'list[ReconBreak]'",
+      "submit_payment_instruction": "(self, request: 'PaymentInstruction', idempotency_key: 'str') -> 'ReconAck'"
+    },
+    "module": "claimtower.integrations.base"
+  },
+  "Router": {
+    "attributes": {},
+    "methods": {
+      "route": "(self, state: 'ClaimState') -> 'RoutingDecision'"
+    },
+    "module": "claimtower.core.interfaces"
+  },
+  "SettlementEngine": {
+    "attributes": {},
+    "methods": {
+      "compute_settlement": "(self, inputs: 'SettlementInputs', rules_version: 'str') -> 'SettlementResult'"
+    },
+    "module": "claimtower.core.interfaces"
+  }
+}

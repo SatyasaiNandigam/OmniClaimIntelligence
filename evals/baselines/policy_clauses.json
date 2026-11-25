@@ -1,0 +1,222 @@
+{
+  "entries": [
+    {
+      "label": "v1 first run: corpus conventions + generic insurance vocabulary; fresh documents unseen",
+      "date": "2026-11-25",
+      "signals_sha": "f560d9b0053f",
+      "splits": {
+        "corpus": {
+          "labelled": 31,
+          "predicted": 31,
+          "detected": 31,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh": {
+          "labelled": 18,
+          "predicted": 18,
+          "detected": 18,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.8889,
+          "wrong_types": [],
+          "abstained_type": [
+            "RIVERSIDE-1:Clause 4.1 Maximum payable: expected limit, abstained",
+            "RIVERSIDE-1:Clause 5.1 Prompt notice: expected condition, abstained"
+          ],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        }
+      }
+    },
+    {
+      "label": "v2: fresh_llm split added (ELMWOOD-1, wording the rules do not know, 2 clauses labelled none); rules only, no rule changes",
+      "date": "2026-11-25",
+      "signals_sha": "f560d9b0053f",
+      "splits": {
+        "corpus": {
+          "labelled": 31,
+          "predicted": 31,
+          "detected": 31,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh": {
+          "labelled": 21,
+          "predicted": 21,
+          "detected": 21,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.9048,
+          "wrong_types": [],
+          "abstained_type": [
+            "RIVERSIDE-1:Clause 4.1 Maximum payable: expected limit, abstained",
+            "RIVERSIDE-1:Clause 5.1 Prompt notice: expected condition, abstained"
+          ],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh_llm": {
+          "labelled": 13,
+          "predicted": 13,
+          "detected": 13,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.3077,
+          "wrong_types": [],
+          "abstained_type": [
+            "ELMWOOD-1:2.1 Burst or overflowing water: expected coverage, abstained",
+            "ELMWOOD-1:2.2 Storm: expected coverage, abstained",
+            "ELMWOOD-1:3.1 Slow deterioration: expected exclusion, abstained",
+            "ELMWOOD-1:3.2 Empty homes: expected exclusion, abstained",
+            "ELMWOOD-1:4.1 Highest payment: expected limit, abstained",
+            "ELMWOOD-1:4.2 Your share: expected deductible, abstained",
+            "ELMWOOD-1:4.3 Water ceiling: expected sublimit, abstained",
+            "ELMWOOD-1:5.1 Telling us: expected condition, abstained",
+            "ELMWOOD-1:5.2 Protecting the home: expected condition, abstained"
+          ],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        }
+      }
+    },
+    {
+      "label": "v3: splits reorganised after the 4a experiments (dev_llm = ELMWOOD + WILLOW, dev_llm2 = WALNUT, fresh_llm = BEECH); rules only, no rule changes",
+      "date": "2026-11-25",
+      "signals_sha": "f560d9b0053f",
+      "splits": {
+        "corpus": {
+          "labelled": 31,
+          "predicted": 31,
+          "detected": 31,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 1.0,
+          "wrong_types": [],
+          "abstained_type": [],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "dev_llm": {
+          "labelled": 28,
+          "predicted": 28,
+          "detected": 28,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.3929,
+          "wrong_types": [],
+          "abstained_type": [
+            "ELMWOOD-1:2.1 Burst or overflowing water: expected coverage, abstained",
+            "ELMWOOD-1:2.2 Storm: expected coverage, abstained",
+            "ELMWOOD-1:3.1 Slow deterioration: expected exclusion, abstained",
+            "ELMWOOD-1:3.2 Empty homes: expected exclusion, abstained",
+            "ELMWOOD-1:4.1 Highest payment: expected limit, abstained",
+            "ELMWOOD-1:4.2 Your share: expected deductible, abstained",
+            "ELMWOOD-1:4.3 Water ceiling: expected sublimit, abstained",
+            "ELMWOOD-1:5.1 Telling us: expected condition, abstained",
+            "ELMWOOD-1:5.2 Protecting the home: expected condition, abstained",
+            "WILLOW-1:B1 Sudden pipe failure: expected coverage, abstained",
+            "WILLOW-1:B2 Fire and smoke: expected coverage, abstained",
+            "WILLOW-1:C1 Faulty workmanship: expected exclusion, abstained",
+            "WILLOW-1:D1 Top amount for the policy: expected limit, abstained",
+            "WILLOW-1:D2 Pipe damage cap: expected sublimit, abstained",
+            "WILLOW-1:D3 First amount you pay: expected deductible, abstained",
+            "WILLOW-1:E1 Keeping us informed: expected condition, abstained",
+            "WILLOW-1:E2 Maintenance: expected condition, abstained"
+          ],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "dev_llm2": {
+          "labelled": 16,
+          "predicted": 16,
+          "detected": 16,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.4375,
+          "wrong_types": [],
+          "abstained_type": [
+            "WALNUT-1:2.1 Burst tanks: expected coverage, abstained",
+            "WALNUT-1:2.2 Lightning: expected coverage, abstained",
+            "WALNUT-1:3.1 War risks: expected exclusion, abstained",
+            "WALNUT-1:3.2 Ageing: expected exclusion, abstained",
+            "WALNUT-1:4.1 Annual ceiling: expected limit, abstained",
+            "WALNUT-1:4.2 Tank cap: expected sublimit, abstained",
+            "WALNUT-1:4.3 Your first part: expected deductible, abstained",
+            "WALNUT-1:5.1 Reporting a loss: expected condition, abstained",
+            "WALNUT-1:5.2 Living in the home: expected condition, abstained"
+          ],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh": {
+          "labelled": 21,
+          "predicted": 21,
+          "detected": 21,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.9048,
+          "wrong_types": [],
+          "abstained_type": [
+            "RIVERSIDE-1:Clause 4.1 Maximum payable: expected limit, abstained",
+            "RIVERSIDE-1:Clause 5.1 Prompt notice: expected condition, abstained"
+          ],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        },
+        "fresh_llm": {
+          "labelled": 16,
+          "predicted": 16,
+          "detected": 16,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "type_accuracy": 0.4375,
+          "wrong_types": [],
+          "abstained_type": [
+            "BEECH-1:2.1 Failed hoses: expected coverage, abstained",
+            "BEECH-1:2.2 Burst pipes: expected coverage, abstained",
+            "BEECH-1:3.1 Deliberate harm: expected exclusion, abstained",
+            "BEECH-1:3.2 Mould: expected exclusion, abstained",
+            "BEECH-1:4.1 Twelve-month maximum: expected limit, abstained",
+            "BEECH-1:4.2 Baths and basins: expected sublimit, abstained",
+            "BEECH-1:4.3 Starting contribution: expected deductible, abstained",
+            "BEECH-1:5.1 Empty home: expected condition, abstained",
+            "BEECH-1:5.2 Alarm: expected condition, abstained"
+          ],
+          "missed": [],
+          "spurious": [],
+          "citation_problems": []
+        }
+      }
+    }
+  ]
+}

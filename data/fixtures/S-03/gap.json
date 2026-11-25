@@ -1,0 +1,22 @@
+{
+  "open_questions": [
+    {
+      "question_id": "Q-INFORCE",
+      "text": "Was the policy in force on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "PAS policy status is in force on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "linked_fact_ids": [
+        "F-S03-01"
+      ]
+    }
+  ],
+  "contradictions": [],
+  "missing_evidence": [],
+  "counterfactuals": []
+}

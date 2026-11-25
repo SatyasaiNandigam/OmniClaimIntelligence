@@ -1,0 +1,200 @@
+{
+  "entries": [
+    {
+      "label": "T4.4 sufficiency v2 (prompt frozen on dev; fresh run once)",
+      "date": "2026-11-25",
+      "config_sha": "37f3e25417a635f3",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "cases": 9,
+            "questions_scored": 29,
+            "status_accuracy": 0.4827586206896552,
+            "gap_accuracy": 0.8275862068965517,
+            "abstained": 17,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "S-01 Q-START: labelled missing/missing, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-01 Q-EXTENT: labelled partially_established/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-01 Q-AMOUNT: labelled unverified/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "D1-claimant-only-cause Q-SUDDEN: labelled possible/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "D2-estimate-only Q-AMOUNT: labelled unverified/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)"
+            ]
+          },
+          "fresh": {
+            "cases": 12,
+            "questions_scored": 15,
+            "status_accuracy": 0.4666666666666667,
+            "gap_accuracy": 0.7333333333333333,
+            "abstained": 9,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "N1-complete-and-clean Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N1-complete-and-clean Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N1-complete-and-clean Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N1-complete-and-clean Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N2-claimant-only Q-SUDDEN: labelled possible/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N4-estimate-without-assessment Q-AMOUNT: labelled unverified/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N6-extent-partly-scoped Q-EXTENT: labelled partially_established/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N8-start-nothing-relevant Q-START: labelled missing/missing, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N9-low-contradiction-does-not-block Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "cases": 9,
+            "questions_scored": 29,
+            "status_accuracy": 0.6206896551724138,
+            "gap_accuracy": 0.6551724137931034,
+            "abstained": 0,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "S-01 Q-START: labelled missing/missing, got unverified/insufficient (R6-insufficient)",
+              "S-02 Q-START: labelled established/none, got possible/insufficient (R5-possible)",
+              "S-02 Q-EXTENT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-02 Q-AMOUNT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-04 Q-START: labelled established/none, got possible/insufficient (R5-possible)",
+              "S-04 Q-EXTENT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-04 Q-AMOUNT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-05 Q-START: labelled established/none, got possible/insufficient (R5-possible)",
+              "S-05 Q-EXTENT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-05 Q-AMOUNT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "D1-claimant-only-cause Q-SUDDEN: labelled possible/insufficient, got partially_established/insufficient (R4-partial)"
+            ]
+          },
+          "fresh": {
+            "cases": 12,
+            "questions_scored": 15,
+            "status_accuracy": 0.7333333333333333,
+            "gap_accuracy": 0.8,
+            "abstained": 0,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "N1-complete-and-clean Q-AMOUNT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "N2-claimant-only Q-SUDDEN: labelled possible/insufficient, got partially_established/insufficient (R4-partial)",
+              "N8-start-nothing-relevant Q-START: labelled missing/missing, got unverified/insufficient (R6-insufficient)",
+              "N9-low-contradiction-does-not-block Q-AMOUNT: labelled established/none, got partially_established/insufficient (R4-partial)"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "T4.4 re-recorded after relaxing criteria wording (Q-P10): dropped 'dated' and 'itemised'",
+      "date": "2026-11-25",
+      "config_sha": "129034abe20e733d",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "cases": 9,
+            "questions_scored": 29,
+            "status_accuracy": 0.4827586206896552,
+            "gap_accuracy": 0.8275862068965517,
+            "abstained": 17,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "S-01 Q-START: labelled missing/missing, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-01 Q-EXTENT: labelled partially_established/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-01 Q-AMOUNT: labelled unverified/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-02 Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-04 Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "S-05 Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "D1-claimant-only-cause Q-SUDDEN: labelled possible/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "D2-estimate-only Q-AMOUNT: labelled unverified/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)"
+            ]
+          },
+          "fresh": {
+            "cases": 12,
+            "questions_scored": 15,
+            "status_accuracy": 0.4666666666666667,
+            "gap_accuracy": 0.7333333333333333,
+            "abstained": 9,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "N1-complete-and-clean Q-SUDDEN: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N1-complete-and-clean Q-START: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N1-complete-and-clean Q-EXTENT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N1-complete-and-clean Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N2-claimant-only Q-SUDDEN: labelled possible/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N4-estimate-without-assessment Q-AMOUNT: labelled unverified/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N6-extent-partly-scoped Q-EXTENT: labelled partially_established/insufficient, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N8-start-nothing-relevant Q-START: labelled missing/missing, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)",
+              "N9-low-contradiction-does-not-block Q-AMOUNT: labelled established/none, got unverified/none (R2-abstain, abstained: [0] no model was available to judge the facts against this criterion; [1] no model was available to judge the facts against this criterion)"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "cases": 9,
+            "questions_scored": 29,
+            "status_accuracy": 0.7586206896551724,
+            "gap_accuracy": 0.7931034482758621,
+            "abstained": 0,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "S-01 Q-START: labelled missing/missing, got unverified/insufficient (R6-insufficient)",
+              "S-02 Q-EXTENT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-02 Q-AMOUNT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-04 Q-EXTENT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "S-05 Q-EXTENT: labelled established/none, got partially_established/insufficient (R4-partial)",
+              "D1-claimant-only-cause Q-SUDDEN: labelled possible/insufficient, got partially_established/insufficient (R4-partial)",
+              "D2-estimate-only Q-AMOUNT: labelled unverified/insufficient, got missing/missing (R7-missing)"
+            ]
+          },
+          "fresh": {
+            "cases": 12,
+            "questions_scored": 15,
+            "status_accuracy": 0.8666666666666667,
+            "gap_accuracy": 0.9333333333333333,
+            "abstained": 0,
+            "over_claims": 0,
+            "refused_judgements": 0,
+            "overclaims": [],
+            "wrong": [
+              "N2-claimant-only Q-SUDDEN: labelled possible/insufficient, got partially_established/insufficient (R4-partial)",
+              "N8-start-nothing-relevant Q-START: labelled missing/missing, got unverified/insufficient (R6-insufficient)"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

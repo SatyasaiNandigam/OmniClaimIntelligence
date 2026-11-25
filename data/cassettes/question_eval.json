@@ -1,0 +1,332 @@
+{
+  "025d4cc12851efaab6c2294983ba495eb0576c22031531a2aa63c536e7d0486f": {
+    "input_tokens": 1541,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 410,
+    "text": "{\"questions\":[{\"text\":\"Was the heating kept on to at least 8 degrees Celsius or was the water system drained before you went on holiday?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-EXC-FROST\"],\"fact_ids\":[\"F1-frost/F1\"],\"evidence_quote\":\"We do not cover damage caused by water freezing in pipes or tanks unless the heating was kept on at a minimum of 8 degrees Celsius or the water was drained down.\",\"establishing_criteria\":[\"Thermostat or smart-heating logs showing temperature >= 8\u00b0C for the period of absence\",\"A statement or receipt confirming the water system was drained before departure\"],\"confidence\":0.95}]}"
+  },
+  "04f6a8442a3f0fd3c6cb931ae6c7bbfabb5ec0d7dfd9c03d70123d086c14d0f0": {
+    "input_tokens": 571,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 258,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"The claimant's date of discovery is a distinct fact (when they noticed the leak) that is not established by the standard Q-START evidence, which seeks when the leak began rather than when it was first observed.\"}"
+  },
+  "06d8f8786d2a980895bb7c3e21aed672de0432bf6502028032fba79403aef1f8": {
+    "input_tokens": 573,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 202,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question seeks evidence about whether the water system was drained before the insured left (this is a distinct fact about pre-departure actions/occupancy not covered by policy status, suddenness, start date, extent, amount, or sublimit).\"}"
+  },
+  "0815f343228a7ceed085c44b2e2a7b13778317e203c3625a44049f9a5a5f489a": {
+    "input_tokens": 1547,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 921,
+    "text": "{\n  \"questions\": [\n    {\n      \"text\": \"Was the heating system set or programmed to maintain a minimum temperature of 8 degrees Celsius in the loft at the time of the freeze?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"CL-EXC-FROST\"\n      ],\n      \"fact_ids\": [\n        \"F1-frost/F1\"\n      ],\n      \"evidence_quote\": \"the cold snap froze the loft pipe while we were on holiday and we had switched the heating off\",\n      \"establishing_criteria\": [\n        \"Thermostat schedule or smart-thermostat logs showing maintained temperature >= 8\u00b0C\",\n        \"Energy provider or installer report confirming heating maintained during holiday\"\n      ],\n      \"confidence\": 0.9\n    },\n    {\n      \"text\": \"Was the loft water pipe (or the property's water system) drained down before the insured left for holiday?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"CL-EXC-FROST\"\n      ],\n      \"fact_ids\": [\n        \"F1-frost/F1\"\n      ],\n      \"evidence_quote\": \"We do not cover damage caused by water freezing in pipes or tanks unless the heating was kept on at a minimum of 8 degrees Celsius or the water was drained down.\",\n      \"establishing_criteria\": [\n        \"Photographs or dated plumber's report showing pipes drained\",\n        \"Statement from claimant or house-sitter confirming drain-down and any supporting dated evidence\"\n      ],\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "0c62e0e4cc9b79b82b0419260d400fd769618fffc404fb38dc27a3e83d8ae7b3": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 133,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"This asks for a fact about temporary vacancy and whether the mains were shut off during that period, which is not established by any of the listed standard questions (they do not ask about occupancy or water being turned off at the mains).\"}"
+  },
+  "106d52cd61ad3fd1ea759836e668aa8f5b180f7f7a1f06deaa8ee2c4ecbad974": {
+    "input_tokens": 1533,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 404,
+    "text": "{\"questions\":[{\"text\":\"On what date did the claimant first discover the leak under the bathroom sink (date of discovery)?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COND-NOTIFY\"],\"fact_ids\":[\"D2-late-notice/F1\",\"D2-late-notice/F2\"],\"evidence_quote\":\"You must tell us about any loss within 14 days of discovering it and give us the documents and information we ask for.\",\"establishing_criteria\":[\"Dated statement from claimant specifying discovery date\",\"Timestamped photos/messages showing when leak was first noticed\",\"Inspection or repair invoice dated on or soon after discovery\"],\"confidence\":0.9}]}"
+  },
+  "25c182cda0f46df5be6d09cfd64aafe5c2c059d4dfe156e0a761143c53d3c2d8": {
+    "input_tokens": 1534,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 519,
+    "text": "{\"questions\":[{\"text\":\"Was the boiler serviced within the 24 months prior to the loss date (provide service dates and provider)?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COND-MAINT\"],\"fact_ids\":[\"F2-maintenance/F2\"],\"evidence_quote\":\"the boiler has not been serviced for about three years\",\"establishing_criteria\":[\"Service invoice or certificate dated within 24 months before 2026-02-10\",\"Record from a qualified engineer confirming service date and scope\",\"Maintenance log showing routine servicing within the 24-month period\"],\"confidence\":0.9}]}"
+  },
+  "261368e4b59d87434a8d332686c9d842dd40a33c7421fa593ab8e2b83b577710": {
+    "input_tokens": 584,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 122,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"None of the listed standard questions or their evidence establishes whether the hose was a permanent fixed plumbing component versus a removable appliance hose, so this requires distinct evidence and is therefore new.\"}"
+  },
+  "2caae8dc60ee6da947bac2bff83fe16217c814cf0dffdabb5a3a46e9ad91a5b5": {
+    "input_tokens": 1528,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 694,
+    "text": "{\"questions\":[{\"text\":\"When was the boiler last serviced (date of last service invoice or log)?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COND-MAINT\"],\"fact_ids\":[\"F2-maintenance/F2\"],\"evidence_quote\":\"have the boiler serviced at least once every 24 months\",\"establishing_criteria\":[\"Copy of service invoice or log showing date of last service\",\"Service record within 24 months of loss or older than 24 months\"],\"confidence\":0.9},{\"text\":\"Do inspection or survey reports identify corrosion or gradual deterioration of the boiler or pipework as the cause of the leak?\",\"category\":\"cause\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F2-maintenance/F2\"],\"evidence_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"establishing_criteria\":[\"Surveyor/plumber statement or photos confirming corrosion consistent with long\u2011term deterioration\",\"Technical report concluding failure mode was gradual corrosion rather than sudden abrupt failure\"],\"confidence\":0.85}]}"
+  },
+  "2db16fd9ea5c8a654e985fbd90e4865c8ff4089cb249c6934029457acefb9422": {
+    "input_tokens": 1483,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 526,
+    "text": "{\"questions\": []}"
+  },
+  "2fd862755ed74ce8e9e4ea026e75bf42761d07d069c63ef3881443c158b86545": {
+    "input_tokens": 1527,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 506,
+    "text": "{\n  \"questions\": [\n    {\n      \"text\": \"What steps were taken, and when, to stop or limit the overflow during the two days the water ran?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"CL-COND-MITIGATE\"\n      ],\n      \"fact_ids\": [\n        \"F3-mitigation/F1\"\n      ],\n      \"evidence_quote\": \"the water tank overflowed and we left the water running for two days before anyone turned off the mains\",\n      \"establishing_criteria\": [\n        \"Timestamped call records or repair invoices showing when the mains were turned off or repairs started\",\n        \"Contemporaneous statements describing actions taken (e.g., attempts to stop water, who was notified and when)\"\n      ],\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "33581b33fa65cb6dbbce582339abc47406f42d425e9d943b1d403f840740fc6c": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 200,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"This asks for contemporaneous mitigation actions and their timing (what was done and when to stop/limit the overflow), which is not established by any standard question about policy force, suddenness, start date, extent, cost, or sublimits.\"}"
+  },
+  "347ed0777e74c34804c197e6f23a5ce03a1dafa3c6e68a4217f16d32d9963eb7": {
+    "input_tokens": 573,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 119,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question asks whether the mains supply was shut off during an unoccupancy period, so answering this requires distinct evidence about water supply status during that time.\"}"
+  },
+  "3867d7ccc9efe0eace14298a4c81a5c22e9a3d9241a2c936b4280cc8738dbaee": {
+    "input_tokens": 1470,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 501,
+    "text": "{\"questions\":[{\"text\":\"Was the water supply to the building turned off at the mains during the five-week unoccupancy period?\", \"category\":\"coverage_condition\", \"clause_ids\":[\"CL-COND-UNOCC\"], \"fact_ids\":[\"D1-unoccupied/F1\",\"D1-unoccupied/F2\"], \"evidence_quote\":\"We do not cover escape of water if the Buildings have been unoccupied for more than 30 consecutive days before the loss, unless the water supply was turned off at the mains.\", \"establishing_criteria\":[\"Documented evidence the mains valve was closed for the unoccupied period (date-stamped photo or utility record)\",\"Claimant or neighbour statement confirming the mains was turned off with dates\",\"Plumber's inspection confirming valve position or lack of supply at time of attendance\"], \"confidence\":0.95}]}"
+  },
+  "4342eb489ed82833a113ff90ee2e7755d4fafeebe2a6754c056e7f676c933ceb": {
+    "input_tokens": 1521,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 464,
+    "text": "{\"questions\":[{\"text\":\"What steps were taken to stop or limit the overflow during the two days the water was running before the mains were turned off?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COND-MITIGATE\"],\"fact_ids\":[\"F3-mitigation/F1\"],\"evidence_quote\":\"the water tank overflowed and we left the water running for two days before anyone turned off the mains\",\"establishing_criteria\":[\"Phone call or repair log showing attempts to stop flow or request assistance\",\"Witness or claimant statement describing actions taken and times\",\"Utility or meter records showing when supply was isolated\"],\"confidence\":0.9}]}"
+  },
+  "43cb9a6b37e0892b601b04b2e4809f119a4f46fb71b72f261ec9ba687e008797": {
+    "input_tokens": 1562,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 206,
+    "text": "{\"questions\": []}"
+  },
+  "4e0f276ccf4ec16d92fd799e437891b9becfc980b2214110fff7044d554a6d9a": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 194,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question seeks evidence about whether the ruptured supply pipe is a built-in part of the building plumbing, so answering this requires distinct evidence about the pipe's ownership/attachment and not covered by the listed standards.\"}"
+  },
+  "5b7b8f69245c5fedac4859d674c69951172d0db947542703a1f34d72485aad97": {
+    "input_tokens": 565,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 186,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-SUDDEN\",\"reason\":\"A technical statement of the failure mechanism and evidence about when the damage began (Q-SUDDEN) would establish whether corrosion or gradual deterioration existed prior to failure.\"}"
+  },
+  "63c21c6f809f9ca5e6719cd511d441013b83abcdfcb7c5511911fcff486daf20": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 128,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question asks whether a specific component is considered a 'fixed' pipe/tank/apparatus under the policy, so answering this requires different legal/contractual evidence not covered by the listed questions.\"}"
+  },
+  "67a4fcb93f2b25ed462249b58e5e7aacd85425d81c44838d8466f664d5d74a03": {
+    "input_tokens": 561,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 193,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-START\",\"reason\":\"The date of last boiler service is a maintenance/inspection record, which is the same type of evidence used to establish when the leak or damage began for Q-START, so it adds nothing new.\"}"
+  },
+  "688b7c9288da5d9451c346a4daac4102c0675cd4eadecd3b7a10b6880c2f597f": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 188,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-SUDDEN\",\"reason\":\"Asking whether reports identify corrosion/gradual deterioration seeks the same failure-mechanism evidence used to determine if the damage was gradual versus sudden (Q-SUDDEN).\"}"
+  },
+  "6d14374f4501d3c12310f02f3247d4259b60a0b3dd4af0df7cb506ee92989b84": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 120,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"This asks whether heating was maintained or the system drained (precaution/occupancy facts) which is not established by any of the listed standard questions or their evidence.\"}"
+  },
+  "6e316ccdeb9482ed0f5a3b3ab657d321ac30a10ba79c4b73b045d89b55bc45f0": {
+    "input_tokens": 576,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 123,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"None of the standard questions ask whether the failed valve is a permanently attached part of the building or heating/plumbing apparatus, so answering this requires distinct evidence about fixture ownership/attachment.\"}"
+  },
+  "6e9ae98dc74a38a43126ac756c333b267f08260e97ae0b8e97b686640fe60465": {
+    "input_tokens": 1551,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 770,
+    "text": "{\"questions\":[{\"text\":\"Was the failed fitting part of the building's fixed water piping (not a removable appliance or tenant-owned fixture)?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F5-occupied-decoy/F2\"],\"evidence_quote\":\"sudden failure of a fitting on the hallway supply pipe\",\"establishing_criteria\":[\"Surveyor report confirming the failed item is fixed piping attached to the building structure\",\"Photograph or schematic showing the fitting located within the building's fixed plumbing system\"],\"confidence\":0.6}]}"
+  },
+  "769b24f075b8e8edba855acce376f367635c1fc68cf89fa09e91da61959ba654": {
+    "input_tokens": 1417,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 739,
+    "text": "{\"questions\":[{\"text\":\"Was the escape of water from a fixed supply pipe joint (the corroded supply pipe) rather than from a non-fixed appliance or external source?\",\"category\":\"cause\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"D5-gradual-decoy/F1\"],\"evidence_quote\":\"Plumber reports: significant corrosion at the joint of the supply pipe\",\"establishing_criteria\":[\"Plumber or surveyor report locating the breach at a fixed supply pipe joint\",\"Photographs or repair invoice showing hole/failure on the fixed supply pipe joint\",\"Site diagram or annotated photos linking the leak origin to the building's fixed pipework\"],\"confidence\":0.9}]}"
+  },
+  "7828b424db4a6c207fd7b545b0448e9ac60a96cdbf3cc7cbb453843a48c39817": {
+    "input_tokens": 581,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 132,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-START\",\"reason\":\"Asking for dated maintenance/repair/inspection records showing prior leakage or corrosion is covered by Q-START, which is established by dated technical evidence or dated maintenance/inspection records indicating when the leak or corrosion began.\"}"
+  },
+  "80463130f2e7c20b4846428483852ad8ebfdc6dcfe59dea7f6b04ec8fb5086de": {
+    "input_tokens": 1567,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1031,
+    "text": "{\"questions\":[{\"text\":\"Are there any dated maintenance, repair or inspection records showing prior leakage, corrosion or deterioration of the failed valve before 5 April 2026?\",\"category\":\"cause\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F4-clean/F2\"],\"evidence_quote\":\"the valve spindle failed suddenly; replaced on 5 April 2026\",\"establishing_criteria\":[\"Dated repair or service records noting leaks or corrosion before 2026-04-05\",\"Inspection report showing corrosion/deterioration dated before the loss\"],\"confidence\":0.9},{\"text\":\"Was the failed valve part of the building's fixed heating/plumbing apparatus (i.e., permanently attached to the building)?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F4-clean/F1\"],\"evidence_quote\":\"the radiator valve failed at 6pm on 5 April 2026 and we isolated the supply straight away\",\"establishing_criteria\":[\"Plumber statement or invoice confirming valve was fixed to the building's heating/plumbing system\",\"Photograph or building plan showing valve location and attachment to fixed pipework\"],\"confidence\":0.7}]}"
+  },
+  "87fa3ebadcef1964c60ddf080dc0723060ed09f3747fec609acf49ccbfcadc3c": {
+    "input_tokens": 573,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 195,
+    "text": "{\"verdict\":\"duplicate\",\"duplicate_of\":\"Q-SUDDEN\",\"reason\":\"Evidence of an actual breach or active leak at the corroded joint is encompassed by the technical statement and timing evidence required to establish whether the damage was sudden/accidental (Q-SUDDEN).\"}"
+  },
+  "9474216bf56a59a81060895d9736ff3ce6ad97c3e91237d6b36f795f17ef99e8": {
+    "input_tokens": 1487,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 206,
+    "text": "{\"questions\": []}"
+  },
+  "963c8b2fa808c42e6bb07071007ac2e2634462ffd75235e91c533cb247e73d4a": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 134,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"This asks for a legal/definition determination about whether a hose qualifies as a \u2018fixed\u2019 building component under the policy wording, which is not established by any standard question's evidence and requires distinct policy-interpretation and component-status evidence.\"}"
+  },
+  "99c83dc39c0c04479b8d44fad561e193b580ccfb71571bdbe5a21b5bca89d55d": {
+    "input_tokens": 1493,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 608,
+    "text": "{\"questions\":[{\"text\":\"Is the washing-machine inlet hose considered a 'fixed water pipe, tank or apparatus' under the policy wording?\", \"category\":\"coverage_condition\", \"clause_ids\":[\"CL-COV-WATER\"], \"fact_ids\":[\"D4-appliance-hose/F1\",\"D4-appliance-hose/F2\"], \"evidence_quote\":\"escape of water from fixed water pipes, tanks or apparatus\", \"establishing_criteria\":[\"Plumber or surveyor statement classifying the hose/connection as part of the building plumbing\",\"Photograph or inspection report showing a permanent fixed connection to the property's water supply\",\"Manufacturer or installation invoice proving the hose is permanently installed as part of the appliance plumbing\"], \"confidence\":0.9}]}"
+  },
+  "a0042146105c8666da74cb3f3212bd762ea733c5ca3ff6f5120bb24f20fb3d2f": {
+    "input_tokens": 1496,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 398,
+    "text": "{\"questions\": []}"
+  },
+  "a0e88dc68c09c0a2cdba37874f00b3eb5247d83941ca88f4213c6f8aefc0bbf1": {
+    "input_tokens": 1461,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 791,
+    "text": "{\n  \"questions\": [\n    {\n      \"text\": \"On what date did the insured first discover the leak under the bathroom sink?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"CL-COND-NOTIFY\"\n      ],\n      \"fact_ids\": [\n        \"D2-late-notice/F1\",\n        \"D2-late-notice/F2\"\n      ],\n      \"evidence_quote\": \"You must tell us about any loss within 14 days of discovering it and give us the documents and information we ask for.\",\n      \"establishing_criteria\": [\n        \"Dated signed statement from the insured stating the discovery date\",\n        \"Dated repair/inspection record or dated photographs showing the leak\"\n      ],\n      \"confidence\": 0.95\n    },\n    {\n      \"text\": \"If discovery was before 20 April 2026, why was the claim first reported to the insurer on 20 April 2026?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"CL-COND-NOTIFY\"\n      ],\n      \"fact_ids\": [\n        \"D2-late-notice/F2\",\n        \"D2-late-notice/F1\"\n      ],\n      \"evidence_quote\": \"The claim was first reported to the insurer on 20 April 2026\",\n      \"establishing_criteria\": [\n        \"Written explanation or timeline from the insured explaining delay\",\n        \"Communications or appointment records showing attempts to obtain information or delay reasons\"\n      ],\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "a465d6b3b1e752959fe8e2b7bb867c40f4e08b7d44218ce1961e6037775a8a48": {
+    "input_tokens": 1481,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 749,
+    "text": "{\"questions\":[{\"text\":\"Was the burst supply pipe a fixed part of the building (i.e., a fixed water pipe) or a tenant-owned/personal fitting?\", \"category\":\"coverage_condition\", \"clause_ids\":[\"CL-COV-WATER\"], \"fact_ids\":[\"F7-tenant/F1\"], \"evidence_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.; supply pipe burst in the kitchen\", \"establishing_criteria\":[\"Landlord or building manager statement that the pipe is part of the building plumbing\",\"Plumber report or invoice referring to a fixed supply pipe in the building fabric\",\"Photograph or building plan showing the pipe as fixed plumbing\"], \"confidence\":0.85}]}"
+  },
+  "a9a9de4e7539f7d3db492b1056da418bc51b85493baf6e5290ac35ba8e60037f": {
+    "input_tokens": 582,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 204,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"Determining whether the water escaped from a fixed supply pipe joint (vs a non-fixed appliance or external source) requires specific evidence identifying the physical origin and whether the component is part of the building fabric, which none of the listed standard questions or their evidence explicitly address.\"}"
+  },
+  "ac2490496e65bf712b778118b103251e38b656cda205fff6617c18cab30c82df": {
+    "input_tokens": 572,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 182,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question asks whether the mains supply was shut off during a period the house was empty, so answering this requires different evidence about occupancy and shutdown status.\"}"
+  },
+  "b6d966195c8c518f7711fd346556a922f81619b808b8609994234507082966b0": {
+    "input_tokens": 580,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 189,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"This asks for the reason for delayed reporting/notice, which requires evidence about claimant actions or communication timing not covered by any listed standard question (which do not address reporting delay or notice reasons).\"}"
+  },
+  "b8f194326cccd1bfda1ffe2679f0b5355d3b266d8ba74747228e36b47185b439": {
+    "input_tokens": 1545,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 270,
+    "text": "{\"questions\": []}"
+  },
+  "b9b0ddaf4f1b67e8ad3b2871d16349cb2af48f25460c25d976b71eb60e812c96": {
+    "input_tokens": 1536,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 525,
+    "text": "{\"questions\":[{\"text\":\"Was the water supply to the building turned off at the mains during the five-week period the house was empty?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COND-UNOCC\"],\"fact_ids\":[\"D1-unoccupied/F1\"],\"evidence_quote\":\"we had been away and the house had been empty for five weeks when the pipe burst\",\"establishing_criteria\":[\"Declaration from claimant with date the mains valve was turned off/on\",\"Utility/occupancy records showing no consumption during the vacancy\",\"Photograph or plumber's statement confirming mains valve position dated before loss\"],\"confidence\":0.9}]}"
+  },
+  "badd578f791ccecad57fbd7b8c646ca99101b5beb94770dffff3fb7a363c0154": {
+    "input_tokens": 1561,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 678,
+    "text": "{\"questions\":[{\"text\":\"Was there evidence of corrosion or gradual deterioration of the radiator valve or spindle prior to the failure?\",\"category\":\"cause\",\"clause_ids\":[\"CL-EXC-GRADUAL\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F4-clean/F2\"],\"evidence_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"establishing_criteria\":[\"Plumber or engineer report describing corrosion or long-term deterioration of the valve/spindle\",\"Metallurgical analysis confirming corrosion or wear caused failure rather than an abrupt mechanical fault\",\"Prior maintenance or repair records showing progressive leakage or repeated repairs to the valve\"],\"confidence\":0.9}]}"
+  },
+  "c144134a6164e2aac9294d663852fc1c58d83535db7d48d727c62ac5fc534d8e": {
+    "input_tokens": 560,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 193,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"Asking when the insured first discovered the leak seeks the claimant's discovery/notice date, which is different from Q-START's evidence about when the leak began and is not established by any listed standard question.\"}"
+  },
+  "c17babd9dd9952bf71ead6d9f80607c44e745959510072414dfae58fc6933065": {
+    "input_tokens": 1583,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 779,
+    "text": "{\"questions\":[{\"text\":\"Was the ruptured supply pipe a fixed (built-in) water pipe forming part of the building's plumbing system?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"F6-sublimit-decoy/F2\"],\"evidence_quote\":\"fixed water pipes\",\"establishing_criteria\":[\"Plumber statement confirming the pipe is permanently attached to the building structure and not portable\",\"Photographs showing the pipe located within walls/floor or connected to fixed fittings\",\"Building plumbing schematic or installation record showing the pipe as part of fixed plumbing\"],\"confidence\":0.75}]}"
+  },
+  "c320ea544d0edca86fdbb6f55887650094657df383ba47fa11821ae41b6620e0": {
+    "input_tokens": 573,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 195,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question asks for recent servicing records of a specific appliance \u2014 this seeks maintenance history (service dates/provider) which is a different fact than timing, suddenness, extent, cost, policy status, or sublimit.\"}"
+  },
+  "c84380cef03526c50d02a7a958d7024654c2e528bbbe4926b0e7287e68f4f1c4": {
+    "input_tokens": 1568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 334,
+    "text": "{\"questions\": []}"
+  },
+  "cd9d9fd75d7439a46124487e94d076f70d36db32857eb59ec8dd860676cf5686": {
+    "input_tokens": 1527,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 586,
+    "text": "{\"questions\":[{\"text\":\"When did the insured first discover the leak under the sink (date)?\",\"category\":\"timing\",\"clause_ids\":[\"CL-COND-NOTIFY\"],\"fact_ids\":[\"D2-late-notice/F1\",\"D2-late-notice/F2\"],\"evidence_quote\":\"You must tell us about any loss within 14 days of discovering it and give us the documents and information we ask for.\",\"establishing_criteria\":[\"Signed statement from the insured giving the discovery date\",\"Contemporaneous evidence (repair invoices, emails, photos) showing discovery date\"],\"confidence\":0.9}]}"
+  },
+  "d0d440809fcef73d119e7d1783727be143f77447f2501983a1eeebd38e1299dd": {
+    "input_tokens": 1542,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 557,
+    "text": "{\n  \"questions\": [\n    {\n      \"text\": \"Was the property's water supply turned off at the mains during the five-week period the house was empty?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"CL-COND-UNOCC\"\n      ],\n      \"fact_ids\": [\n        \"D1-unoccupied/F1\"\n      ],\n      \"evidence_quote\": \"we had been away and the house had been empty for five weeks when the pipe burst\",\n      \"establishing_criteria\": [\n        \"Utility record or contractor statement confirming mains water was shut off before the loss\",\n        \"Claimant or third-party signed statement confirming the mains was turned off and date of shut-off\"\n      ],\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "d36650bc5964128d7654a7ec5bf1b9f09e9aaeaaadede9b45ec798ab52c3d37d": {
+    "input_tokens": 1421,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 742,
+    "text": "{\"questions\":[{\"text\":\"Was the washing machine inlet hose permanently fixed to the building plumbing (a 'fixed' pipe/apparatus) or a removable appliance hose connected to the tap?\", \"category\":\"coverage_condition\", \"clause_ids\":[\"CL-COV-WATER\"], \"fact_ids\":[\"D4-appliance-hose/F1\",\"D4-appliance-hose/F2\"], \"evidence_quote\":\"escape of water from fixed water pipes, tanks or apparatus\", \"establishing_criteria\":[\"Photograph or on-site report showing whether hose has a permanent clamp/union to building plumbing\",\"Plumber's statement or installation invoice describing the hose type and how it is connected\",\"Manufacturer or installation specification showing hose is removable appliance inlet hose\"], \"confidence\":0.9}]}"
+  },
+  "e52661b68624d7dc84712f14849d78dae3543b84d5ecc8edd80eb27da2224288": {
+    "input_tokens": 579,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 126,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"Determining the heating setpoint in the loft at the time of the freeze requires evidence about thermostat programming/temperature settings, which none of the listed standard questions or their evidentiary items request.\"}"
+  },
+  "e87041fbaeebe101bcd83af7b3c6f7232e7321034fe812510a548390cca94752": {
+    "input_tokens": 1487,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 850,
+    "text": "{\"questions\":[{\"text\":\"Does the washing machine inlet hose qualify as a \\\"fixed water pipe, tank or apparatus\\\" under the policy?\", \"category\":\"coverage_condition\", \"clause_ids\":[\"CL-COV-WATER\"], \"fact_ids\":[\"D4-appliance-hose/F2\",\"D4-appliance-hose/F1\"], \"evidence_quote\":\"escape of water from fixed water pipes, tanks or apparatus\", \"establishing_criteria\":[\"Photograph or surveyor note showing hose hard\u2011plumbed into building water supply\"], [\"Plumber's report stating the hose is or is not a permanent part of the fixed plumbing\"], \"confidence\":0.9}]}"
+  },
+  "e9b12a97ce086460aaae2de3108c0db8fea16222a3934017c2ca6cda5d2def2b": {
+    "input_tokens": 1718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 291,
+    "text": "{\"questions\":[{\"text\":\"Does the washing machine inlet hose qualify as a \\\"fixed water pipe, tank or apparatus\\\" under the policy?\",\"category\":\"coverage_condition\",\"clause_ids\":[\"CL-COV-WATER\"],\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"D4-appliance-hose/F2\",\"D4-appliance-hose/F1\"],\"evidence_quote\":\"escape of water from fixed water pipes, tanks or apparatus\",\"establishing_criteria\":[\"Surveyor or plumber statement whether the hose is permanently connected to the building plumbing or is a removable flexible fitting\",\"Photographs showing how the hose is connected to the building water supply and if it is secured as part of fixed plumbing\"],\"confidence\":0.9}]}"
+  },
+  "ea3ef720ea67881170b019bce17e69756ffecb2c72ab684800f1a3e0b5a42c41": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 124,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question seeks evidence about whether the failed fitting is a fixed part of the building or a removable/tenant-owned fixture, so answering it requires different evidence about ownership/fixture status.\"}"
+  },
+  "f024f09f5c3852e137a438a4656e02e583c6d5466dcdded24a774b506da74b0c": {
+    "input_tokens": 1589,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 334,
+    "text": "{\"questions\": []}"
+  },
+  "f0d2c61310a145473a55f3f2c98ce1f8d4b0b39651e6d6873e9c27f2e9f49615": {
+    "input_tokens": 571,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 118,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"No standard question asks about mitigation actions taken during the event or who/how the overflow was stopped, so this requires distinct evidence about steps taken to limit damage.\"}"
+  },
+  "f98207369f5f901c6d9e2e01edef73c2d977ae5c9431b7507b7b3d32c7bdda71": {
+    "input_tokens": 1489,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 977,
+    "text": "{\"questions\":[{\"text\":\"Is there clear evidence of an actual breach or active leak at the corroded supply-pipe joint?\",\"category\":\"cause\",\"clause_ids\":[\"CL-COV-WATER\"],\"fact_ids\":[\"D5-gradual-decoy/F1\"],\"evidence_quote\":\"Plumber reports: significant corrosion at the joint of the supply pipe\",\"establishing_criteria\":[\"Inspection shows a hole, crack or failed joint at the corroded supply pipe joint\",\"Photographs or a dated plumber's report documenting active water flow from that joint\",\"Repair work or pipe sample confirming a through-failure at the joint\"],\"confidence\":0.9}]}"
+  },
+  "faa28b55d9fc9a489f183ece70603ccb35fafcb6f175bfaab0ed7c7ce54066c4": {
+    "input_tokens": 567,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 191,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"Asking when the insured first discovered the leak seeks the claimant's discovery date, which is a different fact from Q-START's requirement for when the leak or damage began and would require distinct evidence.\"}"
+  }
+}

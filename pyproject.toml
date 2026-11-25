@@ -1,0 +1,30 @@
+[project]
+name = "claimtower"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [  # pinned to latest as of 2026-11-24
+  "pydantic==2.14.4", "pyyaml==6.0.4", "langgraph==1.2.24", "fastapi==0.165.0",
+  "uvicorn==0.54.0", "streamlit==1.67.0", "pymupdf==2.1", "pdfplumber==0.11.11", "pillow==13.0.0", "python-docx==1.2.0", "python-dotenv==1.2.4",
+  "sqlalchemy==2.1.9", "python-multipart==0.0.34",
+]
+[project.optional-dependencies]
+llm = ["openai==3.59.0"]
+dev = ["httpx==0.28.1", "hypothesis==6.170.17", "pytest-cov==7.1.0", "pytest==9.2.0", "ruff==0.17.6", "mypy==2.4.1", "import-linter==2.17", "pre-commit==4.7.0"]
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+filterwarnings = ["ignore:.asyncio.iscoroutinefunction. is deprecated:DeprecationWarning"]   # third-party (langsmith) on py3.14
+[tool.ruff]
+line-length = 140
+extend-exclude = ["data", "docs"]
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+per-file-ignores = {"src/claimtower/**/__init__.py" = ["F401"], "scripts/*" = ["E501"], "tests/unit/test_classifier.py" = ["E501"], "tests/unit/test_extractors.py" = ["E501"], "tests/unit/test_provenance.py" = ["E501"], "tests/unit/test_policy_decompose.py" = ["E501"], "tests/unit/test_policy_relations.py" = ["E501"], "tests/unit/test_policy_snapshot.py" = ["E501"], "tests/unit/test_policy_retrieval.py" = ["E501"], "tests/unit/test_policy_llm_typing.py" = ["E501"], "evals/metrics/policy_*.py" = ["E501"], "evals/runners/eval_policy_*.py" = ["E501"], "src/claimtower/evidence/questions.py" = ["E501"], "src/claimtower/evidence/llm_questions.py" = ["E501"], "src/claimtower/evidence/linker.py" = ["E501"], "src/claimtower/evidence/llm_linking.py" = ["E501"], "tests/unit/test_fact_linker.py" = ["E501"], "tests/unit/test_link_eval.py" = ["E501"], "evals/metrics/links.py" = ["E501"], "evals/runners/eval_links.py" = ["E501"], "src/claimtower/evidence/contradiction.py" = ["E501"], "src/claimtower/evidence/llm_contradiction.py" = ["E501"], "src/claimtower/evidence/values.py" = ["E501"], "tests/unit/test_contradiction.py" = ["E501"], "tests/unit/test_contradiction_eval.py" = ["E501"], "evals/metrics/contradictions.py" = ["E501"], "evals/runners/eval_contradictions.py" = ["E501"], "src/claimtower/evidence/sufficiency.py" = ["E501"], "src/claimtower/evidence/llm_sufficiency.py" = ["E501"], "tests/unit/test_sufficiency.py" = ["E501"], "tests/unit/test_sufficiency_eval.py" = ["E501"], "evals/metrics/sufficiency.py" = ["E501"], "evals/runners/eval_sufficiency.py" = ["E501"], "src/claimtower/evidence/min_evidence.py" = ["E501"], "src/claimtower/evidence/llm_requests.py" = ["E501"], "tests/unit/test_min_evidence.py" = ["E501"], "tests/unit/test_request_eval.py" = ["E501"], "evals/metrics/requests.py" = ["E501"], "evals/runners/eval_requests.py" = ["E501"], "evals/runners/export_request_review.py" = ["E501"], "src/claimtower/evidence/counterfactual.py" = ["E501"], "src/claimtower/evidence/llm_counterfactual.py" = ["E501"], "tests/unit/test_counterfactual.py" = ["E501"], "tests/unit/test_counterfactual_eval.py" = ["E501"], "evals/metrics/counterfactuals.py" = ["E501"], "evals/runners/eval_counterfactuals.py" = ["E501"], "src/claimtower/agents/gap.py" = ["E501"], "src/claimtower/evidence/incremental.py" = ["E501"], "tests/unit/test_gap_agent.py" = ["E501"], "tests/unit/test_gap_agent_eval.py" = ["E501"], "evals/runners/eval_gap_agent.py" = ["E501"], "src/claimtower/orchestration/*.py" = ["E501"], "src/claimtower/composition.py" = ["E501"], "tests/unit/test_orchestration.py" = ["E501"], "tests/integration/test_graph_flow.py" = ["E501"], "scripts/run_graph.py" = ["E501"], "src/claimtower/api/*.py" = ["E501"], "src/claimtower/core/state_diff.py" = ["E501"], "tests/api/test_api.py" = ["E501"], "scripts/export_openapi.py" = ["E501"], "scripts/run_api.py" = ["E501"], "scripts/generate_sample_claim.py" = ["E501"], "tests/api/test_samples.py" = ["E501"], "src/claimtower/ui/*.py" = ["E501"], "tests/ui/test_ui.py" = ["E501"], "scripts/run_ui.py" = ["E501"], "tests/unit/test_question_register.py" = ["E501"], "tests/unit/test_question_eval.py" = ["E501"], "evals/metrics/questions.py" = ["E501"], "evals/runners/eval_questions.py" = ["E501"], "evals/runners/live_question_check.py" = ["E501"]}   # re-exports; dense tooling scripts
+[tool.importlinter]
+root_package = "claimtower"
+[[tool.importlinter.contracts]]
+name = "settlement must not import LLM code"
+type = "forbidden"
+source_modules = ["claimtower.settlement"]
+forbidden_modules = ["claimtower.core.llm", "claimtower.agents"]

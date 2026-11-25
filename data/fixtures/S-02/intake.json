@@ -1,0 +1,14 @@
+{
+  "claim_header": {
+    "claim_id": "CLM-0002",
+    "claimant_name": "SYNTHETIC Claimant B",
+    "policy_ref": "POL-1001",
+    "loss_date": "2026-05-02",
+    "loss_type": "water_damage",
+    "loss_description": "Pipe fitting under kitchen sink split suddenly",
+    "channel": "portal",
+    "registered_at": null
+  },
+  "intake_checklist": [],
+  "duplicate_candidates": []
+}

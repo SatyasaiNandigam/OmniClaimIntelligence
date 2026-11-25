@@ -1,0 +1,14 @@
+{
+  "routing": {
+    "tier": "medium",
+    "reason_codes": [
+      "POLICY_ENDORSEMENT_MISSING",
+      "EVIDENCE_MINOR_GAP",
+      "EXPOSURE_MEDIUM_BAND"
+    ],
+    "required_approver_role": "adjuster",
+    "rules_version": "sample-2"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_evidence"
+}

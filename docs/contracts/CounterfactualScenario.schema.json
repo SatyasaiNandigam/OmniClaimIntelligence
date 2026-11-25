@@ -1,0 +1,54 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "affected_issue_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Affected Issue Ids",
+      "type": "array"
+    },
+    "assumed_finding": {
+      "title": "Assumed Finding",
+      "type": "string"
+    },
+    "implication_text": {
+      "title": "Implication Text",
+      "type": "string"
+    },
+    "next_step": {
+      "title": "Next Step",
+      "type": "string"
+    },
+    "question_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Question Id"
+    },
+    "scenario_id": {
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ],
+      "title": "Scenario Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "scenario_id",
+    "assumed_finding",
+    "implication_text",
+    "next_step"
+  ],
+  "title": "CounterfactualScenario",
+  "type": "object"
+}

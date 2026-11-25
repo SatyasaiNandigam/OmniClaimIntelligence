@@ -1,0 +1,70 @@
+{
+  "synthetic": true,
+  "invoices": [
+    {
+      "invoice_no": "INV-2026-0042",
+      "vendor_name": "SYNTHETIC Plumbing Works",
+      "vendor_ref": "VND-0007",
+      "invoice_date": "2026-03-10",
+      "amount": "85000",
+      "currency": "INR",
+      "claim_id": "CLM-P-0011",
+      "status": "paid",
+      "relation": "same_invoice_revised",
+      "relation_to": "S-11",
+      "why": "The S-11 invoice reuses this number and vendor with a revised amount and later date: possible legitimate revision. Needs review, not a fraud label."
+    },
+    {
+      "invoice_no": "INV-7788",
+      "vendor_name": "SYNTHETIC Tiles Pvt Ltd",
+      "vendor_ref": "VND-0011",
+      "invoice_date": "2026-02-20",
+      "amount": "22000",
+      "currency": "INR",
+      "claim_id": "CLM-P-0050",
+      "status": "paid",
+      "relation": "same_number_other_vendor",
+      "relation_to": "S-11",
+      "why": "Same number as a different vendor's invoice would be a coincidence: numbers are only unique per vendor."
+    },
+    {
+      "invoice_no": "INV-2026-0043",
+      "vendor_name": "SYNTHETIC Plumbing Works",
+      "vendor_ref": "VND-0007",
+      "invoice_date": "2026-03-12",
+      "amount": "12500",
+      "currency": "INR",
+      "claim_id": "CLM-P-0011",
+      "status": "paid",
+      "relation": "same_vendor_other_invoice",
+      "relation_to": null,
+      "why": "Same vendor, different invoice number and amount: a normal second invoice."
+    },
+    {
+      "invoice_no": "INV-3001",
+      "vendor_name": "SYNTHETIC Electricals",
+      "vendor_ref": "VND-0021",
+      "invoice_date": "2025-08-20",
+      "amount": "30000",
+      "currency": "INR",
+      "claim_id": "CLM-P-0050",
+      "status": "paid",
+      "relation": "unrelated",
+      "relation_to": null,
+      "why": "Noise."
+    },
+    {
+      "invoice_no": "INV-2026-0050",
+      "vendor_name": "SYNTHETIC Plumbing Works",
+      "vendor_ref": "VND-0007",
+      "invoice_date": "2026-04-18",
+      "amount": "90000",
+      "currency": "INR",
+      "claim_id": "CLM-P-0010",
+      "status": "submitted",
+      "relation": "unrelated",
+      "relation_to": null,
+      "why": "Invoice of the S-10 prior claim."
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "scenario_id": "S-03",
+  "claim_id": "CLM-0003",
+  "synthetic": true,
+  "facts": [
+    {
+      "fact_id": "F-S03-01",
+      "claim_id": "CLM-0003",
+      "proposition": "Reported date of loss is 13 February 2026",
+      "source_document_id": "DOC-S03-1",
+      "page": 1,
+      "evidence_text": "Date of loss: 13 February 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S03-02",
+      "claim_id": "CLM-0003",
+      "proposition": "Claimant reports a pipe burst in the bathroom",
+      "source_document_id": "DOC-S03-1",
+      "page": 1,
+      "evidence_text": "a pipe burst in the bathroom",
+      "evidence_type": "neutral",
+      "related_question_ids": [],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "Q-INFORCE",
+      "text": "Was the policy in force on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "PAS policy status is in force on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "linked_fact_ids": [
+        "F-S03-01"
+      ],
+      "expected_answer": "NOT in force: PAS shows the policy lapsed on 2026-02-10, three days before the loss."
+    }
+  ],
+  "contradictions": [],
+  "missing_evidence": [],
+  "counterfactuals": [],
+  "issues": [
+    {
+      "issue_id": "ISS-INFORCE",
+      "issue": "Policy in force on date of loss",
+      "status": "identified",
+      "clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "fact_ids": [
+        "F-S03-01"
+      ],
+      "note": "Policy not in force on the loss date; no further coverage reasoning is performed."
+    }
+  ],
+  "snapshot": {
+    "status": "not_in_force",
+    "effective_clause_ids": [],
+    "not_effective_clause_ids": [],
+    "missing_documents": [],
+    "precedence_note": "PAS status lapsed effective 2026-02-10.",
+    "reason": "lapsed"
+  },
+  "routing": {
+    "tier": "complex",
+    "reason_codes": [
+      "POLICY_NOT_IN_FORCE"
+    ],
+    "required_approver_role": "senior_adjuster",
+    "rules_version": "sample-2"
+  },
+  "routing_features": {
+    "policy_status": "not_in_force",
+    "policy_match": "exact",
+    "policy_certainty": "exact",
+    "evidence_completeness": "complete",
+    "contradiction_severity": "none",
+    "duplicate_status": "clear_or_benign",
+    "coverage_certainty": "not_assessed",
+    "specialist_required": false,
+    "exposure_inr": 60000
+  },
+  "settlement": null,
+  "expected_actions": [
+    "register_claim",
+    "route_to_operator",
+    "draft_acknowledgement:claimant"
+  ],
+  "notes": [
+    "Claim is still registered and tracked (guardrail 8). No autonomous denial: a human decides; the acknowledgement draft states facts neutrally.",
+    "Only Q-INFORCE is generated; coverage reasoning, gap analysis and settlement are skipped."
+  ],
+  "human_approval_required": true
+}

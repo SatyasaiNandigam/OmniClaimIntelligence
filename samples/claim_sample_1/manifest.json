@@ -1,0 +1,59 @@
+{
+  "synthetic": true,
+  "note": "SYNTHETIC. Never seen by the system: new claimant, policy, dates, amounts and wording. All amounts are SAMPLE.",
+  "claim_id": "CLM-SAMPLE-1",
+  "policy_ref": "POL-1013",
+  "loss_date": "2026-05-22",
+  "loss_type": "water_damage",
+  "loss_description": "Dishwasher inlet hose burst in the utility room",
+  "documents": [
+    {
+      "filename": "fnol.pdf",
+      "expected_type": "fnol",
+      "uploaded_by": "claimant",
+      "pages": 1,
+      "sha256": "a665b709024644a32bba4396a1a7134a4d83e08f8e2f2307e015aa6162df5b97",
+      "text_sha256": "d9b8e359ed5b2beb1133b5b1754da3409f4d1ae8850290da7b8d7cc6afb64c0e"
+    },
+    {
+      "filename": "plumber_report.pdf",
+      "expected_type": "plumber_report",
+      "uploaded_by": "plumber",
+      "pages": 1,
+      "sha256": "a038666cdd0e4b943b26b82e392f9b46bb5092b2ba7ebe2903892bde54b96920",
+      "text_sha256": "339bfee6725296ca6d410628b02febfe4b1b16d091d2bf2820b30cce988684e5"
+    },
+    {
+      "filename": "surveyor_report.pdf",
+      "expected_type": "surveyor_report",
+      "uploaded_by": "surveyor",
+      "pages": 1,
+      "sha256": "6ba0cee2dee465e3b3517bf6d7af7299692e3d426e019d4f1f9f44017785857b",
+      "text_sha256": "7353cc0ff87fdd700afb850b78261acdaed0437867f29fc6a50806ee3a8bb5ea"
+    },
+    {
+      "filename": "estimate.pdf",
+      "expected_type": "estimate",
+      "uploaded_by": "contractor",
+      "pages": 1,
+      "sha256": "032e3e00e06c547f08075e571bdbe1f9a9e5c8e050882e7ba3cecefde268dee6",
+      "text_sha256": "146db65ea5025822f7b695bc2461c8fa55322f045d7c9b259aa33483f77e8d02"
+    },
+    {
+      "filename": "invoice.pdf",
+      "expected_type": "invoice",
+      "uploaded_by": "contractor",
+      "pages": 1,
+      "sha256": "1499fd95bb62bd6370c3c2b9db628ac1630e5783f0249020d8611c66912be9c0",
+      "text_sha256": "039b8217f8c464febd804ea34da387e500a42bd49065cf4a6a29215d727bec97"
+    },
+    {
+      "filename": "claimant_email.pdf",
+      "expected_type": "email",
+      "uploaded_by": "claimant",
+      "pages": 1,
+      "sha256": "24063e3610919f61587ee7c265f5e2812f94f09fade3720af50a1ea3950ee0b6",
+      "text_sha256": "f5a85f4adb99c82be0e09fe1d95d1e523a2cdcc8d1f458d36657b8864134d2ba"
+    }
+  ]
+}

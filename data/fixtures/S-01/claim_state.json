@@ -1,0 +1,725 @@
+{
+  "claim_id": "CLM-0001",
+  "state_version": 9,
+  "correlation_id": "corr-CLM-0001",
+  "claim_header": {
+    "claim_id": "CLM-0001",
+    "claimant_name": "SYNTHETIC Claimant A",
+    "policy_ref": "POL-1001",
+    "loss_date": "2026-03-14",
+    "loss_type": "water_damage",
+    "loss_description": "Kitchen supply pipe burst suddenly",
+    "channel": "portal",
+    "registered_at": null
+  },
+  "intake_checklist": [],
+  "duplicate_candidates": [],
+  "policy_snapshot": {
+    "policy_id": "POL-1001",
+    "version": "2025-01",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "pas_status": "in_force",
+    "clauses": [
+      {
+        "clause_id": "CL-COND-PERIOD",
+        "clause_type": "condition",
+        "heading": "5.1 Period of insurance",
+        "text": "This policy covers loss or damage occurring during the period of insurance shown in the Schedule.",
+        "document": "BASE-HOME-1",
+        "page": 3,
+        "span": [
+          144,
+          241
+        ]
+      },
+      {
+        "clause_id": "CL-COV-WATER",
+        "clause_type": "coverage",
+        "heading": "2.2 Escape of water",
+        "text": "We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.",
+        "document": "BASE-HOME-1",
+        "page": 1,
+        "span": [
+          676,
+          835
+        ]
+      },
+      {
+        "clause_id": "CL-DED-STD",
+        "clause_type": "deductible",
+        "heading": "4.2 Standard deductible",
+        "text": "We will deduct the standard deductible shown in the Schedule from each claim.",
+        "document": "BASE-HOME-1",
+        "page": 2,
+        "span": [
+          599,
+          676
+        ]
+      },
+      {
+        "clause_id": "CL-DEF-SUDDEN",
+        "clause_type": "definition",
+        "heading": "1.2 Sudden and accidental",
+        "text": "Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.",
+        "document": "BASE-HOME-1",
+        "page": 1,
+        "span": [
+          363,
+          534
+        ]
+      },
+      {
+        "clause_id": "CL-EXC-GRADUAL",
+        "clause_type": "exclusion",
+        "heading": "3.2 Gradual leakage",
+        "text": "We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.",
+        "document": "BASE-HOME-1",
+        "page": 2,
+        "span": [
+          252,
+          399
+        ]
+      },
+      {
+        "clause_id": "CL-LIM-BUILDING",
+        "clause_type": "limit",
+        "heading": "4.1 Building Limit",
+        "text": "Our liability for all claims arising in the period of insurance will not exceed the Building Limit shown in the Schedule.",
+        "document": "BASE-HOME-1",
+        "page": 2,
+        "span": [
+          453,
+          574
+        ]
+      },
+      {
+        "clause_id": "CL-SUB-WATER-E1",
+        "clause_type": "sublimit",
+        "heading": "1. Water damage sublimit",
+        "text": "The most we will pay for loss or damage covered under the escape of water cover of this policy is INR 100,000 for any one claim. This sublimit forms part of, and is not in addition to, the Building Limit.",
+        "document": "END-01",
+        "page": 1,
+        "span": [
+          318,
+          522
+        ]
+      }
+    ],
+    "endorsements": [
+      {
+        "endorsement_id": "END-01",
+        "title": "Water Damage Sublimit Endorsement",
+        "effective_from": "2026-01-01",
+        "effective_to": null,
+        "clause_ids": [
+          "CL-SUB-WATER-E1"
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source_clause_id": "CL-DEF-SUDDEN",
+        "target_clause_id": "CL-COV-WATER",
+        "relation": "defines"
+      },
+      {
+        "source_clause_id": "CL-EXC-GRADUAL",
+        "target_clause_id": "CL-COV-WATER",
+        "relation": "excepts"
+      },
+      {
+        "source_clause_id": "CL-SUB-WATER-E1",
+        "target_clause_id": "CL-COV-WATER",
+        "relation": "modifies"
+      }
+    ],
+    "precedence_rules": [
+      "END-01 modifies CL-COV-WATER."
+    ],
+    "source_system_response_ref": "PAS-MOCK/POL-1001/2026-03-14",
+    "retrieved_at": null,
+    "mock": true
+  },
+  "documents": [
+    {
+      "document_id": "DOC-S01-1",
+      "claim_id": "CLM-0001",
+      "filename": "fnol.pdf",
+      "sha256": "c4e349048d47622824394912314ccd29e25794b044afe19629fde1cd5ea52044",
+      "page_count": 1,
+      "detected_type": "fnol",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "claimant",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/fnol.pdf"
+    },
+    {
+      "document_id": "DOC-S01-2",
+      "claim_id": "CLM-0001",
+      "filename": "plumber_report.pdf",
+      "sha256": "bc7613adb8d5ac03c29a13053045ab04fbc15d5dacb0313e2acf991c57b6f4bb",
+      "page_count": 1,
+      "detected_type": "plumber_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "plumber",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/plumber_report.pdf"
+    },
+    {
+      "document_id": "DOC-S01-3",
+      "claim_id": "CLM-0001",
+      "filename": "surveyor_report.pdf",
+      "sha256": "e33ae1df357b114134fda43e3ecb5344c194137e0e283d9e493b309e89274b7b",
+      "page_count": 1,
+      "detected_type": "surveyor_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "surveyor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/surveyor_report.pdf"
+    },
+    {
+      "document_id": "DOC-S01-4",
+      "claim_id": "CLM-0001",
+      "filename": "estimate.pdf",
+      "sha256": "4a37437631d8fdd24fd48781bc86740606d5938aa6963157842989e01473b466",
+      "page_count": 1,
+      "detected_type": "estimate",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "contractor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/estimate.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-S01-01",
+      "claim_id": "CLM-0001",
+      "proposition": "Reported date of loss is 14 March 2026",
+      "source_document_id": "DOC-S01-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Date of loss: 14 March 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-02",
+      "claim_id": "CLM-0001",
+      "proposition": "Claimant reports the kitchen supply pipe burst suddenly",
+      "source_document_id": "DOC-S01-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "the kitchen supply pipe burst suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-03",
+      "claim_id": "CLM-0001",
+      "proposition": "Significant corrosion was present at the joint of the kitchen supply pipe",
+      "source_document_id": "DOC-S01-2",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Significant corrosion was found at the joint of the kitchen supply pipe",
+      "evidence_type": "contradicting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-04",
+      "claim_id": "CLM-0001",
+      "proposition": "Moisture was elevated in the kitchen, hallway and adjoining bedroom wall",
+      "source_document_id": "DOC-S01-3",
+      "page": 1,
+      "region": null,
+      "evidence_text": "elevated in the kitchen, the hallway and the adjoining bedroom wall",
+      "evidence_type": "contradicting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-EXTENT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-05",
+      "claim_id": "CLM-0001",
+      "proposition": "Contractor estimate total is INR 180,000",
+      "source_document_id": "DOC-S01-4",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Total: INR 180,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-06",
+      "claim_id": "CLM-0001",
+      "proposition": "Estimate scope covers only the kitchen and hallway",
+      "source_document_id": "DOC-S01-4",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Scope: kitchen and hallway only",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-EXTENT",
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "image_findings": [],
+  "open_questions": [
+    {
+      "question_id": "Q-INFORCE",
+      "text": "Was the policy in force on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "PAS policy status is in force on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "linked_fact_ids": [
+        "F-S01-01"
+      ]
+    },
+    {
+      "question_id": "Q-SUDDEN",
+      "text": "Was the water damage sudden and accidental rather than gradual?",
+      "category": "cause",
+      "status": "requires_validation",
+      "establishing_criteria": [
+        "Technical statement of the failure mechanism by a qualified person",
+        "Evidence that the damage began at or immediately before the reported loss date"
+      ],
+      "linked_clause_ids": [
+        "CL-COV-WATER",
+        "CL-DEF-SUDDEN",
+        "CL-EXC-GRADUAL"
+      ],
+      "linked_fact_ids": [
+        "F-S01-02",
+        "F-S01-03",
+        "F-S01-04"
+      ]
+    },
+    {
+      "question_id": "Q-START",
+      "text": "When did the leak or damage begin?",
+      "category": "timing",
+      "status": "missing",
+      "establishing_criteria": [
+        "Technical evidence of when the leak or corrosion began",
+        "Maintenance or inspection record"
+      ],
+      "linked_clause_ids": [
+        "CL-EXC-GRADUAL"
+      ],
+      "linked_fact_ids": [
+        "F-S01-03"
+      ]
+    },
+    {
+      "question_id": "Q-EXTENT",
+      "text": "Which areas were affected by the reported event?",
+      "category": "extent",
+      "status": "partially_established",
+      "establishing_criteria": [
+        "Surveyor-confirmed list of affected areas",
+        "Each affected area linked to the reported event"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S01-04",
+        "F-S01-06"
+      ]
+    },
+    {
+      "question_id": "Q-AMOUNT",
+      "text": "Is the claimed repair cost reasonable and supported?",
+      "category": "amount",
+      "status": "unverified",
+      "establishing_criteria": [
+        "Surveyor-assessed cost of repair",
+        "Estimate reconciling to the surveyor scope"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S01-05",
+        "F-S01-06"
+      ]
+    },
+    {
+      "question_id": "Q-SUBLIMIT",
+      "text": "Which water-damage sublimit applies on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "Applicable endorsement wording effective on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-SUB-WATER-E1"
+      ],
+      "linked_fact_ids": []
+    }
+  ],
+  "contradictions": [
+    {
+      "contradiction_id": "C-S01-01",
+      "question_id": "Q-SUDDEN",
+      "fact_ids_a": [
+        "F-S01-02"
+      ],
+      "fact_ids_b": [
+        "F-S01-03",
+        "F-S01-04"
+      ],
+      "kind": "cause",
+      "severity": "high",
+      "explanation": "Claimant reports a sudden burst; plumber reports significant corrosion at the failed joint and the surveyor found moisture in several areas, both consistent with prolonged leakage."
+    }
+  ],
+  "missing_evidence": [
+    {
+      "question_id": "Q-SUDDEN",
+      "gap_type": "contradictory",
+      "minimum_evidence_request": {
+        "addressee_role": "plumber",
+        "items": [
+          "Statement of the failure mechanism of the joint",
+          "Whether the corrosion predates the 14 March 2026 incident",
+          "Whether the findings are consistent with sudden failure or prolonged leakage",
+          "Close-up photographs of the failed joint"
+        ],
+        "must_answer_sub_questions": [
+          "Q-SUDDEN",
+          "Q-START"
+        ],
+        "maps_to_criteria": [
+          "Technical statement of the failure mechanism by a qualified person",
+          "Evidence that the damage began at or immediately before the reported loss date",
+          "Technical evidence of when the leak or corrosion began",
+          "Maintenance or inspection record"
+        ]
+      },
+      "resolves_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ]
+    },
+    {
+      "question_id": "Q-START",
+      "gap_type": "missing",
+      "minimum_evidence_request": {
+        "addressee_role": "claimant",
+        "items": [
+          "Any dated plumbing maintenance or inspection records for the kitchen supply pipe",
+          "Any earlier observation of damp, staining or leaks, with dates"
+        ],
+        "must_answer_sub_questions": [
+          "Q-START"
+        ],
+        "maps_to_criteria": [
+          "Technical evidence of when the leak or corrosion began",
+          "Maintenance or inspection record"
+        ]
+      },
+      "resolves_question_ids": [
+        "Q-START"
+      ]
+    },
+    {
+      "question_id": "Q-EXTENT",
+      "gap_type": "insufficient",
+      "minimum_evidence_request": {
+        "addressee_role": "surveyor",
+        "items": [
+          "Moisture map of the adjoining bedroom wall and whether it is linked to the 14 March 2026 event",
+          "Assessed cost of repair covering all affected areas"
+        ],
+        "must_answer_sub_questions": [
+          "Q-EXTENT",
+          "Q-AMOUNT"
+        ],
+        "maps_to_criteria": [
+          "Surveyor-confirmed list of affected areas",
+          "Each affected area linked to the reported event",
+          "Surveyor-assessed cost of repair",
+          "Estimate reconciling to the surveyor scope"
+        ]
+      },
+      "resolves_question_ids": [
+        "Q-EXTENT",
+        "Q-AMOUNT"
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "scenario_id": "A",
+      "question_id": "Q-SUDDEN",
+      "assumed_finding": "New evidence supports sudden failure of the joint",
+      "affected_issue_ids": [
+        "ISS-COVER-WATER",
+        "ISS-EXC-GRADUAL"
+      ],
+      "implication_text": "The sudden-and-accidental condition would move to established and the gradual-leakage exclusion would be re-assessed as not engaged.",
+      "next_step": "Obtain the surveyor's assessed cost, then re-run coverage and settlement for the affected issues for human review."
+    },
+    {
+      "scenario_id": "B",
+      "question_id": "Q-SUDDEN",
+      "assumed_finding": "New evidence supports prolonged leakage",
+      "affected_issue_ids": [
+        "ISS-COVER-WATER",
+        "ISS-EXC-GRADUAL"
+      ],
+      "implication_text": "The gradual-leakage exclusion would become potentially applicable and the cover condition would not be established; this needs senior human review.",
+      "next_step": "Refer to a senior adjuster with the cited clauses and evidence; no automatic decision."
+    },
+    {
+      "scenario_id": "C",
+      "question_id": "Q-SUDDEN",
+      "assumed_finding": "New evidence is inconclusive",
+      "affected_issue_ids": [
+        "ISS-COVER-WATER",
+        "ISS-EXC-GRADUAL"
+      ],
+      "implication_text": "Cause and start date remain unresolved, so coverage cannot be concluded on the current evidence.",
+      "next_step": "Consider an independent expert inspection."
+    }
+  ],
+  "coverage_issues": [
+    {
+      "issue_id": "ISS-INFORCE",
+      "issue": "Policy in force on date of loss",
+      "status": "established",
+      "clause_citations": [
+        {
+          "clause_id": "CL-COND-PERIOD",
+          "document": "BASE-HOME-1",
+          "page": 3,
+          "span": [
+            144,
+            241
+          ],
+          "text": "This policy covers loss or damage occurring during the period of insurance shown in the Schedule.",
+          "modified_by": []
+        }
+      ],
+      "fact_ids": [
+        "F-S01-01"
+      ],
+      "question_ids": [],
+      "note": null
+    },
+    {
+      "issue_id": "ISS-COVER-WATER",
+      "issue": "Escape of water: sudden and accidental",
+      "status": "unresolved",
+      "clause_citations": [
+        {
+          "clause_id": "CL-COV-WATER",
+          "document": "BASE-HOME-1",
+          "page": 1,
+          "span": [
+            676,
+            835
+          ],
+          "text": "We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.",
+          "modified_by": [
+            "CL-SUB-WATER-E1"
+          ]
+        },
+        {
+          "clause_id": "CL-DEF-SUDDEN",
+          "document": "BASE-HOME-1",
+          "page": 1,
+          "span": [
+            363,
+            534
+          ],
+          "text": "Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.",
+          "modified_by": [
+            "CL-DEF-SUDDEN-E5"
+          ]
+        }
+      ],
+      "fact_ids": [
+        "F-S01-02",
+        "F-S01-03",
+        "F-S01-04"
+      ],
+      "question_ids": [],
+      "note": null
+    },
+    {
+      "issue_id": "ISS-EXC-GRADUAL",
+      "issue": "Gradual leakage exclusion",
+      "status": "potentially_relevant",
+      "clause_citations": [
+        {
+          "clause_id": "CL-EXC-GRADUAL",
+          "document": "BASE-HOME-1",
+          "page": 2,
+          "span": [
+            252,
+            399
+          ],
+          "text": "We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.",
+          "modified_by": []
+        }
+      ],
+      "fact_ids": [
+        "F-S01-03",
+        "F-S01-04"
+      ],
+      "question_ids": [],
+      "note": null
+    },
+    {
+      "issue_id": "ISS-SUBLIMIT",
+      "issue": "Water-damage sublimit",
+      "status": "identified",
+      "clause_citations": [
+        {
+          "clause_id": "CL-SUB-WATER-E1",
+          "document": "END-01",
+          "page": 1,
+          "span": [
+            318,
+            522
+          ],
+          "text": "The most we will pay for loss or damage covered under the escape of water cover of this policy is INR 100,000 for any one claim. This sublimit forms part of, and is not in addition to, the Building Limit.",
+          "modified_by": [
+            "CL-SUB-WATER-E2"
+          ]
+        },
+        {
+          "clause_id": "CL-COV-WATER",
+          "document": "BASE-HOME-1",
+          "page": 1,
+          "span": [
+            676,
+            835
+          ],
+          "text": "We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.",
+          "modified_by": [
+            "CL-SUB-WATER-E1"
+          ]
+        }
+      ],
+      "fact_ids": [],
+      "question_ids": [],
+      "note": null
+    }
+  ],
+  "settlement": {
+    "status": "cannot_calculate",
+    "reserve_forecast": null,
+    "assessed_loss": null,
+    "payable": null,
+    "steps": [],
+    "missing_inputs": [
+      "assessed_covered_loss",
+      "non_covered_items_total"
+    ],
+    "rule_version": "sample-1.0",
+    "currency": "INR",
+    "explanation": null
+  },
+  "proposed_actions": [
+    {
+      "action_id": "ACT-CLM-0001-1",
+      "action_type": "draft_consolidated_request",
+      "responsible_party": "plumber",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0001:draft_consolidated_request:plumber",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0001-2",
+      "action_type": "draft_request",
+      "responsible_party": "claimant",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0001:draft_request:claimant",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0001-3",
+      "action_type": "create_task",
+      "responsible_party": "surveyor_followup",
+      "execution_mode": "controlled_api",
+      "status": "proposed",
+      "idempotency_key": "CLM-0001:create_task:surveyor_followup",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0001-4",
+      "action_type": "draft_status_message",
+      "responsible_party": "claimant",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0001:draft_status_message:claimant",
+      "payload_ref": null
+    }
+  ],
+  "drafts": [],
+  "qa_report": {
+    "passed": true,
+    "failures": []
+  },
+  "audit_ref": "AUDIT-CLM-0001",
+  "routing": {
+    "tier": "complex",
+    "reason_codes": [
+      "CONTRADICTION_HIGH",
+      "EVIDENCE_GAP_MATERIAL",
+      "COVERAGE_UNRESOLVED"
+    ],
+    "required_approver_role": "senior_adjuster",
+    "rules_version": "sample-2"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_evidence"
+}

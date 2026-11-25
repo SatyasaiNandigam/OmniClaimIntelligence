@@ -1,0 +1,62 @@
+{
+  "settlement": {
+    "status": "calculated",
+    "reserve_forecast": null,
+    "assessed_loss": "150000",
+    "payable": "100000",
+    "steps": [
+      {
+        "rule_id": "start",
+        "input_ref": "assessed_covered_loss",
+        "amount_before": "0",
+        "amount_after": "150000"
+      },
+      {
+        "rule_id": "less_non_covered",
+        "input_ref": "non_covered_items_total",
+        "amount_before": "150000",
+        "amount_after": "150000"
+      },
+      {
+        "rule_id": "less_deductible",
+        "input_ref": "applicable_deductible",
+        "amount_before": "150000",
+        "amount_after": "140000"
+      },
+      {
+        "rule_id": "apply_sublimit",
+        "input_ref": "water_damage_sublimit",
+        "amount_before": "140000",
+        "amount_after": "100000"
+      },
+      {
+        "rule_id": "cap_remaining_limit",
+        "input_ref": "remaining_policy_limit",
+        "amount_before": "100000",
+        "amount_after": "100000"
+      },
+      {
+        "rule_id": "less_prior_payments",
+        "input_ref": "prior_payments_total",
+        "amount_before": "100000",
+        "amount_after": "100000"
+      },
+      {
+        "rule_id": "floor_zero",
+        "input_ref": null,
+        "amount_before": "100000",
+        "amount_after": "100000"
+      },
+      {
+        "rule_id": "rounding",
+        "input_ref": null,
+        "amount_before": "100000",
+        "amount_after": "100000"
+      }
+    ],
+    "missing_inputs": [],
+    "rule_version": "sample-1.0",
+    "currency": "INR",
+    "explanation": null
+  }
+}

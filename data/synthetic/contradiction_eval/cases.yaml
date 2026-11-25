@@ -1,0 +1,137 @@
+# SYNTHETIC. Labelled cases for the contradiction detector (T4.3).
+# `dev` = used to write and tune the prompt, rubric and rule bands (together with the five scenario ground-truth files: S-01 has one
+# labelled contradiction, S-02..S-05 have none). `fresh` = written BEFORE any model result on it was seen, run once after the prompt was frozen.
+# Each fact has `tags` (the open questions the fact templates would tag it with). `contradictions` is the labelled truth:
+#   kinds: [..]  the acceptable kinds (the first is the primary one; a conflict about timing can fairly be called date or cause)
+#   a / b: fact ids on the two sides (a prediction matches when it cites at least one fact from each side and has an acceptable kind)
+# `contradictions: []` means the facts are consistent: any contradiction reported is a false alarm.
+# Questions are the six standard ones: Q-INFORCE, Q-SUDDEN, Q-START, Q-EXTENT, Q-AMOUNT, Q-SUBLIMIT.
+
+cases:
+  # ---------------------------------------------------------------------------------------------------- dev
+  - id: D-date-mismatch
+    split: dev
+    facts:
+      - {id: f1, text: "Reported date of loss is 14 March 2026", tags: [Q-INFORCE, Q-SUBLIMIT]}
+      - {id: f2, text: "Surveyor reports: date of loss was 18 March 2026", tags: [Q-INFORCE]}
+      - {id: f3, text: "Claimant reports the pipe burst suddenly", tags: [Q-SUDDEN]}
+    contradictions:
+      - {kinds: [date], a: [f1], b: [f2]}
+  - id: D-amount-high
+    split: dev
+    facts:
+      - {id: f1, text: "Claimant estimates the loss at INR 250,000", tags: [Q-AMOUNT]}
+      - {id: f2, text: "Surveyor assessed the repair cost at INR 120,000", tags: [Q-AMOUNT]}
+    contradictions:
+      - {kinds: [amount], a: [f1], b: [f2]}
+  - id: D-extent
+    split: dev
+    facts:
+      - {id: f1, text: "Claimant reports: the water damage is limited to the bathroom floor", tags: [Q-SUDDEN, Q-EXTENT]}
+      - {id: f2, text: "Surveyor reports: moisture was found in the bathroom, the hallway and two bedrooms", tags: [Q-EXTENT]}
+      - {id: f3, text: "Estimate scope covers the bathroom only", tags: [Q-EXTENT, Q-AMOUNT]}
+    contradictions:
+      - {kinds: [extent], a: [f1], b: [f2]}
+  - id: D-consistent
+    split: dev
+    facts:
+      - {id: f1, text: "Claimant reports: the pipe burst suddenly during the night", tags: [Q-SUDDEN]}
+      - {id: f2, text: "Plumber reports: the joint failed suddenly and showed a fresh fracture surface", tags: [Q-SUDDEN, Q-START]}
+      - {id: f3, text: "Surveyor reports: moisture was confined to the kitchen floor", tags: [Q-SUDDEN, Q-EXTENT]}
+      - {id: f4, text: "Claimant estimates the loss at INR 98,000", tags: [Q-AMOUNT]}
+      - {id: f5, text: "Surveyor assessed the repair cost at INR 96,000", tags: [Q-AMOUNT]}
+    contradictions: []
+  - id: D-timing
+    split: dev
+    facts:
+      - {id: f1, text: "Claimant reports: the leak started on the night of 13 March 2026", tags: [Q-SUDDEN, Q-START]}
+      - {id: f2, text: "Maintenance record dated 20 November 2025 notes a slow drip at the same joint", tags: [Q-START]}
+    contradictions:
+      - {kinds: [date, cause, other], a: [f1], b: [f2]}
+
+  # ---------------------------------------------------------------------------------------------------- fresh (unseen)
+  - id: N1-date-mismatch
+    split: fresh
+    facts:
+      - {id: f1, text: "Reported date of loss is 5 February 2026", tags: [Q-INFORCE, Q-SUBLIMIT]}
+      - {id: f2, text: "Plumber reports: date of loss was 8 February 2026", tags: [Q-INFORCE]}
+      - {id: f3, text: "Plumber reports: the tap fitting split under pressure", tags: [Q-SUDDEN]}
+    contradictions:
+      - {kinds: [date], a: [f1], b: [f2]}
+  - id: N2-invoice-before-loss
+    split: fresh
+    facts:
+      - {id: f1, text: "Reported date of loss is 12 April 2026", tags: [Q-INFORCE]}
+      - {id: f2, text: "Invoice is dated 1 April 2026", tags: []}
+      - {id: f3, text: "Invoice total is INR 84,000", tags: [Q-AMOUNT]}
+    contradictions:
+      - {kinds: [date], a: [f1], b: [f2]}
+  - id: N3-amount-medium
+    split: fresh
+    facts:
+      - {id: f1, text: "Estimate total is INR 140,000", tags: [Q-AMOUNT]}
+      - {id: f2, text: "Surveyor assessed the repair cost at INR 100,000", tags: [Q-AMOUNT]}
+    contradictions:
+      - {kinds: [amount], a: [f1], b: [f2]}
+  - id: N4-amount-close
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant estimates the loss at INR 1,20,000", tags: [Q-AMOUNT]}
+      - {id: f2, text: "Surveyor assessed the repair cost at INR 118,000", tags: [Q-AMOUNT]}
+      - {id: f3, text: "Invoice total is INR 119,000", tags: [Q-AMOUNT]}
+    contradictions: []
+  - id: N5-cause
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant reports: the pipe failed without any warning in the night", tags: [Q-SUDDEN]}
+      - {id: f2, text: "Plumber reports: the pipe wall was heavily corroded and the joint had been seeping for a long time", tags: [Q-SUDDEN, Q-START]}
+      - {id: f3, text: "Reported date of loss is 2 May 2026", tags: [Q-INFORCE]}
+    contradictions:
+      - {kinds: [cause], a: [f1], b: [f2]}
+  - id: N6-extent
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant reports: water only reached the utility room floor", tags: [Q-EXTENT]}
+      - {id: f2, text: "Surveyor reports: water has damaged the utility room, the garage wall and the bedroom above", tags: [Q-EXTENT]}
+      - {id: f3, text: "Estimate scope covers the utility room floor", tags: [Q-EXTENT, Q-AMOUNT]}
+    contradictions:
+      - {kinds: [extent], a: [f1], b: [f2]}
+  - id: N7-consistent-sudden
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant reports: the hose burst suddenly while the machine was running", tags: [Q-SUDDEN]}
+      - {id: f2, text: "Plumber reports: the hose split at the crimp; no sign of earlier leakage", tags: [Q-SUDDEN, Q-START]}
+      - {id: f3, text: "Surveyor reports: moisture was confined to the kitchen floor and base of the units", tags: [Q-SUDDEN, Q-EXTENT]}
+    contradictions: []
+  - id: N8-different-points
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant reports: the stopcock failed and flooded the cellar", tags: [Q-SUDDEN]}
+      - {id: f2, text: "Plumber reports: replaced the stopcock and tested the supply", tags: [Q-SUDDEN]}
+      - {id: f3, text: "Surveyor visited the site on 20 June 2026", tags: []}
+      - {id: f4, text: "Reported date of loss is 18 June 2026", tags: [Q-INFORCE]}
+      - {id: f5, text: "Estimate total is INR 56,000", tags: [Q-AMOUNT]}
+    contradictions: []
+  - id: N9-two-conflicts
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant reports: the pipe split suddenly on 4 July 2026", tags: [Q-SUDDEN]}
+      - {id: f2, text: "Surveyor reports: the staining and rot show the leak has been active for several months", tags: [Q-SUDDEN, Q-START, Q-EXTENT]}
+      - {id: f3, text: "Claimant estimates the loss at INR 400,000", tags: [Q-AMOUNT]}
+      - {id: f4, text: "Surveyor assessed the repair cost at INR 150,000", tags: [Q-AMOUNT]}
+    contradictions:
+      - {kinds: [cause], a: [f1], b: [f2]}
+      - {kinds: [amount], a: [f3], b: [f4]}
+  - id: N10-hedge-not-conflict
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant reports: the pipe burst suddenly", tags: [Q-SUDDEN]}
+      - {id: f2, text: "Plumber reports: the failure appears to have been sudden, although the pipe was old", tags: [Q-SUDDEN, Q-START]}
+    contradictions: []
+  - id: N11-timing
+    split: fresh
+    facts:
+      - {id: f1, text: "Claimant reports: we first noticed the stain on 3 March 2026", tags: [Q-START]}
+      - {id: f2, text: "Maintenance record dated 2 February 2026 notes damp staining on the same wall", tags: [Q-START]}
+    contradictions:
+      - {kinds: [date, cause, other], a: [f1], b: [f2]}

@@ -1,0 +1,10 @@
+operations:
+  extract_document_info:     {mode: autonomous}
+  retrieve_policy_clauses:   {mode: autonomous}
+  identify_missing_evidence: {mode: autonomous}
+  draft_information_request: {mode: draft_only}
+  create_investigation_task: {mode: controlled_api}
+  recommend_coverage:        {mode: human_reviewed}
+  recommend_settlement:      {mode: human_reviewed}
+  deny_claim:                {mode: authorised_human_only, roles: [senior_adjuster]}
+  release_payment:           {mode: authorised_human_only, roles: [supervisor, finance]}

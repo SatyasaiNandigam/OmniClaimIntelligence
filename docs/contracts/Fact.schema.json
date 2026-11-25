@@ -1,0 +1,131 @@
+{
+  "$defs": {
+    "BBox": {
+      "additionalProperties": false,
+      "description": "Region on a page/image, normalised 0..1 in page coordinates.",
+      "properties": {
+        "x0": {
+          "title": "X0",
+          "type": "number"
+        },
+        "x1": {
+          "title": "X1",
+          "type": "number"
+        },
+        "y0": {
+          "title": "Y0",
+          "type": "number"
+        },
+        "y1": {
+          "title": "Y1",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
+      "title": "BBox",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Provenance is mandatory. evidence_text must be a verbatim substring of the page (checked in T2.4).",
+  "properties": {
+    "claim_id": {
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "evidence_text": {
+      "minLength": 1,
+      "title": "Evidence Text",
+      "type": "string"
+    },
+    "evidence_type": {
+      "enum": [
+        "supporting",
+        "contradicting",
+        "neutral"
+      ],
+      "title": "Evidence Type",
+      "type": "string"
+    },
+    "extraction_confidence": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Extraction Confidence",
+      "type": "number"
+    },
+    "extractor_version": {
+      "default": "0",
+      "title": "Extractor Version",
+      "type": "string"
+    },
+    "fact_id": {
+      "title": "Fact Id",
+      "type": "string"
+    },
+    "page": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Page"
+    },
+    "proposition": {
+      "title": "Proposition",
+      "type": "string"
+    },
+    "region": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BBox"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "related_question_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Related Question Ids",
+      "type": "array"
+    },
+    "source_document_id": {
+      "title": "Source Document Id",
+      "type": "string"
+    },
+    "verification_status": {
+      "default": "unverified",
+      "enum": [
+        "unverified",
+        "human_verified",
+        "rejected"
+      ],
+      "title": "Verification Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "fact_id",
+    "claim_id",
+    "proposition",
+    "source_document_id",
+    "evidence_text",
+    "evidence_type",
+    "extraction_confidence"
+  ],
+  "title": "Fact",
+  "type": "object"
+}

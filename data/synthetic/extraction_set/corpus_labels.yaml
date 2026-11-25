@@ -1,0 +1,157 @@
+# Expected extraction results for the RENDERED corpus documents (data/synthetic/claims/*, templates/). ALL SYNTHETIC.
+# Keyed by scenario document id (DOC-S01-1 ...) or template document id. Values are the NORMALISED form (ISO dates, plain decimals,
+# upper-case ids). `absent` = fields that must NOT be extracted. `flagged` = fields that must be flagged low-confidence.
+# `table` = the expected table and its self-check result. Written by hand from the scenario text (data/scenarios/scenarios.yaml),
+# not generated from the extractor. Block style and quoted strings on purpose: an unquoted comma inside a YAML {flow mapping}
+# silently splits a value in two.
+documents:
+  DOC-S01-1:
+    doc_type: fnol
+    expected:
+      claimant_name: "SYNTHETIC Claimant A"
+      policy_number: "POL-1001"
+      loss_date: "2026-03-14"
+      estimated_loss: "180000"
+      loss_description: "On 14 March 2026 the kitchen supply pipe burst suddenly and water flooded the kitchen and hallway."
+    absent: [loss_time, loss_location]
+  DOC-S01-2:
+    doc_type: plumber_report
+    expected:
+      inspection_date: "2026-03-16"
+      findings: "Significant corrosion was found at the joint of the kitchen supply pipe. The joint failed at the corroded section."
+      work_carried_out: "Joint replaced and supply restored on 16 March 2026."
+    flagged: [work_carried_out]
+  DOC-S01-3:
+    doc_type: surveyor_report
+    expected:
+      site_visit_date: "2026-03-18"
+      observations: "Moisture readings were elevated in the kitchen, the hallway and the adjoining bedroom wall. Cost of repair has not been assessed."
+    absent: [assessed_repair_cost, cause_of_loss]
+    flagged: [observations]
+  DOC-S01-4:
+    doc_type: estimate
+    expected:
+      scope: "kitchen and hallway only"
+      total_amount: "180000"
+    table:
+      status: reconciled
+      total: "180000"
+      items: [["Kitchen floor and cabinets", "110000"], ["Hallway flooring and plaster", "70000"]]
+  DOC-S02-1:
+    doc_type: fnol
+    expected:
+      claimant_name: "SYNTHETIC Claimant B"
+      policy_number: "POL-1001"
+      loss_date: "2026-05-02"
+      estimated_loss: "98000"
+      loss_description: "On 2 May 2026 the pipe fitting under the kitchen sink split suddenly and water spread across the kitchen floor."
+  DOC-S02-2:
+    doc_type: plumber_report
+    expected:
+      inspection_date: "2026-05-03"
+      findings: "The pipe fitting split suddenly at a manufacturing flaw. The fitting is less than two years old. No corrosion, prior leakage or staining was observed."
+      work_carried_out: "Fitting replaced on 3 May 2026."
+    flagged: [work_carried_out]
+  DOC-S02-3:
+    doc_type: surveyor_report
+    expected:
+      site_visit_date: "2026-05-05"
+      assessed_repair_cost: "98000"
+      observations: "Moisture was confined to the kitchen floor and the lower kitchen wall. No moisture was found in other rooms."
+    flagged: [observations]
+  DOC-S02-4:
+    doc_type: estimate
+    expected:
+      total_amount: "98000"
+    absent: [scope]
+    table:
+      status: reconciled
+      total: "98000"
+      items: [["Floor repair", "60000"], ["Wall plaster and paint", "30000"], ["Cabinet finish upgrade", "8000"]]
+  DOC-S03-1:
+    doc_type: fnol
+    expected:
+      claimant_name: "SYNTHETIC Claimant C"
+      policy_number: "POL-1003"
+      loss_date: "2026-02-13"
+      estimated_loss: "60000"
+      loss_description: "On 13 February 2026 a pipe burst in the bathroom and water damaged the floor."
+  DOC-S04-1:
+    doc_type: fnol
+    expected:
+      claimant_name: "SYNTHETIC Claimant D"
+      policy_number: "POL-1004"
+      loss_date: "2026-01-20"
+      estimated_loss: "150000"
+      loss_description: "On 20 January 2026 a flexible hose under the bathroom basin burst suddenly and water flooded the bathroom and the corridor."
+  DOC-S04-2:
+    doc_type: plumber_report
+    expected:
+      inspection_date: "2026-01-21"
+      findings: "The flexible hose ruptured suddenly. The hose is less than one year old. No corrosion or prior leakage was observed."
+    absent: [work_carried_out]
+  DOC-S04-3:
+    doc_type: surveyor_report
+    expected:
+      site_visit_date: "2026-01-23"
+      assessed_repair_cost: "150000"
+      observations: "Moisture was confined to the bathroom and the corridor."
+    flagged: [observations]
+  DOC-S04-4:
+    doc_type: estimate
+    expected:
+      total_amount: "150000"
+    table:
+      status: reconciled
+      total: "150000"
+      items: [["Bathroom repairs", "90000"], ["Corridor repairs", "60000"]]
+  DOC-S05-1:
+    doc_type: fnol
+    expected:
+      claimant_name: "SYNTHETIC Claimant E"
+      policy_number: "POL-1005"
+      loss_date: "2026-06-10"
+      estimated_loss: "110000"
+      loss_description: "On 10 June 2026 the pipe coupling in the utility room split suddenly and water spread to the adjoining passage."
+  DOC-S05-2:
+    doc_type: plumber_report
+    expected:
+      inspection_date: "2026-06-11"
+      findings: "The pipe coupling split suddenly. No corrosion or prior leakage was observed."
+    absent: [work_carried_out]
+  DOC-S05-3:
+    doc_type: surveyor_report
+    expected:
+      site_visit_date: "2026-06-13"
+      assessed_repair_cost: "110000"
+      observations: "Moisture was confined to the utility room and the adjoining passage."
+    flagged: [observations]
+  DOC-S05-4:
+    doc_type: estimate
+    expected:
+      total_amount: "110000"
+    table:
+      status: reconciled
+      total: "110000"
+      items: [["Utility room repairs", "70000"], ["Passage repairs", "40000"]]
+  DOC-S05-5:
+    doc_type: policy_schedule
+    expected:
+      policy_number: "POL-1005"
+      period_of_insurance: "2026-01-01/2026-12-31"
+      building_limit: "2000000"
+      standard_deductible: "10000"
+      endorsements_attached: "END-01 Water Damage Sublimit Endorsement"
+  DOC-TPL-1:
+    doc_type: invoice
+    expected:
+      invoice_number: "INV-TPL-0001"
+      vendor_name: "SYNTHETIC Repairs Pvt Ltd (fictional)"
+      payment_terms: "30 days"
+      total_amount: "76700"
+    absent: [invoice_date, due_date, tax_id]
+    table:
+      status: reconciled
+      total: "76700"
+      tax: "11700"
+      items: [["Labour", "40000"], ["Materials", "25000"]]

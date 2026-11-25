@@ -1,0 +1,206 @@
+{
+  "02e715f226b69ef0c502d22e9fa5782691418283bd954c1f2ab955819cf48224": {
+    "input_tokens": 928,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "067ba632fb93f91dcf216ad29e457e435ac63279fef7dc3ebd2491494e85fb90": {
+    "input_tokens": 956,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "17df9fdb69ffae965a0ac79ea997416f6e284cf870cd62eb47c8a3bf6ba65fb5": {
+    "input_tokens": 945,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 283,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"N11-timing/f1\"],\"fact_ids_b\":[\"N11-timing/f2\"],\"kind\":\"date\",\"severity\":\"medium\",\"quote_a\":\"Claimant reports: we first noticed the stain on 3 March 2026\",\"quote_b\":\"Maintenance record dated 2 February 2026 notes damp staining on the same wall\",\"explanation\":\"The claimant states the stain was first noticed on 3 March 2026, while the maintenance record documents damp staining on the same wall on 2 February 2026; both cannot be true about when the damage was first observed. This creates a disputed start date for the leak/damage.\",\"confidence\":0.95}]}"
+  },
+  "1b5a807e5ff8e4c56d6a22dc991beb42864878035e631bfb301df90a35ac0be0": {
+    "input_tokens": 878,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 286,
+    "text": "{\n  \"conflicts\": [\n    {\n      \"fact_ids_a\": [\n        \"F-S01-04\"\n      ],\n      \"fact_ids_b\": [\n        \"F-S01-06\"\n      ],\n      \"kind\": \"extent\",\n      \"severity\": \"medium\",\n      \"quote_a\": \"Moisture was elevated in the kitchen, hallway and adjoining bedroom wall\",\n      \"quote_b\": \"Estimate scope covers only the kitchen and hallway\",\n      \"explanation\": \"One fact reports elevated moisture including an adjoining bedroom wall, while the estimate scope explicitly covers only the kitchen and hallway; both cannot be true about which areas were affected by the event.\",\n      \"confidence\": 0.95\n    }\n  ]\n}"
+  },
+  "1c9cbd61349265da50a37dfc89c2cf3687fc208051667078cb41ca246853b320": {
+    "input_tokens": 963,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 335,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-S01-02\"],\"fact_ids_b\":[\"F-S01-03\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"quote_b\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"explanation\":\"One fact asserts the supply pipe burst suddenly (a sudden accidental event); the other reports significant corrosion at the joint, which indicates a gradual deterioration likely inconsistent with a sudden accidental failure. Both cannot be true if the presence of significant corrosion shows the failure was gradual rather than sudden, which affects coverage.\",\"confidence\":0.95}]}"
+  },
+  "26bceb4acbbcdf21880698979c391f4089cbb96de56b20db04a8b1a47b1fcded": {
+    "input_tokens": 871,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "288c43e6af50abbe2248e692e13d6034eac1fcc78aba5df7c167eb6cf09283a7": {
+    "input_tokens": 898,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "2c1aff7b4a8f0416f358ada5e784bf4053f8a72c5891758d88f63db6592074eb": {
+    "input_tokens": 952,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "32ef226483ab9a70b93111da30f9be6dc05a38ad2c32d3e0a6110919186995d0": {
+    "input_tokens": 890,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 273,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"D-timing/f1\"],\"fact_ids_b\":[\"D-timing/f2\"],\"kind\":\"date\",\"severity\":\"medium\",\"quote_a\":\"Claimant reports: the leak started on the night of 13 March 2026\",\"quote_b\":\"Maintenance record dated 20 November 2025 notes a slow drip at the same joint\",\"explanation\":\"The claimant asserts the leak began on the night of 13 March 2026, while a dated maintenance record documents an ongoing slow drip at the same joint on 20 November 2025; both cannot be true about when the leak began.\",\"confidence\":0.95}]}"
+  },
+  "3b707a2de503039df5c9ea499c52b4097be7a24f8ce363583b4068707921970b": {
+    "input_tokens": 922,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "42fd222d4eafd2bcc0908d56b761156ec197e840a7d306ea06e84088e5459ee2": {
+    "input_tokens": 900,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 501,
+    "text": "{\n  \"conflicts\": [\n    {\n      \"fact_ids_a\": [\n        \"D-extent/f1\"\n      ],\n      \"fact_ids_b\": [\n        \"D-extent/f2\"\n      ],\n      \"kind\": \"extent\",\n      \"severity\": \"high\",\n      \"quote_a\": \"Claimant reports: the water damage is limited to the bathroom floor\",\n      \"quote_b\": \"Surveyor reports: moisture was found in the bathroom, the hallway and two bedrooms\",\n      \"explanation\": \"The claimant asserts damage is limited to the bathroom floor, while the surveyor found moisture in multiple other areas (hallway and two bedrooms); both accounts cannot be true about which areas were affected.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"fact_ids_a\": [\n        \"D-extent/f3\"\n      ],\n      \"fact_ids_b\": [\n        \"D-extent/f2\"\n      ],\n      \"kind\": \"extent\",\n      \"severity\": \"high\",\n      \"quote_a\": \"Estimate scope covers the bathroom only\",\n      \"quote_b\": \"Surveyor reports: moisture was found in the bathroom, the hallway and two bedrooms\",\n      \"explanation\": \"The estimate limits scope to the bathroom only, but the surveyor documents moisture in the hallway and two bedrooms as well; they conflict on which areas were affected and thus on scope of work.\",\n      \"confidence\": 0.95\n    }\n  ]\n}"
+  },
+  "4536b81c056f950067d8acc1e2f82959f4f0bd6f49892c700b056a08d0877a75": {
+    "input_tokens": 959,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 229,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"N5-cause/f1\"],\"fact_ids_b\":[\"N5-cause/f2\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports: the pipe failed without any warning in the night\",\"quote_b\":\"Plumber reports: the pipe wall was heavily corroded and the joint had been seeping for a long time\",\"explanation\":\"The claimant asserts a sudden, unexpected pipe failure occurring overnight, while the plumber describes prolonged corrosion and a joint that had been seeping for a long time; both a sudden, instantaneous failure and a long-term gradual leak cannot both fully explain the same failure mechanism. Resolution affects coverage (sudden accidental vs gradual wear).\",\"confidence\":0.95}]}"
+  },
+  "46f4244708a102641687d91584265fcf331b2590ead491a18cb3f8df6d2d524e": {
+    "input_tokens": 951,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "4cd9bcfdaf1686f1c28379d42a1c885ec5939791e289158e2472f0bd54e0164b": {
+    "input_tokens": 965,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "513c6e4570b2bb0a018da52aef9d57a68ba55d0c0f4d0fc5602f8d5c9e7e74b2": {
+    "input_tokens": 926,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "5bbcc5f0af9600fd78d5a018d877787b61df2b3599de8df85add368403d22288": {
+    "input_tokens": 897,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "677279a5a92602b5c2c0e1b9875980765739babe9ac7a1823a18801b267d27a3": {
+    "input_tokens": 953,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "6ace7855d6bfc5b091e2ccac39b369b3e19ede1064ef06292501771f2129b9f1": {
+    "input_tokens": 873,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 207,
+    "text": "{\"conflicts\": []}"
+  },
+  "737c9e220964d17a71d4864adf7221789ef0a780f68f3ab0027456ba6dbe7c58": {
+    "input_tokens": 941,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 348,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"N11-timing/f1\"],\"fact_ids_b\":[\"N11-timing/f2\"],\"kind\":\"date\",\"severity\":\"medium\",\"quote_a\":\"Claimant reports: we first noticed the stain on 3 March 2026\",\"quote_b\":\"Maintenance record dated 2 February 2026 notes damp staining on the same wall\",\"explanation\":\"The claimant states the stain was first noticed on 3 March 2026, while the maintenance record documents damp staining on the same wall on 2 February 2026; both cannot be the first observation of the condition, so the start date of the leak/damage is inconsistent between the sources.\",\"confidence\":0.95}]}"
+  },
+  "79f92c932bab1ed2b4aee79cd9bb91c928b451005f2dc3d87d354eee056dea7e": {
+    "input_tokens": 933,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "8d75684326008e42395cf7af09eda21fa1ee4c0cd7c48772f5b66b18aa8e5bcb": {
+    "input_tokens": 872,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "934a5e31174e24d7076a9ccae541397a8404a04fa6b83999648de8fc4e2de639": {
+    "input_tokens": 945,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 485,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"D-timing/f1\"],\"fact_ids_b\":[\"D-timing/f2\"],\"kind\":\"date\",\"severity\":\"high\",\"quote_a\":\"Claimant reports: the leak started on the night of 13 March 2026\",\"quote_b\":\"Maintenance record dated 20 November 2025 notes a slow drip at the same joint\",\"explanation\":\"The claimant asserts the leak began on the night of 13 March 2026, while the maintenance record documents a slow drip at the same joint on 20 November 2025; both cannot be true about when the leak began because the maintenance entry indicates the leak (or at least leakage) was present months earlier, which affects coverage timing.\",\"confidence\":0.95}]}"
+  },
+  "a1a5d910258dbf4a3e1af5f182b948e4a701e1f62652d328841eb59037ead186": {
+    "input_tokens": 910,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "be61837931ffd52e60d8d417bbbf037ba0f692388652774ee02db6f8887debfe": {
+    "input_tokens": 987,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "c370f253484e26ad0245f727c4ce48ae7e9e7313da8dc273b8b07feb3239ada1": {
+    "input_tokens": 941,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 281,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"D-timing/f1\"],\"fact_ids_b\":[\"D-timing/f2\"],\"kind\":\"date\",\"severity\":\"medium\",\"quote_a\":\"Claimant reports: the leak started on the night of 13 March 2026\",\"quote_b\":\"Maintenance record dated 20 November 2025 notes a slow drip at the same joint\",\"explanation\":\"The claimant asserts the leak began on the night of 13 March 2026, while the maintenance record documents a slow drip at the same joint on 20 November 2025; both statements claim different start times for the leak and cannot both be true about when the leak began.\",\"confidence\":0.95}]}"
+  },
+  "c5fa354844edd1a358594eb28398f656fb9da2d6bede7c3631b210376bf92ca8": {
+    "input_tokens": 927,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "c794e0dbb9ba3a32254ae838408237e8ed10d30074beec31d7e6897a84c7144e": {
+    "input_tokens": 959,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 366,
+    "text": "{\n  \"conflicts\": [\n    {\n      \"fact_ids_a\": [\n        \"N6-extent/f1\"\n      ],\n      \"fact_ids_b\": [\n        \"N6-extent/f2\"\n      ],\n      \"kind\": \"extent\",\n      \"severity\": \"high\",\n      \"quote_a\": \"Claimant reports: water only reached the utility room floor\",\n      \"quote_b\": \"Surveyor reports: water has damaged the utility room, the garage wall and the bedroom above\",\n      \"explanation\": \"The claimant asserts damage was limited to the utility room floor, while the surveyor reports damage in the utility room plus the garage wall and the bedroom above; both cannot be true about the full extent of affected areas.\",\n      \"confidence\": 0.95\n    }\n  ]\n}"
+  },
+  "cd6c55ae3bf8b9c0c69fa1c8ef726786065dc7b8086f6c04fff45c668a22d4a2": {
+    "input_tokens": 955,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 323,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"D-extent/f1\"],\"fact_ids_b\":[\"D-extent/f2\"],\"kind\":\"extent\",\"severity\":\"high\",\"quote_a\":\"Claimant reports: the water damage is limited to the bathroom floor\",\"quote_b\":\"Surveyor reports: moisture was found in the bathroom, the hallway and two bedrooms\",\"explanation\":\"The claimant asserts the damage is limited to the bathroom floor, while the surveyor found moisture in multiple additional areas (hallway and two bedrooms); both statements cannot be true about which areas were affected.\",\"confidence\":0.95}]}"
+  },
+  "d512596c91ae476ce1e41b4056076ddd11ea40ec0a4b4fd9c040d7f6503904e1": {
+    "input_tokens": 924,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "d54f667f2b5817430282587ca6c903d96d34127ddbe58f5e145f4d62cdca3896": {
+    "input_tokens": 923,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "dbec4b62ff24910a657396f1fee53a3b55ffa59b77a7d3b8ee8e2c343b51439e": {
+    "input_tokens": 951,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "e937b9975c65676470149c7261915fcab0567a527c557a1646462f90c3061d6e": {
+    "input_tokens": 896,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "efdea207bb4ed9271f85d72c48ce444b6ec163930783e7aa9870d9fc3386882d": {
+    "input_tokens": 957,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 350,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"N9-two-conflicts/f1\"],\"fact_ids_b\":[\"N9-two-conflicts/f2\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports: the pipe split suddenly on 4 July 2026\",\"quote_b\":\"Surveyor reports: the staining and rot show the leak has been active for several months\",\"explanation\":\"The claimant asserts a sudden pipe split on a specific loss date, which supports sudden accidental damage; the surveyor finds evidence the leak was active for months, which indicates a gradual failure. Both accounts refer to when and how the damage began and cannot both be true for the same failure mechanism and date.\",\"confidence\":0.95}]}"
+  },
+  "fdedfaf66539ab5cc84476cc1cad3c933eab275f151ed126769a2509057cda43": {
+    "input_tokens": 908,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 455,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-S01-02\"],\"fact_ids_b\":[\"F-S01-03\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports the kitchen supply pipe burst suddenly\",\"quote_b\":\"Significant corrosion was present at the joint of the kitchen supply pipe\",\"explanation\":\"One fact asserts a sudden burst of the kitchen supply pipe while the other reports significant corrosion at the joint, which indicates a gradual deterioration as the likely failure mechanism; both characterizations of the cause cannot be true when determining whether the loss was sudden and accidental.\",\"confidence\":0.95}]}"
+  }
+}

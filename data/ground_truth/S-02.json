@@ -1,0 +1,345 @@
+{
+  "scenario_id": "S-02",
+  "claim_id": "CLM-0002",
+  "synthetic": true,
+  "facts": [
+    {
+      "fact_id": "F-S02-01",
+      "claim_id": "CLM-0002",
+      "proposition": "Reported date of loss is 2 May 2026",
+      "source_document_id": "DOC-S02-1",
+      "page": 1,
+      "evidence_text": "Date of loss: 2 May 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-02",
+      "claim_id": "CLM-0002",
+      "proposition": "Claimant reports the fitting split suddenly",
+      "source_document_id": "DOC-S02-1",
+      "page": 1,
+      "evidence_text": "the pipe fitting under the kitchen sink split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-03",
+      "claim_id": "CLM-0002",
+      "proposition": "Plumber reports the fitting split suddenly",
+      "source_document_id": "DOC-S02-2",
+      "page": 1,
+      "evidence_text": "The pipe fitting split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-04",
+      "claim_id": "CLM-0002",
+      "proposition": "Plumber found no corrosion, prior leakage or staining",
+      "source_document_id": "DOC-S02-2",
+      "page": 1,
+      "evidence_text": "No corrosion, prior leakage or staining was observed",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-05",
+      "claim_id": "CLM-0002",
+      "proposition": "Moisture was confined to kitchen floor and lower wall",
+      "source_document_id": "DOC-S02-3",
+      "page": 1,
+      "evidence_text": "Moisture was confined to the kitchen floor and the lower kitchen wall",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-EXTENT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-06",
+      "claim_id": "CLM-0002",
+      "proposition": "Surveyor-assessed repair cost is INR 98,000",
+      "source_document_id": "DOC-S02-3",
+      "page": 1,
+      "evidence_text": "Assessed repair cost: INR 98,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-07",
+      "claim_id": "CLM-0002",
+      "proposition": "Estimate total reconciles to the surveyor assessment",
+      "source_document_id": "DOC-S02-4",
+      "page": 1,
+      "evidence_text": "Total: INR 98,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S02-08",
+      "claim_id": "CLM-0002",
+      "proposition": "INR 8,000 of the cost is an upgrade not caused by the loss",
+      "source_document_id": "DOC-S02-3",
+      "page": 1,
+      "evidence_text": "INR 8,000 is an upgrade not caused by the loss",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "Q-INFORCE",
+      "text": "Was the policy in force on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "PAS policy status is in force on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "linked_fact_ids": [
+        "F-S02-01"
+      ],
+      "expected_answer": "Policy in force on 2026-05-02 (PAS)."
+    },
+    {
+      "question_id": "Q-SUDDEN",
+      "text": "Was the water damage sudden and accidental rather than gradual?",
+      "category": "cause",
+      "status": "established",
+      "establishing_criteria": [
+        "Technical statement of the failure mechanism by a qualified person",
+        "Evidence that the damage began at or immediately before the reported loss date"
+      ],
+      "linked_clause_ids": [
+        "CL-COV-WATER",
+        "CL-DEF-SUDDEN"
+      ],
+      "linked_fact_ids": [
+        "F-S02-02",
+        "F-S02-03",
+        "F-S02-04"
+      ],
+      "expected_answer": "Plumber and claimant agree: sudden failure, no corrosion."
+    },
+    {
+      "question_id": "Q-START",
+      "text": "When did the leak or damage begin?",
+      "category": "timing",
+      "status": "established",
+      "establishing_criteria": [
+        "Technical evidence of when the leak or corrosion began",
+        "Maintenance or inspection record"
+      ],
+      "linked_clause_ids": [
+        "CL-EXC-GRADUAL"
+      ],
+      "linked_fact_ids": [
+        "F-S02-03",
+        "F-S02-04"
+      ],
+      "expected_answer": "Failure occurred on the reported loss date."
+    },
+    {
+      "question_id": "Q-EXTENT",
+      "text": "Which areas were affected by the reported event?",
+      "category": "extent",
+      "status": "established",
+      "establishing_criteria": [
+        "Surveyor-confirmed list of affected areas",
+        "Each affected area linked to the reported event"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S02-05"
+      ],
+      "expected_answer": "Kitchen floor and lower kitchen wall only."
+    },
+    {
+      "question_id": "Q-AMOUNT",
+      "text": "Is the claimed repair cost reasonable and supported?",
+      "category": "amount",
+      "status": "established",
+      "establishing_criteria": [
+        "Surveyor-assessed cost of repair",
+        "Estimate reconciling to the surveyor scope"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S02-06",
+        "F-S02-07",
+        "F-S02-08"
+      ],
+      "expected_answer": "Surveyor-assessed INR 98,000 reconciles to the estimate; INR 8,000 is a non-covered upgrade."
+    },
+    {
+      "question_id": "Q-SUBLIMIT",
+      "text": "Which water-damage sublimit applies on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "Applicable endorsement wording effective on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-SUB-WATER-E1"
+      ],
+      "linked_fact_ids": [],
+      "expected_answer": "END-01 sublimit INR 100,000 (SAMPLE); not reached."
+    }
+  ],
+  "contradictions": [],
+  "missing_evidence": [],
+  "counterfactuals": [],
+  "issues": [
+    {
+      "issue_id": "ISS-INFORCE",
+      "issue": "Policy in force on date of loss",
+      "status": "established",
+      "clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "fact_ids": [
+        "F-S02-01"
+      ]
+    },
+    {
+      "issue_id": "ISS-COVER-WATER",
+      "issue": "Escape of water: sudden and accidental",
+      "status": "established",
+      "clause_ids": [
+        "CL-COV-WATER",
+        "CL-DEF-SUDDEN"
+      ],
+      "fact_ids": [
+        "F-S02-02",
+        "F-S02-03",
+        "F-S02-04"
+      ]
+    },
+    {
+      "issue_id": "ISS-EXC-GRADUAL",
+      "issue": "Gradual leakage exclusion",
+      "status": "established",
+      "clause_ids": [
+        "CL-EXC-GRADUAL"
+      ],
+      "fact_ids": [
+        "F-S02-04"
+      ],
+      "note": "Exclusion not engaged."
+    },
+    {
+      "issue_id": "ISS-SUBLIMIT",
+      "issue": "Water-damage sublimit",
+      "status": "identified",
+      "clause_ids": [
+        "CL-SUB-WATER-E1"
+      ],
+      "fact_ids": [],
+      "note": "Sublimit identified; payable is below it."
+    }
+  ],
+  "snapshot": {
+    "status": "in_force",
+    "effective_clause_ids": [
+      "CL-DEF-SUDDEN",
+      "CL-COV-WATER",
+      "CL-EXC-GRADUAL",
+      "CL-COND-PERIOD",
+      "CL-LIM-BUILDING",
+      "CL-DED-STD",
+      "CL-SUB-WATER-E1"
+    ],
+    "not_effective_clause_ids": [],
+    "missing_documents": [],
+    "precedence_note": "END-01 modifies CL-COV-WATER."
+  },
+  "routing": {
+    "tier": "simple",
+    "reason_codes": [
+      "POLICY_EXACT",
+      "EVIDENCE_COMPLETE",
+      "NO_CONTRADICTION",
+      "DUPLICATE_CLEAR",
+      "COVERAGE_RESOLVED",
+      "EXPOSURE_WITHIN_FRONTLINE"
+    ],
+    "required_approver_role": "adjuster",
+    "rules_version": "sample-2"
+  },
+  "routing_features": {
+    "policy_status": "in_force",
+    "policy_match": "exact",
+    "policy_certainty": "exact",
+    "evidence_completeness": "complete",
+    "contradiction_severity": "none",
+    "duplicate_status": "clear_or_benign",
+    "coverage_certainty": "resolved",
+    "specialist_required": false,
+    "exposure_inr": 98000
+  },
+  "settlement": {
+    "status": "calculated",
+    "inputs": {
+      "assessed_covered_loss": "98000",
+      "non_covered_items_total": "8000",
+      "applicable_deductible": "10000",
+      "water_damage_sublimit": "100000",
+      "remaining_policy_limit": "2000000",
+      "prior_payments_total": "0"
+    },
+    "missing_inputs": [],
+    "payable": "80000",
+    "engine_check": true
+  },
+  "expected_actions": [
+    "draft_status_message:claimant",
+    "present_settlement_for_human_approval"
+  ],
+  "notes": [
+    "Happy path. Even here a human must approve before any payment instruction.",
+    "Calculation: 98,000 - 8,000 - 10,000 = 80,000; sublimit and limit do not bind."
+  ],
+  "human_approval_required": true
+}

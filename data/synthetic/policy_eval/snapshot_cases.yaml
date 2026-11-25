@@ -1,0 +1,34 @@
+# Expected outcomes of get_snapshot(policy_no, loss_date) (T3.3). SYNTHETIC. Written BEFORE the snapshot builder existed, from the
+# PAS mock's own labelled lookups (data/synthetic/pas_mock_db.json) and the endorsement wording.
+#   outcome        snapshot | not_in_force
+#   version        the PAS policy version on the loss date
+#   status         the PAS status carried on the snapshot (in_force | reinstated)
+#   endorsements   endorsements that contribute clauses on that date (listed, wording available, in force, not wholly replaced)
+#   reason         text that must appear in the NotInForce reason
+#   unavailable    endorsement wordings the claim does not have (left out of the document library for that case)
+#   titles         endorsement titles as the schedule text names them (only needed for a missing wording)
+#   rules          text that must appear in the snapshot's precedence_rules
+cases:
+  - {id: N-01, policy: POL-1001, as_of: "2026-03-14", outcome: snapshot, version: v1, status: in_force, endorsements: [END-01], why: S-01 loss date}
+  - {id: N-02, policy: POL-1001, as_of: "2026-05-02", outcome: snapshot, version: v1, status: in_force, endorsements: [END-01], why: S-02 loss date}
+  - {id: N-03, policy: POL-1003, as_of: "2026-02-13", outcome: not_in_force, reason: ["lapsed", "2026-02-10"], why: S-03 three days after the lapse}
+  - {id: N-04, policy: POL-1004, as_of: "2026-01-20", outcome: snapshot, version: v1, status: in_force, endorsements: [END-01],
+     rules: ["END-02 is listed but not effective until 2026-02-01"], why: S-04 END-02 listed but not yet effective}
+  - {id: N-05, policy: POL-1004, as_of: "2026-02-01", outcome: snapshot, version: v1, status: in_force, endorsements: [END-02],
+     rules: ["END-02 (from 2026-02-01) replaces END-01"], why: first day of END-02 - it replaces END-01}
+  - {id: N-06, policy: POL-1005, as_of: "2026-06-10", outcome: snapshot, version: v1, status: in_force, endorsements: [],
+     unavailable: [END-01], titles: {END-01: "Water Damage Sublimit Endorsement"}, rules: ["END-01 is listed in the schedule but its wording is not available"],
+     why: S-05 listed endorsement without wording}
+  - {id: N-07, policy: POL-1010, as_of: "2026-04-30", outcome: snapshot, version: v1, status: in_force, endorsements: [END-01], why: lapse boundary - last day in force}
+  - {id: N-08, policy: POL-1010, as_of: "2026-05-01", outcome: not_in_force, reason: ["lapsed", "2026-05-01"], why: lapse boundary - first day lapsed}
+  - {id: N-09, policy: POL-1010, as_of: "2025-04-30", outcome: not_in_force, reason: ["not_found"], why: day before inception}
+  - {id: N-10, policy: POL-1011, as_of: "2026-01-31", outcome: snapshot, version: v1, status: in_force, endorsements: [END-01], why: last day before cancellation}
+  - {id: N-11, policy: POL-1011, as_of: "2026-02-01", outcome: not_in_force, reason: ["cancelled", "2026-02-01"], why: first day of the cancellation}
+  - {id: N-12, policy: POL-1011, as_of: "2026-02-15", outcome: not_in_force, reason: ["cancelled"], why: inside the cancellation gap}
+  - {id: N-13, policy: POL-1011, as_of: "2026-03-01", outcome: snapshot, version: v1, status: reinstated, endorsements: [END-01], why: reinstatement day - covered again}
+  - {id: N-14, policy: POL-1011, as_of: "2026-03-10", outcome: snapshot, version: v1, status: reinstated, endorsements: [END-01], why: after reinstatement}
+  - {id: N-15, policy: POL-1012, as_of: "2026-01-14", outcome: snapshot, version: v1, status: in_force, endorsements: [END-01], why: straddle - last day of v1}
+  - {id: N-16, policy: POL-1012, as_of: "2026-01-15", outcome: snapshot, version: v2, status: in_force, endorsements: [END-01, END-03], why: straddle - first day of v2 adds END-03}
+  - {id: N-17, policy: POL-1012, as_of: "2026-03-01", outcome: snapshot, version: v2, status: in_force, endorsements: [END-01, END-03], why: inside v2}
+  - {id: N-18, policy: POL-9999, as_of: "2026-03-01", outcome: not_in_force, reason: ["not_found"], why: unknown policy number}
+  - {id: N-19, policy: pol-1001, as_of: "2026-03-14", outcome: not_in_force, reason: ["not_found"], why: no fuzzy matching - a lower-case number is not an exact match}

@@ -1,0 +1,806 @@
+{
+  "00562c30bb03d7e7c99b3603e7f9fbd2382ed88a1d88a24cee4086f2f9a9f9a3": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 43,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not meet the cost of repairing damage caused by poor building work.\",\"confidence\":0.9}"
+  },
+  "01ac25de9a538d54903c9e93dadd4ce5e375c7ae7c8b7c96823e27b6ef9378bd": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 219,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "0776c16b3070b9ea2d434dad3329165bb4ceeb1ba4490e808f66a0316df955ec": {
+    "input_tokens": 724,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 110,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage if the home was left empty for more than 45 days.\",\"confidence\":0.95}"
+  },
+  "0967559471dad11fda5dda927c1fc8e154413fbace6877738a286b7d11a1282f": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 36,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Take sensible steps to stop damage getting worse.\",\"confidence\":0.9}"
+  },
+  "0ab6e809dde89bb7a48d3766a445a92ff5dd63a67a705429ce8103b22d2a84f4": {
+    "input_tokens": 572,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 41,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by fire or smoke.\",\"confidence\":0.95}"
+  },
+  "0eb048491312a5969557fff6b8b2f6170d490980f043a91a5e8164e7e4822414": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "122b8f1ddedb05096c6f5a55185389bc8923dc9e1e10d2c4ef8ae19d9fb1d8c0": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "13182725a9023c327935646c11821d3d30dd25ae565643986dc99114430277f6": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 39,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage caused by pipework bursting or overflowing.\",\"confidence\":0.95}"
+  },
+  "14da2d2c79fb9fb151ee2808d5f0174c9305faf8de7237c35f9c8dc1db4a522d": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 169,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"In any twelve months we pay no more than the Sum Insured.\",\"confidence\":0.95}"
+  },
+  "15779e2c8e0c9d0c7a50529d8510cc612b49b7785f8d2763e792403fd6d88459": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 219,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "174b3d8b3d9e6d7796d84f1514f67f02f082f8eaebe61ed8182f4cc59b620e63": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 168,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"No payment will be made for damage from wear and tear.\",\"confidence\":0.95}"
+  },
+  "188aa2026515625be56ea675e7439f949234af1adcf9a571fe822304c473f136": {
+    "input_tokens": 729,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 178,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The top amount we will pay for all claims in a year is shown as the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "18f19ee055d0c9ec968e667f1cd8d72732b1c8ae5aea5607ca85134f24e2034c": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 169,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"Escape of water from a burst pipe is something we protect you against.\",\"confidence\":0.95}"
+  },
+  "1a4a5191469e7c4d3271454a4c2afbe609eec7941f4f3102bb65b3e3ec1b9075": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 108,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You bear the first part of every claim, as shown in the Schedule.\",\"confidence\":0.95}"
+  },
+  "1e3a50b6729d3b3f9ac45769ae75f9bb2b31b4a8f0f3ac796a5605fa80f5afbe": {
+    "input_tokens": 724,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 46,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage if the home was left empty for more than 45 days.\",\"confidence\":0.9}"
+  },
+  "20c798c7b1964003ccdd9619e73dd8c3bf3249c4b0bc06f0e096452b174b087f": {
+    "input_tokens": 711,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 99,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Keep the plumbing in good working order.\",\"confidence\":0.95}"
+  },
+  "23b65c98ba1adde185996d3a341a32b206a2b1d23d935d7d11a64363094966f8": {
+    "input_tokens": 725,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 108,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Switch off the water supply if you leave the home empty for a week or more.\",\"confidence\":0.9}"
+  },
+  "257367499bc636f39efbda0bfe8674dce16e1498050776de56caa2d538cd79ed": {
+    "input_tokens": 571,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 44,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You are responsible for the first INR 7,500 of each claim.\",\"confidence\":0.95}"
+  },
+  "26b7dfb848f5092920cd595b9d03fa8fcb0032f31d25e91acda5291ef9e67cad": {
+    "input_tokens": 562,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 163,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Keep the plumbing in good working order.\",\"confidence\":0.95}"
+  },
+  "2858b9764ab715a5571cb46d83c046c590b6b24f87126c551f5229a24e06e758": {
+    "input_tokens": 565,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 38,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage to the home caused by storm.\",\"confidence\":0.95}"
+  },
+  "290cdb0cb59a2f28178e49dafb99a304cb61b915292449ea68b9b494c1b0b200": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 100,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Take sensible steps to stop damage getting worse.\",\"confidence\":0.95}"
+  },
+  "29e86cd9f215aa64ab1f731d4c1128c07c49e26ba17b9eba3d0f07189c2ceea9": {
+    "input_tokens": 572,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 169,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by fire or smoke.\",\"confidence\":0.95}"
+  },
+  "2a3340e1c698608e5bf845835f7b44acd83fc2447f8fe8396bd3a46980a17c1f": {
+    "input_tokens": 712,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "2b62d8e7b5c4bbe2454416066cb166d22cc8d11859a824a7891a6573d35269c3": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "2bfbf2e57fe575745951ab17612dc9cfb22da4336255523af574796cc710691a": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 44,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You bear the first part of every claim, as shown in the Schedule.\",\"confidence\":0.9}"
+  },
+  "2c89ff2a82fe9fde6ffb90c6ab67c14e80774d181ec273d3fda9a3640d10efbc": {
+    "input_tokens": 575,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 177,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"We will pay at most INR 150,000 for damage from pipework in a single claim.\",\"confidence\":0.95}"
+  },
+  "31c9dd62eb4198aa52889d47c2553983a1c411c4671730084e425e8f2283a232": {
+    "input_tokens": 725,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 110,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"Our total payment in any policy year will never go beyond the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "34c38b09cffa0585e6179c2bbacee3389d8448017b2ee07f88f890229871302d": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 169,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"Each claim starts with you paying INR 3,000.\",\"confidence\":0.95}"
+  },
+  "350d39ced9b57a44daa9f96de1a22d23a6adb1e871f9de40ff854ccfe545eec5": {
+    "input_tokens": 576,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 45,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"We will pay no more than the Sum Insured shown in the Schedule for any claim.\",\"confidence\":0.95}"
+  },
+  "375e29d83bbeb857bd812c37fa669f5344cdb3926496d70125ad7c950695e066": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.95}"
+  },
+  "3cb621f735e9c7e770ab88a62770158c8e67b8beb9d59dfa7717b6737aa30f60": {
+    "input_tokens": 576,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 50,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"The most we will pay for repairing pipes and fittings is INR 80,000 for any one claim.\",\"confidence\":0.93}"
+  },
+  "3d07f1316f6cc1f8e40c0ba7fc38f7967eba8b33cf92d0b5a17e5b9aeec5a12c": {
+    "input_tokens": 711,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 35,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Keep the plumbing in good working order.\",\"confidence\":0.9}"
+  },
+  "3d1dc427de0f53cd2228f5043c9d7419b47b99efb52751b3872ab45a4af12774": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 166,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us within 14 days of finding any damage.\",\"confidence\":0.95}"
+  },
+  "3db297166ca556e013949660f6ecb25ff87cac149a7ac36e497a672e136539ae": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"Loss from deliberate damage by you is not paid.\",\"confidence\":0.95}"
+  },
+  "3deb6791c559d323f7bf96447ef1345fee679d019b137596e9b855e999b9efbc": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 38,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Contact us within 21 days of discovering a loss.\",\"confidence\":0.9}"
+  },
+  "3fd46228bf5d325e4f8451863778a01d3d166df2e812b3f66bdaaf610c74f459": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "405320872a54347ccbb5fc0f42f7f103abd565199a1aae3db0b4c10585b4f60d": {
+    "input_tokens": 575,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 46,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage if the home was left empty for more than 45 days.\",\"confidence\":0.95}"
+  },
+  "4153d506ab3bc5221d5a9b7f6eaeb9fb5021095af970f58f78adc42424b40f62": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 173,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"If you or anyone acting for you makes a fraudulent claim we will not pay it.\",\"confidence\":0.95}"
+  },
+  "45cb1974779e7516b977f181c0bcedb21193b80a8fca5626d8247005755ddfa1": {
+    "input_tokens": 572,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 43,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage resulting from rot, corrosion or long-term leaking.\",\"confidence\":0.95}"
+  },
+  "478530d3b0e831d4c35c888bc87d52b19cf91267f3c80fea196515f16e9b5cf0": {
+    "input_tokens": 575,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 49,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"We will pay at most INR 150,000 for damage from pipework in a single claim.\",\"confidence\":0.93}"
+  },
+  "495908372489599ae96e5d98afa9fac6db774d40fefff25354b322c361263e3b": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 42,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Either of us may end this policy by giving 30 days written notice.\",\"confidence\":0.9}"
+  },
+  "497061162284770e1248207a672bb2e053d597084f65f461a895210fb734feeb": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 166,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Contact us within 21 days of discovering a loss.\",\"confidence\":0.95}"
+  },
+  "4a165ebba5526b75e7343c7c356c410ca0e7e3c0db7e11617e792ffc1db2f139": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 41,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"If a claim is dishonest we may refuse it and cancel the policy.\",\"confidence\":0.7}"
+  },
+  "4b290a2e809c6844949ad7b20e0648eb2244c6cc97254ace59a503ce9e46d19b": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.3}"
+  },
+  "4ba0daceb24e96900868acaee8256cf3068041ccd19e10c32535f68386e36ede": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 107,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not meet the cost of repairing damage caused by poor building work.\",\"confidence\":0.95}"
+  },
+  "4fd290287c5a618688c065fd789179402c52dfa61b628ac9bd1a67f18ce9dcef": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 38,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us within 14 days of finding any damage.\",\"confidence\":0.92}"
+  },
+  "5662b52f6ccf2f155cbb5fca9f64928b91c0bec1f5319cfcfb5730b97558dc4b": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 233,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"You need to let us know about any loss within 28 days.\",\"confidence\":0.95}"
+  },
+  "56c6d236022ae3f84aafc108a12ad2fc315241f1cbeb61759de29f66f33bc6b8": {
+    "input_tokens": 580,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 50,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The top amount we will pay for all claims in a year is shown as the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "572af9d613cf21977139d481cdb4d7eaec9e16ac27662271f289cae9f824fe9a": {
+    "input_tokens": 723,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 110,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The highest amount we will pay for any one claim is the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "58a136059c10d4dfea1b574b6ac9e5ec7ef525405fafa401a8899c766cf8bfe4": {
+    "input_tokens": 724,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 49,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"We will pay at most INR 150,000 for damage from pipework in a single claim.\",\"confidence\":0.96}"
+  },
+  "5a42f41daf753a63883a28a9f14da4b89b12effbb721261b9886ae8b2370e7e1": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 171,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not meet the cost of repairing damage caused by poor building work.\",\"confidence\":0.95}"
+  },
+  "5c127973334a4f79ac628d8d715dc211e39a79f39ff6b54a4d26a3c00fe113a1": {
+    "input_tokens": 575,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 110,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage if the home was left empty for more than 45 days.\",\"confidence\":0.95}"
+  },
+  "5f6d0f8675806d1f7a0267b700a8c2a4afcfdfca110462c6190fce78aecd687c": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 103,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"Mould that grows over time is outside this cover.\",\"confidence\":0.95}"
+  },
+  "5f7a88bd901d893c83e1557dc651b38a0a36ef4efc0fa2e55144cb8026c316a3": {
+    "input_tokens": 567,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 36,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Take sensible steps to stop damage getting worse.\",\"confidence\":0.9}"
+  },
+  "5fbfb78903d7c62bae2189ca56533647d3e75ed70f70979faafa7ff4e8c329e2": {
+    "input_tokens": 563,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "6132e1cbe904b40a55a263b832dd3f3c964599267bfb153113a99a441c572b51": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 37,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us about a loss within 30 days.\",\"confidence\":0.9}"
+  },
+  "61703f48476c388ac557c232df8d2fd735467db794e5c0c190b746dd3510a407": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 46,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"We may change these terms only by writing to you at least 30 days before the change.\",\"confidence\":0.8}"
+  },
+  "61fa1c20c599369d82baceebbd6ce3b346ad87b12a43f942ab66574295ebc56b": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 165,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us about a loss within 30 days.\",\"confidence\":0.95}"
+  },
+  "62c540c343bb27b07f44fa8c9bc55a871748073d6555849a23224bb9c55274de": {
+    "input_tokens": 722,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 172,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"The first INR 5,000 of every claim is borne by you.\",\"confidence\":0.95}"
+  },
+  "62fdbd0a2f0ee364f592730203765aec5e8ad5960a0988e2002921cc48a3abb0": {
+    "input_tokens": 725,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 109,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"We will pay no more than the Sum Insured shown in the Schedule for any claim.\",\"confidence\":0.95}"
+  },
+  "663348f78fbb60a70b408831d0e43ae5831e2abb33f5a123812a2afa74852e53": {
+    "input_tokens": 725,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 114,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"The most we will pay for repairing pipes and fittings is INR 80,000 for any one claim.\",\"confidence\":0.95}"
+  },
+  "66c28694fe4d1ff4e069b5e43a65f5fa320962d3b37c40cf7fac08e860b2d190": {
+    "input_tokens": 723,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.62}"
+  },
+  "6a808d1305b06e596e072366ef2a92ef29ccc2ef74ea780a03970ecf263ac1f8": {
+    "input_tokens": 723,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "6c35b588f240bb6fd1109f4a6200699703aa14ddf509d1e0d92d606dce3f3df2": {
+    "input_tokens": 723,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 46,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The highest amount we will pay for any one claim is the Sum Insured in the Schedule.\",\"confidence\":0.96}"
+  },
+  "6e9872234d34ef8d6e7fa235c3b8c955c85bc022aad5aad3ec36dd3c435733f1": {
+    "input_tokens": 567,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Contact us within 21 days of discovering a loss.\",\"confidence\":0.95}"
+  },
+  "70c26af764332d8bf239aed30ddde98f26dad3d6243fc3838c5dc20193b1f0c7": {
+    "input_tokens": 714,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 230,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage to the home caused by storm.\",\"confidence\":0.95}"
+  },
+  "71abdb7a4ed62215662c1a2a31d4a9c75e6d782dfbdfe1417735c89aa53d1eb1": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "745f8b73f4670aad59c40238d42c8a2b92b326708dfaa4de78a781c23671ca17": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us within 14 days of finding any damage.\",\"confidence\":0.95}"
+  },
+  "7528072176b1719bdeb93de637ed406ab6fa5f4927c24f9395297c722fc71a8f": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 105,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"Repair costs after a flood from a failed hose are paid by us.\",\"confidence\":0.95}"
+  },
+  "7563cf5496746b4fe2a4a4a09ca336bacc26188b7aba23139c235783175730ac": {
+    "input_tokens": 720,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 172,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You are responsible for the first INR 7,500 of each claim.\",\"confidence\":0.95}"
+  },
+  "77374ca2693abaf3e7d04335806b8f245743116dbeff5531e36a4f96c9a60ed4": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.85}"
+  },
+  "773ab5aae3e415ecd84f686170ae805174137305475c11eb872a723034c65888": {
+    "input_tokens": 580,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 114,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The top amount we will pay for all claims in a year is shown as the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "796e23a13c608bd4a9ce1ac10f8b7e04f2911da5280a2a452b76e0ebc73e0772": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 103,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage caused by pipework bursting or overflowing.\",\"confidence\":0.95}"
+  },
+  "79f186abd9179681b3631c9d658e97c86c47a0d02753b5b30f0a3ad37fd9d856": {
+    "input_tokens": 720,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 44,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You are responsible for the first INR 7,500 of each claim.\",\"confidence\":0.95}"
+  },
+  "7a5a3bde396bc045dd1bb17bc270598157e3a9849efc71e6e7ac1c291e9c087b": {
+    "input_tokens": 725,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 45,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"We will pay no more than the Sum Insured shown in the Schedule for any claim.\",\"confidence\":0.95}"
+  },
+  "7ea608872eff9a35b07cb87befb53023e1e005c1007af7c14099bdb681b1ca82": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.45}"
+  },
+  "7f84a17d52f874ec922a587de6b49fdeabf2a258eced1b4d129b6c8e05220f27": {
+    "input_tokens": 576,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 114,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"The most we will pay for repairing pipes and fittings is INR 80,000 for any one claim.\",\"confidence\":0.95}"
+  },
+  "801419e199599c2f66eeaaf610b69118961d220ac65e0b82b260687afcbcab72": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 107,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will cover the repair of damage to the home from a burst water tank.\",\"confidence\":0.95}"
+  },
+  "870b86de6aed53766279fa15333ef91c36328feb5e19e0b4de761bedce922eae": {
+    "input_tokens": 712,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "880c316dd56ea5ca646f82fc56ff40826fff2aed0a15fe39e97561767d65f0ab": {
+    "input_tokens": 710,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "886419235e4f687a0f0a37c7f3783eff49698adddf0c77c12af3f3189a72f953": {
+    "input_tokens": 562,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 35,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Keep the plumbing in good working order.\",\"confidence\":0.9}"
+  },
+  "8a42a3bbd4bbd266ad66f7d95cf002d9f2d80754315e492685b2da00218bedca": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.75}"
+  },
+  "8a95fcf0454682bfa397814f48583757f6bf8e810839b0552d88e623b38fe392": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 41,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by fire or smoke.\",\"confidence\":0.96}"
+  },
+  "8dc78cbebb5b379774e3a5168207f3a110df106e9dd2ef865e34031f41801871": {
+    "input_tokens": 727,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "92976b0a279b86307635933187cefd32d7b06d907ae57ef134c02b3069355652": {
+    "input_tokens": 576,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 109,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"We will pay no more than the Sum Insured shown in the Schedule for any claim.\",\"confidence\":0.95}"
+  },
+  "9355a75decff4855eb81c752d0c8a4f298a356a606385e02f166f7a12de2d0c5": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "9646c238261a59293a6867f3439ec53baae32a7999b0c8d44cf77560dfcc0571": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.6}"
+  },
+  "96aafafee0245e55711d7b91b7fc0a815544a377d083b40b46a765c030869721": {
+    "input_tokens": 713,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 100,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"Damage from lightning is included in this policy.\",\"confidence\":0.95}"
+  },
+  "971de37b29bce03826a1c8b6dd9bc06f9c6f00eed21f3a179d9ebfe49fcb03ae": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 155,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "97dbf3f04a6760c62318289fb2b0ed09b3c6f57f1ca9a0586541adeddfc7362b": {
+    "input_tokens": 726,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 175,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"For leaks from baths and basins the ceiling is INR 40,000 each claim.\",\"confidence\":0.95}"
+  },
+  "98ee06657d84fb980ec8aa3dc5e69ec02733bc61f405205512b9a56551ecb761": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 169,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by fire or smoke.\",\"confidence\":0.95}"
+  },
+  "9fc5284ffa542bce16d8ac231e5beafd9ab29bad09cfd39b0767f8ea7c25748b": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 236,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"Damage from water tanks is capped at INR 60,000 per claim.\",\"confidence\":0.95}"
+  },
+  "a16dc418e9a861ff87230f7bfe6bb5f92d13396c66c3d220f5f1b81e1ca58ac7": {
+    "input_tokens": 715,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 292,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"Payments are rounded to the nearest rupee.\",\"confidence\":0.7}"
+  },
+  "a3548d131d26bf5de0e4543f63e7a01b35b480b41628504c2de4da75fc442638": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 39,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage caused by pipework bursting or overflowing.\",\"confidence\":0.95}"
+  },
+  "ab52ca7a63f975195a8df79b6eefd1bb24ba22198db3e505b18c985f88ad4c9a": {
+    "input_tokens": 567,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 100,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Take sensible steps to stop damage getting worse.\",\"confidence\":0.9}"
+  },
+  "b129688d5e4d69834ae69506f95663242f14a40727da98fe9cc8c5dc7443c29f": {
+    "input_tokens": 723,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 42,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by a pipe suddenly splitting.\",\"confidence\":0.98}"
+  },
+  "b131267a3a2204dcb7bfe02a8b7334afa546cf4e70f127fe0cfd0bee2141bbfc": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 42,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by a pipe suddenly splitting.\",\"confidence\":0.95}"
+  },
+  "b13674e310840d891b9c47f644f0d26d32ae773745206196e0931214f0712603": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 171,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage resulting from rot, corrosion or long-term leaking.\",\"confidence\":0.95}"
+  },
+  "b1b9a4925a0dabb5b9794c333ec7c9952769f4883d987b5fca9e1ef0e414a576": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 219,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.95}"
+  },
+  "b3a6ffb383acde8f0d147989bee68ccc0e2b676c7edb17d26ac67abf1fdc99b1": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 103,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"Damage caused by war or nuclear activity is not included.\",\"confidence\":0.95}"
+  },
+  "b7ecfc6ca29bc888351c6bb872d067453b13168ea00225a2eb472ccf3eab8586": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 103,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage caused by pipework bursting or overflowing.\",\"confidence\":0.95}"
+  },
+  "bb9748bdab1f080d1e27e1eb62109cfa5f65a8055ffd0ed7b62bb17d16ff83e8": {
+    "input_tokens": 714,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 38,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage to the home caused by storm.\",\"confidence\":0.95}"
+  },
+  "bf5fd0a1f18ce025b163d68a007b7499ed4182fb8861191828d77fd218327c68": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 219,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.95}"
+  },
+  "c4a935d8631fa8a631d9f8041ed4e520c499be473eab7d012de908eb88a4a6ac": {
+    "input_tokens": 729,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 50,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The top amount we will pay for all claims in a year is shown as the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "c4f017d8fdf9a051471ebffb6cabe605b4a2072c0b92566d8a0767a0d983098d": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 43,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not meet the cost of repairing damage caused by poor building work.\",\"confidence\":0.9}"
+  },
+  "ccf55f3ceed301002efb344aff8f754835eef832f333574b28babf1698973b44": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 38,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us within 14 days of finding any damage.\",\"confidence\":0.9}"
+  },
+  "cf12218beb543f494c5df93e751837d7caee9f9c865b665744563d36e2025f9a": {
+    "input_tokens": 723,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 236,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"If more than one person is named, each of you is bound by these terms.\",\"confidence\":0.9}"
+  },
+  "d516d97cfdfa8c9bd97bab8e875f664d06f656846274062fc539350f3b09347b": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 219,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "d6a961f17b641bfea70d27b0d306f0ccb530399c29a4554c8827182cf4f8cb47": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 219,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "d8b13ea85b2f998e5904c9f9e0973e9366720ba1c5cd2e35a3db782be9cf8c0a": {
+    "input_tokens": 565,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will repair damage to the home caused by storm.\",\"confidence\":0.95}"
+  },
+  "dbabd32a8ffa79ad08235c1e06cdcba7c6ab88eb4c88adab26ff4ce05ed943da": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 44,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You bear the first part of every claim, as shown in the Schedule.\",\"confidence\":0.93}"
+  },
+  "dcbad1f77070f4980cbe202fb07b9c98e08e9f5662f7db043b27052d4c90ca19": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 110,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The highest amount we will pay for any one claim is the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "dd4be0d80ce02f530d9dda1fb163021fd2ca3237889e2a0c015362bc9a7144b4": {
+    "input_tokens": 569,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 45,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"If you or anyone acting for you makes a fraudulent claim we will not pay it.\",\"confidence\":0.9}"
+  },
+  "e1ad4e5beb433a19958a7608b5a0f10c4eb9e6553996aa485e421e13e3418ecf": {
+    "input_tokens": 568,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 37,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us about a loss within 30 days.\",\"confidence\":0.9}"
+  },
+  "e1b4632df18d4a648477d704674679ae2dd2f8b78b661e33ab8307447cb27832": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 172,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You bear the first part of every claim, as shown in the Schedule.\",\"confidence\":0.95}"
+  },
+  "e543bbe39590dfd522e13abbe0437140c615230d19d827b5b131b005c94b9d82": {
+    "input_tokens": 567,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 38,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Contact us within 21 days of discovering a loss.\",\"confidence\":0.9}"
+  },
+  "e69962d1a681823b269b9a7e20c6dcff16ff51dfa3f0efb77d8e2be028b9b2de": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 106,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"The home must be lived in for at least 180 days each year.\",\"confidence\":0.95}"
+  },
+  "e853df75d8c3bceb60a56ee2d57764f2ad4099910efdf046620fb28d0ba3550b": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 101,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Tell us about a loss within 30 days.\",\"confidence\":0.95}"
+  },
+  "ea929f1b2ea619d02d341bff3202df36908ef48483d2be758afd284db677b467": {
+    "input_tokens": 725,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 50,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"The most we will pay for repairing pipes and fittings is INR 80,000 for any one claim.\",\"confidence\":0.96}"
+  },
+  "eb82e25552bd64d0aa6178378940975953287bc2c9e028c563f8ca1e2f7560c3": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 170,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by a pipe suddenly splitting.\",\"confidence\":0.95}"
+  },
+  "ebdac26aca8b1c7e5eb78e24410aea3f676b2143545075c5d0dbda9e3a7e7c5f": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 45,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"If you or anyone acting for you makes a fraudulent claim we will not pay it.\",\"confidence\":0.85}"
+  },
+  "ec0990bf65f605b1bd6db7c0d074286f894d5f19bd9a471a6937e07d772d5b0e": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "f5687a112b6c4be2c9ef5be49580ddb743f0ed4f7f916aaaa9f7ea2be402a553": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 167,
+    "text": "{\"clause_type\":\"condition\",\"evidence_snippet\":\"Cover only applies while the alarm is switched on at night.\",\"confidence\":0.95}"
+  },
+  "f6e9497d446d2dee7cdb7d89e98af640128296364b28e2886cdc3bd8013c716b": {
+    "input_tokens": 724,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 113,
+    "text": "{\"clause_type\":\"sublimit\",\"evidence_snippet\":\"We will pay at most INR 150,000 for damage from pipework in a single claim.\",\"confidence\":0.95}"
+  },
+  "f7cd3881497e5bb08ee68772f4031c08b7e7d3a939d680dffd017adc5ca598bc": {
+    "input_tokens": 574,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 46,
+    "text": "{\"clause_type\":\"limit\",\"evidence_snippet\":\"The highest amount we will pay for any one claim is the Sum Insured in the Schedule.\",\"confidence\":0.95}"
+  },
+  "f84d5b4c866c5057bb32069b8cef1fdf5d6a74c13fb6f89d50ea2c76ebf4930f": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 43,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage resulting from rot, corrosion or long-term leaking.\",\"confidence\":0.95}"
+  },
+  "f88be0bc0a5f0543a63f79f419d00f04a0dbea232f3bfddaf507618ac698eb21": {
+    "input_tokens": 723,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 170,
+    "text": "{\"clause_type\":\"coverage\",\"evidence_snippet\":\"We will meet the cost of repairing damage caused by a pipe suddenly splitting.\",\"confidence\":0.95}"
+  },
+  "f8fa09da41b6bf2fedf58c030eabd36ff883d2c2ef5b7d90284348eb547de91f": {
+    "input_tokens": 570,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.25}"
+  },
+  "f997ad6eb643a77fb24f1275f401b95cd4cb01deb6ec4046066d05ba7ff1f0c6": {
+    "input_tokens": 563,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.65}"
+  },
+  "fa20d7d484a4cf2a2522e630756547461253e3a7203fa530f0542cf07e0537a9": {
+    "input_tokens": 717,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "fa58fd731b84fb5f631640ca3bc1ac45c6d38b4743ba97fc2bf7af94d9c24717": {
+    "input_tokens": 571,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 108,
+    "text": "{\"clause_type\":\"deductible\",\"evidence_snippet\":\"You are responsible for the first INR 7,500 of each claim.\",\"confidence\":0.95}"
+  },
+  "fb22285018b251e6ff672a174d3d9e8925740d2144626e7e6f0fa10f7824cf88": {
+    "input_tokens": 722,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 91,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.9}"
+  },
+  "fc77179234ef6b6332cd0d9dadb3aedf1283b1cfab9754135d390a5dbad6accc": {
+    "input_tokens": 572,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 107,
+    "text": "{\"clause_type\":\"exclusion\",\"evidence_snippet\":\"We will not repair damage resulting from rot, corrosion or long-term leaking.\",\"confidence\":0.95}"
+  },
+  "ffe93772f736dce8f61cd7374887a9b22dc7b69c868f0d5e96624a0829ad4417": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 27,
+    "text": "{\"clause_type\":\"unknown\",\"evidence_snippet\":\"\",\"confidence\":0.75}"
+  }
+}

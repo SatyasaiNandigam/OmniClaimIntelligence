@@ -1,0 +1,159 @@
+{
+  "claim_id": "CLM-0003",
+  "state_version": 9,
+  "correlation_id": "corr-CLM-0003",
+  "claim_header": {
+    "claim_id": "CLM-0003",
+    "claimant_name": "SYNTHETIC Claimant C",
+    "policy_ref": "POL-1003",
+    "loss_date": "2026-02-13",
+    "loss_type": "water_damage",
+    "loss_description": "Pipe burst in bathroom",
+    "channel": "call_centre",
+    "registered_at": null
+  },
+  "intake_checklist": [],
+  "duplicate_candidates": [],
+  "policy_snapshot": null,
+  "documents": [
+    {
+      "document_id": "DOC-S03-1",
+      "claim_id": "CLM-0003",
+      "filename": "fnol.pdf",
+      "sha256": "e080641fcc5ca09ecab93a7a11ab51ecb2dcf0d1b326e9eef17904d134678f2b",
+      "page_count": 1,
+      "detected_type": "fnol",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "claimant",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0003/fnol.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-S03-01",
+      "claim_id": "CLM-0003",
+      "proposition": "Reported date of loss is 13 February 2026",
+      "source_document_id": "DOC-S03-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Date of loss: 13 February 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S03-02",
+      "claim_id": "CLM-0003",
+      "proposition": "Claimant reports a pipe burst in the bathroom",
+      "source_document_id": "DOC-S03-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "a pipe burst in the bathroom",
+      "evidence_type": "neutral",
+      "related_question_ids": [],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "image_findings": [],
+  "open_questions": [
+    {
+      "question_id": "Q-INFORCE",
+      "text": "Was the policy in force on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "PAS policy status is in force on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "linked_fact_ids": [
+        "F-S03-01"
+      ]
+    }
+  ],
+  "contradictions": [],
+  "missing_evidence": [],
+  "counterfactuals": [],
+  "coverage_issues": [
+    {
+      "issue_id": "ISS-INFORCE",
+      "issue": "Policy in force on date of loss",
+      "status": "identified",
+      "clause_citations": [
+        {
+          "clause_id": "CL-COND-PERIOD",
+          "document": "BASE-HOME-1",
+          "page": 3,
+          "span": [
+            144,
+            241
+          ],
+          "text": "This policy covers loss or damage occurring during the period of insurance shown in the Schedule.",
+          "modified_by": []
+        }
+      ],
+      "fact_ids": [
+        "F-S03-01"
+      ],
+      "question_ids": [],
+      "note": "Policy not in force on the loss date; no further coverage reasoning is performed."
+    }
+  ],
+  "settlement": null,
+  "proposed_actions": [
+    {
+      "action_id": "ACT-CLM-0003-1",
+      "action_type": "register_claim",
+      "responsible_party": "adjuster",
+      "execution_mode": "controlled_api",
+      "status": "proposed",
+      "idempotency_key": "CLM-0003:register_claim",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0003-2",
+      "action_type": "route_to_operator",
+      "responsible_party": "adjuster",
+      "execution_mode": "controlled_api",
+      "status": "proposed",
+      "idempotency_key": "CLM-0003:route_to_operator",
+      "payload_ref": null
+    },
+    {
+      "action_id": "ACT-CLM-0003-3",
+      "action_type": "draft_acknowledgement",
+      "responsible_party": "claimant",
+      "execution_mode": "draft",
+      "status": "proposed",
+      "idempotency_key": "CLM-0003:draft_acknowledgement:claimant",
+      "payload_ref": null
+    }
+  ],
+  "drafts": [],
+  "qa_report": {
+    "passed": true,
+    "failures": []
+  },
+  "audit_ref": "AUDIT-CLM-0003",
+  "routing": {
+    "tier": "complex",
+    "reason_codes": [
+      "POLICY_NOT_IN_FORCE"
+    ],
+    "required_approver_role": "senior_adjuster",
+    "rules_version": "sample-2"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_human"
+}

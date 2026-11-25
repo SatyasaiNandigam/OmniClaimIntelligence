@@ -1,0 +1,166 @@
+{
+  "documents": [
+    {
+      "document_id": "DOC-S01-1",
+      "claim_id": "CLM-0001",
+      "filename": "fnol.pdf",
+      "sha256": "c4e349048d47622824394912314ccd29e25794b044afe19629fde1cd5ea52044",
+      "page_count": 1,
+      "detected_type": "fnol",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "claimant",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/fnol.pdf"
+    },
+    {
+      "document_id": "DOC-S01-2",
+      "claim_id": "CLM-0001",
+      "filename": "plumber_report.pdf",
+      "sha256": "bc7613adb8d5ac03c29a13053045ab04fbc15d5dacb0313e2acf991c57b6f4bb",
+      "page_count": 1,
+      "detected_type": "plumber_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "plumber",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/plumber_report.pdf"
+    },
+    {
+      "document_id": "DOC-S01-3",
+      "claim_id": "CLM-0001",
+      "filename": "surveyor_report.pdf",
+      "sha256": "e33ae1df357b114134fda43e3ecb5344c194137e0e283d9e493b309e89274b7b",
+      "page_count": 1,
+      "detected_type": "surveyor_report",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "surveyor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/surveyor_report.pdf"
+    },
+    {
+      "document_id": "DOC-S01-4",
+      "claim_id": "CLM-0001",
+      "filename": "estimate.pdf",
+      "sha256": "4a37437631d8fdd24fd48781bc86740606d5938aa6963157842989e01473b466",
+      "page_count": 1,
+      "detected_type": "estimate",
+      "type_confidence": 0.95,
+      "type_evidence_snippet": null,
+      "source_channel": null,
+      "uploaded_by": "contractor",
+      "uploaded_at": null,
+      "needs_ocr": false,
+      "blob_path": "data/synthetic/claims/CLM-0001/estimate.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-S01-01",
+      "claim_id": "CLM-0001",
+      "proposition": "Reported date of loss is 14 March 2026",
+      "source_document_id": "DOC-S01-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Date of loss: 14 March 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-02",
+      "claim_id": "CLM-0001",
+      "proposition": "Claimant reports the kitchen supply pipe burst suddenly",
+      "source_document_id": "DOC-S01-1",
+      "page": 1,
+      "region": null,
+      "evidence_text": "the kitchen supply pipe burst suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-03",
+      "claim_id": "CLM-0001",
+      "proposition": "Significant corrosion was present at the joint of the kitchen supply pipe",
+      "source_document_id": "DOC-S01-2",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Significant corrosion was found at the joint of the kitchen supply pipe",
+      "evidence_type": "contradicting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-04",
+      "claim_id": "CLM-0001",
+      "proposition": "Moisture was elevated in the kitchen, hallway and adjoining bedroom wall",
+      "source_document_id": "DOC-S01-3",
+      "page": 1,
+      "region": null,
+      "evidence_text": "elevated in the kitchen, the hallway and the adjoining bedroom wall",
+      "evidence_type": "contradicting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-EXTENT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-05",
+      "claim_id": "CLM-0001",
+      "proposition": "Contractor estimate total is INR 180,000",
+      "source_document_id": "DOC-S01-4",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Total: INR 180,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S01-06",
+      "claim_id": "CLM-0001",
+      "proposition": "Estimate scope covers only the kitchen and hallway",
+      "source_document_id": "DOC-S01-4",
+      "page": 1,
+      "region": null,
+      "evidence_text": "Scope: kitchen and hallway only",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-EXTENT",
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "image_findings": []
+}

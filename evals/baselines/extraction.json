@@ -1,0 +1,461 @@
+{
+  "entries": [
+    {
+      "label": "v1 initial parsers and thresholds (before any tuning)",
+      "date": "2026-11-25",
+      "signals_sha": "4e63a6e8bfdb",
+      "splits": {
+        "corpus": {
+          "docs": 19,
+          "field_score": 1.0,
+          "expected_fields": 60,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "dev": {
+          "docs": 8,
+          "field_score": 1.0,
+          "expected_fields": 27,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 0.8,
+          "table_failures": [
+            "d05.table.status: expected 'reconciled', got 'mismatch'",
+            "d05.table.items: expected [['Labour', '20000']], got [['Invoice number', '5521'], ['Labour', '20000']]"
+          ],
+          "required_failures": []
+        },
+        "holdout": {
+          "docs": 26,
+          "field_score": 1.0,
+          "expected_fields": 50,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 0.8571,
+          "flag_missed": [
+            "h01.loss_date: expected True, got False"
+          ],
+          "table_score": 0.963,
+          "table_failures": [
+            "h18.table.items: expected [['Plumbing work', '30000'], ['Tiling', '12000']], got [['Invoice number', '7714'], ['Plumbing work', '30000'], ['Tiling', '12000']]"
+          ],
+          "required_failures": []
+        }
+      }
+    },
+    {
+      "label": "v2 FIRST MEASUREMENT on the unseen fresh split: 87.0% fields, 2 SILENT wrong (date range and amount range read as a single value)",
+      "date": "2026-11-25",
+      "signals_sha": "96f939829152",
+      "splits": {
+        "corpus": {
+          "docs": 19,
+          "field_score": 1.0,
+          "expected_fields": 60,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "dev": {
+          "docs": 8,
+          "field_score": 1.0,
+          "expected_fields": 27,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh": {
+          "docs": 18,
+          "field_score": 0.8696,
+          "expected_fields": 23,
+          "wrong_values": [
+            "f01.loss_date: expected None, got '2026-05-05' (SILENT)",
+            "f02.estimated_loss: expected None, got '45000' (SILENT)"
+          ],
+          "silent_wrong": 2,
+          "missed": [
+            "f08.total_amount: expected '11800', got None"
+          ],
+          "spurious": [],
+          "flag_recall": 0.5,
+          "flag_missed": [
+            "f01.loss_date: expected True, got False",
+            "f02.estimated_loss: expected True, got False"
+          ],
+          "table_score": 0.8125,
+          "table_failures": [
+            "f08.table.status: expected 'reconciled', got 'no_total'",
+            "f08.table.items: expected [['Plumbing', '10000']], got [['Plumbing', '10000'], ['Total (incl. GST)', '11800']]",
+            "f08.table.total: expected '11800', got None"
+          ],
+          "required_failures": []
+        },
+        "holdout": {
+          "docs": 26,
+          "field_score": 1.0,
+          "expected_fields": 50,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        }
+      }
+    },
+    {
+      "label": "v3 FIRST MEASUREMENT on the unseen fresh3 split: 64.3% fields, 2 SILENT wrong (thousands written as k read as units) + 3 total labels not recognised",
+      "date": "2026-11-25",
+      "signals_sha": "807d75517191",
+      "splits": {
+        "corpus": {
+          "docs": 19,
+          "field_score": 1.0,
+          "expected_fields": 60,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "dev": {
+          "docs": 8,
+          "field_score": 1.0,
+          "expected_fields": 27,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 23,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh2": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 19,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh3": {
+          "docs": 14,
+          "field_score": 0.6429,
+          "expected_fields": 14,
+          "wrong_values": [
+            "k04.estimated_loss: expected '40000', got '40' (SILENT)",
+            "k05.estimated_loss: expected None, got '40' (SILENT)"
+          ],
+          "silent_wrong": 2,
+          "missed": [
+            "k06.total_amount: expected '9000', got None",
+            "k07.total_amount: expected '5900', got None",
+            "k08.total_amount: expected '9000', got None"
+          ],
+          "spurious": [],
+          "flag_recall": 0.8,
+          "flag_missed": [
+            "k05.estimated_loss: expected True, got False"
+          ],
+          "table_score": 0.2308,
+          "table_failures": [
+            "k06.table.status: expected 'reconciled', got 'no_total'",
+            "k06.table.items: expected [['Repairs', '9000']], got [['Repairs', '9000'], ['Total Cost', '9000']]",
+            "k06.table.total: expected '9000', got None",
+            "k07.table.status: expected 'reconciled', got 'no_total'",
+            "k07.table.items: expected [['Repairs', '5000']], got [['Repairs', '5000'], ['Total Amount Due', '5900']]",
+            "k07.table.total: expected '5900', got None",
+            "k08.table.status: expected 'reconciled', got 'no_total'",
+            "k08.table.items: expected [['Repairs', '9000']], got [['Repairs', '9000'], ['Amount payable', '9000']]",
+            "k08.table.total: expected '9000', got None",
+            "k10.table.status: expected 'reconciled', got 'mismatch'"
+          ],
+          "required_failures": []
+        },
+        "holdout": {
+          "docs": 26,
+          "field_score": 1.0,
+          "expected_fields": 50,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        }
+      }
+    },
+    {
+      "label": "v4 FIRST MEASUREMENT on the unseen fresh4 split: 82.3% fields, 0 SILENT wrong (3 safe misses: 'of' in a date, currency after the number, '(approx)' in a label)",
+      "date": "2026-11-25",
+      "signals_sha": "7721314a48c2",
+      "splits": {
+        "corpus": {
+          "docs": 19,
+          "field_score": 1.0,
+          "expected_fields": 60,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "dev": {
+          "docs": 8,
+          "field_score": 1.0,
+          "expected_fields": 27,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 23,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh2": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 19,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh3": {
+          "docs": 14,
+          "field_score": 1.0,
+          "expected_fields": 14,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh4": {
+          "docs": 17,
+          "field_score": 0.8235,
+          "expected_fields": 17,
+          "wrong_values": [
+            "m03.loss_date: expected '2026-06-03', got None [unparseable] (flagged)",
+            "m08.estimated_loss: expected '60000', got None [unparseable] (flagged)"
+          ],
+          "silent_wrong": 0,
+          "missed": [
+            "m12.loss_date: expected '2026-06-03', got None"
+          ],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "holdout": {
+          "docs": 26,
+          "field_score": 1.0,
+          "expected_fields": 50,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        }
+      }
+    },
+    {
+      "label": "v4 FINAL: all splits tuned-on (do NOT read these as generalisation: see the FIRST MEASUREMENT entries: unseen 87.0%, 84.2%, 64.3%, 82.3%, silent wrong 2, 3, 2, 0)",
+      "date": "2026-11-25",
+      "signals_sha": "7721314a48c2",
+      "splits": {
+        "corpus": {
+          "docs": 19,
+          "field_score": 1.0,
+          "expected_fields": 60,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "dev": {
+          "docs": 8,
+          "field_score": 1.0,
+          "expected_fields": 27,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 23,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh2": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 19,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh3": {
+          "docs": 14,
+          "field_score": 1.0,
+          "expected_fields": 14,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh4": {
+          "docs": 17,
+          "field_score": 1.0,
+          "expected_fields": 17,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "holdout": {
+          "docs": 26,
+          "field_score": 1.0,
+          "expected_fields": 50,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        }
+      }
+    }
+  ]
+}

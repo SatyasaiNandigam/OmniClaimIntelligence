@@ -1,0 +1,74 @@
+{
+  "claim_id": "CLM-0005",
+  "scenario_id": "S-05",
+  "synthetic": true,
+  "license": "CC0-1.0 - drawn by scripts/generate_synthetic_docs.py, no third-party imagery",
+  "documents": [
+    {
+      "document_id": "DOC-S05-1",
+      "filename": "fnol.pdf",
+      "doc_type": "fnol",
+      "page_count": 1,
+      "sha256": "8083ae2beffa0ea17ef6bd36ed316cacaf987d35ce7f507cd36d79b4bf5642e6",
+      "text_sha256": "bde27e613042b648e4a298035e09158bb0b83a7f551bb16ee4748b9f481886d4",
+      "received_on": "2026-06-11",
+      "uploaded_by": "claimant",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S05-2",
+      "filename": "plumber_report.pdf",
+      "doc_type": "plumber_report",
+      "page_count": 1,
+      "sha256": "6edd824c89d2a0ed5ff3ba06e535c24bed40ffb351ba655ca545ccfd84d4596e",
+      "text_sha256": "0d3c3659efe0caad872ebee447636b5dfbcb4f85806bebf78cb9eb730de8168b",
+      "received_on": "2026-06-12",
+      "uploaded_by": "plumber",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S05-3",
+      "filename": "surveyor_report.pdf",
+      "doc_type": "surveyor_report",
+      "page_count": 1,
+      "sha256": "81256702f0a172ccc75da36f00146a8e6a7621ed42dbe6fc33a1c6e1ff4ff325",
+      "text_sha256": "9e30df9740507ac47ed5c1610821831da10ec6df81c9fd986de3c7af47ad6429",
+      "received_on": "2026-06-14",
+      "uploaded_by": "surveyor",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S05-4",
+      "filename": "estimate.pdf",
+      "doc_type": "estimate",
+      "page_count": 1,
+      "sha256": "1c2be7d65af91664e3a568f21e1b69642645af8fd46889a258ae354d83bab4bb",
+      "text_sha256": "733376dfd401ce4d366cfa04305aea833474e3876f7222e1eac4ab191e676d8a",
+      "received_on": "2026-06-14",
+      "uploaded_by": "contractor",
+      "in_scenario": true
+    },
+    {
+      "document_id": "DOC-S05-5",
+      "filename": "policy_schedule.pdf",
+      "doc_type": "policy_schedule",
+      "page_count": 1,
+      "sha256": "fc44528a63e6b724d4370a83d345d513bac27d1286b7bf5fdc0654b01d387369",
+      "text_sha256": "8d83c0eb83f9e574f33f41acd26605a47c81e2055b23487584a8f35056e96467",
+      "received_on": "2026-06-11",
+      "uploaded_by": "claimant",
+      "in_scenario": true
+    }
+  ],
+  "variants": [],
+  "photos": [
+    {
+      "file": "photos/utility_room_stain.jpg",
+      "sha256": "7e6e63554818cd32f7e92ec3d4918183273a6d0c032ef41093e2956775b4c225",
+      "in_scenario": false,
+      "role": "good",
+      "shows": "stain in utility room",
+      "expected_quality_verdict": "usable"
+    }
+  ]
+}

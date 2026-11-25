@@ -1,0 +1,448 @@
+# SYNTHETIC scenarios S-01..S-05 (BUILD_PLAN section 12). Ground truth: data/ground_truth/<id>.json
+schema_version: 1
+synthetic: true
+note: ALL DATA IS SYNTHETIC. Document page text is the source for scripts/generate_synthetic_docs.py (T1.3) and for the verbatim
+  evidence_text check on ground-truth facts. All money values are SAMPLE.
+clause_catalogue:
+- clause_id: CL-DEF-SUDDEN
+  clause_type: definition
+  document: base_wording
+  purpose: Defines 'sudden and accidental' (abrupt, unforeseen, not gradual).
+- clause_id: CL-COV-WATER
+  clause_type: coverage
+  document: base_wording
+  purpose: Covers escape of water from fixed pipes/tanks, provided it is sudden and accidental.
+- clause_id: CL-EXC-GRADUAL
+  clause_type: exclusion
+  document: base_wording
+  purpose: Excludes gradual leakage, seepage, corrosion and deterioration over time.
+- clause_id: CL-COND-PERIOD
+  clause_type: condition
+  document: base_wording
+  purpose: Cover applies only for loss occurring within the period of insurance.
+- clause_id: CL-LIM-BUILDING
+  clause_type: limit
+  document: base_wording
+  purpose: Building sum insured / limit of liability (SAMPLE INR 2,000,000).
+- clause_id: CL-DED-STD
+  clause_type: deductible
+  document: base_wording
+  purpose: Standard deductible per claim (SAMPLE INR 10,000).
+- clause_id: CL-SUB-WATER-E1
+  clause_type: sublimit
+  document: END-01
+  purpose: Water-damage sublimit (SAMPLE INR 100,000). Modifies CL-COV-WATER.
+- clause_id: CL-SUB-WATER-E2
+  clause_type: sublimit
+  document: END-02
+  purpose: Raises water-damage sublimit (SAMPLE INR 200,000) effective 2026-02-01. Modifies CL-SUB-WATER-E1.
+scenarios:
+- id: S-01
+  title: 'Running example: sudden burst claimed, corrosion and multi-area moisture found'
+  tests:
+  - contradiction
+  - missing start date
+  - insufficient extent
+  - sublimit endorsement
+  - counterfactuals
+  claim_id: CLM-0001
+  claim:
+    claimant_name: SYNTHETIC Claimant A
+    policy_ref: POL-1001
+    loss_date: '2026-03-14'
+    loss_type: water_damage
+    loss_description: Kitchen supply pipe burst suddenly
+    channel: portal
+  pas_expectation:
+    policy: POL-1001
+    status: in_force
+    period:
+    - '2026-01-01'
+    - '2026-12-31'
+    endorsements:
+    - END-01
+  documents:
+  - document_id: DOC-S01-1
+    filename: fnol.pdf
+    doc_type: fnol
+    received_on: '2026-03-16'
+    uploaded_by: claimant
+    pages:
+    - |
+      FIRST NOTICE OF LOSS - SYNTHETIC DOCUMENT
+      Claimant: SYNTHETIC Claimant A
+      Policy number: POL-1001
+      Date of loss: 14 March 2026
+      Description: On 14 March 2026 the kitchen supply pipe burst suddenly and water flooded the kitchen and hallway.
+      Estimated loss: INR 180,000
+  - document_id: DOC-S01-2
+    filename: plumber_report.pdf
+    doc_type: plumber_report
+    received_on: '2026-03-17'
+    uploaded_by: plumber
+    pages:
+    - |
+      PLUMBER'S REPORT - SYNTHETIC DOCUMENT
+      Inspection date: 16 March 2026
+      Findings: Significant corrosion was found at the joint of the kitchen supply pipe. The joint failed at the corroded section.
+      Joint replaced and supply restored on 16 March 2026.
+  - document_id: DOC-S01-3
+    filename: surveyor_report.pdf
+    doc_type: surveyor_report
+    received_on: '2026-03-19'
+    uploaded_by: surveyor
+    pages:
+    - |
+      SURVEYOR'S REPORT - SYNTHETIC DOCUMENT
+      Site visit: 18 March 2026
+      Moisture readings were elevated in the kitchen, the hallway and the adjoining bedroom wall.
+      Cost of repair has not been assessed.
+  - document_id: DOC-S01-4
+    filename: estimate.pdf
+    doc_type: estimate
+    received_on: '2026-03-20'
+    uploaded_by: contractor
+    pages:
+    - |
+      REPAIR ESTIMATE - SYNTHETIC DOCUMENT
+      Kitchen floor and cabinets: INR 110,000
+      Hallway flooring and plaster: INR 70,000
+      Total: INR 180,000
+      Scope: kitchen and hallway only
+  events:
+  - 'on': '2026-03-14'
+    event: loss_occurred
+  - 'on': '2026-03-16'
+    event: fnol_submitted
+    channel: portal
+    document_id: DOC-S01-1
+  - 'on': '2026-03-17'
+    event: document_received
+    document_id: DOC-S01-2
+  - 'on': '2026-03-19'
+    event: document_received
+    document_id: DOC-S01-3
+  - 'on': '2026-03-20'
+    event: document_received
+    document_id: DOC-S01-4
+- id: S-02
+  title: Clean, consistent sudden burst with complete documents
+  tests:
+  - happy path
+  - simple tier
+  - calculation trace
+  - human approval still required
+  claim_id: CLM-0002
+  claim:
+    claimant_name: SYNTHETIC Claimant B
+    policy_ref: POL-1001
+    loss_date: '2026-05-02'
+    loss_type: water_damage
+    loss_description: Pipe fitting under kitchen sink split suddenly
+    channel: portal
+  pas_expectation:
+    policy: POL-1001
+    status: in_force
+    period:
+    - '2026-01-01'
+    - '2026-12-31'
+    endorsements:
+    - END-01
+  documents:
+  - document_id: DOC-S02-1
+    filename: fnol.pdf
+    doc_type: fnol
+    received_on: '2026-05-03'
+    uploaded_by: claimant
+    pages:
+    - |
+      FIRST NOTICE OF LOSS - SYNTHETIC DOCUMENT
+      Claimant: SYNTHETIC Claimant B
+      Policy number: POL-1001
+      Date of loss: 2 May 2026
+      Description: On 2 May 2026 the pipe fitting under the kitchen sink split suddenly and water spread across the kitchen floor.
+      Estimated loss: INR 98,000
+  - document_id: DOC-S02-2
+    filename: plumber_report.pdf
+    doc_type: plumber_report
+    received_on: '2026-05-04'
+    uploaded_by: plumber
+    pages:
+    - |
+      PLUMBER'S REPORT - SYNTHETIC DOCUMENT
+      Inspection date: 3 May 2026
+      Findings: The pipe fitting split suddenly at a manufacturing flaw. The fitting is less than two years old. No corrosion, prior leakage or staining was observed.
+      Fitting replaced on 3 May 2026.
+  - document_id: DOC-S02-3
+    filename: surveyor_report.pdf
+    doc_type: surveyor_report
+    received_on: '2026-05-06'
+    uploaded_by: surveyor
+    pages:
+    - |
+      SURVEYOR'S REPORT - SYNTHETIC DOCUMENT
+      Site visit: 5 May 2026
+      Moisture was confined to the kitchen floor and the lower kitchen wall. No moisture was found in other rooms.
+      Assessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss.
+  - document_id: DOC-S02-4
+    filename: estimate.pdf
+    doc_type: estimate
+    received_on: '2026-05-06'
+    uploaded_by: contractor
+    pages:
+    - |
+      REPAIR ESTIMATE - SYNTHETIC DOCUMENT
+      Floor repair: INR 60,000
+      Wall plaster and paint: INR 30,000
+      Cabinet finish upgrade: INR 8,000
+      Total: INR 98,000
+  events:
+  - 'on': '2026-05-02'
+    event: loss_occurred
+  - 'on': '2026-05-03'
+    event: fnol_submitted
+    channel: portal
+    document_id: DOC-S02-1
+  - 'on': '2026-05-04'
+    event: document_received
+    document_id: DOC-S02-2
+  - 'on': '2026-05-06'
+    event: document_received
+    document_id: DOC-S02-3
+  - 'on': '2026-05-06'
+    event: document_received
+    document_id: DOC-S02-4
+- id: S-03
+  title: Policy lapsed three days before the loss
+  tests:
+  - snapshot / PAS status
+  - no coverage reasoning
+  - human route
+  claim_id: CLM-0003
+  claim:
+    claimant_name: SYNTHETIC Claimant C
+    policy_ref: POL-1003
+    loss_date: '2026-02-13'
+    loss_type: water_damage
+    loss_description: Pipe burst in bathroom
+    channel: call_centre
+  pas_expectation:
+    policy: POL-1003
+    status: lapsed
+    period:
+    - '2025-02-11'
+    - '2026-02-10'
+    lapsed_on: '2026-02-10'
+    endorsements: []
+  documents:
+  - document_id: DOC-S03-1
+    filename: fnol.pdf
+    doc_type: fnol
+    received_on: '2026-02-14'
+    uploaded_by: claimant
+    pages:
+    - |
+      FIRST NOTICE OF LOSS - SYNTHETIC DOCUMENT
+      Claimant: SYNTHETIC Claimant C
+      Policy number: POL-1003
+      Date of loss: 13 February 2026
+      Description: On 13 February 2026 a pipe burst in the bathroom and water damaged the floor.
+      Estimated loss: INR 60,000
+  events:
+  - 'on': '2026-02-10'
+    event: policy_lapsed
+  - 'on': '2026-02-13'
+    event: loss_occurred
+  - 'on': '2026-02-14'
+    event: fnol_submitted
+    channel: call_centre
+    document_id: DOC-S03-1
+- id: S-04
+  title: Two endorsements with different effective dates; loss falls between them
+  tests:
+  - precedence
+  - as-of date
+  - sublimit cap
+  - citation of both endorsements
+  claim_id: CLM-0004
+  claim:
+    claimant_name: SYNTHETIC Claimant D
+    policy_ref: POL-1004
+    loss_date: '2026-01-20'
+    loss_type: water_damage
+    loss_description: Flexible hose under bathroom basin burst
+    channel: portal
+  pas_expectation:
+    policy: POL-1004
+    status: in_force
+    period:
+    - '2025-12-01'
+    - '2026-11-30'
+    endorsements:
+    - id: END-01
+      effective_from: '2025-12-01'
+    - id: END-02
+      effective_from: '2026-02-01'
+  documents:
+  - document_id: DOC-S04-1
+    filename: fnol.pdf
+    doc_type: fnol
+    received_on: '2026-01-21'
+    uploaded_by: claimant
+    pages:
+    - |
+      FIRST NOTICE OF LOSS - SYNTHETIC DOCUMENT
+      Claimant: SYNTHETIC Claimant D
+      Policy number: POL-1004
+      Date of loss: 20 January 2026
+      Description: On 20 January 2026 a flexible hose under the bathroom basin burst suddenly and water flooded the bathroom and the corridor.
+      Estimated loss: INR 150,000
+  - document_id: DOC-S04-2
+    filename: plumber_report.pdf
+    doc_type: plumber_report
+    received_on: '2026-01-22'
+    uploaded_by: plumber
+    pages:
+    - |
+      PLUMBER'S REPORT - SYNTHETIC DOCUMENT
+      Inspection date: 21 January 2026
+      Findings: The flexible hose ruptured suddenly. The hose is less than one year old. No corrosion or prior leakage was observed.
+  - document_id: DOC-S04-3
+    filename: surveyor_report.pdf
+    doc_type: surveyor_report
+    received_on: '2026-01-24'
+    uploaded_by: surveyor
+    pages:
+    - |
+      SURVEYOR'S REPORT - SYNTHETIC DOCUMENT
+      Site visit: 23 January 2026
+      Moisture was confined to the bathroom and the corridor.
+      Assessed repair cost: INR 150,000. No part of the assessed cost is for upgrades.
+  - document_id: DOC-S04-4
+    filename: estimate.pdf
+    doc_type: estimate
+    received_on: '2026-01-24'
+    uploaded_by: contractor
+    pages:
+    - |
+      REPAIR ESTIMATE - SYNTHETIC DOCUMENT
+      Bathroom repairs: INR 90,000
+      Corridor repairs: INR 60,000
+      Total: INR 150,000
+  events:
+  - 'on': '2026-01-20'
+    event: loss_occurred
+  - 'on': '2026-01-21'
+    event: fnol_submitted
+    channel: portal
+    document_id: DOC-S04-1
+  - 'on': '2026-01-22'
+    event: document_received
+    document_id: DOC-S04-2
+  - 'on': '2026-01-24'
+    event: document_received
+    document_id: DOC-S04-3
+  - 'on': '2026-01-24'
+    event: document_received
+    document_id: DOC-S04-4
+- id: S-05
+  title: Endorsement referenced in the schedule but missing from the upload
+  tests:
+  - missing contract data
+  - abstain on affected clause
+  - request endorsement
+  claim_id: CLM-0005
+  claim:
+    claimant_name: SYNTHETIC Claimant E
+    policy_ref: POL-1005
+    loss_date: '2026-06-10'
+    loss_type: water_damage
+    loss_description: Pipe coupling in utility room split suddenly
+    channel: email
+  pas_expectation:
+    policy: POL-1005
+    status: in_force
+    period:
+    - '2026-01-01'
+    - '2026-12-31'
+    endorsements:
+    - END-01
+    endorsement_documents_available: []
+  documents:
+  - document_id: DOC-S05-1
+    filename: fnol.pdf
+    doc_type: fnol
+    received_on: '2026-06-11'
+    uploaded_by: claimant
+    pages:
+    - |
+      FIRST NOTICE OF LOSS - SYNTHETIC DOCUMENT
+      Claimant: SYNTHETIC Claimant E
+      Policy number: POL-1005
+      Date of loss: 10 June 2026
+      Description: On 10 June 2026 the pipe coupling in the utility room split suddenly and water spread to the adjoining passage.
+      Estimated loss: INR 110,000
+  - document_id: DOC-S05-2
+    filename: plumber_report.pdf
+    doc_type: plumber_report
+    received_on: '2026-06-12'
+    uploaded_by: plumber
+    pages:
+    - |
+      PLUMBER'S REPORT - SYNTHETIC DOCUMENT
+      Inspection date: 11 June 2026
+      Findings: The pipe coupling split suddenly. No corrosion or prior leakage was observed.
+  - document_id: DOC-S05-3
+    filename: surveyor_report.pdf
+    doc_type: surveyor_report
+    received_on: '2026-06-14'
+    uploaded_by: surveyor
+    pages:
+    - |
+      SURVEYOR'S REPORT - SYNTHETIC DOCUMENT
+      Site visit: 13 June 2026
+      Moisture was confined to the utility room and the adjoining passage.
+      Assessed repair cost: INR 110,000. No part of the assessed cost is for upgrades.
+  - document_id: DOC-S05-4
+    filename: estimate.pdf
+    doc_type: estimate
+    received_on: '2026-06-14'
+    uploaded_by: contractor
+    pages:
+    - |
+      REPAIR ESTIMATE - SYNTHETIC DOCUMENT
+      Utility room repairs: INR 70,000
+      Passage repairs: INR 40,000
+      Total: INR 110,000
+  - document_id: DOC-S05-5
+    filename: policy_schedule.pdf
+    doc_type: policy_schedule
+    received_on: '2026-06-11'
+    uploaded_by: claimant
+    pages:
+    - |
+      POLICY SCHEDULE - SYNTHETIC DOCUMENT
+      Policy number: POL-1005
+      Period of insurance: 1 January 2026 to 31 December 2026
+      Endorsements attached: END-01 Water Damage Sublimit Endorsement
+      Building limit: INR 2,000,000
+      Standard deductible: INR 10,000
+  events:
+  - 'on': '2026-06-10'
+    event: loss_occurred
+  - 'on': '2026-06-11'
+    event: fnol_submitted
+    channel: email
+    document_id: DOC-S05-1
+  - 'on': '2026-06-11'
+    event: document_received
+    document_id: DOC-S05-5
+  - 'on': '2026-06-12'
+    event: document_received
+    document_id: DOC-S05-2
+  - 'on': '2026-06-14'
+    event: document_received
+    document_id: DOC-S05-3
+  - 'on': '2026-06-14'
+    event: document_received
+    document_id: DOC-S05-4

@@ -1,0 +1,7 @@
+{
+  "not_in_force": {
+    "policy_id": "POL-1003",
+    "loss_date": "2026-02-13",
+    "reason": "PAS status 'lapsed' since 2026-02-10; loss on 2026-02-13"
+  }
+}

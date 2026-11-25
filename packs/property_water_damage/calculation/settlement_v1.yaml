@@ -1,0 +1,25 @@
+# SAMPLE - not insurer policy. Step ORDER is the open domain question (see docs/assumptions.md, Q-S1..Q-S4).
+# The engine (settlement/engine.py) interprets these steps in order using Decimal only; nothing here is code.
+#
+# Input names are produced by the Settlement agent (LLM extracts + cites; the engine computes):
+#   assessed_covered_loss      surveyor-assessed loss before exclusions
+#   non_covered_items_total    items that are not covered (e.g. upgrades)
+#   applicable_deductible      from the policy snapshot (standard or endorsement deductible)
+#   water_damage_sublimit      from the in-force water sublimit endorsement
+#   remaining_policy_limit     building limit minus prior payments against the limit
+#   prior_payments_total       payments already made on this claim
+#
+# `optional: true` means "skip this step when the key is absent". It must ONLY be used when the policy genuinely has no such
+# limit. If a sublimit is referenced by the schedule but its wording is unavailable (scenario S-05) the Settlement agent
+# must report the input as MISSING, not omit it - otherwise the payable could silently exceed the real sublimit.
+version: "sample-1.0"
+currency: INR
+rounding: {mode: half_up, places: 0}   # SAMPLE: whole rupees
+steps:
+  - {id: start,               op: set,      from: assessed_covered_loss}
+  - {id: less_non_covered,    op: subtract, from: non_covered_items_total}
+  - {id: less_deductible,     op: subtract, from: applicable_deductible}
+  - {id: apply_sublimit,      op: cap,      from: water_damage_sublimit, optional: true}
+  - {id: cap_remaining_limit, op: cap,      from: remaining_policy_limit}
+  - {id: less_prior_payments, op: subtract, from: prior_payments_total}
+  - {id: floor_zero,          op: floor,    value: 0}   # SAMPLE: a payable is never negative

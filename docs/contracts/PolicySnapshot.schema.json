@@ -1,0 +1,273 @@
+{
+  "$defs": {
+    "ClauseRelation": {
+      "additionalProperties": false,
+      "properties": {
+        "relation": {
+          "enum": [
+            "modifies",
+            "excepts",
+            "defines",
+            "conditions"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "source_clause_id": {
+          "title": "Source Clause Id",
+          "type": "string"
+        },
+        "target_clause_id": {
+          "title": "Target Clause Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_clause_id",
+        "target_clause_id",
+        "relation"
+      ],
+      "title": "ClauseRelation",
+      "type": "object"
+    },
+    "Endorsement": {
+      "additionalProperties": false,
+      "properties": {
+        "clause_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Clause Ids",
+          "type": "array"
+        },
+        "effective_from": {
+          "format": "date",
+          "title": "Effective From",
+          "type": "string"
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective To"
+        },
+        "endorsement_id": {
+          "title": "Endorsement Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "endorsement_id",
+        "title",
+        "effective_from"
+      ],
+      "title": "Endorsement",
+      "type": "object"
+    },
+    "PolicyClause": {
+      "additionalProperties": false,
+      "properties": {
+        "clause_id": {
+          "title": "Clause Id",
+          "type": "string"
+        },
+        "clause_type": {
+          "enum": [
+            "coverage",
+            "exclusion",
+            "definition",
+            "condition",
+            "limit",
+            "sublimit",
+            "deductible"
+          ],
+          "title": "Clause Type",
+          "type": "string"
+        },
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "heading": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Heading"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "span": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Span"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "clause_id",
+        "clause_type",
+        "text",
+        "document"
+      ],
+      "title": "PolicyClause",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "clauses": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/PolicyClause"
+      },
+      "title": "Clauses",
+      "type": "array"
+    },
+    "effective_from": {
+      "format": "date",
+      "title": "Effective From",
+      "type": "string"
+    },
+    "effective_to": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective To"
+    },
+    "endorsements": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Endorsement"
+      },
+      "title": "Endorsements",
+      "type": "array"
+    },
+    "mock": {
+      "default": true,
+      "title": "Mock",
+      "type": "boolean"
+    },
+    "pas_status": {
+      "default": "in_force",
+      "enum": [
+        "in_force",
+        "lapsed",
+        "cancelled",
+        "reinstated"
+      ],
+      "title": "Pas Status",
+      "type": "string"
+    },
+    "policy_id": {
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "precedence_rules": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Precedence Rules",
+      "type": "array"
+    },
+    "relations": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ClauseRelation"
+      },
+      "title": "Relations",
+      "type": "array"
+    },
+    "retrieved_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retrieved At"
+    },
+    "source_system_response_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source System Response Ref"
+    },
+    "version": {
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "policy_id",
+    "version",
+    "effective_from"
+  ],
+  "title": "PolicySnapshot",
+  "type": "object"
+}

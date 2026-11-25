@@ -1,0 +1,57 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "correlation_id": {
+      "default": "",
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "mock": {
+      "default": true,
+      "title": "Mock",
+      "type": "boolean"
+    },
+    "recon_id": {
+      "title": "Recon Id",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retrieved At"
+    },
+    "source_system": {
+      "default": "",
+      "title": "Source System",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "accepted",
+        "duplicate_ignored",
+        "rejected"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "recon_id",
+    "status",
+    "idempotency_key"
+  ],
+  "title": "ReconAck",
+  "type": "object"
+}

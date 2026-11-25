@@ -1,0 +1,14 @@
+{
+  "routing": {
+    "tier": "complex",
+    "reason_codes": [
+      "CONTRADICTION_HIGH",
+      "EVIDENCE_GAP_MATERIAL",
+      "COVERAGE_UNRESOLVED"
+    ],
+    "required_approver_role": "senior_adjuster",
+    "rules_version": "sample-2"
+  },
+  "human_approval_required": true,
+  "resolution_status": "awaiting_evidence"
+}

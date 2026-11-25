@@ -1,0 +1,370 @@
+{
+  "scenario_id": "S-05",
+  "claim_id": "CLM-0005",
+  "synthetic": true,
+  "facts": [
+    {
+      "fact_id": "F-S05-01",
+      "claim_id": "CLM-0005",
+      "proposition": "Reported date of loss is 10 June 2026",
+      "source_document_id": "DOC-S05-1",
+      "page": 1,
+      "evidence_text": "Date of loss: 10 June 2026",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-INFORCE"
+      ],
+      "extraction_confidence": 0.97,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-02",
+      "claim_id": "CLM-0005",
+      "proposition": "Claimant reports the coupling split suddenly",
+      "source_document_id": "DOC-S05-1",
+      "page": 1,
+      "evidence_text": "the pipe coupling in the utility room split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-03",
+      "claim_id": "CLM-0005",
+      "proposition": "Plumber reports the coupling split suddenly",
+      "source_document_id": "DOC-S05-2",
+      "page": 1,
+      "evidence_text": "The pipe coupling split suddenly",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-04",
+      "claim_id": "CLM-0005",
+      "proposition": "Plumber found no corrosion or prior leakage",
+      "source_document_id": "DOC-S05-2",
+      "page": 1,
+      "evidence_text": "No corrosion or prior leakage was observed",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-SUDDEN",
+        "Q-START"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-05",
+      "claim_id": "CLM-0005",
+      "proposition": "Moisture was confined to utility room and passage",
+      "source_document_id": "DOC-S05-3",
+      "page": 1,
+      "evidence_text": "Moisture was confined to the utility room and the adjoining passage",
+      "evidence_type": "supporting",
+      "related_question_ids": [
+        "Q-EXTENT"
+      ],
+      "extraction_confidence": 0.9,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-06",
+      "claim_id": "CLM-0005",
+      "proposition": "Surveyor-assessed repair cost is INR 110,000",
+      "source_document_id": "DOC-S05-3",
+      "page": 1,
+      "evidence_text": "Assessed repair cost: INR 110,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-07",
+      "claim_id": "CLM-0005",
+      "proposition": "Estimate total reconciles to the surveyor assessment",
+      "source_document_id": "DOC-S05-4",
+      "page": 1,
+      "evidence_text": "Total: INR 110,000",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-AMOUNT"
+      ],
+      "extraction_confidence": 0.95,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    },
+    {
+      "fact_id": "F-S05-08",
+      "claim_id": "CLM-0005",
+      "proposition": "Schedule references endorsement END-01",
+      "source_document_id": "DOC-S05-5",
+      "page": 1,
+      "evidence_text": "Endorsements attached: END-01 Water Damage Sublimit Endorsement",
+      "evidence_type": "neutral",
+      "related_question_ids": [
+        "Q-SUBLIMIT"
+      ],
+      "extraction_confidence": 0.96,
+      "verification_status": "unverified",
+      "extractor_version": "ground-truth"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "Q-INFORCE",
+      "text": "Was the policy in force on the date of loss?",
+      "category": "coverage_condition",
+      "status": "established",
+      "establishing_criteria": [
+        "PAS policy status is in force on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "linked_fact_ids": [
+        "F-S05-01"
+      ],
+      "expected_answer": "Policy in force on 2026-06-10 (PAS)."
+    },
+    {
+      "question_id": "Q-SUDDEN",
+      "text": "Was the water damage sudden and accidental rather than gradual?",
+      "category": "cause",
+      "status": "established",
+      "establishing_criteria": [
+        "Technical statement of the failure mechanism by a qualified person",
+        "Evidence that the damage began at or immediately before the reported loss date"
+      ],
+      "linked_clause_ids": [
+        "CL-COV-WATER",
+        "CL-DEF-SUDDEN"
+      ],
+      "linked_fact_ids": [
+        "F-S05-02",
+        "F-S05-03",
+        "F-S05-04"
+      ],
+      "expected_answer": "Sudden split, no corrosion."
+    },
+    {
+      "question_id": "Q-START",
+      "text": "When did the leak or damage begin?",
+      "category": "timing",
+      "status": "established",
+      "establishing_criteria": [
+        "Technical evidence of when the leak or corrosion began",
+        "Maintenance or inspection record"
+      ],
+      "linked_clause_ids": [
+        "CL-EXC-GRADUAL"
+      ],
+      "linked_fact_ids": [
+        "F-S05-03",
+        "F-S05-04"
+      ],
+      "expected_answer": "Split on the reported loss date."
+    },
+    {
+      "question_id": "Q-EXTENT",
+      "text": "Which areas were affected by the reported event?",
+      "category": "extent",
+      "status": "established",
+      "establishing_criteria": [
+        "Surveyor-confirmed list of affected areas",
+        "Each affected area linked to the reported event"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S05-05"
+      ],
+      "expected_answer": "Utility room and passage."
+    },
+    {
+      "question_id": "Q-AMOUNT",
+      "text": "Is the claimed repair cost reasonable and supported?",
+      "category": "amount",
+      "status": "established",
+      "establishing_criteria": [
+        "Surveyor-assessed cost of repair",
+        "Estimate reconciling to the surveyor scope"
+      ],
+      "linked_clause_ids": [],
+      "linked_fact_ids": [
+        "F-S05-06",
+        "F-S05-07"
+      ],
+      "expected_answer": "Surveyor INR 110,000 equals estimate."
+    },
+    {
+      "question_id": "Q-SUBLIMIT",
+      "text": "Which water-damage sublimit applies on the date of loss?",
+      "category": "coverage_condition",
+      "status": "missing",
+      "establishing_criteria": [
+        "Applicable endorsement wording effective on the date of loss"
+      ],
+      "linked_clause_ids": [
+        "CL-COV-WATER"
+      ],
+      "linked_fact_ids": [
+        "F-S05-08"
+      ],
+      "expected_answer": "Schedule lists END-01 but its wording was not provided, so the sublimit cannot be determined."
+    }
+  ],
+  "contradictions": [],
+  "missing_evidence": [
+    {
+      "question_id": "Q-SUBLIMIT",
+      "gap_type": "missing",
+      "minimum_evidence_request": {
+        "addressee_role": "policy_administration",
+        "items": [
+          "Copy of endorsement END-01 (Water Damage Sublimit Endorsement) as in force on 10 June 2026"
+        ],
+        "must_answer_sub_questions": [
+          "Q-SUBLIMIT"
+        ],
+        "maps_to_criteria": [
+          "Applicable endorsement wording effective on the date of loss"
+        ]
+      },
+      "resolves_question_ids": [
+        "Q-SUBLIMIT"
+      ]
+    }
+  ],
+  "counterfactuals": [],
+  "issues": [
+    {
+      "issue_id": "ISS-INFORCE",
+      "issue": "Policy in force on date of loss",
+      "status": "established",
+      "clause_ids": [
+        "CL-COND-PERIOD"
+      ],
+      "fact_ids": [
+        "F-S05-01"
+      ]
+    },
+    {
+      "issue_id": "ISS-COVER-WATER",
+      "issue": "Escape of water: sudden and accidental",
+      "status": "established",
+      "clause_ids": [
+        "CL-COV-WATER",
+        "CL-DEF-SUDDEN"
+      ],
+      "fact_ids": [
+        "F-S05-02",
+        "F-S05-03",
+        "F-S05-04"
+      ]
+    },
+    {
+      "issue_id": "ISS-EXC-GRADUAL",
+      "issue": "Gradual leakage exclusion",
+      "status": "established",
+      "clause_ids": [
+        "CL-EXC-GRADUAL"
+      ],
+      "fact_ids": [
+        "F-S05-04"
+      ],
+      "note": "Exclusion not engaged."
+    },
+    {
+      "issue_id": "ISS-SUBLIMIT",
+      "issue": "Water-damage sublimit",
+      "status": "abstain",
+      "clause_ids": [
+        "CL-COV-WATER"
+      ],
+      "fact_ids": [
+        "F-S05-08"
+      ],
+      "note": "END-01 is referenced in the schedule but its wording is missing; abstain on the affected clause."
+    }
+  ],
+  "snapshot": {
+    "status": "in_force",
+    "effective_clause_ids": [
+      "CL-DEF-SUDDEN",
+      "CL-COV-WATER",
+      "CL-EXC-GRADUAL",
+      "CL-COND-PERIOD",
+      "CL-LIM-BUILDING",
+      "CL-DED-STD"
+    ],
+    "not_effective_clause_ids": [],
+    "missing_documents": [
+      "END-01"
+    ],
+    "precedence_note": "Endorsement END-01 listed in the schedule but not available."
+  },
+  "routing": {
+    "tier": "medium",
+    "reason_codes": [
+      "POLICY_ENDORSEMENT_MISSING",
+      "EVIDENCE_MINOR_GAP",
+      "EXPOSURE_MEDIUM_BAND"
+    ],
+    "required_approver_role": "adjuster",
+    "rules_version": "sample-2"
+  },
+  "routing_features": {
+    "policy_status": "in_force",
+    "policy_match": "exact",
+    "policy_certainty": "partial",
+    "evidence_completeness": "minor_gap",
+    "contradiction_severity": "none",
+    "duplicate_status": "clear_or_benign",
+    "coverage_certainty": "resolved",
+    "specialist_required": false,
+    "exposure_inr": 110000
+  },
+  "settlement": {
+    "status": "cannot_calculate",
+    "inputs": {
+      "assessed_covered_loss": "110000",
+      "non_covered_items_total": "0",
+      "applicable_deductible": "10000",
+      "remaining_policy_limit": "2000000",
+      "prior_payments_total": "0"
+    },
+    "missing_inputs": [
+      "water_damage_sublimit"
+    ],
+    "payable": null,
+    "engine_check": true,
+    "unavailable_inputs": [
+      "water_damage_sublimit"
+    ]
+  },
+  "expected_actions": [
+    "create_task:request_endorsement_END-01_from_policy_administration",
+    "hold_settlement_until_endorsement_received",
+    "draft_status_message:claimant"
+  ],
+  "notes": [
+    "The Settlement agent (T5.5) must pass water_damage_sublimit in SettlementInputs.unavailable_inputs because the schedule references END-01 but its wording is missing; the engine then returns cannot_calculate even though the rule step is optional."
+  ],
+  "human_approval_required": true
+}

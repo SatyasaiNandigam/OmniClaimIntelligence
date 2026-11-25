@@ -1,0 +1,21 @@
+{
+  "claim_id": "CLM-0003",
+  "scenario_id": "S-03",
+  "synthetic": true,
+  "license": "CC0-1.0 - drawn by scripts/generate_synthetic_docs.py, no third-party imagery",
+  "documents": [
+    {
+      "document_id": "DOC-S03-1",
+      "filename": "fnol.pdf",
+      "doc_type": "fnol",
+      "page_count": 1,
+      "sha256": "e080641fcc5ca09ecab93a7a11ab51ecb2dcf0d1b326e9eef17904d134678f2b",
+      "text_sha256": "b07ce00f38a13e45f3e5cb25dd55e62825860902bf155518abfb4250e1921fcb",
+      "received_on": "2026-02-14",
+      "uploaded_by": "claimant",
+      "in_scenario": true
+    }
+  ],
+  "variants": [],
+  "photos": []
+}

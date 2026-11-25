@@ -1,0 +1,91 @@
+{
+  "entries": [
+    {
+      "label": "v1: BM25 + text-embedding-3-small (256 dims) fused by RRF; min_dense_similarity 0.30 chosen on dev only; fresh untouched",
+      "date": "2026-11-25",
+      "signals_sha": "e84dcd7a0d25",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 256,
+      "modes": {
+        "keyword": {
+          "dev": {
+            "queries": 19,
+            "answerable": 17,
+            "unreachable": 0,
+            "hit@1": 0.7647,
+            "hit@3": 0.9412,
+            "hit@5": 0.9412,
+            "recall@5": 0.9412,
+            "mrr": 0.8529,
+            "no_answer_rate": 1.0,
+            "modifier_completeness": 1.0,
+            "modifier_checks": 4,
+            "clause_not_retrieved_for_modifier_check": 0,
+            "degraded_queries": 0,
+            "misses": [
+              "R-06 'How much excess does the customer bear?' -> [] (wanted ['CL-DED-STD'])"
+            ],
+            "modifier_failures": [],
+            "false_answers": []
+          },
+          "fresh": {
+            "queries": 15,
+            "answerable": 12,
+            "unreachable": 2,
+            "hit@1": 0.9167,
+            "hit@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.9583,
+            "no_answer_rate": 1.0,
+            "modifier_completeness": 1.0,
+            "modifier_checks": 2,
+            "clause_not_retrieved_for_modifier_check": 0,
+            "degraded_queries": 0,
+            "misses": [],
+            "modifier_failures": [],
+            "false_answers": []
+          }
+        },
+        "hybrid": {
+          "dev": {
+            "queries": 19,
+            "answerable": 17,
+            "unreachable": 0,
+            "hit@1": 0.8824,
+            "hit@3": 0.9412,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.9265,
+            "no_answer_rate": 1.0,
+            "modifier_completeness": 1.0,
+            "modifier_checks": 4,
+            "clause_not_retrieved_for_modifier_check": 0,
+            "degraded_queries": 0,
+            "misses": [],
+            "modifier_failures": [],
+            "false_answers": []
+          },
+          "fresh": {
+            "queries": 15,
+            "answerable": 12,
+            "unreachable": 2,
+            "hit@1": 0.9167,
+            "hit@3": 1.0,
+            "hit@5": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.9583,
+            "no_answer_rate": 1.0,
+            "modifier_completeness": 1.0,
+            "modifier_checks": 2,
+            "clause_not_retrieved_for_modifier_check": 0,
+            "degraded_queries": 0,
+            "misses": [],
+            "modifier_failures": [],
+            "false_answers": []
+          }
+        }
+      }
+    }
+  ]
+}

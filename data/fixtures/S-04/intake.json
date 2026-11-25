@@ -1,0 +1,14 @@
+{
+  "claim_header": {
+    "claim_id": "CLM-0004",
+    "claimant_name": "SYNTHETIC Claimant D",
+    "policy_ref": "POL-1004",
+    "loss_date": "2026-01-20",
+    "loss_type": "water_damage",
+    "loss_description": "Flexible hose under bathroom basin burst",
+    "channel": "portal",
+    "registered_at": null
+  },
+  "intake_checklist": [],
+  "duplicate_candidates": []
+}

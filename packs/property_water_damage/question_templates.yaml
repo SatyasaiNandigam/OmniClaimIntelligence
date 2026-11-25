@@ -1,0 +1,268 @@
+# Canonical open questions for a property water-damage claim and what would establish each. Domain content, not code.
+# T2.4 uses the ids to tag facts (fact_templates.yaml); T4.1 builds the question register from this file and may ADD claim-specific
+# questions proposed by the model (`model_questions` below); T4.4 / T4.5 use `establishing_criteria` to judge sufficiency and to write
+# minimum-evidence requests. The ids and criteria match the ground truth (data/ground_truth/*.json).
+#
+# clause_links: which clauses of the policy snapshot the question bears on. A link names clause types (any of) and, optionally, patterns
+# (case-insensitive, any of) that must appear in the clause heading or text. A `fallback: true` link is used only when the links before it
+# found nothing. needs_policy: false = the question is asked even when no policy applies.
+questions:
+  - id: Q-INFORCE
+    text: "Was the policy in force on the date of loss?"
+    category: coverage_condition
+    needs_policy: false
+    establishing_criteria:
+      - "PAS policy status is in force on the date of loss"
+    clause_links:
+      - {types: [condition], match: ['\bperiod of insurance\b']}
+  - id: Q-SUDDEN
+    text: "Was the water damage sudden and accidental rather than gradual?"
+    category: cause
+    establishing_criteria:
+      - "Technical statement of the failure mechanism by a qualified person"
+      - "Evidence that the damage began at or immediately before the reported loss date"
+    clause_links:
+      - {types: [coverage], match: ['\bwater\b']}
+      - {types: [definition], match: ['\bsudden\b']}
+      - {types: [exclusion], match: ['\bgradual\b', '\bseepage\b']}
+  - id: Q-START
+    text: "When did the leak or damage begin?"
+    category: timing
+    criteria_mode: any            # the criteria are alternatives: dated technical evidence OR a dated maintenance / inspection record
+    establishing_criteria:
+      - "Technical evidence of when the leak or corrosion began"
+      - "Maintenance or inspection record"
+    clause_links:
+      - {types: [exclusion], match: ['\bgradual\b', '\bseepage\b']}
+  - id: Q-EXTENT
+    text: "Which areas were affected by the reported event?"
+    category: extent
+    establishing_criteria:
+      - "Surveyor-confirmed list of affected areas"
+      - "Each affected area linked to the reported event"
+  - id: Q-AMOUNT
+    text: "Is the claimed repair cost reasonable and supported?"
+    category: amount
+    establishing_criteria:
+      - "Surveyor-assessed cost of repair"
+      - "Estimate reconciling to the surveyor scope"
+  - id: Q-SUBLIMIT
+    text: "Which water-damage sublimit applies on the date of loss?"
+    category: coverage_condition
+    establishing_criteria:
+      - "Applicable endorsement wording effective on the date of loss"
+    clause_links:
+      - {types: [sublimit]}
+      - {types: [coverage], match: ['\bwater\b'], fallback: true}      # no sublimit wording available: the cover it would modify
+
+# ---------------------------------------------------------------------------------------------------- claim-specific questions
+# The model reads the claim header, the facts and the clauses in force and may ADD questions the templates cannot know to ask
+# (e.g. "does the 30-day unoccupancy condition apply?"). It never removes or rewrites a template question. A proposal is accepted only if it
+# cites clause ids / fact ids that exist, quotes them verbatim, uses an allowed category, is not a repeat of an existing question, does not
+# pre-judge the decision, and reaches min_confidence (kept confidence is capped). Accepted questions are marked as model-proposed.
+model_questions:
+  enabled: true                 # DECISION 2026-11-25: on - the register must be intelligent, with the templates as a floor.
+  max_questions: 4              # SAMPLE
+  min_confidence: 0.60          # SAMPLE
+  confidence_cap: 0.85          # SAMPLE
+  max_text_chars: 200           # SAMPLE
+  max_criteria: 3               # SAMPLE
+  max_clause_chars: 700         # SAMPLE
+  max_fact_chars: 300           # SAMPLE
+  duplicate_overlap: 0.60       # SAMPLE: share of a question's content words that an existing question already has
+  duplicate_check: true         # a second look by the model for repeats in other words (word overlap cannot see them)
+  reasoning_effort: low         # SAMPLE
+  forbidden_patterns:           # a question asks what is known; it never says what the decision will be
+    - '\b(?:will|should|must|can|could)\b.*\b(?:be )?(?:approved?|den(?:y|ied)|rejected?|declined?|repudiated?|paid)\b'
+    - '\b(?:approve|deny|reject|decline|repudiate)\b'
+
+# ---------------------------------------------------------------------------------------------------- fact <-> question links (T4.2)
+# The fact templates (fact_templates.yaml) already tag each fact with the questions it bears on: those links are the floor and are never
+# lost silently. The model judges the DIRECTION of each link - supporting (consistent with the claim as presented), contradicting (points
+# away from it) or neutral - may add a link the tag missed, and may mark a tagged link unrelated (the link is then dropped and listed with the
+# reason). A judgement is accepted only if it names a real fact and question, quotes the fact verbatim for any direction, gives a short
+# rationale and reaches min_confidence (kept confidence is capped). Anything else leaves the tagged link neutral.
+fact_links:
+  enabled: true                 # DECISION 2026-11-25: on.
+  min_confidence: 0.60          # SAMPLE
+  confidence_cap: 0.90          # SAMPLE
+  max_rationale_chars: 300      # SAMPLE
+  max_links_per_fact: 3         # SAMPLE
+  batch_size: 20                # SAMPLE
+  max_fact_chars: 400           # SAMPLE
+  reasoning_effort: low         # SAMPLE
+
+# ---------------------------------------------------------------------------------------------------- contradictions (T4.3)
+# Dates and amounts are compared by RULES on the wording of the facts (the proposition templates in fact_templates.yaml). A rule names the
+# question the conflict bears on and its severity; amount gaps get their severity from the bands. Narrative conflicts (cause, extent,
+# timing) are proposed by the model, one question at a time, and CHECKED: two disjoint sides that each cite real facts of that question,
+# quoted verbatim, with an explanation and a confidence (capped). The severity rubric below is shown to the model; every number is SAMPLE.
+contradictions:
+  enabled: true                 # DECISION 2026-11-25: on (the model part; the rules always run).
+  min_confidence: 0.60          # SAMPLE
+  confidence_cap: 0.90          # SAMPLE
+  max_explanation_chars: 400    # SAMPLE
+  max_per_question: 3           # SAMPLE
+  max_fact_chars: 400           # SAMPLE
+  model_categories: [cause, timing, extent]
+  reasoning_effort: low         # SAMPLE
+  severity_rubric:
+    - "high: the conflict is about something that decides whether the loss is covered or how much is payable (a sudden burst against long-term corrosion; damage in areas the claimant did not report)."
+    - "medium: the conflict changes a material detail but a reviewer could still reach a coverage view (partly different extent, an uncertain or disputed start date)."
+    - "low: a wording or small factual mismatch that a reviewer can settle quickly."
+  date_rules:
+    - id: loss_date
+      question: Q-INFORCE
+      severity: high
+      sources:
+        - '^Reported date of loss is (?P<value>.+)$'
+        - '\bdate of loss (?:is|was|of)?:?\s*(?P<value>\d{1,2} [A-Za-z]+ \d{4})'
+  order_rules:                  # the later date may not be before the earlier one
+    - id: invoice_before_loss
+      question: Q-AMOUNT
+      severity: medium
+      earlier: ['^Reported date of loss is (?P<value>.+)$']
+      later: ['^Invoice is dated (?P<value>.+)$']
+    - id: surveyor_before_loss
+      question: Q-EXTENT
+      severity: medium
+      earlier: ['^Reported date of loss is (?P<value>.+)$']
+      later: ['^Surveyor visited the site on (?P<value>.+)$']
+    - id: plumber_before_loss
+      question: Q-START
+      severity: medium
+      earlier: ['^Reported date of loss is (?P<value>.+)$']
+      later: ['^Plumber inspected the property on (?P<value>.+)$']
+  amount_rules:                 # a gap at or above a band's min_gap_pct gets that band's severity (highest band reached)
+    - id: claimed_vs_assessed
+      question: Q-AMOUNT
+      a: ['^Claimant estimates the loss at (?P<value>.+)$']
+      b: ['^Surveyor assessed the repair cost at (?P<value>.+)$']
+      bands: [{min_gap_pct: 10, severity: low}, {min_gap_pct: 25, severity: medium}, {min_gap_pct: 50, severity: high}]          # SAMPLE
+    - id: estimate_vs_assessed
+      question: Q-AMOUNT
+      a: ['^Estimate total is (?P<value>.+)$']
+      b: ['^Surveyor assessed the repair cost at (?P<value>.+)$']
+      bands: [{min_gap_pct: 10, severity: low}, {min_gap_pct: 25, severity: medium}, {min_gap_pct: 50, severity: high}]          # SAMPLE
+    - id: invoice_vs_estimate
+      question: Q-AMOUNT
+      a: ['^Invoice total is (?P<value>.+)$']
+      b: ['^Estimate total is (?P<value>.+)$']
+      bands: [{min_gap_pct: 5, severity: low}, {min_gap_pct: 15, severity: medium}, {min_gap_pct: 30, severity: high}]            # SAMPLE
+
+# ---------------------------------------------------------------------------------------------------- sufficiency (T4.4)
+# For each open question: is each establishing criterion met by the evidence? From that, the decision table gives the status and the kind of
+# gap. A criterion about the POLICY is decided from the snapshot (criteria_rules); one about FACTS is judged by the model, which must cite the
+# facts and quote them, and may answer 'unclear' (then the question abstains: status unverified, no gap type guessed). A criterion no linked
+# fact bears on is unmet without asking the model. A contradiction at a blocking severity beats every other row.
+#   conditions: blocking_contradiction | unclear_criteria | all_met | any_met | any_partly | supporting_link (a linked fact points toward the
+#   claim) | linked_fact (some fact bears on the question). The first matching row wins; the last row has no condition.
+sufficiency:
+  enabled: true                 # DECISION 2026-11-25: on.
+  min_confidence: 0.60          # SAMPLE
+  confidence_cap: 0.90          # SAMPLE
+  max_rationale_chars: 300      # SAMPLE
+  max_fact_chars: 400           # SAMPLE
+  reasoning_effort: low         # SAMPLE
+  blocking_severities: [medium, high]       # SAMPLE: a low-severity contradiction is noted but does not block
+  criteria_rules:
+    - {question: Q-INFORCE, criterion: "PAS policy status is in force on the date of loss", met_if: policy_answer_known}        # the PAS answered, either way
+    - {question: Q-SUBLIMIT, criterion: "Applicable endorsement wording effective on the date of loss", met_if: linked_clause_type, types: [sublimit]}
+  table:
+    - {id: R1-contradicted,  when: {blocking_contradiction: true}, status: requires_validation, gap: contradictory}
+    - {id: R2-abstain,       when: {unclear_criteria: true},       status: unverified,          gap: null, abstain: true}
+    - {id: R3-established,   when: {all_met: true},                status: established,         gap: null}
+    - {id: R4-partial,       when: {any_met: true},                status: partially_established, gap: insufficient}
+    - {id: R5-possible,      when: {any_partly: true, supporting_link: true}, status: possible, gap: insufficient}
+    - {id: R6-insufficient,  when: {any_partly: true},             status: unverified,          gap: insufficient}
+    - {id: R7-missing,       when: {},                             status: missing,             gap: missing}
+
+# ---------------------------------------------------------------------------------------------------- minimum-evidence requests (T4.5)
+# For every question that is not established, ONE request per addressee that groups everything that person must supply (not piecemeal). WHO is
+# asked is decided here: criteria_roles says who supplies each unresolved criterion, conflict_roles who resolves a contradiction on a question.
+# The model writes the items from the needs and the facts already known; each item must serve a need, ask for no document already on file,
+# and never say what the decision will be. A need the model leaves uncovered gets a rule-written item. Internal roles are asked by the system
+# itself (a missing endorsement is requested from policy administration, never from the claimant). All roles and mappings are SAMPLE.
+requests:
+  enabled: true                 # DECISION 2026-11-25: on (the model writes the items; the addressees and coverage are rules).
+  max_items_per_request: 4      # SAMPLE
+  max_item_chars: 250           # SAMPLE
+  duplicate_overlap: 0.60       # SAMPLE
+  repair_rounds: 1              # SAMPLE: if items were refused and needs are uncovered, the writer is asked once more with the reasons
+  max_known_facts: 6            # SAMPLE
+  max_fact_chars: 300           # SAMPLE
+  reasoning_effort: low         # SAMPLE
+  default_role: claimant
+  roles:                        # CONFIRMED 2026-11-25 (roles and one request per person): who a request can go to, the document types each can supply
+    # DECISION 2026-11-25: a third party (plumber, surveyor, contractor) is NEVER contacted by the system; its request is drafted for the claimant or an adjuster to pass on
+    claimant:              {label: the claimant,                   delivery: direct,                   document_types: [fnol, email, photo, invoice, other]}
+    plumber:               {label: the plumber,                    delivery: via_claimant_or_adjuster, document_types: [plumber_report, invoice, photo]}
+    surveyor:              {label: the surveyor,                   delivery: via_claimant_or_adjuster, document_types: [surveyor_report, photo]}
+    contractor:            {label: the repair contractor,          delivery: via_claimant_or_adjuster, document_types: [estimate, invoice]}
+    policy_administration: {label: the policy administration team, delivery: internal, internal: true, document_types: [policy_schedule, policy_wording, endorsement]}
+  criteria_roles:
+    - {question: Q-INFORCE,  criterion: "PAS policy status is in force on the date of loss", role: policy_administration}
+    - {question: Q-SUDDEN,   criterion: "Technical statement of the failure mechanism by a qualified person", role: plumber}
+    - {question: Q-SUDDEN,   criterion: "Evidence that the damage began at or immediately before the reported loss date", role: plumber}
+    - {question: Q-START,    criterion: "Technical evidence of when the leak or corrosion began", role: plumber}
+    - {question: Q-START,    criterion: "Maintenance or inspection record", role: claimant}
+    - {question: Q-EXTENT,   criterion: "Surveyor-confirmed list of affected areas", role: surveyor}
+    - {question: Q-EXTENT,   criterion: "Each affected area linked to the reported event", role: surveyor}
+    - {question: Q-AMOUNT,   criterion: "Surveyor-assessed cost of repair", role: surveyor}
+    - {question: Q-AMOUNT,   criterion: "Estimate reconciling to the surveyor scope", role: surveyor}
+    - {question: Q-SUBLIMIT, criterion: "Applicable endorsement wording effective on the date of loss", role: policy_administration}
+  conflict_roles:               # who is asked to resolve a contradiction on the question
+    Q-INFORCE: claimant
+    Q-SUDDEN: plumber
+    Q-START: plumber
+    Q-EXTENT: surveyor
+    Q-AMOUNT: surveyor
+    Q-SUBLIMIT: policy_administration
+  forbidden_patterns:           # a request asks for information; it never says what the decision will be
+    - '\b(?:will|would|could|might)\b.*\b(?:be )?(?:approved?|den(?:y|ied)|rejected?|declined?|repudiated?|paid)\b'
+    - '\b(?:approve|deny|reject|decline|repudiate)\b'
+    - '\b(?:not covered|exclusion applies|invalid claim)\b'
+
+# ---------------------------------------------------------------------------------------------------- counterfactual scenarios (T4.6)
+# "What would resolve this claim?" For each unresolved MATERIAL question (the ones framed below) three scenarios: A the finding supports the claim
+# as presented, B it points away from it, C it is inconclusive. Each says which coverage issues would be re-assessed and what the next step is; it
+# NEVER says what the decision will be. The issues affected are those sharing a clause with the question. `effects` says what each finding would do
+# to an issue of each kind (cover / exclusion / amount: from the clause types of its citations). The model may rewrite the wording for the claim;
+# the linter below rejects any rewrite that predicts or recommends a decision, is not conditional, or names an issue that is not affected.
+counterfactuals:
+  enabled: true                 # DECISION 2026-11-25: on (rewrite only; the scenarios, affected issues and next steps are rules).
+  reasoning_effort: low         # SAMPLE
+  max_implication_chars: 420    # SAMPLE
+  max_next_step_chars: 260      # SAMPLE
+  framings:
+    - question: Q-SUDDEN
+      issue_kinds: [cover, exclusion]       # a finding on the cause re-assesses the cover condition and the exclusion, not the sublimit
+      a: "New evidence supports sudden failure"
+      b: "New evidence supports prolonged leakage"
+      c: "New evidence is inconclusive"
+  effects:
+    cover:
+      A: "would move toward established"
+      B: "would not be established"
+      C: "would remain unresolved"
+    exclusion:
+      A: "would be re-assessed as not engaged"
+      B: "would become potentially applicable"
+      C: "would stay open: whether it is engaged could not be concluded"
+    amount:
+      A: "would be re-assessed with the confirmed figures"
+      B: "would need to be re-assessed on a narrower basis"
+      C: "could not be re-assessed"
+  review_suffix:
+    B: "This needs senior human review."
+  next_steps:
+    A: "Collect the outstanding evidence ({outstanding}), then re-run coverage and settlement for the affected issues for human review."
+    B: "Refer to a senior adjuster with the cited clauses and evidence; no automatic decision."
+    C: "Consider an independent expert inspection."
+  conditional_markers: [would, could, may, might, if, remain, stay]
+  forbidden_patterns:           # wording that predicts or recommends a decision (the contract bans a shorter list; this is the stricter, pack-level one)
+    - '\b(?:will|shall|must|should|would|could|can|may|might|is going to)\b[^.]{0,40}\b(?:be )?(?:approved?|den(?:y|ied)|rejected?|declined?|repudiated?|paid|settled|covered|excluded)\b'
+    - '\b(?:claim|loss|cover|payment)\b[^.]{0,20}\b(?:is|are|was|will be|would be)\b[^.]{0,10}\b(?:approved|denied|rejected|declined|payable|not payable|valid|invalid|covered|not covered)\b'
+    - '\b(?:approve|deny|reject|decline|repudiate)\b[^.]{0,20}\b(?:the )?(?:claim|loss|payment)\b'
+    - '\b(?:entitled to|liable for|no liability|full payment|pay out|payout)\b'
+    - '\b(?:likely|probably|almost certainly)\b[^.]{0,30}\b(?:approved?|denied|rejected|covered|paid)\b'

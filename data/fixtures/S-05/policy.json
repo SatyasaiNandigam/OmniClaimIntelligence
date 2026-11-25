@@ -1,0 +1,102 @@
+{
+  "policy_snapshot": {
+    "policy_id": "POL-1005",
+    "version": "2025-01",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "pas_status": "in_force",
+    "clauses": [
+      {
+        "clause_id": "CL-COND-PERIOD",
+        "clause_type": "condition",
+        "heading": "5.1 Period of insurance",
+        "text": "This policy covers loss or damage occurring during the period of insurance shown in the Schedule.",
+        "document": "BASE-HOME-1",
+        "page": 3,
+        "span": [
+          144,
+          241
+        ]
+      },
+      {
+        "clause_id": "CL-COV-WATER",
+        "clause_type": "coverage",
+        "heading": "2.2 Escape of water",
+        "text": "We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.",
+        "document": "BASE-HOME-1",
+        "page": 1,
+        "span": [
+          676,
+          835
+        ]
+      },
+      {
+        "clause_id": "CL-DED-STD",
+        "clause_type": "deductible",
+        "heading": "4.2 Standard deductible",
+        "text": "We will deduct the standard deductible shown in the Schedule from each claim.",
+        "document": "BASE-HOME-1",
+        "page": 2,
+        "span": [
+          599,
+          676
+        ]
+      },
+      {
+        "clause_id": "CL-DEF-SUDDEN",
+        "clause_type": "definition",
+        "heading": "1.2 Sudden and accidental",
+        "text": "Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.",
+        "document": "BASE-HOME-1",
+        "page": 1,
+        "span": [
+          363,
+          534
+        ]
+      },
+      {
+        "clause_id": "CL-EXC-GRADUAL",
+        "clause_type": "exclusion",
+        "heading": "3.2 Gradual leakage",
+        "text": "We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.",
+        "document": "BASE-HOME-1",
+        "page": 2,
+        "span": [
+          252,
+          399
+        ]
+      },
+      {
+        "clause_id": "CL-LIM-BUILDING",
+        "clause_type": "limit",
+        "heading": "4.1 Building Limit",
+        "text": "Our liability for all claims arising in the period of insurance will not exceed the Building Limit shown in the Schedule.",
+        "document": "BASE-HOME-1",
+        "page": 2,
+        "span": [
+          453,
+          574
+        ]
+      }
+    ],
+    "endorsements": [],
+    "relations": [
+      {
+        "source_clause_id": "CL-DEF-SUDDEN",
+        "target_clause_id": "CL-COV-WATER",
+        "relation": "defines"
+      },
+      {
+        "source_clause_id": "CL-EXC-GRADUAL",
+        "target_clause_id": "CL-COV-WATER",
+        "relation": "excepts"
+      }
+    ],
+    "precedence_rules": [
+      "Endorsement END-01 listed in the schedule but not available."
+    ],
+    "source_system_response_ref": "PAS-MOCK/POL-1005/2026-06-10",
+    "retrieved_at": null,
+    "mock": true
+  }
+}
