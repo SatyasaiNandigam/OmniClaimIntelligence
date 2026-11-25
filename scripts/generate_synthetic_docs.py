@@ -19,6 +19,7 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import os
 import random
 import re
 import sys
@@ -464,11 +465,31 @@ def build_all() -> dict[Path, bytes]:
     return files
 
 
+def platform_dependent(p: Path) -> bool:
+    """Files whose BYTES depend on the operating system: JPEG encoding differs between the Windows and Linux Pillow builds, so a JPEG, the scanned PDF made
+    from one, and every manifest (which records the hashes of those files) are not reproducible byte for byte across platforms."""
+    return p.suffix == ".jpg" or p.name.endswith("_scanned.pdf") or p.name == "manifest.json"
+
+
+def strict_check() -> bool:
+    """The committed files were generated on Windows: there the check compares every byte. Elsewhere (CI runs on Linux) only the platform-independent files
+    (the text PDFs and DOCX) are compared. SYNTHETIC_STRICT=1 forces the full check anywhere."""
+    return sys.platform == "win32" or os.environ.get("SYNTHETIC_STRICT") == "1"
+
+
+def stale_files(files: dict[Path, bytes], strict: bool) -> tuple[list[Path], list[Path]]:
+    """(the files that differ from what is on disk, the files that were not compared)."""
+    skipped = [] if strict else [p for p in files if platform_dependent(p)]
+    return sorted(p for p, b in files.items() if p not in skipped and (not p.exists() or p.read_bytes() != b)), skipped
+
+
 def main() -> int:
     files = build_all()
     if "--check" in sys.argv:
-        stale = sorted(str(p.relative_to(OUT)) for p, b in files.items() if not p.exists() or p.read_bytes() != b)
-        print("Synthetic docs out of date - run scripts/generate_synthetic_docs.py: " + ", ".join(stale) if stale else "Synthetic docs up to date.")
+        stale, skipped = stale_files(files, strict_check())
+        note = f" ({len(files) - len(skipped)} files compared; {len(skipped)} image-derived files skipped: JPEG bytes differ between platforms)" if skipped else ""
+        print("Synthetic docs out of date - run scripts/generate_synthetic_docs.py: " + ", ".join(str(p.relative_to(OUT)) for p in stale) if stale
+              else "Synthetic docs up to date." + note)
         return 1 if stale else 0
     for p, b in files.items():
         p.parent.mkdir(parents=True, exist_ok=True)

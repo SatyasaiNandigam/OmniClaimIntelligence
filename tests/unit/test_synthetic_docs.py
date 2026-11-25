@@ -185,3 +185,36 @@ def test_template_samples_exist_for_invoice_and_email():
     assert "Total: INR 76,700" in inv and "Labour: INR 40,000" in inv
     mail = pages(SYN / "templates" / by["email"]["filename"])[0]
     assert "Subject:" in mail and "kitchen" in mail
+
+
+# ------------------------------------------------------------------ the check is strict only where the committed bytes come from (Windows)
+def _generator():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import generate_synthetic_docs as g
+    return g
+
+
+def test_image_derived_files_are_the_platform_dependent_ones():
+    g = _generator()
+    dependent = ("photos/a.jpg", "claims/CLM-0002/surveyor_report_scanned.pdf", "claims/CLM-0001/manifest.json",
+                 "photos/quality_set/manifest.json")
+    independent = ("claims/CLM-0001/fnol.pdf", "policies/BASE-HOME-1.pdf", "templates/invoice_sample.pdf")
+    assert all(g.platform_dependent(Path(n)) for n in dependent)
+    assert not any(g.platform_dependent(Path(n)) for n in independent)
+
+
+def test_off_windows_a_differing_jpeg_does_not_fail_the_check_but_a_changed_text_document_still_does(tmp_path):
+    g = _generator()
+    (tmp_path / "photo.jpg").write_bytes(b"as encoded on windows")
+    (tmp_path / "manifest.json").write_text('{"sha": "windows"}')
+    (tmp_path / "fnol.pdf").write_bytes(b"same text pdf")
+    fresh = {tmp_path / "photo.jpg": b"as encoded on linux", tmp_path / "manifest.json": b'{"sha": "linux"}',
+             tmp_path / "fnol.pdf": b"same text pdf"}
+    stale, skipped = g.stale_files(fresh, strict=False)
+    assert stale == [] and {p.name for p in skipped} == {"photo.jpg", "manifest.json"}
+    stale, _ = g.stale_files(fresh, strict=True)                          # on Windows (or SYNTHETIC_STRICT=1) every byte is compared
+    assert {p.name for p in stale} == {"photo.jpg", "manifest.json"}
+    changed = {**fresh, tmp_path / "fnol.pdf": b"someone edited the scenario text"}
+    assert [p.name for p in g.stale_files(changed, strict=False)[0]] == ["fnol.pdf"]      # a stale text document is still caught everywhere
+    missing = {**fresh, tmp_path / "new.pdf": b"never generated"}
+    assert [p.name for p in g.stale_files(missing, strict=False)[0]] == ["new.pdf"]
