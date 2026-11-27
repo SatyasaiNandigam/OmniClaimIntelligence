@@ -405,6 +405,112 @@
           "mean_confidence_wrong": 0.85
         }
       }
+    },
+    {
+      "label": "v6 insured_statement document type added to the pack: metrics unchanged, config hash re-recorded",
+      "date": "2026-11-27",
+      "signals_sha": "60ae8a2d53ee",
+      "splits": {
+        "adversarial": {
+          "n": 4,
+          "accuracy": 0.0,
+          "answered_precision": 0.0,
+          "wrong_answers": [
+            "a01: expected unknown, got invoice (0.99)",
+            "a02: expected unknown, got endorsement (0.99)",
+            "a03: expected unknown, got policy_wording (0.99)",
+            "a04: expected unknown, got estimate (0.99)"
+          ],
+          "abstain_recall": 0.0,
+          "over_abstained": [],
+          "mean_confidence_correct": null,
+          "min_confidence_correct": null,
+          "mean_confidence_wrong": 0.99
+        },
+        "corpus": {
+          "n": 50,
+          "accuracy": 1.0,
+          "answered_precision": 1.0,
+          "wrong_answers": [],
+          "abstain_recall": 1.0,
+          "over_abstained": [],
+          "mean_confidence_correct": 0.914,
+          "min_confidence_correct": 0.75,
+          "mean_confidence_wrong": null
+        },
+        "dev": {
+          "n": 14,
+          "accuracy": 1.0,
+          "answered_precision": 1.0,
+          "wrong_answers": [],
+          "abstain_recall": 1.0,
+          "over_abstained": [],
+          "mean_confidence_correct": 0.986,
+          "min_confidence_correct": 0.95,
+          "mean_confidence_wrong": null
+        },
+        "fresh": {
+          "n": 18,
+          "accuracy": 0.7778,
+          "answered_precision": 1.0,
+          "wrong_answers": [],
+          "abstain_recall": 1.0,
+          "over_abstained": [
+            "f01: expected fnol [no_heading]",
+            "f04: expected plumber_report [no_heading]",
+            "f05: expected surveyor_report [no_heading]",
+            "f14: expected invoice [no_heading]"
+          ],
+          "mean_confidence_correct": 0.963,
+          "min_confidence_correct": 0.85,
+          "mean_confidence_wrong": null
+        },
+        "fresh2": {
+          "n": 12,
+          "accuracy": 1.0,
+          "answered_precision": 1.0,
+          "wrong_answers": [],
+          "abstain_recall": 1.0,
+          "over_abstained": [],
+          "mean_confidence_correct": 0.986,
+          "min_confidence_correct": 0.95,
+          "mean_confidence_wrong": null
+        },
+        "holdout": {
+          "n": 29,
+          "accuracy": 0.8276,
+          "answered_precision": 1.0,
+          "wrong_answers": [],
+          "abstain_recall": 1.0,
+          "over_abstained": [
+            "h01: expected fnol [uncorroborated]",
+            "h02: expected fnol [no_heading]",
+            "h04: expected plumber_report [uncorroborated]",
+            "h06: expected plumber_report [no_heading]",
+            "h28: expected estimate [no_heading]"
+          ],
+          "mean_confidence_correct": 0.886,
+          "min_confidence_correct": 0.7,
+          "mean_confidence_wrong": null
+        },
+        "llm1": {
+          "n": 16,
+          "accuracy": 0.75,
+          "answered_precision": 0.6667,
+          "wrong_answers": [
+            "l05: expected unknown, got fnol (0.85)"
+          ],
+          "abstain_recall": 0.9091,
+          "over_abstained": [
+            "l09: expected fnol [no_heading]",
+            "l10: expected surveyor_report [no_heading]",
+            "l12: expected endorsement [no_heading]"
+          ],
+          "mean_confidence_correct": 0.99,
+          "min_confidence_correct": 0.99,
+          "mean_confidence_wrong": 0.85
+        }
+      }
     }
   ]
 }

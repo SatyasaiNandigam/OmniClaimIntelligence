@@ -94,6 +94,37 @@
         "fact_ids_unique": true,
         "refused": []
       }
+    },
+    {
+      "label": "v6 insured_statement document type added to the pack: metrics unchanged, config hash re-recorded",
+      "date": "2026-11-27",
+      "extractor_sha": "8c9319e54e7f",
+      "result": {
+        "scenario_facts": 73,
+        "text_document_facts": 341,
+        "citation": {
+          "facts": 414,
+          "verbatim_ok": 414,
+          "verbatim_rate": 1.0,
+          "region_checked": 73,
+          "region_ok": 73,
+          "region_rate": 1.0,
+          "ocr_basis": 0,
+          "problems": []
+        },
+        "ground_truth_facts": 31,
+        "ground_truth_covered": 31,
+        "ground_truth_recall": 1.0,
+        "ground_truth_uncovered": [],
+        "question_links": 40,
+        "question_links_covered": 40,
+        "question_link_recall": 1.0,
+        "question_links_missing": [],
+        "low_confidence_facts": 49,
+        "all_neutral": true,
+        "fact_ids_unique": true,
+        "refused": []
+      }
     }
   ]
 }

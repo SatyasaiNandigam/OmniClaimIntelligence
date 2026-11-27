@@ -426,7 +426,7 @@ def test_unknown_or_unspecified_types_are_skipped_with_a_reason():
     for t in ("photo", "other", "policy_wording", "endorsement", "made_up"):
         r = RULES.extract(doc_type=t, kind="text", pages=[P(1, FNOL)])
         assert r.status == "skipped" and "no field specification" in r.skipped_reason
-    assert set(RULES.extractable_types()) == {"fnol", "policy_schedule", "plumber_report", "surveyor_report", "estimate", "invoice", "email"}
+    assert set(RULES.extractable_types()) == {"fnol", "policy_schedule", "plumber_report", "surveyor_report", "estimate", "invoice", "email", "insured_statement"}
 
 
 def test_ocr_text_confidence_is_capped_and_flagged():

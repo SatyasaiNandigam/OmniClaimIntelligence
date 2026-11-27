@@ -188,6 +188,20 @@ types:
       email_to: {labels: [to, recipient], type: text}
       email_date: {labels: [date, sent], type: date}
       email_subject: {labels: [subject], type: text}
+  insured_statement:
+    title: Insured's statement
+    title_patterns:
+      - 'insured.?s? (supplementary |further |written )?statement'
+      - 'statement (of|by) the insured'
+      - 'claimant.?s? (supplementary |further |written )?statement'
+      - 'policyholder.?s? (supplementary |further )?statement'
+    phrases: [insured, statement, declare, declaration, signed, true and complete, responds to insurer, further information]
+    phrases_needed: 3   # SAMPLE
+    fields:
+      statement_date: {labels: [date of statement, statement date, date], type: date, description: "the date the insured made the statement"}
+      removed_pipe: {labels: [removed pipe section], type: narrative, description: "what the insured says about the removed or failed part (pipe section, appliance): where it is, who has it, whether it was kept, handed over, examined or discarded, and whether it will be available for inspection"}
+      prior_history: {labels: [earlier plumbing work leakage or damage], type: narrative, description: "what the insured says about the property BEFORE the loss: earlier plumbing or repair work, earlier leakage, damp, stains, smells or damage noticed or not noticed, and any earlier claim"}
+      loss_circumstances: {type: narrative, from_body: true, description: "what the insured says about the circumstances of the loss itself: events just before it (power cut, pump restart, pressure), the time, and how it happened"}
   photo:
     title: Photograph
   other:

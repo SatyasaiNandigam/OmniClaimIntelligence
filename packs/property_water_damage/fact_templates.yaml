@@ -21,6 +21,11 @@ templates:
   plumber_report.inspection_date:   {proposition: "Plumber inspected the property on {value}"}
   plumber_report.findings:          {proposition: "Plumber reports: {sentence}", questions: [Q-SUDDEN, Q-START], split_sentences: true}
   plumber_report.work_carried_out:  {proposition: "Plumber reports: {sentence}", split_sentences: true}
+  # ---- insured's statement (a later, signed statement by the claimant)
+  insured_statement.statement_date:     {proposition: "The insured's statement is dated {value}"}
+  insured_statement.removed_pipe:       {proposition: "Insured states: {sentence}", split_sentences: true}
+  insured_statement.prior_history:      {proposition: "Insured states: {sentence}", questions: [Q-SUDDEN, Q-START], split_sentences: true}
+  insured_statement.loss_circumstances: {proposition: "Insured states: {sentence}", questions: [Q-SUDDEN, Q-START], split_sentences: true}
   # ---- surveyor report
   surveyor_report.site_visit_date:       {proposition: "Surveyor visited the site on {value}"}
   surveyor_report.cause_of_loss:         {proposition: "Surveyor reports the cause of loss: {sentence}", questions: [Q-SUDDEN], split_sentences: true}

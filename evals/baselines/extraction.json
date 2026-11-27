@@ -561,6 +561,111 @@
           "required_failures": []
         }
       }
+    },
+    {
+      "label": "v6 insured_statement document type added to the pack: metrics unchanged, config hash re-recorded",
+      "date": "2026-11-27",
+      "signals_sha": "8c9319e54e7f",
+      "splits": {
+        "corpus": {
+          "docs": 19,
+          "field_score": 1.0,
+          "expected_fields": 60,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "dev": {
+          "docs": 8,
+          "field_score": 1.0,
+          "expected_fields": 27,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 23,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh2": {
+          "docs": 18,
+          "field_score": 1.0,
+          "expected_fields": 19,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh3": {
+          "docs": 14,
+          "field_score": 1.0,
+          "expected_fields": 14,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "fresh4": {
+          "docs": 17,
+          "field_score": 1.0,
+          "expected_fields": 17,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        },
+        "holdout": {
+          "docs": 26,
+          "field_score": 1.0,
+          "expected_fields": 50,
+          "wrong_values": [],
+          "silent_wrong": 0,
+          "missed": [],
+          "spurious": [],
+          "flag_recall": 1.0,
+          "flag_missed": [],
+          "table_score": 1.0,
+          "table_failures": [],
+          "required_failures": []
+        }
+      }
     }
   ]
 }
