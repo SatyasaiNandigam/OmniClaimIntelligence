@@ -1,12 +1,12 @@
 {
   "approved_by": "project owner (solo tech lead)",
-  "contract_version": "1.0.0",
+  "contract_version": "1.1.0",
   "files": {
     "AuditEvent.schema.json": "adb594a01b56d5ae7880900ee6d5df419b261d76b4c9781a024c8039f85ba817",
     "ClaimAck.schema.json": "b343e44dd5e65855a1ecc471bafee2c1dafd59803cab0dd3d88e8325962ac195",
     "ClaimCreateRequest.schema.json": "ae42f258cd1809066c847c7d3713d611b94b379a38f2fb094eaf53cbeb8f8c1f",
     "ClaimRecord.schema.json": "8b8ea68122a1ac8755c2251f674ec18c1d058e6899e71491cd51b6eb737b8f7f",
-    "ClaimState.schema.json": "36d5d682c750de1d7cd2e23001b892580e50d45b9f839cc2088f09686e87c8ae",
+    "ClaimState.schema.json": "cc754aa5d6152aadcb43708d7e41f238c137379a7b17f135f3d38de823bcf392",
     "ClaimStatusUpdate.schema.json": "d1e64730fde3087ce5a5db4a30617382934a6d3aad78748480a33aee17b829ef",
     "ClauseCitation.schema.json": "51023d412854b58421b4dc4fa22fada3f9eec4af8520d283013ad0bab16c715b",
     "Contradiction.schema.json": "4e3dec0ce8d77389477bf330ae7f2bc8d010549ca90696acf7a3ccef68d785a5",
@@ -27,12 +27,12 @@
     "ReconBreak.schema.json": "118d0dc46fdc3545b83767f2c2e101c7c95ff05f7e33a39ab311e7dc8d536e44",
     "RoutingDecision.schema.json": "8f9815a39cd709507d81619eacac49568eb8e963cc9d7f8edf05132280fb5159",
     "SettlementInputs.schema.json": "e4023ee3d2cdc5b27abe583ac65d022ff970d2860c6af4a1388f8ca7f35279ff",
-    "SettlementResult.schema.json": "7a5f8351db9d9df7335ef5d27b626088a99267901bbf0622ae0e1ab445118766",
+    "SettlementResult.schema.json": "39bf0b2a8a6bebdd1e65efeb0e935da38ef31fca59691bca2da32408c5b37fb5",
     "StatePatch.schema.json": "51eb6d9643e9168ac5c1c98b0f52e64c0fe66b1582a4fad38f23ab7c8ea0a328",
     "TaskAck.schema.json": "3fb016185648d5d88d5edf3bcc431106963b1d92a7b90d9300b4d1db7607d1dc",
     "TaskRequest.schema.json": "334d5f8bada8a50cb57dd4cd12c34107d795eb7344e2a1f6d02df429535daffd",
     "ownership.json": "a9b0b76e8c13c8cef90933eff85c07816ec758da348c1930880a4e1c173b7d3b",
     "protocols.json": "256fae7e194a490079b18d7a5c05f1c2ec736f540f8209761ddbac8ad3771d41"
   },
-  "frozen_on": "2026-11-25"
+  "frozen_on": "2026-11-27"
 }

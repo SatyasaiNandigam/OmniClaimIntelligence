@@ -1,0 +1,65 @@
+# T5.1 labelled readings. Each case: the facts a controlling question rests on, and the reading a careful adjuster would give for the cover issue
+# (ISS-COVER-WATER: sudden and accidental) and the exclusion issue (ISS-EXC-GRADUAL: gradual cause).
+# reading: supports = facts do not point against the claim / exclusion not engaged; against = they point against / exclusion engaged; unclear = cannot say.
+# dev = seen cases (D-*, F-*, A-* tuned on; G-*, B-* were the unseen sets of earlier runs, spent). fresh = H-* written before the third run, never used to tune.
+cases:
+  - {id: D-1, split: dev, facts: ["The plumber states the copper joint failed suddenly on 2 May 2026 and water escaped at once.", "The claimant reports the first sign of water on 2 May 2026."],
+     cover: supports, exclusion: supports}
+  - {id: D-2, split: dev, facts: ["The surveyor found long-term corrosion and staining that built up over several months.", "The claimant noticed damp patches in March 2026 and did nothing."],
+     cover: against, exclusion: against}
+  - {id: D-3, split: dev, facts: ["The plumber states the pipe burst suddenly.", "The surveyor states the staining indicates leakage over many weeks."],
+     cover: unclear, exclusion: unclear}
+  - {id: D-4, split: dev, facts: ["A flexible hose under the sink split and flooded the kitchen floor within minutes on 14 June 2026."],
+     cover: supports, exclusion: supports}
+  - {id: D-5, split: dev, facts: ["An estimate lists repair costs for the kitchen floor."],
+     cover: unclear, exclusion: unclear}
+  - {id: F-1, split: dev, facts: ["The loss adjuster records that the washing machine inlet hose burst while the machine was running and the room flooded straight away."],
+     cover: supports, exclusion: supports}
+  - {id: F-2, split: dev, facts: ["The contractor found rot and mould throughout the sub-floor consistent with a slow leak of at least a year.", "The tenant says the bathroom had been dripping since last winter."],
+     cover: against, exclusion: against}
+  - {id: F-3, split: dev, facts: ["The claimant says water came through the ceiling overnight.", "No inspection has been carried out and the cause is not known."],
+     cover: unclear, exclusion: unclear}
+  - {id: F-4, split: dev, facts: ["The plumber states a frost split the supply pipe in the loft on 20 January 2026 and water escaped when the thaw came.", "The claimant discovered the flooding the same morning."],
+     cover: supports, exclusion: supports}
+  - {id: F-5, split: dev, facts: ["The photographs show brown tide marks on the wall.", "The claimant says the radiator valve had been weeping for some months."],
+     cover: against, exclusion: against}
+  - {id: F-6, split: dev, facts: ["The invoice shows a boiler service on 3 March 2026."],
+     cover: unclear, exclusion: unclear}
+  - {id: G-1, split: dev, facts: ["The plumber reports that the push-fit connector behind the toilet came apart under pressure and water poured out until the stopcock was shut."],
+     cover: supports, exclusion: supports}
+  - {id: G-2, split: dev, facts: ["The surveyor measured high moisture readings in the party wall and found efflorescence that takes many months to form.", "The neighbour says the pipe had been seeping since the summer."],
+     cover: against, exclusion: against}
+  - {id: G-3, split: dev, facts: ["There is extensive water damage to the lounge ceiling and carpet.", "The repair estimate totals the amount claimed."],
+     cover: unclear, exclusion: unclear}
+  - {id: G-4, split: dev, facts: ["The claimant says the dishwasher outlet hose slipped off during a cycle and flooded the kitchen within an hour."],
+     cover: supports, exclusion: supports}
+  - {id: G-5, split: dev, facts: ["Photographs show buckled laminate flooring in the hallway.", "The claimant called the insurer on 9 April 2026."],
+     cover: unclear, exclusion: unclear}
+  - {id: G-6, split: dev, facts: ["The roofer states a tile slipped in the storm and rain ran in over several nights before it was noticed.", "The claimant first saw the stain on the ceiling a week later."],
+     cover: unclear, exclusion: unclear}
+  - {id: G-7, split: dev, facts: ["The plumber found the corroded elbow had been weeping slowly for a long time before it finally gave way.", "The kitchen units show swelling and mould."],
+     cover: against, exclusion: against}
+  - {id: G-8, split: dev, facts: ["The loss adjuster visited on 3 May 2026.", "A dehumidifier was installed on 4 May 2026."],
+     cover: unclear, exclusion: unclear}
+  # T5.2 ambiguity cases: BASE-HOME-2 (exclusion C1 gradual escape + exception C2 "resulting damage ... unless ... lack of maintenance"). Only the exclusion is labelled.
+  # ambiguous = the WORDING admits two readings that point opposite ways for these facts. unclear = the FACTS are thin (must not be called an ambiguity).
+  - {id: A-1, split: dev, policy: BASE-HOME-2, facts: ["The surveyor found the supply pipe had leaked slowly for months; the ceiling below then collapsed and damaged the lounge."],
+     exclusion: ambiguous}
+  - {id: A-2, split: dev, policy: BASE-HOME-2, facts: ["The plumber says the joint had been seeping slowly and the system had not been serviced for ten years."], exclusion: ambiguous}
+  - {id: A-3, split: dev, policy: BASE-HOME-2, facts: ["A flexible hose split without warning and water poured across the kitchen floor for a few minutes."], exclusion: supports}
+  - {id: A-4, split: dev, policy: BASE-HOME-2, facts: ["An estimate lists replacement of the hallway carpet."], exclusion: unclear}
+  - {id: B-1, split: dev, policy: BASE-HOME-2, facts: ["The washing machine hose had been weeping for weeks and stained the flooring; it then burst and soaked the adjoining room."], exclusion: ambiguous}
+  - {id: B-2, split: dev, policy: BASE-HOME-2, facts: ["The tap had been dripping slowly for a year and the dripping stained the base of the kitchen cupboard."], exclusion: ambiguous}
+  - {id: B-3, split: dev, policy: BASE-HOME-2, facts: ["A pipe fitting snapped without warning and water poured out for ten minutes before it was stopped."], exclusion: supports}
+  - {id: B-4, split: dev, policy: BASE-HOME-2, facts: ["The loss adjuster visited on 12 May 2026 and took photographs."], exclusion: unclear}
+  # third run (T5.2 rule: the ambiguity question is asked only where an exclusion has an exception clause)
+  - {id: H-1, split: fresh, policy: BASE-HOME-2, facts: ["The plumber found the washing machine hose had perished and had been leaking slowly for some time, and the leak soaked into the kitchen cabinets."],
+     exclusion: ambiguous}
+  - {id: H-2, split: fresh, policy: BASE-HOME-2, facts: ["The seals on the shower tray had worn and water had seeped into the ceiling below over several weeks; the boiler had been serviced every year."],
+     exclusion: ambiguous}
+  - {id: H-3, split: fresh, policy: BASE-HOME-2, facts: ["The pipe under the basin sheared off during the night and the bathroom flooded within minutes."], exclusion: supports}
+  - {id: H-4, split: fresh, policy: BASE-HOME-2, facts: ["The invoice for a replacement radiator is dated 21 February 2026."], exclusion: unclear}
+  - {id: H-5, split: fresh, facts: ["The plumber states the stopcock seized and the supply hose burst suddenly, flooding the utility room within minutes."], cover: supports, exclusion: supports}
+  - {id: H-6, split: fresh, facts: ["The surveyor found corroded joints and staining showing the pipe had been leaking slowly for over a year."], cover: against, exclusion: against}
+  - {id: H-7, split: fresh, policy: BASE-HOME-3, facts: ["The plumber states a joint in the loft tank feed pipe failed suddenly and water ran into the bedroom within minutes."], exclusion: supports}
+  - {id: H-8, split: fresh, facts: ["The claimant says there was water on the floor when they got home.", "The cause has not been investigated."], cover: unclear, exclusion: unclear}

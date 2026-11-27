@@ -2,6 +2,8 @@
   "settlement": {
     "status": "cannot_calculate",
     "reserve_forecast": null,
+    "forecast_low": null,
+    "forecast_high": null,
     "assessed_loss": "110000",
     "payable": null,
     "steps": [],

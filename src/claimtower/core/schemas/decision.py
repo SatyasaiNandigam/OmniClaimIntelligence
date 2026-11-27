@@ -49,6 +49,8 @@ class SettlementInputs(Contract):
 class SettlementResult(Contract):
     status: Literal["calculated", "cannot_calculate"]
     reserve_forecast: Money | None = None
+    forecast_low: Money | None = None             # held for validation: engine result at the assessed loss (forecast only)
+    forecast_high: Money | None = None            # ... and at the highest amount claimed or estimated
     assessed_loss: Money | None = None
     payable: Money | None = None
     steps: list[SettlementStepTrace] = []

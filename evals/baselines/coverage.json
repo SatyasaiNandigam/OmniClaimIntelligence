@@ -1,0 +1,508 @@
+{
+  "entries": [
+    {
+      "label": "T5.1 first run: dev tuned, fresh run once",
+      "date": "2026-11-26",
+      "config_sha": "7a3b7793919defbb",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "rows": 10,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "D-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "D-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "D-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "D-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-5 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-5 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          },
+          "fresh": {
+            "rows": 12,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "F-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-5 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-6 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "rows": 10,
+            "status_accuracy": 1.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 4,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": []
+          },
+          "fresh": {
+            "rows": 12,
+            "status_accuracy": 0.5833333333333334,
+            "established_against_the_label": 2,
+            "abstained_when_unclear": 2,
+            "over_abstained": 3,
+            "refused_readings": 3,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got abstain",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "F-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got established",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got abstain",
+              "F-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got established"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "T5.1 v2: cause check; dev tuned, fresh G-* run once",
+      "date": "2026-11-26",
+      "config_sha": "8ebdfef4b7d71a7a",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "rows": 22,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "D-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "D-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "D-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "D-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-5 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-5 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "F-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-5 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-6 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          },
+          "fresh": {
+            "rows": 16,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "G-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "G-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "G-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "G-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "G-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "G-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "G-5 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-5 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-6 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-7 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "G-7 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "G-8 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-8 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "rows": 22,
+            "status_accuracy": 0.7727272727272727,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 8,
+            "over_abstained": 5,
+            "refused_readings": 6,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "D-4 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got abstain",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "F-5 ISS-COVER-WATER: label against -> expected unresolved, got abstain",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got abstain"
+            ]
+          },
+          "fresh": {
+            "rows": 16,
+            "status_accuracy": 0.75,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 6,
+            "over_abstained": 2,
+            "refused_readings": 2,
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "G-2 ISS-COVER-WATER: label against -> expected unresolved, got abstain",
+              "G-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got abstain",
+              "G-6 ISS-COVER-WATER: label unclear -> expected abstain, got unresolved",
+              "G-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got potentially_relevant"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "T5.2: ambiguity check + reason codes; dev tuned (A-*, D-*, F-*), fresh G-*/B-* run once",
+      "date": "2026-11-26",
+      "config_sha": "3c5234936f816a3b",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "rows": 26,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "ambiguity_expected": 2,
+            "ambiguity_found": 0,
+            "false_ambiguity": 0,
+            "abstentions_by_reason": {
+              "": 0
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "D-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "D-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "D-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "D-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-5 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-5 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "F-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-5 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-6 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "A-1 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "A-2 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "A-3 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "A-4 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          },
+          "fresh": {
+            "rows": 20,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "ambiguity_expected": 2,
+            "ambiguity_found": 0,
+            "false_ambiguity": 0,
+            "abstentions_by_reason": {
+              "": 0
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "G-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "G-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "G-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "G-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "G-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "G-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "G-5 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-5 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-6 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-7 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "G-7 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "G-8 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-8 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "B-1 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "B-2 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "B-3 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "B-4 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "rows": 26,
+            "status_accuracy": 0.7692307692307693,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 11,
+            "over_abstained": 6,
+            "refused_readings": 5,
+            "ambiguity_expected": 2,
+            "ambiguity_found": 2,
+            "false_ambiguity": 6,
+            "abstentions_by_reason": {
+              "": 0,
+              "AMBIGUOUS_CLAUSE": 8,
+              "READING_ADVERSE": 4,
+              "UNCLEAR_READING": 9
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "D-4 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got abstain",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "F-5 ISS-COVER-WATER: label against -> expected unresolved, got abstain",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got abstain",
+              "A-3 ISS-EXC-GRADUAL: label supports -> expected established, got abstain"
+            ]
+          },
+          "fresh": {
+            "rows": 20,
+            "status_accuracy": 0.65,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 10,
+            "over_abstained": 6,
+            "refused_readings": 1,
+            "ambiguity_expected": 2,
+            "ambiguity_found": 2,
+            "false_ambiguity": 10,
+            "abstentions_by_reason": {
+              "": 0,
+              "AMBIGUOUS_CLAUSE": 12,
+              "READING_ADVERSE": 2,
+              "UNCLEAR_READING": 4
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "G-1 ISS-COVER-WATER: label supports -> expected established, got abstain",
+              "G-2 ISS-COVER-WATER: label against -> expected unresolved, got abstain",
+              "G-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got abstain",
+              "G-4 ISS-COVER-WATER: label supports -> expected established, got abstain",
+              "G-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got potentially_relevant",
+              "G-7 ISS-COVER-WATER: label against -> expected unresolved, got abstain",
+              "B-3 ISS-EXC-GRADUAL: label supports -> expected established, got abstain"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "T5.2 v2: ambiguity asked only where an exclusion has an exception clause; dev tuned, fresh H-* run once",
+      "date": "2026-11-26",
+      "config_sha": "3c5234936f816a3b",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "rows": 46,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 0,
+            "refused_readings": 0,
+            "ambiguity_expected": 4,
+            "ambiguity_found": 0,
+            "false_ambiguity": 0,
+            "abstentions_by_reason": {
+              "": 0
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "D-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "D-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "D-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "D-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "D-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "D-5 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "D-5 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "F-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "F-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "F-5 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "F-6 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "F-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-1 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "G-1 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "G-2 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "G-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "G-3 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-3 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-4 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "G-4 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "G-5 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-5 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-6 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "G-7 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "G-7 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "G-8 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "G-8 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "A-1 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "A-2 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "A-3 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "A-4 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "B-1 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "B-2 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "B-3 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "B-4 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          },
+          "fresh": {
+            "rows": 11,
+            "status_accuracy": 0.0,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 0,
+            "over_abstained": 1,
+            "refused_readings": 0,
+            "ambiguity_expected": 2,
+            "ambiguity_found": 0,
+            "false_ambiguity": 0,
+            "abstentions_by_reason": {
+              "": 0,
+              "NO_CITATION": 1
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "H-1 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "H-2 ISS-EXC-GRADUAL: label ambiguous -> expected abstain, got identified",
+              "H-3 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "H-4 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified",
+              "H-5 ISS-COVER-WATER: label supports -> expected established, got identified",
+              "H-5 ISS-EXC-GRADUAL: label supports -> expected established, got identified",
+              "H-6 ISS-COVER-WATER: label against -> expected unresolved, got identified",
+              "H-6 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got identified",
+              "H-7 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "H-8 ISS-COVER-WATER: label unclear -> expected abstain, got identified",
+              "H-8 ISS-EXC-GRADUAL: label unclear -> expected abstain, got identified"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "rows": 46,
+            "status_accuracy": 0.7608695652173914,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 20,
+            "over_abstained": 9,
+            "refused_readings": 9,
+            "ambiguity_expected": 4,
+            "ambiguity_found": 4,
+            "false_ambiguity": 4,
+            "abstentions_by_reason": {
+              "": 0,
+              "AMBIGUOUS_CLAUSE": 8,
+              "READING_ADVERSE": 8,
+              "UNCLEAR_READING": 21
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "D-4 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "F-1 ISS-COVER-WATER: label supports -> expected established, got abstain",
+              "F-1 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "F-5 ISS-COVER-WATER: label against -> expected unresolved, got abstain",
+              "F-5 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got abstain",
+              "G-2 ISS-COVER-WATER: label against -> expected unresolved, got abstain",
+              "G-2 ISS-EXC-GRADUAL: label against -> expected potentially_relevant, got abstain",
+              "G-6 ISS-COVER-WATER: label unclear -> expected abstain, got unresolved",
+              "G-6 ISS-EXC-GRADUAL: label unclear -> expected abstain, got potentially_relevant",
+              "A-3 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "B-3 ISS-EXC-GRADUAL: label supports -> expected established, got abstain"
+            ]
+          },
+          "fresh": {
+            "rows": 11,
+            "status_accuracy": 0.8181818181818182,
+            "established_against_the_label": 0,
+            "abstained_when_unclear": 5,
+            "over_abstained": 2,
+            "refused_readings": 0,
+            "ambiguity_expected": 2,
+            "ambiguity_found": 2,
+            "false_ambiguity": 2,
+            "abstentions_by_reason": {
+              "": 0,
+              "AMBIGUOUS_CLAUSE": 4,
+              "NO_CITATION": 1,
+              "READING_ADVERSE": 2,
+              "UNCLEAR_READING": 2
+            },
+            "lint_failures": 0,
+            "self_check_problems": 0,
+            "wrong": [
+              "H-3 ISS-EXC-GRADUAL: label supports -> expected established, got abstain",
+              "H-7 ISS-EXC-GRADUAL: label supports -> expected established, got abstain"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

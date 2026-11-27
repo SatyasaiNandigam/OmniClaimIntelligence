@@ -73,12 +73,15 @@ def test_freeze_blocks_unapproved_change_and_approval_is_recorded(tmp_path, monk
     victim.write_text(victim.read_text(encoding="utf-8").replace('"Fact"', '"FactRenamed"'), encoding="utf-8")
     assert fc.check() == 1                                                  # silent change is blocked
 
+    before = json.loads((tmp_path / "contracts/CONTRACT_LOCK.json").read_text(encoding="utf-8"))["contract_version"]
+    major, minor, patch = (int(x) for x in before.split("."))
     assert fc.approve("rename for test", "tester", "minor") == 0            # deliberate approval
     assert fc.check() == 0
     lock = json.loads((tmp_path / "contracts/CONTRACT_LOCK.json").read_text(encoding="utf-8"))
-    assert lock["contract_version"] == "1.1.0" and lock["approved_by"] == "tester"
+    expected = f"{major}.{minor + 1}.0"
+    assert lock["contract_version"] == expected and lock["approved_by"] == "tester"
     log = (tmp_path / "contracts/CHANGELOG.md").read_text(encoding="utf-8")
-    assert "v1.1.0" in log and "rename for test" in log and "Fact.schema.json" in log and "v1.0.0" in log
+    assert f"v{expected}" in log and "rename for test" in log and "Fact.schema.json" in log and "v1.0.0" in log
 
 
 # ------------------------------------------------------------------ scenarios + fixtures

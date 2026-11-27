@@ -139,6 +139,78 @@
         }
       }
     },
+    "/claims/with-documents": {
+      "post": {
+        "tags": [
+          "claims"
+        ],
+        "summary": "Create Claim With Documents",
+        "description": "Create a claim from its documents in ONE request and assess it once, to the human gate. Every field is optional: what is missing (name, policy, loss date, description) is read from the\nclaim form by the intake agent, and what you supply is kept. A file that is empty, too large or unreadable is skipped and listed in `skipped`; the claim is created if at least one file was stored.\nLater evidence goes to `POST /claims/{id}/documents` (which re-assesses the claim).",
+        "operationId": "create_claim_with_documents_claims_with_documents_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_claim_with_documents_claims_with_documents_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimWithDocumentsResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Content Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/claims/{claim_id}": {
       "get": {
         "tags": [
@@ -481,7 +553,7 @@
           "documents"
         ],
         "summary": "Upload Document",
-        "description": "Store the document and, unless `reassess=false`, re-assess the claim from the evidence node: only the new document is processed, and a pending\nrecommendation at the human gate is superseded (nobody had decided yet).",
+        "description": "Store the document and, unless `reassess=false`, re-assess the claim from the intake node (the checklist and header are refreshed, the notice of loss is read if it is new; the policy node is skipped when nothing it reads changed): only the new document is processed, and a pending\nrecommendation at the human gate is superseded (nobody had decided yet).",
         "operationId": "upload_document_claims__claim_id__documents_post",
         "parameters": [
           {
@@ -598,6 +670,421 @@
         "responses": {
           "200": {
             "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      }
+    },
+    "/claims/{claim_id}/documents/{document_id}/details": {
+      "get": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Document Details",
+        "operationId": "document_details_claims__claim_id__documents__document_id__details_get",
+        "parameters": [
+          {
+            "name": "claim_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Claim Id"
+            }
+          },
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Document Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      }
+    },
+    "/claims/{claim_id}/documents/{document_id}/page/{page}": {
+      "get": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Document Page",
+        "description": "The page as a picture. With `fact`, the place that fact was read from is marked (header `X-Highlight`: region | text | none).",
+        "operationId": "document_page_claims__claim_id__documents__document_id__page__page__get",
+        "parameters": [
+          {
+            "name": "claim_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Claim Id"
+            }
+          },
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Document Id"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Page"
+            }
+          },
+          {
+            "name": "fact",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Fact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "image/png": {}
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      }
+    },
+    "/policies/documents": {
+      "get": {
+        "tags": [
+          "policies"
+        ],
+        "summary": "List Policy Documents",
+        "operationId": "list_policy_documents_policies_documents_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyDocumentView"
+                  },
+                  "title": "Response List Policy Documents Policies Documents Get"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "policies"
+        ],
+        "summary": "Add Policy Document",
+        "description": "Add a policy wording or endorsement. The file may be called anything: the document id and version are read from INSIDE the document (a line such as\n'Policy wording BASE-HOME-1 | Version 2025-01'); `document_id` is only for a document that has none. The same content again is `unchanged`; different content under an\nexisting id is 409 unless `replace=true`. Claims already assessed are not changed: re-assess one with POST /claims/{id}/reassess.",
+        "operationId": "add_policy_document_policies_documents_post",
+        "parameters": [
+          {
+            "name": "replace",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Replace"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_add_policy_document_policies_documents_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyDocumentResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      }
+    },
+    "/policies/reload": {
+      "post": {
+        "tags": [
+          "policies"
+        ],
+        "summary": "Reload Policy Documents",
+        "operationId": "reload_policy_documents_policies_reload_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyReloadResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/claims/{claim_id}/reassess": {
+      "post": {
+        "tags": [
+          "claims"
+        ],
+        "summary": "Reassess Claim",
+        "description": "Run the claim again from `from_node` (default: the policy node, to pick up a policy document added since). Nodes before it are not run; nodes after it whose inputs\ndid not change are skipped. A recommendation waiting at the gate is superseded.",
+        "operationId": "reassess_claim_claims__claim_id__reassess_post",
+        "parameters": [
+          {
+            "name": "claim_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Claim Id"
+            }
+          },
+          {
+            "name": "from_node",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "policy",
+              "title": "From Node"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimView"
+                }
+              }
+            }
           },
           "404": {
             "content": {
@@ -766,6 +1253,141 @@
           }
         }
       }
+    },
+    "/claims/{claim_id}/trail": {
+      "get": {
+        "tags": [
+          "audit"
+        ],
+        "summary": "Trail",
+        "operationId": "trail_claims__claim_id__trail_get",
+        "parameters": [
+          {
+            "name": "claim_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Claim Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrailView"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      }
+    },
+    "/claims/{claim_id}/decision-pack": {
+      "get": {
+        "tags": [
+          "audit"
+        ],
+        "summary": "Decision Pack",
+        "operationId": "decision_pack_claims__claim_id__decision_pack_get",
+        "parameters": [
+          {
+            "name": "claim_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Claim Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(md|pdf)$",
+              "default": "md",
+              "title": "Format"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              },
+              "text/markdown": {},
+              "application/pdf": {}
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -803,7 +1425,7 @@
           "note": {
             "type": "string",
             "title": "Note",
-            "default": "In-memory event log of the prototype: it does not survive a restart. The Quality and Audit agent (T8.5) will persist it."
+            "default": "In-memory event log of the prototype: it does not survive a restart. A persistent audit trail (T8.3) will keep it."
           }
         },
         "type": "object",
@@ -844,6 +1466,144 @@
         ],
         "title": "BBox",
         "description": "Region on a page/image, normalised 0..1 in page coordinates."
+      },
+      "Body_add_policy_document_policies_documents_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File"
+          },
+          "uploaded_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded By"
+          },
+          "document_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_add_policy_document_policies_documents_post"
+      },
+      "Body_create_claim_with_documents_claims_with_documents_post": {
+        "properties": {
+          "files": {
+            "items": {
+              "type": "string",
+              "format": "binary"
+            },
+            "type": "array",
+            "title": "Files",
+            "description": "The claim's documents: claim form, reports, estimate, invoice, photos, schedule ..."
+          },
+          "claim_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{2,63}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Claim Id"
+          },
+          "claimant_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Claimant Name"
+          },
+          "policy_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Policy Ref"
+          },
+          "loss_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loss Date"
+          },
+          "loss_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loss Type"
+          },
+          "loss_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loss Description"
+          },
+          "channel": {
+            "type": "string",
+            "title": "Channel",
+            "default": "other"
+          },
+          "uploaded_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "files"
+        ],
+        "title": "Body_create_claim_with_documents_claims_with_documents_post"
       },
       "Body_upload_document_claims__claim_id__documents_post": {
         "properties": {
@@ -981,7 +1741,7 @@
         },
         "type": "object",
         "title": "ClaimCreate",
-        "description": "Create a claim and run it to the human gate. Everything is optional: with no id one is generated, with no header the intake agent (a mock today)\nreturns the labelled fixture of a known synthetic claim id, or leaves the header as given."
+        "description": "Create a claim and run it to the human gate. Everything is optional: with no id one is generated, with no header the intake agent reads the\nclaim's first notice of loss (a stored document) and fills what is missing; what you supply is kept."
       },
       "ClaimHeader": {
         "properties": {
@@ -1356,6 +2116,37 @@
         "title": "ClaimView",
         "description": "A claim: where it stands (phase, gate, which agents are mocks) and its full state at the current version."
       },
+      "ClaimWithDocumentsResult": {
+        "properties": {
+          "claim": {
+            "$ref": "#/components/schemas/ClaimView"
+          },
+          "stored": {
+            "items": {
+              "$ref": "#/components/schemas/DocumentRecord"
+            },
+            "type": "array",
+            "title": "Stored",
+            "description": "The documents stored with the claim (their types are decided when the claim is assessed)."
+          },
+          "skipped": {
+            "items": {
+              "$ref": "#/components/schemas/SkippedFile"
+            },
+            "type": "array",
+            "title": "Skipped",
+            "description": "Files that were not stored (empty, too large, unreadable) and why. They do not fail the claim.",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "claim",
+          "stored"
+        ],
+        "title": "ClaimWithDocumentsResult",
+        "description": "The claim created from its documents in one call: the claim run once to the human gate, the documents stored, and any file that was skipped and why."
+      },
       "ClauseCitation": {
         "properties": {
           "clause_id": {
@@ -1634,6 +2425,221 @@
         ],
         "title": "CoverageIssue"
       },
+      "DocumentDetails": {
+        "properties": {
+          "document_id": {
+            "type": "string",
+            "title": "Document Id"
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "detected_type": {
+            "type": "string",
+            "title": "Detected Type"
+          },
+          "type_confidence": {
+            "type": "number",
+            "title": "Type Confidence"
+          },
+          "type_method": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type Method"
+          },
+          "type_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type Reason"
+          },
+          "type_evidence_snippet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type Evidence Snippet"
+          },
+          "type_page": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type Page"
+          },
+          "media_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Media Type"
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kind"
+          },
+          "page_count": {
+            "type": "integer",
+            "title": "Page Count"
+          },
+          "uploaded_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded By"
+          },
+          "source_channel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Channel"
+          },
+          "uploaded_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded At"
+          },
+          "same_content_as": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Same Content As",
+            "default": []
+          },
+          "ocr_engine": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Engine"
+          },
+          "ocr_errors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Ocr Errors",
+            "default": []
+          },
+          "load_error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Load Error"
+          },
+          "pages": {
+            "items": {
+              "$ref": "#/components/schemas/PageView"
+            },
+            "type": "array",
+            "title": "Pages",
+            "default": []
+          },
+          "fields": {
+            "items": {
+              "$ref": "#/components/schemas/FieldView"
+            },
+            "type": "array",
+            "title": "Fields",
+            "default": []
+          },
+          "missing_required": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Required",
+            "default": []
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings",
+            "default": []
+          },
+          "low_confidence_below": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Low Confidence Below"
+          }
+        },
+        "type": "object",
+        "required": [
+          "document_id",
+          "filename",
+          "detected_type",
+          "type_confidence",
+          "page_count"
+        ],
+        "title": "DocumentDetails",
+        "description": "What the system read in one document (T7.3): how it was typed and why, the pages and where their text came from, and the fields extracted with page, region and confidence."
+      },
       "DocumentRecord": {
         "properties": {
           "document_id": {
@@ -1756,7 +2762,7 @@
                 "type": "null"
               }
             ],
-            "description": "The claim re-assessed from the evidence node (null when the claim was not re-run)."
+            "description": "The claim re-assessed from the intake node (null when the claim was not re-run)."
           },
           "note": {
             "type": "string",
@@ -2188,6 +3194,87 @@
         ],
         "title": "FieldChange"
       },
+      "FieldView": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "normalised": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Normalised"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "default": ""
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          },
+          "evidence_text": {
+            "type": "string",
+            "title": "Evidence Text"
+          },
+          "confidence": {
+            "type": "number",
+            "title": "Confidence"
+          },
+          "low_confidence": {
+            "type": "boolean",
+            "title": "Low Confidence"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method",
+            "default": "rule"
+          },
+          "flags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Flags",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "value",
+          "page",
+          "evidence_text",
+          "confidence",
+          "low_confidence"
+        ],
+        "title": "FieldView"
+      },
       "Health": {
         "properties": {
           "status": {
@@ -2233,6 +3320,17 @@
             "type": "string",
             "title": "Checkpointer",
             "default": "memory"
+          },
+          "low_confidence_below": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Low Confidence Below"
           }
         },
         "type": "object",
@@ -2249,6 +3347,7 @@
             "type": "string",
             "enum": [
               "approve",
+              "edit",
               "reject",
               "request_more_evidence"
             ],
@@ -2266,6 +3365,14 @@
             "type": "string",
             "title": "Reason",
             "default": ""
+          },
+          "edits": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Edits",
+            "default": {}
           }
         },
         "type": "object",
@@ -2539,6 +3646,39 @@
         ],
         "title": "OpenQuestion"
       },
+      "PageView": {
+        "properties": {
+          "number": {
+            "type": "integer",
+            "title": "Number"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "text_layer",
+              "ocr",
+              "none"
+            ],
+            "title": "Source"
+          },
+          "needs_ocr": {
+            "type": "boolean",
+            "title": "Needs Ocr"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "number",
+          "source",
+          "needs_ocr"
+        ],
+        "title": "PageView"
+      },
       "PolicyClause": {
         "properties": {
           "clause_id": {
@@ -2619,6 +3759,207 @@
           "document"
         ],
         "title": "PolicyClause"
+      },
+      "PolicyDocumentResult": {
+        "properties": {
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "added",
+              "replaced",
+              "unchanged"
+            ],
+            "title": "Outcome"
+          },
+          "document": {
+            "$ref": "#/components/schemas/PolicyDocumentView"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "outcome",
+          "document"
+        ],
+        "title": "PolicyDocumentResult"
+      },
+      "PolicyDocumentView": {
+        "properties": {
+          "doc_id": {
+            "type": "string",
+            "title": "Doc Id"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          },
+          "clauses": {
+            "type": "integer",
+            "title": "Clauses"
+          },
+          "unclassified": {
+            "type": "integer",
+            "title": "Unclassified",
+            "default": 0
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings",
+            "default": []
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "built-in",
+              "uploaded"
+            ],
+            "title": "Source"
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "sha256": {
+            "type": "string",
+            "title": "Sha256"
+          },
+          "id_from": {
+            "type": "string",
+            "enum": [
+              "document",
+              "model",
+              "given",
+              "file_name"
+            ],
+            "title": "Id From"
+          },
+          "uploaded_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded By"
+          },
+          "uploaded_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded At"
+          },
+          "replaces_built_in": {
+            "type": "boolean",
+            "title": "Replaces Built In",
+            "default": false
+          },
+          "id_evidence": {
+            "type": "string",
+            "title": "Id Evidence",
+            "default": ""
+          },
+          "details": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Details",
+            "default": {}
+          }
+        },
+        "type": "object",
+        "required": [
+          "doc_id",
+          "kind",
+          "clauses",
+          "source",
+          "filename",
+          "sha256",
+          "id_from"
+        ],
+        "title": "PolicyDocumentView",
+        "description": "One policy document in the library. The id and version were read from INSIDE the document (`id_from`), not taken from the file name."
+      },
+      "PolicyReloadResult": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "added": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Added",
+            "default": []
+          },
+          "removed": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Removed",
+            "default": []
+          },
+          "changed": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Changed",
+            "default": []
+          },
+          "problems": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Problems",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "total"
+        ],
+        "title": "PolicyReloadResult"
       },
       "PolicySnapshot": {
         "properties": {
@@ -2959,6 +4300,14 @@
             "title": "Nodes Run",
             "default": []
           },
+          "skipped_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Skipped Nodes",
+            "default": []
+          },
           "mock_nodes_run": {
             "items": {
               "type": "string"
@@ -3007,6 +4356,28 @@
               }
             ],
             "title": "Reserve Forecast"
+          },
+          "forecast_low": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Low"
+          },
+          "forecast_high": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast High"
           },
           "assessed_loss": {
             "anyOf": [
@@ -3116,6 +4487,24 @@
         ],
         "title": "SettlementStepTrace"
       },
+      "SkippedFile": {
+        "properties": {
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "filename",
+          "reason"
+        ],
+        "title": "SkippedFile"
+      },
       "StateDiff": {
         "properties": {
           "from_version": {
@@ -3186,6 +4575,79 @@
           "after"
         ],
         "title": "StatusChange"
+      },
+      "TrailRecordView": {
+        "properties": {
+          "seq": {
+            "type": "integer",
+            "title": "Seq"
+          },
+          "ts": {
+            "type": "string",
+            "title": "Ts"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary"
+          },
+          "hash": {
+            "type": "string",
+            "title": "Hash"
+          }
+        },
+        "type": "object",
+        "required": [
+          "seq",
+          "ts",
+          "kind",
+          "summary",
+          "hash"
+        ],
+        "title": "TrailRecordView"
+      },
+      "TrailView": {
+        "properties": {
+          "claim_id": {
+            "type": "string",
+            "title": "Claim Id"
+          },
+          "records": {
+            "items": {
+              "$ref": "#/components/schemas/TrailRecordView"
+            },
+            "type": "array",
+            "title": "Records"
+          },
+          "chain_ok": {
+            "type": "boolean",
+            "title": "Chain Ok"
+          },
+          "problems": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Problems",
+            "default": []
+          },
+          "head": {
+            "type": "string",
+            "title": "Head"
+          }
+        },
+        "type": "object",
+        "required": [
+          "claim_id",
+          "records",
+          "chain_ok",
+          "head"
+        ],
+        "title": "TrailView",
+        "description": "The persistent audit trail of one claim (T8.3): append-only, hash-chained, enough to reconstruct the decision."
       },
       "VersionInfo": {
         "properties": {

@@ -47,7 +47,7 @@ def texts(at: AppTest) -> str:
 
 # ------------------------------------------------------------------------------------------------ the client
 def test_the_client_covers_every_endpoint_the_ui_needs(api):
-    assert api.health()["mock_agents"] and {a["node"] for a in api.agents()} >= {"gap", "coverage"}
+    assert api.health()["mock_agents"] == [] and {a["node"] for a in api.agents()} >= {"gap", "coverage"}
     v = api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True, policy_ref="")
     assert v["status"]["phase"] == "awaiting_human_decision" and [c["claim_id"] for c in api.claims()] == ["CLM-0001"]
     assert api.claim("CLM-0001")["state_version"] == 10 and len(api.versions("CLM-0001")) == 10
@@ -86,14 +86,14 @@ def test_with_no_claim_the_page_explains_how_to_start(api):
     assert not at.exception and "Create a claim in the sidebar" in texts(at) and [b.label for b in at.button] == ["Refresh", "Create and run to the gate"]
 
 
-def test_an_open_claim_shows_the_tabs_the_tier_the_open_questions_and_the_mock_warning(api):
+def test_an_open_claim_shows_the_tabs_the_tier_and_the_open_questions(api):
     api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
     at = page(api, "CLM-0001")
     assert not at.exception and not at.error
-    assert [t.label for t in at.tabs] == ["Overview & decision", "Documents", "Facts", "Questions & gaps", "Policy", "History"]
+    assert [t.label for t in at.tabs] == ["Overview & decision", "Documents", "Document reader", "Facts", "Questions & gaps", "Assessment & decision", "Policy", "History"]
     m = {x.label: x.value for x in at.metric}
     assert m["Tier"] == "complex" and m["Version"] == "10" and m["Required approver"] == "senior adjuster"
-    assert "YET TO IMPLEMENT" in texts(at) and "Q-SUDDEN" in texts(at)
+    assert "YET TO IMPLEMENT" not in texts(at) and "Q-SUDDEN" in texts(at)                                # every agent is real now
     assert len(at.dataframe) >= 5                                                                    # documents, facts, questions, policy clauses, history, audit
 
 
@@ -181,3 +181,11 @@ def test_the_create_boxes_are_cleared_after_a_claim_is_created_and_the_decision_
     at.session_state["selected_claim"] = "CLM-0004"
     at.run()
     assert next(t for t in at.text_input if t.label.startswith("Reason")).value == ""                  # a draft reason does not follow you to another claim
+
+
+def test_the_mock_warning_appears_when_an_agent_is_still_a_mock(tmp_path, library):
+    store = DocumentStore(tmp_path / "store")
+    runner = ClaimRunner(build_registry(SETTINGS, document_store=store, policy_library=library, force_mock=("action",)))
+    mocked = ApiClient(http=TestClient(create_app(runner, store, synthetic_claims=SYNTHETIC / "claims")))
+    mocked.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
+    assert "YET TO IMPLEMENT" in texts(page(mocked, "CLM-0001"))

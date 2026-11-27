@@ -2,7 +2,7 @@
 
 Every node writes one event when it finishes or fails, the supervisor writes one for each routing decision, and the human gate writes one for each
 decision (who, in what role, what, why). The log lives next to the graph, not in ClaimState: the checkpointed state has no room for it, and the
-Quality & Audit agent (T8.5) will persist it properly. In the prototype it is in memory, so it does not survive a restart (the checkpointer does not either).
+persistent audit trail (T8.3) will keep it properly. In the prototype it is in memory, so it does not survive a restart (the checkpointer does not either).
 """
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from typing import Any, Callable, Literal
 
 EventKind = Literal["run_started", "agent_finished", "agent_failed", "ownership_violation", "routed", "human_requested", "human_decision",
-                    "human_decision_refused", "commit", "reassessment", "halted"]
+                    "human_decision_refused", "commit", "reassessment", "halted", "node_skipped", "action_denied"]
 
 
 @dataclass(frozen=True)
@@ -30,7 +30,8 @@ class RunEvent:
 
 
 class EventLog:
-    def __init__(self, clock: Callable[[], datetime] | None = None) -> None:
+    def __init__(self, clock: Callable[[], datetime] | None = None, sink: Callable[[RunEvent], None] | None = None) -> None:
+        self.sink = sink                                  # every event is also handed to the audit trail
         self._events: list[RunEvent] = []
         self._lock = threading.Lock()
         self._clock = clock or (lambda: datetime.now(timezone.utc))
@@ -40,6 +41,8 @@ class EventLog:
         with self._lock:
             ev = RunEvent(len(self._events) + 1, self._clock(), claim_id, kind, node, message, agent_id, mock, state_version, dict(data))
             self._events.append(ev)
+            if self.sink is not None:
+                self.sink(ev)
         return ev
 
     def add_once(self, key: str, claim_id: str, kind: EventKind, node: str, message: str, **kw: Any) -> RunEvent | None:

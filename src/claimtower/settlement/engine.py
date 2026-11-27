@@ -79,6 +79,12 @@ class SettlementCalculator:
     def versions(self) -> list[str]:
         return sorted(self._rules)
 
+    def rules_for(self, rules_version: str) -> CalculationRules:
+        try:
+            return self._rules[rules_version]
+        except KeyError:
+            raise ConfigError(f"unknown settlement rules version '{rules_version}'; available: {self.versions}") from None
+
     def compute_settlement(self, inputs: SettlementInputs, rules_version: str) -> SettlementResult:
         try:
             rules = self._rules[rules_version]

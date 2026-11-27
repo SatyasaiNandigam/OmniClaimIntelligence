@@ -26,8 +26,8 @@ def fixture(sid) -> ClaimState:
 
 
 def all_mock_registry(**kw):
-    """Every node a mock: the graph runs on the labelled fixtures alone (the gap agent is real in `build_registry` by default)."""
-    return build_registry(SETTINGS, force_mock=("gap",), **kw)
+    """Every node a mock: the graph runs on the labelled fixtures alone (the gap and coverage agents are real in `build_registry` by default)."""
+    return build_registry(SETTINGS, force_mock=("intake", "gap", "coverage", "settlement", "action", "audit", "routing"), **kw)
 
 
 def runner(registry=None, **kw):
@@ -53,12 +53,13 @@ def test_a_registry_needs_every_node_and_each_node_its_own_agent():
         AgentRegistry({**ok, "gap": (MockAgent("policy"), "mock")})
 
 
-def test_the_default_registry_has_the_real_gap_agent_and_eight_mocks_that_say_they_are_yet_to_implement():
+def test_the_default_registry_has_the_real_gap_coverage_settlement_and_routing_agents_and_two_mocks_that_say_they_are_yet_to_implement():
     reg = build_registry(SETTINGS)
-    assert reg.implemented == ["gap"] and len(reg.mocks) == 8
+    assert reg.implemented == ["intake", "gap", "coverage", "settlement", "action", "audit", "routing"] and len(reg.mocks) == 2
     table = {r["node"]: r for r in reg.describe()}
-    assert table["gap"]["status"] == "implemented" and table["coverage"]["status"] == "YET TO IMPLEMENT (mock)" and table["coverage"]["task"] == "T5.1"
-    assert build_registry(SETTINGS, force_mock=("gap",)).implemented == []
+    assert table["gap"]["status"] == "implemented" and table["coverage"]["status"] == "implemented"
+    assert table["settlement"]["status"] == "implemented" and table["audit"]["status"] == "implemented" and table["audit"]["task"] == "T8.5"
+    assert build_registry(SETTINGS, force_mock=("intake", "gap", "coverage", "settlement", "action", "audit", "routing")).implemented == []
 
 
 @pytest.mark.parametrize("node", PIPELINE)
@@ -114,19 +115,19 @@ def test_every_labelled_scenario_reaches_the_gate_with_its_labelled_tier(sid):
     assert status.gate["required_approver_role"] == want.routing.required_approver_role and status.resolution_status == want.resolution_status
 
 
-def test_a_claim_with_no_policy_in_force_skips_coverage_and_settlement():
+def test_a_claim_with_no_policy_in_force_runs_coverage_but_skips_settlement():
     r = runner()
     status = r.start(ClaimState(claim_id="CLM-0003"))
-    assert "coverage" not in status.nodes_run and "settlement" not in status.nodes_run and status.nodes_run[3:6] == ["gap", "action", "audit"]
+    assert "settlement" not in status.nodes_run and status.nodes_run[3:7] == ["gap", "coverage", "action", "audit"]
     skip = r.events.of_kind("CLM-0003", "routed")[0]
-    assert skip.data["skipped"] == ["coverage", "settlement"] and "no policy in force" in skip.message
+    assert skip.data["skipped"] == ["settlement"] and "no policy in force" in skip.message
     assert not policy_in_force(r.state("CLM-0003")) and policy_in_force(fixture("S-01"))
     assert policy_in_force(ClaimState(claim_id="x"))                                              # not yet known is not "not in force"
 
 
 def test_the_gate_shows_the_reviewer_what_is_needed_and_which_agents_are_mocks():
     g = runner().start(ClaimState(claim_id="CLM-0001")).gate
-    assert g["claim_id"] == "CLM-0001" and g["tier"] == "complex" and g["allowed_decisions"] == ["approve", "reject", "request_more_evidence"]
+    assert g["claim_id"] == "CLM-0001" and g["tier"] == "complex" and g["allowed_decisions"] == ["approve", "edit", "reject", "request_more_evidence"]
     assert set(g["mock_agents"]) == set(PIPELINE) and g["open_questions"]["Q-START"] == "missing" and g["contradictions"] == 1
     assert "only recommends" in g["note"] and g["settlement"]["status"] in ("calculated", "cannot_calculate")
 
@@ -265,7 +266,8 @@ def test_new_evidence_re_runs_from_the_chosen_node_and_skips_everything_before_i
     v = r.state("CLM-0001").state_version
     status = r.reassess("CLM-0001", from_node="gap")
     assert status.phase == "awaiting_human_decision" and r.state("CLM-0001").state_version > v
-    assert {n: c.calls for n, c in counters.items()} == {"intake": 1, "policy": 1, "evidence": 1, "gap": 2, "coverage": 2, "settlement": 2, "action": 2, "audit": 2, "routing": 2}
+    assert {n: c.calls for n, c in counters.items()} == {"intake": 1, "policy": 1, "evidence": 1, "gap": 2, "coverage": 1, "settlement": 1, "action": 1, "audit": 1, "routing": 1}      # only gap re-ran (it also reads the coverage issues, new since its first run); the rest had unchanged inputs
+    assert [e.node for e in r.events.of_kind("CLM-0001", "node_skipped")] == ["coverage", "settlement", "action", "audit", "routing"] and "unchanged" in r.events.of_kind("CLM-0001", "node_skipped")[0].message
     assert r.events.of_kind("CLM-0001", "reassessment")[0].data["from_node"] == "gap"
     assert r.decide("CLM-0001", approve("senior_adjuster")).resolution_status == "approved"
 

@@ -1450,6 +1450,36 @@
           "default": null,
           "title": "Explanation"
         },
+        "forecast_high": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Forecast High"
+        },
+        "forecast_low": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Forecast Low"
+        },
         "missing_inputs": {
           "default": [],
           "items": {

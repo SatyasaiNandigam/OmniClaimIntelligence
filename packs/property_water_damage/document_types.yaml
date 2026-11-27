@@ -84,7 +84,7 @@ types:
       loss_date: {labels: [date of loss, date of incident, loss date, incident date], type: date, required: true}
       loss_time: {labels: [time of loss, time of incident], type: text}
       loss_location: {labels: [location of loss, loss location, address of loss, risk address, property address], type: text}
-      loss_description: {labels: [description, description of loss, nature of loss, what happened], type: narrative, required: true}
+      loss_description: {labels: [description, description of loss, nature of loss, what happened], type: narrative, required: true, description: "the claimant's own account of what happened (the description of loss)"}
       estimated_loss: {labels: [estimated loss, approximate amount of loss, amount claimed, estimated amount], type: money}
   policy_schedule:
     title: Policy schedule
@@ -128,8 +128,8 @@ types:
     phrases_needed: 3   # SAMPLE
     fields:
       inspection_date: {labels: [inspection date, date of inspection, visit date], type: date, required: true}
-      findings: {labels: [findings, observations, diagnosis], type: narrative, required: true}
-      work_carried_out: {type: narrative, from_body: true}
+      findings: {labels: [findings, observations, diagnosis], type: narrative, required: true, description: "what the plumber found and observed on site: the condition of the pipe and joint (corrosion, scaling, pitting, separation, damp, water traces), the cause of the failure and any statement of when it began; include table rows of observations"}
+      work_carried_out: {type: narrative, from_body: true, description: "the work the plumber carried out (repair, replacement, testing, closing the wall)"}
   surveyor_report:
     title: Surveyor's report
     title_patterns:
@@ -142,9 +142,9 @@ types:
     phrases_needed: 3   # SAMPLE
     fields:
       site_visit_date: {labels: [site visit, date of visit, site visit date, survey date, date of survey], type: date, required: true}
-      cause_of_loss: {labels: [cause of loss, cause], type: narrative}
+      cause_of_loss: {labels: [cause of loss, cause], type: narrative, description: "every statement BY THE SURVEYOR about the CAUSE of the loss or its timing: sudden or gradual, what such signs are associated with, when it began, whether it can be determined, or that no opinion on cause is expressed. Not what the insured reported."}
       assessed_repair_cost: {labels: [assessed repair cost, assessed cost, assessed loss, cost of repair], type: money}
-      observations: {type: narrative, from_body: true}
+      observations: {type: narrative, from_body: true, description: "the surveyor's site observations and readings, including every row of the observations table (area, observation such as staining, efflorescence, blistering, swelling, mould, moisture reading) and the measured affected area"}
   estimate:
     title: Repair estimate
     title_patterns:

@@ -14,7 +14,7 @@ from collections.abc import Callable, Sequence
 
 from claimtower.ingestion.extractors.fields import RuleExtractor
 from claimtower.ingestion.extractors.lines import PageLike
-from claimtower.ingestion.extractors.llm import LLMFieldFiller
+from claimtower.ingestion.extractors.llm import LLMFieldFiller, extract_all, fill_table
 from claimtower.ingestion.extractors.models import ExtractedField, ExtractionResult, LineItem, TableResult
 
 
@@ -27,8 +27,13 @@ class HybridExtractor:
     def extract(self, *, doc_type: str, kind: str | None, pages: Sequence[PageLike],
                 original: Callable[[], bytes] | None = None) -> ExtractionResult:
         result = self.rules.extract(doc_type=doc_type, kind=kind, pages=pages, original=original)
-        if self.llm is not None and result.status == "ok" and result.missing_required:
-            return self.llm.fill(result, kind=kind, pages=pages, original=original)
+        if self.llm is not None and result.status == "ok":
+            result = extract_all(self.llm, result, kind=kind, pages=pages, original=original)    # the model reads everything (checked, never trusted); the rules fill only what it did not give
+            spec = self.rules.types.get(result.document_type)
+            if spec is not None and spec.table:
+                tried = fill_table(self.llm, result, kind=kind, pages=pages, original=original)  # rows and total read by the model, re-added up in code
+                keep_rules = result.table is not None and result.table.status == "reconciled" and (tried.table is None or tried.table.status != "reconciled")
+                result = result.model_copy(update={"warnings": tried.warnings}) if keep_rules else tried
         return result
 
 

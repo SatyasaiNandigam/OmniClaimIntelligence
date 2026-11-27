@@ -1,0 +1,1502 @@
+{
+  "00386852f7854f4436736b5d68abb33dbd2d35cab44072683019f2f630539942": {
+    "input_tokens": 818,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 693,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The operative escape is the identifiable abrupt water event that caused the visible tide marks, so the loss can be seen as happening abruptly despite prior minor seepage\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The radiator valve had been weeping for some months, so the escape resulted from gradual deterioration/repeated seepage and therefore does not meet the requirement of happening abruptly and unexpectedly at an identifiable time\",\"clause_quote\":\"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "01edeaeab6b8bdcab2e4b37816e68569cfde0d0a04ec09c5cd735ae33fd71771": {
+    "input_tokens": 836,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 369,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-4/f0\",\"F-4/f1\"],\"evidence_quote\":\"The plumber states a frost split the supply pipe in the loft on 20 January 2026 and water escaped when the thaw came.\",\"rationale\":\"The plumber's account indicates the pipe split due to frost on a specific date and water escaped on thaw, suggesting a sudden event instead of gradual leakage.\",\"confidence\":0.95}"
+  },
+  "02dd633fa9141647edc7e13cd39a12c709596b057965c57b530c0eefaeb44b80": {
+    "input_tokens": 860,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1623,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The escape is judged by the final failure as an event with an identifiable time (a sudden giving-way) and so meets the requirement that the escape be sudden and accidental\",\n      \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The loss resulted from long-term corrosion and slow weeping (gradual deterioration), which the definition expressly excludes from \\\"sudden and accidental\\\"\",\n      \"clause_quote\": \"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.6\n}"
+  },
+  "0455ed82edef41cc2b29fda3bdc03f4b284cb6eda137b3d87a12cea6657bd532": {
+    "input_tokens": 822,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 779,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The exception (C2) is a carve\u2011back to the exclusion: although gradual escape is excluded, any resulting damage to the home from that gradual escape is covered unless the escape was caused by lack of maintenance\",\"clause_quote\":\"However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\"points\":\"favourable\"},{\"interpretation\":\"The exclusion (C1) governs broadly and bars damage caused by water that escapes gradually; the exception (C2) is limited or does not override the exclusion for the kinds of damage claimed, so the loss is caught by the exclusion (e.g., 'resulting damage' read narrowly or subordinated to the exclusion)\",\"clause_quote\":\"We do not cover damage caused by water that escapes gradually over time.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "05c60b42b7e58d0697c0e8d1c4db0c97d1691105db30d5b08ffeeb865bf6c150": {
+    "input_tokens": 814,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 422,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The escape of water is an abrupt pipe burst occurring at an identifiable time consistent with the plumber's statement\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The water loss results from leakage occurring over many weeks (gradual seepage), falling within the definition's prohibition against gradual deterioration, wear, corrosion or repeated seepage\",\"clause_quote\":\"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.9}"
+  },
+  "063853cbd45fd7872c6836e72d512666947ee9f828c77b24ec0be0daf9b54c9a": {
+    "input_tokens": 834,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 582,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The gradual-escape exclusion applies to damage from a slow leak, so the soaked cabinets fall within the exclusion\",\n      \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\n      \"points\": \"adverse\"\n    },\n    {\n      \"interpretation\": \"The exception for resulting damage applies so damage to the home caused by a gradual escape (e.g., soaked cabinets) is covered unless the escape was caused by lack of maintenance\",\n      \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\n      \"points\": \"favourable\"\n    }\n  ],\n  \"confidence\": 0.85\n}"
+  },
+  "064be0c7fcebd67bc8795bcff0881dc97bc1730ad61abca4cd2308bb47237e79": {
+    "input_tokens": 798,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 752,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The exclusion applies only where the loss or damage is caused by leakage, seepage, corrosion or deterioration that occurs over a period of time, so a sudden burst that is the immediate cause of loss is outside this wording.\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The exclusion covers loss or damage that is the result of a process of gradual leakage/seepage/corrosion occurring over time, even if the final, observable event was a sudden burst\u2014because the underlying gradual process is what 'caused' the loss.\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "09bb6df1ec7a3c768b94d4ba016a1dfa9f7527c159b30bc3c57d25f10f92fb2d": {
+    "input_tokens": 865,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 348,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "09ecb96927a5a1a364c8b6571e2b7fd22b8f942186259cd3367b9e74892dafd7": {
+    "input_tokens": 813,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 227,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"B-3/f0\"],\"evidence_quote\":\"A pipe fitting snapped without warning and water poured out for ten minutes before it was stopped.\",\"rationale\":\"The facts indicate the pipe failed suddenly and the escape occurred over a short period, matching the definition of sudden.\",\"confidence\":0.95}"
+  },
+  "0b1eb533219ab68e183d57b89937c73b2bad28ab25559df86d1a80e9d93b7dfa": {
+    "input_tokens": 830,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 223,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"D-2/f0\",\"D-2/f1\"],\"evidence_quote\":\"The surveyor found long-term corrosion and staining that built up over several months.\",\"rationale\":\"The facts indicate the leak developed over several months and was observable earlier, suggesting gradual deterioration rather than a sudden event.\",\"confidence\":0.9}"
+  },
+  "0e3edab211c91f7dd516302a30b08c3c785fa04982be701297764e629d0428ec": {
+    "input_tokens": 813,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 285,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"A-3/f0\"],\"evidence_quote\":\"A flexible hose split without warning and water poured across the kitchen floor for a few minutes.\",\"rationale\":\"The facts indicate the hose split without warning and released water over a short period.\",\"confidence\":0.95}"
+  },
+  "0e4003428c4f2c0bee91c42b7290611cbe29f602df7d67f42e05f720ac3dcac6": {
+    "input_tokens": 824,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 412,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-5/f1\",\"F-5/f0\"],\"evidence_quote\":\"the claimant says the radiator valve had been weeping for some months.\",\"rationale\":\"The facts indicate the radiator valve had been weeping for months and brown tide marks consistent with ongoing seepage.\",\"confidence\":0.9}"
+  },
+  "0fbd729475be8bf40ca0b866b21be22881c216bca1334a2a24dfc667ac362bb9": {
+    "input_tokens": 702,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 318,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the available facts do not indicate when the leak began or whether the loss was gradual, so the exclusion\u2019s relevance is uncertain.\",\"confidence\":0.4}"
+  },
+  "0fd19cadf631adce4810318874ecb0d9dfdec0a0b0f3bdf2a3174dc164807dc2": {
+    "input_tokens": 632,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 523,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The exclusion applies only where the leaking of water from pipes or fittings itself occurs continuously or repeatedly over a period of time (i.e., the damaging ingress is from a prolonged, slow leak).\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"},{\"interpretation\":\"The exclusion applies to loss or damage that results from processes that develop over time (such as corrosion or deterioration) even if the final breach or observable leak that caused the floor damage was a single or recent event \u2014 so damage that accumulated from earlier, progressive faults is excluded.\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"}],\"confidence\":0.5}"
+  },
+  "11658e885fc13376b8c859855708169b57d2402cfe2ece6dcc36920c989b7cf1": {
+    "input_tokens": 827,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 696,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"\u2018Escape\u2019 means the initial release event and can be satisfied by an identifiable abrupt onset even if leakage continued afterwards\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"\u2018Sudden and accidental\u2019 requires an abrupt, identifiable event and excludes gradual deterioration or repeated seepage, so a year-long slow leak is not an escape that meets the requirement\", \"clause_quote\": \"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "1191a114c54fbcde9358bb2d49fdf9dd479c568e4523431d0d992315c4d239b8": {
+    "input_tokens": 664,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 220,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "1244254898cfdc28968b1b605dfffdc2001c233c8f9f12a02347bf0993f2d205": {
+    "input_tokens": 618,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 220,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "14ee87454137e25a1dc03217772ffd654a2d3f833cd8653437a477c9558b638c": {
+    "input_tokens": 701,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 550,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The loss stems from an identifiable abrupt escape event (a sudden failure or burst) that caused the building damage, distinct from any earlier slow seepage\", \"clause_quote\": \"CL-COV-WATER [coverage] 2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"\u2018Sudden and accidental\u2019 excludes loss caused by gradual deterioration, wear, corrosion or repeated seepage, so a slow leak over at least a year or dripping since last winter falls outside the insured peril\", \"clause_quote\": \"CL-DEF-SUDDEN [definition] 1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "16a10ec88d90c31c57f83700f8b1b6a667c5613ac148ec4d5c48a1c2f76888be": {
+    "input_tokens": 813,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 221,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"D-4/f0 (DOC)\"],\"evidence_quote\":\"A flexible hose under the sink split and flooded the kitchen floor within minutes on 14 June 2026.\",\"rationale\":\"The facts indicate the water escape was sudden rather than the result of gradual leakage over time.\",\"confidence\":0.95}"
+  },
+  "1aeb25c572874c3b95b6a4acd2136512d90751cfcd9765c903ec1f19d637043b": {
+    "input_tokens": 791,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 742,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The exclusion applies because the proximate cause of the loss was prior corrosion/deterioration or a process of weakening of the hose or fittings that occurred over time, even if the final release of water happened suddenly\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}, {\"interpretation\": \"The exclusion does not apply because the loss was caused by a sudden split of a flexible hose that flooded the kitchen within minutes, and the words 'occurring over a period of time' require the damage or leakage itself to be gradual rather than immediate\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}], \"confidence\": 0.65}"
+  },
+  "1d13d5177f5aa2739458233fbb8408b279d69fb461a4651ee085ee6bce427197": {
+    "input_tokens": 622,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 562,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The exclusion applies to loss from leakage originating in the boiler system because a boiler component can be treated as a 'pipe or fitting' and the policy bars loss caused by leakage or deterioration occurring over time\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    },\n    {\n      \"interpretation\": \"The exclusion does not apply because the loss resulted from a sudden failure of the boiler despite a recent service, or because the boiler itself is not a 'pipe or fitting' and so the clause does not reach this loss\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    }\n  ],\n  \"confidence\": 0.6\n}"
+  },
+  "1d662b2d723eb2af170230156a7053ddd7500b2bad4afa6466d39889d253655d": {
+    "input_tokens": 824,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 802,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The water escape counts as a gradual escape (fits \u201cgradually over time\u201d), so the exclusion applies to damage caused by that escape\",\"clause_quote\":\"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\"points\":\"adverse\"},{\"interpretation\":\"Even if the escape is treated as gradual, resulting damage to the home from that escape is covered unless the escape was caused by lack of maintenance\",\"clause_quote\":\"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\"points\":\"favourable\"}],\"confidence\":0.65}"
+  },
+  "1e77babdc9a6ad011cbf3260da3eb88cd44f56ca335b45f055e908e551460267": {
+    "input_tokens": 706,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 335,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-6/f0\"],\"evidence_quote\":\"The invoice shows a boiler service on 3 March 2026.\",\"rationale\":\"the facts indicate the water damage was sudden rather than caused by gradual leakage\",\"confidence\":0.7}"
+  },
+  "21d13c63e45785a3c1212442af1b159ca2f388a12505d593493c7e9580003375": {
+    "input_tokens": 852,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 229,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"\",\"confidence\":0.4}"
+  },
+  "2266427cbc8ae1dd5f803012568429753fed2324a6b05cc96398530faaa0abe9": {
+    "input_tokens": 852,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 727,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The water intrusion was an abrupt event with an identifiable time (overnight) and therefore falls within the policy's \u2018sudden and accidental\u2019 wording.\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"favourable\"}, {\"interpretation\": \"The water entry could be the end result of gradual deterioration, wear, corrosion or repeated seepage that ultimately allowed water through the ceiling, so it does not meet the policy\u2019s exclusion from \u2018sudden and accidental.\u2019\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.85}"
+  },
+  "2346f0997e1032fa48c3cffcd66f91e0e2871a039438e68933e1c4473dc63324": {
+    "input_tokens": 636,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 225,
+    "text": "{\n  \"ambiguous\": false,\n  \"readings\": [],\n  \"confidence\": 0.9\n}"
+  },
+  "240769452e1b10c01998cfe2fb0a5f1cb643a4a7366418f28e9ccd6e9ae3f169": {
+    "input_tokens": 654,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 500,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"Replacement of the hallway carpet is a form of \\\"resulting damage to the home\\\" from a gradual escape of water, so the carpet loss falls within the exception and is covered unless lack of maintenance is shown\",\n      \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"Damage to the carpet is damage \\\"caused by water that escapes gradually over time,\\\" and therefore falls within the primary exclusion rather than the exception (either because \\\"resulting damage to the home\\\" was intended for different kinds of damage or because carpet is not within that scope), so the loss is excluded\",\n      \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "24e0121a36b6fc130bdf25a069c0ee9d5016fd72957fafd223de23d1b3ca8b0e": {
+    "input_tokens": 811,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 347,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"G-4/f0\"],\"evidence_quote\":\"The claimant says the dishwasher outlet hose slipped off during a cycle and flooded the kitchen within an hour.\",\"rationale\":\"The facts indicate the hose slipped off and caused flooding during a single cycle rather than leaking gradually over time.\",\"confidence\":0.95}"
+  },
+  "25c83a8c11197c586ae56b316c5d71d4c14c466625a6632fc3706e5a438ff37e": {
+    "input_tokens": 809,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 538,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The exclusion applies because the loss or damage resulted from a pipe fitting that had been weeping and corroding over a period of time, so the resulting swelling and mould are loss or damage 'caused by gradual leakage... occurring over a period of time'\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"},{\"interpretation\":\"The exclusion does not apply because the immediate cause of the reported damage was the elbow 'finally giv[ing] way' \u2014 a sudden failure \u2014 so the loss or damage is caused by a sudden event rather than by the prior gradual leakage/ deterioration occurring over a period of time\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"}],\"confidence\":0.7}"
+  },
+  "28ba07b7d2a9c6a149599cf29fe940ff66aa3f045813bc694f825398f6eb681a": {
+    "input_tokens": 856,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 352,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-5/f1\",\"F-5/f0\"],\"evidence_quote\":\"the claimant says the radiator valve had been weeping for some months.\",\"rationale\":\"The facts indicate the escape appears to have been gradual over months rather than happening abruptly at an identifiable time.\",\"confidence\":0.85}"
+  },
+  "29e7745938deac53d33a1d5cb42deb6cb22edfaecc5025f01b872e1c755c6727": {
+    "input_tokens": 863,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 427,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"G-7/f0\"],\"evidence_quote\":\"The plumber found the corroded elbow had been weeping slowly for a long time before it finally gave way.\",\"rationale\":\"the plumber found the elbow had been weeping slowly for a long time before it gave way, which indicates gradual deterioration rather than an abrupt event.\",\"confidence\":0.95}"
+  },
+  "29ff80857f4b79a62ae72b5f2c76e28cb8f82bd2fae497e45f238b1666430287": {
+    "input_tokens": 789,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 603,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The hose split was a sudden failure (not a gradual escape), so the exclusion for gradual escape does not apply\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The words \\\"escapes gradually over time\\\" could be read to include a continuous uncontrolled discharge lasting minutes (a gradual escape), bringing the incident within the exclusion; the separate sentence about covering \\\"resulting damage... caused by such an escape of water, unless the escape was caused by a lack of maintenance\\\" could then limit recovery depending on whether the split resulted from lack of maintenance\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"adverse\"}], \"confidence\": 0.65}"
+  },
+  "2a1ef638189cef47b3089b04a4d58e95a75748e41608f83af0f1d1999f111e7b": {
+    "input_tokens": 716,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 275,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-1\"],\"evidence_quote\":\"the washing machine inlet hose burst while the machine was running and the room flooded straight away.\",\"rationale\":\"the facts indicate the damage began suddenly from a hose burst rather than from prolonged leakage.\",\"confidence\":0.9}"
+  },
+  "2c3ea232baf614cda0e5876baab09bd263fce12329124282ce1bd2d755bf7eac": {
+    "input_tokens": 820,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 313,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the available facts conflict about whether the leak was sudden or developed over weeks, so timing is unclear\",\"confidence\":0.4}"
+  },
+  "2d2fa3c093d5534e8ae06f553a97fd045d29c6d8cfc79390f1e1dd92f4d0be3a": {
+    "input_tokens": 833,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 120,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The available fact only lists repair costs and provides no information about how or when the water escaped.\",\"confidence\":0.3}"
+  },
+  "2d7ac47b68c1015109d08997682765e6803c4fc931c11dd2d56a81631933b255": {
+    "input_tokens": 835,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 926,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The exclusion operates to remove cover because the loss was caused by water escaping gradually and the wear of the seals constitutes a lack of maintenance, so the exception does not apply\",\n      \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\n      \"points\": \"adverse\"\n    },\n    {\n      \"interpretation\": \"The exception for resulting damage applies so damage to the home from the gradual escape is covered because the escape was not shown to be caused by a lack of maintenance (the boiler\u2019s servicing does not establish lack of maintenance of the shower seals)\",\n      \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\n      \"points\": \"favourable\"\n    }\n  ],\n  \"confidence\": 0.85\n}"
+  },
+  "2de3b6261afa9e3e01b7f3c98afd1acf02a57378e987d017491dbe61b1c07105": {
+    "input_tokens": 864,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1065,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The tile slipping in the storm is an abrupt, identifiable event that caused water to enter; read together, \u2018escape of water\u2019 can be read broadly to include water entering the Building due to that sudden tile failure, satisfying the requirement that the escape be \u2018sudden and accidental\u2019.\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The water ran in over several nights and the definition treats \u2018sudden and accidental\u2019 as excluding loss that results from gradual deterioration, wear, corrosion or repeated seepage; the multi-night ingress is reasonably read as repeated seepage/gradual rather than an abrupt escape at an identifiable time.\",\"clause_quote\":\"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.6}"
+  },
+  "2eb49fb70fda09035d7cd904ce9c7994f89174a6d65b7ba74665684ae8c60ea1": {
+    "input_tokens": 795,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 281,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "2f3ee7affd885ad61b4f908b3435234a1252a852be79c36e1b0f13027a404b8a": {
+    "input_tokens": 695,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 389,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The hose splitting was an abrupt failure at an identifiable time and not the result of gradual wear, so the event meets the policy\u2019s sudden-and-accidental requirement\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The hose failed because of gradual deterioration, wear or corrosion (even if the actual split occurred within minutes), so the escape falls within the definition\u2019s exclusion from \u201csudden and accidental\u201d\", \"clause_quote\": \"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "313d50c9306b3fe9a64b8977bf3cc794811724e63430c5affdbd0114beae7f69": {
+    "input_tokens": 808,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 615,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The policy requires the escape of water to be sudden (so the loss must occur without warning and within a short period)\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"adverse\"},{\"interpretation\":\"The coverage clause requires only that water escaped from a fixed pipe or appliance; the separate definition of \u201csudden\u201d does not impose an additional requirement here because the coverage text does not use the word \u201csudden\u201d\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"favourable\"}],\"confidence\":0.6}"
+  },
+  "3168d20edf2c7b293c81fa1debdb22197bcdce4639173dbeaf42a8156d8f5774": {
+    "input_tokens": 641,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 405,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The loss or damage resulted from prolonged weeping/corrosion over months and therefore falls within the exclusion's temporal scope\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    },\n    {\n      \"interpretation\": \"The damaging event was a discrete or recently accelerated escape (not the gradual process itself), so the exclusion does not apply to the claim for that distinct loss\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "32b4cb376e0eb0985858f938f2fdef8ea2d971053eb8809e7f7acfa5c3adcb8f": {
+    "input_tokens": 867,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 355,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"G-6/f0\",\"G-6/f1\"],\"evidence_quote\":\"The roofer states a tile slipped in the storm and rain ran in over several nights before it was noticed.\",\"rationale\":\"the facts indicate water entered over several nights rather than at an abrupt identifiable time\",\"confidence\":0.9}"
+  },
+  "33729818c3f9b0d949d4e6b20dc0c9c3d7cb94d537a353b98a5aba6792bdd166": {
+    "input_tokens": 842,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1505,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The flexible hose under the sink is part of the plumbing 'apparatus' and the escape was abrupt, so the loss falls within the escape-of-water wording\",\n      \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The wording requires the water to escape from a 'fixed' pipe/tank/apparatus; a movable or replaceable flexible hose under a sink is not a \u2018fixed\u2019 component and therefore does not meet the clause wording\",\n      \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.8\n}"
+  },
+  "338fcaa81eec36c5e61981d4f42696acf170e1df81fdf3e40f30f60b3f2fe947": {
+    "input_tokens": 780,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 643,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The exclusion applies only when the leakage or escape of water itself occurred gradually over a period of time, so a sudden escape on 2 May 2026 is outside this wording.\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"},{\"interpretation\":\"The exclusion applies where the loss was caused by prior gradual processes (corrosion, deterioration or seepage) that occurred over time even if the final escape of water was sudden (a joint failing), so prior deterioration would bring the loss within the exclusion.\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "347f5b8426c772250d04872fff2d0708b00d1943349b97cf6c6f9ab79d7d9dfb": {
+    "input_tokens": 776,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 284,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "34a1c57f1b9524228052a27b75056e68e60d9ad651e8d81e4fdc95144e66accd": {
+    "input_tokens": 315,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 92,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"push-fit connector came apart under pressure\"}"
+  },
+  "385d665ccf21ccb00bd89fb4583db9a674095a38ad9f500f890125a1622b8aba": {
+    "input_tokens": 775,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 522,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"A flexible supply hose that is attached to and serves a fixed appliance or plumbing installation is part of that appliance/pipe for the wording 'fixed pipe or appliance', so the escape falls within the phrasing of the coverage clause\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"favourable\"}, {\"interpretation\": \"A flexible hose (a removable or non-rigid supply line) is not a 'fixed pipe or appliance', so water escaping from such a hose is outside the stated covered source\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"adverse\"}], \"confidence\": 0.9}"
+  },
+  "38665619e7852e87cf751fee28b4991ccf39c1cc25f11f85f6979779445a5a25": {
+    "input_tokens": 812,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 221,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"H-5/f0\"],\"evidence_quote\":\"The plumber states the stopcock seized and the supply hose burst suddenly, flooding the utility room within minutes.\",\"rationale\":\"The plumber's account indicates the hose burst suddenly and flooding occurred within minutes, pointing away from a gradual leak.\",\"confidence\":0.95}"
+  },
+  "398f3ca42846da36edc7094aa682f467de95cd926352bb3e7420a58adf691f6a": {
+    "input_tokens": 731,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 288,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"D-2/f0\",\"D-2/f1\"],\"evidence_quote\":\"The surveyor found long-term corrosion and staining that built up over several months.\",\"rationale\":\"The facts indicate corrosion and staining developed over several months and the claimant observed damp patches earlier, consistent with a gradual process.\",\"confidence\":0.85}"
+  },
+  "39e6180205129d1fbef7aab808c7fb0ceca15533f95ec262363f9af84dd4cb71": {
+    "input_tokens": 856,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 575,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The escape occurred at a single, identifiable moment before the adjuster\u2019s visit and was abrupt, with the dehumidifier installed afterwards as a remedial step\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"There is no identifiable abrupt event; the water intrusion was ongoing or from repeated seepage such that it does not \u2018happen abruptly and unexpectedly at an identifiable time\u2019\", \"clause_quote\": \"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "3a37210b77cc7bea10bbfc76eca8dc878014c14c9a4c40f900414b73c466a949": {
+    "input_tokens": 844,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 189,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The available facts do not state how or when the water escaped, so the exclusion\u2019s applicability cannot be determined from them.\",\"confidence\":0.4}"
+  },
+  "3b09e01e6f41a5a56b70841b72a8ce4aa0c0fdf09cd0ce6fa68cd7635fede934": {
+    "input_tokens": 808,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 409,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "3bfcb3843a6a76e4c7da83fb80114dc0212cd9d9f26926d71d1bc6aeab863752": {
+    "input_tokens": 815,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 660,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"\u2018Sudden\u2019 describes the escape of water itself \u2014 the escape must occur without warning and within a short period, so a slow leak over months is not a sudden escape\", \"clause_quote\": \"A1 Sudden: Sudden means occurring without warning and within a short period.\", \"points\": \"adverse\"}, {\"interpretation\": \"The operative requirement is damage caused by water escaping; the policy can be read to focus on the resulting damage (the ceiling collapse) or on a final, sudden escape event that caused immediate damage, so a prolonged leak culminating in a sudden collapse can fall within \u2018water escaping\u2019 and the definition of sudden as applied to the damage event\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"favourable\"}], \"confidence\": 0.85}"
+  },
+  "3cfefc84c986f9632d9cb101106646f87bdf535299eee9c0c21713f75cb399a6": {
+    "input_tokens": 650,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 281,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "3d0034419d4005899d99b535d68b60873d00f0f257fd350fa7917378058200e6": {
+    "input_tokens": 831,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 355,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"G-7/f0\",\"G-7/f1\"],\"evidence_quote\":\"The plumber found the corroded elbow had been weeping slowly for a long time before it finally gave way.\",\"rationale\":\"The facts indicate the pipe wept slowly over a long period before failing, suggesting a gradual occurrence.\",\"confidence\":0.95}"
+  },
+  "3d84a7858234c788c16da2bcf7a4fbe26ce099963594300643918232c4a95e83": {
+    "input_tokens": 746,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 230,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"D-4/f0\"],\"evidence_quote\":\"A flexible hose under the sink split and flooded the kitchen floor within minutes on 14 June 2026.\",\"rationale\":\"The facts indicate the hose split abruptly and caused flooding within minutes, which appears to show a sudden and accidental escape of water.\",\"confidence\":0.93}"
+  },
+  "3d990111ccb83235cf281701cf95312c964aa42fd41ebb3f4f38c26725fecc0e": {
+    "input_tokens": 655,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 596,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The exclusion is read as targeting damage that itself develops over time, so prior minor weeping does not automatically mean the loss arose from a process occurring over a period \u2014 the visible tide marks could reflect a more recent single event.\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"},{\"interpretation\":\"The exclusion is read to bar cover where the insured peril (leakage/seepage) has been occurring over a period of time; the claimant\u2019s statement that the radiator valve had been weeping for some months and the brown tide marks support that the loss was caused by gradual leakage.\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"}],\"confidence\":0.6}"
+  },
+  "406b046cdde06cabe28b7cc06456d74d09bba0e003cedb0ba18ae8561137b78f": {
+    "input_tokens": 669,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 699,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The phrase 'fixed water pipes, tanks or apparatus' can reasonably be read to include kitchen plumbing or fixed kitchen water-related fittings, so the reported kitchen floor damage falls within loss caused by escape of water.\", \"clause_quote\": \"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The requirement that the escape be \\\"sudden and accidental\\\" \u2014 defined as happening abruptly at an identifiable time and not resulting from gradual deterioration, wear, corrosion or repeated seepage \u2014 can reasonably be read to require evidence of an abrupt event; absent such evidence the loss may be treated as resulting from gradual deterioration and not within the insuring clause.\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "421f766f42ab4690856c5928e40e9d9678c448c481657586f4ad669c18ad22be": {
+    "input_tokens": 652,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 750,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The loss was the result of long-term seeping over years, so the water did not occur \\\"suddenly\\\" (it did not occur within a short period or without warning).\", \"clause_quote\": \"A1 Sudden: Sudden means occurring without warning and within a short period.\", \"points\": \"adverse\"}, {\"interpretation\": \"Even if seeping had been occurring for years, the joint could have finally failed producing a discrete, rapid escape of water (an event occurring within a short period and without warning).\", \"clause_quote\": \"A1 Sudden: Sudden means occurring without warning and within a short period.\", \"points\": \"favourable\"}], \"confidence\": 0.75}"
+  },
+  "4344dd98470d60bbd2a6bf1a9a36e778447a731db3f1c548d078b458393af20b": {
+    "input_tokens": 840,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 779,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The escape occurred abruptly at an identifiable time (the hose slipped off during a cycle), satisfying the policy\u2019s requirement that the escape be sudden and accidental\", \"clause_quote\": \"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"favourable\"}, {\"interpretation\": \"The loss may be the result of gradual deterioration, wear, or improper maintenance causing the hose to detach, so it falls within the definition\u2019s exception and does not meet the policy\u2019s sudden-and-accidental requirement\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "4366964f033ad26e900d333a0db90d27ec97549b37a2866b41cbdd5bafbfd5ea": {
+    "input_tokens": 661,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 513,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The policy excludes loss or damage that has been caused by a process of gradual leakage, seepage, corrosion or deterioration that develops over time, so where the surveyor found long-term corrosion and staining over several months the exclusion applies.\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    },\n    {\n      \"interpretation\": \"The exclusion is limited to loss or damage directly caused by an ongoing process of leakage or seepage over time, and does not unambiguously apply to pre-existing deterioration or staining as a non-covered condition or to consequential sudden events \u2014 so a careful reader could conclude the wording does not clearly bar a claim based on the observed condition alone.\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    }\n  ],\n  \"confidence\": 0.6\n}"
+  },
+  "444e83bd9013f78a32b8b292bfb6d8512a060e40e6b630d56c75488e16cd96fd": {
+    "input_tokens": 847,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 159,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-1\"],\"evidence_quote\":\"The loss adjuster records that the washing machine inlet hose burst while the machine was running and the room flooded straight away.\",\"rationale\":\"The facts indicate the water escape occurred abruptly at an identifiable time rather than from gradual deterioration.\",\"confidence\":0.95}"
+  },
+  "44d6ec1ab38aee6985a618fc459bf58a6ee9eb6eedd1f295f480fdc225783839": {
+    "input_tokens": 853,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 457,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The flooring damage results from a discrete escape of water that occurred abruptly at an identifiable time (e.g., a sudden burst or discharge), fitting the coverage condition for escape of water\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The flooring damage is the result of gradual seepage or long-term ingress (not an abrupt event), and so does not meet the policy's requirement that the escape be \\\"sudden and accidental\\\"\", \"clause_quote\": \"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.85}"
+  },
+  "44e5a130e15ccdb5727a14f4cba1ac9a400c9b29b80e434117afb7f77f8d58f8": {
+    "input_tokens": 810,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 683,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"A flexible hose attached to plumbing is within the meaning of 'fixed pipe or appliance', so water escaping from it is the covered event\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"favourable\"}, {\"interpretation\": \"A flexible hose is not a 'fixed pipe or appliance', so water escaping from it falls outside this coverage wording\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"adverse\"}], \"confidence\": 0.85}"
+  },
+  "45a11ef5f468b1f080c304b390bb4b9cb277f3f26f88e8887fde88f09611f682": {
+    "input_tokens": 819,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 555,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"B-1/f0\"],\"evidence_quote\":\"The washing machine hose had been weeping for weeks and stained the flooring; it then burst and soaked the adjoining room.\",\"rationale\":\"the facts indicate the water escape was ongoing for weeks before the eventual burst, suggesting a gradual rather than entirely sudden event.\",\"confidence\":0.8}"
+  },
+  "464b9fcdf723a0ee05def093536a5d7ffe2be47fb43238259d6b0203b33a1e59": {
+    "input_tokens": 810,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 186,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The single invoice date does not indicate how or when the water escaped and so does not show suddenness.\",\"confidence\":0.3}"
+  },
+  "4748e5f553e0bf851f002fe04163288cde0baa1054a090d923c830a7636ea02d": {
+    "input_tokens": 804,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 255,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The available fact only lists carpet replacement and does not describe how or when the water escaped, so timing and suddenness are unknown.\",\"confidence\":0.95}"
+  },
+  "476669246fd1230034f1534e452fbddef8af8f3d2bcabb9edda1729ba2068eda": {
+    "input_tokens": 307,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 100,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"pipe under basin sheared off; occurred during the night; flooded within minutes\"}"
+  },
+  "48c5a1fc842276c90c9bc420db07c18e44dae0d26937bc0cc494af8ab2623975": {
+    "input_tokens": 801,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 496,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The hallway carpet replacement results from a sudden escape of water (an event occurring without warning and within a short period) from a fixed pipe or appliance, bringing the loss within the insuring clause\",\"clause_quote\":\"We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"favourable\"},{\"interpretation\":\"The hallway carpet replacement results from water escaping gradually (a slow leak/ongoing seepage) so the loss does not meet the policy\u2019s requirement that the event be sudden (occurring without warning and within a short period)\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "48e3a079046436dc12c3480df0cb32c4ed43129b4f56baf90151b03593fbe76e": {
+    "input_tokens": 704,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 570,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The pipe split was an abrupt, identifiable event caused by frost, and the resulting escape of water fits the requirement that the escape be sudden and accidental.\",\n      \"clause_quote\": \"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The damage arose from freezing and subsequent thawing tied to environmental conditions rather than an abrupt accidental event; the loss may be viewed as resulting from a non-sudden process (predictable freeze/thaw or progressive vulnerability) and therefore not within the defined \\\"sudden and accidental\\\" meaning.\",\n      \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.6\n}"
+  },
+  "49eacb8cb9653d11566b1547f3bac9415fa65112bb340723fd96a0e1bd84eaca": {
+    "input_tokens": 668,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 440,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"Resulting damage from a gradual escape (including floor coverings) is within the exception and therefore treated as damage to the home\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"favourable\"}, {\"interpretation\": \"Damage from a gradual escape is excluded and the carpet replacement is excluded either because 'resulting damage to the home' does not encompass floor coverings or because the escape was caused by lack of maintenance\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "4a2068a077acb81e2f0293737180d54e8998d8873a02f84c65b31afe7d1451e3": {
+    "input_tokens": 758,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 435,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"Exclusion applies only to slow, continuing leaks or seepage that themselves happen over time, not to a sudden hose burst\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"Exclusion applies where underlying gradual deterioration or corrosion of the hose or fitting occurred over time even if the final event was a sudden burst that caused immediate flooding\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "4b08280d0c47eeefb1c7efa8022f0d06af855c4c502db137d6659594d24a6fba": {
+    "input_tokens": 813,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 153,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"H-6/f0\"],\"evidence_quote\":\"The surveyor found corroded joints and staining showing the pipe had been leaking slowly for over a year.\",\"rationale\":\"The facts indicate the pipe leaked slowly over an extended period, consistent with gradual leakage.\",\"confidence\":0.9}"
+  },
+  "4ba9d097d6ef5c61cbbe862f51e6675809ccb281c8710321b2c86c50fd7e2e17": {
+    "input_tokens": 651,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 432,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The loss is the result of a sudden burst that is not the product of a prior, ongoing process\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The physical evidence of prolonged staining shows an ongoing process (leakage/corrosion) that caused or substantially contributed to the loss, so the exclusion applies\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.8}"
+  },
+  "4e5dea16ae7d185ff1c6f071e769ce0dcf97a01e3c1b1b3326441fbbd9b0f4d3": {
+    "input_tokens": 763,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 221,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"D-2/f0\",\"D-2/f1\"],\"evidence_quote\":\"The surveyor found long-term corrosion and staining that built up over several months.\",\"rationale\":\"the facts indicate the water escape developed over several months from corrosion rather than abruptly.\",\"confidence\":0.9}"
+  },
+  "4fd21a4a6f588118914e7223a76d996b36d382379dd5cf9182977c023c86a850": {
+    "input_tokens": 811,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 220,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "51ac1125070b2640ba70c1592b252d59345c250cd735665da8c4565d80518914": {
+    "input_tokens": 837,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 353,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"D-1/f0\",\"D-1/f1\"],\"evidence_quote\":\"The plumber states the copper joint failed suddenly on 2 May 2026 and water escaped at once.\",\"rationale\":\"The facts indicate the leak occurred suddenly on 2 May 2026 rather than gradually over time.\",\"confidence\":0.95}"
+  },
+  "51ba50a444dfa3d052be33accfc4eeb01d80f6fe91c115d50afe05f2a5f507ee": {
+    "input_tokens": 802,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 284,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.0}"
+  },
+  "53efb108471f0d127e24a4ccf959eb9bc1b0b0aa8a5997f27dfb32a64a7de9e6": {
+    "input_tokens": 813,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 516,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"Exclusion limited to gradual damage from pipes or fittings\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"Exclusion applies to any gradual ingress of water over a period of time (including a slipped tile leading to rain entering over several nights)\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.85\n}"
+  },
+  "546938962b66a1432c7c58f86cd5e68844a9569cc539bb8296b2944099f6a2c3": {
+    "input_tokens": 792,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 469,
+    "text": "{\"ambiguous\":false,\"confidence\":0.9}"
+  },
+  "56cc9a8be756469cff759de32475ce99f337ae33ea4a44c04424db7acdb5dd47": {
+    "input_tokens": 718,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 683,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The escape of water is viewed as a single abrupt event occurring when the frozen pipe split or when the thaw allowed water to escape at an identifiable time, satisfying the policy's sudden-and-accidental requirement.\", \"clause_quote\": \"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The policy's \u2018sudden and accidental\u2019 requirement is read to exclude escapes that result from an underlying progressive process (for example repeated freezing/thawing or long-term weakening) so that a pipe failure attributable to prior deterioration or repeated stress does not meet the definition.\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "58cb18bd29aa738d2ec33cc2335b4c170d6fb3828035e4f2c6b121b88f803a85": {
+    "input_tokens": 778,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 413,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The escape is judged by the eventual sudden release when the joint failed, so the event occurred without warning and within a short period despite prior seepage\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"favourable\"},{\"interpretation\":\"The escape is the ongoing seepage described by the plumber (a gradual process over years), so it did not occur without warning or within a short period\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "594ed7c429e619a090c84e9c7ef3f1f0a07be2fb7353f07a108313e1e4e27a31": {
+    "input_tokens": 795,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 507,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The connector failed suddenly under pressure, so the loss was not caused by a gradual process and the gradual-leakage exclusion does not apply\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The push-fit connector had undergone deterioration or corrosion over time which culminated in it coming apart under pressure, so the loss was caused by a gradual process and falls within the exclusion\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.8}"
+  },
+  "59998abddacd1253d072be1ebd5aea0d5ddcf04c960de874639c65170166e50f": {
+    "input_tokens": 848,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 501,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-EXC-GRADUAL\",\"CL-H2-EXC-GRADUAL-EXC\"],\"fact_ids\":[\"B-2/f0\"],\"evidence_quote\":\"The tap had been dripping slowly for a year and the dripping stained the base of the kitchen cupboard.\",\"rationale\":\"The facts indicate the water escaped gradually over an extended period, which points to the gradual-escape exclusion being relevant though an exception concerning maintenance may still be contested.\",\"confidence\":0.7}"
+  },
+  "59a6c8eb8a31f401d6a24bb912d3830661f70b6dc3a04bef2a5f69c75675d3c5": {
+    "input_tokens": 830,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 570,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The soaking of the adjoining room is 'resulting damage' from the prior gradual escape and falls within the exception\",\n      \"clause_quote\": \"However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The loss is damage 'caused by water that escapes gradually over time' (or the escape was caused by lack of maintenance), so the gradual-escape exclusion applies\",\n      \"clause_quote\": \"We do not cover damage caused by water that escapes gradually over time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.85\n}"
+  },
+  "5b8d8178b251f485df82f5f03d31a98d2f04981f71c6cb1006f1d133e4958935": {
+    "input_tokens": 632,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 385,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"Loss arises from a sudden mechanical failure of the inlet hose while the machine was running, not from a process occurring over time\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The burst resulted from prior deterioration/corrosion of the hose that developed over time and so the loss is caused by deterioration occurring over a period of time\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "5bb1886b01172551e0b89e9b72d24a6bc99f89817283507386e0c4c4f2931519": {
+    "input_tokens": 734,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 188,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts on file do not describe the timing or cause of the water escape, so suddenness is undetermined.\",\"confidence\":0.3}"
+  },
+  "5d6e91d84b3ad21137d6cb4f90e8c6395b4353e2dc198ad2754d000c8164ccbb": {
+    "input_tokens": 692,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 543,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The escape of water occurred abruptly at an identifiable time despite prior minor weeping, so the loss satisfies the policy requirement of a sudden escape\", \"clause_quote\": \"CL-COV-WATER [coverage] 2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The damage resulted from gradual deterioration or repeated seepage (the radiator valve had been weeping for months), so the event does not meet the policy's requirement of sudden and accidental\", \"clause_quote\": \"CL-DEF-SUDDEN [definition] 1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "5d8d3f7e50fa1a6fadec7662c006463b680163b1c955f2e95d43d99030450f0b": {
+    "input_tokens": 640,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 477,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The water entry was caused by a sudden event (for example a pipe burst) occurring overnight rather than by a leak developing over time\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The water entry was the result of gradual leakage/seepage or deterioration of a pipe or fitting that developed over a period of time and manifested as water coming through the ceiling overnight\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "5db94f34dfade6b73f2bf4bcd805329a22f14fdf30427878f97c167347f9a39c": {
+    "input_tokens": 687,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 281,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "6136bfe17f6af18ee7438198d1097a38e13fce183cc94c4127fed91d92277c2e": {
+    "input_tokens": 830,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 528,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The pipe split occurred abruptly at an identifiable time due to frost, meeting the requirement that the escape was 'sudden and accidental'\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"favourable\"}, {\"interpretation\": \"The damage resulted from a freeze-thaw process (or foreseeable freezing) rather than an abrupt, accidental event, so the escape may be read as resulting from processes excluded as not 'sudden and accidental'\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "6160bd4e2c75127e5f6831f47b7ddf4c0cc332b22ed99990ba40c4bc53c0dc63": {
+    "input_tokens": 813,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 284,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "617978a6e987f1e52718d6b8f73b2d2c19f9f8e84056832dc80e6dcaa638f724": {
+    "input_tokens": 299,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 150,
+    "text": "{\"states_cause\":\"no\",\"what_it_states\":\"\"}"
+  },
+  "61cbfd22b13e7b42965d4284bc8820ea7ab10f1ba37a6691da95ffa508f692e1": {
+    "input_tokens": 879,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 299,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-H3-COV-ESCAPE\",\"CL-H3-DEF-ESCAPE\"],\"fact_ids\":[\"H-7/f0\"],\"evidence_quote\":\"The plumber states a joint in the loft tank feed pipe failed suddenly and water ran into the bedroom within minutes.\",\"rationale\":\"The facts indicate a joint failed suddenly causing rapid water escape from a fixed installation, fitting the policy definition of escape of water.\",\"confidence\":0.95}"
+  },
+  "631951aa89e28f4bad55cb44ca6d39c558a5d941734fc501c3fbf562b8afa8bb": {
+    "input_tokens": 865,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 232,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-2/f0\",\"F-2/f1\"],\"evidence_quote\":\"The contractor found rot and mould throughout the sub-floor consistent with a slow leak of at least a year.\",\"rationale\":\"The facts indicate the water loss resulted from a slow, long-running leak rather than an abrupt, identifiable event.\",\"confidence\":0.9}"
+  },
+  "6390b89a215a60773391914709d543718a03c9c7fe1475d8bd0dbfaeb7dd146a": {
+    "input_tokens": 779,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 512,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The loss arose from a sudden mechanical event (a frost-induced split) causing immediate escape of water, not from a gradual process\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The policy excludes loss that is the consequence of deterioration or processes that developed over time even if the final failure was manifest suddenly (the thaw revealed escape of water from a pipe that failed as the culmination of prior deterioration)\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.8}"
+  },
+  "6465edf27db4bed920d4401f7288ff722a611d5c8c002baa8ddc968c0b62cfbf": {
+    "input_tokens": 821,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 758,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The exclusion applies to all damage that is caused by water escaping gradually, including damage to the home\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"adverse\"}, {\"interpretation\": \"The exception restores cover for secondary or consequential damage to the home that results from a gradual escape of water (distinct from damage that is the escaping water itself), unless the escape was caused by a lack of maintenance\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"favourable\"}], \"confidence\": 0.6}"
+  },
+  "6481bdd8ee0f82c6264ac54593a8732d7044b2090affb747e6962f3b808f15b4": {
+    "input_tokens": 630,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 315,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The policy excludes only losses caused by prolonged leakage or deterioration and does not apply to an acute mechanical failure that caused rapid flooding\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The exclusion covers loss resulting from underlying gradual deterioration of a pipe or fitting even if the final breach and noticeable flooding happened suddenly\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "68697c276f62e37960a37aa28cdb26f83640471148162a40fab3560973bd7a0b": {
+    "input_tokens": 702,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 444,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The loss results from an abrupt pipe burst occurring at an identifiable time, satisfying the policy\u2019s \u2018sudden and accidental\u2019 requirement\",\"clause_quote\":\"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The damage stems from leakage developing over many weeks (gradual deterioration or repeated seepage) and therefore falls within the definition\u2019s exclusion from \u2018sudden and accidental\u2019\",\"clause_quote\":\"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "687e511145652c6fb3cb4cbec8517153035fa91dc6c4571f83e97dbed89b2a6c": {
+    "input_tokens": 856,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 314,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The available facts do not state how or when the water escaped, so timing and suddenness are unclear.\",\"confidence\":0.6}"
+  },
+  "687f400d41fbacb826a9d6b9c67b1ade971215e7c5dd6468f52166ca23296dd2": {
+    "input_tokens": 779,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 643,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The exclusion applies to any loss or damage (including consequential damage to the kitchen floor) that is caused by a leakage that occurs gradually over time from pipes or fittings\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}, {\"interpretation\": \"The exclusion is limited to the pipes or fittings themselves (their leakage, seepage, corrosion or deterioration) and does not clearly extend to separate property (the kitchen floor) repaired in the estimate\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}], \"confidence\": 0.7}"
+  },
+  "6a8fe87b890424dccd1f07db351293354213db6d7bde68a4f4a7abde71ccf8c0": {
+    "input_tokens": 826,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 441,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The stain to the cupboard is damage caused by water that escaped gradually over time and so falls within the exclusion for gradual escape\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"adverse\"}, {\"interpretation\": \"The stain is resulting damage to the home caused by that gradual escape, and so falls within the exception that the policy will cover resulting damage from such an escape (subject to the separate maintenance proviso)\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"favourable\"}], \"confidence\": 0.85}"
+  },
+  "6a95736555ba0e99e83525a0838a5d5001829fd944f95c69f1602fa2ada08563": {
+    "input_tokens": 680,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 667,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The resulting damage to the home from the gradual escape is covered because the exception applies unless the escape was caused by a lack of maintenance, and a ten-year lapse in service does not necessarily establish that the escape was caused by lack of maintenance as a matter of wording.\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"favourable\"}, {\"interpretation\": \"The resulting damage is not covered because the gradual escape was caused by a lack of maintenance (system not serviced for ten years and joint seeping slowly), bringing the exception's carve\u2011out into play and leaving the exclusion to operate.\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"adverse\"}], \"confidence\": 0.65}"
+  },
+  "6b8941ba884dc8a46b2dc367467d7bbf6823949a24a14a240a9c3549c76ac065": {
+    "input_tokens": 837,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 312,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The available fact only lists replacement of carpet and does not state how or when the water escaped.\",\"confidence\":0.5}"
+  },
+  "6bb3eb5f336fa4ad477178c16f20b0ebcf052dda2174ed9272897aef8d616796": {
+    "input_tokens": 789,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 220,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "6e52f736624e1692a43283b919139dc68cd352a6124fde7af649081cd65f641c": {
+    "input_tokens": 654,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 482,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The exclusion applies only to loss or damage that itself manifests as a process over time (ongoing leakage, seepage, corrosion or deterioration that continues to cause damage), so a sudden escape of water on a single date is not within the exclusion.\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The exclusion covers loss or damage that is the consequence of processes that developed over time (for example prior corrosion or deterioration that weakened a joint), even if the actual water escape and resulting loss occurred suddenly.\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "6e69e59959dc8fed1ae58b704bb788d7d4096afee81800d8226a8bd85c219437": {
+    "input_tokens": 807,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 569,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The hose splitting and flooding within minutes is an abrupt identifiable event that meets the policy requirement of a sudden and accidental escape of water\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The wording excludes escapes that result from prior gradual deterioration, so if the hose split because of wear/age (even if the final break was abrupt) the escape would not satisfy \u201csudden and accidental\u201d\",\"clause_quote\":\"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "6ec9c1cdf0d677c2e1f7fcd48d2f540cf23672d3c456179504cc55ee43f32c59": {
+    "input_tokens": 846,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 289,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-H2-EXC-GRADUAL\",\"CL-H2-EXC-GRADUAL-EXC\"],\"fact_ids\":[\"A-3/f0\"],\"evidence_quote\":\"A flexible hose split without warning and water poured across the kitchen floor for a few minutes.\",\"rationale\":\"The facts indicate the hose failure was sudden rather than a gradual escape.\",\"confidence\":0.95}"
+  },
+  "711df15cd5fa85e239054e73612bc96a3d00cd5fae2842117c4a92ac07ef0879": {
+    "input_tokens": 824,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1060,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The pipe failure was sudden (sheared off and flooded within minutes) and so is not an escape that 'happens gradually over time'; the exclusion C1 therefore does not apply to these facts.\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The term 'gradual escape' could be read broadly to cover escapes that unfold over minutes rather than instantaneously; if C1 applies the exception C2 only restores cover for 'resulting damage' (secondary consequences) rather than the immediate flood damage, so the immediate damage from the pipe shearing could remain caught by the exclusion.\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "74ecab9c2a985760b0e7d80b2ba147859ba9568aab2972d1eb8de714cbc8f2f9": {
+    "input_tokens": 814,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 345,
+    "text": "{\"ambiguous\":false,\"confidence\":0.9,\"readings\":[]}"
+  },
+  "763479336348f726b871a221759d48970b1a6c7d3f7cea3fd1c3b8ebd7067c58": {
+    "input_tokens": 868,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 427,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-4/f0\",\"F-4/f1\"],\"evidence_quote\":\"The plumber states a frost split the supply pipe in the loft on 20 January 2026 and water escaped when the thaw came.\",\"rationale\":\"The facts indicate the supply pipe split from frost and the water escaped abruptly when the thaw occurred.\",\"confidence\":0.9}"
+  },
+  "77069687565e07eb166c81def86a3a191fc17a6813ae3cc1c55593d8a9b731d7": {
+    "input_tokens": 849,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 519,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The loss is the result of an escape of water that occurred abruptly at an identifiable time (a sudden event), satisfying the condition in the coverage clause\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The requirement 'sudden and accidental' is strict: it means an abrupt, identifiable event and excludes damage from gradual deterioration, wear, corrosion or repeated seepage; with only extensive damage reported and no identifiable abrupt event, the loss may not meet that definition\",\"clause_quote\":\"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "78f9689897279032eeda191933da464b375417aa53e4ffc1319f77119207fd7f": {
+    "input_tokens": 307,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 94,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"pipe fitting snapped; water flowed for ten minutes\"}"
+  },
+  "79afffa9295011e3e9de55e08f8a49ddd8536a13a297239ff41c862886071951": {
+    "input_tokens": 845,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 228,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"D-4/f0\"],\"evidence_quote\":\"A flexible hose under the sink split and flooded the kitchen floor within minutes on 14 June 2026.\",\"rationale\":\"The facts indicate the hose failed abruptly and caused flooding within minutes, consistent with a sudden and accidental escape of water.\",\"confidence\":0.95}"
+  },
+  "7b2c3cb33ab07287cc78536ab46e466ecbf03a444cb4c4cadbe213ff6b7bc7b1": {
+    "input_tokens": 859,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 220,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.95}"
+  },
+  "7b5304aea1b3eb45ea42fcc9d958abfda286eddec3c48781f7da406e10aa60ce": {
+    "input_tokens": 837,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 177,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts do not state how or when the water escaped\",\"confidence\":0.3}"
+  },
+  "7c24b0002df6bf3c3949caf0b31d6853d0de6f7866bc4509451b7eed3e057a3b": {
+    "input_tokens": 738,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 228,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"D-1/f0\",\"D-1/f1\"],\"evidence_quote\":\"The plumber states the copper joint failed suddenly on 2 May 2026 and water escaped at once.\",\"rationale\":\"The facts indicate the leak was sudden on 2 May 2026 rather than a gradual seepage over time.\",\"confidence\":0.9}"
+  },
+  "7e67b05ce6663d7bdf2e144d0ed5b25ea914a4696e2de018c8fa2dcf6cd9f181": {
+    "input_tokens": 719,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 284,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "7e8d4d01ee354daae6e86203e2dcd787caa471a9c961f9ac5b59147bfa5ddf23": {
+    "input_tokens": 801,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 687,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The words require the loss to be caused by a gradual process occurring over time; here the event (water through the ceiling overnight) can reasonably be read as a sudden event not described as occurring over a period of time\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The exclusion covers loss where water intrusion is the result of leakage or deterioration of pipes or fittings that developed over time and merely manifested (or worsened) overnight, so the wording can be read to exclude this loss even though the claimant observed water only overnight\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "7fdbd5563949353c93998b6b66f0bcb2ba9ad27228cf81cb2a7154795d281bc4": {
+    "input_tokens": 780,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 433,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The carpet damage is the harm directly caused by the gradual escape of water and therefore falls within the exclusion for damage caused by water that escapes gradually over time\",\"clause_quote\":\"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\"points\":\"adverse\"},{\"interpretation\":\"The carpet damage is \\\"resulting damage to the home\\\" caused by the gradual escape and therefore falls within the exception that such resulting damage is covered unless the escape was caused by a lack of maintenance\",\"clause_quote\":\"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\"points\":\"favourable\"}],\"confidence\":0.85}"
+  },
+  "81b6fa4a0cff01dac3f6a7cce016dd32c5ac40ec19e00061ed1635d1e9ba950d": {
+    "input_tokens": 763,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 532,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The loss is primarily from a sudden burst (as stated by the plumber) and therefore is not within the scope of loss \u2018caused by gradual leakage\u2019\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The loss arises from leakage that occurred over many weeks (as indicated by the surveyor), so the damage falls within loss 'caused by gradual leakage' that the clause excludes\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "81d22d1e56e4689ce5c333aedf72df661e8c8f02334023aaf269a41c97354927": {
+    "input_tokens": 309,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 99,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"dishwasher outlet hose slipped off during a cycle; flooded within an hour\"}"
+  },
+  "81d9d34e67bad3ab512f0396b96e92e6308632b84b0b823bb97fc7ba0f5bbd40": {
+    "input_tokens": 311,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"flexible hose under sink split; flooded within minutes on 14 June 2026\"}"
+  },
+  "82aa394bf5349c59ff03f80a0a756e53558a28281e5c95c7b33b7f1d51697ea0": {
+    "input_tokens": 823,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 374,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The facts on file do not establish whether the water escaped suddenly or by gradual leakage.\",\"confidence\":0.6}"
+  },
+  "82b6d4d4889961b61b992aadd9c59492cff91be09da493f1ba42b73257257de8": {
+    "input_tokens": 766,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 423,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-2/f0\",\"F-2/f1\"],\"evidence_quote\":\"The contractor found rot and mould throughout the sub-floor consistent with a slow leak of at least a year.\",\"rationale\":\"the facts indicate the damage appears to have resulted from a prolonged leak rather than an abrupt escape of water\",\"confidence\":0.9}"
+  },
+  "83c1f3adc8cba3654f333f20dc18b0f9fc14e22e408618312208e0b87c211366": {
+    "input_tokens": 666,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 542,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"Resulting damage to the home from a gradual escape is within the insurer's scope of cover under the exception\",\"clause_quote\":\"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\"points\":\"favourable\"},{\"interpretation\":\"The escape was caused by lack of maintenance (system not serviced for ten years), so the exception does not apply and the gradual escape exclusion removes cover\",\"clause_quote\":\"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "8b038c1abd094d4bf587a5655ecb6ff3dfcd3c428996cfe148f069d6ffeed7b7": {
+    "input_tokens": 637,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 447,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The loss arose from a sudden burst of pipe, so the damage was not caused by gradual leakage occurring over a period of time\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The staining and surveyor's observations indicate leakage over many weeks, so the loss was caused by gradual leakage occurring over a period of time\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.8}"
+  },
+  "8b2f7083ec4555e8339090e1805acfe3eb2589c4b73837fc29f5426e7a68c707": {
+    "input_tokens": 869,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 358,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"D-1/f0\",\"D-1/f1\"],\"evidence_quote\":\"The plumber states the copper joint failed suddenly on 2 May 2026 and water escaped at once.\",\"rationale\":\"The facts indicate the copper joint failed abruptly on 2 May 2026 and water escaped immediately.\",\"confidence\":0.95}"
+  },
+  "8b850770c3c8b885a30b1b9c95da9e2485346a17f45b3f33f186f7b8b5c4e422": {
+    "input_tokens": 859,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 243,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The facts on file do not state how or when the water escaped.\",\"confidence\":0.4}"
+  },
+  "8bbd2f971f081dd201ff64ac029dc8e79385644a57f870912a22225df25eebc9": {
+    "input_tokens": 677,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1075,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The escape was sudden (a hose split without warning and poured water for minutes), so it is not an escape that occurred gradually over time and the gradual-escape exclusion does not apply\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"favourable\"}, {\"interpretation\": \"An escape that pours water across the floor for several minutes can reasonably be read as an escape that occurred 'gradually over time', bringing it within the exclusion and so taking cover away\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "8c6912bc50878a8052e7b25410ef99f5b13da44e161beab89e01ad70c7d80a4b": {
+    "input_tokens": 673,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 595,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The escape of water happened abruptly and unexpectedly at an identifiable time despite recent boiler servicing; the service invoice does not establish gradual deterioration, wear, corrosion or repeated seepage\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"favourable\"}, {\"interpretation\": \"The presence of a recent boiler service suggests ongoing issues or wear that led to the escape of water over time, meaning the loss resulted from gradual deterioration, wear, corrosion or repeated seepage\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.65}"
+  },
+  "8e109a8f05d4607341cf25d7735d9998817c0327523257cb38644256967148fc": {
+    "input_tokens": 767,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 575,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The words cover damage resulting from a leak that has been weeping for months, so the exclusion applies to these facts\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}, {\"interpretation\": \"The words require the loss or damage itself to have occurred progressively over a period of time (not merely that a valve had been weeping), so the exclusion might not apply to a discrete staining event shown in the photographs\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}], \"confidence\": 0.65}"
+  },
+  "8e46f1ce3425ad9e1f3d114e70167eea107557c2a9617f6efcf0fafbf4f6eefb": {
+    "input_tokens": 812,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 495,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"\u201cEscaping\u201d includes any loss of water from a fixed pipe or appliance (including a slow, persistent drip) so the staining is loss from water escaping the tap\", \"clause_quote\": \"We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"favourable\"}, {\"interpretation\": \"The policy requires the escape to be sudden \u2014 i.e. occurring without warning and within a short period \u2014 and a year-long slow drip is not sudden, so the facts do not meet the defined term\", \"clause_quote\": \"Sudden means occurring without warning and within a short period.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "8f0c706ed6ad726a399b2e138404b34543e3c53ed0c78169d93bdaf6d8f11753": {
+    "input_tokens": 801,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 380,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The facts on file do not state how or when the water escaped, so timing and gradualness are not shown.\",\"confidence\":0.5}"
+  },
+  "8f4dde06d33f1aedd3eba2aa501012734d45c2beaf1a340320511a0695747cbe": {
+    "input_tokens": 798,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 701,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The loss was caused by a process of gradual leakage or deterioration over time, so the exclusion applies\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"},{\"interpretation\":\"The damage to the ceiling and carpet could result from a sudden event (for example a sudden escape when a deteriorated fitting finally fails) or the phrase \u201coccurring over a period of time\u201d could be read to modify the deterioration only, so the exclusion does not clearly apply to this presented claim\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"}],\"confidence\":0.7}"
+  },
+  "8f90a253ef7484534653341bd92de55113941048fdc9f3d5d9fa8a253fdd413a": {
+    "input_tokens": 849,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 288,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"G-1/f0\"],\"evidence_quote\":\"The plumber reports that the push-fit connector behind the toilet came apart under pressure and water poured out until the stopcock was shut.\",\"rationale\":\"the facts indicate the connector came apart abruptly causing a sudden release of water.\",\"confidence\":0.9}"
+  },
+  "8fff73b4272a9e1dd3d3fba18204e064c412341959c39a9a679fcd57d5eaaa94": {
+    "input_tokens": 846,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1043,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The connector separation was an abrupt, unexpected event occurring at an identifiable time, falling within the policy\u2019s definition of \u2018sudden and accidental\u2019\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"favourable\"}, {\"interpretation\": \"The connector failure was a mechanical breakdown, maintenance issue or part of gradual deterioration (or the connector is not a \u2018fixed water pipe\u2019), so the escape does not meet the policy\u2019s coverage trigger\", \"clause_quote\": \"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "937457266b2444c04b7af1291f25a53a35354c455bbe4eefc4abbe120352d782": {
+    "input_tokens": 712,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 720,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The loss is treated as a sudden escape of water occurring at an identifiable time (the final breach), so the insuring clause\u2019s requirement that the escape be sudden and accidental can be read as satisfied despite prior signs of deterioration.\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The escape resulted from long-term corrosion/gradual deterioration, and under the policy\u2019s definition an escape that results from corrosion or gradual deterioration is not \u2018sudden and accidental\u2019, so the claim does not meet the insuring requirement.\",\"clause_quote\":\"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.6}"
+  },
+  "94dfe2e34fd7d3b27c752bc5020de5ad0762839dd3df7c82631c8b130fd81412": {
+    "input_tokens": 805,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 673,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The phrase \\\"gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time\\\" requires a showing that the water intrusion developed over a measurable extended period before the visit and the dehumidifier\u2014because the facts give only a single visit date and a dehumidifier installation the next day, there is not enough temporal evidence of ongoing, long\u2011term leakage to bring the loss within the exclusion\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"},{\"interpretation\":\"The exclusion\u2019s key words \\\"caused by gradual leakage, seepage, corrosion or deterioration ... occurring over a period of time\\\" can be read broadly to cover any loss from non\u2011sudden plumbing failures or slow leaks even if discovered and mitigated shortly after discovery; the close timing of the visit (3 May) and dehumidifier installation (4 May) is consistent with loss from an ongoing slow leak that necessitated drying, so the exclusion could apply\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "96ab07f6a1ecd1782e3f8490634cc80233d539ed1f67877ff01b5c3a8ef23834": {
+    "input_tokens": 663,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 831,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The hose split was a sudden failure and the water escaped as an event rather than \\\"gradually over time,\\\" so resulting damage falls within the subsequent coverage carve\u2011in\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"favourable\"}, {\"interpretation\": \"The loss involved water escaping over a period of minutes, which can reasonably be read as \\\"gradually over time,\\\" so the exclusion barring damage from gradual escape applies to the loss\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "9709094aa3ec0097cd1f41eeb72e7738d0620a3355b4a88a1414a907eb0dadbf": {
+    "input_tokens": 725,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 217,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-5/f1\",\"F-5/f0\"],\"evidence_quote\":\"the claimant says the radiator valve had been weeping for some months.\",\"rationale\":\"The facts appear to indicate the leak occurred over a period of months, consistent with gradual leakage.\",\"confidence\":0.8}"
+  },
+  "98d2953a26b13c5779c0744248d865091b6ff950f4d673cc0d1127bcc95c6801": {
+    "input_tokens": 310,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 101,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"copper joint failed suddenly on 2 May 2026; water escaped immediately\"}"
+  },
+  "9901b2a3b1017eb26d9d9f7e5bb382112b0b88f838ccc36d7fa7fe66aa17a673": {
+    "input_tokens": 653,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 542,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The exclusion targets continuous or slowly occurring loss (leakage/seepage) rather than a single sudden escape of water caused by an abrupt failure\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The exclusion embraces loss where the damaging process (corrosion, deterioration or gradual weakening) occurred over time even if the ultimate break and escape of water was a sudden event\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.62\n}"
+  },
+  "9aaa8743c0d12c229a1e45defc9145da8bb4fe1b232a78f5ed2f289821203d8c": {
+    "input_tokens": 816,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 634,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The final failure was a sudden escape from the appliance (the hose burst), so the damage to the adjoining room is damage caused by water escaping from a fixed appliance.\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"favourable\"}, {\"interpretation\": \"The loss is best read as an ongoing escape (the hose was weeping for weeks), so it did not occur \\\"without warning and within a short period\\\" and therefore does not meet the policy's sudden requirement.\", \"clause_quote\": \"A1 Sudden: Sudden means occurring without warning and within a short period.\", \"points\": \"adverse\"}], \"confidence\": 0.8}"
+  },
+  "9aec98c1b6aa6d0c2185993065d6650cdad6cfe791bb30a2fdde5197c840b58c": {
+    "input_tokens": 815,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 222,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"B-2/f0\"],\"evidence_quote\":\"The tap had been dripping slowly for a year and the dripping stained the base of the kitchen cupboard.\",\"rationale\":\"the facts indicate the water escaped gradually over an extended period rather than suddenly\",\"confidence\":0.9}"
+  },
+  "9c9143f59ccbdd0a233924ad84e8aeb189f58a7193dfcd279c63d7149a3f8278": {
+    "input_tokens": 681,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 780,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The hose splitting was an abrupt, identifiable event falling within the insured peril (escape from plumbing)\",\"clause_quote\": \"CL-COV-WATER [coverage] 2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\": \"favourable\"},{\"interpretation\": \"The flexible hose is not a \u2018fixed water pipe, tank or apparatus\u2019 or the failure resulted from prior gradual deterioration (excluded by the definition)\",\"clause_quote\": \"CL-DEF-SUDDEN [definition] 1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "9cbdbda4a2667450fc9437b790cf6e00816d2ba26281bad69a8e2ed292b72390": {
+    "input_tokens": 647,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 284,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "9e77815ff50208df27f60249135b82bdce5d24612671f355d699dacbc7a1dbcd": {
+    "input_tokens": 737,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 294,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-4/f0\",\"F-4/f1\"],\"evidence_quote\":\"The plumber states a frost split the supply pipe in the loft on 20 January 2026 and water escaped when the thaw came.\",\"rationale\":\"The facts indicate the loss followed a discrete pipe failure during thaw rather than ongoing leakage over time.\",\"confidence\":0.9}"
+  },
+  "9f75dd0a902ba038b7eed4a116af79a00bc0fdf8c2e0a52165ab0655232127f6": {
+    "input_tokens": 783,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 702,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"Loss arises from damage developing gradually over an extended period (the problem was ongoing), falling within the exclusion of gradual processes\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}, {\"interpretation\": \"Loss arises from a sudden or recent failure rather than damage developing over a period of time, so the wording requiring that the leakage/seepage/corrosion occurred \\\"over a period of time\\\" is not satisfied\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}], \"confidence\": 0.6}"
+  },
+  "a00bea370332aa956dcdd72c653b65fde79f0659fa9450c506106fd48653f1b2": {
+    "input_tokens": 654,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 452,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The phrase \\\"sudden\\\" can reasonably be read to include a rapid escape of water that damaged the hallway carpet, so the loss fits the escape-of-water requirement when the escape occurred over a short period.\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"favourable\"},{\"interpretation\":\"The definition of \\\"sudden\\\" is sufficiently vague about the length of a \\\"short period\\\" that a careful reader could treat a progressive or slow leak that eventually required carpet replacement as not meeting the \\\"sudden\\\" requirement, so the escape-of-water element would not be satisfied.\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"adverse\"}],\"confidence\":0.6}"
+  },
+  "a035495ee7b1c9fe765e1a5a97c0d2e2b4d7c6a1394f5ba6cae5faed2452c294": {
+    "input_tokens": 646,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 512,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The flooding was caused by a sudden mechanical failure of the inlet hose while the machine was running, not by a process that occurred over a period of time\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The hose burst was the immediate manifestation of prior gradual deterioration or corrosion of the hose or fittings that developed over time and so the loss was caused by a process occurring over a period of time\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.75}"
+  },
+  "a03aa194364be8eb9ba7bee70c8a1861b3acc400ecf57716eeeedee0f00b3306": {
+    "input_tokens": 824,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 348,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "a1d0855cb1c4942f2e4499e1139c942a212e1c4c5eab18c6bed2d34ac1784de3": {
+    "input_tokens": 748,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 223,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-1\"],\"evidence_quote\":\"The loss adjuster records that the washing machine inlet hose burst while the machine was running and the room flooded straight away.\",\"rationale\":\"The facts indicate the water escape happened abruptly at an identifiable time rather than from gradual deterioration.\",\"confidence\":0.9}"
+  },
+  "a22319aa3741d78b9b93c35b4b594869dfcfdb28ce89402d6b0a3333c1008b4c": {
+    "input_tokens": 849,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 292,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-EXC-GRADUAL\",\"CL-H2-EXC-GRADUAL-EXC\"],\"fact_ids\":[\"A-2/f0\"],\"evidence_quote\":\"The plumber says the joint had been seeping slowly and the system had not been serviced for ten years.\",\"rationale\":\"The facts indicate the escape was gradual and linked to lack of maintenance.\",\"confidence\":0.9}"
+  },
+  "a31d96d32dd4546c3b14dcd4b2fb1fd0434d0e28e365a7818e0e0a46e585df51": {
+    "input_tokens": 817,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 569,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The water ingress was the result of an abrupt escape (such as a sudden burst) occurring overnight at an identifiable time\",\"clause_quote\":\"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"favourable\"},{\"interpretation\":\"The water ingress observed overnight is the manifestation of a prior gradual leak or repeated seepage (deterioration over time) and thus is not an abrupt, identifiable escape\",\"clause_quote\":\"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "a56fa8c03dfecca569ca81b9560d4d165e7355f122ded921a585eb5772f90b4b": {
+    "input_tokens": 766,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 443,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The water entry was a sudden event occurring overnight (e.g., an acute burst or rapid failure) and therefore not the kind of loss 'caused by gradual leakage... occurring over a period of time'.\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The water visible overnight could be the manifest consequence of a gradual process (slow leakage, seepage, corrosion or deterioration) that occurred over a period of time and only became apparent when water came through the ceiling, so the wording could be read to apply.\",\n      \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "a6b0f09fbc1220eeb3260b7dfc88011fd05f20c2af184d2139dcee2b245ab0c8": {
+    "input_tokens": 853,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 676,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The loss is within the scope requiring an abrupt, identifiable escape \u2014 the damaging event could be a sudden escape occurring despite earlier weeping\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The loss results from gradual or repeated seepage (the radiator valve weeping for months) and thus is not a sudden escape\",\"clause_quote\":\"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.65}"
+  },
+  "a940921575ec6bfada927e2bcbb48297cfadea4f2396c08835862f0c045017f3": {
+    "input_tokens": 688,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 803,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The relevant event is the final identifiable bursting of the pipe; because the burst happened suddenly at an identifiable time the escape qualifies as \u201csudden and accidental.\u201d\",\"clause_quote\":\"CL-COV-WATER [coverage] 2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The definition treats \u2018sudden and accidental\u2019 as excluding escapes that result from gradual deterioration or repeated seepage; the surveyor\u2019s evidence of staining over many weeks indicates gradual leakage, which means the escape does not meet the defined requirement.\",\"clause_quote\":\"CL-DEF-SUDDEN [definition] 1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.75}"
+  },
+  "a94a420259ce5e3030e456fb28c33eec56c19ea64531394b21d1ee882cad1b99": {
+    "input_tokens": 277,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 165,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"copper joint failed suddenly on 2 May 2026; water escaped immediately\"}"
+  },
+  "aa76cfcd945d135be3b958cf6f36024f6dfa680f9bd7bf77fcce699122c9856e": {
+    "input_tokens": 866,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 933,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The loss arises from an identifiable event of escape of water distinct from prior minor seepage, so the requirement that the escape be sudden and accidental can be read as satisfied\",\n      \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The moisture and efflorescence and the neighbour\u2019s statement of prolonged seeping indicate the problem resulted from repeated seepage or gradual deterioration, so the escape is not \\\"sudden and accidental\\\" under the definition\",\n      \"clause_quote\": \"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "ac18c801126486c51e1ee80057b2ab38db132cc1f534be7c6affedb36a674951": {
+    "input_tokens": 815,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 345,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "ac5513553169816082c4d96a902d7b9d1a26f92e23ef8b6c3de8bcb7b1fe8777": {
+    "input_tokens": 663,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 557,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"A flexible hose that split is within the phrase \\\"fixed pipe or appliance\\\" so damage from its sudden rupture falls within the insuring wording\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"favourable\"},{\"interpretation\":\"A flexible hose that can be detached or is not structurally part of the plumbing does not fall within \\\"fixed pipe or appliance,\\\" so escape from that hose is outside the insuring wording\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"adverse\"}],\"confidence\":0.8}"
+  },
+  "aceb4f07abef4c611b3c349e1120fecca2ef27217873e33fdeb668cf1b33cb16": {
+    "input_tokens": 862,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 291,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"D-2/f0\",\"D-2/f1\"],\"evidence_quote\":\"The surveyor found long-term corrosion and staining that built up over several months.\",\"rationale\":\"the facts indicate the water loss arose from long-term corrosion and gradual buildup rather than an abrupt, identifiable event.\",\"confidence\":0.9}"
+  },
+  "ad653cbe0a5284fe2ba79d628fdb6183a3cc790a8e474a215f078bae6a7ffed6": {
+    "input_tokens": 845,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 226,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"H-6/f0\"],\"evidence_quote\":\"The surveyor found corroded joints and staining showing the pipe had been leaking slowly for over a year.\",\"rationale\":\"the facts indicate the water escaped due to long-term leakage and corrosion rather than an abrupt, identifiable event\",\"confidence\":0.95}"
+  },
+  "ae55201fdb82f20a280224b3523fac349320f4070209fcbf0332c703fd26e9ab": {
+    "input_tokens": 829,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 421,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The collapse and damage to the lounge are excluded because they are damage caused by water that escaped gradually over time.\", \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\", \"points\": \"adverse\"}, {\"interpretation\": \"The collapse and damage to the lounge are within the policy's protection as resulting damage from such an escape of water.\", \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\", \"points\": \"favourable\"}], \"confidence\": 0.9}"
+  },
+  "ae5816e6f20835217b464df6a3d457345620f9481b032be3d5857ba4c8242896": {
+    "input_tokens": 830,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 792,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"Escape was an abrupt, identifiable event (for example a sudden burst) occurring at an identifiable time.\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"Damage resulted from gradual deterioration, wear, corrosion or repeated seepage rather than an abrupt, identifiable event.\",\"clause_quote\":\"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "b1ee236288a5d51f42092b6d3a6b0a9ca3aeb027f0e1c1427172e0599c8b1be1": {
+    "input_tokens": 827,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 185,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts provide no information about how or when the water escaped, so the exclusion cannot be assessed\",\"confidence\":0.4}"
+  },
+  "b4eccd8684bf4589488bdaf3543eb2d1c68cc8709217d08543e3c0ac1ff68efd": {
+    "input_tokens": 794,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 414,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The collapse is \\\"resulting damage\\\" from the gradual escape and so falls within the exception (covered unless the escape was caused by lack of maintenance).\",\"clause_quote\":\"However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\"points\":\"favourable\"},{\"interpretation\":\"The collapse was caused by water that escaped gradually over time, so the exclusion of damage caused by gradual escape applies (no cover).\",\"clause_quote\":\"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "b6599ba9d8c18f90e4cb1e329b496428e9c6659d8adb40909beaf61222f584d4": {
+    "input_tokens": 802,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 407,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"Damage resulted from a sudden or discrete leak or event (not a process over time)\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"},{\"interpretation\":\"Damage resulted from gradual leakage, seepage, corrosion or deterioration of pipes or fittings that occurred over a period of time\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "b8911275364cee90652310d1a7d0ce0a01ae4f4770f1ec4f1f1d0d02153bab3a": {
+    "input_tokens": 307,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 96,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"flexible hose split; water poured for a few minutes\"}"
+  },
+  "b89a335f06de54dab1c4fec85fab6c0b635afe88e4bcc0e952f3e9783e651733": {
+    "input_tokens": 744,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 579,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The kitchen floor damage was caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}, {\"interpretation\": \"The exclusion applies only to the deterioration of the pipes or fittings themselves (or to clearly ongoing leaks), so the listed repair costs for the kitchen floor are not within 'caused by' gradual leakage as used in the clause\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}], \"confidence\": 0.65}"
+  },
+  "b8d80f12a441874f4216c0bc74164535091e4c704871e3ba9b9f5e2e564617a6": {
+    "input_tokens": 667,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 562,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The physical break was a sudden event (a frost split) and the exclusion only bars loss caused by leakage, seepage, corrosion or deterioration that occurs over a period of time, so the wording can be read to leave this sudden-split loss outside the exclusion.\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The exclusion can be read to cover any loss where the damaging process leading to escape of water happened over time (for example weakening, slow leakage, or freeze/thaw deterioration culminating in a split), so the loss from the pipe failure falls within the excluded category.\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.65}"
+  },
+  "b9f922357dee5b30049b0158d675312fc033f191533439c23aadfb8e72d0ba9e": {
+    "input_tokens": 644,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 89,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "bc6b1d1cdd2cf142537be97ddf868bedbc3fb5922bdbdea15441fb942b691341": {
+    "input_tokens": 698,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 608,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The policy requires an \u2018escape of water\u2019 that is sudden and accidental; the loss can be viewed as resulting from a sudden rupture or release even if underlying corrosion was present, because the actual escape event happened abruptly at an identifiable time.\", \"clause_quote\": \"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The definition excludes losses resulting from gradual deterioration such as corrosion, so damage linked to long-term corrosion and staining over several months does not meet the \u2018sudden and accidental\u2019 requirement.\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.75}"
+  },
+  "bd01e8aaf63d9d651c69ea2b0dce80d9d91c244712f68410859e84e1e0228f70": {
+    "input_tokens": 811,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 243,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts on file do not indicate how or when the water escaped\",\"confidence\":0.4}"
+  },
+  "bf56edd8c56d71e8f210c81560d74ee481e7dbd3f5804f7660d8122b0dc564e7": {
+    "input_tokens": 824,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 298,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"H-2/f0\"],\"evidence_quote\":\"The seals on the shower tray had worn and water had seeped into the ceiling below over several weeks; the boiler had been serviced every year.\",\"rationale\":\"The facts indicate the water seepage occurred over several weeks rather than within a short period.\",\"confidence\":0.95}"
+  },
+  "bf646be553741898783cc37b1f763166117bd16cbb78d91a633c83c55aed6710": {
+    "input_tokens": 683,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 217,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "c0569f0b01915c86a20a4764e24fe04a980eaea0c4fcb93ad6a1b7e46c3a0741": {
+    "input_tokens": 738,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 193,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The lone boiler service invoice does not indicate timing or cause of any escape of water, so whether the loss was sudden and accidental is unclear.\",\"confidence\":0.4}"
+  },
+  "c473c3a61477f32b2819a1547355a8ed142525d0e39bac9d052ea00741b145c7": {
+    "input_tokens": 855,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 404,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-3/f0\"],\"evidence_quote\":\"The claimant says water came through the ceiling overnight.\",\"rationale\":\"the facts indicate the escape occurred abruptly overnight, which is consistent with a sudden and accidental event\",\"confidence\":0.6}"
+  },
+  "c4923d0dafa2282b3a16b3a8f46c2b88a23f8ee6b5a5cbb0018bda0f56930421": {
+    "input_tokens": 821,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 124,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The available facts do not indicate how or when the water escaped, so the exclusion cannot be assessed from the file.\",\"confidence\":0.3}"
+  },
+  "c4b4ff9db89ac9764cd9fa8d7148bf92026035647485e4b73cbdac456dab9ace": {
+    "input_tokens": 799,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 384,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The invoice showing a boiler service shortly before loss supports reading that the escape happened abruptly at an identifiable time and was not due to gradual deterioration\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"favourable\"},{\"interpretation\":\"The definition's phrase \\\"not resulting from gradual deterioration, wear, corrosion or repeated seepage\\\" can be read to require evidence that the escape was not caused by prior wear or corrosion; a single recent service invoice does not rule out underlying gradual deterioration as the cause\",\"clause_quote\":\"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "c4d9375f734a6c4213ca14a50517ccd3d1b030e2e0442a5da235a280dd519a01": {
+    "input_tokens": 668,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 308,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"An escape of water occurred when the supply pipe leaked and the resulting collapse caused damage, and the policy\u2019s coverage wording refers to water escaping from a fixed pipe without requiring that the escape be rapid\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"favourable\"},{\"interpretation\":\"The insuring requirement includes that the escape be sudden and accidental; the policy\u2019s definition of sudden requires occurring without warning and within a short period, but the leak here was slow over months so it does not meet that definition\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"adverse\"}],\"confidence\":0.75}"
+  },
+  "c66bcd697b4fc741b923784220ca2f51481150f0aa4d87716ef0aa6c4f7aba8c": {
+    "input_tokens": 852,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 130,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The facts on file only describe damage and repair costs and do not state how or when the water escaped, so the suddenness is not shown.\",\"confidence\":0.6}"
+  },
+  "c68313f5a2f64b15a6224d97a68173953fd54a53674cf07b4b7697ef82337bf1": {
+    "input_tokens": 824,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 678,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The escape was a sudden event (a fitting snapped without warning) and not an escape that occurred gradually over time, so the exclusion for gradual escape does not apply to these facts.\",\n      \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The phrase \\\"escapes gradually over time\\\" could reasonably be read to include an uncontrolled outflow that continued for minutes (ten minutes), so the exclusion for gradual escape could apply but the policy then addresses resulting damage to the home, subject to the maintenance proviso.\",\n      \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.8\n}"
+  },
+  "c724b71fdd0ce8b009e4d91f0a657fd24229a9a2fd0e16a199ee6336415a97d8": {
+    "input_tokens": 809,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 778,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The washing machine inlet hose is part of the washing machine (an \u2018apparatus\u2019) or otherwise within \u2018fixed \u2026 apparatus\u2019, and the burst occurred abruptly at an identifiable time so the event satisfies the policy\u2019s escape-of-water wording and the definition of \u2018sudden and accidental'.\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The wording \u2018fixed water pipes, tanks or apparatus\u2019 implies a degree of permanence or fixed plumbing; a removable/flexible inlet hose to a washing machine is not a \u2018fixed\u2019 pipe or tank and so the escape from that hose falls outside the listed sources, or the loss could be read as resulting from gradual deterioration/corrosion of a hose rather than an abrupt accidental event under the definition.\", \"clause_quote\": \"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.85}"
+  },
+  "c992000f2c16c281e256bb270867ec1f045156de5001a8fa7f5ae342f1ba6c10": {
+    "input_tokens": 805,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 383,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The facts do not indicate the cause or timing of the water escape, so it is unclear how the exclusion bears on the claim.\",\"confidence\":0.3}"
+  },
+  "cb4abf9907c2ee719a9512f85c3a38fcbcdd9ab5910c4dc4b8a7ea12de318c8e": {
+    "input_tokens": 843,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 299,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"G-4/f0\"],\"evidence_quote\":\"The claimant says the dishwasher outlet hose slipped off during a cycle and flooded the kitchen within an hour.\",\"rationale\":\"the facts indicate the hose slipped off abruptly during a cycle and caused flooding within an hour, consistent with an event happening at an identifiable time rather than gradual deterioration.\",\"confidence\":0.9}"
+  },
+  "cd1d7b2e946eddcdc695c8f8345a20fc361fe2366f94d59a7d541ea030401746": {
+    "input_tokens": 780,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 575,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The policy term \u201csudden\u201d refers to the timing of the physical collapse/damage (the loss), not to the prior slow leak; the ceiling collapse occurred \u201cwithin a short period\u201d and therefore can be read as sudden for these facts.\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"favourable\"},{\"interpretation\":\"The policy requires the escape of water itself to be sudden; a supply pipe that leaked slowly for months is not an escape occurring \u201cwithout warning and within a short period,\u201d so the loss does not meet the suddenness requirement.\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "cdbb8ecc5cc069a4e8f1ccee3cef33a9f2ef02a597da34303bfbc58adeef4a96": {
+    "input_tokens": 815,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 397,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The hallway carpet damage is damage caused by water that escaped gradually over time, so it falls under the general gradual-escape exclusion.\",\n      \"clause_quote\": \"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\n      \"points\": \"adverse\"\n    },\n    {\n      \"interpretation\": \"The hallway carpet damage is resulting damage to the home caused by the gradual escape of water, which the policy's exception says will be covered unless the escape was caused by a lack of maintenance.\",\n      \"clause_quote\": \"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\n      \"points\": \"favourable\"\n    }\n  ],\n  \"confidence\": 0.85\n}"
+  },
+  "ce511e19e3448680a9eb4e93de8ac903bdd627d14aa73c6810158378c087def8": {
+    "input_tokens": 831,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 537,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "cea2080bfb5272aa045e451b4f0a3efe0bd8471bb8e7bf6089d6330ad0d11bef": {
+    "input_tokens": 666,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 425,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The water escape is treated as an abrupt event despite prior slow seepage, because the damaging release occurred over a short period when the joint finally failed\",\"clause_quote\":\"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"favourable\"},{\"interpretation\":\"The loss is not \u2018sudden\u2019 because the joint had been seeping slowly over a long period, so the escape does not meet the policy\u2019s defined requirement of occurring without warning and within a short period\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"adverse\"}],\"confidence\":0.8}"
+  },
+  "cf244247d4cc90b8644b7cfc2dfcb5b7737731968835c84566d826999d9d2f58": {
+    "input_tokens": 757,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 481,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-5/f0\",\"F-5/f1\"],\"evidence_quote\":\"The claimant says the radiator valve had been weeping for some months.\",\"rationale\":\"The facts indicate the damage appears to have resulted from gradual leakage over months rather than an abrupt, identifiable escape.\",\"confidence\":0.9}"
+  },
+  "cf297f316d01c3d8a197b8c56a5f0e6d3f6150a9099c0f198e8eae36f8a363f2": {
+    "input_tokens": 705,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 220,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "d14210489a19acd7ec5a1f1f989a1affccd2fc8c2cb00195aed4b9749bd742c1": {
+    "input_tokens": 734,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 221,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-2/f0\",\"F-2/f1\"],\"evidence_quote\":\"The contractor found rot and mould throughout the sub-floor consistent with a slow leak of at least a year.\",\"rationale\":\"The facts indicate the damage resulted from a prolonged leak occurring over an extended period.\",\"confidence\":0.9}"
+  },
+  "d3de337204a754aa30edad590ac1d762d9f991a034e155ade5c478d386b10fc0": {
+    "input_tokens": 706,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 663,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The loss resulted from an abrupt, identifiable escape event that is distinct from prior minor weeping, so the requirement of a sudden and accidental escape can be read to be satisfied.\",\n      \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The water damage stems from ongoing weeping over months and thus results from gradual deterioration or repeated seepage, falling within the definition that excludes non\u2011sudden escapes.\",\n      \"clause_quote\": \"Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.65\n}"
+  },
+  "d42842fd8e0479c4604fb86cba2dd956cbe204cbe294f0cc2584bc12b5ffdd1c": {
+    "input_tokens": 810,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 348,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "d5ea3b53080970989796c5807c9998c9c79bd5e13c79b94ab343c58f2e1386de": {
+    "input_tokens": 682,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 632,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The exclusion of damage caused by water that escapes gradually applies to all damage from such an escape, so the collapse and resulting lounge damage fall within the exclusion\",\"clause_quote\":\"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\"points\":\"adverse\"},{\"interpretation\":\"The follow-up clause creates a carve\u2011in for resulting damage to the home from such an escape, so resulting damage (like the collapsed ceiling and lounge damage) is treated separately and covered unless the escape was caused by lack of maintenance\",\"clause_quote\":\"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\"points\":\"favourable\"}],\"confidence\":0.75}"
+  },
+  "d7042cb14e53e7a600daeb935440a5b8ba6b5036574f011ec9363cbbc1c4bf43": {
+    "input_tokens": 753,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 247,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts conflict about timing, so it is unclear whether the escape was sudden and accidental\",\"confidence\":0.4}"
+  },
+  "d82dd9ac59439dde5a80cfa1bdf0309d6b6b45b6f943c87d68ebaf291a9c91eb": {
+    "input_tokens": 714,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 286,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"D-4/f0\"],\"evidence_quote\":\"A flexible hose under the sink split and flooded the kitchen floor within minutes on 14 June 2026.\",\"rationale\":\"The facts indicate the hose failure caused a sudden release of water within minutes rather than a gradual leakage over time.\",\"confidence\":0.9}"
+  },
+  "d859b1723894c56d6a385be29f3819c74111cdf9cf8336961fea51ba43747688": {
+    "input_tokens": 817,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 296,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"G-1/f0\"],\"evidence_quote\":\"The plumber reports that the push-fit connector behind the toilet came apart under pressure and water poured out until the stopcock was shut.\",\"rationale\":\"The plumber's report describes the connector coming apart under pressure and water pouring out, which appears to indicate a sudden event rather than gradual leakage.\",\"confidence\":0.9}"
+  },
+  "d905156bacdad4674413941ab2c9c1f5a5920e7387469142e96c793987179fe6": {
+    "input_tokens": 862,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 284,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.9}"
+  },
+  "d99fe42aa90c28af70b2671f7ce14b73130f015de8c2f1077cf34814f10f2f35": {
+    "input_tokens": 773,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 500,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The words exclude loss or damage that is the direct result of a process that developed over time (corrosion/seepage/gradual leakage) \u2014 any damage resulting from that long-term deterioration is within the scope of the exclusion.\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"adverse\"\n    },\n    {\n      \"interpretation\": \"The words are read narrowly to exclude only the ongoing state/process (the gradual leakage/seepage/corrosion itself) but not separate, discrete losses that occur when an item finally fails (a sudden consequential event) even if the failure was enabled by prior gradual deterioration.\",\n      \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\n      \"points\": \"favourable\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "d9df2153e168bcdc010e436a113afddb04dd1b1d9307e98e40628dedd65b201c": {
+    "input_tokens": 866,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1046,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The escape is judged sudden and accidental because it happened abruptly at an identifiable time (the joint failed on 2 May 2026)\",\n      \"clause_quote\": \"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The escape is excluded from \u2018sudden and accidental\u2019 because the joint\u2019s failure may have resulted from gradual deterioration (corrosion), which the definition expressly excludes\",\n      \"clause_quote\": \"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.7\n}"
+  },
+  "daf1802b041465d7bd196eb7ac4ffbb17da2fcc7f5e348e44d6a15dfcbc915f7": {
+    "input_tokens": 834,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 656,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The words can be read to require an identifiable abrupt event, and the boiler service date could mark or be linked to such an abrupt, identifiable failure around that time\",\"clause_quote\":\"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"favourable\"},{\"interpretation\":\"The words can be read to require that the loss not result from gradual deterioration, wear, corrosion or repeated seepage, and the single service record does not establish an abrupt identifiable escape (it may instead indicate ongoing maintenance around a gradual problem)\",\"clause_quote\":\"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "dbb58b233fab74abd6ab9a1c70858a492830c1059f18cdacd062ed0a5ca5ac3e": {
+    "input_tokens": 823,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 238,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"H-1/f0\"],\"evidence_quote\":\"The plumber found the washing machine hose had perished and had been leaking slowly for some time, and the leak soaked into the kitchen cabinets.\",\"rationale\":\"the plumber found the hose had been leaking slowly for some time, which suggests the escape was gradual rather than sudden\",\"confidence\":0.9}"
+  },
+  "dbc2b5748b709c2f387e687330f2eaa1c6a9395ea02c73cbd6ff2ef461b8e1d7": {
+    "input_tokens": 668,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 447,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The loss is the result of a sudden mechanical failure on 2 May 2026 rather than a process that occurred over time, so the exclusion for gradual processes does not apply\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The joint failed because of prior corrosion or deterioration that developed over time, and that antecedent gradual process caused the loss even though the escape of water was sudden\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.8}"
+  },
+  "dc349b733478531032b46d9ce13f650a39f72177c2786d54ad67b180daaa730a": {
+    "input_tokens": 683,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 688,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The phrase 'sudden and accidental' is satisfied because the hose burst abruptly at an identifiable time while the machine was running, so the loss is characterized by an abrupt event.\", \"clause_quote\": \"CL-COV-WATER [coverage] 2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The definition excludes loss 'resulting from gradual deterioration, wear, corrosion or repeated seepage', which can reasonably be read to require denial if the hose failure arose from prior wear or deterioration even though the final rupture occurred abruptly.\", \"clause_quote\": \"CL-DEF-SUDDEN [definition] 1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "dcf5f429f98f8434d0ea4f74fa94bf66fea6e070161ad8fd9ea061728e3efdb1": {
+    "input_tokens": 769,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 373,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"F-4/f0\",\"F-4/f1\"],\"evidence_quote\":\"The plumber states a frost split the supply pipe in the loft on 20 January 2026 and water escaped when the thaw came.\",\"rationale\":\"the plumber's account indicates the pipe split abruptly from frost and released water when it thawed, consistent with an incident occurring at an identifiable time\",\"confidence\":0.9}"
+  },
+  "dd6c3a9d4c61a0f4c57f7cc051000a5538097ef6eca931d552f120edf42beb64": {
+    "input_tokens": 654,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 636,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The required \u2018sudden\u2019 quality applies to the water escape itself, and a slow leak that developed over months does not meet that requirement\", \"clause_quote\": \"A1 Sudden: Sudden means occurring without warning and within a short period.\", \"points\": \"adverse\"}, {\"interpretation\": \"The policy insures damage caused by water escaping from a fixed pipe, and the immediate collapse that caused the loss was a sudden event attributable to the leaking water, so the loss can be viewed as arising from an insured \u2018escape of water\u2019\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"favourable\"}], \"confidence\": 0.8}"
+  },
+  "ddbcfb7fade4846d34c7b0b9a9b08bbb9f9cdf5910790d9585eec347611764c6": {
+    "input_tokens": 668,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 604,
+    "text": "{\"ambiguous\": false, \"readings\": [], \"confidence\": 0.85}"
+  },
+  "de2e0628aa9b284f9a66d9d0a410fde12da72e5e17cfa90154fb0cbc43206f39": {
+    "input_tokens": 813,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 158,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"H-3/f0\"],\"evidence_quote\":\"The pipe under the basin sheared off during the night and the bathroom flooded within minutes.\",\"rationale\":\"The facts indicate the pipe failure and rapid flooding occurred suddenly and within a short period.\",\"confidence\":0.9}"
+  },
+  "de88016f3073a029324413d4031501504985743547d4cca74e9ea6918dae9384": {
+    "input_tokens": 869,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 349,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"G-2/f1\",\"G-2/f0\"],\"evidence_quote\":\"the neighbour says the pipe had been seeping since the summer.\",\"rationale\":\"The facts indicate the escape was ongoing over months and therefore appears to be gradual rather than abrupt.\",\"confidence\":0.9}"
+  },
+  "decff5a7873f08ab8debb4c6b0054615354cecc7a06768da0a63c58379864a2b": {
+    "input_tokens": 649,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 616,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The event fits the policy\u2019s timing requirement for suddenness because it occurred without warning and over a short period\", \"clause_quote\": \"A1 Sudden: Sudden means occurring without warning and within a short period.\", \"points\": \"favourable\"}, {\"interpretation\": \"The loss may fall outside the insured peril because the policy limits cover to water escaping from a \u201cfixed pipe or appliance,\u201d which could be read to exclude a flexible hose that split\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"adverse\"}], \"confidence\": 0.75}"
+  },
+  "df1e9d41731246233bcf6f9e4efab3c8aae29b6cd78ad1841ed8b5ddee169157": {
+    "input_tokens": 715,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 153,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "e09864f36e4cfbb40739209ef60b19e830ff4a56dec703551de23c4ba1c69bf3": {
+    "input_tokens": 724,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 276,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-3/f0\",\"F-3/f1\"],\"evidence_quote\":\"The claimant says water came through the ceiling overnight.\",\"rationale\":\"the facts indicate the loss appears to have been sudden rather than the result of gradual leakage\",\"confidence\":0.8}"
+  },
+  "e09ef40e95d1cf830c5ad2d84ca20f73588032e919722353e2cac6aac7c60cf4": {
+    "input_tokens": 793,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 781,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The exclusion targets ongoing leaks or seepage that cause damage over time, and does not apply to a sudden burst that caused immediate flooding.\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The exclusion also covers loss that results from prior corrosion or deterioration that occurred over a period of time even if the final event was a sudden burst, so the loss is 'caused by' earlier deterioration.\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "e0c3410dd1be127dc0cb5e0c985d2a018afbbe9c7ffab107eb83e1ec144bdaf7": {
+    "input_tokens": 827,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 795,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The gradual-escape exclusion (C1) governs these facts because the joint was 'seeping slowly'\u2014a gradual escape\u2014so damage caused by that escape falls within the exclusion.\",\"clause_quote\":\"C1 Gradual escape: We do not cover damage caused by water that escapes gradually over time.\",\"points\":\"adverse\"},{\"interpretation\":\"The resulting-damage provision (C2) governs: resulting damage to the home from such an escape is covered under the policy, unless the escape was caused by a lack of maintenance \u2014 and it could be read that 'lack of maintenance' does not clearly apply to the stated facts or requires a higher threshold than 'not serviced for ten years', so coverage for resulting damage remains.\",\"clause_quote\":\"C2 Resulting damage: However, we will cover resulting damage to the home caused by such an escape of water, unless the escape was caused by a lack of maintenance.\",\"points\":\"favourable\"}],\"confidence\":0.7}"
+  },
+  "e0f61a964b55a2798184be9de77d35b86470a458690e056275ccff74319d66a2": {
+    "input_tokens": 705,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 277,
+    "text": "{\"ambiguous\":false,\"confidence\":0.9}"
+  },
+  "e123b915c6789f2e6ea14110e81bb57845c827f829f1f336467e4ad79342dfbf": {
+    "input_tokens": 654,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 413,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The phrase 'occurring over a period of time' contemplates prolonged, slow processes (eg corrosion, long-term seepage), so a sudden-onset event that produced water through the ceiling overnight is not captured by the exclusion.\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The exclusion covers any leak that happens over any period of time; water entering through the ceiling overnight could be the effect of a leak that operated over the night (or longer), and with no inspection or cause-known, the loss may reasonably fall within the exclusion.\", \"clause_quote\": \"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "e23a5986b04366fef801b08bff54203612abb597075e4812dadf6182f7c0cbf5": {
+    "input_tokens": 766,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 675,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"Coverage applies to water escaping from a fixed pipe or appliance regardless of whether the escape was sudden, because the coverage clause does not itself require suddenness.\",\"clause_quote\":\"We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\",\"points\":\"favourable\"},{\"interpretation\":\"The policy requires the escape to be \\\"sudden\\\" (occurring without warning and within a short period) to trigger the insuring clause, so a slow or gradual escape would not meet the wording.\",\"clause_quote\":\"A1 Sudden: Sudden means occurring without warning and within a short period.\",\"points\":\"adverse\"}],\"confidence\":0.7}"
+  },
+  "e2ec4a2eed96013809c294be16f3970b2589f2d639825ab1935e35f10eacfc4f": {
+    "input_tokens": 815,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 220,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-1\"],\"evidence_quote\":\"The loss adjuster records that the washing machine inlet hose burst while the machine was running and the room flooded straight away.\",\"rationale\":\"The facts indicate the water escaped suddenly while the machine was running rather than by gradual leakage over time.\",\"confidence\":0.95}"
+  },
+  "e3648343f81fcbede6a20e61aa3a9d8eaa72182df0b1464750153810839b1161": {
+    "input_tokens": 816,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 225,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"A-2/f0\"],\"evidence_quote\":\"the joint had been seeping slowly and the system had not been serviced for ten years.\",\"rationale\":\"The plumber's statement indicates a gradual, long-running leak rather than an occurrence within a short period.\",\"confidence\":0.9}"
+  },
+  "e3e364e438eaf6ce418d89ed80c7b5348531f2c7f2d90f799f46e8649158ee69": {
+    "input_tokens": 820,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 187,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts on file do not state how or when the water escaped, so timing and gradualness are unknown.\",\"confidence\":0.3}"
+  },
+  "e4d0787b6064ad6fc66a312a117cf409667e45d059e54e8473256d6da9aee7db": {
+    "input_tokens": 818,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 226,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-COV-WATER\",\"CL-H2-DEF-SUDDEN\"],\"fact_ids\":[\"A-1/f0 (DOC)\"],\"evidence_quote\":\"The surveyor found the supply pipe had leaked slowly for months; the ceiling below then collapsed and damaged the lounge.\",\"rationale\":\"The facts indicate the water escaped gradually over months rather than suddenly.\",\"confidence\":0.9}"
+  },
+  "e50fc5ae8b6f2b0c6dc2ff2937f851dae96de5b3cce2240ba1d0fbd7164549fc": {
+    "input_tokens": 833,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 285,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"F-2/f0\",\"F-2/f1\"],\"evidence_quote\":\"The contractor found rot and mould throughout the sub-floor consistent with a slow leak of at least a year.\",\"rationale\":\"the facts indicate the water escaped gradually over an extended period rather than suddenly;\",\"confidence\":0.9}"
+  },
+  "e5de56511115646b9fd24b1ec91e935c4d042ce7bdc3484a6c46cf3e98b32374": {
+    "input_tokens": 721,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 177,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts conflict about whether the leakage was sudden or gradual.\",\"confidence\":0.4}"
+  },
+  "e5f6df1900e3e6af6ca520f42449a5d0fbf2ca958eea07f599f1b2e4e65b90c2": {
+    "input_tokens": 316,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"frost split supply pipe; water escaped on thaw (20 January 2026)\"}"
+  },
+  "e92d0f383d932bc3af3d8ff30559e69e654e27e2022509c49b5ec0d50150d453": {
+    "input_tokens": 640,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 706,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"\u2018Escape\u2019 can be read broadly to include a discharge that occurs over time (a gradual leak) so that repair/replacement of carpet from that leak would fall within the water-damage wording\", \"clause_quote\": \"B1 Water damage: We cover damage to the home caused by water escaping from a fixed pipe or appliance, unless excluded in Part C.\", \"points\": \"favourable\"}, {\"interpretation\": \"\u2018Escape\u2019 must be an event that is sudden and within a short period under the policy\u2019s definition of \u2018sudden\u2019, so ongoing or slowly developing leakage that necessitated carpet replacement would not satisfy the suddenness requirement\", \"clause_quote\": \"A1 Sudden: Sudden means occurring without warning and within a short period.\", \"points\": \"adverse\"}], \"confidence\": 0.6}"
+  },
+  "e94799b8b1556a2e29c1f27a96d1ae30977b3039225e1df2204d5ae48202ef61": {
+    "input_tokens": 824,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 255,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts on file do not describe how or when the water escaped, so engagement of the gradual-leakage exclusion is unclear\",\"confidence\":0.3}"
+  },
+  "e9673b24e002152315c0821a74f22c5f3859277dfc27ca64ecefc1adf58606d0": {
+    "input_tokens": 837,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 278,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"G-2/f1\",\"G-2/f0\"],\"evidence_quote\":\"the neighbour says the pipe had been seeping since the summer.\",\"rationale\":\"The facts indicate the leak occurred over an extended period rather than as a sudden event.\",\"confidence\":0.9}"
+  },
+  "e9809676f8e876c07224910ac597b6d13e4a1393d1eb02802699b3953452fb07": {
+    "input_tokens": 770,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 291,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"D-1/f0\",\"D-1/f1\"],\"evidence_quote\":\"The plumber states the copper joint failed suddenly on 2 May 2026 and water escaped at once.\",\"rationale\":\"The facts indicate the escape occurred abruptly at an identifiable time rather than from gradual deterioration.\",\"confidence\":0.9}"
+  },
+  "e9d88b0c758a796b9895447b0342d221195ea8585dbca90b8932814f71b4792b": {
+    "input_tokens": 283,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 102,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"frost split supply pipe; water escaped on thaw; 20 January 2026\"}"
+  },
+  "e9f506ae2529b259fa4cbb3a38772d499a2b17db76d8e0e3b50f8d857b5f7e31": {
+    "input_tokens": 278,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 100,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"flexible hose split; flooded within minutes on 14 June 2026\"}"
+  },
+  "ea10e2cfa5d8cdb2c43f21157453b987a965541451f17c11ba73aea949fc5259": {
+    "input_tokens": 697,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 698,
+    "text": "{\n  \"ambiguous\": true,\n  \"readings\": [\n    {\n      \"interpretation\": \"The hose burst was an abrupt, identifiable event that fits the policy's 'sudden and accidental' definition, and the washing machine qualifies as an 'apparatus' from which water escaped.\",\n      \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\n      \"points\": \"favourable\"\n    },\n    {\n      \"interpretation\": \"The coverage requires escape of water from 'fixed water pipes, tanks or apparatus', and an inlet hose to a washing machine is not a 'fixed' pipe or apparatus as contemplated by the clause, so the loss falls outside the described source of escape.\",\n      \"clause_quote\": \"2.2 Escape of water: We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\n      \"points\": \"adverse\"\n    }\n  ],\n  \"confidence\": 0.8\n}"
+  },
+  "eb54ab5031d1d9e00245b5fbf06d4ad264ee97f83211bdb37e75849db8119b47": {
+    "input_tokens": 266,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 88,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"occurred overnight\"}"
+  },
+  "ee742c85b5ee4905c944a0fea7ff65fefc42dd60e0b3e5803528f9430a95ca36": {
+    "input_tokens": 815,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 535,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The water escape was caused by a sudden failure of a joint on 2 May 2026, so the event was not a damage process 'occurring over a period of time'\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"favourable\"}, {\"interpretation\": \"The joint\u2019s sudden failure was the final manifestation of a prior process of deterioration or corrosion that had been occurring over time, so the loss falls within 'gradual leakage... occurring over a period of time'\", \"clause_quote\": \"3.2 Gradual leakage: We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\", \"points\": \"adverse\"}], \"confidence\": 0.7}"
+  },
+  "ee981e909be6f5246c1e0d60ebb1502ccebfe31bb0b4cce937c6861509d9d8e3": {
+    "input_tokens": 849,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 426,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The escape of water is judged by the initiating event (a pipe burst) that occurred abruptly at an identifiable time\",\"clause_quote\":\"Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\",\"points\":\"favourable\"},{\"interpretation\":\"The escape of water is judged by the pattern of leakage (staining over many weeks) showing gradual or repeated seepage rather than a single abrupt event\",\"clause_quote\":\"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\",\"points\":\"adverse\"}],\"confidence\":0.85}"
+  },
+  "f14d38c2de189e7b091f3812a3d58e17de81bec7c9b192b34bdd411178995ba8": {
+    "input_tokens": 311,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 99,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"joint in loft tank feed pipe failed suddenly; water entered bedroom within minutes\"}"
+  },
+  "f2a2eb6de7dddf2995eddf190d1aac8161408d0b47041ddd5f786f5f00531f86": {
+    "input_tokens": 844,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 229,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-COV-WATER\",\"CL-DEF-SUDDEN\"],\"fact_ids\":[\"H-5/f0\"],\"evidence_quote\":\"The plumber states the stopcock seized and the supply hose burst suddenly, flooding the utility room within minutes.\",\"rationale\":\"The facts indicate the pipe/tank apparatus failed abruptly at an identifiable time, consistent with a sudden and accidental escape of water.\",\"confidence\":0.95}"
+  },
+  "f4069b9ceda0e0d8f94960fe784df8edd3144270963c23844ce004084763cf36": {
+    "input_tokens": 756,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 153,
+    "text": "{\"ambiguous\":false,\"readings\":[],\"confidence\":0.9}"
+  },
+  "f5c04177f2f61f96e7f257971b1b3bea7a6947d09d0d21010cd994babf73e0b9": {
+    "input_tokens": 748,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 559,
+    "text": "{\"ambiguous\":true,\"readings\":[{\"interpretation\":\"The phrase \\\"gradual leakage... occurring over a period of time\\\" is read to require that the loss resulted from a progressive, long\u2011running escape of fluid (seepage, corrosion or deterioration) in pipes or fittings, so if the damage to the boiler or system arose from such an ongoing leak the exclusion applies.\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"adverse\"},{\"interpretation\":\"The phrase is read more narrowly to exclude only losses from slow, long\u2011term leaks that develop and cause damage over an appreciable period; a reasonably recent, sudden failure or an isolated fault discovered at or soon after a service on 3 March 2026 would not fit that wording and so would fall outside the exclusion.\",\"clause_quote\":\"We do not cover loss or damage caused by gradual leakage, seepage, corrosion or deterioration of pipes or fittings occurring over a period of time.\",\"points\":\"favourable\"}],\"confidence\":0.7}"
+  },
+  "f5dbe2b00bb76ae95126a1c3e519d6e15508c5eb09f1bde1d6e6643498887286": {
+    "input_tokens": 756,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 193,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"The facts do not establish an identifiable abrupt event and leave the cause unknown, so it is unclear whether the loss was sudden rather than gradual.\",\"confidence\":0.4}"
+  },
+  "f6a237cf93d84aa16e813e538f32a2bdaa29678078686c392b05e1812f7543b5": {
+    "input_tokens": 844,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 850,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The washing machine inlet hose is part of the washing machine 'apparatus' (or forms part of fixed plumbing) so the escape of water falls within 'escape of water from fixed water pipes, tanks or apparatus'\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"favourable\"}, {\"interpretation\": \"The policy requires escape from 'fixed' water pipes, tanks or apparatus; a flexible, detachable washing-machine inlet hose is not 'fixed' and therefore the escape did not occur from a covered source\", \"clause_quote\": \"We cover loss of or damage to the Buildings caused by escape of water from fixed water pipes, tanks or apparatus, provided the escape is sudden and accidental.\", \"points\": \"adverse\"}], \"confidence\": 0.85}"
+  },
+  "f8c697f32bd59db5334976e82eaab15621a49097bdcf05dfd004f6c2fd4e7728": {
+    "input_tokens": 691,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 518,
+    "text": "{\"ambiguous\": true, \"readings\": [{\"interpretation\": \"The escape occurred abruptly at an identifiable time (the incident overnight), fitting the policy's 'sudden and accidental' meaning\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"favourable\"}, {\"interpretation\": \"The water loss may have resulted from gradual deterioration, wear, corrosion or repeated seepage (cause unknown and no inspection), falling within the excluded examples in the definition\", \"clause_quote\": \"1.2 Sudden and accidental: Sudden and accidental means happening abruptly and unexpectedly at an identifiable time, and not resulting from gradual deterioration, wear, corrosion or repeated seepage.\", \"points\": \"adverse\"}], \"confidence\": 0.8}"
+  },
+  "f957fca90c9e912e42366c531f0af758c4cccb171be90c2c475ce7845b8f7665": {
+    "input_tokens": 846,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 293,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"CL-H2-EXC-GRADUAL\",\"CL-H2-EXC-GRADUAL-EXC\"],\"fact_ids\":[\"B-3/f0\"],\"evidence_quote\":\"A pipe fitting snapped without warning and water poured out for ten minutes before it was stopped.\",\"rationale\":\"the facts indicate the water escaped suddenly when a pipe fitting snapped rather than gradually over time.\",\"confidence\":0.95}"
+  },
+  "f9cb445d46589d58823c5befd61bd5f7cb7ce528d88e8c2e76e3c8c727860fc1": {
+    "input_tokens": 851,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 431,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-EXC-GRADUAL\",\"CL-H2-EXC-GRADUAL-EXC\"],\"fact_ids\":[\"A-1/f0\"],\"evidence_quote\":\"The surveyor found the supply pipe had leaked slowly for months; the ceiling below then collapsed and damaged the lounge.\",\"rationale\":\"The facts indicate the supply pipe leaked slowly over months before the ceiling collapsed, pointing to a gradual escape of water.\",\"confidence\":0.8}"
+  },
+  "fa272f2a9d92618ce33866db3dcceda61d0572a815f9e558c7926d35fed0dbd3": {
+    "input_tokens": 852,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 624,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-H2-EXC-GRADUAL\",\"CL-H2-EXC-GRADUAL-EXC\"],\"fact_ids\":[\"B-1/f0\"],\"evidence_quote\":\"The washing machine hose had been weeping for weeks and stained the flooring; it then burst and soaked the adjoining room.\",\"rationale\":\"The facts indicate the water escaped gradually over weeks before a sudden burst, consistent with a gradual-escape exclusion concern.\",\"confidence\":0.7}"
+  },
+  "fcc35bfd45e3bd778073bd9db6929e9941b2c52fbcd300ad98fa1d4b305ddc37": {
+    "input_tokens": 835,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 357,
+    "text": "{\"reading\":\"against\",\"clause_ids\":[\"CL-EXC-GRADUAL\"],\"fact_ids\":[\"G-6/f0\",\"G-6/f1\"],\"evidence_quote\":\"The roofer states a tile slipped in the storm and rain ran in over several nights before it was noticed.\",\"rationale\":\"The facts indicate rain entered over several nights after a tile slipped, suggesting ongoing leakage rather than a single sudden event.\",\"confidence\":0.8}"
+  },
+  "fd9d681fe9873004c3bb2190b304e728e4c076e86e94f3967e74a0f272ffc51d": {
+    "input_tokens": 310,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 97,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"stopcock seized; supply hose burst suddenly, flooding within minutes\"}"
+  },
+  "ff6e9bf84077dd18ce059862a6da956b9d3cb8b8b8228eb42533616cc09f4e36": {
+    "input_tokens": 853,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 179,
+    "text": "{\"reading\":\"unclear\",\"clause_ids\":[],\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"the facts on file do not indicate how or when the water escaped.\",\"confidence\":0.6}"
+  }
+}

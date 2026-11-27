@@ -77,4 +77,6 @@ def make_decomposer(pack: Pack, llm: Any | None) -> PolicyDecomposer:
     (`llm_typing.enabled`) and a client is given. Without a client the rules run alone and untyped clauses are reported, never guessed."""
     cfg = pack.policy_structure.llm_typing
     typer = LLMClauseTyper(llm, pack, cfg) if cfg.enabled and llm is not None else None
-    return PolicyDecomposer(pack.policy_structure, typer=typer)
+    from claimtower.policy.llm_segments import LLMSegmenter
+
+    return PolicyDecomposer(pack.policy_structure, typer=typer, segmenter=LLMSegmenter(llm, pack) if llm is not None else None)

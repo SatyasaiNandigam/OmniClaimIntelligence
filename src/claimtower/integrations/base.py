@@ -6,6 +6,9 @@ mock flags in configs/app.yaml. Rules every implementation must follow:
   * every write is idempotent on `idempotency_key` - a replay returns the original result with `created=False` /
     `status="duplicate_ignored"` and never creates a second claim, task or payment (guardrail 12)
   * PASClient is read-only.
+
+Errors (added in T6.5, not part of the frozen protocols): an adapter raises `AdapterError` (or a subclass) for a failure of the SYSTEM it talks to, never for a business
+answer: "no policy found" is a response with status `not_found`, "unreachable" is `AdapterTimeout`. The caller (retry, dead letter: T6.6) decides what to do.
 """
 from __future__ import annotations
 
@@ -16,6 +19,18 @@ from claimtower.core.schemas import (
     ClaimAck, ClaimCreateRequest, ClaimRecord, ClaimStatusUpdate, MatchStatus, PaymentInstruction,
     PolicyStatusResponse, PolicyVersionResponse, ReconAck, ReconBreak, TaskAck, TaskRequest,
 )
+
+
+class AdapterError(RuntimeError):
+    """The external system failed (not a business answer)."""
+
+
+class AdapterTimeout(AdapterError):
+    """The external system did not answer in time. The call may or may not have taken effect: a retry must use the same idempotency key."""
+
+
+class AdapterNotConfigured(AdapterError):
+    """A live adapter was selected (mock flag off) but is not implemented or configured. See docs/REPLACING_MOCK_ADAPTERS.md."""
 
 
 class PASClient(Protocol):

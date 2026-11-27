@@ -1,0 +1,12 @@
+# Quality checks run on the finished assessment BEFORE it is released to the human gate (T8.5). Domain content, not code. All of it is SAMPLE.
+# A pattern is matched, case-insensitively, against every text the system writes for a person: coverage notes, the settlement explanation, drafts, scenarios and requests.
+# (The coverage and action modules also lint their own text; this is the independent last look.)
+forbidden_patterns:
+  - '\bfraud(ulent)?\s+(is\s+)?(confirmed|proven|established)\b'
+  - '\b(is|are|was)\s+(a\s+)?fraud(ulent)?\b'
+  - '\bclaim\s+(is\s+|has\s+been\s+|was\s+)?(approved|denied|rejected|declined|repudiated)\b'
+  - '\b(we|insurer)\s+(will|shall)\s+(pay|reject|deny|decline)\b'
+  - '\b(is|are|was|will\s+be)\s+(not\s+)?(covered|excluded|payable)\b'
+  - '\b(will\s+be\s+paid|has\s+been\s+paid|is\s+entitled\s+to)\b'
+# Coverage statuses that need a clause citation (an abstention, and the one row that says no policy is in force, are exempt).
+citation_exempt_statuses: [abstain]

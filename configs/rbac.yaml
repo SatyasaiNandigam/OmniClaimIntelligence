@@ -1,1 +1,2 @@
 roles: [intake, adjuster, senior_adjuster, supervisor, finance]  # SAMPLE
+approval_order: [adjuster, senior_adjuster, supervisor]    # SAMPLE: a later role may decide whatever an earlier one may (a claim's routing names the minimum); intake and finance do not decide claims

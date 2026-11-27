@@ -1,8 +1,8 @@
 """Start the API (real Evidence, Policy and Gap agents; mocks for the rest; SYNTHETIC data).
 
     python scripts/run_api.py                       # http://127.0.0.1:8000  (interactive docs at /docs, the contract at /openapi.json)
-    python scripts/run_api.py --port 8080 --llm     # the Gap agent also uses the model (needs LLM_API_KEY in .env)
-    python scripts/run_api.py --store var/store     # keep uploaded documents between runs (claims and events are in memory either way)
+    python scripts/run_api.py --port 8080 --llm     # the Evidence, Gap, Coverage and Settlement agents also use the model (needs LLM_API_KEY in .env)
+    python scripts/run_api.py --store var/store     # keep uploaded documents and the audit trail between runs (claims and events are in memory either way)
 """
 import argparse
 import os

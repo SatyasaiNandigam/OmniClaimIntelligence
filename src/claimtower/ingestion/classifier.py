@@ -211,6 +211,39 @@ class LLMClassifier:
     def __init__(self, llm: LLMClient, rules: RuleClassifier, pack: Pack) -> None:
         self._llm, self._rules, self._pack = llm, rules, pack
 
+    def classify_document(self, pages: Sequence[PageLike]) -> Classification:
+        """The model alone decides the type of a text document (no rule answer is shown to it). Its answer is checked: an allowed type, a verbatim evidence line, enough confidence.
+        code `llm_unavailable` means the model could not answer at all (the caller may then fall back to the rules); any other abstention is the model's own judgement."""
+        from claimtower.core.llm import load_prompt
+
+        cfg = self._rules.cfg
+        allowed = [t for t in self._rules.types if t not in ("other", "email")]
+        described = "\n".join(f"- {t}: {self._rules.types[t].title}" for t in allowed)
+        text_pages = [p for p in pages if p.text.strip()][: cfg.pages_scanned]
+        full = normalise(" ".join(p.text for p in text_pages))
+        try:
+            verdict = self._llm.structured(LLMVerdict, load_prompt("classifier", self._pack, types=described, text=full[:LLM_TEXT_CHARS]))
+        except Exception as e:                                            # model down, bad JSON, TBD model name ...
+            return _unknown("llm_unavailable", f"the model could not answer ({type(e).__name__}: {e})")
+        t, snippet = verdict.document_type.strip(), normalise(verdict.evidence_snippet)
+        if snippet not in full:                                           # a quote padded over several lines: keep its longest line that IS the document's own text
+            lines = sorted((normalise(x) for x in verdict.evidence_snippet.splitlines()), key=len, reverse=True)
+            snippet = next((x for x in lines if len(x) >= 8 and x in full), snippet)
+        problem = None
+        if t == UNKNOWN:
+            problem = "the model answered unknown"
+        elif t not in allowed:
+            problem = f"type '{t}' is not allowed"
+        elif len(snippet) < 8 or snippet not in full:
+            problem = "its evidence snippet is not verbatim text from the document"
+        elif verdict.confidence < cfg.llm_min_confidence:
+            problem = f"confidence {verdict.confidence:.2f} below {cfg.llm_min_confidence:.2f}"
+        if problem:
+            return Classification(UNKNOWN, 0.0, None, None, "llm", "llm_rejected", f"model verdict not used: {problem}")
+        page = next((p.number for p in text_pages if snippet in normalise(p.text)), text_pages[0].number)
+        return Classification(t, round(min(verdict.confidence, cfg.llm_confidence_cap), 3), snippet, page, "llm", "ok",
+                              f"the model chose {t} citing '{snippet}'")
+
     def classify(self, pages: Sequence[PageLike], rules_result: Classification) -> Classification:
         from claimtower.core.llm import load_prompt                      # local: avoids loading the prompt machinery unless needed
         cfg, allowed = self._rules.cfg, [t for t in self._rules.text_types() if t != "other"]
@@ -243,7 +276,9 @@ class LLMClassifier:
 
 
 class HybridClassifier:
-    """Rules first; the LLM (if configured) is consulted only for text documents the rules could not decide."""
+    """With a model: the MODEL decides the type of every text document, on its own (no rule answer or score is shown to it); the rules answer only for what is not a content
+    judgement (an e-mail by its container, a photo by its image, a scan awaiting OCR, an unreadable file) and as the fallback when the model cannot be reached.
+    Without a model: the rules alone, abstaining when unsure."""
 
     ASK_LLM_FOR = {"low_score", "ambiguous", "no_heading", "uncorroborated"}
 
@@ -253,9 +288,12 @@ class HybridClassifier:
     def classify(self, *, kind: str | None, pages: Sequence[PageLike], original: Callable[[], bytes] | None = None,
                  load_error: str | None = None) -> Classification:
         result = self.rules.classify(kind=kind, pages=pages, original=original, load_error=load_error)
-        if result.abstained and result.code in self.ASK_LLM_FOR and self.llm is not None:
-            return self.llm.classify(pages, result)
-        return result
+        if self.llm is None:
+            return result
+        if result.method in ("container", "visual") or result.code in ("needs_ocr", "no_text", "unreadable", "no_type"):
+            return result                                                          # not a content judgement: the file format or the image decides
+        verdict = self.llm.classify_document(pages)
+        return result if verdict.code == "llm_unavailable" else verdict
 
 
 __all__ = ["Classification", "HybridClassifier", "LLMClassifier", "LLMError", "LLMVerdict", "RuleClassifier", "UNKNOWN",

@@ -88,10 +88,10 @@ def test_an_amount_gap_gets_its_severity_from_the_bands(claimed, assessed, sever
         assert (got[0].kind, got[0].severity, got[0].question_id) == ("amount", severity, "Q-AMOUNT") and "differ by" in got[0].explanation
 
 
-def test_estimate_against_invoice_uses_its_own_tighter_bands():
+def test_an_invoice_and_an_estimate_are_different_jobs_so_a_gap_is_noted_never_blocking():
     facts = [fact("F1", "Invoice total is INR 120,000"), fact("F2", "Estimate total is INR 100,000")]
     (c,) = rules_only().detect(facts, QUESTIONS).contradictions
-    assert c.severity == "medium"                      # 17% gap: medium for invoice-vs-estimate (15%), only low for the other amount rules
+    assert c.severity == "low"                         # 17% gap: noted only (real documents: the plumber's invoice and the repair estimate are not the same job)
 
 
 def test_unreadable_values_and_rejected_facts_are_never_compared():
@@ -283,3 +283,9 @@ def test_a_retraction_that_is_not_grounded_in_a_new_fact_is_ignored_and_the_conf
 def test_an_earlier_conflict_whose_fact_changed_is_not_carried_over_and_the_first_assessment_keeps_its_schema():
     r, llm = _detect(ConflictAnswer(), changed=("F2",))
     assert r.retained == [] and llm.classes == ["ConflictAnswer"] and "Earlier conflicts" not in llm.prompts[0]
+
+
+def test_an_estimate_far_above_the_assessment_is_noted_never_blocking():
+    facts = [fact("F1", "Estimate total is INR 450,000"), fact("F2", "Surveyor assessed the repair cost at INR 254,260")]
+    (c,) = rules_only().detect(facts, QUESTIONS).contradictions
+    assert c.severity == "low"

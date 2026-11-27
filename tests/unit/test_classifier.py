@@ -258,11 +258,11 @@ def hybrid(reply):
 UNTITLED = "Site note\nVisited the property. Found the compression joint on the supply pipe corroded and leaking. Replaced the joint, supply restored.\n"
 
 
-def test_llm_answers_only_when_rules_abstain_and_its_evidence_is_verified():
+def test_the_model_decides_a_text_document_and_its_evidence_is_verified():
     clf, provider = hybrid({"document_type": "plumber_report", "confidence": 0.9, "evidence_snippet": "Found the compression joint on the supply pipe"})
     r = clf.classify(kind="text", pages=[P(1, UNTITLED)])
     assert (r.type, r.method, r.code) == ("plumber_report", "llm", "ok") and r.confidence == 0.8       # capped at llm_confidence_cap
-    assert r.evidence_snippet == "Found the compression joint on the supply pipe" and r.page == 1 and "rules abstained" in r.reason
+    assert r.evidence_snippet == "Found the compression joint on the supply pipe" and r.page == 1 and "the model chose" in r.reason
     assert len(provider.requests) == 1
     assert "plumber_report" in provider.requests[0].messages[-1]["content"]                      # the allowed types are in the prompt
 
@@ -272,7 +272,7 @@ def test_llm_answers_only_when_rules_abstain_and_its_evidence_is_verified():
     ({"document_type": "plumber_report", "confidence": 0.95, "evidence_snippet": "short"}, "not verbatim"),
     ({"document_type": "invoice_from_mars", "confidence": 0.95, "evidence_snippet": "Found the compression joint"}, "not allowed"),
     ({"document_type": "other", "confidence": 0.95, "evidence_snippet": "Found the compression joint"}, "not allowed"),
-    ({"document_type": "unknown", "confidence": 0.95, "evidence_snippet": ""}, "also answered unknown"),
+    ({"document_type": "unknown", "confidence": 0.95, "evidence_snippet": ""}, "answered unknown"),
     ({"document_type": "plumber_report", "confidence": 0.40, "evidence_snippet": "Found the compression joint"}, "below"),
 ])
 def test_llm_verdicts_that_do_not_check_out_are_rejected_and_the_document_stays_unknown(reply, why):
@@ -281,20 +281,44 @@ def test_llm_verdicts_that_do_not_check_out_are_rejected_and_the_document_stays_
     assert (r.type, r.code, r.needs_human) == ("unknown", "llm_rejected", True) and why in r.reason
 
 
-def test_llm_is_not_consulted_when_rules_answer_or_when_there_is_nothing_to_read():
+FNOL_TEXT = "FIRST NOTICE OF LOSS\nClaimant: A\nPolicy number: P\nDate of loss: 1 May\n"
+
+
+def test_the_model_is_not_asked_about_scans_and_unreadable_files_and_the_rules_never_overrule_it():
     clf, provider = hybrid({"document_type": "invoice", "confidence": 0.99, "evidence_snippet": "xxxxxxxxxx"})
-    assert clf.classify(kind="text", pages=[P(1, "FIRST NOTICE OF LOSS\nClaimant: A\nPolicy number: P\nDate of loss: 1 May\n")]).method == "rules"
     assert clf.classify(kind="pdf", pages=[P(1, "", "none", True)]).code == "needs_ocr"
     assert clf.classify(kind="pdf", pages=[], load_error="CorruptDocument: x").code == "unreadable"
     assert provider.requests == []
+    r = clf.classify(kind="text", pages=[P(1, FNOL_TEXT)])                  # the rules would say fnol; the model's (rejected) answer stands: unknown, for a person
+    assert (r.type, r.code) == ("unknown", "llm_rejected") and len(provider.requests) == 1
+    assert "fnol" not in provider.requests[0].messages[-1]["content"].split("Document text")[1].lower().replace("first notice of loss", "")    # no rule answer is in the prompt
 
 
-def test_an_unavailable_llm_degrades_to_unknown_not_to_a_crash():
+def test_a_photo_sheet_that_mentions_an_fnol_reference_is_a_photo_not_the_fnol():
+    sheet = ("Photographic Evidence Submitted by Insured\nSubmission FNOL-20261014-0071 - Mr Rajesh Menon\nPhoto 1 (file photo1.jpg)\n"
+             "Caption given by submitter\nKitchen wall and base cabinet after the burst\n")
+    clf, _ = hybrid({"document_type": "photo", "confidence": 0.95, "evidence_snippet": "Photographic Evidence Submitted by Insured"})
+    r = clf.classify(kind="pdf", pages=[P(1, sheet)])
+    assert (r.type, r.method) == ("photo", "llm")
+
+
+def test_an_unavailable_llm_falls_back_to_the_rules_not_to_a_crash():
     clf, _ = hybrid(TimeoutError("model unavailable"))
-    r = clf.classify(kind="text", pages=[P(1, UNTITLED)])
-    assert (r.type, r.code) == ("unknown", "llm_unavailable") and "TimeoutError" in r.reason
+    assert clf.classify(kind="text", pages=[P(1, UNTITLED)]).type == "unknown"                         # the rules abstain too: a person decides
+    r = clf.classify(kind="text", pages=[P(1, FNOL_TEXT)])
+    assert (r.type, r.method) == ("fnol", "rules")                                                      # model down: the rules answer
     to_be_set = HybridClassifier(RULES, LLMClassifier(LLMClient(FakeLLM({}), text_model="TBD", vision_model="TBD"), RULES, PACK))
-    assert to_be_set.classify(kind="text", pages=[P(1, UNTITLED)]).code == "llm_unavailable"      # models not configured yet
+    assert to_be_set.classify(kind="text", pages=[P(1, FNOL_TEXT)]).method == "rules"                   # models not configured yet
+
+
+def test_a_quote_padded_over_several_lines_falls_back_to_its_longest_verbatim_line_but_an_invented_one_is_rejected():
+    text = "Plumbing Failure Inspection Report\nReport number SSP/1\nDate of attendance 14 October 2026\n"
+    padded = "Plumbing Failure Inspection Report\nReport number SSP/1\nWords the document never said at all"
+    clf, _ = hybrid({"document_type": "plumber_report", "confidence": 0.95, "evidence_snippet": padded})
+    r = clf.classify(kind="pdf", pages=[P(1, text)])
+    assert (r.type, r.evidence_snippet) == ("plumber_report", "Plumbing Failure Inspection Report")
+    clf, _ = hybrid({"document_type": "plumber_report", "confidence": 0.95, "evidence_snippet": "Nothing\nthe document\nsaid anywhere"})
+    assert clf.classify(kind="pdf", pages=[P(1, text)]).code == "llm_rejected"
 
 
 # ------------------------------------------------------------------ config validation (a bad pack fails at startup)

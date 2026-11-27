@@ -1,0 +1,80 @@
+{
+  "3b6851182dfe94140ce7142238171316d05c8afc50176d8ae12b44ec7c7dc100": {
+    "input_tokens": 585,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 51,
+    "text": "{\"assessed\":{\"amount\":\"150,000\",\"fact_id\":\"D-3/f0\",\"quote\":\"Assessed repair cost: INR 150,000\"},\"non_covered\":[],\"note\":\"\"}"
+  },
+  "517668e2547ae9a841290ccdd097d6ebf45cf0974c09200de26fbb1755f29556": {
+    "input_tokens": 592,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 57,
+    "text": "{\"assessed\":null,\"non_covered\":[],\"note\":\"Two different assessed amounts are given (Surveyor: INR 90,000; Loss adjuster: INR 110,000), so no single assessed amount is provided.\"}"
+  },
+  "6154f739fdabca1e8fabb422a9d24c81cb0c56801432cdbaa4e442934aa14db3": {
+    "input_tokens": 591,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 30,
+    "text": "{\n  \"assessed\": null,\n  \"non_covered\": [],\n  \"note\": \"\"\n}"
+  },
+  "66727e244c9eddb090e83be1f004b79f0bae0422bf43be5bf91a3da056c81aae": {
+    "input_tokens": 605,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 90,
+    "text": "{\"assessed\":{\"amount\":\"64,500\",\"fact_id\":\"F-1/f0\",\"quote\":\"Surveyor's valuation of the repair works: INR 64,500\"},\"non_covered\":[{\"amount\":\"4,500\",\"fact_id\":\"F-1/f1\",\"quote\":\"Bedroom repaint (not damaged by the escape of water): INR 4,500\"}],\"note\":\"\"}"
+  },
+  "66fa2f711bfb988b86328b356e9614942be8d74011d32ee51ee2119ba000d1bf": {
+    "input_tokens": 585,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 51,
+    "text": "{\"assessed\":{\"amount\":\"133,000\",\"fact_id\":\"F-5/f0\",\"quote\":\"Assessed repair cost: INR 133,000\"},\"non_covered\":[],\"note\":\"\"}"
+  },
+  "7900c2aab31acb2fbc5135917ce07497be37527a29f667232274096b6e77a1e3": {
+    "input_tokens": 583,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 26,
+    "text": "{\"assessed\": null, \"non_covered\": [], \"note\": \"\"}"
+  },
+  "8454cc06cd360058150f790521f89191b9ce19f085753c28a5d491e7132b131c": {
+    "input_tokens": 637,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 118,
+    "text": "{\n  \"assessed\": {\n    \"amount\": \"48,000\",\n    \"fact_id\": \"F-7/f0\",\n    \"quote\": \"Loss adjuster's assessment of damage: INR 48,000\"\n  },\n  \"non_covered\": [\n    {\n      \"amount\": \"15,000\",\n      \"fact_id\": \"F-7/f1\",\n      \"quote\": \"Boiler replacement (not damaged by the loss): INR 15,000\"\n    }\n  ],\n  \"note\": \"\"\n}"
+  },
+  "8500cfdc9e7cd3a629c29ad2feb0b78cfe9b82c99efe30fec1982c75f0626db0": {
+    "input_tokens": 594,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 81,
+    "text": "{\"assessed\":null,\"non_covered\":[],\"note\":\"Two different assessed amounts are recorded: F-4/f0 states \\\"Assessed repair cost: INR 55,000\\\" and F-4/f1 states \\\"Second survey, assessed repair cost: INR 61,000\\\"; because assessments conflict, no single assessed amount is provided.\"}"
+  },
+  "b130d307e9d6e6898fd098b68c2223e0d2a298ae51a468d2f39257c01a43c590": {
+    "input_tokens": 609,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\n  \"assessed\": {\n    \"amount\": \"72,000\",\n    \"fact_id\": \"F-3/f0\",\n    \"quote\": \"Assessed repair cost: INR 72,000, including INR 12,000 for an upgraded worktop that is not covered\"\n  },\n  \"non_covered\": [\n    {\n      \"amount\": \"12,000\",\n      \"fact_id\": \"F-3/f0\",\n      \"quote\": \"Assessed repair cost: INR 72,000, including INR 12,000 for an upgraded worktop that is not covered\"\n    }\n  ],\n  \"note\": \"\"\n}"
+  },
+  "ca9a8fcbb89aa48507a5dfcbba608e30333803464749436913c7474d5c956900": {
+    "input_tokens": 636,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 112,
+    "text": "{\"assessed\":{\"amount\":\"98,000\",\"fact_id\":\"D-1/f0\",\"quote\":\"Assessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss\"},\"non_covered\":[{\"amount\":\"8,000\",\"fact_id\":\"D-1/f0\",\"quote\":\"Assessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss\"}],\"note\":\"\"}"
+  },
+  "d0d6d1c95b9aa384fbf95b79cbbee53263f40b621f1b32b9742e23955ecf5b51": {
+    "input_tokens": 603,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 88,
+    "text": "{\"assessed\":{\"amount\":\"1,20,000\",\"fact_id\":\"D-5/f0\",\"quote\":\"Assessed damage: Rs. 1,20,000\"},\"non_covered\":[{\"amount\":\"5,000\",\"fact_id\":\"D-5/f1\",\"quote\":\"Betterment (new tiles instead of repair): INR 5,000\"}],\"note\":\"\"}"
+  },
+  "d1dd453bec234b7da6c748a67e349d8099a880f42988e68274a945bf43071edd": {
+    "input_tokens": 588,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 26,
+    "text": "{\"assessed\": null, \"non_covered\": [], \"note\": \"\"}"
+  },
+  "e65f75c699d13b939b2a0ef3fce0f65a7a4d2e8ba5381664b5cbdae46b3873ab": {
+    "input_tokens": 588,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 26,
+    "text": "{\"assessed\": null, \"non_covered\": [], \"note\": \"\"}"
+  }
+}

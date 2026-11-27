@@ -1,0 +1,36 @@
+# Next-step planning for a property water-damage claim (T6.4). Domain content, not code. All wording and role names are SAMPLE.
+#
+# An evidence request (state.missing_evidence) is addressed to a role. A role in `draft_roles` gets ONE consolidated information-request draft (everything we need
+# from that role in a single message, never several). A role in `task_roles` is handled inside the insurer or by an appointed professional: a task is created
+# (a controlled call, not sent anywhere by the agent). Nothing here is ever sent: a draft waits for a person, a task is created only through the claims system.
+draft_roles: [claimant, plumber, contractor]
+
+task_roles:
+  surveyor:              {task: surveyor_followup, operation: create_investigation_task, title: "Follow-up with the surveyor"}
+  policy_administration: {task: request_endorsement, operation: create_investigation_task, title: "Obtain the endorsement wording from policy administration",
+                          id_pattern: '\bEND-\d+\b'}      # the task name carries the endorsement id found in the request: request_endorsement_END-01_from_policy_administration
+
+# The autonomy operation each planned action goes through (configs/autonomy_matrix.yaml decides how much freedom it has).
+operations:
+  information_request:   draft_information_request
+  status_message:        draft_status_message
+  acknowledgement:       draft_status_message
+  present_settlement:    present_settlement
+  register_claim:        register_claim
+  route_to_operator:     route_to_operator
+  hold_settlement:       hold_settlement
+
+drafts:
+  information_request:
+    subject: "Claim {claim_id}: information needed"
+    intro: "We are assessing claim {claim_id}{loss}. To go on we need the following from you (one message, so you only have to reply once):"
+    outro: "Please send what you can. If something does not exist, tell us so. A claims colleague will look at your reply."
+  status_message:
+    subject: "Claim {claim_id}: where it stands"
+    body: "We have received claim {claim_id}{loss} and it is being assessed. {waiting} A claims colleague reviews every claim before anything is decided, and we will write to you again."
+    waiting_for_you: "We have asked you for further information (see our separate request)."
+    waiting_for_others: "We are waiting for further information from others involved."
+    nothing_waiting: "We do not need anything more from you right now."
+  acknowledgement:
+    subject: "Claim {claim_id}: we have received it"
+    body: "We have received claim {claim_id}{loss}. We could not match it to a policy that was running on the date you gave, so a claims colleague will contact you to go through it. Nothing has been decided."

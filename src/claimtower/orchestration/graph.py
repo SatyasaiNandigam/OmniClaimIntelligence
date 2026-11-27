@@ -8,11 +8,11 @@
 The flow of a new claim (BUILD_PLAN section 4):
 
     start -> intake -> policy -> evidence -> gap -> coverage -> settlement -> action -> audit -> routing -> HUMAN GATE -> commit
-                                               \\_______ no policy in force ______/^                        (approve only)
+                                                       \\_ no policy in force: settlement skipped _/^   (approve only)
 
   * every agent node is wrapped by the supervisor: ownership is enforced, the version bumped, an event logged; a failing agent parks the claim
     (`awaiting_human`) and the flow halts with the reason;
-  * a claim with no policy in force skips coverage and settlement;
+  * a claim with no policy in force skips settlement (coverage still records the one row that says so);
   * the gate pauses the graph (`interrupt`) and resumes with a named reviewer's decision; only an approval reaches the (mock) commit step;
   * the thread id is the claim id, so every claim has its own checkpoint history (audit-friendly, replayable).
 Only this package imports langgraph (ADR-0001): agents stay framework-free.
@@ -48,14 +48,14 @@ def build_graph(registry: AgentRegistry, supervisor: Supervisor, checkpointer: A
     g.add_edge(START, "start")
     g.add_edge("start", PIPELINE[0])
     for here, there in zip(PIPELINE, PIPELINE[1:]):
-        if here == "gap":
-            g.add_conditional_edges("gap", supervisor.after_gap, {"continue": "coverage", "skip": "action", HALT: END})
+        if here == "coverage":
+            g.add_conditional_edges("coverage", supervisor.after_coverage, {"continue": "settlement", "skip": "action", HALT: END})
         elif here == "routing":
             continue
         else:
             g.add_conditional_edges(here, supervisor.after_agent, {"continue": there, HALT: END})
     g.add_conditional_edges("routing", supervisor.after_routing, {"continue": "human_gate", HALT: END})
-    g.add_conditional_edges("human_gate", supervisor.after_gate, {"commit": "commit", "end": END})
+    g.add_conditional_edges("human_gate", supervisor.after_gate, {"commit": "commit", "edit": "settlement", "end": END})
     g.add_edge("commit", END)
     return g.compile(checkpointer=checkpointer or make_checkpointer("memory"))
 
@@ -71,6 +71,7 @@ class RunStatus(BaseModel):
     gate: dict[str, Any] | None = None             # what the reviewer is shown (while paused at the gate)
     halted_reason: str | None = None               # why a node failed (phase halted)
     nodes_run: list[str] = []
+    skipped_nodes: list[str] = []                  # nodes skipped as unchanged (their inputs did not change) in the latest (re-)assessment
     mock_nodes_run: list[str] = []                 # the nodes that ran a mock ("yet to implement") agent in this claim's runs
     agents: list[dict[str, str]] = []              # the roster: which agent is implemented and which is a mock
 
@@ -87,12 +88,22 @@ class VersionInfo(BaseModel):
 
 
 class ClaimRunner:
-    def __init__(self, registry: AgentRegistry, *, checkpointer: Any | None = None, events: EventLog | None = None) -> None:
+    def __init__(self, registry: AgentRegistry, *, checkpointer: Any | None = None, events: EventLog | None = None, commit_service: Any | None = None,
+                 overrides: Any | None = None, settings: Any | None = None, trail: Any | None = None, llm: Any | None = None) -> None:
         self.registry = registry
+        self.trail = trail
         self.events = events or EventLog()
+        if trail is not None:                                                            # every run event goes into the audit trail too (T8.3)
+            self.events.sink = lambda e: trail.append(e.claim_id, "event", {"seq": e.seq, "kind": e.kind, "node": e.node, "message": e.message, "agent_id": e.agent_id, "mock": e.mock,
+                                                                            "state_version": e.state_version, "data": e.data})
         self._lock = threading.RLock()                    # one run at a time: the agents hold per-run attributes (and the model client counters)
         self._claims: dict[str, None] = {}               # claims in the order they were started
-        self.supervisor = Supervisor(registry, self.events)
+        order = tuple(settings.rbac.approval_order) if settings is not None and settings.rbac.approval_order else None
+        self.supervisor = Supervisor(registry, self.events, commit_service=commit_service, overrides=overrides, approval_order=order, autonomy=settings.autonomy if settings is not None else None,
+                                     low_confidence_below=settings.pack.document_types.extractor.low_confidence if settings is not None else None, trail=trail, llm=llm)
+        guard = getattr(commit_service, "guard", None)
+        if guard is not None:                                                            # a payment or task blocked in the commit step is logged like any other denial
+            guard.sink = self.supervisor.log_denial
         self.graph = build_graph(registry, self.supervisor, checkpointer)
 
     @staticmethod
@@ -139,11 +150,14 @@ class ClaimRunner:
             raise ValueError(f"claim {claim_id} has not been started")
         superseded = "human_gate" in snap.next
         state = ClaimState.model_validate(snap.values)
-        new = apply_patch(state, StatePatch(agent_id="supervisor", updates={"resolution_status": "assessing"}))
+        reassess_patch = StatePatch(agent_id="supervisor", updates={"resolution_status": "assessing"})
+        new = apply_patch(state, reassess_patch)
+        self.supervisor.record(claim_id, reassess_patch, new)
         before = PIPELINE[PIPELINE.index(from_node) - 1] if PIPELINE.index(from_node) > 0 else "start"
         self.events.add(claim_id, "reassessment", from_node, f"re-assessing from '{from_node}' (nodes before it are not re-run)"
                         + ("; the pending recommendation at the human gate is superseded by the new evidence" if superseded else ""),
                         agent_id="supervisor", state_version=new.state_version, from_node=from_node, superseded_gate=superseded)
+        self.supervisor.force[claim_id] = from_node                                     # the node asked for runs even if its inputs look unchanged (the policy system may have)
         self.graph.update_state(cfg, {"resolution_status": "assessing", "state_version": new.state_version}, as_node=before)
         self.graph.invoke(None, cfg)
         return self.status(claim_id)
@@ -186,7 +200,9 @@ class ClaimRunner:
             return RunStatus(claim_id=claim_id, phase="not_started", agents=self.registry.describe())
         st = ClaimState.model_validate(snap.values)
         ran = self.events.of_kind(claim_id, "agent_finished")
-        base = dict(claim_id=claim_id, state_version=st.state_version, resolution_status=st.resolution_status, nodes_run=[e.node for e in ran],
+        last_start = max((e.seq for e in self.events.of_kind(claim_id, "run_started", "reassessment")), default=0)
+        skipped = [e.node for e in self.events.of_kind(claim_id, "node_skipped") if e.seq > last_start]
+        base = dict(claim_id=claim_id, state_version=st.state_version, resolution_status=st.resolution_status, nodes_run=[e.node for e in ran], skipped_nodes=skipped,
                     mock_nodes_run=sorted({e.node for e in ran if e.mock}), agents=self.registry.describe())
         if "human_gate" in snap.next:
             gate = next((i.value for t in snap.tasks for i in t.interrupts), None)

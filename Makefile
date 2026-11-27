@@ -5,6 +5,8 @@ test:     ; pytest
 test-settlement: ; pytest --cov=claimtower.settlement --cov-branch --cov-report=term-missing --cov-fail-under=95
 lint:     ; ruff check . && lint-imports
 eval:     ; python evals/runners/run_eval.py
+eval-check: ; python evals/runners/run_eval.py --quiet --check
+replay:   ; python scripts/replay_scenario.py --list
 data:     ; python scripts/generate_policy_corpus.py && python scripts/generate_synthetic_docs.py && python scripts/seed_pas_mock.py && python scripts/build_fixtures.py
 data-check: ; python scripts/generate_synthetic_docs.py --check && python scripts/seed_pas_mock.py --check && python scripts/build_fixtures.py --check
 schemas:  ; python scripts/export_schemas.py

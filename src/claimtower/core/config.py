@@ -12,14 +12,14 @@ import re
 import string
 from decimal import Decimal
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, get_args
 
 import yaml
 from pydantic import ConfigDict, Field, ValidationError, model_validator
 
 from claimtower.core.errors import ConfigError
 from claimtower.core.schemas import SettlementInputs
-from claimtower.core.schemas.common import Contract, GapType, QuestionCategory, QuestionStatus
+from claimtower.core.schemas.common import Contract, GapType, IssueStatus, QuestionCategory, QuestionStatus
 from claimtower.core.schemas.policy import ClauseType, RelationType
 
 
@@ -65,6 +65,14 @@ class AutonomyMatrix(Contract):
 
 class RBAC(Contract):
     roles: list[str] = Field(min_length=1)
+    approval_order: list[str] = []                  # SAMPLE: who may decide what a lower role may; later = more authority
+
+    @model_validator(mode="after")
+    def _order_in_roles(self) -> "RBAC":
+        unknown = sorted(set(self.approval_order) - set(self.roles))
+        if unknown:
+            raise ValueError(f"approval_order names roles that are not in roles: {unknown}")
+        return self
 
 
 # Guardrail 4: extraction confidence must never drive routing.
@@ -172,6 +180,7 @@ class FieldSpec(Contract):
     required: bool = False                  # missing required fields are reported, never silently skipped
     pattern: str | None = None              # id fields: regex the value must contain (case-insensitive)
     from_body: bool = False                 # no label? take the sentence-like body lines instead (lower confidence)
+    description: str = ""                   # what the field is, for the model reading the document (the rules ignore it)
 
     @model_validator(mode="after")
     def _checks(self) -> "FieldSpec":
@@ -302,7 +311,9 @@ class DocumentTypes(Contract):
 
 
 class IntakeChecklistCfg(Contract):
-    required_documents: list[Any] = []
+    loss_type: str | None = None                      # the pack's line of business: assumed when a claim states none
+    required_fields: list[dict[str, str]] = []       # header fields a registration needs: {name, description}
+    required_documents: list[dict[str, str]] = []    # {type, description}: received when a stored document has that detected type
     required_photo_views: list[Any] = []
 
 
@@ -769,9 +780,15 @@ class CalculationRules(Contract):
     currency: str
     rounding: dict[str, Any]
     steps: list[CalcStep] = Field(min_length=1)
+    forecast_upper_sources: list[str] = []      # patterns (a named group `value`) of facts that state an amount claimed or estimated: the upper end of the forecast range while the repair cost is not validated
 
     @model_validator(mode="after")
     def _checks(self) -> "CalculationRules":
+        for p in self.forecast_upper_sources:
+            try:
+                re.compile(p)
+            except re.error as e:
+                raise ValueError(f"bad pattern in forecast_upper_sources: {p!r} ({e})") from None
         ids = [s.id for s in self.steps]
         if len(ids) != len(set(ids)):
             raise ValueError("duplicate step ids")
@@ -956,6 +973,98 @@ class PolicyStructure(Contract):
         return self
 
 
+IssueKind = Literal["condition", "cover", "exclusion", "amount"]
+CONTROL_STATES = ("settled", "contested", "open", "partial", "missing")
+READINGS = ("favourable", "adverse", "unclear", "ambiguous", "not_judged")
+ROW_CONDITIONS = ("kind", "control", "reading", "not_in_force", "no_citation")
+
+
+class IssueSpec(Contract):
+    """One row of the coverage issue matrix: what the issue is, which open questions control it, and which policy clauses it cites."""
+
+    id: str
+    issue: str
+    kind: IssueKind                                 # condition (policy in force) | cover (an insuring clause) | exclusion | amount (a limit, sublimit, deductible)
+    questions: list[str] = Field(min_length=1)      # the open questions whose answers decide it; a row exists only if they are all in the register
+    clauses: list[ClauseLink] = Field(min_length=1)
+
+
+class IssueRow(Contract):
+    """One row of the status decision table. Every listed condition must hold (a missing one is ignored); the first matching row decides."""
+
+    id: str
+    when: dict[str, Any] = {}
+    status: IssueStatus
+    note: str = ""
+    reason: str = ""                                # T5.2: why the system does not conclude on this row (a code; empty when it does)
+
+    @model_validator(mode="after")
+    def _valid(self) -> "IssueRow":
+        for k, v in self.when.items():
+            if k not in ROW_CONDITIONS:
+                raise ValueError(f"row {self.id}: unknown condition {k!r}; known: {list(ROW_CONDITIONS)}")
+            if k in ("not_in_force", "no_citation"):
+                if not isinstance(v, bool):
+                    raise ValueError(f"row {self.id}: {k} must be true or false")
+                continue
+            allowed = {"kind": get_args(IssueKind), "control": CONTROL_STATES, "reading": READINGS}[k]
+            vals = v if isinstance(v, list) else [v]
+            if not vals or any(x not in allowed for x in vals):
+                raise ValueError(f"row {self.id}: {k} must be one or more of {list(allowed)}")
+        return self
+
+
+class ReadingConfig(Contract):
+    """The model's reading of whether the facts favour the claim as presented under a clause (cover condition met, exclusion not engaged). Checked,
+    never trusted: it must cite offered facts and clauses and quote a fact verbatim; anything else is `unclear` and the row abstains. Values are SAMPLE."""
+
+    enabled: bool = False                           # without it a settled row is only `identified`: the clauses are cited, nothing is concluded
+    min_confidence: float = Field(default=0.6, ge=0, le=1)
+    confidence_cap: float = Field(default=0.9, ge=0, le=1)
+    max_rationale_chars: int = Field(default=300, ge=40)
+    max_clause_chars: int = Field(default=800, ge=100)
+    max_fact_chars: int = Field(default=300, ge=50)
+    reasoning_effort: Literal["minimal", "low", "medium", "high"] | None = None
+    check_ambiguity: bool = True                    # T5.2: first ask whether the clauses admit two reasonable readings that point opposite ways (then: abstain, show both)
+    # T5.2 rule: the ambiguity question is asked only where a clause of one of these types has wording that makes it an exception (a rule, not a model call)
+    ambiguity_trigger_types: list[str] = ["exclusion"]
+    ambiguity_trigger_patterns: list[str] = [r"\bhowever\b", r"\bexcept\b", r"\bunless\b", r"\bprovided that\b"]
+    verify_supports: bool = True                    # a second, independent model question: does the quote itself state how or when the water escaped?
+
+    @model_validator(mode="after")
+    def _valid(self) -> "ReadingConfig":
+        if self.min_confidence > self.confidence_cap:
+            raise ValueError("min_confidence cannot be above confidence_cap: no reading could ever be accepted")
+        return self
+
+
+class CoverageConfig(Contract):
+    """The coverage issue matrix (T5.1): rows, how each row's status follows from its questions, and the wording rules. No row ever says a claim is covered,
+    excluded, approved or denied: it says how well the issue is resolved on the evidence, and a human decides."""
+
+    issues: list[IssueSpec] = Field(min_length=1)
+    table: list[IssueRow] = Field(min_length=1)
+    reading: ReadingConfig = ReadingConfig()
+    forbidden_patterns: list[str] = []              # wording that states a coverage conclusion
+
+    @model_validator(mode="after")
+    def _valid(self) -> "CoverageConfig":
+        ids = [i.id for i in self.issues]
+        if len(ids) != len(set(ids)):
+            raise ValueError("duplicate coverage issue ids")
+        rows = [r.id for r in self.table]
+        if len(rows) != len(set(rows)):
+            raise ValueError("duplicate status-table row ids")
+        if self.table[-1].when:
+            raise ValueError("the last row of the status table must have no conditions, so that every case is decided")
+        for p in self.forbidden_patterns:
+            try:
+                re.compile(p, re.IGNORECASE)
+            except re.error as e:
+                raise ValueError(f"bad forbidden pattern {p!r}: {e}") from e
+        return self
+
+
 class Pack(Contract):
     meta: PackMeta
     document_types: DocumentTypes
@@ -963,6 +1072,7 @@ class Pack(Contract):
     question_templates: QuestionTemplates
     fact_templates: FactTemplates
     policy_structure: PolicyStructure
+    coverage: CoverageConfig | None = None
     calculation: dict[str, dict[str, Any]]     # file stem -> raw rules dict; settlement.rules_loader turns it into engines
     root: Path
     prompts_dir: Path
@@ -1025,6 +1135,11 @@ def load_pack(name: str, root: Path | None = None, problems: list[str] | None = 
         qt = _read(pdir / "question_templates.yaml", QuestionTemplates, problems)
         ft = _read(pdir / "fact_templates.yaml", FactTemplates, problems)
         ps = _read(pdir / "policy_structure.yaml", PolicyStructure, problems)
+        cov = _read(pdir / "coverage_issues.yaml", CoverageConfig, problems) if (pdir / "coverage_issues.yaml").is_file() else None
+        if cov and qt:
+            known = {q.id for q in qt.questions}
+            for i in cov.issues:
+                problems += [f"coverage_issues.yaml: issue {i.id} names unknown question '{q}' (see question_templates.yaml)" for q in i.questions if q not in known]
         if dt and qt and ft:
             problems.extend(check_fact_templates(dt, qt, ft))
         calc: dict[str, dict[str, Any]] = {}
@@ -1035,7 +1150,7 @@ def load_pack(name: str, root: Path | None = None, problems: list[str] | None = 
             problems.append(f"packs/{name}/calculation: no calculation rule files found")
         if not problems and meta and dt and ic and qt and ft and ps:
             return Pack(meta=meta, document_types=dt, intake_checklist=ic, question_templates=qt, fact_templates=ft,
-                        policy_structure=ps, calculation=calc, root=pdir, prompts_dir=pdir / "prompts")
+                        policy_structure=ps, coverage=cov, calculation=calc, root=pdir, prompts_dir=pdir / "prompts")
     if own and problems:
         raise ConfigError("Invalid pack:\n  - " + "\n  - ".join(problems))
     return None

@@ -4,7 +4,7 @@
     python scripts/run_ui.py         # terminal 2   (or: python scripts/run_ui.py --start-api)
 
 Left: the API address, the agents (real or "YET TO IMPLEMENT" mock), the claims, and a form to create one.
-Main: for the selected claim, tabs for the overview and the human decision, the documents (upload here), facts, open questions and gaps, policy, and history.
+Main: for the selected claim, tabs for the overview, documents, document reader, facts, gaps and scenarios, the assessment and the human decision (issue matrix, calculation trace, approval form), policy, and history.
 """
 from __future__ import annotations
 
@@ -12,8 +12,8 @@ import pandas as pd
 import streamlit as st
 
 from claimtower.ui.client import DEFAULT_URL, ApiClient, ApiError
+from claimtower.ui.components import approval, calc_trace, counterfactual_view, doc_viewer, fact_table, gap_board, issue_matrix
 
-ROLES = ["adjuster", "senior_adjuster", "supervisor"]
 STATUS_ICON = {"established": "✅", "partially_established": "🟡", "possible": "🟠", "unverified": "⚪", "missing": "🔴", "requires_validation": "🟣"}
 PHASE_TEXT = {"awaiting_human_decision": "⏸ waiting for a human decision", "completed": "✔ decided", "halted": "⛔ halted (an agent failed)", "not_started": "not started"}
 SAMPLE_FILES = ["fnol.pdf", "plumber_report.pdf", "surveyor_report.pdf", "estimate.pdf", "invoice.pdf", "claimant_email.pdf"]
@@ -48,6 +48,7 @@ def sidebar(api: ApiClient) -> str | None:
         show_error(e)
         st.sidebar.info("Start the API first: `python scripts/run_api.py`")
         return None
+    st.session_state["low_confidence_below"] = health.get("low_confidence_below")
     with st.sidebar.expander(f"Agents: {len(health['implemented_agents'])} real, {len(health['mock_agents'])} mock"):
         st.dataframe(df(api.agents(), ["node", "status", "task", "will_do"]), hide_index=True, width="stretch")
 
@@ -87,7 +88,6 @@ def sidebar(api: ApiClient) -> str | None:
 # ---------------------------------------------------------------------------------------------------- claim tabs
 def overview(api: ApiClient, v: dict) -> None:
     status, state = v["status"], v["state"]
-    gate = status.get("gate")
     if status["phase"] == "halted":
         st.error(f"An agent failed at **{status['paused_at']}**: {status['halted_reason']}. The claim is parked for a human.")
     if status["mock_nodes_run"]:
@@ -104,27 +104,12 @@ def overview(api: ApiClient, v: dict) -> None:
         st.write("**Open questions**  " + "   ".join(f"{STATUS_ICON.get(q['status'], '')} {q['question_id']} {q['status'].replace('_', ' ')}" for q in state["open_questions"]))
     if state.get("settlement"):
         s = state["settlement"]
-        st.write(f"**Settlement (mock):** {s['status']}" + (f", payable INR {s['payable']}" if s.get("payable") else ""))
+        st.write(f"**Settlement{' (mock)' if 'settlement' in status['mock_nodes_run'] else ''}:** {s['status'].replace('_', ' ')}" + (f", payable INR {s['payable']}" if s.get("payable") else ""))
 
-    st.subheader("Human decision")
-    if status["phase"] != "awaiting_human_decision":
+    if status["phase"] == "awaiting_human_decision":
+        st.info("To decide, open the **Assessment & decision** tab: the coverage issues with their clauses, the calculation, and the decision form.")
+    else:
         st.info(PHASE_TEXT.get(status["phase"], status["phase"]) + (f" — {state['resolution_status'].replace('_', ' ')}" if status["phase"] == "completed" else ""))
-        return
-    st.caption(gate["note"])
-    if gate.get("error"):
-        st.error("The last decision was refused: " + gate["error"])
-    k = v["claim_id"]                                                         # keys per claim: one claim's draft decision never leaks into another's
-    col1, col2 = st.columns(2)
-    reviewer = col1.text_input("Reviewer id", value="reviewer-1", key=f"dec_reviewer_{k}")
-    role = col2.selectbox("Reviewer role", ROLES, index=ROLES.index(gate["required_approver_role"]) if gate["required_approver_role"] in ROLES else 0, key=f"dec_role_{k}")
-    decision = st.radio("Decision", gate["allowed_decisions"], horizontal=True, format_func=lambda d: d.replace("_", " "), key=f"dec_decision_{k}")
-    reason = st.text_input("Reason (needed for reject and request more evidence)", key=f"dec_reason_{k}")
-    if st.button("Submit decision", key=f"dec_submit_{k}"):                  # only this button decides: Enter in a box does not
-        try:
-            api.decide(k, decision, reviewer, role, reason)
-            st.rerun()
-        except ApiError as e:
-            show_error(e)
 
 
 def documents_tab(api: ApiClient, v: dict) -> None:
@@ -133,7 +118,7 @@ def documents_tab(api: ApiClient, v: dict) -> None:
     st.dataframe(df([{"file": d["filename"], "type": d["detected_type"], "pages": d["page_count"], "uploaded by": d.get("uploaded_by"), "OCR needed": d["needs_ocr"],
                       "id": d["document_id"]} for d in docs], ["file", "type", "pages", "uploaded by", "OCR needed", "id"]), hide_index=True, width="stretch")
     st.subheader("Add documents")
-    st.caption("Uploading re-assesses the claim from the evidence node: only the new documents are processed. A recommendation waiting at the gate is replaced.")
+    st.caption("Uploading re-assesses the claim from the intake node: the checklist is refreshed and only the new documents are processed. A recommendation waiting at the gate is replaced.")
     files = st.file_uploader("PDF, image, text or e-mail", accept_multiple_files=True, key=f"upload_{claim_id}_{len(docs)}")
     uploader = st.text_input("Uploaded by", value="claimant")
     if st.button("Upload", disabled=not files):
@@ -149,50 +134,6 @@ def documents_tab(api: ApiClient, v: dict) -> None:
             pick = st.selectbox("Document", [d["document_id"] for d in docs], format_func=lambda i: next(d["filename"] for d in docs if d["document_id"] == i))
             name = next(d["filename"] for d in docs if d["document_id"] == pick)
             st.download_button(f"Download {name}", api.document_file(claim_id, pick), file_name=name)
-
-
-def facts_tab(v: dict) -> None:
-    state = v["state"]
-    docs = {d["document_id"]: d for d in state["documents"]}
-    rows = [{"fact": f["fact_id"], "document": docs.get(f["source_document_id"], {}).get("filename", f["source_document_id"]), "page": f["page"],
-             "proposition": f["proposition"], "evidence (verbatim)": f["evidence_text"], "confidence": f["extraction_confidence"],
-             "bears on": ", ".join(f["related_question_ids"]), "checked": f["verification_status"]} for f in state["facts"]]
-    st.caption(f"{len(rows)} facts. Every fact quotes the original document verbatim and was re-checked against it.")
-    st.dataframe(df(rows), hide_index=True, width="stretch")
-
-
-def gaps_tab(v: dict) -> None:
-    state = v["state"]
-    facts = {f["fact_id"]: f for f in state["facts"]}
-    st.subheader("Open questions")
-    st.dataframe(df([{"": STATUS_ICON.get(q["status"], ""), "question": q["question_id"], "status": q["status"].replace("_", " "), "text": q["text"],
-                      "clauses": ", ".join(q["linked_clause_ids"]), "facts": len(q["linked_fact_ids"])} for q in state["open_questions"]]),
-                 hide_index=True, width="stretch")
-    st.subheader("Contradictions")
-    if not state["contradictions"]:
-        st.caption("None found.")
-    for c in state["contradictions"]:
-        with st.container(border=True):
-            st.markdown(f"**{c['kind']} · {c['severity']}** on {c['question_id']}: {c['explanation']}")
-            a, b = st.columns(2)
-            a.markdown("**Side A**\n\n" + "\n".join(f"- {facts.get(i, {}).get('proposition', i)}" for i in c["fact_ids_a"]))
-            b.markdown("**Side B**\n\n" + "\n".join(f"- {facts.get(i, {}).get('proposition', i)}" for i in c["fact_ids_b"]))
-    st.subheader("Minimum-evidence requests")
-    if not state["missing_evidence"]:
-        st.caption("Nothing to ask for.")
-    for m in state["missing_evidence"]:
-        r = m["minimum_evidence_request"]
-        with st.container(border=True):
-            st.markdown(f"**To {r['addressee_role'].replace('_', ' ')}**: resolves {', '.join(m['resolves_question_ids'])} ({m['gap_type']}). Third parties are asked via the claimant or an adjuster.")
-            st.markdown("\n".join(f"- {i}" for i in r["items"]))
-    st.subheader("What would resolve this claim?")
-    if not state["counterfactuals"]:
-        st.caption("No scenarios (no open material question).")
-    for s in state["counterfactuals"]:
-        with st.container(border=True):
-            st.markdown(f"**{s['scenario_id']} · {s['assumed_finding']}** ({s['question_id']})")
-            st.write(s["implication_text"])
-            st.caption("Next step: " + s["next_step"])
 
 
 def policy_tab(v: dict) -> None:
@@ -225,8 +166,14 @@ def history_tab(api: ApiClient, v: dict) -> None:
                                               "; ".join(f"{k} {', '.join(x)}" for k, x in (("added", c["added"]), ("removed", c["removed"]), ("changed", c["changed"])) if x)))
         if d["status_changes"]:
             st.write("**Question status**: " + ", ".join(f"{s['question_id']} {s['before'] or 'new'} → {s['after'] or 'gone'}" for s in d["status_changes"]))
-    st.subheader("Audit log")
+    st.subheader("Human decisions and overrides")
     audit = api.audit(claim_id)
+    st.caption("Every decision with who made it, in which role, why, and what they changed. A refused decision is shown too.")
+    st.dataframe(df([{"#": e["seq"], "decision": e["data"].get("decision") or "refused", "by": e["data"].get("reviewer_id", ""), "role": e["data"].get("reviewer_role", ""),
+                      "reason": e["data"].get("reason", "") or ("" if e["kind"] == "human_decision" else e["message"]),
+                      "changed inputs": ", ".join(f"{k} = {x}" for k, x in (e["data"].get("edits") or {}).items())} for e in audit["human_decisions"]],
+                     ["#", "decision", "by", "role", "reason", "changed inputs"]), hide_index=True, width="stretch")
+    st.subheader("Audit log")
     st.dataframe(df([{"#": e["seq"], "event": e["kind"].replace("_", " "), "node": e["node"], "mock": "mock" if e["mock"] else "", "version": e["state_version"],
                       "message": e["message"]} for e in audit["events"]]), hide_index=True, width="stretch")
     st.caption(audit["note"])
@@ -250,18 +197,25 @@ def main() -> None:
         return
     s = v["status"]
     st.subheader(f"{claim_id}  ·  {PHASE_TEXT.get(s['phase'], s['phase'])}")
-    tabs = st.tabs(["Overview & decision", "Documents", "Facts", "Questions & gaps", "Policy", "History"])
+    tabs = st.tabs(["Overview & decision", "Documents", "Document reader", "Facts", "Questions & gaps", "Assessment & decision", "Policy", "History"])
     with tabs[0]:
         overview(api, v)
     with tabs[1]:
         documents_tab(api, v)
     with tabs[2]:
-        facts_tab(v)
+        doc_viewer.render(api, v)
     with tabs[3]:
-        gaps_tab(v)
+        fact_table.render(v, st.session_state.get("low_confidence_below"))
     with tabs[4]:
-        policy_tab(v)
+        gap_board.render(v)
+        counterfactual_view.render(v)
     with tabs[5]:
+        issue_matrix.render(v)
+        calc_trace.render(v, (s.get("gate") or {}).get("overrides"))
+        approval.render(api, v, show_error)
+    with tabs[6]:
+        policy_tab(v)
+    with tabs[7]:
         history_tab(api, v)
 
 

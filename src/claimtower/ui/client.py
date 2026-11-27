@@ -83,7 +83,22 @@ class ApiClient:
     def document_file(self, claim_id: str, document_id: str) -> bytes:
         return self._call("GET", f"/claims/{claim_id}/documents/{document_id}/file").content
 
+    def document_details(self, claim_id: str, document_id: str) -> dict[str, Any]:
+        return self._call("GET", f"/claims/{claim_id}/documents/{document_id}/details").json()
+
+    def page_image(self, claim_id: str, document_id: str, page: int, fact_id: str | None = None) -> tuple[bytes | None, str]:
+        """(PNG bytes, how the fact was marked: region | text | none). (None, "") when the document has no page picture (text, e-mail, Word)."""
+        try:
+            r = self._call("GET", f"/claims/{claim_id}/documents/{document_id}/page/{page}", params={"fact": fact_id} if fact_id else None)
+        except ApiError as e:
+            if e.status == 404 and "page image" in e.message:
+                return None, ""
+            raise
+        return r.content, r.headers.get("x-highlight", "none")
+
     # ------------------------------------------------------------------ the human gate
-    def decide(self, claim_id: str, decision: str, reviewer_id: str, reviewer_role: str, reason: str = "") -> dict[str, Any]:
-        return self._call("POST", f"/claims/{claim_id}/decision", json={"decision": decision, "reviewer_id": reviewer_id, "reviewer_role": reviewer_role,
-                                                                       "reason": reason}).json()
+    def decide(self, claim_id: str, decision: str, reviewer_id: str, reviewer_role: str, reason: str = "", edits: dict[str, str] | None = None) -> dict[str, Any]:
+        body: dict[str, Any] = {"decision": decision, "reviewer_id": reviewer_id, "reviewer_role": reviewer_role, "reason": reason}
+        if edits:
+            body["edits"] = edits
+        return self._call("POST", f"/claims/{claim_id}/decision", json=body).json()

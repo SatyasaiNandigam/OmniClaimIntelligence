@@ -1,0 +1,141 @@
+# The coverage issue matrix (T5.1): what the adjuster must see, per issue, with the policy clauses behind it. Domain content, not code. All wording is SAMPLE.
+#
+# A row exists when the open questions that control it are in the register. Its STATUS says how well the issue is resolved on the evidence; it NEVER says the
+# claim is covered, excluded, approved or denied (guardrail 2: a human decides every adverse coverage decision):
+#   established          the controlling questions are answered AND the facts favour the claim as presented under the clause (cover condition satisfied,
+#                        exclusion not engaged, policy in force). An adverse reading is never `established`.
+#   identified           the clause is identified and cited; nothing is concluded (a sublimit applies at settlement; the policy is not in force; no reading yet)
+#   unresolved           a cover issue whose controlling questions are contested or open: it cannot be concluded
+#   potentially_relevant an exclusion that may be engaged: the facts point that way or the evidence conflicts; a human decides
+#   incomplete           evidence the issue needs is missing or only partly there
+#   abstain              the system declines to conclude: no clause could be cited, the wording is missing, or the reading was unclear
+# `control` is the aggregate state of the controlling questions: contested (a question needs validation: a blocking contradiction) > missing > partial
+# (partially established) > open (unverified or possible) > settled (all established).
+
+issues:
+  - id: ISS-INFORCE
+    issue: "Policy in force on date of loss"
+    kind: condition
+    questions: [Q-INFORCE]
+    clauses:
+      - {types: [condition], match: ['\bperiod of insurance\b']}
+  - id: ISS-COVER-WATER
+    issue: "Escape of water: sudden and accidental"
+    kind: cover
+    questions: [Q-SUDDEN]
+    clauses:
+      - {types: [coverage], match: ['\bwater\b']}
+      - {types: [definition], match: ['\bsudden\b']}
+  - id: ISS-EXC-GRADUAL
+    issue: "Gradual leakage exclusion"
+    kind: exclusion
+    questions: [Q-SUDDEN, Q-START]
+    clauses:
+      - {types: [exclusion], match: ['\bgradual\b', '\bseepage\b', '\bresulting damage\b']}
+  - id: ISS-SUBLIMIT
+    issue: "Water-damage sublimit"
+    kind: amount
+    questions: [Q-SUBLIMIT]
+    clauses:
+      - {types: [sublimit]}
+      - {types: [coverage], match: ['\bwater\b'], fallback: true}       # no sublimit wording: cite the cover it would modify
+
+# First matching row wins; the last row has no condition. `reason` is the code counted by the abstention metrics (T5.2): the system declines to conclude
+# because of a missing citation or wording, an ambiguous or unclear clause, an unanswered / contested / missing controlling question, or an adverse reading.
+table:
+  - id: R01-not-in-force
+    when: {kind: [condition], not_in_force: true}
+    status: identified
+    note: "The policy system reports no policy in force on the loss date. A person decides what follows; no further coverage reasoning was performed."
+  - id: R02-no-citation
+    when: {no_citation: true}
+    status: abstain
+    reason: NO_CITATION
+    note: "No clause of the policy snapshot could be cited for this issue, so it is not assessed."
+  - id: R03-wording-missing
+    when: {kind: [amount], control: [missing]}
+    status: abstain
+    reason: WORDING_MISSING
+    note: "The wording that sets this limit is not available (it is listed on the schedule but was not provided). The related cover is cited; the issue is not assessed until the wording is obtained."
+  - id: R04-amount
+    when: {kind: [amount]}
+    status: identified
+    note: "The limit is identified. It applies at settlement, where the payable amount is compared with it."
+  - id: R05-cover-contested
+    when: {kind: [cover], control: [contested]}
+    status: unresolved
+    reason: CONTROL_CONTESTED
+    note: "The evidence on this condition conflicts and needs validation; no conclusion is drawn."
+  - id: R06-exclusion-contested
+    when: {kind: [exclusion], control: [contested]}
+    status: potentially_relevant
+    reason: CONTROL_CONTESTED
+    note: "The evidence conflicts on facts this exclusion depends on, so it may be engaged. Both readings are open; a person decides."
+  - id: R07-missing-or-partial
+    when: {kind: [condition, cover, exclusion], control: [missing, partial]}
+    status: incomplete
+    reason: EVIDENCE_MISSING
+    note: "Evidence this issue depends on is missing or only partly there (see the open questions and the evidence requests)."
+  - id: R08-cover-open
+    when: {kind: [condition, cover], control: [open]}
+    status: unresolved
+    reason: CONTROL_OPEN
+    note: "The questions this condition depends on are not yet answered."
+  - id: R09-exclusion-open
+    when: {kind: [exclusion], control: [open]}
+    status: incomplete
+    reason: CONTROL_OPEN
+    note: "The questions this exclusion depends on are not yet answered."
+  - id: R10-condition-settled
+    when: {kind: [condition], control: [settled]}
+    status: established
+    note: "The condition is evidenced by the policy system and the claim."
+  - id: R11-favourable
+    when: {kind: [cover, exclusion], control: [settled], reading: [favourable]}
+    status: established
+    note: "The controlling questions are answered and the facts on file do not point against the claim as presented under this clause. A person confirms."
+  - id: R12-adverse-cover
+    when: {kind: [cover], control: [settled], reading: [adverse]}
+    status: unresolved
+    reason: READING_ADVERSE
+    note: "The questions are answered, but the facts on file may not satisfy this condition. A person decides; the system does not conclude."
+  - id: R13-adverse-exclusion
+    when: {kind: [exclusion], control: [settled], reading: [adverse]}
+    status: potentially_relevant
+    reason: READING_ADVERSE
+    note: "The questions are answered, and the facts on file may engage this exclusion. A person decides; the system does not conclude."
+  - id: R13b-ambiguous
+    when: {kind: [cover, exclusion], control: [settled], reading: [ambiguous]}
+    status: abstain
+    reason: AMBIGUOUS_CLAUSE
+    note: "The clauses can reasonably be read in more than one way and the readings point opposite ways for these facts. Both readings are shown; a person decides; the system does not conclude."
+  - id: R14-unclear
+    when: {control: [settled], reading: [unclear]}
+    status: abstain
+    reason: UNCLEAR_READING
+    note: "The clause and the facts could not be read against each other with confidence; the issue is left to a person."
+  - id: R15-not-judged
+    when: {control: [settled], reading: [not_judged]}
+    status: identified
+    note: "The clause is identified and the questions are answered; the facts were not read against the clause."
+  - id: R99-default
+    status: identified
+    note: "The clause is identified; nothing is concluded."
+
+# The model's reading (only for cover and exclusion rows whose controlling questions are settled). SAMPLE values.
+reading:
+  enabled: true                  # DECISION 2026-11-26: on; without it settled rows are only `identified`.
+  min_confidence: 0.60           # SAMPLE
+  confidence_cap: 0.90           # SAMPLE
+  max_rationale_chars: 300       # SAMPLE
+  max_clause_chars: 800          # SAMPLE
+  max_fact_chars: 300            # SAMPLE
+  check_ambiguity: true          # T5.2: ask first whether the clause admits two reasonable readings (abstain + show both)
+  reasoning_effort: low          # SAMPLE
+
+# Wording that states a coverage conclusion. A note or rationale that matches is replaced by the plain table note.
+forbidden_patterns:
+  - '\b(?:is|are|was|will be|would be|should be)\s+(?:not\s+)?(?:covered|excluded|payable|approved|denied|rejected|declined|valid|invalid)\b'
+  - '\b(?:approve|deny|reject|decline|repudiate)\b'
+  - '\b(?:exclusion|cover|coverage|condition)\b[^.]{0,25}\b(?:applies|does not apply|is engaged|is not engaged|is met|is not met|is satisfied|is not satisfied)\b'
+  - '\b(?:not covered|no cover|covered in full|fully covered|entitled to|liable for)\b'

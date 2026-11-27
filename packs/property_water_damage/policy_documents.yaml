@@ -1,0 +1,7 @@
+# How a policy document says which document it is (policy wording ingestion). Domain content, not code. SAMPLE.
+# The document id comes from INSIDE the document, never from the file name: a file may be called anything. The first line of the first pages that matches a pattern decides.
+# Patterns are matched case-insensitively against each line; the named group `id` is the document id, `version` (optional) its version.
+id_patterns:
+  - '^(?:policy wording|policy document|wording|endorsement|policy schedule)\s+(?:no\.?\s*|ref(?:erence)?\.?\s*|id\s*:?\s*)?(?P<id>[A-Z][A-Za-z0-9]*(?:-[A-Za-z0-9]+)+)\s*(?:\|\s*version\s+(?P<version>\S+))?'
+  - '^(?:form|wording id|document id|document reference|endorsement id)\s*[:#]\s*(?P<id>[A-Z][A-Za-z0-9]*(?:-[A-Za-z0-9]+)+)\s*(?:[|,]\s*version\s+(?P<version>\S+))?'
+pages_scanned: 2          # the id is looked for on the first pages only

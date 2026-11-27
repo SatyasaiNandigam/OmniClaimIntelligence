@@ -482,9 +482,9 @@ def test_llm_answers_that_do_not_check_out_leave_the_field_missing_with_a_warnin
     assert any(re.search(why, w) for w in r.warnings), r.warnings
 
 
-def test_llm_is_only_asked_when_required_fields_are_missing_and_failure_is_a_warning_not_a_crash():
+def test_llm_is_asked_for_fields_the_rules_missed_and_failure_is_a_warning_not_a_crash():
     r, provider = run_hybrid({"fields": {}}, text=FNOL)
-    assert r.missing_required == [] and provider.requests == []
+    assert r.missing_required == [] and len(provider.requests) <= 1          # asked at most once, for declared fields the rules did not find; its null answers change nothing
     r, _ = run_hybrid(TimeoutError("down"))
     assert r.field("policy_number") is None and any("TimeoutError" in w for w in r.warnings)
     clf = HybridExtractor(RULES, LLMFieldFiller(LLMClient(FakeLLM({}), text_model="TBD", vision_model="TBD"), RULES, PACK))

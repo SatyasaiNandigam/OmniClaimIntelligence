@@ -22,7 +22,7 @@ from __future__ import annotations
 import re
 from collections.abc import Sequence
 from dataclasses import dataclass, field, replace
-from typing import Literal, Protocol
+from typing import Any, Literal, Protocol
 
 from claimtower.core.config import ClauseTypeRule, PolicyStructure
 from claimtower.core.schemas.policy import ClauseType, PolicyClause
@@ -30,6 +30,7 @@ from claimtower.core.schemas.policy import ClauseType, PolicyClause
 TypeSource = Literal["heading", "section", "title", "text", "llm"]
 SOURCES: tuple[TypeSource, ...] = ("heading", "section", "title", "text")        # the rule evidence, in order; "llm" is never a rule
 _ATTR = {"heading": "heading_keywords", "section": "section_keywords", "title": "title_keywords", "text": "text_cues"}
+MIN_WORDS_ONE_LINE = 6                              # a line with no text under it is a clause only if it is itself a sentence
 _NOT_A_HEADING_END = (".", ";", ",", ":")
 
 
@@ -90,6 +91,7 @@ class Decomposition:
     info: dict[str, ClauseInfo] = field(default_factory=dict)
     unclassified: list[Unclassified] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
+    marks: Any = None                                # the model's heading marks when it cut the document (kept so a reload does not ask again)
 
 
 @dataclass
@@ -103,9 +105,12 @@ class _Draft:
 
 
 class PolicyDecomposer:
-    def __init__(self, structure: PolicyStructure, typer: ClauseTyper | None = None) -> None:
+    def __init__(self, structure: PolicyStructure, typer: ClauseTyper | None = None, segmenter: Any | None = None) -> None:
         self.cfg = structure
         self.typer = typer
+        self.segmenter = segmenter                       # optional model that marks clause headings when the numbering patterns find none (policy/llm_segments.py)
+        self.last_problem: str | None = None
+        self._amount_cues = [re.compile(p, re.IGNORECASE) for p in structure.llm_typing.amount_cues]
         self._noise = [re.compile(p, re.IGNORECASE) for p in structure.noise_patterns]
         self._sections = [re.compile(p) for p in structure.section_patterns]
         self._clauses = [re.compile(p) for p in structure.clause_patterns]
@@ -144,9 +149,26 @@ class PolicyDecomposer:
         return None
 
     # ------------------------------------------------------------------------------------------------ main
-    def decompose(self, doc_id: str, pages: Sequence[PageLike]) -> Decomposition:
+    def decompose(self, doc_id: str, pages: Sequence[PageLike], use_segmenter: bool = False, marks: Any | None = None) -> Decomposition:
+        """The numbering patterns first; when they find no clause and a segmenter is allowed, the model's checked heading marks (same cutting code)."""
+        self.last_problem = None
+        if marks is not None:                              # marks saved from an earlier reading
+            return self._scan(doc_id, pages, marks)
+        out = self._scan(doc_id, pages, None)
+        if not out.clauses and not out.unclassified and use_segmenter and self.segmenter is not None:
+            marks = self.segmenter.split(list(pages), out.title)
+            if marks is not None:
+                out = self._scan(doc_id, pages, marks)
+                out.marks = marks
+                out.warnings.append("clause headings were marked by the model (the document's numbering was not recognised); check the clause list")
+            else:
+                self.last_problem = self.segmenter.last_problem
+        return out
+
+    def _scan(self, doc_id: str, pages: Sequence[PageLike], marks: Any | None) -> Decomposition:
         out = Decomposition(doc_id=doc_id, title=None, kind="policy_wording")
         drafts: list[_Draft] = []
+        count = 0
         section: str | None = None
         for index, page in enumerate(pages):
             current: _Draft | None = None
@@ -155,10 +177,23 @@ class PolicyDecomposer:
                 line = raw.strip()
                 if not line or any(rx.search(line) for rx in self._noise):
                     continue
-                if (sec := self._section(line)) is not None:
+                if marks is not None:
+                    key = normalise(line)
+                    if key in marks.sections:
+                        section, current, seen_heading = key, None, True
+                        continue
+                    if key in marks.clauses:
+                        count += 1
+                        num = marks.clauses[key]
+                        head = (num or f"c{count}", key[len(num):].strip() if num else key)
+                    else:
+                        head = None
+                elif (sec := self._section(line)) is not None:
                     section, current, seen_heading = sec, None, True
                     continue
-                if (head := self._clause_heading(line)) is not None:
+                else:
+                    head = self._clause_heading(line)
+                if head is not None:
                     current = _Draft(page.number, head[0], line, head[1], section)
                     drafts.append(current)
                     seen_heading = True
@@ -173,20 +208,29 @@ class PolicyDecomposer:
                     seen_heading = True                                              # one warning per page is enough
         if out.title and any(rx.search(out.title) for rx in self._endorsement):
             out.kind = "endorsement"
-        self._build(out, drafts, {p.number: normalise(p.text) for p in pages})
+        self._build(out, drafts, {p.number: normalise(p.text) for p in pages}, check_amounts=marks is not None)
+        out.marks = marks
         return out
 
-    def _build(self, out: Decomposition, drafts: list[_Draft], page_text: dict[int, str]) -> None:
+    def _build(self, out: Decomposition, drafts: list[_Draft], page_text: dict[int, str], check_amounts: bool = False) -> None:
         cursor: dict[int, int] = {}
         used: set[str] = set()
         for d in drafts:
             body = normalise(" ".join(d.lines))
-            if not body:
-                out.warnings.append(f"page {d.page}: heading '{d.heading}' has no text under it")
-                continue
             full = page_text[d.page]
             at = full.find(normalise(d.heading), cursor.get(d.page, 0))
-            start = full.find(body, at + len(normalise(d.heading))) if at >= 0 else -1
+            head_text, d_title = d.heading, d.title
+            if not body:                                   # a one-line clause ("3.3 Flood. We do not cover ..."): the line itself is the clause, verbatim
+                body = normalise(d.heading)
+                if len(body[len(d.number):].split()) < MIN_WORDS_ONE_LINE:       # a bare title carries no wording of cover: nothing to cite
+                    out.warnings.append(f"page {d.page}: '{d.heading}' is only a title (no text under it); not a clause")
+                    continue
+                if at >= 0 and ". " in body[3:]:
+                    cut = body.index(". ", 3)
+                    head_text, d_title = body[:cut], d.title.split(". ", 1)[0]
+                start = at
+            else:
+                start = full.find(body, at + len(normalise(d.heading))) if at >= 0 else -1
             if start < 0:
                 out.warnings.append(f"page {d.page}: clause '{d.heading}' could not be located in the page text; left out")
                 continue
@@ -198,13 +242,16 @@ class PolicyDecomposer:
             while clause_id in used:
                 clause_id += "'"
             used.add(clause_id)
-            decided = self.classify(heading=d.title, section=d.section, title=out.title, text=body)
+            decided = self.classify(heading=d_title, section=d.section, title=out.title, text=body.split(". ", 1)[1] if head_text != d.heading and ". " in body else body)
+            reason = "no type rule matched its heading, section, document title or text"
+            if decided is not None and check_amounts and decided[0] in self.cfg.llm_typing.types_needing_amount and not any(rx.search(f"{d.heading} {body}") for rx in self._amount_cues):
+                decided, reason = None, f"typed '{decided[0]}' by a rule but the clause states no amount and points to none (the model marked this text as a clause)"      # a payout rule must say how much
             if decided is None:
-                out.unclassified.append(Unclassified(out.doc_id, d.page, d.number, d.heading, d.section, body,
-                                                     "no type rule matched its heading, section, document title or text",
+                out.unclassified.append(Unclassified(out.doc_id, d.page, d.number, head_text, d.section, body,
+                                                     reason,
                                                      clause_id, (start, end)))
                 continue
-            out.clauses.append(PolicyClause(clause_id=clause_id, clause_type=decided[0], heading=d.heading, text=body,
+            out.clauses.append(PolicyClause(clause_id=clause_id, clause_type=decided[0], heading=head_text, text=body,
                                             document=out.doc_id, page=d.page, span=(start, end)))
             out.info[clause_id] = ClauseInfo(d.number, d.section, decided[1])
         if self.typer is not None:

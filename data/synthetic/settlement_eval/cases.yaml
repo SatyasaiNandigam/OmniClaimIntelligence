@@ -1,0 +1,100 @@
+# T5.5 labelled amount extraction. Each case: the facts of a claim about money (proposition = the fact's one-line statement, evidence = the verbatim line it came from)
+# and the labels: `assessed` = the amount the surveyor / loss adjuster ASSESSED (null when no assessment is stated: an estimate or claim is not one),
+# `non_covered` = the total of amounts a fact says are not part of the loss (0 when none is stated), `assessed_conflict` = true when two different assessed amounts exist.
+# dev = written while building the prompt; fresh = written before the first run on it, never used to tune.
+cases:
+  - id: D-1
+    split: dev
+    facts:
+      - {p: "Surveyor assessed the repair cost at INR 98,000", e: "Assessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss"}
+      - {p: "Estimate line 'Cabinet finish upgrade' is INR 8,000", e: "Cabinet finish upgrade: INR 8,000"}
+      - {p: "Estimate total is INR 98,000", e: "Total: INR 98,000"}
+    assessed: 98000
+    non_covered: 8000
+  - id: D-2
+    split: dev
+    facts:
+      - {p: "Contractor estimate total is INR 180,000", e: "Estimate total: INR 180,000"}
+      - {p: "Claimant estimates the loss at INR 175,000", e: "Estimated loss: INR 175,000"}
+    assessed: null
+    non_covered: null
+  - id: D-3
+    split: dev
+    facts:
+      - {p: "Surveyor assessed the repair cost at INR 150,000", e: "Assessed repair cost: INR 150,000"}
+      - {p: "Estimate total reconciles to the surveyor assessment", e: "Total: INR 150,000"}
+    assessed: 150000
+    non_covered: 0
+  - id: D-4
+    split: dev
+    facts:
+      - {p: "Surveyor assessed the repair cost at INR 90,000", e: "Assessed repair cost: INR 90,000"}
+      - {p: "Loss adjuster assessed the repair cost at INR 110,000", e: "Loss adjuster's assessment: INR 110,000"}
+    assessed: null
+    assessed_conflict: true
+    non_covered: null
+  - id: D-5
+    split: dev
+    facts:
+      - {p: "The loss adjuster assessed the damage at Rs. 1,20,000", e: "Assessed damage: Rs. 1,20,000"}
+      - {p: "Betterment of INR 5,000 is not part of the loss", e: "Betterment (new tiles instead of repair): INR 5,000"}
+    assessed: 120000
+    non_covered: 5000
+  - id: D-6
+    split: dev
+    facts:
+      - {p: "Estimate line 'Floor repair' is INR 60,000", e: "Floor repair: INR 60,000"}
+      - {p: "Estimate line 'Wall plaster and paint' is INR 30,000", e: "Wall plaster and paint: INR 30,000"}
+    assessed: null
+    non_covered: null
+  - id: F-1
+    split: fresh
+    facts:
+      - {p: "The surveyor values the repair at INR 64,500", e: "Surveyor's valuation of the repair works: INR 64,500"}
+      - {p: "Painting of the unaffected bedroom, INR 4,500, is outside the loss", e: "Bedroom repaint (not damaged by the escape of water): INR 4,500"}
+    assessed: 64500
+    non_covered: 4500
+  - id: F-2
+    split: fresh
+    facts:
+      - {p: "Claimant says repairs will cost INR 210,000", e: "Cost of repairs claimed: INR 210,000"}
+      - {p: "A builder's quotation of INR 195,000 was received", e: "Quotation: INR 195,000"}
+    assessed: null
+    non_covered: null
+  - id: F-3
+    split: fresh
+    facts:
+      - {p: "Surveyor assessed the repair cost at INR 72,000", e: "Assessed repair cost: INR 72,000, including INR 12,000 for an upgraded worktop that is not covered"}
+      - {p: "Estimate line 'Quartz worktop upgrade' is INR 12,000", e: "Quartz worktop upgrade: INR 12,000"}
+    assessed: 72000
+    non_covered: 12000
+  - id: F-4
+    split: fresh
+    facts:
+      - {p: "Surveyor assessed the repair cost at INR 55,000", e: "Assessed repair cost: INR 55,000"}
+      - {p: "A second survey assessed the repair cost at INR 61,000", e: "Second survey, assessed repair cost: INR 61,000"}
+    assessed: null
+    assessed_conflict: true
+    non_covered: null
+  - id: F-5
+    split: fresh
+    facts:
+      - {p: "Surveyor assessed the repair cost at INR 133,000", e: "Assessed repair cost: INR 133,000"}
+      - {p: "Estimate total reconciles to the surveyor assessment", e: "Total: INR 133,000"}
+    assessed: 133000
+    non_covered: 0
+  - id: F-6
+    split: fresh
+    facts:
+      - {p: "The invoice for emergency drying is INR 9,800", e: "Drying services invoice: INR 9,800"}
+      - {p: "The claimant paid the plumber INR 3,200", e: "Plumber call-out: INR 3,200"}
+    assessed: null
+    non_covered: null
+  - id: F-7
+    split: fresh
+    facts:
+      - {p: "Loss adjuster assessed the damage at INR 48,000", e: "Loss adjuster's assessment of damage: INR 48,000"}
+      - {p: "Replacement of the old but undamaged boiler, INR 15,000, is not covered", e: "Boiler replacement (not damaged by the loss): INR 15,000"}
+      - {p: "Estimate line 'Boiler replacement' is INR 15,000", e: "Boiler replacement: INR 15,000"}
+    assessed: 48000
+    non_covered: 15000

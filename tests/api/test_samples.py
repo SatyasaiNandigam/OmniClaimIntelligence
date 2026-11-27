@@ -53,4 +53,4 @@ def test_the_documented_api_flow_works_with_the_sample_files(tmp_path, library):
     q = {x["question_id"]: x["status"] for x in s["open_questions"]}
     assert q["Q-INFORCE"] == "established" and q["Q-SUBLIMIT"] == "established" and s["missing_evidence"] == []                           # clean: nothing is asked for
     assert [(c["kind"], c["severity"], c["question_id"]) for c in s["contradictions"]] == [("amount", "low", "Q-AMOUNT")]                  # the deliberate 10% difference
-    assert client.post("/claims/CLM-1001/decision", json={"decision": "approve", "reviewer_id": "t1", "reviewer_role": "adjuster"}).status_code == 200
+    assert client.post("/claims/CLM-1001/decision", json={"decision": "approve", "reviewer_id": "t1", "reviewer_role": "senior_adjuster"}).status_code == 200

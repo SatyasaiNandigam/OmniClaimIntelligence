@@ -22,6 +22,7 @@ from claimtower.core.schemas.common import Contract, Money
 ROOT = Path(__file__).resolve().parents[4]
 DATA = ROOT / "data" / "synthetic"
 PAS_FILE, CLAIMS_FILE, INVOICES_FILE = DATA / "pas_mock_db.json", DATA / "prior_claims.json", DATA / "invoice_registry.json"
+PAS_EXTRA_FILE = DATA.parent / "local" / "pas_policies.json"       # your own policies for testing with real documents (not synthetic data; env CLAIMTOWER_PAS_EXTRA overrides the path)
 
 PolicyStatus = Literal["in_force", "lapsed", "cancelled", "reinstated"]
 
@@ -158,8 +159,13 @@ def _load(model, path: Path):
     return model.model_validate(json.loads(path.read_text(encoding="utf-8")))
 
 
-def load_pas_db(path: Path = PAS_FILE) -> PasDatabase:
-    return _load(PasDatabase, path)
+def load_pas_db(path: Path = PAS_FILE, extra: Path | None = None) -> PasDatabase:
+    """The mock PAS. Policies in the optional extra file ({"policies": [...]}, same layout) are added, and replace a synthetic policy of the same number."""
+    db = _load(PasDatabase, path)
+    if extra is not None and extra.is_file():
+        added = [PasPolicy.model_validate(p) for p in json.loads(extra.read_text(encoding="utf-8")).get("policies", [])]
+        db.policies = [p for p in db.policies if p.policy_no not in {a.policy_no for a in added}] + added
+    return db
 
 
 def load_prior_claims(path: Path = CLAIMS_FILE) -> PriorClaimsFile:

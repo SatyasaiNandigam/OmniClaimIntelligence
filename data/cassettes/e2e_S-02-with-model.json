@@ -1,0 +1,128 @@
+{
+  "07d9372ee289506fd48adecf6059b6c5d68ed517db94514c35fb72a506030bd6": {
+    "input_tokens": 565,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 191,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"Determining whether the failed fitting is a permanent part of the building requires evidence about the component's attachment/fixture status, which none of the listed standard questions or their evidentiary items ask for.\"}"
+  },
+  "22ade48ac8e5b586dce114d97e484e071126f8f6016932ef19c4834df5ac884c": {
+    "input_tokens": 793,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 113,
+    "text": "{\"assessed\":{\"amount\":\"98,000\",\"fact_id\":\"DOC-S02-3\",\"quote\":\"Assessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss.\"},\"non_covered\":[{\"amount\":\"8,000\",\"fact_id\":\"DOC-S02-3\",\"quote\":\"Assessed repair cost: INR 98,000, of which INR 8,000 is an upgrade not caused by the loss.\"}],\"note\":\"\"}"
+  },
+  "2f7477185e4aa892bb83d0303154cfc87328c36437435361990bf451837631fa": {
+    "input_tokens": 1084,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "3fdc7703e098de6dcdc4f1eb598b82093d896c5483f9cc7756c4c13cf525737b": {
+    "input_tokens": 809,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 557,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-DOC-S02-2-findings-1\",\"F-DOC-S02-2-findings-2\",\"F-DOC-S02-2-findings-3\"],\"evidence_quote\":\"Plumber reports: The pipe fitting split suddenly at a manufacturing flaw.\",\"rationale\":\"A qualified plumber's technical findings\u2014sudden split from a manufacturing flaw, fitting under two years old, and no prior corrosion or staining\u2014support that the leak began at the sudden split rather than earlier.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No maintenance or inspection records are provided in the listed facts.\",\"confidence\":0.9}]}"
+  },
+  "49f85e21a37f323db9269d4d4c7b499f36a6646532d923cc82a779864f3ca6cc": {
+    "input_tokens": 784,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 459,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"met\",\"fact_ids\":[\"F-DOC-S02-3-observations-1\",\"F-DOC-S02-3-observations-2\"],\"evidence_quote\":\"Surveyor reports: Moisture was confined to the kitchen floor and the lower kitchen wall.\",\"rationale\":\"A surveyor explicitly identifies the affected areas and confirms no moisture elsewhere, providing a surveyor-confirmed list.\",\"confidence\":0.95},{\"criterion_index\":1,\"verdict\":\"met\",\"fact_ids\":[\"F-DOC-S02-3-observations-1\",\"F-DOC-S02-3-observations-2\"],\"evidence_quote\":\"Surveyor reports: Moisture was confined to the kitchen floor and the lower kitchen wall.\",\"rationale\":\"The surveyor links the presence of moisture specifically to the kitchen floor and lower kitchen wall, tying those areas to the event.\",\"confidence\":0.95}]}"
+  },
+  "4e0cb33eef8e51720e96a24f271370ec5b4fbcbf34252d46f16f3b11bf862c7b": {
+    "input_tokens": 303,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 97,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"pipe fitting split due to manufacturing flaw (suddenly)\"}"
+  },
+  "6c9a8422970830cd570152115323c425dd7fab9599b2d470ee204797a20234f8": {
+    "input_tokens": 404,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 211,
+    "text": "{\"text\":\"Payable: INR 80,000 (assessed loss INR 98,000; rules sample-1.0). The assessed covered loss [F-DOC-S02-3-assessed_repair_cost] was recorded as INR 98,000. From that amount non-covered items [F-DOC-S02-4-item-3] reduced the figure to INR 90,000, and then the deductible [schedule of the policy POL-1001] further reduced it to INR 80,000. The water-damage sublimit [END-01/1] did not change the amount (INR 80,000). The remaining policy limit [schedule of the policy POL-1001, payments on other claims] did not change the amount (INR 80,000). Prior payments on this claim did not alter the amount (INR 80,000). A final floor at zero did not affect the amount (INR 80,000).\"}"
+  },
+  "6faf8fcc1e96b39d56d6af548a381e0dd40162571e1a1019377c7f8ac6078bcc": {
+    "input_tokens": 1700,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 2340,
+    "text": "{\"links\":[{\"fact_id\":\"F-DOC-S02-1-estimated_loss\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Claimant estimates the loss at INR 98,000\",\"rationale\":\"This is a claimant's estimated total cost and so is a monetary figure relevant to amount but does not judge its reasonableness.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-1-loss_date\",\"question_id\":\"Q-INFORCE\",\"direction\":\"neutral\",\"evidence_quote\":\"Reported date of loss is 2 May 2026\",\"rationale\":\"The fact gives the reported loss date which is relevant to whether the policy was in force but does not state policy status.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-1-loss_date\",\"question_id\":\"Q-SUBLIMIT\",\"direction\":\"neutral\",\"evidence_quote\":\"Reported date of loss is 2 May 2026\",\"rationale\":\"The loss date determines which endorsement wording applies but the date alone does not state which sublimit applies.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-1-loss_description-1\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"On 2 May 2026 the pipe fitting under the kitchen sink split suddenly and water spread across the kitchen floor.\",\"rationale\":\"The claimant states the fitting 'split suddenly', which directly supports the loss being sudden and accidental.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-2-findings-1\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"The pipe fitting split suddenly at a manufacturing flaw.\",\"rationale\":\"The plumber's report explicitly says the fitting 'split suddenly', which supports a sudden failure.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-2-findings-1\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"The pipe fitting split suddenly at a manufacturing flaw.\",\"rationale\":\"Stating the fitting 'split suddenly' at a manufacturing flaw indicates the failure began abruptly, supporting a recent start coincident with the reported event.\",\"confidence\":0.8},{\"fact_id\":\"F-DOC-S02-2-findings-2\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"The fitting is less than two years old.\",\"rationale\":\"A relatively new fitting suggests failure was less likely from long-term wear and is consistent with a sudden manufacturing-related failure.\",\"confidence\":0.7},{\"fact_id\":\"F-DOC-S02-2-findings-2\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"The fitting is less than two years old.\",\"rationale\":\"The short age of the fitting supports the leak starting recently rather than from long-term deterioration.\",\"confidence\":0.7},{\"fact_id\":\"F-DOC-S02-2-findings-3\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"No corrosion, prior leakage or staining was observed.\",\"rationale\":\"Absence of corrosion or prior leakage is consistent with a sudden failure rather than gradual deterioration.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-2-findings-3\",\"question_id\":\"Q-START\",\"direction\":\"supporting\",\"evidence_quote\":\"No corrosion, prior leakage or staining was observed.\",\"rationale\":\"No signs of prior leakage indicate the problem likely started recently at the time of the reported event.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-2-work_carried_out-1\",\"question_id\":\"Q-M-F2A49F1E\",\"direction\":\"neutral\",\"evidence_quote\":\"Fitting replaced on 3 May 2026.\",\"rationale\":\"This gives the replacement date which is relevant to whether the insurer was notified before replacement but does not state any notification timing.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-3-assessed_repair_cost\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Surveyor assessed the repair cost at INR 98,000\",\"rationale\":\"A surveyor-assessed cost is a monetary assessment relevant to amount but alone does not state whether the claim cost is reasonable or reconciled to the estimate.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-3-observations-1\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"Moisture was confined to the kitchen floor and the lower kitchen wall.\",\"rationale\":\"Moisture confined to the immediate area of the reported failure is consistent with a single sudden event rather than widespread gradual leakage.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-3-observations-1\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"Moisture was confined to the kitchen floor and the lower kitchen wall.\",\"rationale\":\"This identifies the affected areas as the kitchen floor and lower kitchen wall, supporting the reported extent of damage.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-3-observations-2\",\"question_id\":\"Q-SUDDEN\",\"direction\":\"supporting\",\"evidence_quote\":\"No moisture was found in other rooms.\",\"rationale\":\"Lack of moisture elsewhere supports the idea of a localized, sudden event rather than a longstanding leak affecting multiple rooms.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-3-observations-2\",\"question_id\":\"Q-EXTENT\",\"direction\":\"supporting\",\"evidence_quote\":\"No moisture was found in other rooms.\",\"rationale\":\"This confirms other rooms were not affected, supporting the surveyed extent being limited to the kitchen.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-4-item-1\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Estimate line 'Floor repair' is INR 60,000\",\"rationale\":\"This is an estimate line item relevant to total cost but does not by itself prove reasonableness or causation.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-4-item-2\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Estimate line 'Wall plaster and paint' is INR 30,000\",\"rationale\":\"This line item states a monetary amount relevant to the claimed repair cost but does not evaluate its appropriateness.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-4-item-3\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Estimate line 'Cabinet finish upgrade' is INR 8,000\",\"rationale\":\"An individual estimate line is relevant to the total claimed amount but does not on its own confirm reasonableness or causation.\",\"confidence\":0.9},{\"fact_id\":\"F-DOC-S02-4-total_amount\",\"question_id\":\"Q-AMOUNT\",\"direction\":\"neutral\",\"evidence_quote\":\"Estimate total is INR 98,000\",\"rationale\":\"The total estimate is a monetary figure relevant to the amount question but is neutral on whether the cost is reasonable or fully supported.\",\"confidence\":0.9}]}"
+  },
+  "7494fc9cc79e55dbcf9f64a6d3317f1ecab32a528c09ffbec4d285edb5d11fc8": {
+    "input_tokens": 305,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 70,
+    "text": "{\"text\":\"We have received claim CLM-0002 (loss on 02 May 2026) and it is being assessed. We have asked you for further information (see our separate request). A claims colleague reviews every claim before anything is decided, and we will write to you again.\"}"
+  },
+  "8837097fa795958066cba924dcac4b061cf3caa8ae0c4a53fdf12733b97c06a3": {
+    "input_tokens": 971,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "90784e5e545a06dc48c3e362d9f51149d79ad9330c564022c2b73b0636ca439a": {
+    "input_tokens": 1040,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 354,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"BASE-HOME-1/3.1\",\"BASE-HOME-1/3.2\"],\"fact_ids\":[\"F-DOC-S02-1-loss_description-1\",\"F-DOC-S02-2-findings-1\",\"F-DOC-S02-2-findings-2\",\"F-DOC-S02-2-findings-3\",\"F-DOC-S02-3-observations-1\",\"F-DOC-S02-3-observations-2\"],\"evidence_quote\":\"The pipe fitting split suddenly at a manufacturing flaw.\",\"rationale\":\"The plumber's finding indicates a sudden failure with no prior leakage or corrosion, which appears inconsistent with gradual leakage.\",\"confidence\":0.9}"
+  },
+  "9182994268e936ff0059fa6ef3323bf77e72485752d2e6fa1ee343c4595605a5": {
+    "input_tokens": 921,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 936,
+    "text": "{\"items\":[{\"text\":\"Photograph clearly showing the failed pipe fitting (replaced 3 May 2026) installed in the building plumbing, including surrounding pipework and its connection to the structure.\",\"need_ids\":[0],\"asks_for\":\"new_document\",\"document_type\":\"photo\"},{\"text\":\"Plumber invoice or work order dated 3 May 2026 describing the replaced fitting as part of the fixed pipework (not a removable appliance component).\",\"need_ids\":[1],\"asks_for\":\"new_document\",\"document_type\":\"invoice\"},{\"text\":\"A timestamped email or insurer acknowledgement sent before 3 May 2026 notifying the insurer of the water loss; include sender, recipient and date/time.\",\"need_ids\":[2,3],\"asks_for\":\"new_document\",\"document_type\":\"email\"}]}"
+  },
+  "a6218ee3393f0649e06ecebf0fe4430c7d316893b24ec56bcd165d5026bda691": {
+    "input_tokens": 566,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 121,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"None of the listed standard questions ask about notice timing to the insurer or whether notification occurred before a specific repair date, so this requires different evidence (claims/notification records).\"}"
+  },
+  "a706d8db9e3f5666aaf106cace980e3c2e714c89a9ed4411db45daa8aad38a78": {
+    "input_tokens": 508,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 165,
+    "text": "{\"text\":\"We are assessing claim CLM-0002 (loss on 02 May 2026). To continue, please reply once with the following: \\n- Photograph clearly showing the failed pipe fitting (replaced 3 May 2026) installed in the building plumbing, including surrounding pipework and its connection to the structure.\\n- Plumber invoice or work order dated 3 May 2026 describing the replaced fitting as part of the fixed pipework (not a removable appliance component).\\n- A timestamped email or insurer acknowledgement sent before 3 May 2026 notifying the insurer of the water loss; include sender, recipient and date/time.\\nIf any item does not exist, please tell us. A claims colleague will review your reply.\"}"
+  },
+  "ad7e72e84bb0012c0c3fae109ebc93db725ae0e831dc4c0663b16ba1f4a0f893": {
+    "input_tokens": 954,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 639,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-DOC-S02-2-findings-1\",\n        \"F-DOC-S02-2-findings-2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: The pipe fitting split suddenly at a manufacturing flaw.\",\n      \"rationale\": \"A licensed plumber provided a technical cause (manufacturing flaw) and described the fitting splitting suddenly, satisfying the requirement for a technical statement by a qualified person.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-DOC-S02-1-loss_description-1\",\n        \"F-DOC-S02-2-findings-3\",\n        \"F-DOC-S02-3-observations-1\",\n        \"F-DOC-S02-3-observations-2\"\n      ],\n      \"evidence_quote\": \"Claimant reports: On 2 May 2026 the pipe fitting under the kitchen sink split suddenly and water spread across the kitchen floor.\",\n      \"rationale\": \"The claimant reported the date of sudden failure, the plumber found no prior leakage or corrosion, and the surveyor found moisture limited to the kitchen, consistent with damage beginning at or immediately before the reported loss date.\",\n      \"confidence\": 0.85\n    }\n  ]\n}"
+  },
+  "c78140da2c714699a797ba5eefc768edd76aa891fa0fbaaab892a6c8487e9c84": {
+    "input_tokens": 904,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 664,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-DOC-S02-3-assessed_repair_cost\"\n      ],\n      \"evidence_quote\": \"Surveyor assessed the repair cost at INR 98,000\",\n      \"rationale\": \"A qualified surveyor explicitly assessed the repair cost at INR 98,000, directly satisfying the criterion.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-DOC-S02-4-item-1\",\n        \"F-DOC-S02-4-item-2\",\n        \"F-DOC-S02-4-item-3\",\n        \"F-DOC-S02-4-total_amount\",\n        \"F-DOC-S02-3-assessed_repair_cost\"\n      ],\n      \"evidence_quote\": \"Estimate total is INR 98,000\",\n      \"rationale\": \"The estimate line items sum to the stated estimate total of INR 98,000, which matches the surveyor's assessed repair cost, indicating the estimate reconciles to the surveyor scope.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "d091d69c2b838a01e841d845a2271a37e25a0b6c8603cee9a6e4c2b6530a12e4": {
+    "input_tokens": 2306,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1264,
+    "text": "{\n  \"questions\": [\n    {\n      \"text\": \"Was the failed pipe fitting a permanent fixed fitting of the building (not a removable appliance component)?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"BASE-HOME-1/1.1\",\n        \"BASE-HOME-1/2.2\"\n      ],\n      \"fact_ids\": [\n        \"F-DOC-S02-1-loss_description-1\",\n        \"F-DOC-S02-2-findings-1\"\n      ],\n      \"evidence_quote\": \"Buildings means the dwelling at the address shown in the Schedule, including its permanent fixtures, fixed pipes and fittings.\",\n      \"establishing_criteria\": [\n        \"Photograph or surveyor note showing fitting fixed into the building plumbing\",\n        \"Plumber or invoice description stating the fitting is part of fixed pipework\"\n      ],\n      \"confidence\": 0.85\n    },\n    {\n      \"text\": \"Was the insurer notified of the loss before the fitting was replaced on 3 May 2026?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"BASE-HOME-1/5.2\"\n      ],\n      \"fact_ids\": [\n        \"F-DOC-S02-2-work_carried_out-1\",\n        \"F-DOC-S02-2-inspection_date\"\n      ],\n      \"evidence_quote\": \"Fitting replaced on 3 May 2026.\",\n      \"establishing_criteria\": [\n        \"Timestamped claim notification or email sent before replacement\",\n        \"Insurer acknowledgement or call log dated before 3 May 2026\"\n      ],\n      \"confidence\": 0.8\n    }\n  ]\n}"
+  },
+  "d9ce00bafde497aa6a3714f6b6a903587c836339911dac4683c91c0dff33b62b": {
+    "input_tokens": 1036,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 611,
+    "text": "{\"reading\":\"supports\",\"clause_ids\":[\"BASE-HOME-1/2.2\",\"BASE-HOME-1/1.2\"],\"fact_ids\":[\"F-DOC-S02-2-findings-1\",\"F-DOC-S02-2-findings-3\",\"F-DOC-S02-2-findings-2\",\"F-DOC-S02-3-observations-1\",\"F-DOC-S02-3-observations-2\",\"F-DOC-S02-1-loss_description-1\"],\"evidence_quote\":\"Plumber reports: The pipe fitting split suddenly at a manufacturing flaw.\",\"rationale\":\"The facts indicate the fitting failed abruptly and there is no evidence of gradual deterioration or prior leakage.\",\"confidence\":0.95}"
+  },
+  "e26bdedfa5f232997698c83495f267fbefe89856082cf62b31fcc87191902666": {
+    "input_tokens": 299,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 94,
+    "text": "{\"states_cause\":\"yes\",\"what_it_states\":\"pipe fitting split suddenly due to a manufacturing flaw\"}"
+  },
+  "f822d9af319f207fb6fab04b4450dc6906ce17785ccddc6e8da98ce572cbac5d": {
+    "input_tokens": 954,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "fc95554d1693d2ff18f1370933729e925ce675b55610031dda2523d3680f8848": {
+    "input_tokens": 766,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 416,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"There is no fact showing a timestamped claim notification or email prior to the 3 May 2026 replacement.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No insurer acknowledgement or call log dated before 3 May 2026 is provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  }
+}

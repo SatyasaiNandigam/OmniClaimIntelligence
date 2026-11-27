@@ -15,6 +15,11 @@
 version: "sample-1.0"
 currency: INR
 rounding: {mode: half_up, places: 0}   # SAMPLE: whole rupees
+# While the repair cost is not validated (Q-AMOUNT not established) no payable is calculated; a forecast range is shown instead: the engine's result at the assessed loss up to its result at the
+# highest of these amounts (facts whose proposition matches), so a reviewer sees what is at stake. A forecast is never a payment.
+forecast_upper_sources:
+  - '^Estimate total is (?P<value>.+)$'
+  - '^Claimant estimates the loss at (?P<value>.+)$'
 steps:
   - {id: start,               op: set,      from: assessed_covered_loss}
   - {id: less_non_covered,    op: subtract, from: non_covered_items_total}

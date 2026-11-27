@@ -1,0 +1,193 @@
+{
+  "entries": [
+    {
+      "label": "T8.1 first scorecard: 13 e2e cases (11 rules, 2 with recorded model answers)",
+      "date": "2026-11-26",
+      "cases": {
+        "S-01": {
+          "passed": true
+        },
+        "S-02": {
+          "passed": true
+        },
+        "S-03": {
+          "passed": true
+        },
+        "S-04": {
+          "passed": true
+        },
+        "S-05": {
+          "passed": true
+        },
+        "S-01-late-evidence": {
+          "passed": true
+        },
+        "S-02-approve": {
+          "passed": true
+        },
+        "S-02-edit-then-approve": {
+          "passed": true
+        },
+        "S-05-endorsement-arrives": {
+          "passed": true
+        },
+        "sample-claim-1": {
+          "passed": true
+        },
+        "S-02-model-unavailable": {
+          "passed": true
+        },
+        "S-01-with-model": {
+          "passed": true
+        },
+        "S-02-with-model": {
+          "passed": true
+        }
+      },
+      "end_to_end": {
+        "rules": {
+          "document_type_accuracy": [
+            18,
+            18
+          ],
+          "fact_recall": [
+            31,
+            31
+          ],
+          "question_status_agreement": [
+            10,
+            25
+          ],
+          "contradiction_recall": [
+            0,
+            1
+          ],
+          "request_addressee_recall": [
+            1,
+            4
+          ],
+          "coverage_status_agreement": [
+            10,
+            17
+          ],
+          "settlement_exact_match": [
+            5,
+            5
+          ],
+          "routing_tier_agreement": [
+            2,
+            5
+          ],
+          "routing_codes_agreement": [
+            1,
+            5
+          ],
+          "action_agreement": [
+            10,
+            14
+          ],
+          "citation_correctness": [
+            5,
+            5
+          ],
+          "abstention_appropriateness": [
+            1,
+            1
+          ]
+        },
+        "rules on the same scenarios as the model runs": {
+          "document_type_accuracy": [
+            8,
+            8
+          ],
+          "fact_recall": [
+            14,
+            14
+          ],
+          "question_status_agreement": [
+            5,
+            12
+          ],
+          "contradiction_recall": [
+            0,
+            1
+          ],
+          "request_addressee_recall": [
+            0,
+            3
+          ],
+          "coverage_status_agreement": [
+            5,
+            8
+          ],
+          "settlement_exact_match": [
+            2,
+            2
+          ],
+          "routing_tier_agreement": [
+            1,
+            2
+          ],
+          "routing_codes_agreement": [
+            0,
+            2
+          ],
+          "action_agreement": [
+            3,
+            6
+          ],
+          "citation_correctness": [
+            2,
+            2
+          ]
+        },
+        "rules + model (replayed)": {
+          "document_type_accuracy": [
+            8,
+            8
+          ],
+          "fact_recall": [
+            14,
+            14
+          ],
+          "question_status_agreement": [
+            10,
+            12
+          ],
+          "contradiction_recall": [
+            1,
+            1
+          ],
+          "request_addressee_recall": [
+            3,
+            3
+          ],
+          "coverage_status_agreement": [
+            8,
+            8
+          ],
+          "settlement_exact_match": [
+            2,
+            2
+          ],
+          "routing_tier_agreement": [
+            1,
+            2
+          ],
+          "routing_codes_agreement": [
+            1,
+            2
+          ],
+          "action_agreement": [
+            5,
+            6
+          ],
+          "citation_correctness": [
+            2,
+            2
+          ]
+        }
+      }
+    }
+  ]
+}

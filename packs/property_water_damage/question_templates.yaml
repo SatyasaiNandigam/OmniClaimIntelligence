@@ -143,12 +143,12 @@ contradictions:
       question: Q-AMOUNT
       a: ['^Estimate total is (?P<value>.+)$']
       b: ['^Surveyor assessed the repair cost at (?P<value>.+)$']
-      bands: [{min_gap_pct: 10, severity: low}, {min_gap_pct: 25, severity: medium}, {min_gap_pct: 50, severity: high}]          # SAMPLE
+      bands: [{min_gap_pct: 10, severity: low}]          # a contractor's estimate above (or below) the surveyor's assessment is normal: noted, never blocking. The assessment is what settlement uses. (DECISION 2026-11-26, real documents)
     - id: invoice_vs_estimate
       question: Q-AMOUNT
       a: ['^Invoice total is (?P<value>.+)$']
       b: ['^Estimate total is (?P<value>.+)$']
-      bands: [{min_gap_pct: 5, severity: low}, {min_gap_pct: 15, severity: medium}, {min_gap_pct: 30, severity: high}]            # SAMPLE
+      bands: [{min_gap_pct: 5, severity: low}]            # an invoice (work already done, for example the plumber's repair of the pipe) and an estimate (work still to do) are different jobs: noted, never blocking (DECISION 2026-11-26, real documents)
 
 # ---------------------------------------------------------------------------------------------------- sufficiency (T4.4)
 # For each open question: is each establishing criterion met by the evidence? From that, the decision table gives the status and the kind of

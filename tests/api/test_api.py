@@ -13,7 +13,7 @@ from claimtower.orchestration.graph import ClaimRunner
 
 ROOT = Path(__file__).resolve().parents[2]
 SETTINGS = load_settings()
-MOCKS = "intake,coverage,settlement,action,audit,routing"
+MOCKS = ""
 PDF = (SYNTHETIC / "claims" / "CLM-0001" / "plumber_report.pdf").read_bytes()
 
 
@@ -22,9 +22,9 @@ def library():
     return policy_library_from_pdfs(SETTINGS)
 
 
-def make_client(tmp_path, library, **kw):
+def make_client(tmp_path, library, force_mock=(), **kw):
     store = DocumentStore(tmp_path / "store")
-    runner = ClaimRunner(build_registry(SETTINGS, document_store=store, policy_library=library))
+    runner = ClaimRunner(build_registry(SETTINGS, document_store=store, policy_library=library, force_mock=force_mock))
     return TestClient(create_app(runner, store, synthetic_claims=SYNTHETIC / "claims", **kw)), runner
 
 
@@ -47,7 +47,7 @@ def test_health_says_what_is_real_and_what_is_a_mock(client):
     assert r.status_code == 200
     h = r.json()
     assert h["status"] == "ok" and h["prototype"] and h["synthetic_data_only"] and h["claims"] == 0
-    assert h["mock_agents"] == MOCKS.split(",") and h["implemented_agents"] == ["policy", "evidence", "gap"]
+    assert h["mock_agents"] == [] and h["implemented_agents"] == ["intake", "policy", "evidence", "gap", "coverage", "settlement", "action", "audit", "routing"]
 
 
 def test_every_response_carries_the_mock_flag_even_an_error(client):
@@ -58,7 +58,8 @@ def test_every_response_carries_the_mock_flag_even_an_error(client):
 
 def test_the_roster_lists_each_agent_with_its_status_and_task(client):
     rows = {r["node"]: r for r in client.get("/agents").json()}
-    assert rows["gap"]["status"] == "implemented" and rows["coverage"]["status"] == "YET TO IMPLEMENT (mock)" and rows["coverage"]["task"] == "T5.1"
+    assert rows["gap"]["status"] == "implemented" and rows["coverage"]["status"] == "implemented"
+    assert rows["settlement"]["status"] == "implemented" and rows["audit"]["status"] == "implemented" and rows["audit"]["task"] == "T8.5"
 
 
 # ------------------------------------------------------------------------------------------------ claims
@@ -69,7 +70,7 @@ def test_creating_a_claim_runs_it_to_the_human_gate(client):
     assert v["claim_id"] == "CLM-0001" and v["state_version"] == 10 and v["state"]["claim_id"] == "CLM-0001" and v["state"]["state_version"] == 10
     s = v["status"]
     assert s["phase"] == "awaiting_human_decision" and s["paused_at"] == "human_gate" and s["gate"]["tier"] == "complex"
-    assert s["gate"]["allowed_decisions"] == ["approve", "reject", "request_more_evidence"] and set(s["mock_nodes_run"]) == set(MOCKS.split(","))
+    assert s["gate"]["allowed_decisions"] == ["approve", "edit", "reject", "request_more_evidence"] and s["mock_nodes_run"] == []
     assert v["state"]["facts"] and v["state"]["policy_snapshot"]["mock"] is True and v["state"]["correlation_id"] == "corr-CLM-0001"
 
 
@@ -82,9 +83,11 @@ def test_a_claim_without_an_id_gets_one_and_a_supplied_header_reaches_the_policy
     assert v["state"]["policy_snapshot"]["pas_status"] == "in_force" and v["state"]["facts"] == []                               # no documents yet
 
 
-def test_a_lapsed_policy_claim_skips_coverage_and_settlement(client):
+def test_a_lapsed_policy_claim_runs_coverage_but_skips_settlement(client):
     v = create(client, "CLM-0003").json()
-    assert "coverage" not in v["status"]["nodes_run"] and v["state"]["policy_snapshot"] is None and v["status"]["gate"]["reason_codes"] == ["POLICY_NOT_IN_FORCE"]
+    assert "coverage" in v["status"]["nodes_run"] and "settlement" not in v["status"]["nodes_run"]
+    assert v["state"]["policy_snapshot"] is None and v["status"]["gate"]["reason_codes"] == ["POLICY_NOT_IN_FORCE"]
+    assert [(i["issue_id"], i["status"]) for i in v["state"]["coverage_issues"]] == [("ISS-INFORCE", "identified")]
 
 
 @pytest.mark.parametrize("body,code", [({"claim_id": "CLM-0001", "use_synthetic_documents": True}, 409), ({"claim_id": "CLM-9999", "use_synthetic_documents": True}, 404),
@@ -94,7 +97,8 @@ def test_creating_a_claim_refuses_a_duplicate_an_unknown_demo_claim_and_a_bad_bo
     assert client.post("/claims", json=body).status_code == code
 
 
-def test_claims_are_listed_one_line_each_and_read_one_by_one(client):
+def test_claims_are_listed_one_line_each_and_read_one_by_one(tmp_path, library):
+    client, _ = make_client(tmp_path, library, force_mock=("routing",))          # the labelled tiers: without a model the real routing sends every claim to complex
     create(client, "CLM-0001")
     create(client, "CLM-0002")
     rows = {r["claim_id"]: r for r in client.get("/claims").json()}
@@ -110,7 +114,7 @@ def test_versions_and_diffs_trace_what_each_node_changed(client):
     create(client)
     versions = client.get("/claims/CLM-0001/versions").json()
     assert [v["node"] for v in versions] == ["start", "intake", "policy", "evidence", "gap", "coverage", "settlement", "action", "audit", "routing"]
-    assert versions[1]["mock"] is True and versions[2]["mock"] is False and [v["version"] for v in versions] == list(range(1, 11))
+    assert versions[1]["mock"] is False and versions[8]["mock"] is False and [v["version"] for v in versions] == list(range(1, 11))
     d = client.get("/claims/CLM-0001/diff", params={"from": 3, "to": 6}).json()
     assert d["from_version"] == 3 and d["to_version"] == 6 and {"facts", "open_questions", "coverage_issues"} <= {c["field"] for c in d["changes"]}
     assert client.get("/claims/CLM-0001/diff", params={"from": 4, "to": 4}).json()["changes"] == []
@@ -130,7 +134,7 @@ def test_a_claim_lists_its_documents_and_serves_the_original(client):
     assert client.get("/claims/CLM-0001/documents/DOC-NOPE/file").status_code == 404
 
 
-def test_uploading_a_document_re_assesses_the_claim_from_the_evidence_node_and_supersedes_the_open_gate(client):
+def test_uploading_a_document_re_assesses_the_claim_from_the_intake_node_and_supersedes_the_open_gate(client):
     v1 = create(client).json()
     r = client.post("/claims/CLM-0001/documents", files={"file": ("plumber_supplementary.pdf", PDF, "application/pdf")}, data={"uploaded_by": "plumber"})
     assert r.status_code == 201
@@ -140,9 +144,9 @@ def test_uploading_a_document_re_assesses_the_claim_from_the_evidence_node_and_s
     assert v2["state_version"] > v1["state_version"] and len(v2["state"]["facts"]) > len(v1["state"]["facts"]) and len(v2["state"]["documents"]) == 5
     events = client.get("/claims/CLM-0001/audit").json()["events"]
     re = next(e for e in events if e["kind"] == "reassessment")
-    assert re["data"]["superseded_gate"] is True and re["node"] == "evidence"
+    assert re["data"]["superseded_gate"] is True and re["node"] == "intake"
     nodes_after = [e["node"] for e in events if e["seq"] > re["seq"] and e["kind"] == "agent_finished"]
-    assert nodes_after[0] == "evidence" and "intake" not in nodes_after and "policy" not in nodes_after
+    assert nodes_after[:3] == ["intake", "policy", "evidence"]                                                        # the facts the policy node reads had changed since its first run
 
 
 def test_an_upload_can_be_stored_without_re_assessing(client):
@@ -191,7 +195,8 @@ def test_a_malformed_decision_is_rejected_before_it_reaches_the_graph(client, bo
     assert client.get("/claims/CLM-0001/status").json()["phase"] == "awaiting_human_decision"
 
 
-def test_a_simple_claim_may_be_decided_by_an_adjuster_and_an_unknown_claim_is_404(client):
+def test_a_simple_claim_may_be_decided_by_an_adjuster_and_an_unknown_claim_is_404(tmp_path, library):
+    client, _ = make_client(tmp_path, library, force_mock=("routing",))
     create(client, "CLM-0002")
     assert client.post("/claims/CLM-0002/decision", json=decision("adjuster")).status_code == 200
     assert client.post("/claims/CLM-0404/decision", json=decision()).status_code == 404
@@ -215,7 +220,8 @@ def test_the_audit_log_names_every_agent_every_mock_and_every_human_decision(cli
     kinds = [e["kind"] for e in a["events"]]
     assert kinds[0] == "run_started" and kinds.count("agent_finished") == 9 and kinds[-2:] == ["human_decision", "commit"]
     finished = {e["node"]: e for e in a["events"] if e["kind"] == "agent_finished"}
-    assert finished["coverage"]["mock"] is True and finished["coverage"]["message"].startswith("YET TO IMPLEMENT (mock, T5.1)") and finished["gap"]["mock"] is False
+    assert finished["audit"]["mock"] is False and finished["audit"]["message"].startswith("quality checks passed") and finished["action"]["mock"] is False
+    assert finished["gap"]["mock"] is False and finished["coverage"]["mock"] is False
     assert [e["kind"] for e in a["human_decisions"]] == ["human_decision_refused", "human_decision"] and a["human_decisions"][1]["data"]["reviewer_id"] == "rev-9"
     assert all("key" not in e["data"] for e in a["events"]) and {r["node"] for r in a["agents"]} >= {"gap", "coverage"}
     assert client.get("/claims/CLM-0404/audit").status_code == 404

@@ -142,3 +142,16 @@ def test_all_records_are_labelled_synthetic():
         assert json.loads((ROOT / f"data/synthetic/{f}.json").read_text(encoding="utf-8"))["synthetic"] is True
     assert all(p.holder_name.startswith("SYNTHETIC") for p in PAS.policies)
     assert all(c.claimant_name.startswith("SYNTHETIC") for c in CLAIMS.claims)
+
+
+def test_your_own_policies_file_is_added_to_the_mock_pas(tmp_path):
+    from datetime import date
+
+    from claimtower.integrations.mock.pas_mock import MockPasAdapter
+    extra = tmp_path / "p.json"
+    extra.write_text(json.dumps({"policies": [{"policy_no": "HSP-1", "holder_name": "A Person", "versions": [{"version": "v1", "effective_from": "2026-01-01", "effective_to": "2026-12-31",
+                      "base_wording_id": "W-1", "endorsements": [{"endorsement_id": "E-1", "effective_from": "2026-01-01", "effective_to": None}], "schedule": {"building_limit": "9"}}],
+                      "status_history": [{"status": "in_force", "effective_from": "2026-01-01", "effective_to": "2026-12-31", "note": ""}]}]}), encoding="utf-8")
+    a = MockPasAdapter(extra=extra)
+    assert a.get_policy_version("HSP-1", date(2026, 3, 1)).base_wording_id == "W-1" and a.get_schedule("HSP-1", date(2026, 3, 1)) == {"building_limit": "9"}
+    assert a.get_policy_version("POL-1001", date(2026, 3, 14)).policy_no == "POL-1001"

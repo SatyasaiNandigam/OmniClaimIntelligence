@@ -94,6 +94,10 @@ class SnapshotBuilder:
         self._engine = EffectiveSetBuilder(extractor)
         self._clock = clock or (lambda: datetime.now(timezone.utc))
 
+    def set_library(self, library: PolicyLibrary) -> None:
+        """Use another library from now on (a policy document was added or the folder was re-read): the next snapshot sees it."""
+        self._library = library
+
     # ------------------------------------------------------------------------------------------------ the PolicyService contract
     def get_snapshot(self, policy_no: str, loss_date: date,
                      endorsement_titles: Mapping[str, str] | None = None) -> PolicySnapshot | NotInForce:

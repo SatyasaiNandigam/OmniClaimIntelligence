@@ -2,6 +2,12 @@
 
 Every change to a frozen contract is recorded here by `scripts/freeze_contracts.py --approve`.
 
+## v1.1.0 - 2026-11-27 - approved by project owner (solo tech lead)
+
+**Reason:** SettlementResult: added optional forecast_low and forecast_high (a forecast range shown instead of a payable while the repair cost is not validated); additive, nothing removed
+
+- changed: ClaimState.schema.json, SettlementResult.schema.json
+
 ## v1.0.0 - 2026-11-25 - approved by project owner (solo tech lead)
 
 **Reason:** M0 baseline: ClaimState and sub-models, agent protocol, PAS/Claims/Recon adapter protocols, section-11 interfaces

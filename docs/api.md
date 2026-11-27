@@ -9,13 +9,14 @@ uvicorn claimtower.api.main:build_default_app --factory
 pytest tests/api                            # 30 contract tests
 ```
 
-What runs behind it: the claim graph (`docs/orchestration.md`) with the real Evidence, Policy and Gap agents and mocks ("YET TO IMPLEMENT") for the rest, on SYNTHETIC data.
-Every response carries `X-Mock-Agents: intake,coverage,...`; `GET /health` and `GET /agents` say which agent is which.
+What runs behind it: the claim graph (`docs/orchestration.md`) with every agent real (intake, policy, evidence, gap, coverage, settlement, action, audit, routing); the policy, claims and reconciliation systems are mocks. SYNTHETIC data. The whole flow, step by step, is in `API_FLOW.md`.
+Every response carries `X-Mock-Agents: (empty when every agent is real)`; `GET /health` and `GET /agents` say which agent is which.
 
 | Endpoint | What it does | Errors |
 |---|---|---|
 | `GET /health` | service, mock and implemented agents, claim count | |
 | `GET /agents` | the roster: status (`implemented` / `YET TO IMPLEMENT (mock)`), the task that will implement each | |
+| `POST /claims/with-documents` | create a claim from its documents in ONE multipart request (`files`, plus the same optional fields as `POST /claims` and `uploaded_by`); all files are stored, then the claim is assessed once. Returns `claim`, `stored`, `skipped` (a bad file is skipped and reported) | 409 duplicate id, 422 no file could be stored or a bad claim id |
 | `POST /claims` | create a claim and run it to the human gate. Body (all optional): `claim_id`, `policy_ref`, `loss_date`, `loss_type`, `loss_description`, `claimant_name`, `channel`, `use_synthetic_documents` (demo: load `data/synthetic/claims/<id>`). Returns the claim view | 409 duplicate id, 404 no synthetic folder, 422 bad body |
 | `GET /claims` | one line per claim (phase, tier, open questions by status) | |
 | `GET /claims/{id}` | the claim view: `status` (phase, gate, nodes run, mock nodes) and the full `state` at the current version | 404 |
@@ -23,9 +24,17 @@ Every response carries `X-Mock-Agents: intake,coverage,...`; `GET /health` and `
 | `GET /claims/{id}/versions` | every committed version and the node that produced it | 404 |
 | `GET /claims/{id}/diff?from=&to=` | what changed between two versions: added / removed / changed items per field, and every question whose status moved | 404 unknown claim or version, 422 |
 | `GET /claims/{id}/documents` | the claim's documents (type, pages, source) | 404 |
-| `POST /claims/{id}/documents` | multipart upload (`file`, optional `uploaded_by`, `source_channel`; `?reassess=false` to only store). Re-assesses the claim from the evidence node: only the new document is processed, and a recommendation waiting at the gate is superseded | 404, 413 (over 20 MB), 422 empty |
+| `POST /claims/{id}/documents` | multipart upload (`file`, optional `uploaded_by`, `source_channel`; `?reassess=false` to only store). Re-assesses the claim from the intake node (checklist refreshed, notice of loss read, unchanged nodes skipped): only the new document is processed, and a recommendation waiting at the gate is superseded | 404, 413 (over 20 MB), 422 empty |
 | `GET /claims/{id}/documents/{doc}/file` | the original file | 404 |
-| `POST /claims/{id}/decision` | the human gate: `{decision: approve\|reject\|request_more_evidence, reviewer_id, reviewer_role, reason}` | 409 not waiting for a decision, 422 refused (the reason in `detail.error`; the gate stays open) |
+| `GET /claims/{id}/documents/{doc}/details` | what the system read in one document: the type and why, the pages and where their text came from (text layer or OCR), the extracted fields with page, region and confidence | 404 unknown claim or document |
+| `GET /claims/{id}/documents/{doc}/page/{n}` | the page as a PNG; `?fact=<fact id>` marks where that fact was read (header `X-Highlight`: region, text or none) | 404 unknown page or fact, or the document has no page picture |
+| `GET /policies/documents` | the policy documents in the library: id, version and title read from inside each document, kind, clause count, source (built-in or uploaded), original file name | 404 if the server cannot manage policy documents |
+| `POST /policies/documents` | add a policy wording or endorsement (multipart `file`, optional `uploaded_by`, `document_id`; `?replace=true`). The file name is irrelevant: the id and version are read from the document. 201 added or replaced, 200 unchanged | 409 same id with different content (without `replace`), 413, 422 not a PDF, no id inside, no text layer, no clauses |
+| `POST /policies/reload` | read the policy folders again: added, removed, changed, and files that could not be read | |
+| `POST /claims/{id}/reassess?from_node=` | run a claim again from a node (default `policy`, to pick up a document added since); unchanged nodes are skipped | 404, 422 unknown node |
+| `GET /claims/{id}/trail` | the persistent audit trail of the claim (hash-chained): records and whether the chain is intact | 404 unknown claim, or the trail is not enabled |
+| `GET /claims/{id}/decision-pack` | the decision pack built from the trail alone: Markdown, or PDF with `?format=pdf` | 404 as above, 422 bad format |
+| `POST /claims/{id}/decision` | the human gate: `{decision: approve\|edit\|reject\|request_more_evidence, reviewer_id, reviewer_role, reason, edits}` | 409 not waiting for a decision, 422 refused (the reason in `detail.error`; the gate stays open) |
 | `GET /claims/{id}/audit` | the event log: every agent (with `mock`), routing, human decisions and refusals | 404 |
 
 ## The UI
@@ -46,8 +55,8 @@ evidence requests, scenarios), **Policy**, **History** (versions, diff, audit lo
 
 ## Rules the API keeps
 
-- The system only **recommends**. `approve` pays and denies nothing: the commit step is a mock. A reviewer's role must reach the claim's `required_approver_role`
-  (adjuster < senior_adjuster < supervisor, SAMPLE); reject and request_more_evidence need a reason; a refused decision changes nothing.
+- The system only **recommends**. `approve` commits the claim through the mock adapters; a payment instruction goes out only for a calculated settlement and an approver who may release payments (a supervisor). A reviewer's role must reach the claim's `required_approver_role`
+  (adjuster < senior_adjuster < supervisor, SAMPLE); edit, reject and request_more_evidence need a reason; edit needs `edits` (settlement input -> amount); reject needs the role named for `deny_claim`; a refused decision changes nothing.
 - A mock agent's output is a labelled fixture, not computed; it is always flagged (`mock: true` in the audit log, `mock_nodes_run`, the header).
 
 ## Prototype limits (do not build on them)

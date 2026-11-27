@@ -29,8 +29,8 @@ def end(eid: str, frm: str, to: str | None = None) -> EndorsementEntry:
     return EndorsementEntry(endorsement_id=eid, effective_from=D(frm), effective_to=D(to) if to else None)
 
 
-def ver(v: str, frm: str, to: str | None, ends: list[EndorsementEntry], **extra: str) -> PolicyVersion:
-    return PolicyVersion(version=v, effective_from=D(frm), effective_to=D(to) if to else None, base_wording_id="BASE-HOME-1",
+def ver(v: str, frm: str, to: str | None, ends: list[EndorsementEntry], wording: str = "BASE-HOME-1", **extra: str) -> PolicyVersion:
+    return PolicyVersion(version=v, effective_from=D(frm), effective_to=D(to) if to else None, base_wording_id=wording,
                          endorsements=ends, schedule={**SCHEDULE, **extra})
 
 

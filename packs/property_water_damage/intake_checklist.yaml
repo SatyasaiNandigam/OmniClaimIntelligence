@@ -1,3 +1,17 @@
-# required docs - request ALL at once
-required_documents: []
+# What a registration needs for a property water-damage claim (T6.7). Domain content, not code. All of it is SAMPLE.
+# The Intake agent asks for everything still missing in ONE consolidated request, so the claimant is not asked twice.
+loss_type: water_damage            # the line of business of this pack: a claim with no stated loss type is taken to be this one (stated as an assumption)
+
+# Header fields a registration needs. A missing one is tracked and asked for; it never blocks registration (a missing loss date is a gap, not a refusal).
+required_fields:
+  - {name: claimant_name,    description: "Name of the claimant"}
+  - {name: policy_ref,       description: "Policy number"}
+  - {name: loss_date,        description: "Date of loss"}
+  - {name: loss_description, description: "A description of what happened"}
+
+# Documents a registration needs (received when a stored document has this detected type).
+required_documents:
+  - {type: fnol,     description: "First notice of loss form"}
+  - {type: estimate, description: "Repair estimate or quotation"}
+
 required_photo_views: []

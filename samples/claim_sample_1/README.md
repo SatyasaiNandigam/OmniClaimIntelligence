@@ -47,7 +47,7 @@ Do not reuse `CLM-0001` to `CLM-0005`: those ids trigger the labelled fixtures o
 | Extra | none | the model may add claim-specific questions (typically whether the dishwasher hose counts as a fixed part of the plumbing) and a request to the claimant; that is the known tendency to over-ask, see Q-P6 in `docs/assumptions.md` |
 | Gate | paused, waiting for a decision | same |
 
-The coverage, settlement, action, audit and routing agents are still mocks, so for a new id the gate shows no tier and no settlement: those parts are not computed.
+Every agent is real now. Rules only, after the uploads: the settlement is calculated (assessed loss INR 64,500 from the surveyor, not the claimant's 72,000 estimate; payable INR 54,500), the quality checks pass, and the claim is routed complex (nothing is established without the model). The whole flow is in `API_FLOW.md`.
 
 ## Regenerate
 

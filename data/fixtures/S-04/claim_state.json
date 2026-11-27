@@ -549,6 +549,8 @@
   "settlement": {
     "status": "calculated",
     "reserve_forecast": null,
+    "forecast_low": null,
+    "forecast_high": null,
     "assessed_loss": "150000",
     "payable": "100000",
     "steps": [

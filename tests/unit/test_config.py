@@ -59,7 +59,7 @@ def test_invalid_yaml_syntax_reports_file_and_line(root):
 
 def test_all_problems_reported_together(root):
     edit(root / "configs/app.yaml", lambda d: d["llm"].__setitem__("temperature", 9))
-    edit(root / "configs/rbac.yaml", lambda d: d.__setitem__("roles", ["intake"]))
+    edit(root / "configs/rbac.yaml", lambda d: (d.__setitem__("roles", ["intake"]), d.__setitem__("approval_order", [])))
     with pytest.raises(ConfigError) as e:
         load_settings(root)
     msg = str(e.value)

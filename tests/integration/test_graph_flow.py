@@ -15,7 +15,7 @@ from claimtower.orchestration.supervisor import HumanDecision
 
 SETTINGS = load_settings()
 CLAIMS = {"S-01": "CLM-0001", "S-02": "CLM-0002", "S-03": "CLM-0003", "S-04": "CLM-0004", "S-05": "CLM-0005"}
-REAL = {"policy", "evidence", "gap"}
+REAL = {"intake", "policy", "evidence", "gap", "coverage", "settlement", "action", "audit", "routing"}
 
 
 @pytest.fixture(scope="module")
@@ -68,8 +68,26 @@ def test_a_new_claim_runs_through_real_and_mock_agents_to_the_gate_and_an_approv
     assert not gap_event.mock and gap_event.message.startswith("FULL assessment") and "REVIEW" in gap_event.message
 
     # the mocks say so: their output is the labelled fixture, not derived from the real agents above
-    coverage = next(e for e in r.events_for("CLM-0001") if e.node == "coverage")
-    assert coverage.mock and coverage.message.startswith("YET TO IMPLEMENT (mock, T5.1)")
+    audit = next(e for e in r.events_for("CLM-0001") if e.node == "audit")
+    assert not audit.mock and audit.message.startswith("quality checks passed") and state.qa_report.passed and state.audit_ref == "AUDIT-CLM-0001"
+
+    # action (real): next steps planned from the gaps; a draft waits for a person, nothing is sent
+    assert "draft_status_message" in [a.action_type for a in state.proposed_actions] and all(d.status == "draft" for d in state.drafts)
+    assert all(a.idempotency_key.startswith("CLM-0001:") for a in state.proposed_actions)
+
+    # settlement (real): CLM-0001 has only a contractor's estimate (no surveyor assessment), so no number is produced: the missing inputs are named
+    assert state.settlement.status == "cannot_calculate" and state.settlement.payable is None
+    assert state.settlement.missing_inputs == ["assessed_covered_loss", "non_covered_items_total"] and "cannot_calculate_final_settlement_yet" in state.settlement.explanation
+
+    # coverage (real): one row per issue, cited from the REAL snapshot, a status that says how well it is resolved (never a verdict). Without a model the questions
+    # are open, so the cover issue is unresolved and the exclusion incomplete; the sublimit is identified
+    rows = {i.issue_id: i for i in state.coverage_issues}
+    assert {k: v.status for k, v in rows.items()} == {"ISS-INFORCE": "established", "ISS-COVER-WATER": "unresolved", "ISS-EXC-GRADUAL": "incomplete",
+                                                      "ISS-SUBLIMIT": "identified"}
+    assert all(c.clause_id.startswith(("BASE-HOME-1/", "END-01/")) and c.text for i in rows.values() for c in i.clause_citations)
+    assert all(i.clause_citations for i in rows.values()) and any(c.modified_by for c in rows["ISS-COVER-WATER"].clause_citations)
+    cov = next(e for e in r.events_for("CLM-0001") if e.node == "coverage")
+    assert not cov.mock and cov.message.startswith("4 issue(s)")
     assert state.routing.tier == "complex" and status.gate["tier"] == "complex" and set(status.gate["mock_agents"]) == set(PIPELINE) - REAL
 
     # the gate: nothing happens until a person decides; the decision is recorded; only an approval reaches the (mock) commit
@@ -91,9 +109,10 @@ def test_every_synthetic_claim_goes_through_the_real_agents_to_the_gate(tmp_path
     state = r.state(claim)
     assert status.phase == "awaiting_human_decision" and not r.events.of_kind(claim, "agent_failed")
     assert state.facts and state.open_questions and state.routing is not None
-    if sid == "S-03":                                                          # lapsed: no policy in force, so coverage and settlement are skipped
+    if sid == "S-03":                                                          # lapsed: no policy in force: coverage records the one row that says so, settlement is skipped
         assert state.policy_snapshot is None and [q.question_id for q in state.open_questions] == ["Q-INFORCE"]
-        assert "coverage" not in status.nodes_run and "settlement" not in status.nodes_run
+        assert "coverage" in status.nodes_run and "settlement" not in status.nodes_run
+        assert [(i.issue_id, i.status) for i in state.coverage_issues] == [("ISS-INFORCE", "identified")]
     else:
         assert state.policy_snapshot is not None and "coverage" in status.nodes_run
     if sid == "S-05":
@@ -119,7 +138,8 @@ def test_late_evidence_re_enters_at_the_evidence_node_and_only_the_touched_quest
 
     assert status.phase == "awaiting_human_decision"
     ran = [e.node for e in new_events if e.kind == "agent_finished"]
-    assert ran == ["evidence", "gap", "coverage", "settlement", "action", "audit", "routing"]            # intake and policy were NOT re-run
+    skipped = [e.node for e in new_events if e.kind == "node_skipped"]
+    assert ran == ["evidence", "gap", "coverage", "settlement", "routing"] and skipped == ["action", "audit"]   # intake and policy were NOT re-run; action and audit had nothing new to read
     state = r.state("CLM-0001")
     old_facts = {f.fact_id: f for f in first.facts}
     assert all(state_f == old_facts[state_f.fact_id] for state_f in state.facts if state_f.fact_id in old_facts)       # unchanged documents keep their facts

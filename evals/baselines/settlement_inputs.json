@@ -1,0 +1,59 @@
+{
+  "entries": [
+    {
+      "label": "T5.5 first run: dev 6 cases, fresh 7 run once",
+      "date": "2026-11-26",
+      "config_sha": "f675261db3b430bc",
+      "model": "gpt-5-mini",
+      "modes": {
+        "rules only": {
+          "dev": {
+            "cases": 6,
+            "assessed_correct": 1.0,
+            "non_covered_correct": 1.0,
+            "wrong_numbers": 0,
+            "missing_when_labelled": 0,
+            "model_only_values": 0,
+            "refused_readings": 0,
+            "wrong": []
+          },
+          "fresh": {
+            "cases": 7,
+            "assessed_correct": 0.8571428571428571,
+            "non_covered_correct": 0.8571428571428571,
+            "wrong_numbers": 0,
+            "missing_when_labelled": 2,
+            "model_only_values": 0,
+            "refused_readings": 0,
+            "wrong": [
+              "F-1 assessed: label 64500, got None",
+              "F-1 non_covered: label 4500, got None"
+            ]
+          }
+        },
+        "rules + model": {
+          "dev": {
+            "cases": 6,
+            "assessed_correct": 1.0,
+            "non_covered_correct": 1.0,
+            "wrong_numbers": 0,
+            "missing_when_labelled": 0,
+            "model_only_values": 0,
+            "refused_readings": 0,
+            "wrong": []
+          },
+          "fresh": {
+            "cases": 7,
+            "assessed_correct": 1.0,
+            "non_covered_correct": 1.0,
+            "wrong_numbers": 0,
+            "missing_when_labelled": 0,
+            "model_only_values": 2,
+            "refused_readings": 0,
+            "wrong": []
+          }
+        }
+      }
+    }
+  ]
+}

@@ -21,6 +21,7 @@ from claimtower.core.schemas import ClaimState, DocumentRecord, Fact
 from claimtower.core.state import OWNERSHIP, StatePatch
 from claimtower.ingestion.classifier import HybridClassifier
 from claimtower.ingestion.extractors import HybridExtractor
+from claimtower.ingestion.ocr import OcrEngine
 from claimtower.ingestion.provenance import StoreFactExtractor, verify_fact_citations
 from claimtower.ingestion.store import DocumentStore
 
@@ -33,15 +34,19 @@ class EvidenceAgent:
     agent_id: ClassVar[str] = "evidence"
     owns: ClassVar[frozenset[str]] = OWNERSHIP["evidence"]
 
-    def __init__(self, store: DocumentStore, pack: Pack, classifier: HybridClassifier, extractor: HybridExtractor) -> None:
-        self.store, self.pack, self.classifier, self.extractor = store, pack, classifier, extractor
+    def __init__(self, store: DocumentStore, pack: Pack, classifier: HybridClassifier, extractor: HybridExtractor, ocr: OcrEngine | None = None) -> None:
+        self.store, self.pack, self.classifier, self.extractor, self.ocr = store, pack, classifier, extractor, ocr
         self._facts = StoreFactExtractor(store, pack.fact_templates)
 
     def run(self, state: ClaimState) -> StatePatch:
         previous = {d.document_id: d for d in state.documents}
         records: list[DocumentRecord] = []
         changed: list[DocumentRecord] = []
+        scanned: list[str] = []
         for rec in self.store.records(state.claim_id):
+            if self.ocr is not None and rec.needs_ocr:                    # a scan: the model transcribes it (the text is flagged `ocr`, never treated as verbatim)
+                rec = self.store.run_ocr(rec.document_id, self.ocr)
+                scanned.append(rec.document_id)
             stored = self.store.stored(rec.document_id)
             old = previous.get(rec.document_id)
             if old is not None and _signature(old) == _signature(rec) and old.detected_type != "unknown":
@@ -73,8 +78,17 @@ class EvidenceAgent:
         facts.sort(key=lambda f: (f.source_document_id, f.fact_id))
 
         unknown = [r.document_id for r in records if r.detected_type == "unknown"]
+        if scanned:
+            left = [d for d in scanned if self.store.stored(d).ocr_errors]
+            parts_ocr = f"REVIEW: {len(scanned)} scanned document(s) transcribed by the vision model: {', '.join(sorted(scanned))}" + (f" (OCR errors on {', '.join(sorted(left))})" if left else "")
         parts = [f"{len(changed)} document(s) processed, {len(records) - len(changed)} unchanged; "
                  f"{len(accepted)} new fact(s), {len(facts)} in total"]
+        if scanned:
+            parts.append(parts_ocr)
+        floor = self.pack.document_types.extractor.low_confidence
+        low = sorted(f.fact_id for f in facts if f.extraction_confidence < floor and f.verification_status == "unverified")
+        if low:                                                                          # governance: a low-confidence reading is flagged for a person, never hidden or promoted
+            parts.append(f"REVIEW: {len(low)} fact(s) read with low extraction confidence (below {floor:.2f}); a person should check them against the document: {', '.join(low[:8])}" + (" ..." if len(low) > 8 else ""))
         if unknown:
             parts.append(f"{len(unknown)} document(s) of unknown type need a human: {', '.join(sorted(unknown))}")
         if self._facts.rejected:

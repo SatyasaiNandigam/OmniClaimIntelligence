@@ -3,14 +3,23 @@
     GET  /health                          the service, which agents are real and which are mocks
     GET  /agents                          the roster (implemented | YET TO IMPLEMENT (mock)) with the task that will implement each
     POST /claims                          create a claim and run it to the human gate
+    POST /claims/with-documents           the same, with the claim's documents sent in the one multipart request (a bad file is skipped and reported)
     GET  /claims                          the claims, one line each
     GET  /claims/{id}                     status (phase, gate, mock nodes) and the full state at the current version
     GET  /claims/{id}/versions            every committed version and the node that produced it
     GET  /claims/{id}/diff?from=&to=      what changed between two versions
-    GET  /claims/{id}/documents           the claim's documents          POST: upload one (re-assesses the claim from the evidence node)
+    GET  /claims/{id}/documents           the claim's documents          POST: upload one (re-assesses the claim from the intake node)
     GET  /claims/{id}/documents/{doc}/file   the original file
+    GET  /claims/{id}/documents/{doc}/details   what the system read: type and why, pages, extracted fields with page, region and confidence
+    GET  /claims/{id}/documents/{doc}/page/{n}   the page as a PNG; ?fact=<fact id> marks where that fact was read
     POST /claims/{id}/decision            the human gate: approve | reject | request_more_evidence by a named reviewer
     GET  /claims/{id}/audit               the event log (agents, mocks, routing, human decisions)
+    GET  /policies/documents              the policy documents in the library (id and version read from inside each document)
+    POST /policies/documents              add a policy wording or endorsement (any file name; the id is read from the document); ?replace=true to supersede
+    POST /policies/reload                 read the policy folders again (what was added, removed, changed)
+    POST /claims/{id}/reassess            run a claim again from a node (default policy: pick up a new wording)
+    GET  /claims/{id}/trail               the persistent audit trail (hash-chained) and whether its chain is intact
+    GET  /claims/{id}/decision-pack       the decision pack built from the trail alone: ?format=md (default) or pdf
 
 Prototype limits, stated rather than hidden: reviewer identity and role are ASSERTED by the caller (no authentication yet); claims and events live in
 memory; one claim is processed at a time; every response carries `X-Mock-Agents` naming the agents that are not implemented yet.
@@ -18,19 +27,23 @@ Errors: 404 unknown claim / document / version, 409 the claim is in the wrong st
 """
 from __future__ import annotations
 
+import hashlib
 import uuid
+from datetime import date
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Any
 
 from fastapi import FastAPI, File, Form, HTTPException, Query, Request, Response, UploadFile
 from fastapi.responses import JSONResponse
 
 from claimtower.api.schemas import (
-    AuditView, ClaimCreate, ClaimSummary, ClaimView, DocumentUploadResult, ErrorDetail, EventView, Health,
+    PolicyDocumentResult, PolicyDocumentView, PolicyReloadResult, AuditView, ClaimCreate, ClaimWithDocumentsResult, SkippedFile, ClaimSummary, ClaimView, DocumentDetails, DocumentUploadResult, ErrorDetail, EventView, FieldView, Health, PageView, TrailRecordView, TrailView,
 )
 from claimtower.core.schemas import ClaimHeader, ClaimState, DocumentRecord
 from claimtower.core.state import OwnershipViolation
 from claimtower.core.state_diff import StateDiff
+from claimtower.ingestion.loaders import UnsupportedDocument
+from claimtower.ingestion.preview import render_highlighted
 from claimtower.ingestion.store import DocumentStore, StoreError
 from claimtower.orchestration.graph import ClaimRunner, RunStatus, VersionInfo
 from claimtower.orchestration.supervisor import HumanDecision
@@ -39,7 +52,7 @@ MAX_UPLOAD_BYTES = 20 * 1024 * 1024
 ERRORS = {404: {"model": ErrorDetail}, 409: {"model": ErrorDetail}, 422: {"model": ErrorDetail}}
 
 
-def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: Path | None = None, max_upload_bytes: int = MAX_UPLOAD_BYTES) -> FastAPI:
+def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: Path | None = None, max_upload_bytes: int = MAX_UPLOAD_BYTES, policies: Any | None = None) -> FastAPI:
     app = FastAPI(title="Insurance Claim Resolution Control Tower", version="0.1.0",
                   description="Prototype. SYNTHETIC data only. Agents marked `YET TO IMPLEMENT (mock)` return labelled fixtures. "
                               "A human decides every approval, denial and payment; the system only recommends.")
@@ -75,7 +88,8 @@ def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: P
     # ------------------------------------------------------------------ service
     @app.get("/health", response_model=Health, tags=["service"])
     def health() -> Health:
-        return Health(mock_agents=runner.registry.mocks, implemented_agents=runner.registry.implemented, claims=len(runner.claims()))
+        return Health(mock_agents=runner.registry.mocks, implemented_agents=runner.registry.implemented, claims=len(runner.claims()),
+                      low_confidence_below=runner.supervisor.low_confidence_below)
 
     @app.get("/agents", tags=["service"])
     def agents() -> list[dict[str, str]]:
@@ -100,6 +114,49 @@ def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: P
                                  loss_type=body.loss_type, loss_description=body.loss_description, channel=body.channel)
         runner.start(ClaimState(claim_id=claim_id, claim_header=header))
         return view(claim_id)
+
+    @app.post("/claims/with-documents", response_model=ClaimWithDocumentsResult, status_code=201, tags=["claims"], responses={**ERRORS, 413: {"model": ErrorDetail}})
+    def create_claim_with_documents(
+            files: Annotated[list[UploadFile], File(description="The claim's documents: claim form, reports, estimate, invoice, photos, schedule ...", json_schema_extra={"items": {"type": "string", "format": "binary"}})],
+            claim_id: Annotated[str | None, Form(pattern=r"^[A-Za-z0-9][A-Za-z0-9_.-]{2,63}$")] = None, claimant_name: Annotated[str | None, Form()] = None,
+            policy_ref: Annotated[str | None, Form()] = None, loss_date: Annotated[date | None, Form()] = None, loss_type: Annotated[str | None, Form()] = None,
+            loss_description: Annotated[str | None, Form()] = None, channel: Annotated[str, Form()] = "other", uploaded_by: Annotated[str | None, Form()] = None,
+    ) -> ClaimWithDocumentsResult:
+        """Create a claim from its documents in ONE request and assess it once, to the human gate. Every field is optional: what is missing (name, policy, loss date, description) is read from the
+        claim form by the intake agent, and what you supply is kept. A file that is empty, too large or unreadable is skipped and listed in `skipped`; the claim is created if at least one file was stored.
+        Later evidence goes to `POST /claims/{id}/documents` (which re-assesses the claim)."""
+        if channel not in ("portal", "call_centre", "email", "agent", "other"):
+            raise HTTPException(422, "channel must be one of portal, call_centre, email, agent, other")
+        claim_id = claim_id or f"CLM-{uuid.uuid4().hex[:8].upper()}"
+        if runner.knows(claim_id):
+            raise HTTPException(409, f"claim {claim_id} already exists")
+        stored: list[DocumentRecord] = []
+        skipped: list[SkippedFile] = []
+        for f in files:
+            name = f.filename or "upload"
+            data = f.file.read(max_upload_bytes + 1)
+            if len(data) > max_upload_bytes:
+                skipped.append(SkippedFile(filename=name, reason=f"larger than {max_upload_bytes // (1024 * 1024)} MB"))
+            elif not data:
+                skipped.append(SkippedFile(filename=name, reason="the file is empty"))
+            else:
+                same = next((r for r in store.records(claim_id) if r.sha256 == hashlib.sha256(data).hexdigest()), None)
+                if same is not None:                                                       # a restarted server forgets the claim, not its stored files: never store the same file twice
+                    if all(r.document_id != same.document_id for r in stored):
+                        stored.append(same)
+                    continue
+                try:
+                    stored.append(store.ingest(claim_id, name, data, uploaded_by=uploaded_by))
+                except (StoreError, UnsupportedDocument) as e:
+                    skipped.append(SkippedFile(filename=name, reason=str(e)))
+        if not stored:
+            raise HTTPException(422, {"error": "no document could be stored, so no claim was created", "skipped": [s.model_dump() for s in skipped]})
+        header = None
+        if any((claimant_name, policy_ref, loss_date, loss_type, loss_description)):
+            header = ClaimHeader(claim_id=claim_id, claimant_name=claimant_name, policy_ref=policy_ref, loss_date=loss_date, loss_type=loss_type,
+                                 loss_description=loss_description, channel=channel)
+        runner.start(ClaimState(claim_id=claim_id, claim_header=header))                 # one run, after every document is stored
+        return ClaimWithDocumentsResult(claim=view(claim_id), stored=stored, skipped=skipped)
 
     @app.get("/claims", response_model=list[ClaimSummary], tags=["claims"])
     def list_claims() -> list[ClaimSummary]:
@@ -137,7 +194,7 @@ def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: P
     @app.post("/claims/{claim_id}/documents", response_model=DocumentUploadResult, status_code=201, tags=["documents"], responses={**ERRORS, 413: {"model": ErrorDetail}})
     def upload_document(claim_id: str, file: Annotated[UploadFile, File()], uploaded_by: Annotated[str | None, Form()] = None,
                         source_channel: Annotated[str | None, Form()] = None, reassess: Annotated[bool, Query()] = True) -> DocumentUploadResult:
-        """Store the document and, unless `reassess=false`, re-assess the claim from the evidence node: only the new document is processed, and a pending
+        """Store the document and, unless `reassess=false`, re-assess the claim from the intake node (the checklist and header are refreshed, the notice of loss is read if it is new; the policy node is skipped when nothing it reads changed): only the new document is processed, and a pending
         recommendation at the human gate is superseded (nobody had decided yet)."""
         known(claim_id)
         data = file.file.read(max_upload_bytes + 1)
@@ -149,8 +206,8 @@ def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: P
             record = store.ingest(claim_id, file.filename or "upload", data, uploaded_by=uploaded_by, source_channel=source_channel)
         except StoreError as e:
             raise HTTPException(409, str(e)) from e
-        status = runner.reassess(claim_id, from_node="evidence") if reassess else None
-        return DocumentUploadResult(document=record, reassessment=status, note="re-assessed from the evidence node" if reassess else "stored; not re-assessed")
+        status = runner.reassess(claim_id, from_node="intake") if reassess else None
+        return DocumentUploadResult(document=record, reassessment=status, note="re-assessed from the intake node" if reassess else "stored; not re-assessed")
 
     @app.get("/claims/{claim_id}/documents/{document_id}/file", tags=["documents"], responses={**ERRORS}, response_class=Response)
     def get_document_file(claim_id: str, document_id: str) -> Response:
@@ -161,6 +218,98 @@ def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: P
         stored = store.stored(document_id)
         return Response(content=store.original(document_id), media_type=getattr(stored, "media_type", None) or "application/octet-stream",
                         headers={"Content-Disposition": f'inline; filename="{record.filename}"'})
+
+    def stored_of(claim_id: str, document_id: str):
+        known(claim_id)
+        if next((d for d in store.records(claim_id) if d.document_id == document_id), None) is None:
+            raise HTTPException(404, f"claim {claim_id} has no document {document_id}")
+        return store.stored(document_id)
+
+    @app.get("/claims/{claim_id}/documents/{document_id}/details", response_model=DocumentDetails, tags=["documents"], responses={**ERRORS})
+    def document_details(claim_id: str, document_id: str) -> DocumentDetails:
+        d = stored_of(claim_id, document_id)
+        ex = d.extraction
+        fields = [FieldView(name=f.name, value=f.value, normalised=f.normalised, label=f.label, page=f.page, region=f.region.model_dump() if f.region else None, evidence_text=f.evidence_text,
+                            confidence=f.confidence, low_confidence=f.low_confidence, method=f.method, flags=list(f.flags)) for f in (ex.fields if ex else [])]
+        return DocumentDetails(document_id=d.document_id, filename=d.filename, detected_type=d.detected_type, type_confidence=d.type_confidence, type_method=d.type_method,
+                               type_reason=d.type_reason, type_evidence_snippet=d.type_evidence_snippet, type_page=d.type_page, media_type=d.media_type, kind=d.kind,
+                               page_count=d.page_count, uploaded_by=d.uploaded_by, source_channel=d.source_channel, uploaded_at=d.uploaded_at, same_content_as=list(d.same_content_as),
+                               ocr_engine=d.ocr_engine, ocr_errors=list(d.ocr_errors), load_error=d.load_error,
+                               pages=[PageView(number=p.number, source=p.source, needs_ocr=p.needs_ocr, text=p.text) for p in d.pages], fields=fields,
+                               missing_required=list(ex.missing_required) if ex else [], warnings=list(ex.warnings) if ex else [], low_confidence_below=runner.supervisor.low_confidence_below)
+
+    @app.get("/claims/{claim_id}/documents/{document_id}/page/{page}", tags=["documents"], responses={200: {"content": {"image/png": {}}}, **ERRORS}, response_class=Response)
+    def document_page(claim_id: str, document_id: str, page: int, fact: Annotated[str | None, Query()] = None) -> Response:
+        """The page as a picture. With `fact`, the place that fact was read from is marked (header `X-Highlight`: region | text | none)."""
+        d = stored_of(claim_id, document_id)
+        if not 1 <= page <= d.page_count:
+            raise HTTPException(404, f"document {document_id} has pages 1 to {d.page_count}")
+        region = text = None
+        if fact is not None:
+            f = next((x for x in runner.state(claim_id).facts if x.fact_id == fact and x.source_document_id == document_id), None)
+            if f is None:
+                raise HTTPException(404, f"document {document_id} has no fact {fact}")
+            region, text = (f.region if f.page == page else None), (f.evidence_text if f.page == page else None)
+        try:
+            png, how = render_highlighted(store.original(document_id), page, region, text)
+        except UnsupportedDocument as e:
+            raise HTTPException(404, str(e)) from None
+        return Response(png, media_type="image/png", headers={"X-Highlight": how})
+
+    # ------------------------------------------------------------------ policy documents
+    def manager() -> Any:
+        if policies is None:
+            raise HTTPException(404, "policy documents cannot be managed on this server")
+        return policies
+
+    def pview(e: Any) -> PolicyDocumentView:
+        return PolicyDocumentView(**e.__dict__)
+
+    @app.get("/policies/documents", response_model=list[PolicyDocumentView], tags=["policies"], responses={**ERRORS})
+    def list_policy_documents() -> list[PolicyDocumentView]:
+        return [pview(e) for e in manager().entries()]
+
+    @app.post("/policies/documents", response_model=PolicyDocumentResult, status_code=201, tags=["policies"], responses={**ERRORS})
+    async def add_policy_document(response: Response, file: Annotated[UploadFile, File()], uploaded_by: Annotated[str | None, Form()] = None,
+                                  document_id: Annotated[str | None, Form()] = None, replace: Annotated[bool, Query()] = False) -> PolicyDocumentResult:
+        """Add a policy wording or endorsement. The file may be called anything: the document id and version are read from INSIDE the document (a line such as
+        'Policy wording BASE-HOME-1 | Version 2025-01'); `document_id` is only for a document that has none. The same content again is `unchanged`; different content under an
+        existing id is 409 unless `replace=true`. Claims already assessed are not changed: re-assess one with POST /claims/{id}/reassess."""
+        from claimtower.policy.manager import PolicyConflict, PolicyDocumentError
+
+        data = await file.read(max_upload_bytes + 1)
+        if len(data) > max_upload_bytes:
+            raise HTTPException(413, f"the file is over {max_upload_bytes // (1024 * 1024)} MB")
+        try:
+            res = manager().ingest(data, file.filename or "upload.pdf", uploaded_by=uploaded_by, replace=replace, document_id=document_id)
+        except PolicyConflict as e:
+            raise HTTPException(409, str(e)) from None
+        except PolicyDocumentError as e:
+            raise HTTPException(422, str(e)) from None
+        if res.outcome == "unchanged":
+            response.status_code = 200
+        e = res.entry
+        note = {"added": "added to the library", "replaced": "replaced the earlier document with this id", "unchanged": "the same content is already in the library"}[res.outcome]
+        if e.unclassified:
+            note += f"; {e.unclassified} clause(s) could not be typed by the rules and are left for a person (they are not guessed)"
+        return PolicyDocumentResult(outcome=res.outcome, document=pview(e), note=note + ". Claims already assessed are not changed: re-assess one from the policy node.")
+
+    @app.post("/policies/reload", response_model=PolicyReloadResult, tags=["policies"], responses={**ERRORS})
+    def reload_policy_documents() -> PolicyReloadResult:
+        r = manager().reload()
+        return PolicyReloadResult(total=r.total, added=r.added, removed=r.removed, changed=r.changed, problems=r.problems)
+
+    @app.post("/claims/{claim_id}/reassess", response_model=ClaimView, tags=["claims"], responses={**ERRORS})
+    def reassess_claim(claim_id: str, from_node: Annotated[str, Query()] = "policy") -> ClaimView:
+        """Run the claim again from `from_node` (default: the policy node, to pick up a policy document added since). Nodes before it are not run; nodes after it whose inputs
+        did not change are skipped. A recommendation waiting at the gate is superseded."""
+        from claimtower.orchestration.registry import PIPELINE
+
+        known(claim_id)
+        if from_node not in PIPELINE:
+            raise HTTPException(422, f"unknown node '{from_node}'; nodes are {', '.join(PIPELINE)}")
+        runner.reassess(claim_id, from_node=from_node)
+        return view(claim_id)
 
     # ------------------------------------------------------------------ the human gate
     @app.post("/claims/{claim_id}/decision", response_model=ClaimView, tags=["human gate"], responses={**ERRORS})
@@ -184,5 +333,29 @@ def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: P
                             data={k: v for k, v in e.data.items() if k != "key"}) for e in runner.events_for(claim_id)]
         return AuditView(claim_id=claim_id, events=events, agents=runner.registry.describe(),
                          human_decisions=[e for e in events if e.kind in ("human_decision", "human_decision_refused")])
+
+    def trail_of(claim_id: str):
+        known(claim_id)
+        if runner.trail is None:
+            raise HTTPException(404, "the audit trail is not enabled on this server")
+        return runner.trail
+
+    @app.get("/claims/{claim_id}/trail", response_model=TrailView, tags=["audit"], responses={**ERRORS})
+    def trail(claim_id: str) -> TrailView:
+        t = trail_of(claim_id)
+        problems = t.verify()
+        recs = [TrailRecordView(seq=r.seq, ts=r.ts, kind=r.kind, hash=r.hash, summary=(f"{r.data['kind']} ({r.data['node']}): {r.data['message']}"[:200] if r.kind == "event"
+                                                                                  else f"patch by {r.data['agent_id']} -> v{r.data['version']}" if r.kind == "state_patch" else "claim created"))
+                for r in t.records(claim_id)]
+        return TrailView(claim_id=claim_id, records=recs, chain_ok=not problems, problems=problems[:10], head=t.head)
+
+    @app.get("/claims/{claim_id}/decision-pack", tags=["audit"], responses={200: {"content": {"text/markdown": {}, "application/pdf": {}}}, **ERRORS})
+    def decision_pack(claim_id: str, format: Annotated[str, Query(pattern="^(md|pdf)$")] = "md") -> Response:
+        t = trail_of(claim_id)
+        from claimtower.audit.explain_pack import build_pack, pack_to_pdf
+        md = build_pack(t, claim_id)
+        if format == "pdf":
+            return Response(pack_to_pdf(md), media_type="application/pdf", headers={"Content-Disposition": f'attachment; filename="decision-pack-{claim_id}.pdf"'})
+        return Response(md, media_type="text/markdown; charset=utf-8", headers={"Content-Disposition": f'inline; filename="decision-pack-{claim_id}.md"'})
 
     return app

@@ -1,0 +1,122 @@
+{
+  "106b03fd58939d0285885f892511585f5dedb4f701c8647ab36db04d1a1c723c": {
+    "input_tokens": 590,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 209,
+    "text": "{\"text\":\"We are assessing claim CLM-0001 (loss on 14 March 2026). To progress the assessment, please reply once with the items below. Clarify the conflict between statements on file: The claimant asserts a sudden burst on the reported loss date, while the plumber reports significant corrosion at the joint and that the joint failed at the corroded section, indicating a gradual deterioration as the failure mechanism; both a sudden accidental burst and a failure due to long-term corrosion cannot both fully explain the cause of loss for coverage purposes.\\n\\nPlease provide: Evidence that the damage began at or immediately before the reported loss date (so that we can answer: Was the water damage sudden and accidental rather than gradual?)\\n\\nPlease provide: Technical evidence of when the leak or corrosion began (so that we can answer: When did the leak or damage begin?)\\n\\nIf an item is not available, please say so. A claims colleague will review your reply.\"}"
+  },
+  "382851bb726f724fa0a2fd1c522fbef6fb70b4c71a078cf5429732c1619e0a84": {
+    "input_tokens": 726,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 26,
+    "text": "{\"assessed\": null, \"non_covered\": [], \"note\": \"\"}"
+  },
+  "4fdc3e9016957db1920e5b2d8f71eab1b0b0424732a714efe058c014d9e59643": {
+    "input_tokens": 1172,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 535,
+    "text": "{\"items\":[{\"text\":\"State whether the corroded kitchen supply pipe joint failure you observed is consistent with a sudden burst on 14 Mar 2026 or with long-term corrosion. Give your opinion on when the corrosion/leak began (date or estimated timeframe) and brief reasons.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "556c02906fa9e18388352dc874cbfa45499ffeea59b88228faa16a2a0f100fbd": {
+    "input_tokens": 256,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 85,
+    "text": "{\"text\":\"The final settlement cannot be calculated until the assessed covered loss and non_covered_items_total are known; therefore no payable amount is shown and none is estimated. Any deduction, cap, or adjustment will be applied when the following are determined: assessed_covered_loss and non_covered_items_total [keep amounts as recorded]. Payable: INR 0.00.\"}"
+  },
+  "62a7b5684913901349bf14baca14dca6cf62a0c2404866afdccf3daaf612b592": {
+    "input_tokens": 563,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 189,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"Determining whether the kitchen supply pipe is a permanent building fixture is a distinct factual question about the nature of the item and is not established by any of the listed standard questions or their evidence.\"}"
+  },
+  "69cbba0ccf4891b86a9f8cf0aa8b03a8cd1cc4517ecbee403cba607d1820555b": {
+    "input_tokens": 862,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 310,
+    "text": "{\"criteria\":[{\"criterion_index\":0,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"No surveyor-assessed cost is provided in the listed facts; only the claimant's/estimate figures appear.\",\"confidence\":0.9},{\"criterion_index\":1,\"verdict\":\"unmet\",\"fact_ids\":[],\"evidence_quote\":\"\",\"rationale\":\"There is an estimate and its scope, but no surveyor scope or survey to reconcile the estimate against is provided in the facts.\",\"confidence\":0.9}]}"
+  },
+  "6d3d81214fec8c917da9fd775f2d7b521f5d67503a718a3fe8e32fc80686a34d": {
+    "input_tokens": 826,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 611,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-DOC-S01-3-observations-1\"\n      ],\n      \"evidence_quote\": \"Surveyor reports: Moisture readings were elevated in the kitchen, the hallway and the adjoining bedroom wall.\",\n      \"rationale\": \"A qualified surveyor explicitly reported elevated moisture in a specific list of areas (kitchen, hallway, adjoining bedroom wall).\",\n      \"confidence\": 0.95\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-DOC-S01-1-loss_description-1\",\n        \"F-DOC-S01-3-observations-1\",\n        \"F-DOC-S01-4-scope\"\n      ],\n      \"evidence_quote\": \"Claimant reports: On 14 March 2026 the kitchen supply pipe burst suddenly and water flooded the kitchen and hallway.\",\n      \"rationale\": \"The claimant directly links the burst pipe to flooding in the kitchen and hallway, but the surveyor's finding of moisture in an adjoining bedroom wall is not explicitly tied to the reported pipe burst and the estimate omits the bedroom.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "88731d8d192629131b52e761f0d13736e86545b26e5c996db6fdd0ae460ec525": {
+    "input_tokens": 776,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 459,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-DOC-S01-2-findings-1\",\n        \"F-DOC-S01-2-findings-2\"\n      ],\n      \"evidence_quote\": \"Plumber reports: Significant corrosion was found at the joint of the kitchen supply pipe.\",\n      \"rationale\": \"A qualified plumber observed significant corrosion and failure at the joint, which is technical evidence of deterioration but gives no timing of when the corrosion began.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"unmet\",\n      \"fact_ids\": [],\n      \"evidence_quote\": \"\",\n      \"rationale\": \"No maintenance or inspection records are provided in the listed facts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "895a2849f81da25ebbe892df930bd30eff5d1f28b1cd6d2307089e40e0a8f2e0": {
+    "input_tokens": 1035,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 449,
+    "text": "{\"conflicts\":[{\"fact_ids_a\":[\"F-DOC-S01-1-loss_description-1\"],\"fact_ids_b\":[\"F-DOC-S01-2-findings-1\",\"F-DOC-S01-2-findings-2\"],\"kind\":\"cause\",\"severity\":\"high\",\"quote_a\":\"Claimant reports: On 14 March 2026 the kitchen supply pipe burst suddenly and water flooded the kitchen and hallway.\",\"quote_b\":\"Plumber reports: Significant corrosion was found at the joint of the kitchen supply pipe.\",\"explanation\":\"The claimant asserts a sudden burst on the reported loss date, while the plumber reports significant corrosion at the joint and that the joint failed at the corroded section, indicating a gradual deterioration as the failure mechanism; both a sudden accidental burst and a failure due to long-term corrosion cannot both fully explain the cause of loss for coverage purposes.\",\"confidence\":0.95}]}"
+  },
+  "9cfdb48e8fc4448abe07535c8ce2c52305004eea3c2a5106353aefdb0e29d39a": {
+    "input_tokens": 1060,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 407,
+    "text": "{\"items\":[{\"text\":\"Please state whether the corrosion at the kitchen supply pipe joint (the failed corroded joint in the kitchen) is consistent with a sudden burst on 14 Mar 2026 or indicates long-term gradual deterioration; state which and why, with your timing opinion.\",\"need_ids\":[0,1,2],\"asks_for\":\"statement\",\"document_type\":\"\"}]}"
+  },
+  "a59da84cf45140e111bc460dbd02ab7e750744ada7f193b7b1407e296068ac67": {
+    "input_tokens": 988,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 143,
+    "text": "{\"conflicts\": []}"
+  },
+  "a883606c6f5ca73b7b5d7bed39b97c61959aedf81ec70dcb7b0bb6c3074d2d73": {
+    "input_tokens": 948,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 79,
+    "text": "{\"conflicts\": []}"
+  },
+  "aaab7b95a7f515830ea73e7cc3c20fcab8f6ed18d374d75db417723151f17c27": {
+    "input_tokens": 1001,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 569,
+    "text": "{\n  \"items\": [\n    {\n      \"text\": \"State whether the moisture in the adjoining bedroom wall is attributable to the 14 Mar 2026 kitchen supply pipe burst; if yes, explain the pathway and confirm the bedroom as an event-affected area.\",\n      \"need_ids\": [\n        0\n      ],\n      \"asks_for\": \"statement\",\n      \"document_type\": \"\"\n    },\n    {\n      \"text\": \"Provide a surveyor-assessed repair scope and itemised cost per room (kitchen, hallway, and bedroom if affected) and reconcile these costs against the estimate lines INR 110,000 and INR 70,000 and total INR 180,000.\",\n      \"need_ids\": [\n        1,\n        2\n      ],\n      \"asks_for\": \"statement\",\n      \"document_type\": \"\"\n    }\n  ]\n}"
+  },
+  "abba7c6a959b3f60a0dfeb3a87dda1cc715870773788d6b1f1cbade3b9dd53f5": {
+    "input_tokens": 559,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 118,
+    "text": "{\"verdict\":\"new\",\"duplicate_of\":\"none\",\"reason\":\"None of the standard questions ask for the date/time the insurer was notified \u2014 this requires distinct evidence (claimant or insurer notification records) about notice timing.\"}"
+  },
+  "b74998f465c788813775de7b8be396f7d4650fec57158342f7a57b8976697744": {
+    "input_tokens": 2250,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1071,
+    "text": "{\n  \"questions\": [\n    {\n      \"text\": \"When was the insurer notified of the loss (date and time)?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"BASE-HOME-1/5.2\"\n      ],\n      \"fact_ids\": [\n        \"F-DOC-S01-1-loss_date\"\n      ],\n      \"evidence_quote\": \"You must tell us about any loss as soon as reasonably possible and give us the documents and information we ask for.\",\n      \"establishing_criteria\": [\n        \"Provide the date/time the insurer received the first notification of this loss\",\n        \"Provide any claim reference or email/sent timestamp showing notification\"\n      ],\n      \"confidence\": 0.9\n    },\n    {\n      \"text\": \"Was the kitchen supply pipe a permanent fixed pipe or fitting forming part of the Buildings?\",\n      \"category\": \"coverage_condition\",\n      \"clause_ids\": [\n        \"BASE-HOME-1/1.1\",\n        \"BASE-HOME-1/2.2\"\n      ],\n      \"fact_ids\": [\n        \"F-DOC-S01-1-loss_description-1\",\n        \"F-DOC-S01-2-findings-1\"\n      ],\n      \"evidence_quote\": \"Buildings means the dwelling at the address shown in the Schedule, including its permanent fixtures, fixed pipes and fittings.\",\n      \"establishing_criteria\": [\n        \"Photograph or surveyor note identifying the burst supply pipe as a fixed/installed pipe within the building fabric\",\n        \"Plumber or installation invoice or property plan showing the pipe is a permanent fixed pipe/fitting\"\n      ],\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "bf5848bc8cec0fbaafe020ac46fe16415803c614df0c3796d578d303d075ba0b": {
+    "input_tokens": 887,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 576,
+    "text": "{\n  \"criteria\": [\n    {\n      \"criterion_index\": 0,\n      \"verdict\": \"met\",\n      \"fact_ids\": [\n        \"F-DOC-S01-2-findings-1\",\n        \"F-DOC-S01-2-findings-2\"\n      ],\n      \"evidence_quote\": \"The joint failed at the corroded section.\",\n      \"rationale\": \"A plumber (qualified person) provided a technical finding that the corroded joint failed, describing the failure mechanism.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"criterion_index\": 1,\n      \"verdict\": \"partly\",\n      \"fact_ids\": [\n        \"F-DOC-S01-1-loss_description-1\",\n        \"F-DOC-S01-2-findings-1\"\n      ],\n      \"evidence_quote\": \"On 14 March 2026 the kitchen supply pipe burst suddenly and water flooded the kitchen and hallway.\",\n      \"rationale\": \"The claimant states the damage began on the reported date, but the plumber's finding of significant corrosion suggests the damage may have developed earlier.\",\n      \"confidence\": 0.7\n    }\n  ]\n}"
+  },
+  "c896e830d5091902772179484f13be95df4e6fd1be81dc3979a72db42d00c22d": {
+    "input_tokens": 1636,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 2924,
+    "text": "{\n  \"links\": [\n    {\n      \"fact_id\": \"F-DOC-S01-1-estimated_loss\",\n      \"question_id\": \"Q-AMOUNT\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Claimant estimates the loss at INR 180,000\",\n      \"rationale\": \"This is the claimant's estimated total and does not itself judge reasonableness.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-1-loss_date\",\n      \"question_id\": \"Q-INFORCE\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Reported date of loss is 14 March 2026\",\n      \"rationale\": \"The fact supplies the loss date but does not state policy status on that date.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-1-loss_date\",\n      \"question_id\": \"Q-SUBLIMIT\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Reported date of loss is 14 March 2026\",\n      \"rationale\": \"The date is provided but whether a sublimit applies depends on endorsement wording, not the date alone.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-1-loss_description-1\",\n      \"question_id\": \"Q-SUDDEN\",\n      \"direction\": \"supporting\",\n      \"evidence_quote\": \"On 14 March 2026 the kitchen supply pipe burst suddenly and water flooded the kitchen and hallway.\",\n      \"rationale\": \"The claimant explicitly describes a sudden pipe burst, which supports the event being sudden and accidental.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-1-loss_description-1\",\n      \"question_id\": \"Q-EXTENT\",\n      \"direction\": \"supporting\",\n      \"evidence_quote\": \"On 14 March 2026 the kitchen supply pipe burst suddenly and water flooded the kitchen and hallway.\",\n      \"rationale\": \"The claimant names the kitchen and hallway as the areas flooded, identifying affected locations.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-2-findings-1\",\n      \"question_id\": \"Q-SUDDEN\",\n      \"direction\": \"contradicting\",\n      \"evidence_quote\": \"Plumber reports: Significant corrosion was found at the joint of the kitchen supply pipe.\",\n      \"rationale\": \"Significant corrosion indicates deterioration over time and points away from a purely sudden event.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-2-findings-1\",\n      \"question_id\": \"Q-START\",\n      \"direction\": \"supporting\",\n      \"evidence_quote\": \"Plumber reports: Significant corrosion was found at the joint of the kitchen supply pipe.\",\n      \"rationale\": \"Corrosion at the joint suggests the deterioration began before the reported loss date.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-2-findings-2\",\n      \"question_id\": \"Q-SUDDEN\",\n      \"direction\": \"contradicting\",\n      \"evidence_quote\": \"Plumber reports: The joint failed at the corroded section.\",\n      \"rationale\": \"Failure at a corroded section implies a progressive degradation cause rather than a purely sudden, unexplained failure.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-2-findings-2\",\n      \"question_id\": \"Q-START\",\n      \"direction\": \"supporting\",\n      \"evidence_quote\": \"Plumber reports: The joint failed at the corroded section.\",\n      \"rationale\": \"Identifying corrosion at the failure site supports the leak or damage originating before the reported loss date.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-3-observations-1\",\n      \"question_id\": \"Q-SUDDEN\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Surveyor reports: Moisture readings were elevated in the kitchen, the hallway and the adjoining bedroom wall.\",\n      \"rationale\": \"Elevated moisture readings show presence of moisture but do not by themselves indicate when the damage began.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-3-observations-1\",\n      \"question_id\": \"Q-EXTENT\",\n      \"direction\": \"supporting\",\n      \"evidence_quote\": \"Surveyor reports: Moisture readings were elevated in the kitchen, the hallway and the adjoining bedroom wall.\",\n      \"rationale\": \"The surveyor identifies specific locations with elevated moisture, confirming affected areas.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-3-observations-2\",\n      \"question_id\": \"Q-SUDDEN\",\n      \"direction\": \"unrelated\",\n      \"evidence_quote\": \"\",\n      \"rationale\": \"Statement that cost has not been assessed is about assessment status and does not bear on whether the damage was sudden.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-3-observations-2\",\n      \"question_id\": \"Q-EXTENT\",\n      \"direction\": \"unrelated\",\n      \"evidence_quote\": \"\",\n      \"rationale\": \"Saying the cost of repair has not been assessed does not identify or limit which areas were affected.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-4-item-1\",\n      \"question_id\": \"Q-AMOUNT\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Estimate line 'Kitchen floor and cabinets' is INR 110,000\",\n      \"rationale\": \"This is an estimate line item and does not by itself confirm reasonableness of the total claim.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-4-item-2\",\n      \"question_id\": \"Q-AMOUNT\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Estimate line 'Hallway flooring and plaster' is INR 70,000\",\n      \"rationale\": \"This is an estimate line item and does not by itself confirm reasonableness of the total claim.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-4-scope\",\n      \"question_id\": \"Q-EXTENT\",\n      \"direction\": \"supporting\",\n      \"evidence_quote\": \"Estimate scope: kitchen and hallway only\",\n      \"rationale\": \"The estimate scope explicitly lists kitchen and hallway as the areas to be repaired, supporting those as the claimed affected areas.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-4-scope\",\n      \"question_id\": \"Q-AMOUNT\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Estimate scope: kitchen and hallway only\",\n      \"rationale\": \"Scope indicates which areas the estimate covers but does not by itself validate the reasonableness of the claimed cost.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"fact_id\": \"F-DOC-S01-4-total_amount\",\n      \"question_id\": \"Q-AMOUNT\",\n      \"direction\": \"neutral\",\n      \"evidence_quote\": \"Estimate total is INR 180,000\",\n      \"rationale\": \"This states the estimated total cost but does not by itself assess whether the amount is reasonable or supported.\",\n      \"confidence\": 0.9\n    }\n  ]\n}"
+  },
+  "cfe7d2b4e6e2b6f8b247f7bb0b030158d8e47c3368acde77ac93dfcdbaaa13c4": {
+    "input_tokens": 933,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 1248,
+    "text": "{\n  \"items\": [\n    {\n      \"text\": \"Provide any maintenance or inspection record for the kitchen supply pipe or the kitchen area showing entries and dates before the leak (who performed it and dates).\",\n      \"need_ids\": [\n        0\n      ],\n      \"asks_for\": \"new_document\",\n      \"document_type\": \"other\"\n    },\n    {\n      \"text\": \"Provide the date and time you first notified the insurer of this loss and any claim reference or the sent timestamp of that notification email.\",\n      \"need_ids\": [\n        1,\n        2\n      ],\n      \"asks_for\": \"information\",\n      \"document_type\": \"\"\n    },\n    {\n      \"text\": \"Upload a clear photograph showing the burst kitchen supply pipe/joint in place within the building fabric (e.g., in-wall or under-sink) including surrounding area for context.\",\n      \"need_ids\": [\n        3\n      ],\n      \"asks_for\": \"new_document\",\n      \"document_type\": \"photo\"\n    },\n    {\n      \"text\": \"Provide the pipe installation invoice or the property plan that shows the kitchen supply pipe as a permanent fixed pipe/fitting within the building.\",\n      \"need_ids\": [\n        4\n      ],\n      \"asks_for\": \"new_document\",\n      \"document_type\": \"invoice\"\n    }\n  ]\n}"
+  },
+  "e828ce4a0067cd5123bada5da3e4570612e76be7f1d4368fca2a1c6973b0114f": {
+    "input_tokens": 550,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 195,
+    "text": "{\"text\":\"We are assessing claim CLM-0001 (loss on 14 March 2026). To progress the assessment, please reply once with the items below and attach any files you have. If an item does not exist, please say so. A claims colleague will review your reply.\\n\\n- Provide any maintenance or inspection record for the kitchen supply pipe or the kitchen area showing entries and dates before the leak (who performed it and dates).\\n- Provide the date and time you first notified the insurer of this loss and any claim reference or the sent timestamp of that notification email.\\n- Upload a clear photograph showing the burst kitchen supply pipe/joint in place within the building fabric (e.g., in-wall or under-sink) including surrounding area for context.\\n- Provide the pipe installation invoice or the property plan that shows the kitchen supply pipe as a permanent fixed pipe/fitting within the building.\"}"
+  },
+  "f882627445795f63a6c06a51a1d213c38751d8ebb1e1184175ae8723bfb969c7": {
+    "input_tokens": 305,
+    "model": "gpt-5-mini-2025-08-07",
+    "output_tokens": 70,
+    "text": "{\"text\":\"We have received claim CLM-0001 (loss on 14 March 2026) and it is being assessed. We have asked you for further information (see our separate request). A claims colleague reviews every claim before anything is decided, and we will write to you again.\"}"
+  }
+}

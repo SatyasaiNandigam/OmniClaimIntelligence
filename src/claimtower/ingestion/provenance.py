@@ -110,7 +110,8 @@ def build_facts(*, claim_id: str, document_id: str, doc_type: str, result: Extra
         version = LLM_VERSION if f.method == "llm" else RULES_VERSION
         base = dict(value=f.value, normalised=f.normalised or f.value, label=f.label, currency=f.currency or "")
         if tpl.split_sentences:
-            for i, sentence in enumerate(split_sentences(f.value), start=1):
+            sentences = [s for piece in f.value.split("\n") for s in split_sentences(piece)]          # a model's list of findings arrives one per line; a rule's text is one line
+            for i, sentence in enumerate(sentences, start=1):
                 emit(f"F-{document_id}-{f.name}-{i}", tpl.proposition.format(**base, sentence=sentence), sentence, f.page, f.region,
                      f.confidence, version, tpl.questions, f.name)
         else:
