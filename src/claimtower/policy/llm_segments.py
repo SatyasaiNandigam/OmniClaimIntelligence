@@ -10,10 +10,13 @@ and verifiable. Typing of the clauses is a separate, already checked step.
 """
 from __future__ import annotations
 
+
 from dataclasses import dataclass, field
 from typing import Any
 
 from pydantic import BaseModel
+
+from claimtower.policy.problem import ThreadLocalProblem
 
 MAX_LINES = 400
 
@@ -39,9 +42,10 @@ def _norm(s: str) -> str:
 
 
 class LLMSegmenter:
+    last_problem = ThreadLocalProblem()                # why the last reading gave nothing; per thread, so documents read in parallel do not mix their reasons
+
     def __init__(self, llm: Any, pack: Any) -> None:
         self._llm, self._pack = llm, pack
-        self.last_problem: str | None = None
 
     def split(self, pages: list[Any], title: str | None = None) -> Marks | None:
         from claimtower.core.llm import load_prompt

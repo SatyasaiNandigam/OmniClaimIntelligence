@@ -83,6 +83,17 @@ class ApiClient:
         """GET /claims/{id}/decision-pack as Markdown (`md`) or PDF (`pdf`)."""
         return self._call("GET", f"/claims/{claim_id}/decision-pack", params={"format": fmt}).content
 
+    # ------------------------------------------------------------------ the mock PAS
+    def pas_policies(self) -> list[dict[str, Any]]:
+        return self._call("GET", "/pas/policies").json()
+
+    def read_schedule(self, filename: str, data: bytes) -> dict[str, Any]:
+        """POST /pas/schedules/read: the proposed PAS record, checked against the document. Nothing is stored."""
+        return self._call("POST", "/pas/schedules/read", files={"file": (filename, data)}).json()
+
+    def register_pas_policy(self, policy: dict[str, Any], replace: bool = False) -> dict[str, Any]:
+        return self._call("POST", "/pas/policies", params={"replace": str(replace).lower()}, json=policy).json()
+
     # ------------------------------------------------------------------ policy library
     def policy_documents(self) -> list[dict[str, Any]]:
         return self._call("GET", "/policies/documents").json()
@@ -90,6 +101,11 @@ class ApiClient:
     def add_policy_document(self, filename: str, data: bytes, *, uploaded_by: str | None = None, document_id: str | None = None, replace: bool = False) -> dict[str, Any]:
         form = {k: v for k, v in {"uploaded_by": uploaded_by, "document_id": document_id}.items() if v}
         return self._call("POST", "/policies/documents", params={"replace": str(replace).lower()}, files={"file": (filename, data)}, data=form or None).json()
+
+    def add_policy_documents(self, files: list[tuple[str, bytes]], *, uploaded_by: str | None = None, replace: bool = False) -> dict[str, Any]:
+        """POST /policies/documents/batch: many wordings and endorsements in one request; one result per file."""
+        return self._call("POST", "/policies/documents/batch", params={"replace": str(replace).lower()}, files=[("files", (n, d)) for n, d in files],
+                          data={"uploaded_by": uploaded_by} if uploaded_by else None).json()
 
     def reload_policies(self) -> dict[str, Any]:
         return self._call("POST", "/policies/reload").json()

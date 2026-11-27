@@ -10,10 +10,13 @@ The policy number and period are only reported (each must also be verbatim text)
 """
 from __future__ import annotations
 
+
 import re
 from typing import Any
 
 from pydantic import BaseModel, Field
+
+from claimtower.policy.problem import ThreadLocalProblem
 
 MIN_CONFIDENCE = 0.6
 MAX_CHARS = 7000
@@ -42,9 +45,10 @@ def safe_id(raw: str) -> str:
 
 
 class LLMIdentityReader:
+    last_problem = ThreadLocalProblem()                # why the last reading gave nothing; per thread, so documents read in parallel do not mix their reasons
+
     def __init__(self, llm: Any, pack: Any) -> None:
         self._llm, self._pack = llm, pack
-        self.last_problem: str | None = None
 
     def read(self, pages: list[Any], n_pages: int = 3) -> tuple[str, str | None, str, str, dict[str, str]] | None:
         """(doc_id, version, evidence quote, kind, details) or None (see `last_problem`)."""

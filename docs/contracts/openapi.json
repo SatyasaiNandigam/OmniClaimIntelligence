@@ -995,6 +995,290 @@
         }
       }
     },
+    "/policies/documents/batch": {
+      "post": {
+        "tags": [
+          "policies"
+        ],
+        "summary": "Add Policy Documents",
+        "description": "Add many policy wordings and endorsements in ONE request. Each file is read like `POST /policies/documents` (the id and version come from inside the document), the files are read in\nparallel, and every file gets its own result: one that is unreadable, or that clashes with a different document of the same id (unless `replace=true`), fails alone and the others are stored.\nClaims already assessed are not changed: re-assess one with POST /claims/{id}/reassess.",
+        "operationId": "add_policy_documents_policies_documents_batch_post",
+        "parameters": [
+          {
+            "name": "replace",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Replace"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_add_policy_documents_policies_documents_batch_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyBatchResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Content Too Large"
+          }
+        }
+      }
+    },
+    "/pas/policies": {
+      "get": {
+        "tags": [
+          "mock PAS"
+        ],
+        "summary": "List Pas Policies",
+        "description": "The policies the mock PAS knows: the synthetic ones and the ones registered through this API.",
+        "operationId": "list_pas_policies_pas_policies_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PasPolicyView"
+                  },
+                  "title": "Response List Pas Policies Pas Policies Get"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "mock PAS"
+        ],
+        "summary": "Register Pas Policy",
+        "description": "Record a policy in the mock PAS (normally the proposal from `POST /pas/schedules/read`, after a person checked it). A policy number that already exists is 409 unless `replace=true`.\nClaims already assessed are not changed: re-assess one with POST /claims/{id}/reassess.",
+        "operationId": "register_pas_policy_pas_policies_post",
+        "parameters": [
+          {
+            "name": "replace",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Replace"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasPolicy"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasRegisterResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          }
+        }
+      }
+    },
+    "/pas/schedules/read": {
+      "post": {
+        "tags": [
+          "mock PAS"
+        ],
+        "summary": "Read Policy Schedule",
+        "description": "Read a policy schedule and PROPOSE the PAS record: policy number, period, endorsements, limits and deductible. Every value is checked against the text of the document and a value\nthat is not in it is left out (see `checks`, `warnings`). NOTHING is stored: look at the proposal, correct it if needed, and send it to `POST /pas/policies`.",
+        "operationId": "read_policy_schedule_pas_schedules_read_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_read_policy_schedule_pas_schedules_read_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScheduleReadResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Content Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/policies/reload": {
       "post": {
         "tags": [
@@ -1503,6 +1787,35 @@
         ],
         "title": "Body_add_policy_document_policies_documents_post"
       },
+      "Body_add_policy_documents_policies_documents_batch_post": {
+        "properties": {
+          "files": {
+            "items": {
+              "type": "string",
+              "format": "binary"
+            },
+            "type": "array",
+            "title": "Files",
+            "description": "Policy wordings and endorsements, as many as needed"
+          },
+          "uploaded_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "files"
+        ],
+        "title": "Body_add_policy_documents_policies_documents_batch_post"
+      },
       "Body_create_claim_with_documents_claims_with_documents_post": {
         "properties": {
           "files": {
@@ -1604,6 +1917,21 @@
           "files"
         ],
         "title": "Body_create_claim_with_documents_claims_with_documents_post"
+      },
+      "Body_read_policy_schedule_pas_schedules_read_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File",
+            "description": "A policy schedule (PDF)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_read_policy_schedule_pas_schedules_read_post"
       },
       "Body_upload_document_claims__claim_id__documents_post": {
         "properties": {
@@ -2950,6 +3278,38 @@
         ],
         "title": "Endorsement"
       },
+      "EndorsementEntry": {
+        "properties": {
+          "endorsement_id": {
+            "type": "string",
+            "title": "Endorsement Id"
+          },
+          "effective_from": {
+            "type": "string",
+            "format": "date",
+            "title": "Effective From"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "endorsement_id",
+          "effective_from"
+        ],
+        "title": "EndorsementEntry"
+      },
       "ErrorDetail": {
         "properties": {
           "detail": {
@@ -3679,6 +4039,243 @@
         ],
         "title": "PageView"
       },
+      "PasPolicy": {
+        "properties": {
+          "policy_no": {
+            "type": "string",
+            "title": "Policy No"
+          },
+          "holder_name": {
+            "type": "string",
+            "title": "Holder Name"
+          },
+          "versions": {
+            "items": {
+              "$ref": "#/components/schemas/PolicyVersion"
+            },
+            "type": "array",
+            "title": "Versions"
+          },
+          "status_history": {
+            "items": {
+              "$ref": "#/components/schemas/StatusSegment"
+            },
+            "type": "array",
+            "title": "Status History"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "policy_no",
+          "holder_name",
+          "versions",
+          "status_history"
+        ],
+        "title": "PasPolicy"
+      },
+      "PasPolicyView": {
+        "properties": {
+          "policy_no": {
+            "type": "string",
+            "title": "Policy No"
+          },
+          "holder_name": {
+            "type": "string",
+            "title": "Holder Name"
+          },
+          "versions": {
+            "type": "integer",
+            "title": "Versions"
+          },
+          "effective_from": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective From"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "base_wording_id": {
+            "type": "string",
+            "title": "Base Wording Id",
+            "default": ""
+          },
+          "endorsements": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Endorsements",
+            "default": []
+          },
+          "schedule": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Schedule",
+            "default": {}
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "synthetic",
+              "registered"
+            ],
+            "title": "Source"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "policy_no",
+          "holder_name",
+          "versions",
+          "source"
+        ],
+        "title": "PasPolicyView",
+        "description": "One policy of the mock policy administration system (PAS)."
+      },
+      "PasRegisterResult": {
+        "properties": {
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "added",
+              "replaced"
+            ],
+            "title": "Outcome"
+          },
+          "policy_no": {
+            "type": "string",
+            "title": "Policy No"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "outcome",
+          "policy_no"
+        ],
+        "title": "PasRegisterResult"
+      },
+      "PolicyBatchItem": {
+        "properties": {
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "added",
+              "replaced",
+              "unchanged",
+              "failed"
+            ],
+            "title": "Outcome"
+          },
+          "document": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PolicyDocumentView"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "type": "integer",
+            "title": "Status",
+            "description": "What the single-file route would have answered for this file: 200 / 201 ok, 409 conflict, 422 unreadable.",
+            "default": 200
+          },
+          "error": {
+            "type": "string",
+            "title": "Error",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "filename",
+          "outcome"
+        ],
+        "title": "PolicyBatchItem"
+      },
+      "PolicyBatchResult": {
+        "properties": {
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/PolicyBatchItem"
+            },
+            "type": "array",
+            "title": "Results"
+          },
+          "added": {
+            "type": "integer",
+            "title": "Added",
+            "default": 0
+          },
+          "replaced": {
+            "type": "integer",
+            "title": "Replaced",
+            "default": 0
+          },
+          "unchanged": {
+            "type": "integer",
+            "title": "Unchanged",
+            "default": 0
+          },
+          "failed": {
+            "type": "integer",
+            "title": "Failed",
+            "default": 0
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "results"
+        ],
+        "title": "PolicyBatchResult",
+        "description": "One result per file, in the order sent. The batch itself succeeds even when some files fail: look at each `outcome`."
+      },
       "PolicyClause": {
         "properties": {
           "clause_id": {
@@ -4069,6 +4666,59 @@
         ],
         "title": "PolicySnapshot"
       },
+      "PolicyVersion": {
+        "properties": {
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "effective_from": {
+            "type": "string",
+            "format": "date",
+            "title": "Effective From"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "base_wording_id": {
+            "type": "string",
+            "title": "Base Wording Id"
+          },
+          "endorsements": {
+            "items": {
+              "$ref": "#/components/schemas/EndorsementEntry"
+            },
+            "type": "array",
+            "title": "Endorsements",
+            "default": []
+          },
+          "schedule": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Schedule",
+            "default": {}
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "effective_from",
+          "base_wording_id"
+        ],
+        "title": "PolicyVersion"
+      },
       "ProposedAction": {
         "properties": {
           "action_id": {
@@ -4336,6 +4986,103 @@
         "title": "RunStatus",
         "description": "Where a claim stands, in the words the API and the UI need."
       },
+      "ScheduleCheckView": {
+        "properties": {
+          "field": {
+            "type": "string",
+            "title": "Field"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "found": {
+            "type": "boolean",
+            "title": "Found"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "field",
+          "value",
+          "found"
+        ],
+        "title": "ScheduleCheckView"
+      },
+      "ScheduleReadResult": {
+        "properties": {
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "policy": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PasPolicy"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/ScheduleCheckView"
+            },
+            "type": "array",
+            "title": "Checks",
+            "default": []
+          },
+          "problems": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Problems",
+            "description": "Why there is no record (nothing could be confirmed from the document).",
+            "default": []
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings",
+            "description": "What to look at before registering, e.g. the base wording is not named.",
+            "default": []
+          },
+          "existing": {
+            "type": "string",
+            "enum": [
+              "none",
+              "synthetic",
+              "registered"
+            ],
+            "title": "Existing",
+            "default": "none"
+          },
+          "read_by": {
+            "type": "string",
+            "enum": [
+              "model",
+              "rules"
+            ],
+            "title": "Read By",
+            "default": "model"
+          }
+        },
+        "type": "object",
+        "required": [
+          "filename"
+        ],
+        "title": "ScheduleReadResult",
+        "description": "What the system read from a policy schedule. Nothing is stored: a person looks at `policy` and its checks, may correct it, and registers it with POST /pas/policies."
+      },
       "SettlementResult": {
         "properties": {
           "status": {
@@ -4575,6 +5322,49 @@
           "after"
         ],
         "title": "StatusChange"
+      },
+      "StatusSegment": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "in_force",
+              "lapsed",
+              "cancelled",
+              "reinstated"
+            ],
+            "title": "Status"
+          },
+          "effective_from": {
+            "type": "string",
+            "format": "date",
+            "title": "Effective From"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "effective_from"
+        ],
+        "title": "StatusSegment"
       },
       "TrailRecordView": {
         "properties": {

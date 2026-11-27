@@ -21,6 +21,7 @@ import json
 import re
 import threading
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -28,6 +29,7 @@ from typing import Any, Literal
 
 import pymupdf
 
+from claimtower.policy.problem import ThreadLocalProblem
 from claimtower.policy.decompose import Decomposition, PolicyDecomposer
 from claimtower.policy.snapshot import PolicyLibrary
 
@@ -84,6 +86,17 @@ class IngestResult:
 
 
 @dataclass
+class BatchItem:
+    """The result for one file of a batch."""
+
+    filename: str
+    outcome: Literal["added", "replaced", "unchanged", "failed"]
+    entry: PolicyEntry | None
+    error: str = ""
+    status: int = 200
+
+
+@dataclass
 class ReloadReport:
     added: list[str] = field(default_factory=list)
     removed: list[str] = field(default_factory=list)
@@ -101,11 +114,12 @@ def read_pages(data: bytes) -> list[_Page]:
 
 
 class IdentityReader:
+    last_problem = ThreadLocalProblem()                # why the last reading gave nothing; per thread, so documents read in parallel do not mix their reasons
+
     def __init__(self, id_patterns: list[str], pages_scanned: int = 2, llm_reader: Any | None = None) -> None:
         self._rx = [re.compile(p, re.IGNORECASE) for p in id_patterns]
         self._n = pages_scanned
         self.llm = llm_reader
-        self.last_problem: str | None = None
 
     @classmethod
     def load(cls, pack: Any, llm: Any | None = None) -> IdentityReader:
@@ -273,27 +287,60 @@ class PolicyDocumentManager:
             raise PolicyDocumentError("this server has no folder for uploaded policy documents")
         with self._lock:
             d, ident, sha = self._decompose(data, filename, given_id=document_id, allow_file_name=False, use_llm=True)
-            existing = self._entries.get(d.doc_id)
-            if existing is not None and existing.sha256 == sha:
-                return IngestResult("unchanged", existing)
-            if existing is not None and not replace:
-                raise PolicyConflict(f"a document with the id '{d.doc_id}' already exists ({existing.source}: {existing.filename}) with different content; "
-                                     "send it with replace=true if the new one is meant to supersede it")
-            (self._uploads / f"{d.doc_id}.pdf").write_bytes(data)
-            index = self._read_index()
-            stamp = self._clock().isoformat()
-            index[d.doc_id] = {"filename": filename, "uploaded_by": uploaded_by, "uploaded_at": stamp, "sha256": sha, "id_from": ident.source, "version": ident.version,
-                               "id_evidence": ident.line, "details": ident.details, "marks": _marks_to(d.marks)}
-            self._index_path().write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")      # type: ignore[union-attr]
-            e = self._entry(d, ident, sha, "uploaded", filename, uploaded_by, stamp)
-            e.replaces_built_in = existing is not None and existing.source == "built-in"
-            self._docs[d.doc_id], self._entries[d.doc_id] = d, e
-            self._publish()
-            return IngestResult("replaced" if existing is not None else "added", e)
+            return self._commit(d, ident, sha, data, filename, uploaded_by, replace)
+
+    def _commit(self, d: Decomposition, ident: Identity, sha: str, data: bytes, filename: str, uploaded_by: str | None, replace: bool) -> IngestResult:
+        """Store one read document (the caller holds the lock). Same content again is `unchanged`; different content under an existing id needs `replace`."""
+        existing = self._entries.get(d.doc_id)
+        if existing is not None and existing.sha256 == sha:
+            return IngestResult("unchanged", existing)
+        if existing is not None and not replace:
+            raise PolicyConflict(f"a document with the id '{d.doc_id}' already exists ({existing.source}: {existing.filename}) with different content; "
+                                 "send it with replace=true if the new one is meant to supersede it")
+        (self._uploads / f"{d.doc_id}.pdf").write_bytes(data)                                   # type: ignore[operator]
+        index = self._read_index()
+        stamp = self._clock().isoformat()
+        index[d.doc_id] = {"filename": filename, "uploaded_by": uploaded_by, "uploaded_at": stamp, "sha256": sha, "id_from": ident.source, "version": ident.version,
+                           "id_evidence": ident.line, "details": ident.details, "marks": _marks_to(d.marks)}
+        self._index_path().write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")      # type: ignore[union-attr]
+        e = self._entry(d, ident, sha, "uploaded", filename, uploaded_by, stamp)
+        e.replaces_built_in = existing is not None and existing.source == "built-in"
+        self._docs[d.doc_id], self._entries[d.doc_id] = d, e
+        self._publish()
+        return IngestResult("replaced" if existing is not None else "added", e)
+
+    def ingest_many(self, files: list[tuple[str, bytes]], *, uploaded_by: str | None = None, replace: bool = False, workers: int = 4) -> list[BatchItem]:
+        """Add several documents at once. The slow part (the model reading each one) runs in parallel and OUTSIDE the lock; the results are then stored one at a time, in the order sent.
+        One bad file never stops the others: each file gets its own result."""
+        if self._uploads is None:
+            raise PolicyDocumentError("this server has no folder for uploaded policy documents")
+
+        def read(item: tuple[str, bytes]) -> tuple[Decomposition, Identity, str] | PolicyDocumentError:
+            try:
+                return self._decompose(item[1], item[0], given_id=None, allow_file_name=False, use_llm=True)
+            except PolicyDocumentError as e:
+                return e
+
+        with ThreadPoolExecutor(max_workers=max(1, min(workers, len(files) or 1))) as pool:
+            read_all = list(pool.map(read, files))
+        out: list[BatchItem] = []
+        for (filename, data), got in zip(files, read_all, strict=True):
+            if isinstance(got, PolicyDocumentError):
+                out.append(BatchItem(filename, "failed", None, str(got), 422))
+                continue
+            d, ident, sha = got
+            try:
+                with self._lock:
+                    r = self._commit(d, ident, sha, data, filename, uploaded_by, replace)
+            except PolicyConflict as e:
+                out.append(BatchItem(filename, "failed", None, str(e), 409))
+                continue
+            out.append(BatchItem(filename, r.outcome, r.entry, "", 200))
+        return out
 
     def entries(self) -> list[PolicyEntry]:
         with self._lock:
             return sorted(self._entries.values(), key=lambda e: e.doc_id)
 
 
-__all__ = ["IdentityReader", "IngestResult", "PolicyConflict", "PolicyDocumentError", "PolicyDocumentManager", "PolicyEntry", "ReloadReport"]
+__all__ = ["BatchItem", "IdentityReader", "IngestResult", "PolicyConflict", "PolicyDocumentError", "PolicyDocumentManager", "PolicyEntry", "ReloadReport"]

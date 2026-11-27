@@ -186,3 +186,70 @@ def test_without_a_manager_the_endpoints_say_so(tmp_path):
     runner = ClaimRunner(build_registry(SETTINGS, force_mock=("intake", "gap", "coverage", "settlement", "action", "audit", "routing")))
     c = TestClient(create_app(runner, store, synthetic_claims=SYNTHETIC / "claims"))
     assert c.get("/policies/documents").status_code == 404 and c.post("/policies/reload").status_code == 404 and ClaimState
+
+
+# ---------------------------------------------------------------------------------------------------------------- many documents in one request
+def batch(c, files, **kw):
+    return c.post("/policies/documents/batch", files=[("files", (n, b, "application/pdf")) for n, b in files], **kw)
+
+
+def test_a_batch_stores_every_good_file_and_reports_each_bad_one_on_its_own(client):
+    c, m = client
+    changed = make_pdf(["Endorsement END-01 | Version 2", "1. Water damage sublimit", "The most we will pay is INR 90,000 for any one claim."])
+    r = batch(c, [("a.pdf", pdf_bytes("END-01")), ("junk.pdf", b"nope"), ("empty.pdf", b""), ("b.pdf", changed)], data={"uploaded_by": "ops-1"})
+    assert r.status_code == 200
+    body = r.json()
+    got = {x["filename"]: x for x in body["results"]}
+    assert [x["filename"] for x in body["results"]] == ["a.pdf", "junk.pdf", "empty.pdf", "b.pdf"]                   # the order sent
+    assert got["a.pdf"]["outcome"] == "added" and got["a.pdf"]["document"]["doc_id"] == "END-01" and got["a.pdf"]["document"]["uploaded_by"] == "ops-1"
+    assert got["junk.pdf"]["outcome"] == "failed" and got["junk.pdf"]["status"] == 422 and got["empty.pdf"]["error"] == "the file is empty"
+    assert got["b.pdf"]["outcome"] == "failed" and got["b.pdf"]["status"] == 409 and "replace" in got["b.pdf"]["error"]    # same id, other content, in the same batch
+    assert (body["added"], body["failed"]) == (1, 3) and "END-01" in {e.doc_id for e in m.entries()}
+
+
+def test_a_second_batch_is_unchanged_and_replace_supersedes(client):
+    c, _ = client
+    assert batch(c, [("x.pdf", pdf_bytes("END-01"))]).json()["added"] == 1
+    assert batch(c, [("y.pdf", pdf_bytes("END-01"))]).json()["unchanged"] == 1
+    changed = make_pdf(["Endorsement END-01 | Version 2", "1. Water damage sublimit", "The most we will pay is INR 90,000 for any one claim."])
+    r = batch(c, [("z.pdf", changed)], params={"replace": "true"}).json()
+    assert r["replaced"] == 1 and r["results"][0]["document"]["version"] == "2"
+
+
+def test_a_batch_reads_many_files_and_refuses_too_many(client):
+    c, m = client
+    names = ["END-01", "END-02", "BASE-HOME-1"]
+    r = batch(c, [(f"{n}.pdf", pdf_bytes(n)) for n in names]).json()
+    assert [x["document"]["doc_id"] for x in r["results"]] == names and r["failed"] == 0
+    assert batch(c, [(f"f{i}.pdf", b"x") for i in range(31)]).status_code == 413
+
+
+def test_the_client_sends_a_batch(client):
+    from claimtower.ui.client import ApiClient
+
+    c, _ = client
+    api = ApiClient(http=c)
+    res = api.add_policy_documents([("one.pdf", pdf_bytes("END-01")), ("bad.pdf", b"nope")], uploaded_by="ops-2")
+    assert (res["added"], res["failed"]) == (1, 1)
+
+
+def test_last_problem_is_kept_per_thread_so_parallel_reads_do_not_mix_their_reasons():
+    import threading
+
+    from claimtower.policy.problem import ThreadLocalProblem
+
+    class Reader:
+        last_problem = ThreadLocalProblem()
+
+    r, seen, gate = Reader(), {}, threading.Barrier(2)
+    assert r.last_problem is None
+
+    def work(name: str) -> None:
+        r.last_problem = f"reason of {name}"
+        gate.wait()                                       # both threads have now set theirs
+        seen[name] = r.last_problem
+
+    threads = [threading.Thread(target=work, args=(n,)) for n in ("a", "b")]
+    [t.start() for t in threads]
+    [t.join() for t in threads]
+    assert seen == {"a": "reason of a", "b": "reason of b"} and r.last_problem is None          # this thread never set one

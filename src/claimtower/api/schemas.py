@@ -8,6 +8,7 @@ from pydantic import BaseModel, Field
 
 from claimtower.core.schemas import ClaimState, DocumentRecord
 from claimtower.core.state_diff import StateDiff
+from claimtower.integrations.mock.data import PasPolicy
 from claimtower.orchestration.graph import RunStatus, VersionInfo
 
 
@@ -156,6 +157,65 @@ class PolicyDocumentView(BaseModel):
 class PolicyDocumentResult(BaseModel):
     outcome: Literal["added", "replaced", "unchanged"]
     document: PolicyDocumentView
+    note: str = ""
+
+
+class PolicyBatchItem(BaseModel):
+    filename: str
+    outcome: Literal["added", "replaced", "unchanged", "failed"]
+    document: PolicyDocumentView | None = None
+    status: int = Field(200, description="What the single-file route would have answered for this file: 200 / 201 ok, 409 conflict, 422 unreadable.")
+    error: str = ""
+
+
+class PolicyBatchResult(BaseModel):
+    """One result per file, in the order sent. The batch itself succeeds even when some files fail: look at each `outcome`."""
+
+    results: list[PolicyBatchItem]
+    added: int = 0
+    replaced: int = 0
+    unchanged: int = 0
+    failed: int = 0
+    note: str = ""
+
+
+class PasPolicyView(BaseModel):
+    """One policy of the mock policy administration system (PAS)."""
+
+    policy_no: str
+    holder_name: str
+    versions: int
+    effective_from: date | None = None
+    effective_to: date | None = None
+    base_wording_id: str = ""
+    endorsements: list[str] = []
+    schedule: dict[str, str] = {}
+    source: Literal["synthetic", "registered"]
+    note: str = ""
+
+
+class ScheduleCheckView(BaseModel):
+    field: str
+    value: str
+    found: bool
+    note: str = ""
+
+
+class ScheduleReadResult(BaseModel):
+    """What the system read from a policy schedule. Nothing is stored: a person looks at `policy` and its checks, may correct it, and registers it with POST /pas/policies."""
+
+    filename: str
+    policy: PasPolicy | None = None
+    checks: list[ScheduleCheckView] = []
+    problems: list[str] = Field([], description="Why there is no record (nothing could be confirmed from the document).")
+    warnings: list[str] = Field([], description="What to look at before registering, e.g. the base wording is not named.")
+    existing: Literal["none", "synthetic", "registered"] = "none"
+    read_by: Literal["model", "rules"] = "model"
+
+
+class PasRegisterResult(BaseModel):
+    outcome: Literal["added", "replaced"]
+    policy_no: str
     note: str = ""
 
 

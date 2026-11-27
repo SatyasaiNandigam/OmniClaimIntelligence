@@ -37,22 +37,25 @@ from fastapi import FastAPI, File, Form, HTTPException, Query, Request, Response
 from fastapi.responses import JSONResponse
 
 from claimtower.api.schemas import (
-    PolicyDocumentResult, PolicyDocumentView, PolicyReloadResult, AuditView, ClaimCreate, ClaimWithDocumentsResult, SkippedFile, ClaimSummary, ClaimView, DocumentDetails, DocumentUploadResult, ErrorDetail, EventView, FieldView, Health, PageView, TrailRecordView, TrailView,
+    PasPolicyView, PasRegisterResult, ScheduleCheckView, ScheduleReadResult, PolicyBatchItem, PolicyBatchResult, PolicyDocumentResult, PolicyDocumentView, PolicyReloadResult, AuditView, ClaimCreate, ClaimWithDocumentsResult, SkippedFile, ClaimSummary, ClaimView, DocumentDetails, DocumentUploadResult, ErrorDetail, EventView, FieldView, Health, PageView, TrailRecordView, TrailView,
 )
 from claimtower.core.schemas import ClaimHeader, ClaimState, DocumentRecord
 from claimtower.core.state import OwnershipViolation
 from claimtower.core.state_diff import StateDiff
 from claimtower.ingestion.loaders import UnsupportedDocument
+from claimtower.integrations.mock.data import PasPolicy
 from claimtower.ingestion.preview import render_highlighted
 from claimtower.ingestion.store import DocumentStore, StoreError
 from claimtower.orchestration.graph import ClaimRunner, RunStatus, VersionInfo
 from claimtower.orchestration.supervisor import HumanDecision
 
 MAX_UPLOAD_BYTES = 20 * 1024 * 1024
+MAX_POLICY_BATCH = 30                                   # policy documents in one batch request
 ERRORS = {404: {"model": ErrorDetail}, 409: {"model": ErrorDetail}, 422: {"model": ErrorDetail}}
 
 
-def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: Path | None = None, max_upload_bytes: int = MAX_UPLOAD_BYTES, policies: Any | None = None) -> FastAPI:
+def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: Path | None = None, max_upload_bytes: int = MAX_UPLOAD_BYTES, policies: Any | None = None,
+               pas: Any | None = None, schedule_reader: Any | None = None) -> FastAPI:
     app = FastAPI(title="Insurance Claim Resolution Control Tower", version="0.1.0",
                   description="Prototype. SYNTHETIC data only. Agents marked `YET TO IMPLEMENT (mock)` return labelled fixtures. "
                               "A human decides every approval, denial and payment; the system only recommends.")
@@ -293,6 +296,87 @@ def create_app(runner: ClaimRunner, store: DocumentStore, *, synthetic_claims: P
         if e.unclassified:
             note += f"; {e.unclassified} clause(s) could not be typed by the rules and are left for a person (they are not guessed)"
         return PolicyDocumentResult(outcome=res.outcome, document=pview(e), note=note + ". Claims already assessed are not changed: re-assess one from the policy node.")
+
+    @app.post("/policies/documents/batch", response_model=PolicyBatchResult, tags=["policies"], responses={**ERRORS, 413: {"model": ErrorDetail}})
+    async def add_policy_documents(files: Annotated[list[UploadFile], File(description="Policy wordings and endorsements, as many as needed", json_schema_extra={"items": {"type": "string", "format": "binary"}})],
+                                   uploaded_by: Annotated[str | None, Form()] = None, replace: Annotated[bool, Query()] = False) -> PolicyBatchResult:
+        """Add many policy wordings and endorsements in ONE request. Each file is read like `POST /policies/documents` (the id and version come from inside the document), the files are read in
+        parallel, and every file gets its own result: one that is unreadable, or that clashes with a different document of the same id (unless `replace=true`), fails alone and the others are stored.
+        Claims already assessed are not changed: re-assess one with POST /claims/{id}/reassess."""
+        from claimtower.policy.manager import PolicyDocumentError
+
+        m = manager()
+        if len(files) > MAX_POLICY_BATCH:
+            raise HTTPException(413, f"at most {MAX_POLICY_BATCH} documents in one request")
+        items: list[tuple[str, bytes]] = []
+        early: dict[int, PolicyBatchItem] = {}
+        for n, f in enumerate(files):
+            data = await f.read(max_upload_bytes + 1)
+            name = f.filename or f"upload-{n + 1}.pdf"
+            if len(data) > max_upload_bytes:
+                early[n] = PolicyBatchItem(filename=name, outcome="failed", status=413, error=f"the file is over {max_upload_bytes // (1024 * 1024)} MB")
+            elif not data:
+                early[n] = PolicyBatchItem(filename=name, outcome="failed", status=422, error="the file is empty")
+            else:
+                items.append((name, data))
+        try:
+            done = iter(m.ingest_many(items, uploaded_by=uploaded_by, replace=replace))
+        except PolicyDocumentError as e:
+            raise HTTPException(422, str(e)) from None
+        results: list[PolicyBatchItem] = []
+        for n in range(len(files)):
+            if n in early:
+                results.append(early[n])
+                continue
+            r = next(done)
+            results.append(PolicyBatchItem(filename=r.filename, outcome=r.outcome, document=pview(r.entry) if r.entry else None, status=r.status, error=r.error))
+        count = {k: sum(1 for r in results if r.outcome == k) for k in ("added", "replaced", "unchanged", "failed")}
+        return PolicyBatchResult(results=results, **count, note="Claims already assessed are not changed: re-assess one from the policy node.")
+
+    # ------------------------------------------------------------------ the mock policy administration system (a real PAS is read-only for us: this is demo set-up)
+    def mock_pas() -> Any:
+        if pas is None or not hasattr(pas, "register_policy") or not pas.can_register():
+            raise HTTPException(404, "policies cannot be registered on this server (it has no mock PAS to write to)")
+        return pas
+
+    @app.get("/pas/policies", response_model=list[PasPolicyView], tags=["mock PAS"], responses={**ERRORS})
+    def list_pas_policies() -> list[PasPolicyView]:
+        """The policies the mock PAS knows: the synthetic ones and the ones registered through this API."""
+        return [PasPolicyView(**p) for p in mock_pas().policies()]
+
+    @app.post("/pas/schedules/read", response_model=ScheduleReadResult, tags=["mock PAS"], responses={**ERRORS, 413: {"model": ErrorDetail}})
+    async def read_policy_schedule(file: Annotated[UploadFile, File(description="A policy schedule (PDF)")]) -> ScheduleReadResult:
+        """Read a policy schedule and PROPOSE the PAS record: policy number, period, endorsements, limits and deductible. Every value is checked against the text of the document and a value
+        that is not in it is left out (see `checks`, `warnings`). NOTHING is stored: look at the proposal, correct it if needed, and send it to `POST /pas/policies`."""
+        from claimtower.integrations.mock.schedule import ScheduleReader
+
+        adapter = mock_pas()
+        data = await file.read(max_upload_bytes + 1)
+        if len(data) > max_upload_bytes:
+            raise HTTPException(413, f"the file is over {max_upload_bytes // (1024 * 1024)} MB")
+        if not data:
+            raise HTTPException(422, "the file is empty")
+        try:
+            p = (schedule_reader or ScheduleReader(None)).read(data, file.filename or "schedule.pdf")
+        except ValueError as e:
+            raise HTTPException(422, str(e)) from None
+        known = {r["policy_no"]: r["source"] for r in adapter.policies()}
+        return ScheduleReadResult(filename=file.filename or "schedule.pdf", policy=p.policy, checks=[ScheduleCheckView(**c.__dict__) for c in p.checks], problems=p.problems,
+                                  warnings=p.warnings, existing=known.get(p.policy.policy_no, "none") if p.policy else "none", read_by=p.source)  # type: ignore[arg-type]
+
+    @app.post("/pas/policies", response_model=PasRegisterResult, status_code=201, tags=["mock PAS"], responses={**ERRORS})
+    def register_pas_policy(policy: PasPolicy, replace: Annotated[bool, Query()] = False) -> PasRegisterResult:
+        """Record a policy in the mock PAS (normally the proposal from `POST /pas/schedules/read`, after a person checked it). A policy number that already exists is 409 unless `replace=true`.
+        Claims already assessed are not changed: re-assess one with POST /claims/{id}/reassess."""
+        from claimtower.integrations.mock.pas_mock import PasConflict, PasRegisterError
+
+        try:
+            outcome = mock_pas().register_policy(policy, replace=replace)
+        except PasConflict as e:
+            raise HTTPException(409, str(e)) from None
+        except PasRegisterError as e:
+            raise HTTPException(422, str(e)) from None
+        return PasRegisterResult(outcome=outcome, policy_no=policy.policy_no, note="Recorded in the mock PAS and in use at once. Claims already assessed are not changed: re-assess one from the policy node.")
 
     @app.post("/policies/reload", response_model=PolicyReloadResult, tags=["policies"], responses={**ERRORS})
     def reload_policy_documents() -> PolicyReloadResult:

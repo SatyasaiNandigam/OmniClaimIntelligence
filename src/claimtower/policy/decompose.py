@@ -24,6 +24,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field, replace
 from typing import Any, Literal, Protocol
 
+from claimtower.policy.problem import ThreadLocalProblem
 from claimtower.core.config import ClauseTypeRule, PolicyStructure
 from claimtower.core.schemas.policy import ClauseType, PolicyClause
 
@@ -105,11 +106,12 @@ class _Draft:
 
 
 class PolicyDecomposer:
+    last_problem = ThreadLocalProblem()                # why the last reading gave nothing; per thread, so documents read in parallel do not mix their reasons
+
     def __init__(self, structure: PolicyStructure, typer: ClauseTyper | None = None, segmenter: Any | None = None) -> None:
         self.cfg = structure
         self.typer = typer
         self.segmenter = segmenter                       # optional model that marks clause headings when the numbering patterns find none (policy/llm_segments.py)
-        self.last_problem: str | None = None
         self._amount_cues = [re.compile(p, re.IGNORECASE) for p in structure.llm_typing.amount_cues]
         self._noise = [re.compile(p, re.IGNORECASE) for p in structure.noise_patterns]
         self._sections = [re.compile(p) for p in structure.section_patterns]

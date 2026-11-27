@@ -55,7 +55,7 @@ def test_the_client_adds_a_policy_document_and_refuses_a_changed_one_unless_repl
 
 def test_the_page_lists_the_library_and_shows_a_document_in_detail(api):
     at = page(api)
-    assert not at.exception and [t.label for t in at.tabs] == ["Library", "Add a document", "Reload"]
+    assert not at.exception and [t.label for t in at.tabs] == ["Library", "Add a document", "Reload", "Policy schedules (mock PAS)"]
     assert {m.label for m in at.metric} == {"Documents", "Built in", "Uploaded", "Clauses left for a person"}
     assert at.selectbox(key="policy_pick").value in {d["doc_id"] for d in api.policy_documents()}
 
@@ -73,3 +73,28 @@ def test_the_page_says_so_when_the_server_cannot_manage_policies(tmp_path):
     bare = ApiClient(http=TestClient(create_app(runner, store, synthetic_claims=SYNTHETIC / "claims")))
     at = page(bare)
     assert not at.exception and "does not manage policy documents" in at.info[0].value
+
+
+def test_the_client_adds_many_policy_documents_in_one_request(api):
+    res = api.add_policy_documents([("a.pdf", (POLICIES / "END-01.pdf").read_bytes()), ("b.pdf", b"nope")], uploaded_by="ops-1")
+    assert (res["added"], res["failed"]) == (1, 1) and [r["outcome"] for r in res["results"]] == ["added", "failed"]
+    assert "END-01" in {d["doc_id"] for d in api.policy_documents()}
+
+
+def test_the_add_tab_takes_many_files(api):
+    at = page(api)
+    assert not at.exception
+    assert any(b.label == "Add to the library" and b.disabled for b in at.button)
+
+
+def test_the_pas_tab_lists_the_policies_and_waits_for_a_schedule(tmp_path):
+    from claimtower.integrations.mock.data import PAS_FILE
+    from claimtower.integrations.mock.pas_mock import MockPasAdapter
+
+    store = DocumentStore(tmp_path / "store")
+    runner = ClaimRunner(build_registry(SETTINGS, document_store=store), settings=SETTINGS)
+    pas = MockPasAdapter(PAS_FILE, tmp_path / "reg.json")
+    with_pas = ApiClient(http=TestClient(create_app(runner, store, synthetic_claims=SYNTHETIC / "claims", pas=pas)))
+    at = page(with_pas)
+    assert not at.exception and any(b.label == "Read the schedule" and b.disabled for b in at.button)
+    assert "Policies in the mock PAS" in " ".join(m.value for m in at.markdown)

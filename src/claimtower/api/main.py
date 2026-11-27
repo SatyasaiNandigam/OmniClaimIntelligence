@@ -25,6 +25,7 @@ from claimtower.integrations.dispatcher import Dispatcher
 from claimtower.ingestion.store import DocumentStore
 from claimtower.orchestration.graph import ClaimRunner
 from claimtower.orchestration.overrides import OverrideStore
+from claimtower.integrations.mock.schedule import ScheduleReader
 
 
 def build_default_app() -> FastAPI:
@@ -43,4 +44,5 @@ def build_default_app() -> FastAPI:
     registry = build_registry(settings, document_store=store, policy_manager=policies, adapters=adapters, dispatcher=dispatcher, overrides=overrides, llm=llm)
     trail = AuditTrail(Path(os.environ.get("CLAIMTOWER_AUDIT") or store.root / "audit-trail.jsonl"))         # persistent when CLAIMTOWER_STORE is set (the default store is temporary)
     runner = ClaimRunner(registry, commit_service=build_commit_service(settings, adapters, dispatcher), overrides=overrides, settings=settings, trail=trail, llm=llm)
-    return create_app(runner, store, synthetic_claims=SYNTHETIC / "claims", policies=policies)
+    schedule_reader = ScheduleReader(llm, settings.pack)                                  # reads a policy schedule for the mock PAS (the model when there is one)
+    return create_app(runner, store, synthetic_claims=SYNTHETIC / "claims", policies=policies, pas=adapters.pas, schedule_reader=schedule_reader)
