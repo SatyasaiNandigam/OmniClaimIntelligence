@@ -62,6 +62,10 @@ class ApiClient:
     def create_claim(self, **body: Any) -> dict[str, Any]:
         return self._call("POST", "/claims", json={k: v for k, v in body.items() if v not in (None, "")}).json()
 
+    def create_claim_with_documents(self, files: list[tuple[str, bytes]], **fields: Any) -> dict[str, Any]:
+        """POST /claims/with-documents: the claim and all its documents in one request, assessed once. `files` is [(filename, bytes)]; the other fields are optional form fields."""
+        return self._call("POST", "/claims/with-documents", files=[("files", (n, d)) for n, d in files], data={k: v for k, v in fields.items() if v not in (None, "")}).json()
+
     def versions(self, claim_id: str) -> list[dict[str, Any]]:
         return self._call("GET", f"/claims/{claim_id}/versions").json()
 

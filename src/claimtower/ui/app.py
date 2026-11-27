@@ -1,44 +1,26 @@
-"""A very simple Streamlit UI over the API (T7.2, first cut). Everything it does goes through `ApiClient`, i.e. through the endpoints in docs/api.md.
+"""The Streamlit UI over the API. Everything it does goes through `ApiClient`, i.e. through the endpoints in docs/api.md.
 
     python scripts/run_api.py        # terminal 1
     python scripts/run_ui.py         # terminal 2   (or: python scripts/run_ui.py --start-api)
 
-Left: the API address, the agents (real or "YET TO IMPLEMENT" mock), the claims, and a form to create one.
-Main: for the selected claim, tabs for the overview, documents, document reader, facts, gaps and scenarios, the assessment and the human decision (issue matrix, calculation trace, approval form), policy, and history.
+A sidebar menu of pages, one job each: Claims (list, open, create from documents) and Claim workspace (one claim's tabs). More pages follow: decision, audit and decision pack, policies.
+The sidebar also holds the API address and the agents.
 """
 from __future__ import annotations
 
-import pandas as pd
 import streamlit as st
 
 from claimtower.ui.client import DEFAULT_URL, ApiClient, ApiError
+from claimtower.ui.common import PHASE_TEXT, STATUS_ICON, client, df, show_error
 from claimtower.ui.components import approval, calc_trace, counterfactual_view, doc_viewer, fact_table, gap_board, issue_matrix
-
-STATUS_ICON = {"established": "✅", "partially_established": "🟡", "possible": "🟠", "unverified": "⚪", "missing": "🔴", "requires_validation": "🟣"}
-PHASE_TEXT = {"awaiting_human_decision": "⏸ waiting for a human decision", "completed": "✔ decided", "halted": "⛔ halted (an agent failed)", "not_started": "not started"}
-SAMPLE_FILES = ["fnol.pdf", "plumber_report.pdf", "surveyor_report.pdf", "estimate.pdf", "invoice.pdf", "claimant_email.pdf"]
-
+from claimtower.ui.views import claims
 
 HIDE_ENTER_HINT = """<style>[data-testid="InputInstructions"] {display: none;}</style>"""     # the "Press Enter to apply" text under every text box
 
 
-def client() -> ApiClient:
-    injected = st.session_state.get("_client")                      # tests inject a client wired to an in-process API
-    if injected is not None:
-        return injected
-    return ApiClient(st.session_state.get("api_url", DEFAULT_URL))
-
-
-def show_error(e: ApiError) -> None:
-    st.error(f"{'Cannot reach the API' if e.status == 0 else f'The API said no ({e.status})'}: {e.message}")
-
-
-def df(rows: list[dict], columns: list[str] | None = None) -> pd.DataFrame:
-    return pd.DataFrame(rows, columns=columns) if rows else pd.DataFrame(columns=columns or [])
-
-
 # ---------------------------------------------------------------------------------------------------- sidebar
-def sidebar(api: ApiClient) -> str | None:
+def sidebar(api: ApiClient) -> bool:
+    """The API address, its health and the agents. False when the API cannot be reached (the page then stops)."""
     st.sidebar.title("Claim Control Tower")
     st.sidebar.caption("Prototype · SYNTHETIC data only")
     st.sidebar.text_input("API address", value=DEFAULT_URL, key="api_url")
@@ -47,42 +29,11 @@ def sidebar(api: ApiClient) -> str | None:
     except ApiError as e:
         show_error(e)
         st.sidebar.info("Start the API first: `python scripts/run_api.py`")
-        return None
+        return False
     st.session_state["low_confidence_below"] = health.get("low_confidence_below")
     with st.sidebar.expander(f"Agents: {len(health['implemented_agents'])} real, {len(health['mock_agents'])} mock"):
         st.dataframe(df(api.agents(), ["node", "status", "task", "will_do"]), hide_index=True, width="stretch")
-
-    claims = api.claims()
-    ids = [c["claim_id"] for c in claims]
-    st.sidebar.subheader("Claims")
-    if st.sidebar.button("Refresh", key="refresh"):
-        st.rerun()
-    default = st.session_state.get("selected_claim")
-    choice = st.sidebar.selectbox("Open a claim", ids, index=ids.index(default) if default in ids else None, placeholder="no claim yet" if not ids else "choose a claim",
-                                  key="claim_choice", format_func=lambda i: f"{i}  ·  {next(c['phase'] for c in claims if c['claim_id'] == i).replace('_', ' ')}")
-    if choice:
-        st.session_state["selected_claim"] = choice
-
-    with st.sidebar.expander("Create a claim", expanded=not ids):
-        if st.session_state.pop("_reset_create", False):                    # clear the boxes after a claim was created (before the widgets exist)
-            st.session_state.update(new_claim_id="", new_policy="", new_loss_date=None, new_desc="", new_demo=False)
-        claim_id = st.text_input("Claim id (optional)", placeholder="CLM-1001", key="new_claim_id")
-        policy_ref = st.text_input("Policy number", placeholder="POL-1013", key="new_policy")
-        loss_date = st.date_input("Loss date", value=None, key="new_loss_date")
-        loss_desc = st.text_input("Loss description", placeholder="Dishwasher inlet hose burst", key="new_desc")
-        demo = st.checkbox("Load the demo documents of this claim id (CLM-0001 to CLM-0005)", key="new_demo")
-        if st.button("Create and run to the gate", key="create_claim"):
-            try:
-                with st.spinner("Running the claim through the agents (up to a minute with the model)…"):
-                    created = api.create_claim(claim_id=claim_id.strip() or None, policy_ref=policy_ref.strip() or None,
-                                               loss_date=loss_date.isoformat() if loss_date else None, loss_type="water_damage" if policy_ref else None,
-                                               loss_description=loss_desc.strip() or None, use_synthetic_documents=demo)
-                st.session_state["selected_claim"] = created["claim_id"]
-                st.session_state["_reset_create"] = True
-                st.rerun()
-            except ApiError as e:
-                show_error(e)
-    return st.session_state.get("selected_claim")
+    return True
 
 
 # ---------------------------------------------------------------------------------------------------- claim tabs
@@ -179,16 +130,12 @@ def history_tab(api: ApiClient, v: dict) -> None:
     st.caption(audit["note"])
 
 
-# ---------------------------------------------------------------------------------------------------- page
-def main() -> None:
-    st.set_page_config(page_title="Claim Control Tower", page_icon="🛡", layout="wide")
-    st.markdown(HIDE_ENTER_HINT, unsafe_allow_html=True)
-    api = client()
-    claim_id = sidebar(api)
-    st.title("Insurance Claim Resolution Control Tower")
-    st.caption("Prototype. SYNTHETIC data only. A human decides every approval, denial and payment: the system only recommends.")
+# ---------------------------------------------------------------------------------------------------- pages
+def workspace(api: ApiClient) -> None:
+    claim_id = st.session_state.get("selected_claim")
+    st.title("Claim workspace")
     if not claim_id:
-        st.info("Create a claim in the sidebar (try the demo claim id **CLM-0001** with *Load the demo documents*), or open one.")
+        st.info("No claim is open. Go to **Claims** in the menu: open a claim, or create one from its documents (the demo claim ids are CLM-0001 to CLM-0005).")
         return
     try:
         v = api.claim(claim_id)
@@ -217,6 +164,29 @@ def main() -> None:
         policy_tab(v)
     with tabs[7]:
         history_tab(api, v)
+
+
+def main() -> None:
+    st.set_page_config(page_title="Claim Control Tower", page_icon="🛡", layout="wide")
+    st.markdown(HIDE_ENTER_HINT, unsafe_allow_html=True)
+    api = client()
+    if not sidebar(api):
+        st.stop()
+    has_claim = bool(st.session_state.get("selected_claim"))
+
+    def workspace_view() -> None:
+        workspace(api)
+
+    workspace_page = st.Page(workspace_view, title="Claim workspace", icon="📂", url_path="workspace", default=has_claim)
+
+    def claims_view() -> None:
+        claims.render(api, lambda: st.switch_page(workspace_page))
+
+    pages = [st.Page(claims_view, title="Claims", icon="🗂", url_path="claims", default=not has_claim), workspace_page]
+    if has_claim:
+        st.sidebar.caption(f"Open claim: **{st.session_state['selected_claim']}**")
+    st.navigation(pages).run()
+    st.caption("Prototype. SYNTHETIC data only. A human decides every approval, denial and payment: the system only recommends.")
 
 
 main()

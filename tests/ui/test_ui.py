@@ -83,7 +83,8 @@ def test_the_page_says_so_when_the_api_is_not_running():
 
 def test_with_no_claim_the_page_explains_how_to_start(api):
     at = page(api)
-    assert not at.exception and "Create a claim in the sidebar" in texts(at) and [b.label for b in at.button] == ["Refresh", "Create and run to the gate"]
+    assert not at.exception and "No claim yet" in texts(at) and [t.label for t in at.tabs] == ["All claims", "New claim"]
+    assert [b.label for b in at.button] == ["Create claim and assess"] and at.button[0].disabled          # nothing to create from yet: no files and no demo box ticked
 
 
 def test_an_open_claim_shows_the_tabs_the_tier_and_the_open_questions(api):
@@ -121,20 +122,26 @@ def test_a_reject_without_a_reason_is_refused_by_the_api_and_shown(api):
     assert "needs a reason" in texts(at) and api.claim("CLM-0002")["status"]["phase"] == "awaiting_human_decision"
 
 
-def test_creating_a_claim_from_the_sidebar_runs_it_and_opens_it(api):
+def test_creating_a_claim_on_the_claims_page_runs_it_and_offers_to_open_it(api):
     at = page(api)
-    next(t for t in at.text_input if t.label == "Claim id (optional)").set_value("CLM-0003")
-    next(c for c in at.checkbox if c.label.startswith("Load the demo documents")).set_value(True)
-    next(b for b in at.button if b.label == "Create and run to the gate").click()
+    next(t for t in at.text_input if t.label == "Claim id").set_value("CLM-0003")
+    next(c for c in at.checkbox if c.label.startswith("No files?")).set_value(True)
+    at.run()                                                                                                   # ticking the box reruns the page and enables the button
+    next(b for b in at.button if b.label == "Create claim and assess").click()
     at.run()
-    assert not at.exception and at.session_state["selected_claim"] == "CLM-0003"
-    assert api.claim("CLM-0003")["status"]["gate"]["reason_codes"] == ["POLICY_NOT_IN_FORCE"] and [t.label for t in at.tabs][0] == "Overview & decision"
+    assert not at.exception and at.session_state["selected_claim"] == "CLM-0003" and "CLM-0003" in " ".join(s.value for s in at.success)
+    assert api.claim("CLM-0003")["status"]["gate"]["reason_codes"] == ["POLICY_NOT_IN_FORCE"]
+    next(b for b in at.button if b.label == "Open it").click()
+    at.run()
+    assert not at.exception and [t.label for t in at.tabs][0] == "Overview & decision"                  # "Open it" lands in the claim workspace
 
 
 def test_creating_a_claim_with_a_bad_id_shows_the_api_message(api):
     at = page(api)
-    next(t for t in at.text_input if t.label == "Claim id (optional)").set_value("x")
-    next(b for b in at.button if b.label == "Create and run to the gate").click()
+    next(t for t in at.text_input if t.label == "Claim id").set_value("x")
+    next(c for c in at.checkbox if c.label.startswith("No files?")).set_value(True)
+    at.run()                                                                                                   # ticking the box reruns the page and enables the button
+    next(b for b in at.button if b.label == "Create claim and assess").click()
     at.run()
     assert not at.exception and "claim_id" in texts(at)
 
@@ -170,12 +177,14 @@ def test_the_press_enter_hint_under_the_text_boxes_is_hidden(api):
 
 def test_the_create_boxes_are_cleared_after_a_claim_is_created_and_the_decision_boxes_are_per_claim(api):
     at = page(api)
-    next(t for t in at.text_input if t.label == "Claim id (optional)").set_value("CLM-0002")
-    next(c for c in at.checkbox if c.label.startswith("Load the demo documents")).set_value(True)
-    next(b for b in at.button if b.label == "Create and run to the gate").click()
+    next(t for t in at.text_input if t.label == "Claim id").set_value("CLM-0002")
+    next(c for c in at.checkbox if c.label.startswith("No files?")).set_value(True)
+    at.run()                                                                                                   # ticking the box reruns the page and enables the button
+    next(b for b in at.button if b.label == "Create claim and assess").click()
     at.run()
     assert not at.exception and at.session_state["selected_claim"] == "CLM-0002"
-    assert next(t for t in at.text_input if t.label == "Claim id (optional)").value == "" and not next(c for c in at.checkbox if c.label.startswith("Load the demo")).value
+    assert next(t for t in at.text_input if t.label == "Claim id").value == "" and not next(c for c in at.checkbox if c.label.startswith("No files?")).value
+    at = page(api, "CLM-0002")                                                                                 # the claim is open: the workspace page
     next(t for t in at.text_input if t.label.startswith("Reason")).set_value("typed for CLM-0002")
     api.create_claim(claim_id="CLM-0004", use_synthetic_documents=True)
     at.session_state["selected_claim"] = "CLM-0004"
@@ -189,3 +198,24 @@ def test_the_mock_warning_appears_when_an_agent_is_still_a_mock(tmp_path, librar
     mocked = ApiClient(http=TestClient(create_app(runner, store, synthetic_claims=SYNTHETIC / "claims")))
     mocked.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
     assert "YET TO IMPLEMENT" in texts(page(mocked, "CLM-0001"))
+
+
+# ------------------------------------------------------------------------------------------------ the Claims page
+def test_the_client_creates_a_claim_from_uploaded_files_in_one_call(api):
+    r = api.create_claim_with_documents([("fnol.pdf", PDF), ("empty.pdf", b"")], claim_id="CLM-9101", uploaded_by="claimant", policy_ref="")
+    assert r["claim"]["claim_id"] == "CLM-9101" and len(r["stored"]) == 1 and [s["filename"] for s in r["skipped"]] == ["empty.pdf"]
+    with pytest.raises(ApiError) as e:
+        api.create_claim_with_documents([("empty.pdf", b"")], claim_id="CLM-9102")
+    assert e.value.status == 422 and not any(c["claim_id"] == "CLM-9102" for c in api.claims())
+
+
+def test_the_claims_page_lists_every_claim_with_counts_and_opens_the_chosen_one(api):
+    api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
+    api.create_claim(claim_id="CLM-0002", use_synthetic_documents=True)
+    at = page(api)
+    assert not at.exception and {m.label: m.value for m in at.metric}["Claims"] == "2"
+    assert {r for r in at.dataframe[0].value["claim"]} == {"CLM-0001", "CLM-0002"}
+    next(s for s in at.selectbox if s.label == "Claim").set_value("CLM-0002")
+    next(b for b in at.button if b.label == "Open claim").click()
+    at.run()
+    assert not at.exception and at.session_state["selected_claim"] == "CLM-0002" and at.tabs[0].label == "Overview & decision"
