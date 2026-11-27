@@ -129,3 +129,19 @@ def test_the_settlement_does_not_deduct_what_the_assessment_already_leaves_out()
     calc = SettlementCalculator(rules_by_version(load_settings().pack.calculation))
     result = SettlementAgent(calc, SETTLEMENT_RULES, MockPasAdapter(), MockPaymentsLedger(), reader=Reader()).run(state).updates["settlement"]
     assert result.status == "calculated" and result.payable == Decimal(244260)          # 254,260 less the 10,000 deductible of POL-1001: nothing else deducted
+
+
+def test_an_amount_the_assessment_says_is_not_included_is_never_deducted_from_it():
+    from claimtower.agents.settlement_inputs import AmountItem, AmountsAnswer, LLMAmountReader
+    from claimtower.core.schemas import Fact
+
+    def fact(fid, p, e=None):
+        return Fact(fact_id=fid, claim_id="C", proposition=p, source_document_id="D", page=1, evidence_text=e or p, evidence_type="neutral", related_question_ids=["Q-AMOUNT"], extraction_confidence=0.9)
+
+    line = "The assessed loss for reinstatement is INR 254,260. The cost of repairing the failed pipe section (plumber's invoice INR 35,000) is not included."
+    facts = [fact("A", "Surveyor assessed the repair cost at INR 254,260", line), fact("U", "Gold taps, not caused by the loss, INR 20,000")]
+    ans = AmountsAnswer(assessed=AmountItem(amount="254,260", fact_id="A", quote="The assessed loss for reinstatement is INR 254,260"),
+                        non_covered=[AmountItem(amount="35,000", fact_id="A", quote="plumber's invoice INR 35,000) is not included"), AmountItem(amount="20,000", fact_id="U", quote="INR 20,000")])
+    a, n, refused = LLMAmountReader.check(ans, facts)
+    assert a.value == Decimal(254260) and n.value == Decimal(20000)                 # the 35,000 stated by the assessment's own fact is refused; a separate fact's real deduction stays
+    assert "already left out" in (refused or "") and n.cites == ["U"]

@@ -124,6 +124,7 @@ class LLMAmountReader:
     def check(ans: AmountsAnswer, facts: Sequence[Fact]) -> tuple[Extracted, Extracted, str | None]:
         by_id = {f.fact_id: f for f in facts}
         refused: list[str] = []
+        assessed_ids = {ans.assessed.fact_id} if ans.assessed is not None else set()
 
         def ok(item: AmountItem, must_say_excluded: bool = False) -> Decimal | None:
             f = by_id.get(item.fact_id)
@@ -137,6 +138,9 @@ class LLMAmountReader:
                 return None
             if must_say_excluded and PRICE_FACT.search(f.fact_id):                                  # a priced line of an estimate or invoice is not 'non-covered' because a model says so
                 refused.append(f"{item.fact_id}: a line item or total of an estimate or invoice is a price, not a statement that the amount is not covered")
+                return None
+            if must_say_excluded and (f.fact_id in assessed_ids or "assessed" in f.proposition.lower()):    # the fact that STATES the assessment cannot also be the source of a deduction from it:
+                refused.append(f"{item.fact_id}: it states the assessed loss; an amount it says is 'not included' is already left out of that loss, not a deduction from it")
                 return None
             return v
 
