@@ -41,6 +41,11 @@ def page(api: ApiClient | None, claim: str | None = None, **state) -> AppTest:
     return at.run()
 
 
+def to_decision(at: AppTest) -> AppTest:
+    next(b for b in at.button if b.label == "Go to the decision").click()          # the form is on the Human decision page
+    return at.run()
+
+
 def texts(at: AppTest) -> str:
     return " ".join([*[e.value for e in at.error], *[w.value for w in at.warning], *[i.value for i in at.info], *[m.value for m in at.markdown], *[c.value for c in at.caption]])
 
@@ -91,16 +96,17 @@ def test_an_open_claim_shows_the_tabs_the_tier_and_the_open_questions(api):
     api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
     at = page(api, "CLM-0001")
     assert not at.exception and not at.error
-    assert [t.label for t in at.tabs] == ["Overview & decision", "Documents", "Document reader", "Facts", "Questions & gaps", "Assessment & decision", "Policy", "History"]
+    assert [t.label for t in at.tabs if t.label not in ("Next steps", "Needs attention")] == ["Overview", "Questions & gaps", "Documents", "Document reader", "Facts", "Assessment", "Policy", "History"]
     m = {x.label: x.value for x in at.metric}
     assert m["Tier"] == "complex" and m["Version"] == "10" and m["Required approver"] == "senior adjuster"
-    assert "YET TO IMPLEMENT" not in texts(at) and "Q-SUDDEN" in texts(at)                                # every agent is real now
+    assert "Q-SUDDEN" in texts(at)                                # every agent is real now
     assert len(at.dataframe) >= 5                                                                    # documents, facts, questions, policy clauses, history, audit
 
 
 def test_the_decision_form_refuses_a_role_that_is_too_low_and_accepts_an_authorised_one(api):
     api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
     at = page(api, "CLM-0001")
+    at = to_decision(at)
     next(s for s in at.selectbox if s.label == "Reviewer role").set_value("adjuster")
     next(b for b in at.button if b.label == "Submit decision").click()
     at.run()
@@ -110,12 +116,13 @@ def test_the_decision_form_refuses_a_role_that_is_too_low_and_accepts_an_authori
     next(b for b in at.button if b.label == "Submit decision").click()
     at.run()
     assert not at.exception and api.claim("CLM-0001")["state"]["resolution_status"] == "approved"
-    assert "decided" in texts(at) or any("decided" in s.value for s in at.subheader)
+    assert any("approved" in x.value for x in at.success)                                           # the page now shows the outcome
 
 
 def test_a_reject_without_a_reason_is_refused_by_the_api_and_shown(api):
     api.create_claim(claim_id="CLM-0002", use_synthetic_documents=True)
     at = page(api, "CLM-0002")
+    at = to_decision(at)
     next(r for r in at.radio if r.label == "Decision").set_value("reject")
     next(b for b in at.button if b.label == "Submit decision").click()
     at.run()
@@ -133,7 +140,7 @@ def test_creating_a_claim_on_the_claims_page_runs_it_and_offers_to_open_it(api):
     assert api.claim("CLM-0003")["status"]["gate"]["reason_codes"] == ["POLICY_NOT_IN_FORCE"]
     next(b for b in at.button if b.label == "Open it").click()
     at.run()
-    assert not at.exception and [t.label for t in at.tabs][0] == "Overview & decision"                  # "Open it" lands in the claim workspace
+    assert not at.exception and [t.label for t in at.tabs][0] == "Overview"                  # "Open it" lands in the claim workspace
 
 
 def test_creating_a_claim_with_a_bad_id_shows_the_api_message(api):
@@ -184,20 +191,12 @@ def test_the_create_boxes_are_cleared_after_a_claim_is_created_and_the_decision_
     at.run()
     assert not at.exception and at.session_state["selected_claim"] == "CLM-0002"
     assert next(t for t in at.text_input if t.label == "Claim id").value == "" and not next(c for c in at.checkbox if c.label.startswith("No files?")).value
-    at = page(api, "CLM-0002")                                                                                 # the claim is open: the workspace page
+    at = to_decision(page(api, "CLM-0002"))                                                                    # the claim is open: its decision page
     next(t for t in at.text_input if t.label.startswith("Reason")).set_value("typed for CLM-0002")
     api.create_claim(claim_id="CLM-0004", use_synthetic_documents=True)
     at.session_state["selected_claim"] = "CLM-0004"
     at.run()
     assert next(t for t in at.text_input if t.label.startswith("Reason")).value == ""                  # a draft reason does not follow you to another claim
-
-
-def test_the_mock_warning_appears_when_an_agent_is_still_a_mock(tmp_path, library):
-    store = DocumentStore(tmp_path / "store")
-    runner = ClaimRunner(build_registry(SETTINGS, document_store=store, policy_library=library, force_mock=("action",)))
-    mocked = ApiClient(http=TestClient(create_app(runner, store, synthetic_claims=SYNTHETIC / "claims")))
-    mocked.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
-    assert "YET TO IMPLEMENT" in texts(page(mocked, "CLM-0001"))
 
 
 # ------------------------------------------------------------------------------------------------ the Claims page
@@ -218,4 +217,31 @@ def test_the_claims_page_lists_every_claim_with_counts_and_opens_the_chosen_one(
     next(s for s in at.selectbox if s.label == "Claim").set_value("CLM-0002")
     next(b for b in at.button if b.label == "Open claim").click()
     at.run()
-    assert not at.exception and at.session_state["selected_claim"] == "CLM-0002" and at.tabs[0].label == "Overview & decision"
+    assert not at.exception and at.session_state["selected_claim"] == "CLM-0002" and at.tabs[0].label == "Overview"
+
+
+def test_the_history_tab_compares_two_versions_as_a_short_table_and_a_list_of_moved_questions(api):
+    api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
+    at = page(api, "CLM-0001")
+    assert not at.exception and "Compare two versions" in " ".join(h.value for h in at.subheader)
+    next(s for s in at.selectbox if s.key == "diff_from_CLM-0001").set_value(1)
+    at.run()
+    assert not at.exception and "field(s) changed" in texts(at)
+    tables = [d.value for d in at.dataframe]
+    assert any(list(t.columns) == ["what", "change"] and len(t) > 3 for t in tables)                       # one readable row per changed field, not a dump of ids
+    assert any(list(t.columns) == ["question", "from", "to"] for t in tables)
+
+
+def test_the_claim_can_be_switched_from_the_sidebar_on_any_page(api):
+    api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
+    api.create_claim(claim_id="CLM-0002", use_synthetic_documents=True)
+    at = page(api, "CLM-0001")
+    assert "**CLM-0001**" in texts(at) and next(s for s in at.sidebar.selectbox if s.label == "Current claim").value == "CLM-0001"
+    next(s for s in at.sidebar.selectbox if s.label == "Current claim").set_value("CLM-0002")
+    at.run()
+    assert not at.exception and at.session_state["selected_claim"] == "CLM-0002" and "**CLM-0002**" in texts(at)
+    at = to_decision(page(api, "CLM-0001"))                                                                  # and on the decision page
+    assert "**CLM-0001**" in texts(at)
+    next(s for s in at.sidebar.selectbox if s.label == "Current claim").set_value("CLM-0002")
+    at.run()
+    assert not at.exception and "**CLM-0002**" in texts(at) and any(b.label == "Submit decision" for b in at.button)        # the decision page follows the switch

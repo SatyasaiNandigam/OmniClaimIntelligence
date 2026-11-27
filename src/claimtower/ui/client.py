@@ -75,6 +75,25 @@ class ApiClient:
     def audit(self, claim_id: str) -> dict[str, Any]:
         return self._call("GET", f"/claims/{claim_id}/audit").json()
 
+    def trail(self, claim_id: str) -> dict[str, Any]:
+        """GET /claims/{id}/trail: the hash-chained audit trail (404 when the server runs without one)."""
+        return self._call("GET", f"/claims/{claim_id}/trail").json()
+
+    def decision_pack(self, claim_id: str, fmt: str = "md") -> bytes:
+        """GET /claims/{id}/decision-pack as Markdown (`md`) or PDF (`pdf`)."""
+        return self._call("GET", f"/claims/{claim_id}/decision-pack", params={"format": fmt}).content
+
+    # ------------------------------------------------------------------ policy library
+    def policy_documents(self) -> list[dict[str, Any]]:
+        return self._call("GET", "/policies/documents").json()
+
+    def add_policy_document(self, filename: str, data: bytes, *, uploaded_by: str | None = None, document_id: str | None = None, replace: bool = False) -> dict[str, Any]:
+        form = {k: v for k, v in {"uploaded_by": uploaded_by, "document_id": document_id}.items() if v}
+        return self._call("POST", "/policies/documents", params={"replace": str(replace).lower()}, files={"file": (filename, data)}, data=form or None).json()
+
+    def reload_policies(self) -> dict[str, Any]:
+        return self._call("POST", "/policies/reload").json()
+
     # ------------------------------------------------------------------ documents
     def documents(self, claim_id: str) -> list[dict[str, Any]]:
         return self._call("GET", f"/claims/{claim_id}/documents").json()

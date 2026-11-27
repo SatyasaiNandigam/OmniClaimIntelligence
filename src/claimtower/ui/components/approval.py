@@ -34,7 +34,7 @@ def render(api: ApiClient, v: dict, show_error) -> None:
         st.info({"completed": "✔ decided", "halted": "⛔ halted (an agent failed)", "not_started": "not started"}.get(status["phase"], status["phase"])
                 + (f" — {state['resolution_status'].replace('_', ' ')}" if status["phase"] == "completed" else ""))
         return
-    st.caption(gate["note"])
+    st.caption("The system only recommends. Approving here pays or denies nothing.")
     qa = state.get("qa_report")
     if qa is not None and qa["passed"]:
         st.caption("✅ Quality checks passed before this reached you.")

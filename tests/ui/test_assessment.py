@@ -33,15 +33,19 @@ def api(tmp_path) -> ApiClient:
     return c
 
 
-def page(api, claim="CLM-0002") -> AppTest:
+def page(api, claim="CLM-0002", decide=False) -> AppTest:
     at = AppTest.from_file(APP, default_timeout=120)
     at.session_state["_client"] = api
     at.session_state["selected_claim"] = claim
-    return at.run()
+    at.run()
+    if decide:                                                                                 # the form is on the Human decision page: reach it as a user does
+        next(b for b in at.button if b.label == "Go to the decision").click()
+        at.run()
+    return at
 
 
 def texts(at) -> str:
-    return " ".join([*[m.value for m in at.markdown], *[c.value for c in at.caption], *[i.value for i in at.info], *[w.value for w in at.warning], *[e.value for e in at.error],
+    return " ".join([*[m.value for m in at.markdown], *[c.value for c in at.caption], *[i.value for i in at.info], *[x.value for x in at.success], *[w.value for w in at.warning], *[e.value for e in at.error],
                      *[h.value for h in at.subheader], *[f"{m.label} {m.value}" for m in at.metric]])
 
 
@@ -99,7 +103,7 @@ def test_a_reason_is_mandatory_for_edit_reject_and_request_more_evidence_but_not
 
 
 def test_an_edit_without_a_reason_is_stopped_in_the_form_and_nothing_is_decided(api):
-    at = page(api)
+    at = page(api, decide=True)
     widget(at, "radio", "Decision").set_value("edit").run()
     at.text_input(key="dec_edit_non_covered_items_total_CLM-0002").set_value("28000")
     at = submit(at)
@@ -107,13 +111,13 @@ def test_an_edit_without_a_reason_is_stopped_in_the_form_and_nothing_is_decided(
 
 
 def test_a_reject_without_a_reason_is_stopped_in_the_form(api):
-    at = page(api)
+    at = page(api, decide=True)
     widget(at, "radio", "Decision").set_value("reject")
     assert "needs a reason" in texts(submit(at)) and api.claim("CLM-0002")["status"]["phase"] == "awaiting_human_decision"
 
 
 def test_an_edit_recalculates_the_engine_and_the_reason_and_the_changed_input_appear_in_the_audit_view(api):
-    at = page(api)
+    at = page(api, decide=True)
     widget(at, "radio", "Decision").set_value("edit").run()
     at.text_input(key="dec_edit_non_covered_items_total_CLM-0002").set_value("28,000")
     widget(at, "text_input", REASON).set_value("the surveyor confirmed a second upgrade")
@@ -122,14 +126,15 @@ def test_an_edit_recalculates_the_engine_and_the_reason_and_the_changed_input_ap
     state = api.claim("CLM-0002")
     assert state["state"]["settlement"]["payable"] == "60000" and state["status"]["phase"] == "awaiting_human_decision"
     t = texts(at)
-    assert "Edits already in force: Non-covered items total = 28000" in t and "Edited by a reviewer at the gate" in t
+    assert "Edits already in force: Non-covered items total = 28000" in t
+    assert "Edited by a reviewer at the gate" in texts(page(api))                                     # and the workspace's calculation says so
     d = api.audit("CLM-0002")["human_decisions"]
     assert d[-1]["data"]["decision"] == "edit" and d[-1]["data"]["reason"] == "the surveyor confirmed a second upgrade" and d[-1]["data"]["edits"] == {"non_covered_items_total": "28000"}
-    assert "Human decisions and overrides" in texts(page(api))
+    assert "Human decisions and overrides" not in texts(page(api))                                  # moved to the Audit & decision pack page
 
 
 def test_the_api_refuses_a_role_that_is_too_low_and_the_form_shows_why(api):
-    at = page(api)
+    at = page(api, decide=True)
     widget(at, "selectbox", "Reviewer role").set_value("adjuster")
     widget(at, "radio", "Decision").set_value("reject").run()
     widget(at, "text_input", REASON).set_value("outside the period")
@@ -138,8 +143,20 @@ def test_the_api_refuses_a_role_that_is_too_low_and_the_form_shows_why(api):
 
 
 def test_an_approval_needs_no_reason_and_closes_the_gate(api):
-    at = page(api)
+    at = page(api, decide=True)
     widget(at, "selectbox", "Reviewer role").set_value("supervisor")
     at = submit(at)
     assert not at.exception and api.claim("CLM-0002")["state"]["resolution_status"] == "approved"
-    assert "decided" in texts(at)
+    assert "Decided" in texts(at) and "Decisions recorded" in texts(at)
+
+
+from claimtower.ui.components.actions import label  # noqa: E402
+
+
+def test_the_proposed_next_steps_are_shown_on_the_overview_and_the_decision_page(api):
+    n = len([a for a in api.claim("CLM-0002")["state"]["proposed_actions"] if a["status"] != "cancelled"])
+    for at in (page(api), page(api, decide=True)):
+        assert not at.exception and "Proposed next steps" in [h.value for h in at.subheader]
+    at = page(api)
+    shown = " ".join(m.value for m in at.markdown) + " ".join(e.label for e in at.expander)
+    assert n == 0 or all(label(a) in shown for a in api.claim("CLM-0002")["state"]["proposed_actions"] if a["status"] != "cancelled")

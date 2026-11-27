@@ -2,9 +2,7 @@
 
 Left: the page picture; choosing a fact jumps to its page and marks where it was read (the box the extractor recorded, or the quoted line found on the page). Documents with no page picture
 (text, e-mail, Word) show the stored text of the page instead. Right: the detected type with the reason, page count, uploader and source, whether the text came from OCR, the source excerpt beside
-the selected finding, the extracted fields with page and confidence (low confidence marked), the duplicate badge and what the agents did with this document.
-
-Honest about what is not there: duplicate detection is not built yet (T6.8), so the badge says "not checked", never "no duplicate". No label accuses anyone of anything.
+the selected finding, the extracted fields with page and confidence (low confidence marked), and what the agents did with this document. No label accuses anyone of anything.
 """
 from __future__ import annotations
 
@@ -14,14 +12,6 @@ import streamlit as st
 from claimtower.ui.client import ApiClient, ApiError
 
 HOW = {"region": "the box recorded when the value was read", "text": "the quoted line, found on the page", "none": "no position could be marked"}
-
-
-def duplicate_badge(state: dict, document_id: str) -> None:
-    hits = [d for d in state.get("duplicate_candidates", []) if document_id in str(d)]
-    if hits:
-        st.warning("Possible duplicate (a candidate for a person to check, not a conclusion): " + "; ".join(str(h.get("matched_fields", h)) for h in hits))
-    else:
-        st.info("Duplicate check: **not done yet** (duplicate detection is T6.8). This is not a statement that there is no duplicate.")
 
 
 def agent_log(api: ApiClient, claim_id: str, doc: dict) -> None:
@@ -91,7 +81,6 @@ def render(api: ApiClient, v: dict) -> None:
             st.warning(f"Page(s) {', '.join(map(str, ocr))} were read by OCR ({d['ocr_engine']}): the text is a transcription, not the original text.")
         if d["ocr_errors"] or d["load_error"]:
             st.error("; ".join([*d["ocr_errors"], *([d["load_error"]] if d["load_error"] else [])]))
-        duplicate_badge(state, doc_id)
         if fact:
             low = d["low_confidence_below"] is not None and fact["extraction_confidence"] < d["low_confidence_below"]
             st.markdown("**Source excerpt**")

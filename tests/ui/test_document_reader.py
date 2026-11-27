@@ -105,12 +105,12 @@ def test_unknown_documents_pages_and_facts_are_not_found_and_a_text_document_has
 
 
 # ---------------------------------------------------------------------------------------------------------------- the tab
-def test_the_reader_shows_the_type_the_reason_the_fields_and_the_duplicate_badge_that_says_not_checked(api):
+def test_the_reader_shows_the_type_the_reason_the_fields_and_and_what_the_agents_did(api):
     at = page(api)
     assert not at.exception and "Document reader" in [t.label for t in at.tabs]
     t = texts(at)
     assert "Typed by" in t and "Fields extracted from this document" in t and "What the agents did" in t
-    assert "Duplicate check: **not done yet**" in t and "not a statement that there is no duplicate" in t
+    assert "uplicate" not in t
 
 
 def test_choosing_a_fact_jumps_to_its_page_and_shows_the_source_excerpt_beside_it(api):

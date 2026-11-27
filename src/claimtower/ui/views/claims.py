@@ -37,8 +37,7 @@ def _claim_list(claims: list[dict], open_claim: Callable[[], None]) -> None:
         st.info("No claim yet. Create one in the **New claim** tab: upload its documents, or load a demo claim.")
         return
     st.dataframe(df([{"claim": c["claim_id"], "status": PHASE_SHORT.get(c["phase"], c["phase"]), "tier": c.get("tier") or "–", "version": c.get("state_version"),
-                      "business status": (c.get("resolution_status") or "–").replace("_", " "), "questions": _questions(c["open_questions"]),
-                      "mock agents": ", ".join(c["mock_agents"])} for c in claims]), hide_index=True, width="stretch")
+                      "business status": (c.get("resolution_status") or "–").replace("_", " "), "questions": _questions(c["open_questions"])} for c in claims]), hide_index=True, width="stretch")
     ids = [c["claim_id"] for c in claims]
     selected = st.session_state.get("selected_claim")
     c1, c2, _ = st.columns([2, 1, 3], vertical_alignment="bottom")

@@ -29,10 +29,21 @@ def render(v: dict, floor: float | None) -> None:
     low = sum(1 for r in data if r[""])
     st.caption(f"{len(data)} facts" + (f", {low} read with low confidence (marked, to be checked against the document)" if low else "")
                + ". Every fact quotes the original document verbatim and was re-checked against it.")
-    st.dataframe(pd.DataFrame(data) if data else pd.DataFrame(columns=["fact"]), hide_index=True, width="stretch")
-    if data:
+    f1, f2, f3 = st.columns([2, 2, 1], vertical_alignment="bottom")
+    docs = sorted({r["document"] for r in data})
+    qs = sorted({q for r in data for q in r["bears on"].split(", ") if q})
+    pick_docs = f1.multiselect("Document", docs, key=f"facts_docs_{k}", placeholder="all documents")
+    pick_qs = f2.multiselect("Bears on question", qs, key=f"facts_qs_{k}", placeholder="all questions")
+    only_low = f3.toggle("Low confidence only", key=f"facts_low_{k}", disabled=not low)
+    shown = [r for r in data if (not pick_docs or r["document"] in pick_docs) and (not pick_qs or set(pick_qs) & set(r["bears on"].split(", "))) and (not only_low or r[""])]
+    if len(shown) != len(data):
+        st.caption(f"Showing {len(shown)} of {len(data)} facts.")
+    st.dataframe(pd.DataFrame(shown) if shown else pd.DataFrame(columns=["fact"]), hide_index=True, width="stretch",
+                 column_config={"proposition": st.column_config.TextColumn(width="large"), "evidence (verbatim)": st.column_config.TextColumn(width="large"),
+                                "confidence": st.column_config.ProgressColumn(min_value=0.0, max_value=1.0, format="%.2f", width="small"), "page": st.column_config.NumberColumn(width="small")})
+    if shown:
         by_id = {f["fact_id"]: f for f in state["facts"]}
-        pick = st.selectbox("Show a fact in its document", [r["fact"] for r in data], key=f"facttable_pick_{k}",
+        pick = st.selectbox("Show a fact in its document", [r["fact"] for r in shown], key=f"facttable_pick_{k}",
                             format_func=lambda i: f"{i}  ·  {by_id[i]['proposition'][:70]}")
         f = by_id[pick]
         st.button("Open in the Document reader tab", key=f"facttable_open_{k}", on_click=open_in_reader, args=(k, f["source_document_id"], pick))

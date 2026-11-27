@@ -84,14 +84,23 @@ def test_the_scenario_rows_and_matrix_say_which_issues_each_scenario_touches():
 
 
 # ---------------------------------------------------------------------------------------------------------------- the page
-def test_the_tab_shows_the_three_kinds_side_by_side_and_the_scenario_table(api):
+def test_the_tab_counts_each_kind_shows_the_cards_with_both_sides_and_the_scenario_table(api):
     at = page(api)
     assert not at.exception
+    m = {x.label: x.value for x in at.metric}
+    assert m["🟣 Conflicting evidence"] == "1" and m["🔴 Missing evidence"] == "1" and m["🟡 Insufficient evidence"] == "1"
     t = texts(at)
-    for needle in ["### 🟣 Conflicting evidence", "### 🔴 Missing evidence", "### 🟡 Insufficient evidence", "### ⚪ Not yet judged", "### ✅ Settled", "**Side A**", "**Side B**",
-                   "**Ask plumber**", "**Ask claimant**", "**Ask surveyor**", "Scenario A", "Scenario B", "Scenario C", "What would resolve this claim?", "Which scenario touches which issue"]:
+    for needle in ["**Side A**", "**Side B**", "**Ask plumber**", "**Ask claimant**", "**Ask surveyor**", "Scenario A", "Scenario B", "Scenario C", "What would resolve this claim?", "Which scenario touches which issue"]:
         assert needle in t, needle
-    assert len(at.dataframe) >= 4                                                              # not yet judged, settled, the matrix, and the other tabs' tables
+    assert "### ⚪ Not yet judged" not in t and "### ✅ Settled" not in t                              # the default view is what needs attention
+
+
+def test_the_other_views_show_what_is_not_yet_judged_and_what_is_settled(api):
+    at = page(api)
+    next(r for r in at.radio if r.key == "gaps_view_CLM-0001").set_value("All")
+    at.run()
+    t = texts(at)
+    assert not at.exception and "### ⚪ Not yet judged" in t and "### ✅ Settled" in t
 
 
 def test_the_scenarios_never_predict_a_decision_and_the_view_says_so(api):
@@ -112,3 +121,13 @@ def test_with_no_scenarios_the_view_explains_why_not_in_two_different_ways():
     s = s01()
     s["counterfactuals"] = []
     assert "re-assess it" in info_of(s)
+
+
+def test_a_settled_question_is_a_card_with_what_establishes_it_and_the_facts_that_prove_it(api):
+    at = page(api)
+    next(r for r in at.radio if r.key == "gaps_view_CLM-0001").set_value("Settled")
+    at.run()
+    assert not at.exception
+    t = texts(at)
+    assert "**What establishes it**" in t and "Rests on" in t and "Q-INFORCE" in t and "Q-SUBLIMIT" in t
+    assert any(e.label.startswith("Evidence behind this question") for e in at.expander)                 # the verbatim facts are one click away
