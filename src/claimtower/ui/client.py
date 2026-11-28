@@ -59,6 +59,10 @@ class ApiClient:
     def claim(self, claim_id: str) -> dict[str, Any]:
         return self._call("GET", f"/claims/{claim_id}").json()
 
+    def reassess(self, claim_id: str, from_node: str = "policy") -> dict[str, Any]:
+        """POST /claims/{id}/reassess: run the claim again from a step, without new documents (a policy document added since, a halted step to retry). Returns the claim."""
+        return self._call("POST", f"/claims/{claim_id}/reassess", params={"from_node": from_node}).json()
+
     def create_claim(self, **body: Any) -> dict[str, Any]:
         return self._call("POST", "/claims", json={k: v for k, v in body.items() if v not in (None, "")}).json()
 

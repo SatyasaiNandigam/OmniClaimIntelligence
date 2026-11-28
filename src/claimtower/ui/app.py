@@ -46,6 +46,16 @@ def sidebar(api: ApiClient) -> bool:
 
 
 # ---------------------------------------------------------------------------------------------------- claim tabs
+def reassess(api: ApiClient, claim_id: str, node: str) -> None:
+    """Run the claim again from `node` and show the result (the page reloads on success)."""
+    try:
+        with st.spinner(f"Re-assessing from {node}…"):
+            api.reassess(claim_id, node)
+        st.rerun()
+    except ApiError as e:
+        show_error(e)
+
+
 def documents_tab(api: ApiClient, v: dict) -> None:
     claim_id = v["claim_id"]
     docs = api.documents(claim_id)
@@ -70,6 +80,15 @@ def documents_tab(api: ApiClient, v: dict) -> None:
                 st.rerun()
             except ApiError as e:
                 show_error(e)
+    with st.container(border=True):
+        st.subheader("Re-assess without new documents")
+        st.caption("Runs the claim again, for example after a policy document was added to the library or when a step failed. A recommendation waiting at the gate is replaced.")
+        nodes = [a["node"] for a in api.agents()]
+        r1, r2 = st.columns([2, 1], vertical_alignment="bottom")
+        start = r1.selectbox("Start from step", nodes, index=nodes.index("policy") if "policy" in nodes else 0, key=f"reassess_node_{claim_id}",
+                             help="Steps before it are not run again; later steps whose inputs did not change are skipped.")
+        if r2.button("Re-assess", key=f"reassess_{claim_id}"):
+            reassess(api, claim_id, start)
     if docs:
         with st.expander("Download an original"):
             pick = st.selectbox("Document", [d["document_id"] for d in docs], format_func=lambda i: next(d["filename"] for d in docs if d["document_id"] == i))
@@ -192,7 +211,7 @@ def workspace(api: ApiClient, open_decision: Callable[[], None]) -> None:
     header.render(v)
     tabs = st.tabs(["Overview", "Questions & gaps", "Documents", "Document reader", "Facts", "Assessment", "Policy", "History"])
     with tabs[0]:
-        overview.render(v, open_decision)
+        overview.render(v, open_decision, lambda node: reassess(api, claim_id, node))
     with tabs[1]:
         gap_board.render(v)
         st.divider()

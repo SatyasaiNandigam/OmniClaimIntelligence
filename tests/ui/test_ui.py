@@ -170,6 +170,7 @@ def test_a_halted_claim_shows_which_agent_failed(api):
     api.create_claim(claim_id="CLM-0001")
     at = page(api, "CLM-0001")
     assert not at.exception and "An agent failed at **evidence**" in texts(at) and "document store is down" in texts(at)
+    assert any(b.label == "Re-assess from evidence" for b in at.button)                                        # the way out of a halt is on the Overview
 
 
 # ------------------------------------------------------------------------------------------------ typing in the boxes
@@ -245,3 +246,17 @@ def test_the_claim_can_be_switched_from_the_sidebar_on_any_page(api):
     next(s for s in at.sidebar.selectbox if s.label == "Current claim").set_value("CLM-0002")
     at.run()
     assert not at.exception and "**CLM-0002**" in texts(at) and any(b.label == "Submit decision" for b in at.button)        # the decision page follows the switch
+
+
+def test_a_claim_can_be_re_assessed_from_the_client_and_from_the_documents_tab(api):
+    api.create_claim(claim_id="CLM-0001", use_synthetic_documents=True)
+    again = api.reassess("CLM-0001", "policy")
+    assert again["claim_id"] == "CLM-0001" and again["status"]["phase"] == "awaiting_human_decision"
+    with pytest.raises(ApiError) as e:
+        api.reassess("CLM-0001", "nowhere")
+    assert e.value.status == 422
+    at = page(api, "CLM-0001")
+    assert not at.exception and at.selectbox(key="reassess_node_CLM-0001").value == "policy"                    # starts from the policy step by default
+    next(b for b in at.button if b.label == "Re-assess").click()
+    at.run()
+    assert not at.exception and api.claim("CLM-0001")["status"]["phase"] == "awaiting_human_decision"

@@ -20,6 +20,7 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, ClassVar
 
 from pydantic import BaseModel
@@ -80,6 +81,7 @@ class GapAgent:
         self._memories: dict[str, GapMemory] = {}            # one memory per claim: an API serves many claims with one agent
         self._last_claim: str | None = None
         self.last_run: GapRun | None = None
+        self._memory_dir: Path | None = None
 
     @property
     def memory(self) -> GapMemory | None:
@@ -93,6 +95,35 @@ class GapAgent:
         else:
             self._memories[value.state.claim_id] = value
             self._last_claim = value.state.claim_id
+
+    # ------------------------------------------------------------------------------------------------ keeping the memory on disk
+    def enable_persistence(self, directory: Path | str) -> None:
+        """Keep each claim's memory in `<directory>/<claim id>.json` (written at the end of every run), so that after a restart with the same folder a re-assessment is incremental again."""
+        self._memory_dir = Path(directory)
+        self._memory_dir.mkdir(parents=True, exist_ok=True)
+
+    def _save_memory(self, mem: GapMemory) -> None:
+        if self._memory_dir is None:
+            return
+        path = self._memory_dir / f"{mem.state.claim_id}.json"
+        tmp = path.with_suffix(".tmp")
+        tmp.write_text(mem.model_dump_json(), encoding="utf-8", newline=chr(10))
+        tmp.replace(path)                                                          # never half-written
+
+    def _load_memory(self, state: ClaimState) -> GapMemory | None:
+        """The memory saved for this claim, if it still describes the claim: its outputs must be exactly the ones the claim holds now. If the server stopped between this agent's run and the
+        save of the claim, the file is AHEAD of the claim and is not used: the run is a full one (slower, never wrong)."""
+        if self._memory_dir is None:
+            return None
+        path = self._memory_dir / f"{state.claim_id}.json"
+        try:
+            mem = GapMemory.model_validate_json(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return None
+        s = mem.state
+        same = (s.open_questions == state.open_questions and s.contradictions == state.contradictions and s.missing_evidence == state.missing_evidence
+                and s.counterfactuals == state.counterfactuals)
+        return mem if same else None
 
     def memory_of(self, claim_id: str) -> GapMemory | None:
         return self._memories.get(claim_id)
@@ -108,7 +139,9 @@ class GapAgent:
         return None
 
     def run(self, state: ClaimState) -> StatePatch:
-        mem = self._memories.get(state.claim_id)
+        mem = self._memories.get(state.claim_id) or self._load_memory(state)
+        if mem is not None and state.claim_id not in self._memories:
+            self._memories[state.claim_id] = mem                                                      # restored from the store
         cold = mem is None
         view = self._snapshot_view(state)
         usable = [f for f in state.facts if f.verification_status != "rejected"]
@@ -188,6 +221,7 @@ class GapAgent:
         new_state = state.model_copy(update=updates)
         diff = diff_gap(state, new_state)
         self.memory = GapMemory(state=new_state, links=links, assessments=list(assessed.values()), request_fingerprints=fingerprints)
+        self._save_memory(self.memory)
         self.last_run = GapRun(cold, affected, sorted(set(order) - affected, key=order.__getitem__), diff, sorted(changed), sorted(set(plan) - changed),
                                sorted(recompute), gen.review_questions, warnings, gen.problems + cf.problems, det.retained, retracted,
                                [f"{a.question_id} (on {', '.join(a.settled_fact_ids)})" for a in assessed.values() if a.settled_on_evidence])

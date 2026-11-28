@@ -2,7 +2,7 @@
 
     python scripts/run_api.py                       # http://127.0.0.1:8000  (interactive docs at /docs, the contract at /openapi.json)
     python scripts/run_api.py --port 8080 --llm     # the Evidence, Gap, Coverage and Settlement agents also use the model (needs LLM_API_KEY in .env)
-    python scripts/run_api.py --store var/store     # keep uploaded documents and the audit trail between runs (claims and events are in memory either way)
+    python scripts/run_api.py --store var/store     # keep everything between runs: documents, policy documents, the audit trail and the assessed claims (start again with the same folder)
 """
 import argparse
 import os

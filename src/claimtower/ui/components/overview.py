@@ -56,7 +56,7 @@ def tabs(state: dict, status: dict, coverage: bool = True) -> None:
                 st.markdown(f"{icon} **{i['issue']}**  " + chr(10) + f"<small>{meaning}</small>", unsafe_allow_html=True)
 
 
-def render(v: dict, open_decision=None) -> None:
+def render(v: dict, open_decision=None, reassess=None) -> None:
     state, status = v["state"], v["status"]
     left, right = st.columns([3, 2], gap="large")
     with left:
@@ -66,6 +66,10 @@ def render(v: dict, open_decision=None) -> None:
                 open_decision()
         elif status["phase"] == "completed":
             st.success(f"Decided: {state['resolution_status'].replace('_', ' ')}.")
+        elif status["phase"] == "halted" and reassess is not None and status.get("paused_at"):
+            st.markdown("**Next step:** fix the cause above (for example add a missing policy document), then run the claim again from the step that failed.")
+            if st.button(f"Re-assess from {status['paused_at']}", type="primary", key="overview_reassess"):
+                reassess(status["paused_at"])
         tabs(state, status, coverage=False)
     with right:
         st.subheader("Where the questions stand")

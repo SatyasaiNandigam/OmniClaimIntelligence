@@ -4,7 +4,8 @@
     python scripts/run_api.py                                                  # the same, with options
 
 Environment (all optional):
-    CLAIMTOWER_STORE   directory for the document store (default: a fresh temporary one, like the in-memory claims it goes with)
+    CLAIMTOWER_STORE   directory for everything the server keeps: documents, policy documents, the audit trail and the assessed claims (state, versions, decisions).
+                       Start again with the same folder and the claims are back. Default: a fresh temporary folder, gone after the run
     CLAIMTOWER_POLICIES  directory for uploaded policy documents (default: <store>/policies; kept between runs only when CLAIMTOWER_STORE is set)
     CLAIMTOWER_LLM     1 = the Evidence, Gap, Coverage, Settlement and Action agents also use the model (needs LLM_API_KEY in .env; only synthetic data is sent)
 """
@@ -23,6 +24,7 @@ from claimtower.core.config import load_settings
 from claimtower.integrations import build_adapters
 from claimtower.integrations.dispatcher import Dispatcher
 from claimtower.ingestion.store import DocumentStore
+from claimtower.orchestration.checkpoints import make_checkpointer
 from claimtower.orchestration.graph import ClaimRunner
 from claimtower.orchestration.overrides import OverrideStore
 from claimtower.integrations.mock.schedule import ScheduleReader
@@ -39,10 +41,15 @@ def build_default_app() -> FastAPI:
         llm = LLMClient.from_settings(settings)
     store = DocumentStore(Path(os.environ.get("CLAIMTOWER_STORE") or tempfile.mkdtemp(prefix="claimtower-store-")))
     adapters, dispatcher = build_adapters(settings), Dispatcher()                         # one claims system and one retrying dispatcher for intake and the commit step
-    overrides = OverrideStore()                                                         # what a reviewer edits at the gate is read by the Settlement agent
+    overrides = OverrideStore(store.root / "overrides.json")                             # what a reviewer edits at the gate is read by the Settlement agent (kept in the store)
     policies = build_policy_manager(settings, Path(os.environ.get("CLAIMTOWER_POLICIES") or store.root / "policies"), llm=llm)        # add or reload policy documents while running
     registry = build_registry(settings, document_store=store, policy_manager=policies, adapters=adapters, dispatcher=dispatcher, overrides=overrides, llm=llm)
     trail = AuditTrail(Path(os.environ.get("CLAIMTOWER_AUDIT") or store.root / "audit-trail.jsonl"))         # persistent when CLAIMTOWER_STORE is set (the default store is temporary)
-    runner = ClaimRunner(registry, commit_service=build_commit_service(settings, adapters, dispatcher), overrides=overrides, settings=settings, trail=trail, llm=llm)
+    runner = ClaimRunner(registry, checkpointer=make_checkpointer("file", store.root / "claims"), commit_service=build_commit_service(settings, adapters, dispatcher), overrides=overrides,
+                         settings=settings, trail=trail, llm=llm)
+    gap = next((s.agent for s in registry if s.node == "gap"), None)
+    if hasattr(gap, "enable_persistence"):
+        gap.enable_persistence(store.root / "gap")                                       # the Gap agent's memory too: a restored claim is re-assessed incrementally
+    runner.restore()                                                                      # claims assessed before a restart with the same store are back (state, versions, decisions)
     schedule_reader = ScheduleReader(llm, settings.pack)                                  # reads a policy schedule for the mock PAS (the model when there is one)
     return create_app(runner, store, synthetic_claims=SYNTHETIC / "claims", policies=policies, pas=adapters.pas, schedule_reader=schedule_reader)

@@ -106,6 +106,34 @@ class ClaimRunner:
             guard.sink = self.supervisor.log_denial
         self.graph = build_graph(registry, self.supervisor, checkpointer)
 
+    def _save(self, claim_id: str) -> None:
+        """Keep the claim on disk when the checkpointer can (a file checkpointer): called when a run, a decision or a re-assessment ends, also when it failed half-way."""
+        save = getattr(self.graph.checkpointer, "save", None)
+        if save is not None:
+            save(claim_id)
+
+    def restore(self) -> list[str]:
+        """After a restart with the same store: take back the claims the checkpointer holds and the run events (from the audit trail). Returns the claim ids, oldest first.
+        What is not kept: the Gap agent's memory of its last run, so the next re-assessment of a restored claim assesses the questions in full (slower, never wrong)."""
+        with self._lock:
+            cp = self.graph.checkpointer
+            held = set(cp.thread_ids()) if hasattr(cp, "thread_ids") else set()
+            if self.trail is not None and len(self.events) == 0:
+                from datetime import datetime
+
+                evs = []
+                for r in self.trail.records(kind="event"):
+                    d = r.data
+                    evs.append(RunEvent(d["seq"], datetime.fromisoformat(r.ts), r.claim_id, d["kind"], d["node"], d["message"], d.get("agent_id"), bool(d.get("mock")),
+                                        d.get("state_version"), dict(d.get("data") or {})))
+                self.events.restore(evs)
+            first = {}
+            for e in self.events.of_kind_all("run_started"):
+                first.setdefault(e.claim_id, e.seq)
+            for cid in sorted(held, key=lambda c: (first.get(c, 10**9), c)):
+                self._claims[cid] = None
+            return self.claims()
+
     @staticmethod
     def _cfg(claim_id: str) -> dict[str, Any]:
         return {"configurable": {"thread_id": claim_id}}          # thread id = claim id: one checkpoint history per claim
@@ -121,7 +149,10 @@ class ClaimRunner:
         self._claims[state.claim_id] = None
         if not state.correlation_id:                                  # written only at claim creation, never by an agent: ids every event and adapter call of this claim
             state = state.model_copy(update={"correlation_id": f"corr-{state.claim_id}"})
-        self.graph.invoke(state, self._cfg(state.claim_id))
+        try:
+            self.graph.invoke(state, self._cfg(state.claim_id))
+        finally:
+            self._save(state.claim_id)
         return self.status(state.claim_id)
 
     def decide(self, claim_id: str, decision: HumanDecision | dict[str, Any]) -> RunStatus:
@@ -131,7 +162,10 @@ class ClaimRunner:
             if "human_gate" not in snap.next:
                 raise ValueError(f"claim {claim_id} is not waiting for a human decision (next: {snap.next or 'finished'})")
             payload = decision.model_dump() if isinstance(decision, HumanDecision) else dict(decision)
-            self.graph.invoke(Command(resume=payload), self._cfg(claim_id))
+            try:
+                self.graph.invoke(Command(resume=payload), self._cfg(claim_id))
+            finally:
+                self._save(claim_id)
             return self.status(claim_id)
 
     def reassess(self, claim_id: str, from_node: str = "evidence") -> RunStatus:
@@ -159,7 +193,10 @@ class ClaimRunner:
                         agent_id="supervisor", state_version=new.state_version, from_node=from_node, superseded_gate=superseded)
         self.supervisor.force[claim_id] = from_node                                     # the node asked for runs even if its inputs look unchanged (the policy system may have)
         self.graph.update_state(cfg, {"resolution_status": "assessing", "state_version": new.state_version}, as_node=before)
-        self.graph.invoke(None, cfg)
+        try:
+            self.graph.invoke(None, cfg)
+        finally:
+            self._save(claim_id)
         return self.status(claim_id)
 
     # ------------------------------------------------------------------ read
