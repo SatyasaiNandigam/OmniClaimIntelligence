@@ -69,6 +69,11 @@ def _norm(s: str) -> str:
     return " ".join(s.split())
 
 
+def is_sum(s: str) -> bool:
+    """A sum of money ('INR 3,200,000', '10,000', '₹4500000'), as opposed to words that happen to contain a number ('as per wording clause 5.1')."""
+    return re.fullmatch(r"(?:INR|Rs\.?|₹)?\s*[0-9][0-9,]*(?:\.[0-9]+)?", s.strip(), re.I) is not None
+
+
 def _digits(s: str) -> str:
     return re.sub(r"[^0-9]", "", s)
 
@@ -103,7 +108,7 @@ def date_in_text(d: date, text: str) -> bool:
     if d.isoformat() in t or f"{d.day:02d}/{d.month:02d}/{d.year}" in t or f"{d.day}/{d.month}/{d.year}" in t:
         return True
     month = MONTHS[d.month - 1]
-    return re.search(rf"\b{d.day}(?:st|nd|rd|th)?\b", t) is not None and str(d.year) in t and (month in t or month[:3] in t)
+    return re.search(rf"\b0?{d.day}(?:st|nd|rd|th)?\b", t) is not None and str(d.year) in t and (month in t or month[:3] in t)
 
 
 def _text_of(data: bytes) -> str:
@@ -191,15 +196,25 @@ class ScheduleReader:
             ends.append(EndorsementEntry(endorsement_id=_norm(e.id), effective_from=eff or start or date.min))
         schedule: dict[str, str] = {}
         for m in a.amounts:
-            name, digits = re.sub(r"\W+", "_", m.name.strip().lower()).strip("_"), _digits(m.value)
-            ok = bool(name and digits) and any(_digits(n) == digits for n in re.findall(r"\d[\d,]*", flat))
-            out.checks.append(Check(name or "amount", digits, ok, "" if ok else "the amount is not in the document"))
+            name, raw = re.sub(r"\W+", "_", m.name.strip().lower()).strip("_"), _norm(m.value)
+            if not name or not raw:
+                continue
+            if is_sum(raw):                                      # a sum: kept as digits, and the digits must be in the document
+                digits = _digits(raw)
+                ok = any(_digits(n) == digits for n in re.findall(r"\d[\d,]*", flat))
+                value, shown = digits, digits
+            else:                                                # words ("as per wording clause 5.1"): kept as written, and the words must be in the document
+                ok = raw.lower() in low
+                value, shown = raw, raw
+            out.checks.append(Check(name, shown, ok, "" if ok else "not found in the document"))
             if ok:
-                schedule[name] = digits
+                schedule[name] = value
             else:
-                out.warnings.append(f"the amount '{m.name} = {m.value}' was reported but is not in the document: left out")
+                out.warnings.append(f"'{m.name} = {m.value}' was reported but is not in the document: left out")
         if "standard_deductible" not in schedule:
-            out.warnings.append("no standard deductible is stated: the calculation will need it")
+            out.warnings.append("the schedule states no standard deductible: the calculation will look for it in the wording")
+        elif not is_sum(schedule["standard_deductible"]):
+            out.warnings.append(f"the schedule gives the deductible in words ('{schedule['standard_deductible']}'): the calculation will read it from the wording")
         if out.problems or start is None or end is None:
             return out
         out.policy = PasPolicy(policy_no=number, holder_name=holder or "(not stated)",

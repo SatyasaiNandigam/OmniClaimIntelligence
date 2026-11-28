@@ -63,6 +63,7 @@ class GapRun:
     problems: list[str] = field(default_factory=list)
     retained_contradictions: list[str] = field(default_factory=list)       # earlier conflicts kept: no checked evidence resolved them
     retracted_contradictions: list[str] = field(default_factory=list)      # earlier conflicts a new fact resolved, with the explanation
+    settled_on_evidence: list[str] = field(default_factory=list)           # questions the facts together answered although a listed example was not met (with the facts)
 
 
 class GapAgent:
@@ -188,7 +189,8 @@ class GapAgent:
         diff = diff_gap(state, new_state)
         self.memory = GapMemory(state=new_state, links=links, assessments=list(assessed.values()), request_fingerprints=fingerprints)
         self.last_run = GapRun(cold, affected, sorted(set(order) - affected, key=order.__getitem__), diff, sorted(changed), sorted(set(plan) - changed),
-                               sorted(recompute), gen.review_questions, warnings, gen.problems + cf.problems, det.retained, retracted)
+                               sorted(recompute), gen.review_questions, warnings, gen.problems + cf.problems, det.retained, retracted,
+                               [f"{a.question_id} (on {', '.join(a.settled_fact_ids)})" for a in assessed.values() if a.settled_on_evidence])
         return StatePatch(agent_id=self.agent_id, updates=updates, rationale=self._rationale(self.last_run, bool(new_facts)))
 
     # ------------------------------------------------------------------------------------------------
@@ -206,6 +208,8 @@ class GapAgent:
             parts.append(f"earlier contradictions kept (nothing resolved them): {', '.join(r.retained_contradictions)}")
         if r.retracted_contradictions:
             parts.append(f"earlier contradictions resolved by new evidence: {'; '.join(r.retracted_contradictions)}")
+        if r.settled_on_evidence:
+            parts.append(f"settled on the evidence as a whole (a listed example was not met word for word): {', '.join(r.settled_on_evidence)}")
         if r.review_questions:
             parts.append(f"REVIEW (classifier abstained, a person decides): {', '.join(r.review_questions)}")
         if r.warnings:

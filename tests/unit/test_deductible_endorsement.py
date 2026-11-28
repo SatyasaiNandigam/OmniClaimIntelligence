@@ -145,3 +145,62 @@ def test_an_amount_the_assessment_says_is_not_included_is_never_deducted_from_it
     a, n, refused = LLMAmountReader.check(ans, facts)
     assert a.value == Decimal(254260) and n.value == Decimal(20000)                 # the 35,000 stated by the assessment's own fact is refused; a separate fact's real deduction stays
     assert "already left out" in (refused or "") and n.cites == ["U"]
+
+
+# ---------------------------------------------------------------------------------------------------------------- the schedule only refers to the wording
+WORDING = clause("W/5.1", "5.1 The Deductible is INR 10,000 for each claim.")
+SNAP_WORDING = PolicySnapshot(policy_id="P", version="v1", effective_from=date(2026, 1, 1), clauses=[WORDING, NEW, OLD],
+                              endorsements=[Endorsement(endorsement_id="E-02", title="t", effective_from=date(2026, 9, 1), clause_ids=["E-02/a", "E-02/b"])])
+
+
+def test_schedule_values_are_a_sum_or_words_and_the_wording_clauses_are_those_no_endorsement_owns():
+    from claimtower.agents.settlement_inputs import schedule_number, wording_deductible_candidates
+
+    assert schedule_number({"standard_deductible": "10,000"}, "standard_deductible") == (Decimal(10000), None)
+    assert schedule_number({"standard_deductible": "as per wording clause 5.1"}, "standard_deductible") == (None, "as per wording clause 5.1")
+    assert schedule_number({}, "standard_deductible") == (None, None) and schedule_number(None, "x") == (None, None)
+    assert [c.clause_id for c in wording_deductible_candidates(SNAP_WORDING)] == ["W/5.1"] and wording_deductible_candidates(None) == []
+
+
+def _agent(schedule, reader=None):
+    from claimtower.agents.settlement import SettlementAgent
+    from claimtower.composition import SETTLEMENT_RULES
+    from claimtower.core.config import load_settings
+    from claimtower.integrations.mock.claims_mock import MockPaymentsLedger
+    from claimtower.settlement.engine import SettlementCalculator
+    from claimtower.settlement.rules_loader import rules_by_version
+
+    class Sched:
+        def get_schedule(self, policy_no, as_of):
+            return schedule
+
+    return SettlementAgent(SettlementCalculator(rules_by_version(load_settings().pack.calculation)), SETTLEMENT_RULES, Sched(), MockPaymentsLedger(), deductible_reader=reader)
+
+
+class WordingReader:
+    def __init__(self):
+        self.offered = None
+
+    def read(self, cands, loss_date, standard):
+        self.offered = [c.clause_id for c in cands]
+        return DeductibleReader.check(DeductibleAnswer(amount="10,000", clause_id="W/5.1", quote="The Deductible is INR 10,000 for each claim"), cands)
+
+
+def test_a_schedule_that_refers_to_the_wording_gets_its_deductible_from_the_wording_clause():
+    r = WordingReader()
+    s = _state().model_copy(update={"policy_snapshot": SNAP_WORDING.model_copy(update={"endorsements": [], "clauses": [WORDING]})})              # no endorsement: the wording alone
+    inputs, parts, notes = _agent({"standard_deductible": "as per wording clause 5.1", "building_limit": "2000000"}, r).extract(s)
+    assert r.offered == ["W/5.1"] and inputs.applicable_deductible == Decimal(10000) and parts["applicable_deductible"].cites == ["W/5.1"] and parts["applicable_deductible"].review
+
+
+def test_without_a_model_a_schedule_that_refers_to_the_wording_leaves_the_deductible_unknown_with_the_reason():
+    s = _state().model_copy(update={"policy_snapshot": SNAP_WORDING.model_copy(update={"endorsements": [], "clauses": [WORDING]})})
+    inputs, _, notes = _agent({"standard_deductible": "as per wording clause 5.1", "building_limit": "2000000"}).extract(s)
+    assert inputs.applicable_deductible is None and any("refers to the wording" in n and "clause 5.1" in n for n in notes)
+
+
+def test_a_schedule_figure_is_never_replaced_by_the_wording_and_the_model_is_not_asked():
+    r = WordingReader()
+    s = _state().model_copy(update={"policy_snapshot": SNAP_WORDING.model_copy(update={"endorsements": [], "clauses": [WORDING]})})
+    inputs, parts, _ = _agent({"standard_deductible": "10000", "building_limit": "2000000"}, r).extract(s)
+    assert r.offered is None and inputs.applicable_deductible == Decimal(10000) and parts["applicable_deductible"].how == "schedule"

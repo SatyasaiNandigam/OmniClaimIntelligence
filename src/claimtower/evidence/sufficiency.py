@@ -21,7 +21,7 @@ A person asked to resolve an abstained question sees which criteria were unclear
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Literal, Protocol
 
 from claimtower.core.config import SufficiencyConfig
@@ -59,6 +59,17 @@ class JudgeOutcome:
     detail: str = ""
 
 
+@dataclass(frozen=True)
+class PurposeVerdict:
+    """The model's answer to "do the facts together answer what the question is for?", after the checks (None settled = no, with the reason)."""
+
+    settled: bool
+    fact_ids: tuple[str, ...] = ()
+    quote: str = ""
+    rationale: str = ""
+    confidence: float | None = None
+
+
 class CriterionJudge(Protocol):
     def judge(self, question: OpenQuestion, criteria: dict[int, str], facts: Sequence[Fact], directions: dict[str, str],
               sources: dict[str, str]) -> JudgeOutcome: ...
@@ -75,6 +86,9 @@ class QuestionAssessment:
     noted_contradiction_ids: tuple[str, ...]      # contradictions below the blocking severity: noted, not blocking
     abstained: bool
     reason: str
+    settled_on_evidence: bool = False             # row P1: the facts together answered the question although a listed example was not met word for word
+    settled_fact_ids: tuple[str, ...] = ()
+    settled_quote: str = ""
 
     def unresolved(self) -> list[CriterionAssessment]:
         """The criteria that still need evidence (what T4.5 turns into a request): everything not met."""
@@ -117,9 +131,27 @@ class SufficiencyClassifier:
             q_facts = [usable[i] for i in directions]
             sources = {f.fact_id: documents[f.source_document_id] for f in q_facts if documents and f.source_document_id in documents}
             criteria = self._assess_criteria(q, q_facts, directions, sources, snapshot, result)
-            result.assessments.append(self._decide(q, criteria, directions, [c for c in contradictions if c.question_id == q.question_id],
-                                                   (modes or {}).get(q.question_id, "all")))
+            a = self._decide(q, criteria, directions, [c for c in contradictions if c.question_id == q.question_id], (modes or {}).get(q.question_id, "all"))
+            result.assessments.append(self._settle(q, a, q_facts, directions, sources, result))
         return result
+
+    # ------------------------------------------------------------------ settling on the evidence as a whole (config `purpose`)
+    def _settle(self, q: OpenQuestion, a: QuestionAssessment, facts: Sequence[Fact], directions: dict[str, str], sources: dict[str, str],
+                result: SufficiencyResult) -> QuestionAssessment:
+        """A question about HOW something happened (its category is listed in `purpose.categories`) that its criteria only partly establish gets a second look: do the facts TOGETHER answer
+        what it is for? Only a question with evidence for it and an `insufficient` gap qualifies: never one with a blocking contradiction, one the model could not judge (abstained), or one
+        with nothing to go on (missing). A fact that points the other way stops it, and so does a model that is down: the status stays as the decision table gave it."""
+        p = self.cfg.purpose
+        settle = getattr(self.judge, "settle", None)
+        if not (p.enabled and settle is not None and q.category in p.categories and a.gap_type == "insufficient" and not a.abstained and facts):
+            return a
+        if any(d == "contradicting" for d in directions.values()):
+            return a
+        v = settle(q, a.criteria, facts, directions, sources)
+        if v is None or not v.settled:
+            return a
+        return replace(a, status="established", gap_type=None, row_id="P1-settled-on-evidence", abstained=False, settled_on_evidence=True, settled_fact_ids=v.fact_ids,
+                       settled_quote=v.quote, reason=f"row P1: the facts together answer the question: {v.rationale}")
 
     # ------------------------------------------------------------------ criteria
     def _assess_criteria(self, q: OpenQuestion, facts: Sequence[Fact], directions: dict[str, str], sources: dict[str, str],

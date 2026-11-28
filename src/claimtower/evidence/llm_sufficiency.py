@@ -20,7 +20,7 @@ from pydantic import BaseModel, Field
 
 from claimtower.core.config import Pack, SufficiencyConfig
 from claimtower.core.schemas import Fact, OpenQuestion
-from claimtower.evidence.sufficiency import VERDICTS, CriterionAssessment, JudgeOutcome, RefusedVerdict
+from claimtower.evidence.sufficiency import VERDICTS, CriterionAssessment, JudgeOutcome, PurposeVerdict, RefusedVerdict
 
 
 class VerdictItem(BaseModel):
@@ -34,6 +34,14 @@ class VerdictItem(BaseModel):
 
 class VerdictAnswer(BaseModel):
     criteria: list[VerdictItem] = []
+
+
+class PurposeAnswer(BaseModel):
+    settled: bool = False
+    fact_ids: list[str] = []
+    evidence_quote: str = ""
+    rationale: str = ""
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
 
 
 def _norm(s: str) -> str:
@@ -65,6 +73,30 @@ class LLMCriterionJudge:
         fb = "\n".join(f"- {f.fact_id} [{directions.get(f.fact_id, 'neutral')}] (from the {sources.get(f.fact_id, 'unknown')} document): "
                        f"{_norm(f.proposition)[:self.cfg.max_fact_chars]}" for f in facts)
         return load_prompt("sufficiency_check", self._pack, question_text=f"{question.question_id}: {question.text}", criteria_block=cb, facts_block=fb)
+
+    def settle(self, question: OpenQuestion, criteria: Sequence[CriterionAssessment], facts: Sequence[Fact], directions: dict[str, str],
+               sources: dict[str, str] | None = None) -> PurposeVerdict | None:
+        """Do the facts together answer what the question is for? None when the model is down or its answer fails a check; otherwise a verdict (settled or not). Checked, never trusted:
+        `settled` needs cited facts among those offered, a verbatim quote, a rationale within the limit and a confidence that reaches `purpose.min_confidence`."""
+        from claimtower.core.llm import load_prompt
+
+        cfg = self.cfg.purpose
+        cb = "\n".join(f"- {c.criterion}: {c.verdict} ({c.rationale})" for c in criteria)
+        fb = "\n".join(f"- {f.fact_id} [{directions.get(f.fact_id, 'neutral')}] (from the {(sources or {}).get(f.fact_id, 'unknown')} document): "
+                       f"{_norm(f.proposition)[:self.cfg.max_fact_chars]}" for f in facts)
+        try:
+            ans = self._llm.structured(PurposeAnswer, load_prompt("question_purpose", self._pack, question_text=f"{question.question_id}: {question.text}", criteria_block=cb, facts_block=fb))
+        except Exception:                                   # model down, no recording in replay, bad JSON: the status stays as the decision table gave it
+            return None
+        if not isinstance(ans, PurposeAnswer):
+            return None
+        by_id = {f.fact_id: f for f in facts}
+        rationale = _norm(ans.rationale)
+        if not ans.settled or ans.confidence < cfg.min_confidence or not rationale or len(rationale) > cfg.max_rationale_chars:
+            return PurposeVerdict(False, rationale=rationale, confidence=ans.confidence)
+        if not self._grounded(VerdictItem(criterion_index=0, verdict="met", fact_ids=ans.fact_ids, evidence_quote=ans.evidence_quote, confidence=ans.confidence), by_id):
+            return PurposeVerdict(False, rationale="the answer cites no offered fact or its quote is not verbatim text of a cited fact")
+        return PurposeVerdict(True, tuple(dict.fromkeys(ans.fact_ids)), _norm(ans.evidence_quote), rationale, round(min(ans.confidence, self.cfg.confidence_cap), 3))
 
     def check(self, answer: VerdictAnswer, question: OpenQuestion, criteria: dict[int, str], facts: Sequence[Fact]) -> JudgeOutcome:
         cfg = self.cfg

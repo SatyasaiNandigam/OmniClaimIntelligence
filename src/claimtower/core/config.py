@@ -530,6 +530,17 @@ class SufficiencyRow(Contract):
         return self
 
 
+class PurposeConfig(Contract):
+    """Settling a question on the evidence as a whole. The listed criteria are examples of what would establish a question; for a question about HOW something happened (its cause, its timing)
+    different evidence can answer it just as well. When a question is only partly evidenced by its criteria, a second model call asks whether the facts together answer what the question is FOR.
+    It is accepted only if it cites the facts, quotes one verbatim, no linked fact points the other way and no contradiction blocks. Off, or a question category not listed: nothing changes."""
+
+    enabled: bool = False
+    categories: list[str] = []                      # the question categories it may apply to (a question about a required document or an amount is never settled this way)
+    min_confidence: float = Field(default=0.75, ge=0, le=1)
+    max_rationale_chars: int = Field(default=300, ge=40)
+
+
 class SufficiencyConfig(Contract):
     """Sufficiency classifier (T4.4): for each question, which criteria are met by the evidence, and from that the status and the gap type
     (contradictory / missing / insufficient) through the decision table. A criterion about the policy is decided from the snapshot; one
@@ -543,6 +554,7 @@ class SufficiencyConfig(Contract):
     reasoning_effort: Literal["minimal", "low", "medium", "high"] | None = None
     blocking_severities: list[Literal["low", "medium", "high"]] = ["medium", "high"]   # a contradiction at these severities blocks
     criteria_rules: list[CriterionRule] = []
+    purpose: PurposeConfig = PurposeConfig()
     table: list[SufficiencyRow] = Field(min_length=1)
 
     @model_validator(mode="after")

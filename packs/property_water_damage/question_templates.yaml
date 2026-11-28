@@ -165,6 +165,11 @@ sufficiency:
   max_fact_chars: 400           # SAMPLE
   reasoning_effort: low         # SAMPLE
   blocking_severities: [medium, high]       # SAMPLE: a low-severity contradiction is noted but does not block
+  purpose:                      # DECISION 2026-11-28: a question about HOW something happened can be answered by other evidence than its listed examples
+    enabled: true               #   (a plumber's finding of a sudden rupture with no earlier staining answers "when did it begin" without a maintenance record).
+    categories: [timing, cause] #   Never for a question about a required document or an amount. A second model call; it must cite and quote the facts, and a fact pointing the other way stops it.
+    min_confidence: 0.75        # SAMPLE
+    max_rationale_chars: 300    # SAMPLE
   criteria_rules:
     - {question: Q-INFORCE, criterion: "PAS policy status is in force on the date of loss", met_if: policy_answer_known}        # the PAS answered, either way
     - {question: Q-SUBLIMIT, criterion: "Applicable endorsement wording effective on the date of loss", met_if: linked_clause_type, types: [sublimit]}

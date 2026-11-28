@@ -20,7 +20,7 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel
 
-from claimtower.agents.settlement_inputs import (DeductibleReader, Extracted, LLMAmountReader, PaymentsSource, ScheduleSource, combine, deductible_candidates, rule_amounts,
+from claimtower.agents.settlement_inputs import (schedule_number, wording_deductible_candidates, DeductibleReader, Extracted, LLMAmountReader, PaymentsSource, ScheduleSource, combine, deductible_candidates, rule_amounts,
                                                  sublimit_from_snapshot)
 from claimtower.agents.settlement_inputs import _money_of
 from claimtower.core.config import Pack
@@ -95,17 +95,16 @@ class SettlementAgent:
         paid_here = self.payments.paid_on_claim(state.claim_id) if self.payments else None
         paid_policy = self.payments.paid_against_policy(h.policy_ref) if self.payments and h and h.policy_ref else None
         sch = "schedule of the policy " + (h.policy_ref if h and h.policy_ref else "")
-        parts["applicable_deductible"] = Extracted(Decimal(sched["standard_deductible"]), [sch], "schedule") if sched and "standard_deductible" in sched else \
-            Extracted(None, [], "schedule", "the deductible is not available from the policy system")
-        parts["remaining_policy_limit"] = Extracted(Decimal(sched["building_limit"]) - (paid_policy - paid_here), [sch, "payments on other claims"], "schedule") \
-            if sched and "building_limit" in sched and paid_policy is not None and paid_here is not None else Extracted(None, [], "schedule", "the limit is not available")
-        parts["prior_payments_total"] = Extracted(paid_here, ["payments on this claim"], "payments") if paid_here is not None else \
-            Extracted(None, [], "payments", "payments on this claim are not available")
+        std_n, std_text = schedule_number(sched, "standard_deductible")
+        lim_n, lim_text = schedule_number(sched, "building_limit")
+        parts["applicable_deductible"] = Extracted(std_n, [sch], "schedule") if std_n is not None else             Extracted(None, [], "schedule", f"the schedule refers to the wording for the deductible ('{std_text}')" if std_text else "the deductible is not available from the policy system")
+        parts["remaining_policy_limit"] = Extracted(lim_n - (paid_policy - paid_here), [sch, "payments on other claims"], "schedule")             if lim_n is not None and paid_policy is not None and paid_here is not None else             Extracted(None, [], "schedule", f"the schedule refers to the wording for the limit ('{lim_text}')" if lim_text else "the limit is not available")
+        parts["prior_payments_total"] = Extracted(paid_here, ["payments on this claim"], "payments") if paid_here is not None else             Extracted(None, [], "payments", "payments on this claim are not available")
         cands = deductible_candidates(state.policy_snapshot, h.loss_date) if h else []
+        if not cands and std_n is None and sched is not None and h and self.deductible_reader is not None:
+            cands = wording_deductible_candidates(state.policy_snapshot)                 # the schedule gives no sum: the standard deductible is in the wording (never replaces a schedule figure)
         if cands:                                                               # an endorsement in force on the loss date amends the deductible: the schedule's figure is not used silently
-            std = Decimal(sched["standard_deductible"]) if sched and "standard_deductible" in sched else None
-            parts["applicable_deductible"] = self.deductible_reader.read(cands, h.loss_date, std) if self.deductible_reader is not None else \
-                Extracted(None, [c.clause_id for c in cands], "clause", "an endorsement amends the deductible; choosing the one in force on the loss date needs the model", unavailable=True)
+            parts["applicable_deductible"] = self.deductible_reader.read(cands, h.loss_date, std_n) if self.deductible_reader is not None else                 Extracted(None, [c.clause_id for c in cands], "clause", "an endorsement amends the deductible; choosing the one in force on the loss date needs the model", unavailable=True)
         rec = self.overrides.last(state.claim_id) if self.overrides is not None else None
         if rec is not None:                                                     # a reviewer's edit at the gate: the INPUT is replaced, the engine still computes
             for name, value in self.overrides.get(state.claim_id).items():

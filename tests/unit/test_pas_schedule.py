@@ -48,6 +48,7 @@ GOOD = ScheduleAnswer(policy_number="HSP-9000", holder_name="Mrs A Rao", period_
 def test_dates_are_read_in_the_usual_written_forms_and_must_appear_in_the_text():
     assert parse_date("1 March 2026") == date(2026, 3, 1) and parse_date("March 1, 2026") == date(2026, 3, 1) and parse_date("2026-03-01") == date(2026, 3, 1)
     assert parse_date("31 Dec 2026") == date(2026, 12, 31) and parse_date("soon") is None and parse_date("31 February 2026") is None
+    assert date_in_text(date(2026, 3, 1), "01 March 2026 to 28 February 2027 (both days inclusive)")          # a leading zero is the same day
     assert date_in_text(date(2027, 2, 28), "to 28 February 2027") and date_in_text(date(2027, 2, 28), "28/02/2027") and not date_in_text(date(2027, 2, 27), "to 28 February 2027")
 
 
@@ -177,3 +178,27 @@ def test_without_a_mock_pas_the_routes_say_so(tmp_path):
     store = DocumentStore(tmp_path / "store")
     c = TestClient(create_app(ClaimRunner(build_registry(SETTINGS, document_store=store), settings=SETTINGS), store, synthetic_claims=SYNTHETIC / "claims"))
     assert c.get("/pas/policies").status_code == 404 and "mock PAS" in c.get("/pas/policies").json()["detail"]
+
+
+def test_a_zero_padded_period_and_an_amount_given_in_words_are_read_without_false_alarms():
+    lines = ["Policy number: HSP-9001", "Period of insurance: 01 March 2026 to 28 February 2027 (both days inclusive)", "Policy wording: HS-W-2026", "Building limit: INR 3,200,000",
+             "Escape of water cover: as per wording", "Deductible: as per wording clause 5.1"]
+    ans = GOOD.model_copy(update={"policy_number": "HSP-9001", "period_text": "01 March 2026 to 28 February 2027 (both days inclusive)", "endorsements": [],
+                                  "amounts": [ScheduleAmount(name="building_limit", value="3200000"), ScheduleAmount(name="escape_of_water_cover", value=""), ScheduleAmount(name="deductible", value="")]})
+    p = ScheduleReader(FakeLLM(ans), SETTINGS.pack).read(pdf(lines), "s.pdf")
+    assert not p.problems and p.policy.versions[0].schedule == {"building_limit": "3200000"}
+    assert not any("escape_of_water" in w or "'deductible" in w for w in p.warnings) and any("no standard deductible" in w for w in p.warnings)
+
+
+def test_an_item_the_schedule_gives_in_words_is_kept_as_those_words_when_the_document_says_them():
+    from claimtower.integrations.mock.schedule import is_sum
+
+    assert is_sum("INR 3,200,000") and is_sum("10,000") and is_sum("4500000") and not is_sum("as per wording clause 5.1") and not is_sum("included")
+    lines = ["Policy number: HSP-9002", "Period of insurance: 1 March 2026 to 28 February 2027", "Policy wording: HS-W-2026", "Building limit: INR 3,200,000",
+             "Standard deductible: as per wording clause 5.1", "Escape of water cover: included"]
+    ans = GOOD.model_copy(update={"policy_number": "HSP-9002", "endorsements": [], "amounts": [
+        ScheduleAmount(name="building_limit", value="3200000"), ScheduleAmount(name="standard_deductible", value="as per wording clause 5.1"),
+        ScheduleAmount(name="escape_of_water_cover", value="included"), ScheduleAmount(name="premium", value="as per quotation 77")]})
+    p = ScheduleReader(FakeLLM(ans), SETTINGS.pack).read(pdf(lines), "s.pdf")
+    assert p.policy.versions[0].schedule == {"building_limit": "3200000", "standard_deductible": "as per wording clause 5.1", "escape_of_water_cover": "included"}
+    assert any("premium" in w and "not in the document" in w for w in p.warnings) and any("in words" in w and "read it from the wording" in w for w in p.warnings)

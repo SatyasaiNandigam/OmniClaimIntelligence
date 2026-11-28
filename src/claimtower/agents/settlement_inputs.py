@@ -196,6 +196,25 @@ class DeductibleAnswer(BaseModel):
     note: str = ""
 
 
+def schedule_number(sched: dict[str, str] | None, key: str) -> tuple[Decimal | None, str | None]:
+    """(number, None) when the schedule gives the item as a sum; (None, text) when it gives words instead (for example "as per wording clause 5.1"); (None, None) when it says nothing."""
+    raw = (sched or {}).get(key)
+    if raw is None or not str(raw).strip():
+        return None, None
+    try:
+        return Decimal(str(raw).replace(",", "").strip()), None
+    except InvalidOperation:
+        return None, str(raw).strip()
+
+
+def wording_deductible_candidates(snapshot: PolicySnapshot | None) -> list[Any]:
+    """The deductible clauses of the base wording (those no endorsement owns): where the standard deductible is when the schedule only refers to the wording."""
+    if snapshot is None:
+        return []
+    owned = {cid for e in snapshot.endorsements for cid in e.clause_ids}
+    return [c for c in snapshot.clauses if c.clause_type == "deductible" and c.clause_id not in owned]
+
+
 def deductible_candidates(snapshot: PolicySnapshot | None, loss_date: Any) -> list[Any]:
     """Deductible clauses of the endorsements in force on the loss date (an endorsement can amend the deductible of the wording or the schedule)."""
     if snapshot is None or loss_date is None:
@@ -232,4 +251,4 @@ class DeductibleReader:
             return Extracted(None, ids, "model", "an endorsement amends the deductible but the model's choice could not be checked against the clause text" + (f" ({ans.note})" if ans.note else ""), unavailable=True)
         return Extracted(v, [c.clause_id], "model", f"the deductible in force on the loss date is taken from {c.clause_id}", review=True)
 
-__all__ = ["AmountsAnswer", "DeductibleAnswer", "DeductibleReader", "Extracted", "LLMAmountReader", "deductible_candidates", "PaymentsSource", "ScheduleSource", "combine", "rule_amounts", "sublimit_from_snapshot"]
+__all__ = ["schedule_number", "wording_deductible_candidates", "AmountsAnswer", "DeductibleAnswer", "DeductibleReader", "Extracted", "LLMAmountReader", "deductible_candidates", "PaymentsSource", "ScheduleSource", "combine", "rule_amounts", "sublimit_from_snapshot"]
